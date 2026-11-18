@@ -36,6 +36,11 @@ export const DEFAULT_DEFINITIONS = {
             name: 'Connive',
             reminder: 'Draw a card, then discard a card. If you discarded a nonland '
                 + 'card, put a +1/+1 counter on this creature.'
+        },
+        {
+            name: 'Recruit',
+            reminder: 'Draw a card, then discard a card. If you discarded a nonland '
+                + 'card, create a 1/1 white Human Soldier creature token.'
         }
     ],
     tokens: [
