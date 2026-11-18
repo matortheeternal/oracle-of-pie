@@ -1,9 +1,5 @@
 export const SPELL_TAGS = [
     {
-        tag: 'modal',
-        match: { kind: 'ChooseModesEffect' }
-    },
-    {
         tag: 'copy-spell',
         match: {
             kind: 'CopyEffect',
