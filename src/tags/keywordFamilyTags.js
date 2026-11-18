@@ -8,7 +8,12 @@ const GRANTED = 'grantedKeywordNames';
 const COUNTER_EFFECTS = ['PutCountersEffect', 'EntersWithCountersEffect'];
 const ONTO_SELF = [
     { kind: SELF_GRANTING_EFFECTS, subject: { refersToSelf: true } },
-    { kind: COUNTER_EFFECTS, card: { isCreature: true }, phrases: { refersToSelf: true } }
+    {
+        kind: COUNTER_EFFECTS,
+        card: { isCreature: true },
+        phrases: { refersToSelf: true }
+    },
+    { kind: 'KeywordAbility', context: { station: { kind: 'StationAbility' } } }
 ];
 
 export const KEYWORD_FAMILY_TAGS = [

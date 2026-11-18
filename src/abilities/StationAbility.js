@@ -16,4 +16,8 @@ export default class StationAbility extends Ability {
     get parts() {
         return [this.inner].filter(Boolean);
     }
+
+    childContext(context) {
+        return { ...super.childContext(context), station: this };
+    }
 }

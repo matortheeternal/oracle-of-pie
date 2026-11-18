@@ -83,4 +83,8 @@ export default class KeywordAbility extends Ability {
     get isKeywordAbility() {
         return true;
     }
+
+    get conferredKeywordNames() {
+        return this.keywords.names;
+    }
 }
