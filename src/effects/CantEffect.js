@@ -25,6 +25,7 @@ const CANT_QUALIFIERS = [
     'during [^,.]+',
     'more than [^,.]+'
 ];
+const NEXT_UNTAP = /^untap during [^,.]*\bnext\b/;
 const CANT = new RegExp(
     `^(?:can't|cannot|doesn't|don't) (${CANT_ALTERNATIVES.join('|')})`
         + `(?: (?:${CANT_QUALIFIERS.join('|')}))*`,
@@ -38,5 +39,9 @@ export default class CantEffect extends Effect {
 
     parseArguments(match) {
         this.restriction = match[1].toLowerCase();
+    }
+
+    get preventsNextUntap() {
+        return NEXT_UNTAP.test(this.restriction);
     }
 }
