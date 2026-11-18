@@ -45,7 +45,7 @@ export default class PieInspector {
     judge(attribution) {
         const colors = attribution.colors;
         const policy = COLOR_POLICIES.find(candidate => candidate.appliesTo(colors));
-        const verdict = policy?.judge(colors, attribution.inspection.tiers);
+        const verdict = policy?.judge(colors, attribution.tiers);
         if (!verdict) return null;
         const profile = this.profiles.get(attribution.inspection.id) ?? null;
         return new PieFlag(attribution, policy, verdict, profile);

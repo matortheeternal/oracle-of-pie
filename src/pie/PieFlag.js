@@ -19,6 +19,7 @@ export default class PieFlag {
         const { inspection, evidence, colors } = this.attribution;
         return {
             inspection: inspection.id,
+            exception: this.attribution.exception?.id ?? null,
             title: inspection.title,
             colors: String(colors),
             policy: this.policy.id,

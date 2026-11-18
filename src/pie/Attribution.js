@@ -4,7 +4,13 @@ import attributedColors from './attributedColors.js';
 export default class Attribution {
     constructor(inspection, face, { node, context }) {
         this.inspection = inspection;
+        this.exception = inspection.exceptionFor(node, context);
         this.colors = attributedColors(face, context);
         this.evidence = evidenceOf(node, context);
+    }
+
+    get tiers() {
+        const base = this.inspection.tiers;
+        return this.exception ? this.exception.tiersOver(base) : base;
     }
 }

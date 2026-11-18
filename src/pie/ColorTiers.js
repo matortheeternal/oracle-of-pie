@@ -15,6 +15,10 @@ export default class ColorTiers {
         this.byColor = byColor;
     }
 
+    withOverrides(overrides) {
+        return new ColorTiers({ ...this.byColor, ...overrides });
+    }
+
     tierOf(color) {
         return this.byColor[color];
     }
