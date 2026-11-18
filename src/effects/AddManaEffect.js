@@ -10,7 +10,7 @@ const MANA_KIND_ALTERNATIVES = [
 const MANA_ALTERNATIVES = [
     '(?:\\{[^}]+\\})+(?:,? (?:or |and )?(?:\\{[^}]+\\})+)*',
     `(?:[a-z]+|\\d+|X) mana (?:${MANA_KIND_ALTERNATIVES.join('|')})`,
-    '[^,.]*\\bmana\\b[^,.]*'
+    '[^,.]*\\bmana\\b(?! value)[^,.]*'
 ];
 const MANA = new RegExp(`^(?:${MANA_ALTERNATIVES.join('|')})`, 'i');
 const MANA_TAIL = /^(for each [^,.]+|instead)/i;
