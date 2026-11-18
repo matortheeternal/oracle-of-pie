@@ -2,14 +2,16 @@ import Parser from '../core/Parser.js';
 import Keyword from './Keyword.js';
 
 const SEPARATOR = /^(?:,? ?(?:and|or) |, )/;
+const CHOICE = /^your choice of /i;
 
 export default class KeywordList extends Parser {
     static match(scribe, str) {
-        return Keyword.match(scribe, str) ? [''] : null;
+        return Keyword.match(scribe, str.replace(CHOICE, '')) ? [''] : null;
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
+        this.consumeText(CHOICE);
         this.keywords = [this.consume([Keyword])];
         while (this.continuesWithKeyword()) {
             this.consumeText(SEPARATOR);
