@@ -1,7 +1,7 @@
 import Effect from './Effect.js';
 
-const PREVENT_AMOUNT = '(all|the next \\w+)';
-const PREVENTED = `${PREVENT_AMOUNT} (combat )?damage that would be dealt`;
+const PREVENT_AMOUNT = '(all|the next \\w+|that|the)';
+const PREVENTED = `${PREVENT_AMOUNT} (combat )?damage(?: that would be dealt)?`;
 const PREVENT_DAMAGE = new RegExp(`^prevent ${PREVENTED}`, 'i');
 const SCOPE = /^[^,.]+/;
 const UNRESTRICTED_SCOPE = /^(?:this turn)?$/i;

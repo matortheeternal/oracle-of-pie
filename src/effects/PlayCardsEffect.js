@@ -3,8 +3,10 @@ import ObjectEffect from './ObjectEffect.js';
 const PLAY_CARDS = /^(play|cast) (?!an additional land|two additional lands)/i;
 const WITHOUT_PAYING = /^without paying (?:its|their) mana costs?/i;
 const AS_THOUGH_FLASH = /^as though (?:it|they) had flash/i;
+const ANY_TYPE = 'mana of any type (?:can be spent )?to cast [^,.]+';
+const ANY_TYPE_MANA = new RegExp(`^,? and (?:you may spend )?${ANY_TYPE}`, 'i');
 const SOURCE = /^from [^,.]+?(?= without paying\b| as though\b|[,.]|$)/i;
-const PLAY_TAILS = [WITHOUT_PAYING, AS_THOUGH_FLASH, SOURCE];
+const PLAY_TAILS = [WITHOUT_PAYING, AS_THOUGH_FLASH, ANY_TYPE_MANA, SOURCE];
 const PLAY = 'play';
 
 export default class PlayCardsEffect extends ObjectEffect {

@@ -18,7 +18,8 @@ const RETURN_TAIL_ALTERNATIVES = [
     'under (?:your|its owner\'s|their owners\'|their owner\'s) control',
     'attached to [^,.]+',
     'with (?:an? |N |\\w+ )[^,.]*counters? on (?:it|them)',
-    'at the beginning of [^,.]+'
+    'at the beginning of [^,.]+',
+    'at end of combat'
 ];
 const RETURN_TAIL = new RegExp(
     `^(${RETURN_TAIL_ALTERNATIVES.join('|')})`, 'i'

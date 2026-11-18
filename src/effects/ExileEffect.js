@@ -8,7 +8,10 @@ const EXILE_TAIL_ALTERNATIVES = [
     'at random',
     'until ~ leaves the battlefield',
     'until [^,.]+ leaves the battlefield',
-    'from the top of (?:your|their|its owner\'s|that player\'s) library until [^,.]+'
+    'from the top of (?:your|their|its owner\'s|that player\'s) library until [^,.]+',
+    'with [^,.]*counters? on (?:it|them)',
+    'at (?:end of combat|the beginning of [^,.]+)',
+    'from (?:your|its owner\'s|their) graveyard'
 ];
 const EXILE_TAIL = new RegExp(
     `^(${EXILE_TAIL_ALTERNATIVES.join('|')})`, 'i'

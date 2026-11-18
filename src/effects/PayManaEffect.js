@@ -1,7 +1,7 @@
 import { ActivationCost } from 'mana-scribe';
 import Effect from './Effect.js';
 
-const PAY_MANA = /^pays? (any amount of |\w+ or more )?((?:\{[^}]+\})+)/i;
+const PAY_MANA = /^pays? (any amount of |\w+ or more |\w+ (?=\{))?((?:\{[^}]+\})+)/i;
 const REPEATED = /^any number of times\b/i;
 const ALTERNATIVE = /^rather than pay(?:ing)? [^,.]+/i;
 const AND_LIFE = /^and (\w+) life\b/i;
