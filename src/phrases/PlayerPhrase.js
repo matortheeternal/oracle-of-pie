@@ -1,6 +1,7 @@
 import Phrase from './Phrase.js';
 
 const PLAYER_ALTERNATIVES = [
+    'you and (?:target opponent|target player|that player|each opponent)(?: each)?',
     'you',
     'target player',
     'target opponent',
@@ -18,13 +19,14 @@ const PLAYER_ALTERNATIVES = [
     'the chosen player',
     'that (?:creature|spell|permanent)\'s controller',
     'its owner',
-    'your opponents',
-    'you and target opponent each'
+    'your opponents'
 ];
 const PLAYER = new RegExp(
     `^(${PLAYER_ALTERNATIVES.join('|')})\\b`, 'i'
 );
 const YOU = /^you\b/i;
+const COMPOUND = / and /i;
+const RELATIVE = /^who (?:does(?:n't| not)?|can't|did(?:n't)?|lost life this turn)\b/i;
 const OPPOSING = /opponent|defending|controller|its owner/i;
 const OPPONENT = /opponent|defending player/i;
 const EVERY_PLAYER = /^(?:each|your opponents)\b/i;
@@ -38,6 +40,7 @@ export default class PlayerPhrase extends Phrase {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.player = match[1].toLowerCase();
+        this.relative = this.consumeText(RELATIVE)?.[0] ?? null;
     }
 
     get isPlayer() {
@@ -45,6 +48,7 @@ export default class PlayerPhrase extends Phrase {
     }
 
     get isYou() {
+        if (COMPOUND.test(this.player)) return false;
         return YOU.test(this.player) && !this.player.includes('opponent');
     }
 
@@ -53,7 +57,7 @@ export default class PlayerPhrase extends Phrase {
     }
 
     get includesYou() {
-        return this.isYou || EACH_PLAYER.test(this.player);
+        return YOU.test(this.player) || EACH_PLAYER.test(this.player);
     }
 
     get isMass() {

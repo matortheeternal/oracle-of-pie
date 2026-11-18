@@ -3,10 +3,12 @@ import AttachedReference from './AttachedReference.js';
 import AnyTarget from './AnyTarget.js';
 import PlayerPhrase from './PlayerPhrase.js';
 import ZonePhrase from './ZonePhrase.js';
+import LibraryTopPhrase from './LibraryTopPhrase.js';
 import BackReference from './BackReference.js';
 import NounPhrase from './NounPhrase.js';
 
 export const PHRASE_PARSERS = [
-    SelfReference, AttachedReference, AnyTarget, ZonePhrase, PlayerPhrase, BackReference,
+    SelfReference, AttachedReference, AnyTarget, ZonePhrase, LibraryTopPhrase,
+    PlayerPhrase, BackReference,
     NounPhrase
 ];
