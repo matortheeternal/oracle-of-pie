@@ -7,3 +7,122 @@
 {"id":"5cfd73ab-8509-4e4b-9704-68d8dad3b301|counterspell","verdict":"correct","note":"","at":"2026-11-17T23:58:34.239Z"}
 {"id":"ef71ef07-8a35-41ec-a851-d95e9e3a221b|counterspell","verdict":"correct","note":"","at":"2026-11-17T23:58:40.196Z"}
 {"id":"c387f46f-ad91-4964-8dc6-acefe537fe3c|counterspell","verdict":"correct","note":"","at":"2026-11-17T23:58:42.600Z"}
+{"id":"0db20037-35b3-4b1f-8dd6-3ee797c421ca|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:04:09.363Z"}
+{"id":"5a5d426b-e5eb-44f0-b5fe-c258bec6d59e|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:05:05.088Z"}
+{"id":"313aee0e-4090-4589-b323-a4edbda21c68|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:05:10.165Z"}
+{"id":"d55f6c70-321f-4fb4-bd33-0850ae1a7c36|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:05:13.926Z"}
+{"id":"79090b00-d920-4134-a838-fb434cf3ee4d|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:05:17.409Z"}
+{"id":"b0870f91-c544-446a-8f7b-a8d03fdb0a2a|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:05:22.012Z"}
+{"id":"1a8185ed-636b-49ad-bf24-2ab02c7fb91e|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:05:29.336Z"}
+{"id":"9ac20f38-adc4-40a9-95c9-bbdc689b928b|counterspell","verdict":"correct","note":"","at":"2026-11-18T03:05:40.467Z"}
+{"id":"4240dab9-ace7-490d-97c3-489a9fd52038|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T03:06:07.571Z"}
+{"id":"3ceee5c2-321c-49ec-ba49-1fac7f6ee2cc|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T03:06:17.179Z"}
+{"id":"0540eaca-0e03-4831-955a-192ae2b87d35|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T03:06:21.616Z"}
+{"id":"032f59c3-9f47-4db3-a43c-065a99ed7efe|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T03:06:24.629Z"}
+{"id":"3c2e2e69-cd44-458f-a5b0-8591baa24e65|removal-destroy","verdict":"wrong","note":"this is a weird case and we probably shouldn't try to model it.  it's a jailer effect that can turn into a destruction effect if you resolve its activated ability.","at":"2026-11-18T03:07:21.546Z"}
+{"id":"fa25d142-e6ba-4fc9-81e2-114c32afc030|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T03:07:27.501Z"}
+{"id":"c2a4c6c7-e5b4-4cc8-91d8-5de8cc95ed00|removal-destroy","verdict":"wrong","note":"sort of?  it's not instant speed, so a lot of the time it's more of a give your creatures and spells deathtouch effect.  I'd say no as far as our tagging is concerned.","at":"2026-11-18T03:08:25.895Z"}
+{"id":"5d307515-6ea1-4b1f-8e4b-49bfebfbdfcc|removal-destroy","verdict":"wrong","note":"it's technically sacrifice","at":"2026-11-18T03:09:08.497Z"}
+{"id":"79a63064-f25b-4c34-867e-a9d32da97b14|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T03:09:16.656Z"}
+{"id":"0a744206-04c4-46cb-b64d-cf192c9324df|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T03:09:35.525Z"}
+{"id":"d14f313c-fea6-49c4-8197-5b74ee584a6b|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:09:44.371Z"}
+{"id":"e5d928dc-b465-4cf7-ab11-d5bd3328f8e7|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:09:50.742Z"}
+{"id":"0f35cf85-6783-4d69-b5e6-a81f7c1f21e7|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:09:57.672Z"}
+{"id":"9056eba4-612b-4e82-8689-fe098241b007|removal-exile","verdict":"wrong","note":"","at":"2026-11-18T03:10:13.676Z"}
+{"id":"760ede92-a826-4144-9de8-84ba9b8743d1|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:10:25.179Z"}
+{"id":"f474d244-d9be-4580-bf62-f97660e9c1a3|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:10:28.052Z"}
+{"id":"823006a8-098c-457a-8546-77ae2457c459|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:10:34.113Z"}
+{"id":"d2db3f9c-26fe-487b-bbb7-8bc6f33456f1|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:10:41.058Z"}
+{"id":"367bb252-41e1-4f98-9d22-442dd332cccf|removal-exile","verdict":"correct","note":"","at":"2026-11-18T03:10:49.439Z"}
+{"id":"eef75645-1aa5-4085-8cbd-8b6fec2cbdc2|removal-exile","verdict":"wrong","note":"","at":"2026-11-18T03:10:54.217Z"}
+{"id":"85aa53e8-f062-4d02-bc69-1413f7f0dcf1|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:10:59.001Z"}
+{"id":"4b473a42-a0c5-43d5-93f9-c599e963a06b|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:11:33.809Z"}
+{"id":"9ad61841-9894-41da-bdd8-248c2ce21b00|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:11:37.660Z"}
+{"id":"8651da8e-9b2c-4530-a521-aea490ad88d4|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:11:40.706Z"}
+{"id":"7830f600-c7c7-48f8-8020-3493c5745eed|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:11:50.389Z"}
+{"id":"67d29e56-9ca8-46bc-9ee0-20184e867ce4|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:11:55.413Z"}
+{"id":"8f1c1bd6-8420-4de2-81f4-5faa419da301|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:12:05.653Z"}
+{"id":"e25062ba-7176-4d59-ac3e-26d19b26f02a|removal-bounce","verdict":"correct","note":"it is, but I don't think we need to recognize this construction.","at":"2026-11-18T03:12:33.839Z"}
+{"id":"b5c8e24a-f4d7-42dc-8117-905ad0bad888|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:12:40.722Z"}
+{"id":"24cd8f54-c1d4-4040-93bf-a7b9b719ac30|removal-bounce","verdict":"correct","note":"","at":"2026-11-18T03:12:48.653Z"}
+{"id":"7d05ffe2-e52b-42af-87ca-6aae488b9f41|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:13:01.015Z"}
+{"id":"d04d2434-121e-4420-abfc-fa21ad5577c3|removal-artifact","verdict":"correct","note":"it is because it is removal-nonland, which includes artifacts.","at":"2026-11-18T03:14:38.170Z"}
+{"id":"565ba85c-bad8-4cbd-a2ff-b4384b886308|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:14:45.852Z"}
+{"id":"78304a06-4c9a-4cdf-b67f-067d88762381|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:14:54.913Z"}
+{"id":"a7c96442-706b-4fd8-9b38-052872dafe58|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:15:05.249Z"}
+{"id":"a5729f11-6cde-4830-b882-ab4c5251c1a9|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:15:09.101Z"}
+{"id":"7aa34ef4-5e11-491b-8dbe-6ef80e0ad26c|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:15:28.434Z"}
+{"id":"169728d6-7820-4a6d-a815-70714ad3e887|removal-artifact","verdict":"wrong","note":"I would argue no, because the artifact creature has to be a creature, so I think this is creature removal.","at":"2026-11-18T03:16:12.507Z"}
+{"id":"a7dd75bf-ecda-406c-baa2-8c051f138809|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:16:16.547Z"}
+{"id":"7346c266-19d8-4432-acf5-f00aff074ad5|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T03:16:21.610Z"}
+{"id":"dab64d0f-1246-4a4d-9a79-6db2ca0c8882|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:16:28.712Z"}
+{"id":"22249955-0741-470e-bc2b-f32d4510849b|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:16:34.748Z"}
+{"id":"8485cfaa-1dbf-432b-b5d0-92a6aa6a329b|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:16:45.984Z"}
+{"id":"09669283-eb14-46a2-b37a-51d7a52da891|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:16:48.572Z"}
+{"id":"de1ca6ed-b275-4f62-ba05-f31b3659b352|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:16:55.708Z"}
+{"id":"86d2a45a-e452-4241-8ab4-28a2bb808ffa|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:17:03.250Z"}
+{"id":"bac52ae6-24ee-4c4f-a32c-3eb9859dc025|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:17:07.578Z"}
+{"id":"ecf1e378-d6bc-4ee0-800e-eb8a955d781f|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:17:11.988Z"}
+{"id":"f3838ff1-5403-4f3f-8531-36029c13fcfc|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:17:36.492Z"}
+{"id":"1e9053b5-5cca-486c-9dd8-b198a7b666bf|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T03:17:46.208Z"}
+{"id":"b7cc831c-c1a1-4ea4-ae78-5be2b6173407|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:17:58.963Z"}
+{"id":"332b6ed7-90de-46c0-85ad-1ad708b2c1e1|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:07.706Z"}
+{"id":"5462cb38-7cd7-46e8-a273-35d0d1af45b4|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:09.812Z"}
+{"id":"cefa28e2-6a95-4aca-86f4-b0b741f61939|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:11.320Z"}
+{"id":"cf3234f2-09d7-4d8b-b871-3bf0fcb75b6d|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:14.971Z"}
+{"id":"00ba96e0-42a7-432a-a500-5e607d75a358|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:18.459Z"}
+{"id":"7fd7d20d-d44c-443c-a2cf-320f39a3bec4|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:20.266Z"}
+{"id":"d8e585c5-1de3-4558-8a2f-0d9fb07edad6|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:25.849Z"}
+{"id":"6bb7419b-e085-4616-8e5c-4ed08cb2b4c1|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:29.122Z"}
+{"id":"06548af1-4fda-435c-ac32-bbf7afafb34e|hate-flying","verdict":"correct","note":"","at":"2026-11-18T03:18:34.207Z"}
+{"id":"30a0a6c2-1fbb-4784-ab96-22611d57e62c|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:18:40.240Z"}
+{"id":"c42ce2e9-4dfe-468a-8f41-49e187cb91d4|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:18:46.706Z"}
+{"id":"4abda0ad-0a2b-4bd9-81c7-56329e62311d|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:18:50.440Z"}
+{"id":"4ba5bcee-fc95-4d05-965e-b1762529ec5f|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:18:54.936Z"}
+{"id":"4b0b4d16-1d2b-497e-a1ae-bfb89eece665|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:19:02.233Z"}
+{"id":"fd0592e0-021a-450f-b0fb-e4a242dc16bf|removal-sacrifice","verdict":"skip","note":"","at":"2026-11-18T03:19:08.719Z"}
+{"id":"822ef47e-3f1b-40a6-8c5c-fea3d7deba5b|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:19:16.049Z"}
+{"id":"1e9053b5-5cca-486c-9dd8-b198a7b666bf|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:19:17.522Z"}
+{"id":"1ea3ba2d-e88f-4879-92f2-681637094b45|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:19:25.012Z"}
+{"id":"33b6555e-035d-4241-a341-a9b9139ca6f0|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-18T03:19:29.238Z"}
+{"id":"e3cd53c1-86bd-4177-adb0-a1fa693b44c6|removal-toughness","verdict":"skip","note":"I don't think this really counts for the same reason as a ward ability doesn't get the counterspell tag.  But that may be inconsistent, I'm not sure.","at":"2026-11-18T03:20:32.157Z"}
+{"id":"e7a7ba65-ad14-41d5-889b-9bbeae9ab3f7|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T03:20:35.129Z"}
+{"id":"7b0d9139-b3ad-4065-9b55-aeeda8950bee|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T03:20:37.587Z"}
+{"id":"57fdf496-c31e-4a3b-a8a6-4f053b808267|removal-toughness","verdict":"wrong","note":"technically yes, although it is a bit weird.  unless all p/t swap effects are tagged removal toughness, I don't think we should handle this.","at":"2026-11-18T03:21:15.388Z"}
+{"id":"24964ce8-1eec-49b3-9db1-b895bc686ec5|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T03:23:47.992Z"}
+{"id":"d0cc7e79-69dc-4f9d-9eed-1848f8ddb1be|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T03:23:56.731Z"}
+{"id":"d940611f-f84d-43fa-82d6-eecb4fb54164|removal-toughness","verdict":"correct","note":"technicaly yes.  it's kind of an edge case, but we can include it.  this card is a super cool design.","at":"2026-11-18T03:24:28.989Z"}
+{"id":"50e7ae38-2a66-4e32-bfb3-fefbae0caa61|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T03:24:37.760Z"}
+{"id":"dd27c5fa-4355-4e5c-8219-b74cfe209da0|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T03:24:47.636Z"}
+{"id":"0ac5c149-f6af-46b6-974e-14689e9a583d|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T03:24:54.617Z"}
+{"id":"f55a3781-fe33-4301-9bb5-6a54b9c13c4f|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:24:59.051Z"}
+{"id":"535916f8-b51a-4414-8ab0-fdccdefd9433|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:03.347Z"}
+{"id":"6cf50e21-0f60-4e9a-b910-ebe1bad2a29e|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:14.093Z"}
+{"id":"4b0b4d16-1d2b-497e-a1ae-bfb89eece665|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:17.223Z"}
+{"id":"424f3d53-47e7-4212-8267-53279ea8900a|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:20.100Z"}
+{"id":"a3435757-d049-4aaf-a2cb-897dd4940997|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:21.756Z"}
+{"id":"2e4865c5-a590-4820-81ec-926014ddb8c4|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:27.497Z"}
+{"id":"50e7ae38-2a66-4e32-bfb3-fefbae0caa61|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:30.517Z"}
+{"id":"b7ea2089-abcd-4e60-8201-93801eae5084|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:35.392Z"}
+{"id":"25b30117-03ef-49a5-8743-2d1c167d4bc3|sweeper","verdict":"correct","note":"","at":"2026-11-18T03:25:39.026Z"}
+{"id":"9fe77f70-85cf-4a18-9451-2fad4c341f07|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:25:48.163Z"}
+{"id":"453e72bf-a682-4ec8-9cdd-799f2acb3862|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:25:56.065Z"}
+{"id":"d56f24a1-04dc-4769-9941-05bd99508e40|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:26:06.268Z"}
+{"id":"4ef07e5a-3dc3-41dd-a3a9-e8812b4d40d3|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:26:15.134Z"}
+{"id":"8f976399-29a9-4eb7-844d-3d3f2fdf6ea7|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:26:21.319Z"}
+{"id":"8429ba6a-6c06-4a83-a6ee-023b64b825f8|burn-creature","verdict":"correct","note":"removal-fight gets burn-creature","at":"2026-11-18T03:27:22.380Z"}
+{"id":"77cd2246-6906-4dce-8580-4c9d2e68c477|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:27:31.936Z"}
+{"id":"cd54438d-7f9d-4d80-b15b-0f0bf4becc15|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:27:45.091Z"}
+{"id":"49b86b51-e1ef-4e27-84d2-66166481e0a5|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:27:59.627Z"}
+{"id":"69a37af8-6bcd-42b3-b788-0a357e742cc0|burn-creature","verdict":"correct","note":"","at":"2026-11-18T03:28:02.830Z"}
+{"id":"6f931c1e-f1d2-4dc7-a653-c29adfc8fb2c|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:28:21.755Z"}
+{"id":"e6f2ba06-2c92-48b7-a95f-ea6bf35aa0fe|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:28:35.234Z"}
+{"id":"273ad15c-366a-4691-978b-d6028b57005a|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:28:40.107Z"}
+{"id":"7f61a2a6-2fe2-48ec-8e2e-74d147be0a0a|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:28:45.546Z"}
+{"id":"4b8ca7fd-3c8e-44fe-ab0a-0ddc2f2b047c|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:28:53.736Z"}
+{"id":"cd54438d-7f9d-4d80-b15b-0f0bf4becc15|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:28:55.536Z"}
+{"id":"745efa76-7063-4971-9d1b-b2b4cb336a57|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:29:03.817Z"}
+{"id":"94fa21f1-826a-4d51-9ccd-d72e5cf13f3d|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:29:07.529Z"}
+{"id":"fe9f6825-597b-4d80-ab7c-f4ee4e824b6f|burn-player","verdict":"correct","note":"","at":"2026-11-18T03:29:13.523Z"}
+{"id":"2c42983e-f45a-4d10-afe5-d2234dfae1ee|burn-player","verdict":"wrong","note":"conjuring a card does not need to be something we support","at":"2026-11-18T03:29:38.374Z"}
+{"id":"55e564b4-7c08-4109-bd67-da5f31fe002e|burn-any","verdict":"correct","note":"","at":"2026-11-18T03:29:42.654Z"}

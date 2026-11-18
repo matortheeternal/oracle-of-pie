@@ -295,3 +295,892 @@
 {"id":"mtg-narou:Sort Through Trash|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:38:23.497Z"}
 {"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:38:25.588Z"}
 {"id":"mtg-narou:Wild Adandara + Ciel, Watchful Guardian|removal-fight","verdict":"correct","note":"","at":"2026-11-17T23:38:29.324Z"}
+{"id":"mtg-the-pale-age:Absolute Judgment|sweeper","verdict":"correct","note":"","at":"2026-11-18T01:41:17.243Z"}
+{"id":"mtg-the-pale-age:Absorbing Reception|threaten","verdict":"correct","note":"","at":"2026-11-18T01:41:22.980Z"}
+{"id":"mtg-the-pale-age:Angel of Contemplation|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:41:26.890Z"}
+{"id":"mtg-the-pale-age:Bearer of the Unholy|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:41:28.024Z"}
+{"id":"mtg-the-pale-age:Behold with Awe|scry","verdict":"correct","note":"","at":"2026-11-18T01:41:29.064Z"}
+{"id":"mtg-the-pale-age:Cephalopodization|draw","verdict":"correct","note":"","at":"2026-11-18T01:41:31.274Z"}
+{"id":"mtg-the-pale-age:Doctor of History|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:41:32.924Z"}
+{"id":"mtg-the-pale-age:Drown in Delusion|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T01:41:36.482Z"}
+{"id":"mtg-the-pale-age:Experimental Mutation|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T01:41:46.770Z"}
+{"id":"mtg-the-pale-age:Experimental Mutation|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T01:41:47.425Z"}
+{"id":"mtg-the-pale-age:Fallen Mender|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:41:49.621Z"}
+{"id":"mtg-the-pale-age:Falling Thoughts|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T01:41:51.248Z"}
+{"id":"mtg-the-pale-age:Goddess of Spring|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:41:53.209Z"}
+{"id":"mtg-the-pale-age:Insatiable Hunger|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T01:41:54.335Z"}
+{"id":"mtg-the-pale-age:Magical Lasso|tapper-creature","verdict":"correct","note":"","at":"2026-11-18T01:42:04.533Z"}
+{"id":"mtg-the-pale-age:Nyxie, the Nurturer|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:42:05.460Z"}
+{"id":"mtg-the-pale-age:Orcish Investigator|draw","verdict":"correct","note":"","at":"2026-11-18T01:42:06.821Z"}
+{"id":"mtg-the-pale-age:Parthenogenesis|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:42:10.079Z"}
+{"id":"mtg-the-pale-age:Pass into Eternity|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T01:42:11.985Z"}
+{"id":"mtg-the-pale-age:The Thunderstrider|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:42:13.182Z"}
+{"id":"mtg-the-pale-age:Thirst of the Dead|draw","verdict":"correct","note":"","at":"2026-11-18T01:42:16.048Z"}
+{"id":"mtg-the-pale-age:Ugr, Northern Sanctum|flicker-creature","verdict":"correct","note":"","at":"2026-11-18T01:42:23.788Z"}
+{"id":"mtg-the-pale-age:Unstoppable Force|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T01:42:24.991Z"}
+{"id":"mtg-underground:Balthasar Quaid|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T01:42:28.089Z"}
+{"id":"mtg-underground:Balthasar Quaid|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T01:42:28.849Z"}
+{"id":"mtg-underground:Cave Wave|sweeper","verdict":"correct","note":"","at":"2026-11-18T01:42:34.368Z"}
+{"id":"mtg-underground:Climbing Gear|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T01:42:36.389Z"}
+{"id":"mtg-underground:Climbing Gear|removal-toughness","verdict":"wrong","note":"no, skullclamp is not tagged removal-toughness, so this shouldn't be either (you can't equip to opponent's creatures)","at":"2026-11-18T01:43:18.875Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|sweeper","verdict":"correct","note":"","at":"2026-11-18T01:43:21.988Z"}
+{"id":"mtg-underground:Defective Elevator|flicker-creature","verdict":"correct","note":"","at":"2026-11-18T01:43:27.358Z"}
+{"id":"mtg-underground:Door to Destruction|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T01:43:31.319Z"}
+{"id":"mtg-underground:Door to Destruction|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T01:43:32.101Z"}
+{"id":"mtg-underground:Forced Reboot|tapper-creature","verdict":"correct","note":"","at":"2026-11-18T01:43:34.331Z"}
+{"id":"mtg-underground:Metra's Blessing|anthem","verdict":"correct","note":"","at":"2026-11-18T01:43:36.761Z"}
+{"id":"mtg-underground:Promising Tunnel|fetchland","verdict":"correct","note":"","at":"2026-11-18T01:43:38.255Z"}
+{"id":"mtg-underground:Succumb to Despair|removal-toughness","verdict":"correct","note":"","at":"2026-11-18T01:43:39.592Z"}
+{"id":"mtg-underground:Terramorphic Expanse|fetchland","verdict":"correct","note":"","at":"2026-11-18T01:43:40.471Z"}
+{"id":"mtg-underground:This Area is Off Limits|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T01:43:42.625Z"}
+{"id":"mtg-underground:This Area is Off Limits|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T01:43:43.165Z"}
+{"id":"mtg-underground:Vaporize|removal-destroy","verdict":"correct","note":"","at":"2026-11-18T01:43:44.423Z"}
+{"id":"mtg-underground:Vaporize|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T01:43:45.651Z"}
+{"id":"mtg-underground:Vaporize|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T01:43:47.477Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|burn-player","verdict":"correct","note":"","at":"2026-11-18T01:43:50.684Z"}
+{"id":"mtg-narou:Shalltear Bloodfallen|lifegain","verdict":"correct","note":"","at":"2026-11-18T01:43:51.884Z"}
+{"id":"mtg-narou:The Talentless Outcast|tutor-to-hand","verdict":"correct","note":"","at":"2026-11-18T01:43:55.441Z"}
+{"id":"mtg-narou:The Talentless Outcast|anthem","verdict":"correct","note":"","at":"2026-11-18T01:43:58.291Z"}
+{"id":"mtg-the-pale-age:Abaddon, Fist of Suns|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:04:59.302Z"}
+{"id":"mtg-the-pale-age:Aberrant Nemesis|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:01.835Z"}
+{"id":"mtg-the-pale-age:Abundant Paradise|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:04.504Z"}
+{"id":"mtg-the-pale-age:Abyss Dweller|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:05:20.147Z"}
+{"id":"mtg-the-pale-age:Access Infinity|hand-size-increase","verdict":"correct","note":"","at":"2026-11-18T06:05:22.148Z"}
+{"id":"mtg-the-pale-age:Access Infinity|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:24.096Z"}
+{"id":"mtg-the-pale-age:Access Infinity|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:05:26.217Z"}
+{"id":"mtg-the-pale-age:Act of Intimidation|gives-menace","verdict":"correct","note":"","at":"2026-11-18T06:05:32.296Z"}
+{"id":"mtg-the-pale-age:Adept Falconer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:35.046Z"}
+{"id":"mtg-the-pale-age:Adja and Danica|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:37.809Z"}
+{"id":"mtg-the-pale-age:Advanced Transport Gargoyle|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:05:39.765Z"}
+{"id":"mtg-the-pale-age:Airship Workshop|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:43.340Z"}
+{"id":"mtg-the-pale-age:Angel of Contemplation|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:45.795Z"}
+{"id":"mtg-the-pale-age:Angel of Obliteration|alternate-win-condition","verdict":"correct","note":"","at":"2026-11-18T06:05:49.034Z"}
+{"id":"mtg-the-pale-age:Angel of Obliteration|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:05:52.994Z"}
+{"id":"mtg-the-pale-age:Angel of Perpetuation|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:05:55.390Z"}
+{"id":"mtg-the-pale-age:Angel of Perpetuation|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:05:56.933Z"}
+{"id":"mtg-the-pale-age:Angel of Perpetuation|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:02.012Z"}
+{"id":"mtg-the-pale-age:Angel of Perpetuation|alternate-win-condition","verdict":"correct","note":"","at":"2026-11-18T06:06:04.333Z"}
+{"id":"mtg-the-pale-age:Assault Chopper|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:07.477Z"}
+{"id":"mtg-the-pale-age:Assault Chopper|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:10.379Z"}
+{"id":"mtg-the-pale-age:Asset, Lord of Knowledge|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:12.744Z"}
+{"id":"mtg-the-pale-age:Asset, Lord of Knowledge|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:06:19.213Z"}
+{"id":"mtg-the-pale-age:Autonomous Excavation Unit|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:25.015Z"}
+{"id":"mtg-the-pale-age:Autonomous Excavation Unit|mana-rock","verdict":"correct","note":"","at":"2026-11-18T06:06:28.878Z"}
+{"id":"mtg-the-pale-age:Autonomous Excavation Unit|mana-rock","verdict":"correct","note":"","at":"2026-11-18T06:06:38.582Z"}
+{"id":"mtg-the-pale-age:Banquet of Flesh|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:06:41.156Z"}
+{"id":"mtg-the-pale-age:Basement Fleshgorger|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:43.575Z"}
+{"id":"mtg-the-pale-age:Bearer of Hope|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:48.937Z"}
+{"id":"mtg-the-pale-age:Bearer of Hope|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:06:51.663Z"}
+{"id":"mtg-the-pale-age:Bearer of the Unholy|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:06:56.555Z"}
+{"id":"mtg-the-pale-age:Beast of the Woods|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:06:59.300Z"}
+{"id":"mtg-the-pale-age:Beast of the Woods|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:07:00.814Z"}
+{"id":"mtg-the-pale-age:Beast of the Woods|mana-dork","verdict":"correct","note":"","at":"2026-11-18T06:07:04.282Z"}
+{"id":"mtg-the-pale-age:Befriend the Beasts|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:07:06.959Z"}
+{"id":"mtg-the-pale-age:Behold with Awe|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:07:08.846Z"}
+{"id":"mtg-the-pale-age:Benevolence|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:07:10.835Z"}
+{"id":"mtg-the-pale-age:Benevolence|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:07:12.019Z"}
+{"id":"mtg-the-pale-age:Benevolence|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:07:14.929Z"}
+{"id":"mtg-the-pale-age:Birth from Flesh|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:07:19.738Z"}
+{"id":"mtg-the-pale-age:Bleak Survivalist|sacrifice-outlet-creature","verdict":"correct","note":"","at":"2026-11-18T06:07:23.007Z"}
+{"id":"mtg-the-pale-age:Bleak Survivalist|sacrifice-outlet-artifact","verdict":"correct","note":"","at":"2026-11-18T06:07:23.626Z"}
+{"id":"mtg-the-pale-age:Bleak Survivalist|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:07:24.786Z"}
+{"id":"mtg-the-pale-age:Bloodprint|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:07:28.909Z"}
+{"id":"mtg-the-pale-age:Bloodprint|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:07:31.065Z"}
+{"id":"mtg-the-pale-age:Branching Horror|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:07:33.829Z"}
+{"id":"mtg-the-pale-age:Branching Horror|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:07:35.864Z"}
+{"id":"mtg-the-pale-age:Break Wings|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:07:40.421Z"}
+{"id":"mtg-the-pale-age:Break Wings|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:08:06.683Z"}
+{"id":"mtg-the-pale-age:Broken Robot|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:08:09.563Z"}
+{"id":"mtg-the-pale-age:Broken Robot|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:08:11.701Z"}
+{"id":"mtg-the-pale-age:Bubbling Springs|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:08:13.267Z"}
+{"id":"mtg-the-pale-age:Cackling Imp|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:08:17.676Z"}
+{"id":"mtg-the-pale-age:Call to Slaughter|gives-first-strike","verdict":"correct","note":"","at":"2026-11-18T06:08:20.203Z"}
+{"id":"mtg-the-pale-age:Call to Slaughter|keyword-anthem","verdict":"correct","note":"","at":"2026-11-18T06:08:21.512Z"}
+{"id":"mtg-the-pale-age:Call to Slaughter|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:08:23.927Z"}
+{"id":"mtg-the-pale-age:Call to Slaughter|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:08:26.439Z"}
+{"id":"mtg-the-pale-age:Cataclysmic Wake|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:08:29.412Z"}
+{"id":"mtg-the-pale-age:Cephalopodization|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:08:31.017Z"}
+{"id":"mtg-the-pale-age:Cephalopodization|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:08:35.701Z"}
+{"id":"mtg-the-pale-age:Challenge Divinity|gives-indestructible","verdict":"correct","note":"","at":"2026-11-18T06:08:58.609Z"}
+{"id":"mtg-the-pale-age:Childhood Tree|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:08:59.728Z"}
+{"id":"mtg-the-pale-age:Childhood Tree|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:09:06.298Z"}
+{"id":"mtg-the-pale-age:Cinder Sprite|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:09.364Z"}
+{"id":"mtg-the-pale-age:Clarity|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:11.242Z"}
+{"id":"mtg-the-pale-age:Clarity|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:09:12.258Z"}
+{"id":"mtg-the-pale-age:Cloud Eater|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:09:16.702Z"}
+{"id":"mtg-the-pale-age:Cloud Skimmer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:20.509Z"}
+{"id":"mtg-the-pale-age:Clue|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:24.152Z"}
+{"id":"mtg-the-pale-age:Clue|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:09:25.146Z"}
+{"id":"mtg-the-pale-age:Colorsight|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:29.638Z"}
+{"id":"mtg-the-pale-age:Colorsight|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:30.670Z"}
+{"id":"mtg-the-pale-age:Colossal Pteradactyl|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:32.728Z"}
+{"id":"mtg-the-pale-age:Congealing Axe|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:34.604Z"}
+{"id":"mtg-the-pale-age:Consistent Burn|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:09:38.166Z"}
+{"id":"mtg-the-pale-age:Crystal Ichor|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:09:40.666Z"}
+{"id":"mtg-the-pale-age:Cursed Blade|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:09:42.480Z"}
+{"id":"mtg-the-pale-age:Cyberoptic Camouflage|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:50.276Z"}
+{"id":"mtg-the-pale-age:Cyberoptic Camouflage|gives-hexproof","verdict":"correct","note":"","at":"2026-11-18T06:09:51.826Z"}
+{"id":"mtg-the-pale-age:Deepwood Druid|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:53.832Z"}
+{"id":"mtg-the-pale-age:Deepwood Druid|mana-dork","verdict":"correct","note":"","at":"2026-11-18T06:09:54.958Z"}
+{"id":"mtg-the-pale-age:Depravity|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:09:57.688Z"}
+{"id":"mtg-the-pale-age:Depravity|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:09:58.682Z"}
+{"id":"mtg-the-pale-age:Depravity|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:09:59.716Z"}
+{"id":"mtg-the-pale-age:Derelict Doorway|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:10:01.430Z"}
+{"id":"mtg-the-pale-age:Desert Assault Vehicle|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:10:03.509Z"}
+{"id":"mtg-the-pale-age:Desert Assault Vehicle|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:10:46.442Z"}
+{"id":"mtg-the-pale-age:Desert Assault Vehicle|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:10:48.230Z"}
+{"id":"mtg-the-pale-age:Desert Assault Vehicle|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:10:49.658Z"}
+{"id":"mtg-the-pale-age:Devour the Weak|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:10:51.506Z"}
+{"id":"mtg-the-pale-age:Devour the Weak|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:10:53.294Z"}
+{"id":"mtg-the-pale-age:Dino Trainer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:10:54.767Z"}
+{"id":"mtg-the-pale-age:Disgrace|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:10:55.738Z"}
+{"id":"mtg-the-pale-age:Disgrace|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:10:56.771Z"}
+{"id":"mtg-the-pale-age:Divine Duality|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:11:01.028Z"}
+{"id":"mtg-the-pale-age:Doctor of History|cda-toughness","verdict":"correct","note":"","at":"2026-11-18T06:11:16.718Z"}
+{"id":"mtg-the-pale-age:Doctor of History|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:11:18.598Z"}
+{"id":"mtg-the-pale-age:Dune Priest|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:11:21.204Z"}
+{"id":"mtg-the-pale-age:Ea, Forgotten Queen|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:11:23.053Z"}
+{"id":"mtg-the-pale-age:Ea, Forgotten Queen|mana-dork","verdict":"correct","note":"","at":"2026-11-18T06:11:24.365Z"}
+{"id":"mtg-the-pale-age:Ea, Forgotten Queen|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:11:27.077Z"}
+{"id":"mtg-the-pale-age:Ea, Forgotten Queen|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:11:28.036Z"}
+{"id":"mtg-the-pale-age:Edification|gives-lifelink","verdict":"correct","note":"","at":"2026-11-18T06:11:29.530Z"}
+{"id":"mtg-the-pale-age:Edification|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T06:11:36.827Z"}
+{"id":"mtg-the-pale-age:Edification|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:11:38.520Z"}
+{"id":"mtg-the-pale-age:Eerie Sphere|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:11:40.444Z"}
+{"id":"mtg-the-pale-age:Electric Inspiration|modal","verdict":"correct","note":"","at":"2026-11-18T06:11:43.143Z"}
+{"id":"mtg-the-pale-age:Electric Inspiration|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:11:44.605Z"}
+{"id":"mtg-the-pale-age:Ember Invocation|modal","verdict":"correct","note":"","at":"2026-11-18T06:11:46.203Z"}
+{"id":"mtg-the-pale-age:Ember Invocation|gives-first-strike","verdict":"correct","note":"","at":"2026-11-18T06:11:48.303Z"}
+{"id":"mtg-the-pale-age:Embrace the Void|modal","verdict":"correct","note":"","at":"2026-11-18T06:11:49.156Z"}
+{"id":"mtg-the-pale-age:Embrace the Void|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:11:50.462Z"}
+{"id":"mtg-the-pale-age:Embrace the Void|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:11:52.698Z"}
+{"id":"mtg-the-pale-age:Embrace the Void|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:11:54.551Z"}
+{"id":"mtg-the-pale-age:Embrace the Void|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:11:56.110Z"}
+{"id":"mtg-the-pale-age:Endless Explosion|repeatable-removal","verdict":"wrong","note":"I don't think so, because massacre girl isn't repeatable-removal.","at":"2026-11-18T06:13:01.792Z"}
+{"id":"mtg-the-pale-age:Environmental Adaptation|activated-ability","verdict":"wrong","note":"","at":"2026-11-18T06:13:20.179Z"}
+{"id":"mtg-the-pale-age:Essence Extractor|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:13:21.941Z"}
+{"id":"mtg-the-pale-age:Evolution Solution|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:13:24.632Z"}
+{"id":"mtg-the-pale-age:Exaltation|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:13:25.907Z"}
+{"id":"mtg-the-pale-age:Exaltation|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:13:27.739Z"}
+{"id":"mtg-the-pale-age:Experimental Mutation|modal","verdict":"correct","note":"","at":"2026-11-18T06:13:28.706Z"}
+{"id":"mtg-the-pale-age:Experimental Mutation|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:13:30.052Z"}
+{"id":"mtg-the-pale-age:Experimental Mutation|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:13:32.539Z"}
+{"id":"mtg-the-pale-age:Experimental Mutation|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:13:34.375Z"}
+{"id":"mtg-the-pale-age:Falling Thoughts|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:13:36.897Z"}
+{"id":"mtg-the-pale-age:Falroth Integrator|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:13:38.666Z"}
+{"id":"mtg-the-pale-age:Falroth Ranger|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:13:39.963Z"}
+{"id":"mtg-the-pale-age:Ferocious Invocation|modal","verdict":"correct","note":"","at":"2026-11-18T06:13:40.913Z"}
+{"id":"mtg-the-pale-age:Ferocious Invocation|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:13:43.085Z"}
+{"id":"mtg-the-pale-age:Ferocious Leap|gives-first-strike","verdict":"correct","note":"","at":"2026-11-18T06:13:49.295Z"}
+{"id":"mtg-the-pale-age:Field Researcher|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:13:50.951Z"}
+{"id":"mtg-the-pale-age:Filibus, the Terrible|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:14:01.463Z"}
+{"id":"mtg-the-pale-age:Final Hour|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:14:02.877Z"}
+{"id":"mtg-the-pale-age:Floating Rock|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:14:03.848Z"}
+{"id":"mtg-the-pale-age:Floating Rock|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:14:04.908Z"}
+{"id":"mtg-the-pale-age:Fluttergoyf|cda-power","verdict":"correct","note":"","at":"2026-11-18T06:14:07.234Z"}
+{"id":"mtg-the-pale-age:Fluttergoyf|cda-toughness","verdict":"correct","note":"","at":"2026-11-18T06:14:07.827Z"}
+{"id":"mtg-the-pale-age:Forgotten Tributary|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:14:10.042Z"}
+{"id":"mtg-the-pale-age:Frenzied Giant|sacrifice-outlet-artifact","verdict":"correct","note":"","at":"2026-11-18T06:14:12.365Z"}
+{"id":"mtg-the-pale-age:Frenzied Giant|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:14:13.456Z"}
+{"id":"mtg-the-pale-age:Frenzied Giant|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:14:15.940Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:14:20.548Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:14:21.517Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:14:23.398Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:14:24.627Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:14:25.977Z"}
+{"id":"mtg-the-pale-age:Ghost Bass|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:14:28.218Z"}
+{"id":"mtg-the-pale-age:Ghost Blade|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:14:31.935Z"}
+{"id":"mtg-the-pale-age:Ghost Bloom|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:14:35.833Z"}
+{"id":"mtg-the-pale-age:Ghost Company|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:14:47.116Z"}
+{"id":"mtg-the-pale-age:Ghost Company|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:14:57.833Z"}
+{"id":"mtg-the-pale-age:Giant Slaying Sword|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:02.240Z"}
+{"id":"mtg-the-pale-age:Giant Vampire Bat|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:15:04.750Z"}
+{"id":"mtg-the-pale-age:Grace of the Hunt|keyword-anthem","verdict":"correct","note":"","at":"2026-11-18T06:15:06.374Z"}
+{"id":"mtg-the-pale-age:Grace of the Hunt|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:15:08.352Z"}
+{"id":"mtg-the-pale-age:Grace of the Hunt|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:15:09.550Z"}
+{"id":"mtg-the-pale-age:Grace of the Hunt|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:15:10.759Z"}
+{"id":"mtg-the-pale-age:Great Northern Owl|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:12.202Z"}
+{"id":"mtg-the-pale-age:Great Northern Owl|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:13.594Z"}
+{"id":"mtg-the-pale-age:Greatsword City|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:14.588Z"}
+{"id":"mtg-the-pale-age:Greatsword City|gives-trample","verdict":"correct","note":"","at":"2026-11-18T06:15:15.997Z"}
+{"id":"mtg-the-pale-age:Greener Pastures|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:17.886Z"}
+{"id":"mtg-the-pale-age:Greener Pastures|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:15:18.917Z"}
+{"id":"mtg-the-pale-age:Greener Pastures|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:15:19.888Z"}
+{"id":"mtg-the-pale-age:Grizzled Instructor|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:22.888Z"}
+{"id":"mtg-the-pale-age:Grizzled Instructor|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:15:27.884Z"}
+{"id":"mtg-the-pale-age:Gryn, the Immortal|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:15:30.976Z"}
+{"id":"mtg-the-pale-age:Gryn, the Immortal|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:32.195Z"}
+{"id":"mtg-the-pale-age:Gryn, the Immortal|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:15:33.370Z"}
+{"id":"mtg-the-pale-age:Hakai, the Primeval|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:15:40.390Z"}
+{"id":"mtg-the-pale-age:Hakai, the Primeval|gives-trample","verdict":"correct","note":"","at":"2026-11-18T06:15:42.010Z"}
+{"id":"mtg-the-pale-age:Hart of Falroth|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:15:47.227Z"}
+{"id":"mtg-the-pale-age:Harvester|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:15:49.362Z"}
+{"id":"mtg-the-pale-age:Haunted Retreat|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:15:51.901Z"}
+{"id":"mtg-the-pale-age:Heavy Crawler|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:53.130Z"}
+{"id":"mtg-the-pale-age:Hildi, Princess of the Wind|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:54.470Z"}
+{"id":"mtg-the-pale-age:Hounded by Death|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:56.058Z"}
+{"id":"mtg-the-pale-age:Hounded by Death|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:15:57.456Z"}
+{"id":"mtg-the-pale-age:Ichor|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:15:59.014Z"}
+{"id":"mtg-the-pale-age:Ichor|mana-rock","verdict":"correct","note":"","at":"2026-11-18T06:16:00.918Z"}
+{"id":"mtg-the-pale-age:Iggy, the Starved|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:16:03.926Z"}
+{"id":"mtg-the-pale-age:Iggy, the Starved|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:16:05.166Z"}
+{"id":"mtg-the-pale-age:Immolation|modal","verdict":"correct","note":"","at":"2026-11-18T06:16:06.088Z"}
+{"id":"mtg-the-pale-age:Immolation|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:16:07.707Z"}
+{"id":"mtg-the-pale-age:Immolation|gives-haste","verdict":"correct","note":"","at":"2026-11-18T06:16:09.242Z"}
+{"id":"mtg-the-pale-age:Infernal Impulse|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:16:10.806Z"}
+{"id":"mtg-the-pale-age:Infernal Impulse|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:16:11.856Z"}
+{"id":"mtg-the-pale-age:Infernal Impulse|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:16:14.394Z"}
+{"id":"mtg-the-pale-age:Infernal Impulse|gives-trample","verdict":"correct","note":"","at":"2026-11-18T06:16:15.750Z"}
+{"id":"mtg-the-pale-age:Insatiable Hunger|sacrifice-outlet-creature","verdict":"correct","note":"","at":"2026-11-18T06:16:17.667Z"}
+{"id":"mtg-the-pale-age:Insatiable Hunger|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:16:19.540Z"}
+{"id":"mtg-the-pale-age:Insatiable Hunger|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:16:22.346Z"}
+{"id":"mtg-the-pale-age:Insatiable Hunger|repeatable-removal","verdict":"wrong","note":"It only hits enchanted creature, so no.","at":"2026-11-18T06:16:36.712Z"}
+{"id":"mtg-the-pale-age:Ivar and Signe, Huntsworn|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:16:40.256Z"}
+{"id":"mtg-the-pale-age:Ivar and Signe, Huntsworn|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:16:42.273Z"}
+{"id":"mtg-the-pale-age:Ivar and Signe, Huntsworn|gives-haste","verdict":"correct","note":"","at":"2026-11-18T06:16:44.043Z"}
+{"id":"mtg-the-pale-age:Kaeda|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:16:46.329Z"}
+{"id":"mtg-the-pale-age:Kaeda|gives-haste","verdict":"correct","note":"","at":"2026-11-18T06:16:47.935Z"}
+{"id":"mtg-the-pale-age:Keeper of the Pride|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:16:51.582Z"}
+{"id":"mtg-the-pale-age:Keeper of the Pride|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:16:52.970Z"}
+{"id":"mtg-the-pale-age:Keeper of the Pride|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:16:55.070Z"}
+{"id":"mtg-the-pale-age:Keeper of the Pride|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:16:56.472Z"}
+{"id":"mtg-the-pale-age:Keeper of the Pride|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:16:57.794Z"}
+{"id":"mtg-the-pale-age:Kevala, Archdemon Apostate|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:17:03.449Z"}
+{"id":"mtg-the-pale-age:Kevala, Archdemon Apostate|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:17:06.043Z"}
+{"id":"mtg-the-pale-age:Kevala, Archdemon Apostate|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:17:11.461Z"}
+{"id":"mtg-the-pale-age:Kikuki, Infinite Torment|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:14.960Z"}
+{"id":"mtg-the-pale-age:Knight of Desolate Lands|gives-first-strike","verdict":"correct","note":"","at":"2026-11-18T06:17:16.575Z"}
+{"id":"mtg-the-pale-age:Knowledge Warden|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:22.289Z"}
+{"id":"mtg-the-pale-age:Law of the Jungle|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:23.043Z"}
+{"id":"mtg-the-pale-age:Law of the Jungle|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:17:24.808Z"}
+{"id":"mtg-the-pale-age:Liege of the Mists|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:27.693Z"}
+{"id":"mtg-the-pale-age:Liege of the Mists|fog","verdict":"correct","note":"","at":"2026-11-18T06:17:28.799Z"}
+{"id":"mtg-the-pale-age:Liege of the Mists|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:30.842Z"}
+{"id":"mtg-the-pale-age:Liege of the Mists|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:17:33.123Z"}
+{"id":"mtg-the-pale-age:Living Locomotive|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:34.360Z"}
+{"id":"mtg-the-pale-age:Looming Towers|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:35.427Z"}
+{"id":"mtg-the-pale-age:Magical Lasso|modal","verdict":"correct","note":"","at":"2026-11-18T06:17:36.793Z"}
+{"id":"mtg-the-pale-age:Magnificent Multitasker|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:38.150Z"}
+{"id":"mtg-the-pale-age:Marrow Pool Ritualist|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:39.679Z"}
+{"id":"mtg-the-pale-age:Masao, Illustrious Sailor|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:17:42.661Z"}
+{"id":"mtg-the-pale-age:Masao, Illustrious Sailor|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:17:44.057Z"}
+{"id":"mtg-the-pale-age:Master of Agonies|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:17:45.437Z"}
+{"id":"mtg-the-pale-age:Matilda, the Reader|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:17:48.117Z"}
+{"id":"mtg-the-pale-age:Merfolk Tidetuner|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:17:50.989Z"}
+{"id":"mtg-the-pale-age:Merfolk Tidetuner|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:17:54.947Z"}
+{"id":"mtg-the-pale-age:Might Makes Right|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:18:56.145Z"}
+{"id":"mtg-the-pale-age:Might Makes Right|gives-hexproof","verdict":"correct","note":"","at":"2026-11-18T06:18:57.949Z"}
+{"id":"mtg-the-pale-age:Mitosis|modal","verdict":"correct","note":"","at":"2026-11-18T06:18:58.891Z"}
+{"id":"mtg-the-pale-age:Morsel|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:01.098Z"}
+{"id":"mtg-the-pale-age:Mountain Catacombs|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:02.023Z"}
+{"id":"mtg-the-pale-age:Mountain Crusher|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:03.259Z"}
+{"id":"mtg-the-pale-age:Mr. Cosmos|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:04.987Z"}
+{"id":"mtg-the-pale-age:Mystic Revelation|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:19:06.585Z"}
+{"id":"mtg-the-pale-age:Mystical Machinations|modal","verdict":"correct","note":"","at":"2026-11-18T06:19:10.181Z"}
+{"id":"mtg-the-pale-age:Nibble|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:19:14.370Z"}
+{"id":"mtg-the-pale-age:Nibble|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:19:15.340Z"}
+{"id":"mtg-the-pale-age:Number 16, the Hunter|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:17.001Z"}
+{"id":"mtg-the-pale-age:Nyxie, the Nurturer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:18.464Z"}
+{"id":"mtg-the-pale-age:Old Green Guardian|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:19.591Z"}
+{"id":"mtg-the-pale-age:Old Green Guardian|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:19:21.336Z"}
+{"id":"mtg-the-pale-age:Old Man Mushroom|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:25.841Z"}
+{"id":"mtg-the-pale-age:Omnus|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:27.608Z"}
+{"id":"mtg-the-pale-age:Orc Warlord|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:19:31.165Z"}
+{"id":"mtg-the-pale-age:Orc Warlord|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:19:32.731Z"}
+{"id":"mtg-the-pale-age:Orcish Investigator|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:19:35.261Z"}
+{"id":"mtg-the-pale-age:Origin- The Guest|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:19:37.107Z"}
+{"id":"mtg-the-pale-age:Origin- The Killer|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:19:41.187Z"}
+{"id":"mtg-the-pale-age:Origin- The Killer|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:19:43.836Z"}
+{"id":"mtg-the-pale-age:Pain Channeler|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:19:46.906Z"}
+{"id":"mtg-the-pale-age:Pain Channeler|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:19:47.704Z"}
+{"id":"mtg-the-pale-age:Panopticon|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:20:21.481Z"}
+{"id":"mtg-the-pale-age:Passion|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:20:22.469Z"}
+{"id":"mtg-the-pale-age:Path to Paradise|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:20:23.896Z"}
+{"id":"mtg-the-pale-age:Pious Horror|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:20:25.064Z"}
+{"id":"mtg-the-pale-age:Pious Horror|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:20:27.485Z"}
+{"id":"mtg-the-pale-age:Poise|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:20:29.400Z"}
+{"id":"mtg-the-pale-age:Poise|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:20:30.370Z"}
+{"id":"mtg-the-pale-age:Poise|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:20:31.416Z"}
+{"id":"mtg-the-pale-age:Population Regulator|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:20:36.620Z"}
+{"id":"mtg-the-pale-age:Population Regulator|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:20:38.524Z"}
+{"id":"mtg-the-pale-age:Population Regulator|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:20:39.974Z"}
+{"id":"mtg-the-pale-age:Prickly Pack Dino|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:20:46.443Z"}
+{"id":"mtg-the-pale-age:Pristine Prism|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:20:48.493Z"}
+{"id":"mtg-the-pale-age:Pristine Prism|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:20:49.686Z"}
+{"id":"mtg-the-pale-age:Prowling Carnotaurus|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:20:51.250Z"}
+{"id":"mtg-the-pale-age:Psychic Agony|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:20:52.630Z"}
+{"id":"mtg-the-pale-age:Pure Intent|modal","verdict":"correct","note":"","at":"2026-11-18T06:20:54.070Z"}
+{"id":"mtg-the-pale-age:Pure Intent|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:20:55.548Z"}
+{"id":"mtg-the-pale-age:Pyzzix, the Absurd|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:20:56.944Z"}
+{"id":"mtg-the-pale-age:Queen of Misery|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:20:58.068Z"}
+{"id":"mtg-the-pale-age:Queen of Misery|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:20:59.185Z"}
+{"id":"mtg-the-pale-age:Quiet Undergrowth|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:00.052Z"}
+{"id":"mtg-the-pale-age:Quinn, Inexorable|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:02.306Z"}
+{"id":"mtg-the-pale-age:Ravenous Greatwolf|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:03.308Z"}
+{"id":"mtg-the-pale-age:Ravenous Greatwolf|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:04.872Z"}
+{"id":"mtg-the-pale-age:Reality-Warping Blow|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:07.524Z"}
+{"id":"mtg-the-pale-age:Remorseless|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:21:09.648Z"}
+{"id":"mtg-the-pale-age:Roach Chef|sacrifice-outlet-creature","verdict":"correct","note":"","at":"2026-11-18T06:21:11.809Z"}
+{"id":"mtg-the-pale-age:Roach Chef|sacrifice-outlet-artifact","verdict":"correct","note":"","at":"2026-11-18T06:21:12.891Z"}
+{"id":"mtg-the-pale-age:Roach Chef|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:21:14.474Z"}
+{"id":"mtg-the-pale-age:Roach Chef|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:15.477Z"}
+{"id":"mtg-the-pale-age:Rogue Wave|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:21.447Z"}
+{"id":"mtg-the-pale-age:Rogue Wave|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:23.457Z"}
+{"id":"mtg-the-pale-age:Rot, Spoil, and Fester|modal","verdict":"correct","note":"","at":"2026-11-18T06:21:24.539Z"}
+{"id":"mtg-the-pale-age:Rot, Spoil, and Fester|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:21:27.251Z"}
+{"id":"mtg-the-pale-age:Rot, Spoil, and Fester|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:21:28.755Z"}
+{"id":"mtg-the-pale-age:Roxanne, Queen of Feld|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:21:32.127Z"}
+{"id":"mtg-the-pale-age:Sabotage Their Systems|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:33.850Z"}
+{"id":"mtg-the-pale-age:Sabotage Their Systems|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:35.232Z"}
+{"id":"mtg-the-pale-age:Sacrificial Lamb|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:21:36.168Z"}
+{"id":"mtg-the-pale-age:Scrabbling Ogre|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:21:37.466Z"}
+{"id":"mtg-the-pale-age:Scrabbling Ogre|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:38.404Z"}
+{"id":"mtg-the-pale-age:Scrabbling Ogre|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:39.352Z"}
+{"id":"mtg-the-pale-age:Scrabbling Ogre|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:46.248Z"}
+{"id":"mtg-the-pale-age:Sea Witch|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:21:49.010Z"}
+{"id":"mtg-the-pale-age:Seaborn Hustler|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:51.508Z"}
+{"id":"mtg-the-pale-age:Seal Within|hate-graveyard","verdict":"correct","note":"","at":"2026-11-18T06:21:53.558Z"}
+{"id":"mtg-the-pale-age:Seal Within|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:21:56.696Z"}
+{"id":"mtg-the-pale-age:Seething Summit|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:21:57.686Z"}
+{"id":"mtg-the-pale-age:Sinew Spawn|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:21:59.380Z"}
+{"id":"mtg-the-pale-age:Sinew Spawn|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:21:59.972Z"}
+{"id":"mtg-the-pale-age:Sizzle Splitter|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:25.913Z"}
+{"id":"mtg-the-pale-age:Sizzle Splitter|sacrifice-outlet-artifact","verdict":"correct","note":"","at":"2026-11-18T06:22:27.192Z"}
+{"id":"mtg-the-pale-age:Sizzle Splitter|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:22:28.422Z"}
+{"id":"mtg-the-pale-age:Skittering Deathbot|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:22:32.286Z"}
+{"id":"mtg-the-pale-age:Sky Port City|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:33.185Z"}
+{"id":"mtg-the-pale-age:Skyleaper|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:22:35.742Z"}
+{"id":"mtg-the-pale-age:Snuff, Silence, and Subdue|modal","verdict":"correct","note":"","at":"2026-11-18T06:22:37.004Z"}
+{"id":"mtg-the-pale-age:Somber Philosopher|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:40.448Z"}
+{"id":"mtg-the-pale-age:Somber Soldier|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:41.570Z"}
+{"id":"mtg-the-pale-age:Sphinx of the Wall|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:22:44.337Z"}
+{"id":"mtg-the-pale-age:Sphinx of the Wall|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:45.368Z"}
+{"id":"mtg-the-pale-age:Spider Tank|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:46.948Z"}
+{"id":"mtg-the-pale-age:Spider Tank|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:48.506Z"}
+{"id":"mtg-the-pale-age:Spirit|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:22:50.507Z"}
+{"id":"mtg-the-pale-age:Spirit|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:22:51.401Z"}
+{"id":"mtg-the-pale-age:Standard Mk3 Airship|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:55.756Z"}
+{"id":"mtg-the-pale-age:T-Rex Charger|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:22:57.225Z"}
+{"id":"mtg-the-pale-age:T-Rex Charger|gives-haste","verdict":"correct","note":"","at":"2026-11-18T06:22:59.014Z"}
+{"id":"mtg-the-pale-age:T-Rex Charger|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:23:55.764Z"}
+{"id":"mtg-the-pale-age:Take Root|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:23:57.314Z"}
+{"id":"mtg-the-pale-age:Tarbosaurus Alpha|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:23:59.310Z"}
+{"id":"mtg-the-pale-age:Teleporting Inventor|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:24:02.689Z"}
+{"id":"mtg-the-pale-age:Tenured Professor|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:24:04.702Z"}
+{"id":"mtg-the-pale-age:Tenured Professor|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:24:05.595Z"}
+{"id":"mtg-the-pale-age:Terrible Strength|gives-trample","verdict":"correct","note":"","at":"2026-11-18T06:24:07.294Z"}
+{"id":"mtg-the-pale-age:Terror Injector|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:24:08.961Z"}
+{"id":"mtg-the-pale-age:The Amalgamation|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:24:12.471Z"}
+{"id":"mtg-the-pale-age:The Gang's All Here|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:24:18.312Z"}
+{"id":"mtg-the-pale-age:The Gang's All Here|gives-trample","verdict":"correct","note":"","at":"2026-11-18T06:24:19.479Z"}
+{"id":"mtg-the-pale-age:The Hollow Throne|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:24:26.186Z"}
+{"id":"mtg-the-pale-age:The Hollow Throne|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:24:27.286Z"}
+{"id":"mtg-the-pale-age:The Lone Forest|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:24:33.091Z"}
+{"id":"mtg-the-pale-age:The Mad King|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:24:34.978Z"}
+{"id":"mtg-the-pale-age:The Mothership|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:24:36.564Z"}
+{"id":"mtg-the-pale-age:The Mothership|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:24:40.008Z"}
+{"id":"mtg-the-pale-age:The Ruler|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:24:42.735Z"}
+{"id":"mtg-the-pale-age:The Ruler|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:24:47.686Z"}
+{"id":"mtg-the-pale-age:The Search for Meredith|cost-reducer-creature","verdict":"correct","note":"","at":"2026-11-18T06:25:21.048Z"}
+{"id":"mtg-the-pale-age:The Thunderstrider|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:25:22.883Z"}
+{"id":"mtg-the-pale-age:Thirst of the Dead|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:25:24.107Z"}
+{"id":"mtg-the-pale-age:Tomi, Enlightened Archivist|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T06:25:26.448Z"}
+{"id":"mtg-the-pale-age:Tomi, Enlightened Archivist|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:25:29.296Z"}
+{"id":"mtg-the-pale-age:Torment|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:25:30.564Z"}
+{"id":"mtg-the-pale-age:Tormented Executioner|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:25:31.997Z"}
+{"id":"mtg-the-pale-age:Tormented Executioner|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:25:33.171Z"}
+{"id":"mtg-the-pale-age:Toxic Jungle|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:25:34.121Z"}
+{"id":"mtg-the-pale-age:Traveler's Bane|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:25:36.233Z"}
+{"id":"mtg-the-pale-age:Traveler's Bane|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:25:37.550Z"}
+{"id":"mtg-the-pale-age:Turn to Feathers|modal","verdict":"correct","note":"","at":"2026-11-18T06:25:44.114Z"}
+{"id":"mtg-the-pale-age:Ugr, Northern Sanctum|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:25:45.201Z"}
+{"id":"mtg-the-pale-age:Ugr, Northern Sanctum|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T06:25:46.973Z"}
+{"id":"mtg-the-pale-age:Undead Moose|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:25:48.059Z"}
+{"id":"mtg-the-pale-age:Undead Moose|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:25:48.687Z"}
+{"id":"mtg-the-pale-age:Unrivaled Violence|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:25:50.449Z"}
+{"id":"mtg-the-pale-age:Unrivaled Violence|gives-menace","verdict":"correct","note":"","at":"2026-11-18T06:25:52.443Z"}
+{"id":"mtg-the-pale-age:Unstoppable Force|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:25:54.121Z"}
+{"id":"mtg-the-pale-age:Usurp Identity|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:25:55.481Z"}
+{"id":"mtg-the-pale-age:Vandalbomber|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:07.320Z"}
+{"id":"mtg-the-pale-age:Vandalbomber|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:26:08.831Z"}
+{"id":"mtg-the-pale-age:Vandalbomber|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:09.937Z"}
+{"id":"mtg-the-pale-age:Verdant Hills|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:10.853Z"}
+{"id":"mtg-the-pale-age:Village Baker|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:12.079Z"}
+{"id":"mtg-the-pale-age:Village Baker|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:26:13.203Z"}
+{"id":"mtg-the-pale-age:Wandering Bloodseeker|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:26:14.609Z"}
+{"id":"mtg-the-pale-age:Wandering Bloodseeker|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:15.920Z"}
+{"id":"mtg-the-pale-age:Wandering Bloodseeker|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:26:17.690Z"}
+{"id":"mtg-the-pale-age:Warden of Death|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:26:21.043Z"}
+{"id":"mtg-the-pale-age:Warden of Death|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:26:22.199Z"}
+{"id":"mtg-the-pale-age:Warden of Death|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:26:30.223Z"}
+{"id":"mtg-the-pale-age:Warden of Death|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:26:32.207Z"}
+{"id":"mtg-the-pale-age:Waterspout|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:33.745Z"}
+{"id":"mtg-the-pale-age:Way of the Wild|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:35.222Z"}
+{"id":"mtg-the-pale-age:Way of the Wild|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:26:36.551Z"}
+{"id":"mtg-the-pale-age:Way of the Wild|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:26:37.479Z"}
+{"id":"mtg-the-pale-age:Wendigo|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:40.889Z"}
+{"id":"mtg-the-pale-age:Wendigo|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:26:42.284Z"}
+{"id":"mtg-the-pale-age:Wendigo|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:26:45.155Z"}
+{"id":"mtg-the-pale-age:Writhing Hall|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:26:46.099Z"}
+{"id":"mtg-the-pale-age:Writhing Hall|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:26:49.100Z"}
+{"id":"mtg-the-pale-age:Writhing Hall|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:26:49.789Z"}
+{"id":"mtg-the-pale-age:Ylexa, Blood Enjoyer|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:27:14.447Z"}
+{"id":"mtg-the-pale-age:Ylexa, Blood Enjoyer|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:27:16.733Z"}
+{"id":"mtg-the-pale-age:Zai, Well of Knowledge|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T06:27:18.485Z"}
+{"id":"mtg-the-pale-age:Zai, Well of Knowledge|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:27:20.129Z"}
+{"id":"mtg-the-pale-age:Zai, Well of Knowledge|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:27:21.135Z"}
+{"id":"mtg-the-pale-age:Zai, Well of Knowledge|cda-power","verdict":"correct","note":"","at":"2026-11-18T06:27:24.842Z"}
+{"id":"mtg-underground:Abduct|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:27:39.419Z"}
+{"id":"mtg-underground:Abyssal Interference|hate-graveyard","verdict":"correct","note":"","at":"2026-11-18T06:27:40.788Z"}
+{"id":"mtg-underground:Aegis Crawler|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:27:44.643Z"}
+{"id":"mtg-underground:Aggressive Ants|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:27:45.963Z"}
+{"id":"mtg-underground:Akpo Furen|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:27:47.697Z"}
+{"id":"mtg-underground:Akpo Furen|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:27:49.383Z"}
+{"id":"mtg-underground:Akpo Furen|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:27:50.354Z"}
+{"id":"mtg-underground:Akpo Furen|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:27:51.863Z"}
+{"id":"mtg-underground:Akpo Furen|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:27:52.902Z"}
+{"id":"mtg-underground:Ancient Metalmind|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:27:56.043Z"}
+{"id":"mtg-underground:Ancient Metalmind|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:27:56.934Z"}
+{"id":"mtg-underground:Ancient Metalmind|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:27:58.993Z"}
+{"id":"mtg-underground:Ancient Metalmind|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:28:00.187Z"}
+{"id":"mtg-underground:Ancient Metalmind|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:28:01.924Z"}
+{"id":"mtg-underground:Ancient Stone Spirit|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:04.212Z"}
+{"id":"mtg-underground:Antares|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:05.359Z"}
+{"id":"mtg-underground:Antares|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:28:07.843Z"}
+{"id":"mtg-underground:Antares|repeatable-removal","verdict":"skip","note":"","at":"2026-11-18T06:28:23.501Z"}
+{"id":"mtg-underground:Apex Ape|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:27.209Z"}
+{"id":"mtg-underground:Apex Predator|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:29.003Z"}
+{"id":"mtg-underground:Araphor, Radiant Protector|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:30.775Z"}
+{"id":"mtg-underground:Arcane Shift|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:28:31.912Z"}
+{"id":"mtg-underground:Arcane Shift|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:28:32.868Z"}
+{"id":"mtg-underground:Arcmaw Carnivore|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:28:35.822Z"}
+{"id":"mtg-underground:Ardent Cultist|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:37.320Z"}
+{"id":"mtg-underground:Avatar of Annihilation|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:38.234Z"}
+{"id":"mtg-underground:Avatar of Annihilation|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:28:40.087Z"}
+{"id":"mtg-underground:Avatar of Annihilation|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:28:41.690Z"}
+{"id":"mtg-underground:Azorius Estuary|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:44.729Z"}
+{"id":"mtg-underground:Azorius Estuary|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:45.842Z"}
+{"id":"mtg-underground:Balthasar Quaid|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:28:47.280Z"}
+{"id":"mtg-underground:Balthasar Quaid|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:28:54.531Z"}
+{"id":"mtg-underground:Balthasar Quaid|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:28:58.117Z"}
+{"id":"mtg-underground:Balthasar Quaid|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:28:59.679Z"}
+{"id":"mtg-underground:Balthasar Quaid|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:29:01.473Z"}
+{"id":"mtg-underground:Balthasar Quaid|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:29:03.305Z"}
+{"id":"mtg-underground:Barrier Stone|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:29:25.936Z"}
+{"id":"mtg-underground:Beast King|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:29:27.646Z"}
+{"id":"mtg-underground:Beast King|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:29:30.319Z"}
+{"id":"mtg-underground:Beast King|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:29:31.047Z"}
+{"id":"mtg-underground:Beast King|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:29:36.063Z"}
+{"id":"mtg-underground:Biggy, Lord of Goblins|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:29:37.490Z"}
+{"id":"mtg-underground:Biggy, Lord of Goblins|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:29:38.345Z"}
+{"id":"mtg-underground:Blank|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:29:39.426Z"}
+{"id":"mtg-underground:Blasting Fields Expedition|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T06:29:42.074Z"}
+{"id":"mtg-underground:Blasting Fields Expedition|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:29:43.757Z"}
+{"id":"mtg-underground:Bloodlake Brawler|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:29:46.909Z"}
+{"id":"mtg-underground:Bloodlake Brawler|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:29:47.685Z"}
+{"id":"mtg-underground:Bloodlake Brawler|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:29:48.540Z"}
+{"id":"mtg-underground:Boneheap Curator|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:29:50.148Z"}
+{"id":"mtg-underground:Boneheap Curator|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:29:51.224Z"}
+{"id":"mtg-underground:Boros Boroughs|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:29:52.886Z"}
+{"id":"mtg-underground:Boros Boroughs|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:29:53.990Z"}
+{"id":"mtg-underground:Boulder Borer|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:29:54.840Z"}
+{"id":"mtg-underground:Boulder Borer|mana-dork","verdict":"correct","note":"","at":"2026-11-18T06:29:55.898Z"}
+{"id":"mtg-underground:Burning-Spirit Shaman|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:02.407Z"}
+{"id":"mtg-underground:Catacomb Crawler|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:03.996Z"}
+{"id":"mtg-underground:Caught in a Cave-In|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:05.110Z"}
+{"id":"mtg-underground:Caught in a Cave-In|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:30:06.486Z"}
+{"id":"mtg-underground:Caught in a Cave-In|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:30:07.506Z"}
+{"id":"mtg-underground:Caught in a Cave-In|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:09.366Z"}
+{"id":"mtg-underground:Cave Troll|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:14.750Z"}
+{"id":"mtg-underground:Cave Wave|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:30:16.520Z"}
+{"id":"mtg-underground:Ceremonial Sword|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:18.024Z"}
+{"id":"mtg-underground:Chaos Aberration|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:30:19.610Z"}
+{"id":"mtg-underground:Chungus, Tremendous Toad|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:22.396Z"}
+{"id":"mtg-underground:Climbing Gear|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:23.770Z"}
+{"id":"mtg-underground:Colossal Axolotl|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:30:24.820Z"}
+{"id":"mtg-underground:Command Construct|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:30:26.676Z"}
+{"id":"mtg-underground:Command Construct|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:30:29.574Z"}
+{"id":"mtg-underground:Coordinated Tactics|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:30:31.225Z"}
+{"id":"mtg-underground:Coordinated Tactics|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:30:31.804Z"}
+{"id":"mtg-underground:Corpsecopse Tangle|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:31:12.009Z"}
+{"id":"mtg-underground:Corpsecopse Tangle|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:31:13.053Z"}
+{"id":"mtg-underground:Crafty Conjurer|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:31:16.656Z"}
+{"id":"mtg-underground:Cruel Selection|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T06:31:19.707Z"}
+{"id":"mtg-underground:Cruel Selection|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:31:20.492Z"}
+{"id":"mtg-underground:Cruel Selection|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:31:21.593Z"}
+{"id":"mtg-underground:Crush Beneath|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:31:23.825Z"}
+{"id":"mtg-underground:Crystal Champion|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:31:25.757Z"}
+{"id":"mtg-underground:Crystal Champion|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:31:27.447Z"}
+{"id":"mtg-underground:Crystal Pioneer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:31:42.394Z"}
+{"id":"mtg-underground:Crystal Pioneer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:31:46.164Z"}
+{"id":"mtg-underground:Crystal Pioneer|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:31:47.122Z"}
+{"id":"mtg-underground:Crystal Pioneer|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:31:48.080Z"}
+{"id":"mtg-underground:Crystal Pioneer|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:31:49.285Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:31:50.551Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:31:54.879Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:31:57.397Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|repeatable-removal","verdict":"skip","note":"","at":"2026-11-18T06:32:01.901Z"}
+{"id":"mtg-underground:Dark Abyss Expedition|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:32:25.979Z"}
+{"id":"mtg-underground:Dark Abyss Expedition|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:32:27.289Z"}
+{"id":"mtg-underground:Dead End|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:32:29.909Z"}
+{"id":"mtg-underground:Deepway Informant|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:32:32.794Z"}
+{"id":"mtg-underground:Defective Elevator|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:32:33.902Z"}
+{"id":"mtg-underground:Defective Elevator|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:32:35.108Z"}
+{"id":"mtg-underground:Defective Elevator|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:32:36.955Z"}
+{"id":"mtg-underground:Demera von Freyden|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:32:50.782Z"}
+{"id":"mtg-underground:Demera von Freyden|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:32:53.052Z"}
+{"id":"mtg-underground:Demera von Freyden|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:32:54.423Z"}
+{"id":"mtg-underground:Demera von Freyden|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:32:55.784Z"}
+{"id":"mtg-underground:Demera von Freyden|repeatable-lifegain","verdict":"skip","note":"","at":"2026-11-18T06:32:58.682Z"}
+{"id":"mtg-underground:Depthdiver Troll|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:33:00.732Z"}
+{"id":"mtg-underground:Desperate Hex|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:33:01.838Z"}
+{"id":"mtg-underground:Desperate Hex|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:33:02.862Z"}
+{"id":"mtg-underground:Desperate Hex|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:33:03.836Z"}
+{"id":"mtg-underground:Devastating Blow|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:33:06.064Z"}
+{"id":"mtg-underground:Dimir Derelict|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:07.864Z"}
+{"id":"mtg-underground:Dimir Derelict|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:08.880Z"}
+{"id":"mtg-underground:Discover Lost Technology|modal","verdict":"correct","note":"","at":"2026-11-18T06:33:09.932Z"}
+{"id":"mtg-underground:Discover Lost Technology|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:33:11.116Z"}
+{"id":"mtg-underground:Disturbed Denizen|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:12.330Z"}
+{"id":"mtg-underground:Door to Destruction|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:13.462Z"}
+{"id":"mtg-underground:Door to Destruction|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:33:15.032Z"}
+{"id":"mtg-underground:Door to Destruction|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:33:16.168Z"}
+{"id":"mtg-underground:Drainage District|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:17.472Z"}
+{"id":"mtg-underground:Drainage District|hate-graveyard","verdict":"correct","note":"","at":"2026-11-18T06:33:18.524Z"}
+{"id":"mtg-underground:Drill Rig|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:21.788Z"}
+{"id":"mtg-underground:Drill Rig|mana-rock","verdict":"correct","note":"","at":"2026-11-18T06:33:22.872Z"}
+{"id":"mtg-underground:Drown in Memories|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:33:27.304Z"}
+{"id":"mtg-underground:Envelop in Roots|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:33:28.911Z"}
+{"id":"mtg-underground:Escort Training|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:30.856Z"}
+{"id":"mtg-underground:Escort Training|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:33:32.594Z"}
+{"id":"mtg-underground:Exhausted Mage|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:33:34.934Z"}
+{"id":"mtg-underground:Exhausted Mage|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:33:37.778Z"}
+{"id":"mtg-the-pale-age:Abyssal Gaze|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:34:58.979Z"}
+{"id":"mtg-the-pale-age:Angel of Contemplation|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:35:03.073Z"}
+{"id":"mtg-the-pale-age:Bearer of the Unholy|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:35:04.522Z"}
+{"id":"mtg-the-pale-age:Challenge Divinity|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:35:06.386Z"}
+{"id":"mtg-the-pale-age:Consistent Burn|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:08.252Z"}
+{"id":"mtg-the-pale-age:Crystal Ichor|burst-draw","verdict":"correct","note":"","at":"2026-11-18T06:35:10.163Z"}
+{"id":"mtg-the-pale-age:Doctor of History|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:35:11.901Z"}
+{"id":"mtg-the-pale-age:Ea, Forgotten Queen|burst-draw","verdict":"correct","note":"","at":"2026-11-18T06:35:14.257Z"}
+{"id":"mtg-the-pale-age:Edification|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:35:16.575Z"}
+{"id":"mtg-the-pale-age:Ember Invocation|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:18.913Z"}
+{"id":"mtg-the-pale-age:Fallen Mender|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:35:20.104Z"}
+{"id":"mtg-the-pale-age:Ferocious Leap|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:35:24.111Z"}
+{"id":"mtg-the-pale-age:Frenzied Giant|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:28.161Z"}
+{"id":"mtg-the-pale-age:Goddess of Spring|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:35:29.415Z"}
+{"id":"mtg-the-pale-age:Heavy Crawler|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:31.227Z"}
+{"id":"mtg-the-pale-age:How to Become a Giant|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:33.311Z"}
+{"id":"mtg-the-pale-age:Ichor Eruption|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:34.482Z"}
+{"id":"mtg-the-pale-age:Nyxie, the Nurturer|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:35:37.022Z"}
+{"id":"mtg-the-pale-age:Pluck|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:39.145Z"}
+{"id":"mtg-the-pale-age:Rot, Spoil, and Fester|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:40.319Z"}
+{"id":"mtg-the-pale-age:Snuff, Silence, and Subdue|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:42.539Z"}
+{"id":"mtg-the-pale-age:Somber Philosopher|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:35:44.041Z"}
+{"id":"mtg-the-pale-age:Terrible Strength|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:35:46.130Z"}
+{"id":"mtg-the-pale-age:The Abyssal Prison|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:36:20.303Z"}
+{"id":"mtg-the-pale-age:The Gang's All Here|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:36:23.670Z"}
+{"id":"mtg-the-pale-age:The Thunderstrider|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:36:26.139Z"}
+{"id":"mtg-the-pale-age:Unconstrained Growth|land-ramp","verdict":"correct","note":"","at":"2026-11-18T06:36:28.176Z"}
+{"id":"mtg-the-pale-age:Wandering Bloodseeker|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:36:32.657Z"}
+{"id":"mtg-the-pale-age:Waterspout|removal-tuck","verdict":"correct","note":"","at":"2026-11-18T06:36:34.719Z"}
+{"id":"mtg-the-pale-age:Waterspout|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:36:36.761Z"}
+{"id":"mtg-underground:Aggressive Ants|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:36:37.895Z"}
+{"id":"mtg-underground:Ambush from Above|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:36:39.472Z"}
+{"id":"mtg-underground:Antares|repeatable-removal","verdict":"skip","note":"","at":"2026-11-18T06:36:42.230Z"}
+{"id":"mtg-underground:Become Impassable|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:36:44.301Z"}
+{"id":"mtg-underground:Biggy, Lord of Goblins|mana-producer","verdict":"correct","note":"","at":"2026-11-18T06:36:46.582Z"}
+{"id":"mtg-underground:Boneheap Curator|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:36:49.582Z"}
+{"id":"mtg-underground:Coordinated Tactics|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:36:52.446Z"}
+{"id":"mtg-underground:Cruel Selection|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:36:54.436Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|repeatable-removal","verdict":"skip","note":"","at":"2026-11-18T06:36:59.903Z"}
+{"id":"mtg-underground:Dead End|burst-draw","verdict":"correct","note":"","at":"2026-11-18T06:37:01.810Z"}
+{"id":"mtg-underground:Demera von Freyden|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:37:08.154Z"}
+{"id":"mtg-underground:Demera von Freyden|repeatable-lifegain","verdict":"skip","note":"","at":"2026-11-18T06:37:10.761Z"}
+{"id":"mtg-underground:Falling Stones|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:37:12.918Z"}
+{"id":"mtg-underground:Fearful Pathfinder|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:37:16.893Z"}
+{"id":"mtg-underground:Feast on Their Sanity|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:44:19.092Z"}
+{"id":"mtg-underground:Fel, the Burning Badlands|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:20.385Z"}
+{"id":"mtg-underground:Ferocious Bloodfiend|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:21.629Z"}
+{"id":"mtg-underground:Field of Negation|modal","verdict":"correct","note":"","at":"2026-11-18T06:44:22.635Z"}
+{"id":"mtg-underground:Field of Negation|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:44:23.992Z"}
+{"id":"mtg-underground:Fire Viper|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T06:44:26.580Z"}
+{"id":"mtg-underground:Flame-Blessed Zealot|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:44:27.827Z"}
+{"id":"mtg-underground:Flaming Newt|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:30.708Z"}
+{"id":"mtg-underground:Flaming Newt|mana-dork","verdict":"correct","note":"","at":"2026-11-18T06:44:31.341Z"}
+{"id":"mtg-underground:Flood Tyrant|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:33.301Z"}
+{"id":"mtg-underground:Forgotten Foundry Expedition|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:34.849Z"}
+{"id":"mtg-underground:Fourfold Vengeance|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:44:36.605Z"}
+{"id":"mtg-underground:Fungal Revival|modal","verdict":"correct","note":"","at":"2026-11-18T06:44:38.675Z"}
+{"id":"mtg-underground:General Blanth|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:41.425Z"}
+{"id":"mtg-underground:General Blanth|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:42.793Z"}
+{"id":"mtg-underground:General Blanth|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:44:43.887Z"}
+{"id":"mtg-underground:Goblin Archivist|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:47.642Z"}
+{"id":"mtg-underground:Goblin Archivist|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:44:48.528Z"}
+{"id":"mtg-underground:Goblin Bomb-Tosser|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:44:50.087Z"}
+{"id":"mtg-underground:Goblin Bomb-Tosser|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:44:51.294Z"}
+{"id":"mtg-underground:Goblin Druid|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:52.847Z"}
+{"id":"mtg-underground:Goblin Powderkeg|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:44:53.932Z"}
+{"id":"mtg-underground:Goblin Powderkeg|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:44:55.200Z"}
+{"id":"mtg-underground:Goblin Throat-Slitter|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:44:57.436Z"}
+{"id":"mtg-underground:Goblin Throat-Slitter|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:44:58.427Z"}
+{"id":"mtg-underground:Goblin Tracker|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:05.457Z"}
+{"id":"mtg-underground:Golgari Grove|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:06.433Z"}
+{"id":"mtg-underground:Golgari Grove|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:07.444Z"}
+{"id":"mtg-underground:Grasping Aberration|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:45:10.504Z"}
+{"id":"mtg-underground:Grotesque Abomination|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:13.554Z"}
+{"id":"mtg-underground:Gruul Moor|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:14.615Z"}
+{"id":"mtg-underground:Gruul Moor|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:15.514Z"}
+{"id":"mtg-underground:Harmond, Crime Baron|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:17.025Z"}
+{"id":"mtg-underground:Harmond, Crime Baron|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:45:18.743Z"}
+{"id":"mtg-underground:Harmond, Crime Baron|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:45:19.526Z"}
+{"id":"mtg-underground:Harmond, Crime Baron|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:45:21.048Z"}
+{"id":"mtg-underground:Heathen Prophet|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:27.148Z"}
+{"id":"mtg-underground:Hibernating Hopper|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:28.724Z"}
+{"id":"mtg-underground:Holy Hammer|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:45:29.816Z"}
+{"id":"mtg-underground:Holy Hammer|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:45:30.838Z"}
+{"id":"mtg-underground:Holy Hammer|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:45:36.472Z"}
+{"id":"mtg-underground:Host of Hungry Spirits|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:45:42.468Z"}
+{"id":"mtg-underground:Hot Sludge|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:45:45.006Z"}
+{"id":"mtg-underground:Hot Sludge|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:46.493Z"}
+{"id":"mtg-underground:Hot Sludge|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:45:47.484Z"}
+{"id":"mtg-underground:Hot Sludge|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:49.388Z"}
+{"id":"mtg-underground:Huge Hart|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:51.031Z"}
+{"id":"mtg-underground:IA4782, Systems Manager|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:52.218Z"}
+{"id":"mtg-underground:Incite the Mob|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:45:53.581Z"}
+{"id":"mtg-underground:Incite the Mob|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:45:54.431Z"}
+{"id":"mtg-underground:Instrument Explosion|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:45:55.363Z"}
+{"id":"mtg-underground:Izzet Aqueducts|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:56.323Z"}
+{"id":"mtg-underground:Izzet Aqueducts|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:45:57.308Z"}
+{"id":"mtg-underground:Kapilikua, Walking Volcano|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:45:58.736Z"}
+{"id":"mtg-underground:Kapilikua, Walking Volcano|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:46:00.545Z"}
+{"id":"mtg-underground:Lead the Way|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:46:02.075Z"}
+{"id":"mtg-underground:Lost in the Dark|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:46:03.311Z"}
+{"id":"mtg-underground:Lost in the Dark|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:46:04.320Z"}
+{"id":"mtg-underground:Lumbering Gladeguard|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:46:13.090Z"}
+{"id":"mtg-underground:Lumbering Gladeguard|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:46:14.177Z"}
+{"id":"mtg-underground:Madcap Maniac|sacrifice-outlet-creature","verdict":"correct","note":"","at":"2026-11-18T06:47:04.921Z"}
+{"id":"mtg-underground:Madcap Maniac|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:48:08.694Z"}
+{"id":"mtg-underground:Madcap Maniac|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:48:10.282Z"}
+{"id":"mtg-underground:Magnetic Mace|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:48:11.886Z"}
+{"id":"mtg-underground:Magnetic Mace|auto-equip","verdict":"correct","note":"","at":"2026-11-18T06:48:13.757Z"}
+{"id":"mtg-underground:Magnificent Might|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:48:15.695Z"}
+{"id":"mtg-underground:Mahabal, Valiant Lord|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:48:17.867Z"}
+{"id":"mtg-underground:Many-legged Death|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:48:19.425Z"}
+{"id":"mtg-underground:Many-legged Death|removal-artifact","verdict":"correct","note":"","at":"2026-11-18T06:48:22.658Z"}
+{"id":"mtg-underground:Many-legged Death|removal-enchantment","verdict":"correct","note":"","at":"2026-11-18T06:48:23.398Z"}
+{"id":"mtg-underground:Many-legged Death|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:48:24.471Z"}
+{"id":"mtg-underground:Many-legged Death|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:48:25.595Z"}
+{"id":"mtg-underground:Many-legged Death|repeatable-removal","verdict":"wrong","note":"","at":"2026-11-18T06:49:09.108Z"}
+{"id":"mtg-underground:Matau, the First Fungi|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:11.210Z"}
+{"id":"mtg-underground:Megaton Mallet|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:12.911Z"}
+{"id":"mtg-underground:Megaton Mallet|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:49:13.940Z"}
+{"id":"mtg-underground:Megaton Mallet|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:49:14.726Z"}
+{"id":"mtg-underground:Melancholy|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:16.165Z"}
+{"id":"mtg-underground:Metra's Blessing|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:49:17.518Z"}
+{"id":"mtg-underground:Metra's Blessing|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:49:18.471Z"}
+{"id":"mtg-underground:Mintrea, Drowning Sorrow|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:19.670Z"}
+{"id":"mtg-underground:Moko, the Mushroom City|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:20.538Z"}
+{"id":"mtg-underground:Moko, the Mushroom City|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:49:21.536Z"}
+{"id":"mtg-underground:Muck Monster|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:49:22.813Z"}
+{"id":"mtg-underground:Muck Monster|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:49:26.473Z"}
+{"id":"mtg-underground:Mushroom Grove Expedition|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:27.575Z"}
+{"id":"mtg-underground:Mycelial Missionary|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:49:28.616Z"}
+{"id":"mtg-underground:Mycelial Missionary|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:49:29.704Z"}
+{"id":"mtg-underground:Mysterious Orb|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:30.960Z"}
+{"id":"mtg-underground:Mysterious Orb|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:32.485Z"}
+{"id":"mtg-underground:Netherworld Mesmer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:33.721Z"}
+{"id":"mtg-underground:Nirn, the Perfect Shelter|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:34.679Z"}
+{"id":"mtg-underground:Nonna, She Who Sees|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:35.807Z"}
+{"id":"mtg-underground:Old Barnaby|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:37.227Z"}
+{"id":"mtg-underground:Old Barnaby|burst-draw","verdict":"correct","note":"","at":"2026-11-18T06:49:38.250Z"}
+{"id":"mtg-underground:Old Barnaby|repeatable-pure-draw","verdict":"skip","note":"","at":"2026-11-18T06:49:44.774Z"}
+{"id":"mtg-underground:Old Barnaby|draw-engine","verdict":"skip","note":"","at":"2026-11-18T06:49:46.107Z"}
+{"id":"mtg-underground:Orzhov Oddity|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:49.301Z"}
+{"id":"mtg-underground:Orzhov Oddity|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:50.148Z"}
+{"id":"mtg-underground:Peculiar Crystal|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:55.791Z"}
+{"id":"mtg-underground:Perfect Parry|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:49:57.192Z"}
+{"id":"mtg-underground:Promising Tunnel|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:58.188Z"}
+{"id":"mtg-underground:Psychic Serpent|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:49:59.235Z"}
+{"id":"mtg-underground:Puapua, Foul Beast|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:50:00.444Z"}
+{"id":"mtg-underground:Puapua, Foul Beast|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:50:01.478Z"}
+{"id":"mtg-underground:Puapua, Foul Beast|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:50:50.156Z"}
+{"id":"mtg-underground:Quicksilver Serpent|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:50:53.695Z"}
+{"id":"mtg-underground:Rakdos Reaches|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:50:55.140Z"}
+{"id":"mtg-underground:Rakdos Reaches|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:50:56.604Z"}
+{"id":"mtg-underground:Rapacious Bogbeast|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:50:57.930Z"}
+{"id":"mtg-underground:Rapacious Bogbeast|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:50:58.793Z"}
+{"id":"mtg-underground:Rare Discovery|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:51:01.968Z"}
+{"id":"mtg-underground:Rare Discovery|burst-draw","verdict":"correct","note":"","at":"2026-11-18T06:51:02.799Z"}
+{"id":"mtg-underground:Razorplate Behemoth|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:51:04.443Z"}
+{"id":"mtg-underground:Razorplate Behemoth|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:51:06.238Z"}
+{"id":"mtg-underground:Razorplate Behemoth|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:51:07.271Z"}
+{"id":"mtg-underground:Reassembling Robot|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:51:08.488Z"}
+{"id":"mtg-underground:Relinquish Attachments|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:51:09.554Z"}
+{"id":"mtg-underground:Return to Monkey|modal","verdict":"correct","note":"","at":"2026-11-18T06:51:10.509Z"}
+{"id":"mtg-underground:Reviver of Ire|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:51:11.836Z"}
+{"id":"mtg-underground:Reviver of Ire|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:51:13.574Z"}
+{"id":"mtg-underground:Reviver of the Depths|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:51:15.364Z"}
+{"id":"mtg-underground:Ritual of Resurgence|ritual","verdict":"correct","note":"","at":"2026-11-18T06:51:18.036Z"}
+{"id":"mtg-underground:Rokir, Elite Firewielder|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:51:19.302Z"}
+{"id":"mtg-underground:Rokir, Elite Firewielder|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:51:20.185Z"}
+{"id":"mtg-underground:Rokir, Elite Firewielder|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:51:22.825Z"}
+{"id":"mtg-underground:Ruined City Expedition|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:51:24.050Z"}
+{"id":"mtg-underground:Rush of Violence|combat-trick","verdict":"correct","note":"","at":"2026-11-18T06:51:25.347Z"}
+{"id":"mtg-underground:Rusted Exoshell|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:51:28.353Z"}
+{"id":"mtg-underground:Sage of the Spores|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:51:30.189Z"}
+{"id":"mtg-underground:Sage of the Spores|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:51:32.159Z"}
+{"id":"mtg-underground:Workshop of Worlds|cost-reducer","verdict":"correct","note":"","at":"2026-11-18T06:52:55.724Z"}
+{"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|gives-indestructible","verdict":"correct","note":"","at":"2026-11-18T06:52:59.246Z"}
+{"id":"mtg-underground:Unlock Lost Secrets|alternate-win-condition","verdict":"correct","note":"","at":"2026-11-18T06:53:01.026Z"}
+{"id":"mtg-underground:The Spirit Between|cda-power","verdict":"correct","note":"","at":"2026-11-18T06:53:02.164Z"}
+{"id":"mtg-underground:The Spirit Between|cda-toughness","verdict":"correct","note":"","at":"2026-11-18T06:53:02.995Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|keyword-anthem","verdict":"correct","note":"","at":"2026-11-18T06:53:04.411Z"}
+{"id":"mtg-underground:Sporestone|mana-rock","verdict":"correct","note":"","at":"2026-11-18T06:53:05.743Z"}
+{"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|sacrifice-outlet-artifact","verdict":"correct","note":"","at":"2026-11-18T06:53:07.399Z"}
+{"id":"mtg-narou:Ainz Ooal Gown|sacrifice-outlet-creature","verdict":"correct","note":"","at":"2026-11-18T06:53:08.668Z"}
+{"id":"mtg-underground:Standard of Victory|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:53:10.245Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|gives-trample","verdict":"correct","note":"","at":"2026-11-18T06:53:12.416Z"}
+{"id":"mtg-underground:Sporecap Troll|mana-dork","verdict":"correct","note":"","at":"2026-11-18T06:53:13.634Z"}
+{"id":"mtg-underground:Writhing Rageworm|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T06:53:16.748Z"}
+{"id":"mtg-underground:Spirit Drinker|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:53:19.893Z"}
+{"id":"mtg-underground:Sow Spores|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:53:20.703Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|group-slug","verdict":"correct","note":"","at":"2026-11-18T06:53:23.590Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|repeatable-creature-tokens","verdict":"correct","note":"","at":"2026-11-18T06:53:25.468Z"}
+{"id":"mtg-underground:Toll Taker|additional-cost","verdict":"correct","note":"","at":"2026-11-18T06:53:28.496Z"}
+{"id":"mtg-narou:Ainz Ooal Gown|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:53:29.931Z"}
+{"id":"mtg-underground:Old Barnaby|draw-engine","verdict":"wrong","note":"Planeswalker ultimates (-N where N >= starting loyalty) are not repeatable.","at":"2026-11-18T06:54:21.328Z"}
+{"id":"mtg-underground:Antares|repeatable-removal","verdict":"wrong","note":"ultimate is not repeatable","at":"2026-11-18T06:54:30.660Z"}
+{"id":"mtg-underground:Demera von Freyden|repeatable-lifegain","verdict":"wrong","note":"ultimate is not repeatable","at":"2026-11-18T06:54:39.176Z"}
+{"id":"mtg-underground:Old Barnaby|repeatable-pure-draw","verdict":"wrong","note":"","at":"2026-11-18T06:54:43.570Z"}
+{"id":"mtg-underground:Spark of Insight|ritual","verdict":"correct","note":"","at":"2026-11-18T06:54:45.578Z"}
+{"id":"mtg-narou:Sealing Crystal|mana-rock","verdict":"correct","note":"","at":"2026-11-18T06:54:47.940Z"}
+{"id":"mtg-narou:Scheming Princess + Renner, Servant of Nazarick|sacrifice-outlet-creature","verdict":"correct","note":"","at":"2026-11-18T06:54:50.082Z"}
+{"id":"mtg-narou:The Talentless Outcast|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:54:52.090Z"}
+{"id":"mtg-underground:Sporespreading Shaman|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:54:54.020Z"}
+{"id":"mtg-underground:Splitspell|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:54:55.360Z"}
+{"id":"mtg-underground:Standard of Victory|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:54:57.001Z"}
+{"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-18T06:54:58.897Z"}
+{"id":"mtg-underground:Spirit Drinker|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:54:59.972Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|repeatable-removal","verdict":"correct","note":"","at":"2026-11-18T06:55:11.358Z"}
+{"id":"mtg-underground:Silaksamar, Pure Blade|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:55:20.965Z"}
+{"id":"mtg-narou:Ivy, the Weakest Tamer|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:55:22.457Z"}
+{"id":"mtg-underground:Scythecrawler|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T06:55:24.030Z"}
+{"id":"mtg-underground:Spirit Drinker|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:55:29.070Z"}
+{"id":"mtg-underground:Simian Ritespeaker|burst-draw","verdict":"correct","note":"","at":"2026-11-18T06:55:30.429Z"}
+{"id":"mtg-underground:Warp Mind|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:55:32.167Z"}
+{"id":"mtg-underground:Trace|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:55:32.982Z"}
+{"id":"mtg-underground:Writhing Rageworm|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:55:34.543Z"}
+{"id":"mtg-underground:Scion of the Deep|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:55:36.035Z"}
+{"id":"mtg-underground:Tsolus, the Storyteller|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:55:37.038Z"}
+{"id":"mtg-narou:Harem Plot|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-18T06:55:40.218Z"}
+{"id":"mtg-narou:Shalltear Bloodfallen|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:55:41.718Z"}
+{"id":"mtg-underground:Simian Ritespeaker|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:55:43.116Z"}
+{"id":"mtg-underground:Tsolus, the Storyteller|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:55:45.504Z"}
+{"id":"mtg-underground:Wild Revelation|burst-draw","verdict":"correct","note":"","at":"2026-11-18T06:55:47.012Z"}
+{"id":"mtg-narou:Demiurge|death-trigger","verdict":"correct","note":"","at":"2026-11-18T06:55:50.604Z"}
+{"id":"mtg-narou:Harem Plot|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:55:53.807Z"}
+{"id":"mtg-narou:The Talentless Outcast|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-18T06:55:55.084Z"}
+{"id":"mtg-narou:Sebas Tian|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:56:03.794Z"}
+{"id":"mtg-underground:Voci, the Silent District|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:56:05.032Z"}
+{"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-18T06:56:06.945Z"}
+{"id":"mtg-underground:System Enforcer|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:56:15.388Z"}
+{"id":"mtg-underground:Terrifying Might|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:56:17.401Z"}
+{"id":"mtg-underground:Voci, the Silent District|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:56:18.307Z"}
+{"id":"mtg-underground:Scythecrawler|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:56:20.095Z"}
+{"id":"mtg-narou:Light Healing|cantrip","verdict":"correct","note":"","at":"2026-11-18T06:56:21.169Z"}
+{"id":"mtg-narou:Demiurge|draw-engine","verdict":"correct","note":"","at":"2026-11-18T06:56:25.713Z"}
+{"id":"mtg-underground:The Lord of Hunger|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:56:27.423Z"}
+{"id":"mtg-underground:Wild Revelation|pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:56:28.649Z"}
+{"id":"mtg-narou:Demiurge|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T06:56:30.741Z"}
+{"id":"mtg-underground:Standard of Victory|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:56:32.688Z"}
+{"id":"mtg-underground:Toll Taker|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:56:34.689Z"}
+{"id":"mtg-underground:Strategic Surveyor|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:56:36.047Z"}
+{"id":"mtg-underground:Tunnel Tyrant|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T06:56:37.585Z"}
+{"id":"mtg-underground:The Spirit Between|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:56:38.959Z"}
+{"id":"mtg-narou:Cocytus, Weapon Master|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T06:56:40.029Z"}
+{"id":"mtg-underground:Selesnya Snarl|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:40.983Z"}
+{"id":"mtg-underground:Shadow of the Beast|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:41.769Z"}
+{"id":"mtg-underground:Sickle of Separation|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:42.835Z"}
+{"id":"mtg-underground:Simian Ritespeaker|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:43.653Z"}
+{"id":"mtg-underground:Simic Thicket|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:44.323Z"}
+{"id":"mtg-underground:Skittersnatcher|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:44.946Z"}
+{"id":"mtg-underground:Soulsip Scavenger|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:45.628Z"}
+{"id":"mtg-underground:Sporecap Troll|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:46.237Z"}
+{"id":"mtg-underground:Sporestone|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:46.865Z"}
+{"id":"mtg-underground:Stone-Faced Sentinel|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:47.565Z"}
+{"id":"mtg-underground:Terramorphic Expanse|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:48.409Z"}
+{"id":"mtg-underground:Tsolus, the Storyteller|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:49.502Z"}
+{"id":"mtg-underground:Veteran Expeditioner|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:50.207Z"}
+{"id":"mtg-underground:Voci, the Silent District|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:50.879Z"}
+{"id":"mtg-underground:Workshop of Worlds|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:51.453Z"}
+{"id":"mtg-underground:Zarun, the Shadowed Spire|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:51.986Z"}
+{"id":"mtg-narou:Ainz Ooal Gown|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:53.183Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:53.914Z"}
+{"id":"mtg-narou:Cocytus, Weapon Master|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:54.629Z"}
+{"id":"mtg-narou:Dangerous City|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:55.337Z"}
+{"id":"mtg-narou:Ivy, the Weakest Tamer|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:56.107Z"}
+{"id":"mtg-narou:Magic Bag|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:56.855Z"}
+{"id":"mtg-narou:Pandora Actor|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:57.684Z"}
+{"id":"mtg-narou:Scheming Princess + Renner, Servant of Nazarick|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:58.409Z"}
+{"id":"mtg-narou:Sealing Crystal|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:56:59.088Z"}
+{"id":"mtg-narou:Sebas Tian|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:00.027Z"}
+{"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:00.765Z"}
+{"id":"mtg-narou:Village Campground|activated-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:01.461Z"}
+{"id":"mtg-underground:Slimy Sewerslug|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:57:12.465Z"}
+{"id":"mtg-underground:This Area is Off Limits|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:57:17.783Z"}
+{"id":"mtg-underground:Total Annihilation|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:57:18.991Z"}
+{"id":"mtg-underground:Skullblast|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:20.133Z"}
+{"id":"mtg-underground:Sow Spores|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:57:21.161Z"}
+{"id":"mtg-underground:Vaporize|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:57:22.361Z"}
+{"id":"mtg-underground:Slimy Sewerslug|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:24.132Z"}
+{"id":"mtg-underground:Sporespreading Shaman|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:57:25.537Z"}
+{"id":"mtg-narou:Deem Worthless|removal-creature","verdict":"correct","note":"","at":"2026-11-18T06:57:26.970Z"}
+{"id":"mtg-underground:Smite the Wicked|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:28.447Z"}
+{"id":"mtg-underground:Sporestone|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:57:29.915Z"}
+{"id":"mtg-underground:Territorial Aggression|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:31.335Z"}
+{"id":"mtg-underground:The Lord of Hunger|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:57:32.775Z"}
+{"id":"mtg-underground:The Lord of Hunger|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:34.347Z"}
+{"id":"mtg-underground:Tunnel Tyrant|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:57:35.597Z"}
+{"id":"mtg-underground:This Area is Off Limits|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:37.223Z"}
+{"id":"mtg-underground:Vicious Delight|gives-pp-counters","verdict":"correct","note":"","at":"2026-11-18T06:57:38.301Z"}
+{"id":"mtg-underground:Troll Catapulter|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:40.533Z"}
+{"id":"mtg-underground:Trusty Crossbow|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:41.441Z"}
+{"id":"mtg-narou:Albedo|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:43.105Z"}
+{"id":"mtg-narou:Deem Worthless|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:44.447Z"}
+{"id":"mtg-underground:Saltmine Surveyor|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:46.051Z"}
+{"id":"mtg-narou:Dragon Lightning|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:48.178Z"}
+{"id":"mtg-underground:Scion of the Deep|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:50.209Z"}
+{"id":"mtg-narou:Plotting Village Chief|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:51.852Z"}
+{"id":"mtg-underground:Selesnya Snarl|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:53.111Z"}
+{"id":"mtg-narou:Wild Adandara + Ciel, Watchful Guardian|spot-removal","verdict":"correct","note":"","at":"2026-11-18T06:57:55.203Z"}
+{"id":"mtg-underground:Simian Scouting Unit|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:58.314Z"}
+{"id":"mtg-underground:Simic Thicket|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:57:59.266Z"}
+{"id":"mtg-underground:Slimy Sewerslug|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:00.192Z"}
+{"id":"mtg-underground:Slithering Siren|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:01.360Z"}
+{"id":"mtg-underground:Spectral Slug|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:02.412Z"}
+{"id":"mtg-underground:Sporestone|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:03.142Z"}
+{"id":"mtg-underground:Troll Catapulter|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:03.731Z"}
+{"id":"mtg-underground:Trusty Crossbow|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:04.924Z"}
+{"id":"mtg-underground:Tsolus, the Storyteller|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:05.896Z"}
+{"id":"mtg-underground:Viashino Eggtender|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:07.133Z"}
+{"id":"mtg-narou:Ainz Ooal Gown|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:09.401Z"}
+{"id":"mtg-narou:Albedo|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:10.445Z"}
+{"id":"mtg-narou:Blue Potion|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:11.524Z"}
+{"id":"mtg-narou:Cheat Item|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:12.343Z"}
+{"id":"mtg-narou:Ivy, the Weakest Tamer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:13.064Z"}
+{"id":"mtg-narou:Plotting Village Chief|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:13.623Z"}
+{"id":"mtg-narou:Sealing Crystal|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:14.347Z"}
+{"id":"mtg-narou:Sound Dampener|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:15.248Z"}
+{"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:16.171Z"}
+{"id":"mtg-narou:Wild Adandara + Ciel, Watchful Guardian|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T06:58:17.028Z"}
+{"id":"mtg-the-pale-age:Spontaneous Collapse|wheel-one-sided","verdict":"correct","note":"","at":"2026-11-18T07:00:51.932Z"}
+{"id":"mtg-the-pale-age:Panopticon|wheel-symmetrical","verdict":"correct","note":"","at":"2026-11-18T07:00:54.467Z"}
+{"id":"mtg-the-pale-age:Panopticon|burst-draw","verdict":"correct","note":"","at":"2026-11-18T07:00:55.918Z"}
+{"id":"mtg-underground:Unlock Lost Secrets|wheel-one-sided","verdict":"correct","note":"","at":"2026-11-18T07:00:58.214Z"}
+{"id":"mtg-underground:Entrance to Eternity|burst-draw","verdict":"correct","note":"","at":"2026-11-18T07:00:59.445Z"}
+{"id":"mtg-underground:Unlock Lost Secrets|burst-draw","verdict":"correct","note":"","at":"2026-11-18T07:01:00.786Z"}
+{"id":"mtg-underground:Many-legged Death|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T07:01:02.435Z"}
+{"id":"mtg-underground:Old Barnaby|pure-draw","verdict":"correct","note":"","at":"2026-11-18T07:01:03.805Z"}
+{"id":"mtg-underground:Entrance to Eternity|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T07:01:05.748Z"}
+{"id":"mtg-underground:Sporespreading Shaman|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T07:01:07.431Z"}
