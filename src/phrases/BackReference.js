@@ -81,7 +81,13 @@ export default class BackReference extends Phrase {
     }
 
     accepts(candidate) {
-        return !this.refersToExiled || Boolean(candidate.owner?.isExile);
+        if (this.refersToExiled && !candidate.owner?.isExile) return false;
+        return this.acceptsType(candidate);
+    }
+
+    acceptsType(candidate) {
+        if (this.objectType !== 'spell') return true;
+        return Boolean(candidate.hasType?.('spell'));
     }
 
     allowsTypeAlone(type) {
