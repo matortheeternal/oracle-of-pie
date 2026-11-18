@@ -7,6 +7,11 @@ export const DEFAULT_DEFINITIONS = {
             reminder: '{parameter}, Discard this card: Draw a card.'
         },
         {
+            name: 'Firebending',
+            reminder: 'Whenever this creature attacks, add {parameter} {R}. This mana '
+                + 'lasts until end of combat.'
+        },
+        {
             name: 'Gift',
             reminder: 'You may promise an opponent a gift as you cast this spell.'
         },
