@@ -1,4 +1,5 @@
 import ColorTiers from '../ColorTiers.js';
+import { FLYER_DAMAGE, COMBATANT_DAMAGE } from './exceptions.js';
 import { PRIMARY, SECONDARY, TERTIARY, NONE } from '../ColorTier.js';
 
 const DIRECT_DAMAGE = { kind: 'DamageEffect', isPowerBased: false };
@@ -11,6 +12,7 @@ export const DAMAGE_INSPECTIONS = [
         tiers: ColorTiers.of(TERTIARY, NONE, TERTIARY, PRIMARY, TERTIARY),
         description: 'Red owns direct damage. White hits attackers or flyers; green '
             + 'prefers fight and bite.',
+        exceptions: [FLYER_DAMAGE, COMBATANT_DAMAGE],
         match: { ...DIRECT_DAMAGE, phrases: { hitsCreature: true } }
     },
     {

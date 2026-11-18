@@ -1,4 +1,5 @@
 import ColorTiers from '../ColorTiers.js';
+import { FLYER_DESTRUCTION, FLYER_EXILE } from './exceptions.js';
 import { PRIMARY, SECONDARY, TERTIARY, NONE } from '../ColorTier.js';
 
 const OPPOSING_CREATURE = {
@@ -25,6 +26,7 @@ export const REMOVAL_INSPECTIONS = [
         group: 'Removal',
         tiers: ColorTiers.of(SECONDARY, NONE, PRIMARY, NONE, NONE),
         description: 'Black destroys anything; white destroys conditionally.',
+        exceptions: [FLYER_DESTRUCTION],
         match: {
             kind: 'DestroyEffect',
             phrases: { ...OPPOSING_CREATURE, requiresFlying: false }
@@ -37,6 +39,7 @@ export const REMOVAL_INSPECTIONS = [
         tiers: ColorTiers.of(PRIMARY, TERTIARY, SECONDARY, NONE, NONE),
         description: 'White exiles, often temporarily. Black exiles less often than it '
             + 'destroys.',
+        exceptions: [FLYER_EXILE],
         match: {
             kind: 'ExileEffect',
             isTemporary: false,

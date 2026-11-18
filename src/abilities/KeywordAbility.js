@@ -74,6 +74,12 @@ export default class KeywordAbility extends Ability {
         return this.keywords.keywords.some(keyword => keyword.name === wanted);
     }
 
+    hasManaCostKeyword(name) {
+        const wanted = name.toLowerCase();
+        return this.keywords.keywords
+            .some(keyword => keyword.name === wanted && keyword.hasManaParameter);
+    }
+
     get isKeywordAbility() {
         return true;
     }

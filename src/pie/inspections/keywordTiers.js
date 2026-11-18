@@ -1,5 +1,6 @@
 import ColorTiers from '../ColorTiers.js';
 import { PRIMARY, SECONDARY, TERTIARY, NONE } from '../ColorTier.js';
+import { NON_MANA_WARD } from './exceptions.js';
 
 export const KEYWORD_TIERS = {
     'flying': ColorTiers.of(PRIMARY, PRIMARY, SECONDARY, SECONDARY, TERTIARY),
@@ -18,4 +19,8 @@ export const KEYWORD_TIERS = {
     'flash': ColorTiers.of(SECONDARY, PRIMARY, SECONDARY, SECONDARY, SECONDARY),
     'ward': ColorTiers.of(SECONDARY, PRIMARY, TERTIARY, TERTIARY, SECONDARY),
     'prowess': ColorTiers.of(TERTIARY, PRIMARY, NONE, PRIMARY, NONE)
+};
+
+export const KEYWORD_EXCEPTIONS = {
+    ward: [NON_MANA_WARD]
 };

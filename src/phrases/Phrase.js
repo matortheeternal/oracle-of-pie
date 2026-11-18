@@ -112,4 +112,8 @@ export default class Phrase extends Parser {
     hasQualifier(qualifier) {
         return false;
     }
+
+    requiresKeyword(keyword) {
+        return false;
+    }
 }
