@@ -8,11 +8,10 @@ Levels: CardText → abilities/ → statements/ (Sentence, statement registry) �
 phrases/ (+ modifiers/) → values/; costs/ use mana-scribe. resolvers/ link across sentences
 (temporary exile). tags/ holds TagRule strategies that read the tree.
 
-    node bin/tagCorpus.js ../data/corpus.json ../data/js-predictions.json
-    ../.venv/bin/python -I ../spike/tageval.py ../spike ../data/corpus.json ../data/tags.json ../data/tageval-js.json ../data/js-predictions.json
+Evaluate against Scryfall tags from the repository root with `npm run evaluate`.
 
 Status (2026-11-17, modern corpus): 67% of cards fully recognized; tag micro precision 98.4%, recall 78.3%
-(Python spike: 56%, 97.6%, 71.9%).
+(the Python spike: 56%, 97.6%, 71.9%).
 
 Definitions: keywords, keyword actions and tokens are all a name plus reminder text. Matching nodes
 (KeywordAbility, KeywordActionEffect, CreateTokenEffect) attach the parsed reminder as an Expansion; tag rules
@@ -28,4 +27,4 @@ see expansions, recognition coverage ignores them. Projects add or override defi
 References: ReferenceResolver links each back-reference to the nearest earlier compatible phrase within one
 ability (Saga chapters share a scope; quoted abilities get their own). ExileEffect.isTemporary reads those links.
 Next: "each of up to N target", "divided among N targets", "named <card>"; split multi-node-type tag rules
-into one rule class per node type; jasmine tests from review verdicts; port custom-card queue to JS.
+into one rule class per node type; jasmine tests from review verdicts.
