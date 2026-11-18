@@ -3,7 +3,7 @@ import Effect from './Effect.js';
 const AFTER_PHASE = '(?:after this (?:main )?phase, )?';
 const PHASE_KIND = '(combat|main|beginning|end)';
 const ADDITIONAL_PHASE = new RegExp(
-    `^${AFTER_PHASE}there is an additional ${PHASE_KIND}(?: phase)?[^,.]*`, 'i'
+    `^${AFTER_PHASE}there(?: is|'s) an additional ${PHASE_KIND}(?: phase)?[^,.]*`, 'i'
 );
 const COMBAT = 'combat';
 
