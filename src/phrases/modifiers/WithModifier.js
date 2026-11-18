@@ -1,5 +1,6 @@
 import Modifier from './Modifier.js';
 
+const BEFORE_DESTINATION = '(?=,|\\.|$| to (?:its|their) owners?\'?s? hands?)';
 const WITH_ALTERNATIVES = [
     'flying',
     'reach',
@@ -14,20 +15,22 @@ const WITH_ALTERNATIVES = [
     'toughness',
     'mana value',
     'total power',
+    'total mana value',
     'converted mana cost',
     'a [\\w+\\-/]+ counter on it',
     '[\\w+\\-/]+ counters on (?:it|them)',
     'counters on (?:it|them)',
-    'the greatest power[^,.]*',
+    `the greatest (?:power|mana value)[^,.]*?${BEFORE_DESTINATION}`,
     'the same name as [^,.]+',
     'that name',
     'an? [a-z]+ (?:mana )?ability'
 ];
+const COMPARED = `[^,.]+?${BEFORE_DESTINATION}`;
 const COMPARISON_ALTERNATIVES = [
     '(?: or toughness)? (?:\\d+|X|N) or (?:less|greater|more)',
-    '(?: or toughness)? less than [^,.]+',
-    '(?: or toughness)? greater than [^,.]+',
-    ' equal to [^,.]+',
+    `(?: or toughness)? less than ${COMPARED}`,
+    `(?: or toughness)? greater than ${COMPARED}`,
+    ` equal to ${COMPARED}`,
     ' (?:\\d+|X|N)(?=[,.]|$)'
 ];
 const WITH = new RegExp(

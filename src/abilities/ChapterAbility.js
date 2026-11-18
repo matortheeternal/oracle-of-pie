@@ -1,7 +1,9 @@
 import BodyAbility from './BodyAbility.js';
 
 const NUMERAL = '(?:I|II|III|IV|V|VI|VII|VIII|IX|X)';
-const CHAPTER = new RegExp(`^(${NUMERAL}(?:, ${NUMERAL})*) (?:—|-) ([\\s\\S]+)$`);
+const CHAPTER_NAME = '(?:[A-Z][\\w\' ,!]+? — )?';
+const CHAPTERS = `(${NUMERAL}(?:, ${NUMERAL})*)`;
+const CHAPTER = new RegExp(`^${CHAPTERS} (?:—|-) ${CHAPTER_NAME}([\\s\\S]+)$`);
 
 export default class ChapterAbility extends BodyAbility {
     static match(scribe, str) {
