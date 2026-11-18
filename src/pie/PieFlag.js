@@ -20,6 +20,7 @@ export default class PieFlag {
         return {
             inspection: inspection.id,
             exception: this.attribution.exception?.id ?? null,
+            citation: this.attribution.citation,
             title: inspection.title,
             colors: String(colors),
             policy: this.policy.id,

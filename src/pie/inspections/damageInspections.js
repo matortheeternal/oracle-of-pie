@@ -27,6 +27,7 @@ export const DAMAGE_INSPECTIONS = [
         id: 'bite',
         title: 'Creature deals damage equal to its power',
         group: 'Damage',
+        cites: '"Bite"',
         match: {
             kind: 'DamageEffect',
             isPowerBased: true,
@@ -37,6 +38,7 @@ export const DAMAGE_INSPECTIONS = [
         id: 'fight',
         title: 'Fights',
         group: 'Damage',
+        cites: 'Fight',
         match: { kind: 'FightEffect', phrases: { isOpposingObject: true } }
     }
 ];

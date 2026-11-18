@@ -10,13 +10,15 @@ function keywordTags(slug) {
     return [`gains-${slug}`, `gives-${slug}`, `${slug}-counter`];
 }
 
-export default function keywordInspection(keyword, { tiers, exceptions = [] } = {}) {
+export default function keywordInspection(keyword, options = {}) {
+    const { tiers, exceptions = [], cites = titleOf(keyword) } = options;
     const slug = KeywordFamilyEvaluator.slug(keyword);
     return {
         id: `keyword-${slug}`,
         title: titleOf(keyword),
         group: KEYWORDS_GROUP,
         tiers,
+        cites,
         exceptions,
         description: `Has, gains or gives ${keyword}, or puts ${keyword} counters.`,
         match: {

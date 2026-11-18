@@ -1,14 +1,16 @@
 import Query from '../evaluators/Query.js';
 import PieException from './PieException.js';
 import ColorTiers from './ColorTiers.js';
+import Citation from './Citation.js';
 import { CANON_TIERS } from './canonTierTable.js';
 
 function canonTiersOf(id) {
     return ColorTiers.fromNames(CANON_TIERS[id] ?? {});
 }
 
-function defaultTiers(id, allowedWherever) {
-    const own = canonTiersOf(id);
+function defaultTiers(id, citation, allowedWherever) {
+    const canon = canonTiersOf(id);
+    const own = citation ? canon.loosenedBy(citation.tiers) : canon;
     if (!allowedWherever) return own;
     return own.loosenedBy(canonTiersOf(allowedWherever));
 }
@@ -19,7 +21,8 @@ export default class PieInspection {
         this.id = id;
         this.title = title;
         this.group = group;
-        this.tiers = tiers ?? defaultTiers(id, spec.allowedWherever);
+        this.citation = Citation.of(spec.cites);
+        this.tiers = tiers ?? defaultTiers(id, this.citation, spec.allowedWherever);
         this.description = description;
         this.exceptions = exceptions.map(exception => new PieException(exception));
         this.query = Query.compile(spec.match);

@@ -6,6 +6,10 @@ export const CANON_KEYWORDS = [
     'defender', 'flash', 'ward', 'prowess'
 ];
 
+export const KEYWORD_CITATIONS = {
+    'ward': 'Ward (for mana)'
+};
+
 export const KEYWORD_EXCEPTIONS = {
     'ward': [LIFE_WARD, NON_MANA_WARD],
     'trample': [DEMON_TRAMPLE]

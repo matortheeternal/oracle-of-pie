@@ -22,6 +22,7 @@ export const REMOVAL_INSPECTIONS = [
         id: 'counter-ability',
         title: 'Counters abilities',
         group: 'Removal',
+        cites: 'Counter target activated/triggered ability',
         match: { ...COUNTERS_ABILITY, phrases: OPPOSING_ABILITY }
     },
     {

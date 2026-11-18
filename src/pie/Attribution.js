@@ -15,6 +15,10 @@ export default class Attribution {
         return this.face.parsed.locate?.(this.evidence) ?? null;
     }
 
+    get citation() {
+        return this.exception?.citation ?? this.inspection.citation;
+    }
+
     get tiers() {
         const base = this.inspection.tiers;
         return this.exception ? this.exception.tiersOver(base) : base;

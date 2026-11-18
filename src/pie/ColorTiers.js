@@ -30,6 +30,11 @@ export default class ColorTiers {
         return own.isWorseThan(theirs) ? theirs : own;
     }
 
+    get listed() {
+        const listed = COLORS.filter(color => this.tierOf(color) !== NONE);
+        return Object.fromEntries(listed.map(color => [color, this.tierOf(color)]));
+    }
+
     tierOf(color) {
         return this.byColor[color];
     }
