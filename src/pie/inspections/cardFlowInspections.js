@@ -26,6 +26,7 @@ export const CARD_FLOW_INSPECTIONS = [
     tagInspection({
         id: 'mill-self',
         title: 'Mills yourself',
-        group: 'Graveyard'
+        group: 'Graveyard',
+        atLeast: { W: 'tertiary' }
     })
 ];
