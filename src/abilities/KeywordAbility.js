@@ -5,6 +5,7 @@ import Definition from '../definitions/Definition.js';
 
 const KEYWORD_WITH_COST = /^—(?! )[^.]+\.?$/;
 const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+|— \d+\/\d+)\.?$/;
+const CARD_NAME = /^[A-Z][^.]*$/;
 const PARAMETER = /^(?:[a-z][A-Za-z ,'-]*|with [^.]+)$/;
 
 function isSingle(list) {
@@ -12,7 +13,8 @@ function isSingle(list) {
 }
 
 function isKeywordParameter(list, rest) {
-    return isSingle(list) && PARAMETER.test(rest);
+    if (!isSingle(list)) return false;
+    return PARAMETER.test(rest) || (list.keywords[0].takesName && CARD_NAME.test(rest));
 }
 
 function isManaCostContinuation(list, rest) {

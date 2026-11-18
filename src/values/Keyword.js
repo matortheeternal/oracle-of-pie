@@ -11,6 +11,7 @@ const PARAMETER_ALTERNATIVES = [
     'N'
 ];
 const MANA_PARAMETER = /^\{/;
+const NAMED_PARTNER = / with$/;
 const PARAMETER = new RegExp(
     `^(?:—| )?(${PARAMETER_ALTERNATIVES.join('|')})`
 );
@@ -27,6 +28,10 @@ export default class Keyword extends Node {
         this.parameter = parameter?.[1] ?? null;
         if (parameter?.[0])
             this.remainingStr = this.remainingStr.slice(parameter[0].length);
+    }
+
+    get takesName() {
+        return NAMED_PARTNER.test(this.name);
     }
 
     get hasManaParameter() {
