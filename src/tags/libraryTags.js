@@ -2,7 +2,21 @@ const CREATURE_CARD = { isCreatureCard: true };
 const GRAVEYARD_LAND = { hasExactType: 'land', zone: 'graveyard' };
 const LAND_SWAP = { ability: { cost: { sacrificesOther: true } } };
 
+const SEARCH = { kind: 'SearchLibraryEffect' };
+
 export const LIBRARY_TAGS = [
+    {
+        tag: 'tutor-land-basic',
+        match: { ...SEARCH, phrases: { hasType: 'land', hasQualifier: 'basic' } }
+    },
+    {
+        tag: 'tutor-artifact',
+        match: { ...SEARCH, phrases: { hasExactType: 'artifact' } }
+    },
+    {
+        tag: 'tutor-land-to-battlefield',
+        match: { ...SEARCH, findsLand: true, toBattlefield: true }
+    },
     {
         tag: 'tutor-to-hand',
         match: { kind: 'SearchLibraryEffect', toHand: true }

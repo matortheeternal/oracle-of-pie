@@ -63,6 +63,10 @@ export default class SearchLibraryEffect extends Effect {
         return Boolean(this.wanted);
     }
 
+    get phrases() {
+        return this.wanted?.phrases ?? [];
+    }
+
     get findsLand() {
         return Boolean(this.wanted?.some(isLandPhrase));
     }
