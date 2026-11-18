@@ -10,6 +10,8 @@ const TOKEN_DESCRIPTION_ALTERNATIVES = [
     ' attached to [^,.]+',
     ' for each [^,.]+',
     ' tapped and attacking',
+    ' that\'s tapped and attacking',
+    ',? except (?:[^."]|"[^"]*")+',
     ' that (?:are|is) [^,.]+'
 ];
 const TOKEN_NOUN = '((?:[^."]|"[^"]*")*?\\btokens?\\b)';

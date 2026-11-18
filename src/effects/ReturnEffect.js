@@ -12,6 +12,7 @@ const DESTINATION = new RegExp(
 const FROM_GRAVEYARD = /^from (?:your|a|their|its owner's) graveyards? /i;
 const RETURN_TAIL_ALTERNATIVES = [
     'tapped',
+    'and attacking',
     'transformed',
     'face down',
     'under (?:your|its owner\'s|their owners\'|their owner\'s) control',
