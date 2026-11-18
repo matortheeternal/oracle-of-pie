@@ -31,7 +31,7 @@ import PayManaEffect from './PayManaEffect.js';
 import PayLifeEffect from './PayLifeEffect.js';
 import PlayerCountersEffect from './PlayerCountersEffect.js';
 import RevealHandEffect from './RevealHandEffect.js';
-import RevealUntilEffect from './RevealUntilEffect.js';
+import DigUntilEffect from './DigUntilEffect.js';
 import AttachEffect from './AttachEffect.js';
 import ExtraLandEffect from './ExtraLandEffect.js';
 import PlayCardsEffect from './PlayCardsEffect.js';
@@ -68,18 +68,17 @@ import RemoveCountersEffect from './RemoveCountersEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
 export const EFFECT_PARSERS = [
-    TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
-    CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect, ReturnEffect,
-    DrawEffect, DiscardEffect, DamageModificationEffect, DamageEffect, ModifyPTEffect,
-    HandSizeEffect, SetBasePTEffect,
+    DigUntilEffect, TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect,
+    LoseLifeEffect, CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect,
+    ReturnEffect, DrawEffect, DiscardEffect, DamageModificationEffect, DamageEffect,
+    ModifyPTEffect, HandSizeEffect, SetBasePTEffect,
     CausativeEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, ShuffleIntoLibraryEffect,
     MoveCountersEffect, RemoveCountersEffect,
     KeywordActionEffect, AddManaEffect, CantEffect, EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
-    PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect,
-    RevealUntilEffect, AttachEffect,
+    PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
@@ -97,7 +96,7 @@ export {
     CantEffect, EntersWithCountersEffect, ShuffleIntoLibraryEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect,
-    RevealUntilEffect, AttachEffect,
+    DigUntilEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
