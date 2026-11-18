@@ -15,7 +15,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'primary', B: 'none', R: 'none', G: 'none'
     },
     'edict': {
-        W: 'tertiary', U: 'none', B: 'primary', R: 'tertiary', G: 'tertiary'
+        W: 'tertiary', U: 'none', B: 'primary', R: 'tertiary', G: 'none'
     },
     'shrink-creature': {
         W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'
@@ -102,7 +102,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'secondary', B: 'tertiary', R: 'secondary', G: 'primary'
     },
     'extra-untap': {
-        W: 'primary', U: 'tertiary', B: 'none', R: 'primary', G: 'primary'
+        W: 'none', U: 'tertiary', B: 'none', R: 'none', G: 'primary'
     },
     'freeze-creature': {
         W: 'secondary', U: 'primary', B: 'none', R: 'none', G: 'none'
