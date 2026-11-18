@@ -29,6 +29,7 @@ export default function customFace(face) {
         type_line: typeLine(face),
         mana_cost: manaCost(face),
         colors: colors(face),
-        oracle_text: rulesText(face)
+        oracle_text: rulesText(face),
+        loyalty: face.loyalty ?? null
     };
 }
