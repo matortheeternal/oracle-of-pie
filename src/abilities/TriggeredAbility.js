@@ -18,10 +18,16 @@ export default class TriggeredAbility extends BodyAbility {
         this.trigger = `${match[1]} ${match[2]}`;
         this.event = parseTriggerEvent(match[2]);
         this.triggerSubject = this.parseNext(this.event.subject, PHRASE_PARSERS);
+        this.triggerObject = this.parseTriggerObject();
+    }
+
+    parseTriggerObject() {
+        const phrase = this.event.objectPhrase;
+        return phrase ? this.parseNext(phrase, PHRASE_PARSERS) : null;
     }
 
     get referenceSeeds() {
-        return [this.triggerSubject].filter(Boolean);
+        return [this.triggerSubject, this.triggerObject].filter(Boolean);
     }
 
     get isRepeatable() {

@@ -27,6 +27,10 @@ export default class TriggerEvent {
         return true;
     }
 
+    get objectPhrase() {
+        return null;
+    }
+
     toJSON() {
         return { event: this.constructor.name, subject: this.subject };
     }
