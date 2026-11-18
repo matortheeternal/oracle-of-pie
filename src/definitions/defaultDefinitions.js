@@ -8,6 +8,12 @@ export const DEFAULT_DEFINITIONS = {
                 + 'gets +1/+0 until end of turn.'
         },
         {
+            name: 'Blitz',
+            reminder: 'If you cast this spell for its blitz cost, it gains haste and '
+                + '"When this creature dies, draw a card." Sacrifice it at the beginning '
+                + 'of the next end step.'
+        },
+        {
             name: 'Cycling',
             reminder: '{parameter}, Discard this card: Draw a card.'
         },
