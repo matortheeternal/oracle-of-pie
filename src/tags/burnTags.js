@@ -8,6 +8,25 @@ export const BURN_TAGS = [
         match: { kind: 'DamageEffect', phrases: { hitsPlayer: true } }
     },
     {
+        tag: 'burn-planeswalker',
+        match: {
+            kind: 'DamageEffect',
+            phrases: {
+                refersToSelf: false,
+                controlledByYou: false,
+                any: [{ isAnyTarget: true }, { hasExactType: 'planeswalker' }]
+            }
+        }
+    },
+    {
+        tag: 'burn-player-each',
+        match: { kind: 'DamageEffect', phrases: { player: 'each player' } }
+    },
+    {
+        tag: 'burn-you',
+        match: { kind: 'DamageEffect', phrases: { isPlayer: true, isYou: true } }
+    },
+    {
         tag: 'burn-any',
         match: { kind: 'DamageEffect', phrases: { isAnyTarget: true } }
     },
