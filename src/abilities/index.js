@@ -1,4 +1,5 @@
 import ModeLine from './ModeLine.js';
+import DieResultLine from './DieResultLine.js';
 import StructureLine from './StructureLine.js';
 import StationAbility from './StationAbility.js';
 import ChapterAbility from './ChapterAbility.js';
@@ -9,7 +10,8 @@ import AbilityWordAbility from './AbilityWordAbility.js';
 import SpellAbility from './SpellAbility.js';
 
 export const ABILITY_PARSERS = [
-    ModeLine, StructureLine, StationAbility, ChapterAbility, KeywordAbility,
+    ModeLine, DieResultLine, StructureLine, StationAbility, ChapterAbility,
+    KeywordAbility,
     AbilityWordAbility, TriggeredAbility, ActivatedAbility, SpellAbility
 ];
 
