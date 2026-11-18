@@ -92,6 +92,7 @@ export const REMOVAL_INSPECTIONS = [
         match: {
             kind: DESTROY_OR_EXILE,
             duration: null,
+            not: { isTemporary: true },
             phrases: { isOpposingObject: true, hasExactType: 'artifact' }
         }
     },
@@ -102,6 +103,7 @@ export const REMOVAL_INSPECTIONS = [
         match: {
             kind: DESTROY_OR_EXILE,
             duration: null,
+            not: { isTemporary: true },
             phrases: { isOpposingObject: true, hasExactType: 'enchantment' }
         }
     }
