@@ -3,6 +3,7 @@ const CREATURE = /\bCreature\b/;
 const INSTANT_OR_SORCERY = /\b(?:Instant|Sorcery)\b/;
 const INSTANT = /\bInstant\b/;
 const ARTIFACT = /\bArtifact\b/;
+const EQUIPMENT = /\bEquipment\b/;
 
 export default class CardContext {
     constructor({ name = '', typeLine = '' } = {}) {
@@ -24,6 +25,10 @@ export default class CardContext {
 
     get isInstantOrSorcery() {
         return INSTANT_OR_SORCERY.test(this.typeLine);
+    }
+
+    get isEquipment() {
+        return EQUIPMENT.test(this.typeLine);
     }
 
     get isCreature() {

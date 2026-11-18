@@ -10,6 +10,8 @@ import { DERIVED_TAGS } from './derivedTags.js';
 import { KEYWORD_GRANT_TAGS } from './keywordGrantTags.js';
 import { MANA_TAGS } from './manaTags.js';
 import { SACRIFICE_TAGS } from './sacrificeTags.js';
+import { PLAYER_TAGS } from './playerTags.js';
+import { SPELL_TAGS } from './spellTags.js';
 
 export const DEFAULT_TAG_SPECS = [
     ...REMOVAL_TAGS,
@@ -22,6 +24,8 @@ export const DEFAULT_TAG_SPECS = [
     ...KEYWORD_GRANT_TAGS,
     ...MANA_TAGS,
     ...SACRIFICE_TAGS,
+    ...PLAYER_TAGS,
+    ...SPELL_TAGS,
     ...STRUCTURE_TAGS,
     ...DERIVED_TAGS
 ];
