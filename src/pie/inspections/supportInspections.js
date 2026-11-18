@@ -1,5 +1,5 @@
 import tagInspection from './tagInspection.js';
-import { UNTAPPED_CREATURES } from './exceptions.js';
+import { EXTRA_ATTACK, UNTAPPED_CREATURES } from './exceptions.js';
 
 const OPPONENT_LOSES_LIFE = { kind: 'LoseLifeEffect', subjectIsOpponent: true };
 const YOUR_OWN_PERMANENTS = {
@@ -17,7 +17,7 @@ export const SUPPORT_INSPECTIONS = [
         id: 'extra-untap',
         title: 'Untaps your permanents en masse',
         group: 'Mana & lands',
-        exceptions: [UNTAPPED_CREATURES]
+        exceptions: [EXTRA_ATTACK, UNTAPPED_CREATURES]
     }),
     {
         id: 'freeze-creature',

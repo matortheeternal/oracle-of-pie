@@ -81,6 +81,15 @@ export const WHEEL = {
     cites: '"Wheeling"'
 };
 
+const EXTRA_COMBAT = { kind: 'AdditionalPhaseEffect', addsCombat: true };
+
+export const EXTRA_ATTACK = {
+    id: 'extra-attack',
+    title: 'Untapping creatures for an additional combat',
+    match: { context: { cardText: { effects: { any: [EXTRA_COMBAT] } } } },
+    cites: 'Extra attack'
+};
+
 export const UNTAPPED_CREATURES = {
     id: 'creatures',
     title: 'Untapping creatures',
