@@ -7,11 +7,14 @@ const COUNT = `(${NUMBER_PATTERN}|that much|twice that much|N)`;
 const POWER_OWNER = `(its|their|~'s|that creature's|this creature's)`;
 const AMOUNT = new RegExp(
     `^(?:${COUNT} damage(?: divided as you choose)?`
-        + `|damage equal to (?:${POWER_OWNER} power|[^,.]+?)(?= to ))`,
+        + `|damage equal to (?:${POWER_OWNER} power|[^,.]+?)(?= to )`
+        + '|damage(?= to ))',
     'i'
 );
 const TO_TARGETS = /^(?:to|among) /i;
 const FOR_EACH = /^for each [^,.]+/i;
+const EACH_OF = /^each of /i;
+const EQUAL_TO = /^equal to [^,.]+/i;
 
 export default class DamageEffect extends Effect {
     static get pattern() {
@@ -22,8 +25,13 @@ export default class DamageEffect extends Effect {
         const amount = this.consumeText(AMOUNT);
         this.amountText = amount?.[0] ?? null;
         this.isPowerBased = Boolean(amount?.[2]);
-        this.targets = this.consumeText(TO_TARGETS) ? this.consume([PhraseList]) : null;
-        this.consumeText(FOR_EACH);
+        this.targets = this.consumeText(TO_TARGETS) ? this.consumeTargets() : null;
+        this.consumeText(FOR_EACH) ?? this.consumeText(EQUAL_TO);
+    }
+
+    consumeTargets() {
+        this.consumeText(EACH_OF);
+        return this.consume([PhraseList]);
     }
 
     get parts() {

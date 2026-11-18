@@ -1,6 +1,7 @@
 import Effect from './Effect.js';
 
-const EACH_COMBAT = '(attack|block)s? each (?:combat|turn) if able';
+const COMBAT_WINDOW = '(?:each|this) (?:combat|turn) if able';
+const EACH_COMBAT = `(attack|block)s?(?: or blocks?)?(?: [^,.]*?)? ${COMBAT_WINDOW}`;
 const MUST_BE_BLOCKED = 'must (be blocked)[^,.]* if able';
 const COMBAT_REQUIREMENT = new RegExp(`^(?:${EACH_COMBAT}|${MUST_BE_BLOCKED})`, 'i');
 const ATTACK = 'attack';

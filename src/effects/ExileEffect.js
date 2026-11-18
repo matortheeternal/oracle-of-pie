@@ -3,10 +3,12 @@ import ObjectEffect from './ObjectEffect.js';
 const EXILE = /^exiles? /i;
 const EXILE_TAIL_ALTERNATIVES = [
     'face down',
+    'instead of putting [^,.]+',
     'instead',
     'at random',
     'until ~ leaves the battlefield',
-    'until [^,.]+ leaves the battlefield'
+    'until [^,.]+ leaves the battlefield',
+    'from the top of (?:your|their|its owner\'s|that player\'s) library until [^,.]+'
 ];
 const EXILE_TAIL = new RegExp(
     `^(${EXILE_TAIL_ALTERNATIVES.join('|')})`, 'i'
