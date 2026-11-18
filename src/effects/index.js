@@ -61,6 +61,7 @@ import CounterModificationEffect from './CounterModificationEffect.js';
 import BeginGameEffect from './BeginGameEffect.js';
 import TuckEffect from './TuckEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
+import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
 export const EFFECT_PARSERS = [
@@ -70,8 +71,8 @@ export const EFFECT_PARSERS = [
     HandSizeEffect, SetBasePTEffect,
     CausativeEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
-    SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
-    CantEffect, EntersWithCountersEffect,
+    SacrificeEffect, FightEffect, MillEffect, ShuffleIntoLibraryEffect,
+    KeywordActionEffect, AddManaEffect, CantEffect, EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
@@ -88,7 +89,7 @@ export {
     DrawEffect, DiscardEffect, DamageEffect, ModifyPTEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
-    CantEffect, EntersWithCountersEffect,
+    CantEffect, EntersWithCountersEffect, ShuffleIntoLibraryEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
