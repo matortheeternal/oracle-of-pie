@@ -18,6 +18,7 @@ export default class Phrase extends Parser {
     attachTo(effect) {
         this.owner = effect;
     }
+
     get refersToSelf() {
         return false;
     }
@@ -51,7 +52,36 @@ export default class Phrase extends Parser {
         return this.hasType('creature') || this.hasType('permanent');
     }
 
+    get isOpposingObject() {
+        if (this.refersToSelf || this.controlledByYou) return false;
+        if (this.isCardInZone) return false;
+        return !this.isPlayer;
+    }
+
+    get hitsCreature() {
+        if (this.refersToSelf || this.controlledByYou) return false;
+        return this.hasType('creature');
+    }
+
+    get hitsPlayer() {
+        if (this.isPlayer) return Boolean(this.canBeOpponent);
+        if (this.isAnyTarget) return true;
+        return this.hasExactType('player') || this.hasExactType('opponent');
+    }
+
+    get requiresFlying() {
+        return Boolean(this.requiredKeywords?.includes('flying'));
+    }
+
+    get isCreatureCard() {
+        return this.hasExactType('creature') && this.isCardInZone;
+    }
+
     hasType(type) {
+        return false;
+    }
+
+    hasExactType(type) {
         return false;
     }
 

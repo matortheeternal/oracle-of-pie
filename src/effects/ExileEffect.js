@@ -30,6 +30,10 @@ export default class ExileEffect extends ObjectEffect {
         return true;
     }
 
+    get removesPermanently() {
+        return !this.isTemporary;
+    }
+
     get isTemporary() {
         return this.phrases.some(isReturnedToBattlefield);
     }

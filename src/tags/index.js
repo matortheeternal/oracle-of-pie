@@ -1,10 +1,9 @@
-import * as removal from './rules/removalRules.js';
-import * as burn from './rules/burnRules.js';
-import * as cardFlow from './rules/cardFlowRules.js';
-import * as library from './rules/libraryRules.js';
-import * as creature from './rules/creatureRules.js';
+import { REMOVAL_TAGS } from './removalTags.js';
+import { BURN_TAGS } from './burnTags.js';
+import { CARD_FLOW_TAGS } from './cardFlowTags.js';
+import { LIBRARY_TAGS } from './libraryTags.js';
+import { CREATURE_TAGS } from './creatureTags.js';
 
-export const TAG_RULES = [
-    ...Object.values(removal), ...Object.values(burn), ...Object.values(cardFlow),
-    ...Object.values(library), ...Object.values(creature)
+export const DEFAULT_TAG_SPECS = [
+    ...REMOVAL_TAGS, ...BURN_TAGS, ...CARD_FLOW_TAGS, ...LIBRARY_TAGS, ...CREATURE_TAGS
 ];

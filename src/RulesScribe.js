@@ -9,6 +9,7 @@ import { STATEMENT_PARSERS } from './statements/index.js';
 import Clause from './clauses/Clause.js';
 import { DEFAULT_KEYWORDS } from './defaultKeywords.js';
 import RulesDefinitions from './definitions/RulesDefinitions.js';
+import createTagEvaluators from './evaluators/createTagEvaluators.js';
 
 const NEVER = /(?!)/;
 const REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
@@ -25,7 +26,8 @@ function escapeNames(names) {
 }
 
 export default class RulesScribe {
-    constructor({ keywords = DEFAULT_KEYWORDS, definitions = {} } = {}) {
+    constructor({ keywords = DEFAULT_KEYWORDS, definitions = {}, tags = [] } = {}) {
+        this.tagEvaluators = createTagEvaluators(tags);
         this.definitions = RulesDefinitions.withDefaults(definitions);
         const keywordSources = escapeNames(keywords)
             .concat(this.definitions.keywords.patternSources);
@@ -56,6 +58,7 @@ export default class RulesScribe {
 
     parseFace({ name = '', typeLine = '', text = '' }) {
         const card = new CardContext({ name, typeLine });
-        return new ParsedCard(card, this.parseText(normalizeCardText(text, name)));
+        const parsed = this.parseText(normalizeCardText(text, name));
+        return new ParsedCard(card, parsed, this.tagEvaluators);
     }
 }

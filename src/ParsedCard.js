@@ -1,4 +1,4 @@
-import tagCard from './tags/tagCard.js';
+import evaluateCard from './evaluators/evaluateCard.js';
 import UnrecognizedText from './values/UnrecognizedText.js';
 import UnrecognizedCost from './costs/UnrecognizedCost.js';
 import Clause from './clauses/Clause.js';
@@ -6,13 +6,14 @@ import Clause from './clauses/Clause.js';
 const UNRECOGNIZED = [UnrecognizedText, UnrecognizedCost];
 
 export default class ParsedCard {
-    constructor(card, text) {
+    constructor(card, text, evaluators) {
         this.card = card;
         this.text = text;
+        this.evaluators = evaluators;
     }
 
     get tags() {
-        this.cachedTags ??= tagCard(this.text, this.card);
+        this.cachedTags ??= evaluateCard(this.text, this.card, this.evaluators);
         return this.cachedTags;
     }
 

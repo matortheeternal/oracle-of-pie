@@ -2,7 +2,9 @@ import RulesScribe from './RulesScribe.js';
 
 export { default as CardText } from './CardText.js';
 export { default as ParsedCard } from './ParsedCard.js';
-export { TAG_RULES } from './tags/index.js';
+export { DEFAULT_TAG_SPECS } from './tags/index.js';
+export { default as Evaluator } from './evaluators/Evaluator.js';
+export { default as Query } from './evaluators/Query.js';
 export { RulesScribe };
 export default RulesScribe;
 export { default as RulesDefinitions } from './definitions/RulesDefinitions.js';

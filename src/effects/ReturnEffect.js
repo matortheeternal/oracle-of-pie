@@ -54,6 +54,14 @@ export default class ReturnEffect extends ObjectEffect {
         return super.isComplete && Boolean(this.destination);
     }
 
+    get isBounce() {
+        return this.destination === 'hand' && !this.fromGraveyard;
+    }
+
+    get removesPermanently() {
+        return this.isBounce;
+    }
+
     get returnsToBattlefield() {
         return this.destination === 'battlefield';
     }

@@ -16,4 +16,8 @@ export default class ObjectEffect extends Effect {
     get phrases() {
         return this.objects?.phrases ?? [];
     }
+
+    get primaryObject() {
+        return this.phrases[0] ?? null;
+    }
 }

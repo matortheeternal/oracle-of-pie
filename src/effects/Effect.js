@@ -50,6 +50,10 @@ export default class Effect extends Parser {
         return false;
     }
 
+    get removesPermanently() {
+        return false;
+    }
+
     get returnsToBattlefield() {
         return false;
     }
