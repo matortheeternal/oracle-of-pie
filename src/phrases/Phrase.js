@@ -47,6 +47,10 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    get controlledByOpponent() {
+        return false;
+    }
+
     get hasSubtypes() {
         return false;
     }

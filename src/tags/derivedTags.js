@@ -9,6 +9,7 @@ const ATTACHED_TARGET = {
     any: [{ phrases: { isAttached: true } }, { subject: { isAttached: true } }]
 };
 const SINGLE_TARGET = { isTargeted: true, isMass: false };
+const OPPONENTS_GROUP = { isMass: true, controlledByOpponent: true };
 const REPEATABLE = {
     card: { isInstantOrSorcery: false },
     ability: { isRepeatable: true, isUltimate: false },
@@ -21,6 +22,28 @@ const GRANTING_EFFECTS = ['GrantEffect', 'ModifyPTEffect'];
 const LASTING_GRANT = { ...STATIC_GRANT, expansion: null };
 
 export const DERIVED_TAGS = [
+    {
+        tag: 'removal-nonland',
+        match: { tag: REMOVAL, phrases: { hasQualifier: 'nonland' } }
+    },
+    {
+        tag: 'removal-planeswalker',
+        match: { tag: REMOVAL, phrases: { hasType: 'planeswalker' } }
+    },
+    {
+        tag: 'removal-land',
+        match: { tag: REMOVAL, phrases: { hasExactType: 'land' } }
+    },
+    {
+        tag: 'sweeper-one-sided',
+        match: {
+            tag: 'sweeper',
+            any: [
+                { phrases: OPPONENTS_GROUP },
+                { subject: OPPONENTS_GROUP }
+            ]
+        }
+    },
     {
         tag: 'repeatable-pp-counters',
         match: {
