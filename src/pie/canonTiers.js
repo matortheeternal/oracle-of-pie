@@ -3,7 +3,7 @@ import { COLORS } from './ColorProfile.js';
 export const PRIMARY_RATIO = 0.5;
 export const SECONDARY_RATIO = 0.1;
 export const SECONDARY_MIN_CARDS = 5;
-export const TERTIARY_RATIO = 0.03;
+export const TERTIARY_RATIO = 0.02;
 export const TERTIARY_MIN_CARDS = 2;
 
 function tierNameFor(ratio, count) {

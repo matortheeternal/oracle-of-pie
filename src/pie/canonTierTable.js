@@ -3,7 +3,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'primary', B: 'none', R: 'none', G: 'none'
     },
     'destroy-creature': {
-        W: 'primary', U: 'none', B: 'primary', R: 'none', G: 'none'
+        W: 'primary', U: 'none', B: 'primary', R: 'tertiary', G: 'none'
     },
     'exile-creature': {
         W: 'primary', U: 'tertiary', B: 'primary', R: 'tertiary', G: 'none'
@@ -12,7 +12,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'primary', B: 'none', R: 'none', G: 'none'
     },
     'edict': {
-        W: 'none', U: 'none', B: 'primary', R: 'tertiary', G: 'tertiary'
+        W: 'tertiary', U: 'none', B: 'primary', R: 'tertiary', G: 'tertiary'
     },
     'shrink-creature': {
         W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'
@@ -138,7 +138,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'none', B: 'primary', R: 'primary', G: 'none'
     },
     'keyword-reach': {
-        W: 'none', U: 'none', B: 'none', R: 'secondary', G: 'primary'
+        W: 'tertiary', U: 'none', B: 'none', R: 'secondary', G: 'primary'
     },
     'keyword-trample': {
         W: 'none', U: 'none', B: 'tertiary', R: 'primary', G: 'primary'
