@@ -44,6 +44,14 @@ export default class PTModifier extends Node {
         return raisesPower && this.toughness.sign !== '-';
     }
 
+    get isPowerOnlyBoost() {
+        return this.isPowerBoost && this.toughness.magnitude === 0;
+    }
+
+    get isEvenBoost() {
+        return this.isBoost && this.power.magnitude === this.toughness.magnitude;
+    }
+
     get isBoost() {
         return this.power.sign === '+' && this.toughness.sign === '+'
             && this.power.magnitude !== 0 && this.toughness.magnitude !== 0;
