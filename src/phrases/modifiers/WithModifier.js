@@ -1,6 +1,6 @@
 import Modifier from './Modifier.js';
 
-const BEFORE_DESTINATION = '(?=,|\\.|$| to (?:its|their) owners?\'?s? hands?)';
+const BEFORE_DESTINATION = '(?=,|\\.|$| to (?:its|their) owners?\'?s? hands?| until\\b)';
 const WITH_ALTERNATIVES = [
     'flying',
     'reach',
