@@ -44,6 +44,10 @@ export default class KeywordActionEffect extends Effect {
         this.actionText = match[1];
     }
 
+    get isKeywordAction() {
+        return true;
+    }
+
     get consumesSource() {
         return TRANSFORM_SELF.test(this.actionText);
     }

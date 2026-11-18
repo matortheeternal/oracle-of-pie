@@ -7,6 +7,7 @@ export default class Expansion extends Node {
         expansion.text = definition.parse(scribe, node);
         expansion.raw = expansion.text.raw;
         expansion.isOpponents = Boolean(node.subjectIsOpponent);
+        expansion.isPerformedAction = Boolean(node.isKeywordAction);
         return expansion;
     }
 
@@ -22,7 +23,9 @@ export default class Expansion extends Node {
         const forOpponent = Boolean(context.forOpponent || this.isOpponents);
         const origin = context.origin ?? context.sentence ?? context.ability;
         const granted = this.isToken;
-        return { ...context, origin, expansion: this, forOpponent, granted };
+        const definitionOnly = context.definitionOnly || !this.isPerformedAction;
+        const expansion = this;
+        return { ...context, origin, expansion, forOpponent, granted, definitionOnly };
     }
 
     toJSON() {
