@@ -22,6 +22,30 @@ const LASTING_GRANT = { ...STATIC_GRANT, expansion: null };
 
 export const DERIVED_TAGS = [
     {
+        tag: 'repeatable-pp-counters',
+        match: {
+            tag: ['gives-pp-counters', 'gains-pp-counters'],
+            context: { ...REPEATABLE, expansion: null }
+        }
+    },
+    {
+        tag: 'repeatable-loot',
+        match: { tag: 'loot', context: REPEATABLE }
+    },
+    {
+        tag: 'repeatable-rummage',
+        match: { tag: 'rummage', context: REPEATABLE }
+    },
+    {
+        tag: 'pinger',
+        match: {
+            kind: 'DamageEffect',
+            isPing: true,
+            phrases: { any: [{ hitsCreature: true }, { hitsPlayer: true }] },
+            context: REPEATABLE
+        }
+    },
+    {
         tag: 'spot-removal',
         match: {
             any: [

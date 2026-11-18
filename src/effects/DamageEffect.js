@@ -1,6 +1,6 @@
 import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
-import { NUMBER_PATTERN } from '../values/numberWords.js';
+import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const DEALS = /^deals? /i;
 const COUNT = `(${NUMBER_PATTERN}|that much|twice that much|N)`;
@@ -15,6 +15,7 @@ const TO_TARGETS = /^(?:to|among) /i;
 const FOR_EACH = /^for each [^,.]+/i;
 const EACH_OF = /^each of /i;
 const EQUAL_TO = /^equal to [^,.]+/i;
+const PING_LIMIT = 2;
 
 export default class DamageEffect extends Effect {
     static get pattern() {
@@ -32,6 +33,16 @@ export default class DamageEffect extends Effect {
     consumeTargets() {
         this.consumeText(EACH_OF);
         return this.consume([PhraseList]);
+    }
+
+    get fixedAmount() {
+        const count = this.amountText?.split(' ')[0] ?? '';
+        return numberValue(count) ?? null;
+    }
+
+    get isPing() {
+        const amount = this.fixedAmount;
+        return amount !== null && amount <= PING_LIMIT;
     }
 
     get parts() {
