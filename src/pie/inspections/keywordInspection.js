@@ -10,7 +10,7 @@ function keywordTags(slug) {
     return [`gains-${slug}`, `gives-${slug}`, `${slug}-counter`];
 }
 
-export default function keywordInspection(keyword, tiers, exceptions = []) {
+export default function keywordInspection(keyword, { tiers, exceptions = [] } = {}) {
     const slug = KeywordFamilyEvaluator.slug(keyword);
     return {
         id: `keyword-${slug}`,
@@ -28,7 +28,7 @@ export default function keywordInspection(keyword, tiers, exceptions = []) {
     };
 }
 
-export function keywordInspections(tiersByKeyword, exceptionsByKeyword = {}) {
-    return Object.entries(tiersByKeyword).map(([keyword, tiers]) =>
-        keywordInspection(keyword, tiers, exceptionsByKeyword[keyword]));
+export function keywordInspections(tiersByKeyword) {
+    return Object.entries(tiersByKeyword)
+        .map(([keyword, tiers]) => keywordInspection(keyword, { tiers }));
 }

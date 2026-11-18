@@ -1,12 +1,14 @@
 import Query from '../evaluators/Query.js';
 import PieException from './PieException.js';
+import ColorTiers from './ColorTiers.js';
+import { CANON_TIERS } from './canonTierTable.js';
 
 export default class PieInspection {
     constructor({ id, title, group, tiers, description = '', exceptions = [], match }) {
         this.id = id;
         this.title = title;
         this.group = group;
-        this.tiers = tiers;
+        this.tiers = tiers ?? ColorTiers.fromNames(CANON_TIERS[id] ?? {});
         this.description = description;
         this.exceptions = exceptions.map(exception => new PieException(exception));
         this.query = Query.compile(match);
