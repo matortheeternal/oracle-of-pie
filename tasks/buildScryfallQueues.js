@@ -4,6 +4,8 @@ import { cardKey } from '../src/corpusScribe.js';
 import TagTree from '../src/TagTree.js';
 import TagScore from '../src/TagScore.js';
 import SeededRandom from '../src/SeededRandom.js';
+import ReviewLog from '../src/ReviewLog.js';
+import ReviewPriority from '../src/queues/ReviewPriority.js';
 import { notTaggedItem, notSuggestedItem } from '../src/queues/scryfallQueueItem.js';
 
 const MISSED_SAMPLE_PER_TAG = 10;
@@ -27,7 +29,9 @@ for (const [tag, keys] of Object.entries(score.falseNegatives)) {
     notSuggested.push(...sample.map(key => notSuggestedItem(context(tag, key))));
 }
 
-writeJsonl(queuePath('scryfall-suggested-not-tagged'), notTagged);
+const notTaggedReviews = ReviewLog.forQueue('scryfall-suggested-not-tagged');
+const prioritized = new ReviewPriority(notTaggedReviews).order(notTagged);
+writeJsonl(queuePath('scryfall-suggested-not-tagged'), prioritized);
 writeJsonl(queuePath('scryfall-tagged-not-suggested'), notSuggested);
 console.log({
     suggestedNotTagged: notTagged.length,

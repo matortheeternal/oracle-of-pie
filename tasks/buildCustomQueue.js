@@ -6,16 +6,18 @@ import TagScore from '../src/TagScore.js';
 import ReviewLog from '../src/ReviewLog.js';
 import loadProjects from '../src/custom/loadProjects.js';
 import CustomSuggestions from '../src/queues/CustomSuggestions.js';
+import ReviewPriority from '../src/queues/ReviewPriority.js';
 import { formatRow, percent } from '../src/table.js';
 import path from 'node:path';
 
 const QUEUE = 'custom-suggested-tags';
 const WIDTHS = [-22, 6, 6, 0];
 
+const reviews = ReviewLog.forQueue(QUEUE);
 const suggestions = new CustomSuggestions({
     scribe: createCorpusScribe(readJson(PATHS.corpus)),
     tree: TagTree.load(PATHS.tags),
-    reviews: ReviewLog.forQueue(QUEUE),
+    reviews,
     agreement: new TagScore(EVALUATED_TAGS)
 });
 for (const card of loadProjects(PATHS.projects)) suggestions.addCard(card);
@@ -34,7 +36,7 @@ function printAgreement(agreement) {
 }
 
 const { agreement, items, stats } = suggestions;
-writeJsonl(queuePath(QUEUE), items);
+writeJsonl(queuePath(QUEUE), new ReviewPriority(reviews).order(items));
 const agreed = Object.fromEntries(agreement.rows.map(row => [row.tag, row.tp]));
 writeJson(path.join(QUEUES, `${QUEUE}.agreed.json`), agreed);
 console.log(JSON.stringify(stats, null, 1));
