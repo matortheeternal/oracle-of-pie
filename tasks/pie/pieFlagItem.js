@@ -1,4 +1,4 @@
-import { COLORS } from '../../../rules-scribe/src/index.js';
+import { COLORS } from 'oracle-of-pie';
 
 const SEVERITY_WORDS = { 'warning': 'break', 'weak-warning': 'bend' };
 const VERDICT_HINT = 'Correct = the card really bends or breaks the color pie this way. '

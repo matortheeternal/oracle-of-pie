@@ -1,4 +1,4 @@
-import Node from '../../../rules-scribe/src/core/Node.js';
+import Node from 'oracle-of-pie/src/core/Node.js';
 
 const HIDDEN = new Set([
     'children', 'expansions', 'parts', 'leftover', 'raw', 'remainingStr', 'constructor',

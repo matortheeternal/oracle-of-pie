@@ -1,4 +1,4 @@
-import { CardColors } from '../../rules-scribe/src/index.js';
+import { CardColors } from 'oracle-of-pie';
 
 export function cardColorsOf(card) {
     return new CardColors({ colors: card.colors ?? [], manaCost: card.mana_cost ?? '' });

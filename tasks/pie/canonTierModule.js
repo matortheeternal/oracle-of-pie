@@ -1,4 +1,4 @@
-import { COLORS, ColorProfile, canonTiers } from '../../rules-scribe/src/index.js';
+import { COLORS, ColorProfile, canonTiers } from 'oracle-of-pie';
 
 function tierLine(tiers) {
     return COLORS.map(color => `${color}: '${tiers[color]}'`).join(', ');

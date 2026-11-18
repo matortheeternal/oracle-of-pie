@@ -5,8 +5,8 @@ import { createCorpusScribe } from '../corpusScribe.js';
 import { parseCardFaces } from '../pieCorpus.js';
 import AstSerializer from './AstSerializer.js';
 import annotateFace from './annotateFace.js';
-import { PieInspector, CardColors } from '../../../rules-scribe/src/index.js';
-import normalizeCardText from '../../../rules-scribe/src/core/normalizeCardText.js';
+import { PieInspector, CardColors } from 'oracle-of-pie';
+import normalizeCardText from 'oracle-of-pie/src/core/normalizeCardText.js';
 
 const SEARCH_LIMIT = 20;
 

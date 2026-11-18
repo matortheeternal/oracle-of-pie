@@ -1,5 +1,5 @@
-import Effect from '../../../rules-scribe/src/effects/Effect.js';
-import Clause from '../../../rules-scribe/src/clauses/Clause.js';
+import Effect from 'oracle-of-pie/src/effects/Effect.js';
+import Clause from 'oracle-of-pie/src/clauses/Clause.js';
 
 const EFFECTLESS_CLAUSE = 'clause with no recognized effect';
 

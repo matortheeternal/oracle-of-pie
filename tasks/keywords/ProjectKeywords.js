@@ -1,6 +1,6 @@
 import KeywordHarvest from './KeywordHarvest.js';
 import projectSettings from './projectSettings.js';
-import { ColorTiers } from '../../../rules-scribe/src/index.js';
+import { ColorTiers } from 'oracle-of-pie';
 
 function keyOf(definition) {
     return definition.name.toLowerCase();

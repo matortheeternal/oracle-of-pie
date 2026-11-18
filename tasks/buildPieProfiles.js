@@ -4,7 +4,7 @@ import canonTierModule from '../src/canonTierModule.js';
 import { PATHS } from '../src/paths.js';
 import { createCorpusScribe } from '../src/corpusScribe.js';
 import { pieCards } from '../src/pieCorpus.js';
-import { PieInspector, ColorProfileBuilder } from '../../rules-scribe/src/index.js';
+import { PieInspector, ColorProfileBuilder } from 'oracle-of-pie';
 
 const corpus = readJson(PATHS.corpus);
 const scribe = createCorpusScribe(corpus);

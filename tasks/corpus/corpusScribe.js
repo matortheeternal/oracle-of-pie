@@ -1,6 +1,6 @@
 import {
-    RulesScribe, DEFAULT_TAG_SPECS, KeywordFamilyEvaluator
-} from '../../rules-scribe/src/index.js';
+    Oracle, DEFAULT_TAG_SPECS, KeywordFamilyEvaluator
+} from 'oracle-of-pie';
 
 const STRUCTURAL_KEYWORDS = ['Enchant', 'Equip'];
 
@@ -44,7 +44,7 @@ export function evaluatedTags(corpus, tree) {
 export function createCorpusScribe(corpus, definitions = {}) {
     const keywords = corpusKeywords(corpus);
     const allKeywords = [...keywords, ...STRUCTURAL_KEYWORDS];
-    return new RulesScribe({ keywords: allKeywords, definitions });
+    return new Oracle({ keywords: allKeywords, definitions });
 }
 
 export function cardKey(card) {

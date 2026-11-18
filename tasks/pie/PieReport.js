@@ -1,5 +1,5 @@
 import { percent } from './table.js';
-import { COLOR_POLICIES } from '../../rules-scribe/src/index.js';
+import { COLOR_POLICIES } from 'oracle-of-pie';
 
 const COLOR_BREAK_TAG = 'color-break';
 

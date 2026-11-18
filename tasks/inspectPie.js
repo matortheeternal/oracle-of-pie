@@ -3,7 +3,7 @@ import { PATHS } from '../src/paths.js';
 import { createCorpusScribe } from '../src/corpusScribe.js';
 import { pieCards } from '../src/pieCorpus.js';
 import PieReport from '../src/PieReport.js';
-import { PieInspector } from '../../rules-scribe/src/index.js';
+import { PieInspector } from 'oracle-of-pie';
 
 const disabled = process.argv.slice(2);
 const corpus = readJson(PATHS.corpus);
