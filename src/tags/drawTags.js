@@ -1,3 +1,5 @@
+import { WHEEL_SENTENCE } from './handReset.js';
+
 const YOUR_DRAW = { kind: 'DrawEffect', affectsYou: true };
 const PAID_EFFECT = { kind: ['DiscardEffect', 'SacrificeEffect'], affectsYou: true };
 const DRAW_COSTS = {
@@ -30,11 +32,16 @@ const SINGLE_DRAW = { ...RESOLVES_OR_ENTERS, not: VARIABLE_DRAW };
 export const DRAW_TAGS = [
     {
         tag: 'pure-draw',
-        match: { ...YOUR_DRAW, context: { not: DRAW_COSTS } }
+        match: { ...YOUR_DRAW, context: { not: { any: [DRAW_COSTS, WHEEL_SENTENCE] } } }
     },
     {
         tag: 'burst-draw',
-        match: { tag: 'pure-draw', isBurst: true }
+        match: {
+            any: [
+                { tag: 'pure-draw', isBurst: true },
+                { kind: 'DrawEffect', isBurst: true, context: WHEEL_SENTENCE }
+            ]
+        }
     },
     {
         tag: 'cantrip',
