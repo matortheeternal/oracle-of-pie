@@ -3,6 +3,7 @@ import Expansion from '../definitions/Expansion.js';
 
 const CREATE = /^creates? /i;
 const CREATURE_TOKEN = /\bcreature tokens?\b/i;
+const LAND_TOKEN = /\bland tokens?\b/i;
 const TOKEN_DESCRIPTION_ALTERNATIVES = [
     ' with (?:"[^"]*"|[^,."])+(?:, and [^.,]+)?',
     ' named [^,.]+',
@@ -35,6 +36,10 @@ export default class CreateTokenEffect extends Effect {
 
     get createsCreature() {
         return CREATURE_TOKEN.test(this.description ?? '');
+    }
+
+    get createsLand() {
+        return LAND_TOKEN.test(this.description ?? '');
     }
 
     get tokenDefinitions() {

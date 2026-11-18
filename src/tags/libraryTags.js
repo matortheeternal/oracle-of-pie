@@ -1,4 +1,5 @@
 const CREATURE_CARD = { isCreatureCard: true };
+const GRAVEYARD_LAND = { hasExactType: 'land', zone: 'graveyard' };
 const LAND_SWAP = { ability: { cost: { sacrificesOther: true } } };
 
 export const LIBRARY_TAGS = [
@@ -32,7 +33,19 @@ export const LIBRARY_TAGS = [
                     toBattlefield: true,
                     phrases: { hasExactType: 'land', zone: 'hand' }
                 },
-                { kind: 'ExtraLandEffect' }
+                { kind: 'ExtraLandEffect' },
+                {
+                    kind: 'ReturnEffect',
+                    returnsToBattlefield: true,
+                    phrases: GRAVEYARD_LAND
+                },
+                { kind: 'PutEffect', toBattlefield: true, phrases: GRAVEYARD_LAND },
+                {
+                    kind: 'CreateTokenEffect',
+                    createsLand: true,
+                    affectsYou: true,
+                    card: { isLand: false }
+                }
             ]
         }
     },
