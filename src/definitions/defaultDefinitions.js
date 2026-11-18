@@ -41,6 +41,11 @@ export const DEFAULT_DEFINITIONS = {
             name: 'Recruit',
             reminder: 'Draw a card, then discard a card. If you discarded a nonland '
                 + 'card, create a 1/1 white Human Soldier creature token.'
+        },
+        {
+            name: 'Amass',
+            reminder: 'Put {parameter} +1/+1 counters on an Army you control. '
+                + 'If you don\'t control one, create a 0/0 Army creature token first.'
         }
     ],
     tokens: [
