@@ -4,6 +4,7 @@ const INSTANT_OR_SORCERY = /\b(?:Instant|Sorcery)\b/;
 const INSTANT = /\bInstant\b/;
 const ARTIFACT = /\bArtifact\b/;
 const EQUIPMENT = /\bEquipment\b/;
+const TYPE_DASH = ' — ';
 
 export default class CardContext {
     constructor({ name = '', typeLine = '', loyalty = null, faceCount = 1 } = {}) {
@@ -24,6 +25,15 @@ export default class CardContext {
 
     isUltimate(loyaltyLoss) {
         return this.startingLoyalty !== null && loyaltyLoss >= this.startingLoyalty;
+    }
+
+    get subtypes() {
+        const [, subtypes = ''] = this.typeLine.split(TYPE_DASH);
+        return subtypes.split(' ').filter(Boolean);
+    }
+
+    hasSubtype(subtype) {
+        return this.subtypes.includes(subtype);
     }
 
     get isLand() {

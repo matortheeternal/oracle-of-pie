@@ -38,3 +38,16 @@ export const NON_MANA_WARD = {
     match: { kind: 'KeywordAbility', not: { hasManaCostKeyword: 'ward' } },
     tiers: { B: PRIMARY }
 };
+
+function creatureTypeException(subtype, tiers) {
+    const isType = { hasSubtype: subtype };
+    return {
+        id: subtype.toLowerCase(),
+        title: `${subtype}s`,
+        match: { any: [{ card: isType }, { subject: isType }, { phrases: isType }] },
+        tiers
+    };
+}
+
+export const KNIGHT_FIRST_STRIKE = creatureTypeException('Knight', { B: SECONDARY });
+export const DEMON_TRAMPLE = creatureTypeException('Demon', { B: SECONDARY });

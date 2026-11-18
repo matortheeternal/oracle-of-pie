@@ -188,6 +188,10 @@ export default class NounPhrase extends Phrase {
         return this.modifiers.map(modifier => modifier.keyword).filter(Boolean);
     }
 
+    hasSubtype(subtype) {
+        return this.subtypes.some(word => word === subtype || singular(word) === subtype);
+    }
+
     requiresKeyword(keyword) {
         return this.requiredKeywords.includes(keyword.toLowerCase());
     }

@@ -116,4 +116,8 @@ export default class Phrase extends Parser {
     requiresKeyword(keyword) {
         return false;
     }
+
+    hasSubtype(subtype) {
+        return false;
+    }
 }
