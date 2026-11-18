@@ -1,6 +1,5 @@
 import Effect from './Effect.js';
 
-const ADD = /^adds? /i;
 const MANA_KIND_ALTERNATIVES = [
     'of any (?:one )?(?:color|type)',
     'in any combination of [^,.]+',
@@ -10,9 +9,11 @@ const MANA_KIND_ALTERNATIVES = [
 const MANA_ALTERNATIVES = [
     '(?:\\{[^}]+\\})+(?:,? (?:or |and )?(?:\\{[^}]+\\})+)*',
     `(?:[a-z]+|\\d+|X) mana (?:${MANA_KIND_ALTERNATIVES.join('|')})`,
-    '[^,.]*\\bmana\\b(?! value)[^,.]*'
+    '[^,.]*\\bmana\\b(?! value)[^,.]*',
+    '[^,.]*?\\{[^}]+\\}[^,.]*'
 ];
 const MANA = new RegExp(`^(?:${MANA_ALTERNATIVES.join('|')})`, 'i');
+const ADD = new RegExp(`^adds? (?=${MANA.source.slice(1)})`, 'i');
 const MANA_TAIL = /^(for each [^,.]+|instead)/i;
 
 export default class AddManaEffect extends Effect {
