@@ -8,7 +8,7 @@ export const KEYWORD_TIERS = {
     'deathtouch': ColorTiers.of(NONE, NONE, PRIMARY, TERTIARY, PRIMARY),
     'haste': ColorTiers.of(TERTIARY, NONE, SECONDARY, PRIMARY, TERTIARY),
     'hexproof': ColorTiers.of(SECONDARY, SECONDARY, NONE, NONE, PRIMARY),
-    'indestructible': ColorTiers.of(PRIMARY, NONE, TERTIARY, TERTIARY, SECONDARY),
+    'indestructible': ColorTiers.of(PRIMARY, NONE, SECONDARY, TERTIARY, SECONDARY),
     'lifelink': ColorTiers.of(PRIMARY, NONE, PRIMARY, NONE, TERTIARY),
     'menace': ColorTiers.of(NONE, NONE, PRIMARY, PRIMARY, TERTIARY),
     'reach': ColorTiers.of(NONE, NONE, NONE, TERTIARY, PRIMARY),
