@@ -7,6 +7,7 @@ const REMOVAL = [
 ];
 const SINGLE_TARGET = { isTargeted: true, isMass: false };
 const REPEATABLE = {
+    card: { isInstantOrSorcery: false },
     ability: { isRepeatable: true },
     delayedTrigger: null,
     temporaryGrant: null
