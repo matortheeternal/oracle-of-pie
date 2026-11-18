@@ -10,6 +10,10 @@ export default class Expansion extends Node {
         return expansion;
     }
 
+    get isToken() {
+        return this.definition.isToken;
+    }
+
     get children() {
         return [this.text];
     }

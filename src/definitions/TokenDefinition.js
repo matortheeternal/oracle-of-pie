@@ -10,6 +10,10 @@ export default class TokenDefinition extends Definition {
         this.namePattern = new RegExp(`(?<![\\w])${escaped}(?![\\w])`);
     }
 
+    get isToken() {
+        return true;
+    }
+
     isNamedIn(description) {
         return this.namePattern.test(description);
     }

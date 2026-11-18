@@ -26,6 +26,7 @@ const PLAYER = new RegExp(
 );
 const YOU = /^you\b/i;
 const OPPOSING = /opponent|defending|controller|its owner/i;
+const OPPONENT = /opponent|defending player/i;
 
 export default class PlayerPhrase extends Phrase {
     static match(scribe, str) {
@@ -47,6 +48,10 @@ export default class PlayerPhrase extends Phrase {
 
     get canBeOpponent() {
         return !this.isYou || OPPOSING.test(this.player);
+    }
+
+    get isOpponent() {
+        return OPPONENT.test(this.player);
     }
 
     get controlledByYou() {

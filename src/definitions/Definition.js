@@ -7,6 +7,10 @@ export default class Definition {
         Object.defineProperty(this, 'parsedTexts', { value: new Map() });
     }
 
+    get isToken() {
+        return false;
+    }
+
     get key() {
         return this.name.toLowerCase();
     }

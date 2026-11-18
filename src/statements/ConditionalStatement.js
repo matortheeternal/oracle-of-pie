@@ -24,6 +24,8 @@ const CONDITION_ALTERNATIVES = [
     'as an additional cost to cast this spell',
     'as long as [^,]+'
 ];
+const SPENT_COLOR = /\{([WUBRG])\}(?:\{\1\})* was spent to cast/;
+const KICKED = /\bwas kicked\b/i;
 const CONDITION = new RegExp(
     `^(${CONDITION_ALTERNATIVES.join('|')})\\b([^,]*), `, 'i'
 );
@@ -39,7 +41,20 @@ export default class ConditionalStatement extends Statement {
         this.clauses = this.consumeClauses();
     }
 
+    get spentColors() {
+        const color = this.condition.match(SPENT_COLOR)?.[1];
+        return color ? [color] : [];
+    }
+
+    get requiresKicker() {
+        return KICKED.test(this.condition);
+    }
+
     get children() {
         return [this.clauses].filter(Boolean);
+    }
+
+    childContext(context) {
+        return { ...context, condition: this };
     }
 }

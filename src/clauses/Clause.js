@@ -34,6 +34,7 @@ export default class Clause extends Parser {
 
     attachSubject(effect, subject) {
         effect.subject = subject;
+        effect.isOptional = this.isOptional;
         return effect;
     }
 

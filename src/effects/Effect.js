@@ -15,6 +15,7 @@ export default class Effect extends Parser {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.subject = null;
+        this.isOptional = false;
         this.parseArguments(match);
         this.duration = this.consume([Duration]);
     }
