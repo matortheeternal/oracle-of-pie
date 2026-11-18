@@ -53,6 +53,9 @@ import PhaseEffect from './PhaseEffect.js';
 import BecomesEffect from './BecomesEffect.js';
 import DamageModificationEffect from './DamageModificationEffect.js';
 import DistributeCountersEffect from './DistributeCountersEffect.js';
+import SetBasePTEffect from './SetBasePTEffect.js';
+import TypeChangeEffect from './TypeChangeEffect.js';
+import ManaRetentionEffect from './ManaRetentionEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
@@ -60,7 +63,7 @@ export const EFFECT_PARSERS = [
     SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
     CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect, ReturnEffect,
     DrawEffect, DiscardEffect, DamageModificationEffect, DamageEffect, ModifyPTEffect,
-    HandSizeEffect,
+    HandSizeEffect, SetBasePTEffect,
     CausativeEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
@@ -71,7 +74,8 @@ export const EFFECT_PARSERS = [
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    BecomesEffect, DistributeCountersEffect, OpaqueEffect
+    BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
+    OpaqueEffect
 ];
 
 export {
@@ -87,5 +91,6 @@ export {
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    BecomesEffect, DistributeCountersEffect, OpaqueEffect
+    BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
+    OpaqueEffect
 };
