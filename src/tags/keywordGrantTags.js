@@ -1,13 +1,9 @@
+import { STATIC_GRANT } from './staticGrant.js';
+
 const GRANTING_EFFECTS = ['GrantEffect', 'ModifyPTEffect'];
 const GRANT_RECIPIENT = {
     refersToSelf: false,
     any: [{ isBackReference: false }, { antecedent: { isTargeted: true } }]
-};
-const TEMPORARY_SENTENCE = {
-    any: [
-        { condition: { isDuration: true } },
-        { sentence: { effects: { duration: { isUntilEndOfTurn: true } } } }
-    ]
 };
 const GRANTED_KEYWORDS = [
     'flying', 'haste', 'trample', 'vigilance', 'lifelink', 'deathtouch', 'first strike',
@@ -33,13 +29,15 @@ export const KEYWORD_GRANT_TAGS = [
         match: {
             kind: GRANTING_EFFECTS,
             grantsKeywords: true,
+            duration: null,
             subject: {
                 isMass: true,
+                isCommanderGroup: false,
                 controlledByYou: true,
                 hasType: 'creature',
                 not: { any: [{ hasExactType: 'permanent' }, { hasExactType: 'spell' }] }
             },
-            context: { not: TEMPORARY_SENTENCE }
+            context: STATIC_GRANT
         }
     }
 ];

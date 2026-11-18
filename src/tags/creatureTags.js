@@ -1,3 +1,4 @@
+import { STATIC_GRANT } from './staticGrant.js';
 
 export const CREATURE_TAGS = [
     {
@@ -30,7 +31,13 @@ export const CREATURE_TAGS = [
             kind: 'ModifyPTEffect',
             modifier: { isPowerBoost: true },
             duration: null,
-            subject: { isMass: true, controlledByYou: true, hasType: 'creature' }
+            subject: {
+                isMass: true,
+                isCommanderGroup: false,
+                controlledByYou: true,
+                hasType: 'creature'
+            },
+            context: STATIC_GRANT
         }
     },
     {
