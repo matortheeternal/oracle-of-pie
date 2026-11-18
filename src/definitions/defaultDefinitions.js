@@ -45,6 +45,12 @@ export const DEFAULT_DEFINITIONS = {
             reminder: '{T}, Sacrifice this token: Add one mana of any color.'
         },
         {
+            name: 'Lander',
+            typeLine: 'Token Artifact — Lander',
+            reminder: '{2}, {T}, Sacrifice this token: Search your library for a basic '
+                + 'land card, put it onto the battlefield tapped, then shuffle.'
+        },
+        {
             name: 'Blood',
             typeLine: 'Token Artifact — Blood',
             reminder: '{1}, {T}, Discard a card, Sacrifice this token: Draw a card.'
