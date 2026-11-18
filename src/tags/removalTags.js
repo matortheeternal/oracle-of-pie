@@ -11,7 +11,11 @@ export const REMOVAL_TAGS = [
         tag: 'counterspell',
         match: {
             any: [
-                { kind: 'CounterEffect', countersSpell: true },
+                {
+                    kind: 'CounterEffect',
+                    countersSpell: true,
+                    context: { not: { ability: { event: { kind: 'TargetedEvent' } } } }
+                },
                 {
                     kind: 'ExileEffect',
                     phrases: { hasExactType: 'spell', controlledByYou: false }

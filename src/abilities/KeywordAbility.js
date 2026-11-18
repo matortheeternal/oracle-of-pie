@@ -1,6 +1,7 @@
 import Ability from './Ability.js';
 import KeywordList from '../values/KeywordList.js';
 import Expansion from '../definitions/Expansion.js';
+import Definition from '../definitions/Definition.js';
 
 const KEYWORD_WITH_COST = /^—(?:[^.]+\.?)$/;
 const PARAMETER = /^[a-z][a-z ,'-]*$/;
@@ -38,8 +39,15 @@ export default class KeywordAbility extends Ability {
         return this.cachedExpansions;
     }
 
+    printedDefinition(keyword) {
+        const isSingle = this.keywords.keywords.length === 1;
+        if (!isSingle || this.reminders.length !== 1) return null;
+        return new Definition({ name: keyword.name, reminder: this.reminders[0] });
+    }
+
     expansionFor(keyword) {
-        const definition = this.scribe.definitions.keywords.definitionFor(keyword.name);
+        const registered = this.scribe.definitions.keywords.definitionFor(keyword.name);
+        const definition = registered ?? this.printedDefinition(keyword);
         return definition ? [Expansion.of(this.scribe, definition, keyword)] : [];
     }
 

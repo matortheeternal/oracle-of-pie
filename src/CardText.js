@@ -2,6 +2,11 @@ import Parser from './core/Parser.js';
 
 const REMINDER = /\s*\([^()]*\)/g;
 const LINE_BREAK = /\n+/;
+const PARENTHESES = /^\(|\)$/g;
+
+function stripParentheses(reminder) {
+    return reminder.trim().replace(PARENTHESES, '');
+}
 
 export default class CardText extends Parser {
     static fromText(scribe, text) {
@@ -21,7 +26,9 @@ export default class CardText extends Parser {
         this.reminders.push(...reminders.map(reminder => reminder.trim()));
         const text = line.replace(REMINDER, '').trim();
         if (!text) return;
-        this.parseNext(text, this.scribe.abilityParsers)?.apply(this.abilities);
+        const ability = this.parseNext(text, this.scribe.abilityParsers);
+        ability?.reminders?.push(...reminders.map(stripParentheses));
+        ability?.apply(this.abilities);
     }
 
     get children() {

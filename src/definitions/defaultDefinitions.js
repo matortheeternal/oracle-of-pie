@@ -7,6 +7,10 @@ export const DEFAULT_DEFINITIONS = {
             reminder: '{parameter}, Discard this card: Draw a card.'
         },
         {
+            name: 'Gift',
+            reminder: 'You may promise an opponent a gift as you cast this spell.'
+        },
+        {
             name: 'Typecycling',
             pattern: TYPECYCLING,
             reminder: '{parameter}, Discard this card: Search your library for a {type} '
