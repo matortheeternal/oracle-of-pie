@@ -115,16 +115,16 @@ export const EVASIVE_POWER_PUMP = {
     tiers: { U: TERTIARY }
 };
 
-const CONTROLLER_REVEALS_REPLACEMENT = {
-    kind: 'RevealUntilEffect',
+const CONTROLLER_FINDS_RANDOM_CARD = {
+    findsRandomCard: true,
     subject: { canBeOpponent: true }
 };
-const REPLACED_FROM_LIBRARY = { effects: { any: [CONTROLLER_REVEALS_REPLACEMENT] } };
+const RANDOMLY_REPLACED = { effects: { any: [CONTROLLER_FINDS_RANDOM_CARD] } };
 
 export const POLYMORPH = {
     id: 'polymorph',
-    title: 'Replaced by a random card from its controller\'s library',
-    match: { context: { cardText: REPLACED_FROM_LIBRARY } },
+    title: 'Replaced by a random card for its controller',
+    match: { context: { cardText: RANDOMLY_REPLACED } },
     cites: '"Polymorph"'
 };
 
