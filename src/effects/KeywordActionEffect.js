@@ -8,13 +8,14 @@ const KEYWORD_ACTION_ALTERNATIVES = [
     'seek', 'endure', 'manifest dread', 'manifest', 'venture into the dungeon',
     'the ring tempts you', 'become the monarch', 'take the initiative', 'goad [^,.]+',
     'transform [^,.]+', 'regenerate [^,.]+', 'shuffle(?: [^,.]*)?', 'time travel',
-    'forage', 'collect evidence', 'exert [^,.]+'
+    'forage', 'collect evidence', 'exert [^,.]+', 'suspect [^,.]+', 'earthbend',
+    'endures', 'monstrosity', 'blight', 'behold an? [^,.]+'
 ];
 const KEYWORD_ACTION = new RegExp(
     `^(${KEYWORD_ACTION_ALTERNATIVES.join('|')})(?![\\w])(?: (${NUMBER_PATTERN}))?`, 'i'
 );
 
-const THIRD_PERSON = /(?<=connive|explore)s$/;
+const THIRD_PERSON = /(?<=connive|explore|endure)s$/;
 
 export default class KeywordActionEffect extends Effect {
     static get pattern() {

@@ -6,7 +6,8 @@ const SELF_NOUNS = [
     'Equipment', 'Aura', 'Vehicle', 'token', 'Saga', 'planeswalker', 'battle',
     'Class', 'Room', 'Siege'
 ];
-const SELF = new RegExp(`^(?:~|this (?:${SELF_NOUNS.join('|')})\\b)`, 'i');
+const SELF_NOUN = `this (?:${SELF_NOUNS.join('|')})\\b`;
+const SELF = new RegExp(`^(?:~|(?:he|she)(?= )|${SELF_NOUN})`, 'i');
 
 export default class SelfReference extends Phrase {
     static match(scribe, str) {
