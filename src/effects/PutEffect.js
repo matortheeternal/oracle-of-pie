@@ -8,7 +8,7 @@ const DESTINATION_ALTERNATIVES = [
     'on the bottom of [^,.]+',
     'on top of [^,.]+',
     'on top\\b',
-    'into (?:your|their) library [^,.]+'
+    'into (?:your|their|its owner\'s) library [^,.]+'
 ];
 const DESTINATION = new RegExp(
     `^(?:from [^,.]+? )?(${DESTINATION_ALTERNATIVES.join('|')})`, 'i'
@@ -51,6 +51,10 @@ export default class PutEffect extends ObjectEffect {
 
     get toBattlefield() {
         return this.destination === 'onto the battlefield';
+    }
+
+    get removesPermanently() {
+        return Boolean(this.destination?.includes('library'));
     }
 
     get sendsRestToGraveyard() {

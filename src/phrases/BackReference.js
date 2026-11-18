@@ -17,6 +17,7 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'each of those creatures',
     'the rest',
     'the cop(?:y|ies)',
+    'the chosen spell',
     'that one'
 ];
 const BACK_REFERENCE = new RegExp(

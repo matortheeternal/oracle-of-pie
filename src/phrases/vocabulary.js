@@ -20,7 +20,7 @@ export const QUALIFIER_WORDS = new Set([
     'white', 'blue', 'black', 'red', 'green', 'colorless', 'monocolored',
     'multicolored', 'tapped', 'untapped', 'attacking', 'blocking', 'blocked',
     'unblocked', 'other', 'legendary', 'basic', 'nonbasic', 'snow', 'enchanted',
-    'equipped', 'historic', 'modified', 'face-down', 'activated', 'triggered',
+    'equipped', 'historic', 'modified', 'face-down', 'activated', 'triggered', 'loyalty',
     'outlaw', 'chosen', 'exiled', 'nontoken', 'token'
 ]);
 

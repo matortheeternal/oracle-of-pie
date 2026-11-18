@@ -59,11 +59,12 @@ import ManaRetentionEffect from './ManaRetentionEffect.js';
 import AdditionalPhaseEffect from './AdditionalPhaseEffect.js';
 import CounterModificationEffect from './CounterModificationEffect.js';
 import BeginGameEffect from './BeginGameEffect.js';
+import TuckEffect from './TuckEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
 export const EFFECT_PARSERS = [
-    SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
+    TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
     CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect, ReturnEffect,
     DrawEffect, DiscardEffect, DamageModificationEffect, DamageEffect, ModifyPTEffect,
     HandSizeEffect, SetBasePTEffect,
@@ -82,7 +83,7 @@ export const EFFECT_PARSERS = [
 ];
 
 export {
-    SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
+    TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
     CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect, ReturnEffect,
     DrawEffect, DiscardEffect, DamageEffect, ModifyPTEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,

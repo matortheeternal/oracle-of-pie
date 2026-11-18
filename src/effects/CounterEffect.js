@@ -1,6 +1,8 @@
 import ObjectEffect from './ObjectEffect.js';
 
-const COUNTER = /^counters? (?=target|up to|that|it\b|all|each|another|\w+ target)/i;
+const COUNTERED = '(?=target|up to|that|the\\b|it\\b|all|each|another|\\w+ target)';
+const COUNTER = new RegExp(`^counters? ${COUNTERED}`, 'i');
+const ABILITY_SOURCE = /^of an? [^,.]+/i;
 const UNLESS = /^unless ([^.]+)/i;
 
 function isCounterable(phrase) {
@@ -15,6 +17,7 @@ export default class CounterEffect extends ObjectEffect {
 
     parseArguments(match) {
         super.parseArguments(match);
+        this.consumeText(ABILITY_SOURCE);
         this.unless = this.consumeText(UNLESS)?.[1] ?? null;
     }
 

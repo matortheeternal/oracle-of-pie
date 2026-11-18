@@ -5,6 +5,8 @@ const MASS_OPPOSING = {
     isCardInZone: false
 };
 const OPPOSING_CREATURE = { isOpposingObject: true, hasType: 'creature' };
+const OPPOSING_SPELL = { hasType: 'spell', controlledByYou: false };
+
 function removesType(type) {
     return {
         any: [
@@ -34,7 +36,8 @@ export const REMOVAL_TAGS = [
                 {
                     kind: 'ExileEffect',
                     phrases: { hasExactType: 'spell', controlledByYou: false }
-                }
+                },
+                { kind: ['ReturnEffect', 'TuckEffect'], phrases: OPPOSING_SPELL }
             ]
         }
     },
