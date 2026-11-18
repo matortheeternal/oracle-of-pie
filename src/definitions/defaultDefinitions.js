@@ -49,6 +49,13 @@ export const DEFAULT_DEFINITIONS = {
                 + 'card, create a 1/1 white Human Soldier creature token.'
         },
         {
+            name: 'Discover',
+            reminder: 'Exile cards from the top of your library until you exile a '
+                + 'nonland card with mana value {parameter} or less. Cast it without '
+                + 'paying its mana cost or put it into your hand. Put the rest on the '
+                + 'bottom of your library in a random order.'
+        },
+        {
             name: 'Amass',
             reminder: 'Put {parameter} +1/+1 counters on an Army you control. '
                 + 'If you don\'t control one, create a 0/0 Army creature token first.'

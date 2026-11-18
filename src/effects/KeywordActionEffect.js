@@ -4,7 +4,7 @@ import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const KEYWORD_ACTION_ALTERNATIVES = [
     'scry', 'surveil', 'investigate', 'proliferate', 'explores?', 'connives?', 'populate',
-    'learn', 'amass [A-Z][a-z]+', 'adapt', 'bolster', 'support', 'incubate', 'discover',
+    'learn', 'amass [A-Z][a-z]+', 'adapt', 'bolster', 'support', 'incubate', 'discovers?',
     'seek', 'endure', 'manifest dread', 'manifest', 'venture into the dungeon',
     'the ring tempts you', 'become the monarch', 'take the initiative', 'goad [^,.]+',
     'transform [^,.]+', 'regenerate [^,.]+', 'shuffle(?: [^,.]*)?', 'time travel',
@@ -19,7 +19,8 @@ const KEYWORD_ACTION = new RegExp(
 );
 
 const TRANSFORM_SELF = /^transform (?:~|this\b|it\b)/i;
-const THIRD_PERSON = /(?<=connive|explore|endure)s$/;
+const THIRD_PERSON = /(?<=connive|explore|endure|discover)s$/;
+const RANDOM_FIND_ACTIONS = new Set(['discover']);
 
 export default class KeywordActionEffect extends Effect {
     static get pattern() {
@@ -46,6 +47,10 @@ export default class KeywordActionEffect extends Effect {
 
     get isKeywordAction() {
         return true;
+    }
+
+    get findsRandomCard() {
+        return RANDOM_FIND_ACTIONS.has(this.action);
     }
 
     get consumesSource() {
