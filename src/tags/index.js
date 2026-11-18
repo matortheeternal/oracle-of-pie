@@ -10,6 +10,7 @@ import { PUMP_TAGS } from './pumpTags.js';
 import { LIFE_TAGS } from './lifeTags.js';
 import { TURN_TAGS } from './turnTags.js';
 import { VANILLA_TAGS } from './vanillaTags.js';
+import { EVASION_TAGS } from './evasionTags.js';
 import { LIBRARY_TAGS } from './libraryTags.js';
 import { CREATURE_TAGS } from './creatureTags.js';
 import { BOARD_TAGS } from './boardTags.js';
@@ -35,6 +36,7 @@ export const DEFAULT_TAG_SPECS = [
     ...LIFE_TAGS,
     ...TURN_TAGS,
     ...VANILLA_TAGS,
+    ...EVASION_TAGS,
     ...LIBRARY_TAGS,
     ...CREATURE_TAGS,
     ...BOARD_TAGS,

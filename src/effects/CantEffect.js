@@ -25,6 +25,7 @@ const CANT_QUALIFIERS = [
     'during [^,.]+',
     'more than [^,.]+'
 ];
+const UNBLOCKABLE = /^can't be blocked(?! by)(?![^.]*\bexcept\b)/i;
 const NEXT_UNTAP = /^untap during [^,.]*\bnext\b/;
 const CANT = new RegExp(
     `^(?:can't|cannot|doesn't|don't) (${CANT_ALTERNATIVES.join('|')})`
@@ -39,6 +40,10 @@ export default class CantEffect extends Effect {
 
     parseArguments(match) {
         this.restriction = match[1].toLowerCase();
+    }
+
+    get makesUnblockable() {
+        return UNBLOCKABLE.test(this.raw);
     }
 
     get preventsNextUntap() {
