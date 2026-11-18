@@ -4,6 +4,8 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'it',
     'them',
     'itself',
+    'him',
+    'her',
     'that (?:creature|card|permanent|spell|token|land|artifact|enchantment|planeswalker)',
     'those (?:creatures|cards|permanents|tokens|spells)',
     'the exiled cards?',

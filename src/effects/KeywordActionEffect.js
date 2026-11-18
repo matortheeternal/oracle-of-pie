@@ -11,8 +11,10 @@ const KEYWORD_ACTION_ALTERNATIVES = [
     'forage', 'collect evidence', 'exert [^,.]+', 'suspect [^,.]+', 'earthbend',
     'endures', 'monstrosity', 'blight', 'behold an? [^,.]+'
 ];
+const REPEAT = '(?: twice| (?:\\w+ )?times)?';
+const ACTION_AMOUNT = `(?: (${NUMBER_PATTERN}))?${REPEAT}`;
 const KEYWORD_ACTION = new RegExp(
-    `^(${KEYWORD_ACTION_ALTERNATIVES.join('|')})(?![\\w])(?: (${NUMBER_PATTERN}))?`, 'i'
+    `^(${KEYWORD_ACTION_ALTERNATIVES.join('|')})(?![\\w])${ACTION_AMOUNT}`, 'i'
 );
 
 const THIRD_PERSON = /(?<=connive|explore|endure)s$/;
