@@ -50,7 +50,8 @@ export const REMOVAL_INSPECTIONS = [
         match: {
             kind: 'SacrificeEffect',
             isOptional: false,
-            subject: { canBeOpponent: true }
+            subject: { canBeOpponent: true },
+            phrases: { hasType: 'creature' }
         }
     },
     {
