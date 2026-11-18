@@ -9,6 +9,7 @@ import { BOARD_TAGS } from './boardTags.js';
 import { STRUCTURE_TAGS } from './structureTags.js';
 import { DERIVED_TAGS } from './derivedTags.js';
 import { KEYWORD_GRANT_TAGS } from './keywordGrantTags.js';
+import { KEYWORD_FAMILY_TAGS } from './keywordFamilyTags.js';
 import { MANA_TAGS } from './manaTags.js';
 import { SACRIFICE_TAGS } from './sacrificeTags.js';
 import { PLAYER_TAGS } from './playerTags.js';
@@ -24,6 +25,7 @@ export const DEFAULT_TAG_SPECS = [
     ...CREATURE_TAGS,
     ...BOARD_TAGS,
     ...KEYWORD_GRANT_TAGS,
+    ...KEYWORD_FAMILY_TAGS,
     ...MANA_TAGS,
     ...SACRIFICE_TAGS,
     ...PLAYER_TAGS,

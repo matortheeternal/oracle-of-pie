@@ -38,6 +38,10 @@ export default class RulesScribe {
         this.effectParsers = EFFECT_PARSERS;
     }
 
+    isKeyword(name) {
+        return this.keywordPattern.exec(name)?.[0].length === name.length;
+    }
+
     startsEffect(str) {
         return this.effectParsers.some(parser => parser.match(this, str));
     }

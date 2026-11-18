@@ -29,6 +29,10 @@ export default class PutCountersEffect extends Effect {
         this.consumeText(EQUAL_TO);
     }
 
+    get keywordCounterNames() {
+        return this.kind && this.scribe.isKeyword(this.kind) ? [this.kind] : [];
+    }
+
     get kindPattern() {
         return COUNTER_KIND;
     }
