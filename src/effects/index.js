@@ -56,6 +56,9 @@ import DistributeCountersEffect from './DistributeCountersEffect.js';
 import SetBasePTEffect from './SetBasePTEffect.js';
 import TypeChangeEffect from './TypeChangeEffect.js';
 import ManaRetentionEffect from './ManaRetentionEffect.js';
+import AdditionalPhaseEffect from './AdditionalPhaseEffect.js';
+import CounterModificationEffect from './CounterModificationEffect.js';
+import BeginGameEffect from './BeginGameEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
@@ -75,7 +78,7 @@ export const EFFECT_PARSERS = [
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
-    OpaqueEffect
+    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect, OpaqueEffect
 ];
 
 export {
@@ -92,5 +95,5 @@ export {
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
-    OpaqueEffect
+    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect, OpaqueEffect
 };
