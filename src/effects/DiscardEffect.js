@@ -2,8 +2,9 @@ import Effect from './Effect.js';
 import Amount from '../values/Amount.js';
 
 const DISCARD = /^discards? /i;
-const WHOLE_HAND = /^(?:their|your) hand$/i;
+const WHOLE_HAND = /^(?:all (?:the )?cards (?:in|from) )?(?:their|your) hand$/i;
 const DISCARDED_ALTERNATIVES = [
+    'all (?:the )?cards (?:in|from) (?:their|your) hand',
     '(?:[a-z]+ )?cards?(?: at random| of their choice| with [^,.]+)?',
     '(?:their|your) hand',
     'that card',
