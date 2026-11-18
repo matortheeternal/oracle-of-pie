@@ -6,7 +6,7 @@ export const KEYWORD_TIERS = {
     'first strike': ColorTiers.of(PRIMARY, NONE, TERTIARY, PRIMARY, NONE),
     'double strike': ColorTiers.of(SECONDARY, NONE, NONE, PRIMARY, TERTIARY),
     'deathtouch': ColorTiers.of(NONE, NONE, PRIMARY, TERTIARY, PRIMARY),
-    'haste': ColorTiers.of(TERTIARY, NONE, SECONDARY, PRIMARY, TERTIARY),
+    'haste': ColorTiers.of(NONE, NONE, SECONDARY, PRIMARY, SECONDARY),
     'hexproof': ColorTiers.of(SECONDARY, SECONDARY, NONE, NONE, PRIMARY),
     'indestructible': ColorTiers.of(PRIMARY, NONE, SECONDARY, TERTIARY, SECONDARY),
     'lifelink': ColorTiers.of(PRIMARY, NONE, PRIMARY, NONE, TERTIARY),
