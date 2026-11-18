@@ -1,11 +1,12 @@
 import { PRIMARY, SECONDARY, TERTIARY } from '../ColorTier.js';
 
-const FLYING_TARGET = { phrases: { requiresKeyword: 'flying' } };
+const FLYING = { requiresKeyword: 'flying' };
+const FLYING_TARGET = { phrases: FLYING };
 
-export const FLYER_DESTRUCTION = {
+export const FLYER_REMOVAL = {
     id: 'flying',
     title: 'Creatures with flying',
-    match: FLYING_TARGET,
+    match: { any: [FLYING_TARGET, { subject: FLYING }] },
     tiers: { G: PRIMARY }
 };
 
