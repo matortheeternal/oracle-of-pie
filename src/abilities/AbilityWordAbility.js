@@ -1,7 +1,7 @@
 import Ability from './Ability.js';
 
-const ABILITY_WORD = /^([A-Z][A-Za-z'’]*(?: [A-Za-z'’]+){0,4}) (?:—|-) (?=\S)/;
-const NOT_ABILITY_WORD = /^choose\b/i;
+const ABILITY_WORD = /^([A-Z][A-Za-z'’-]*(?: [A-Za-z'’-]+){0,4}) (?:—|-) (?=\S)/;
+const NOT_ABILITY_WORD = /^(?:choose|exhaust)\b/i;
 
 export default class AbilityWordAbility extends Ability {
     static match(scribe, str) {

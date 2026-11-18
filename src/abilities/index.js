@@ -10,7 +10,7 @@ import SpellAbility from './SpellAbility.js';
 
 export const ABILITY_PARSERS = [
     ModeLine, StructureLine, StationAbility, ChapterAbility, KeywordAbility,
-    TriggeredAbility, ActivatedAbility, AbilityWordAbility, SpellAbility
+    AbilityWordAbility, TriggeredAbility, ActivatedAbility, SpellAbility
 ];
 
 export const INNER_ABILITY_PARSERS = [
