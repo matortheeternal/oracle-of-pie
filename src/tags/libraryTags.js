@@ -60,5 +60,17 @@ export const LIBRARY_TAGS = [
             fromGraveyard: true,
             phrases: CREATURE_CARD
         }
+    },
+    {
+        tag: 'hate-graveyard',
+        match: {
+            kind: 'ExileEffect',
+            phrases: {
+                any: [
+                    { kind: 'ZonePhrase', ownedByYou: false },
+                    { zone: 'graveyard', zoneOwnedByYou: false, refersToSelf: false }
+                ]
+            }
+        }
     }
 ];
