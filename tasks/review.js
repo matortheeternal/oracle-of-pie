@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { HTML, send, sendError, readBody } from './http.mjs';
+import { AST_ROUTES } from './astRoutes.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const QUEUES = path.join(ROOT, 'queues');
@@ -113,7 +114,8 @@ const routes = [
     [PAGE_ROUTE, 'GET', sendPage],
     [QUEUES_ROUTE, 'GET', sendQueues],
     [QUEUE_ROUTE, 'GET', sendQueue],
-    [DECISIONS_ROUTE, 'POST', recordDecision]
+    [DECISIONS_ROUTE, 'POST', recordDecision],
+    ...AST_ROUTES
 ];
 
 function route(req, res) {

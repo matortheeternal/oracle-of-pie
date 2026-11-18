@@ -18,10 +18,14 @@ function parseFace(scribe, card, face) {
     return { parsed, colors: faceColorsOf(card, face) };
 }
 
+export function parseCardFaces(scribe, card) {
+    return card.faces.map(face => parseFace(scribe, card, face));
+}
+
 export function* pieCards(scribe, corpus) {
     for (const card of corpus) {
         try {
-            const faces = card.faces.map(face => parseFace(scribe, card, face));
+            const faces = parseCardFaces(scribe, card);
             yield { card, faces, colors: cardColorsOf(card) };
         } catch (error) {
             console.warn('skipped', card.name, error.message);
