@@ -36,7 +36,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'none', B: 'none', R: 'secondary', G: 'primary'
     },
     'discard-opponent': {
-        W: 'none', U: 'none', B: 'primary', R: 'tertiary', G: 'none'
+        W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'
     },
     'mill-opponent': {
         W: 'none', U: 'primary', B: 'secondary', R: 'none', G: 'tertiary'

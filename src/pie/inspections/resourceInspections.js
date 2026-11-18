@@ -1,12 +1,14 @@
 const CREATURE_CARD = { isCreatureCard: true };
 const FORCED_OPPONENT = { isOptional: false, subject: { canBeOpponent: true } };
+const DRAWS_IN_SENTENCE = { sentence: { effects: { any: [{ kind: 'DrawEffect' }] } } };
+const REPLACED_BY_DRAW = { context: DRAWS_IN_SENTENCE };
 
 export const RESOURCE_INSPECTIONS = [
     {
         id: 'discard-opponent',
         title: 'Makes opponents discard',
         group: 'Card flow',
-        match: { kind: 'DiscardEffect', ...FORCED_OPPONENT }
+        match: { kind: 'DiscardEffect', ...FORCED_OPPONENT, not: REPLACED_BY_DRAW }
     },
     {
         id: 'mill-opponent',
