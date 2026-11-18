@@ -10,6 +10,11 @@ export function writeJson(file, value) {
     fs.writeFileSync(file, JSON.stringify(value));
 }
 
+export function writeReadableJson(file, value) {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, `${JSON.stringify(value, null, 4)}\n`);
+}
+
 export function readJsonl(file) {
     if (!fs.existsSync(file)) return [];
     const lines = fs.readFileSync(file, 'utf8').split('\n').filter(Boolean);
