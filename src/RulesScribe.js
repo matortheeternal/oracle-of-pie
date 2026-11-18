@@ -1,6 +1,7 @@
 import CardText from './CardText.js';
 import CardContext from './core/CardContext.js';
 import normalizeCardText from './core/normalizeCardText.js';
+import TextLocator from './core/TextLocator.js';
 import ParsedCard from './ParsedCard.js';
 import { ABILITY_PARSERS, INNER_ABILITY_PARSERS } from './abilities/index.js';
 import { RESOLVERS } from './resolvers/index.js';
@@ -63,6 +64,7 @@ export default class RulesScribe {
     parseFace({ name = '', typeLine = '', text = '', loyalty = null, faceCount = 1 }) {
         const card = new CardContext({ name, typeLine, loyalty, faceCount });
         const parsed = this.parseText(normalizeCardText(text, name));
-        return new ParsedCard(card, parsed, this.tagLibrary);
+        const locator = new TextLocator(text, name);
+        return new ParsedCard(card, parsed, this.tagLibrary, locator);
     }
 }

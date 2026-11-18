@@ -10,9 +10,9 @@ function toInspection(spec) {
     return spec instanceof PieInspection ? spec : new PieInspection(spec);
 }
 
-function attributeFace(face, inspection) {
+function attributeFace(face, faceIndex, inspection) {
     const match = findAttributableMatch(face, inspection);
-    return match ? new Attribution(inspection, face, match) : null;
+    return match ? new Attribution(inspection, face, match, faceIndex) : null;
 }
 
 export default class PieInspector {
@@ -29,8 +29,8 @@ export default class PieInspector {
     }
 
     attribute(faces, inspection) {
-        for (const face of faces) {
-            const attribution = attributeFace(face, inspection);
+        for (const [faceIndex, face] of faces.entries()) {
+            const attribution = attributeFace(face, faceIndex, inspection);
             if (attribution) return attribution;
         }
         return null;

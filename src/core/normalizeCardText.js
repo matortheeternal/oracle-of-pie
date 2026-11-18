@@ -7,7 +7,7 @@ function escapeRegExp(str) {
     return str.replace(REGEX_SPECIAL, '\\$&');
 }
 
-function nameVariants(name) {
+export function nameVariants(name) {
     const variants = [
         name,
         name.split(',')[0],

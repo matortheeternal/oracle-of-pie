@@ -1,10 +1,15 @@
 import evaluateCard from './evaluators/evaluateCard.js';
 
 export default class ParsedCard {
-    constructor(card, text, tagLibrary) {
+    constructor(card, text, tagLibrary, locator = null) {
         this.card = card;
         this.text = text;
         this.tagLibrary = tagLibrary;
+        this.locator = locator;
+    }
+
+    locate(fragment) {
+        return this.locator?.locate(fragment) ?? null;
     }
 
     walk() {

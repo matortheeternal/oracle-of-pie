@@ -26,6 +26,8 @@ export default class PieFlag {
             severity: this.severity,
             offending: this.offending,
             evidence,
+            face: this.attribution.faceIndex,
+            range: this.attribution.range,
             shares: this.profile?.shares() ?? null,
             examples: this.profile?.examples ?? null
         };
