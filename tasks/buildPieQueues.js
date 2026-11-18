@@ -1,0 +1,51 @@
+import { readJson, writeJsonl } from '../src/files.js';
+import { PATHS, queuePath } from '../src/paths.js';
+import ProjectScribes from '../src/keywords/ProjectScribes.js';
+import ReviewLog from '../src/ReviewLog.js';
+import loadProjects from '../src/custom/loadProjects.js';
+import ReviewPriority from '../src/queues/ReviewPriority.js';
+import ProjectPieFlags from '../src/pie/projectPieFlags.js';
+import pieFlagItem from '../src/pie/pieFlagItem.js';
+
+const CUSTOM_QUEUE = 'custom-pie-flags';
+const HYBRID_QUEUE = 'printed-hybrid-pie-flags';
+const HYBRID = 'hybrid';
+
+const corpus = readJson(PATHS.corpus);
+const profiles = readJson(PATHS.pieProfiles);
+
+function printedView(card) {
+    const { name, rarity, faces, image, scryfall_uri } = card;
+    return { name, rarity, faces, image, scryfall_uri };
+}
+
+function customItems() {
+    const cards = loadProjects(PATHS.projects).filter(card => card.isPlayable);
+    const pieFlags = new ProjectPieFlags(new ProjectScribes(corpus, cards), profiles);
+    const items = [];
+    for (const card of cards) {
+        for (const flag of pieFlags.flagsFor(card)) {
+            const profile = profiles[flag.inspection];
+            items.push(pieFlagItem({ id: card.id, card: card.view, flag, profile }));
+        }
+    }
+    return items;
+}
+
+function hybridItems() {
+    const byName = new Map(corpus.map(card => [card.name, card]));
+    const flags = readJson(PATHS.pieFlags).filter(flag => flag.policy === HYBRID);
+    return flags.map(flag => {
+        const card = byName.get(flag.name);
+        const profile = profiles[flag.inspection];
+        const view = printedView(card);
+        return pieFlagItem({ id: card.oracle_id, card: view, flag, profile });
+    });
+}
+
+const QUEUES = [[CUSTOM_QUEUE, customItems()], [HYBRID_QUEUE, hybridItems()]];
+for (const [queue, items] of QUEUES) {
+    const ordered = new ReviewPriority(ReviewLog.forQueue(queue)).order(items);
+    writeJsonl(queuePath(queue), ordered);
+    console.log(`${queue}: ${items.length} items`);
+}
