@@ -45,5 +45,7 @@ export const MECHANICAL_COLOR_PIE = {
     'Return target creature from graveyard to hand.': { W: 'secondary', B: 'primary' },
     '"Reanimation"': { W: 'primary', B: 'primary', R: 'secondary', G: 'secondary' },
     'Can\'t be blocked': { U: 'primary' },
-    'Extra attack': { W: 'tertiary', R: 'primary' }
+    'Extra attack': { W: 'tertiary', R: 'primary' },
+    'Destroy target attacking or blocking creature.': { W: 'primary' },
+    'Deal N damage to target attacking or blocking creature.': { W: 'primary' }
 };

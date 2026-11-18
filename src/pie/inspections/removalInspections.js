@@ -1,4 +1,4 @@
-import { FLYER_REMOVAL, FLYER_EXILE } from './exceptions.js';
+import { FLYER_REMOVAL, FLYER_EXILE, COMBATANT_REMOVAL } from './exceptions.js';
 
 const OPPOSING_CREATURE = {
     isOpposingObject: true,
@@ -29,7 +29,7 @@ export const REMOVAL_INSPECTIONS = [
         id: 'destroy-creature',
         title: 'Destroys creatures',
         group: 'Removal',
-        exceptions: [FLYER_REMOVAL],
+        exceptions: [FLYER_REMOVAL, COMBATANT_REMOVAL],
         match: {
             kind: 'DestroyEffect',
             phrases: OPPOSING_CREATURE
@@ -57,7 +57,7 @@ export const REMOVAL_INSPECTIONS = [
         id: 'edict',
         title: 'Makes opponents sacrifice',
         group: 'Removal',
-        exceptions: [FLYER_REMOVAL],
+        exceptions: [FLYER_REMOVAL, COMBATANT_REMOVAL],
         match: {
             kind: 'SacrificeEffect',
             isOptional: false,

@@ -36,13 +36,22 @@ export const STAT_SCALED_DAMAGE = {
     tiers: { G: PRIMARY }
 };
 
+const COMBATANTS = {
+    phrases: { any: [{ hasQualifier: 'attacking' }, { hasQualifier: 'blocking' }] }
+};
+
 export const COMBATANT_DAMAGE = {
     id: 'attacking-or-blocking',
     title: 'Attacking or blocking creatures',
-    match: {
-        phrases: { any: [{ hasQualifier: 'attacking' }, { hasQualifier: 'blocking' }] }
-    },
-    tiers: { W: SECONDARY }
+    match: COMBATANTS,
+    cites: 'Deal N damage to target attacking or blocking creature.'
+};
+
+export const COMBATANT_REMOVAL = {
+    id: 'attacking-or-blocking',
+    title: 'Attacking or blocking creatures',
+    match: COMBATANTS,
+    cites: 'Destroy target attacking or blocking creature.'
 };
 
 const PREVENTED_DAMAGE = { event: { kind: 'DamagePreventedEvent' } };
