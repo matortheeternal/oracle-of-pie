@@ -2,6 +2,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { HTML, send, sendError, readBody } from './http.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const QUEUES = path.join(ROOT, 'queues');
@@ -18,7 +19,6 @@ const QUEUES_ROUTE = /^\/api\/queues$/;
 const QUEUE_ROUTE = /^\/api\/queues\/([^/]+)$/;
 const DECISIONS_ROUTE = /^\/api\/queues\/([^/]+)\/decisions$/;
 const VERDICTS = new Set(['correct', 'wrong', 'skip']);
-const HTML = 'text/html; charset=utf-8';
 const IMAGE_TYPES = {
     '.jpg': 'image/jpeg',
     '.jpeg': 'image/jpeg',
@@ -70,24 +70,6 @@ function listQueues() {
     return fs.readdirSync(QUEUES)
         .filter(file => file.endsWith('.jsonl'))
         .map(describeQueue);
-}
-
-function send(res, status, body, type = 'application/json') {
-    res.writeHead(status, { 'Content-Type': type });
-    res.end(type === 'application/json' ? JSON.stringify(body) : body);
-}
-
-function sendError(res, status, error) {
-    send(res, status, { error });
-}
-
-function readBody(req) {
-    return new Promise((resolve, reject) => {
-        let data = '';
-        req.on('data', chunk => data += chunk);
-        req.on('end', () => resolve(JSON.parse(data || '{}')));
-        req.on('error', reject);
-    });
 }
 
 async function recordDecision(req, res, name) {
