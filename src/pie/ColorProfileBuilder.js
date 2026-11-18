@@ -18,7 +18,7 @@ export default class ColorProfileBuilder {
 
     addAttribution(attribution, name) {
         const color = attribution.colors.soleColor;
-        if (!color) return;
+        if (!color || attribution.exception) return;
         const profile = this.profiles.get(attribution.inspection.id);
         profile.counts[color] = (profile.counts[color] ?? 0) + 1;
         const examples = profile.examples[color] ??= [];
