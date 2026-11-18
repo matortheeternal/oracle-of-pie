@@ -69,6 +69,11 @@ export default class KeywordAbility extends Ability {
         return definition ? [Expansion.of(this.scribe, definition, keyword)] : [];
     }
 
+    hasKeyword(name) {
+        const wanted = name.toLowerCase();
+        return this.keywords.keywords.some(keyword => keyword.name === wanted);
+    }
+
     get isKeywordAbility() {
         return true;
     }

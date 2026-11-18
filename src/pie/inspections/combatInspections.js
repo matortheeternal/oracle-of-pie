@@ -4,34 +4,6 @@ import { PRIMARY, SECONDARY, TERTIARY, NONE } from '../ColorTier.js';
 
 export const COMBAT_INSPECTIONS = [
     tagInspection({
-        id: 'gives-haste',
-        title: 'Gives haste',
-        group: 'Creatures & combat',
-        tiers: ColorTiers.of(TERTIARY, NONE, SECONDARY, PRIMARY, TERTIARY),
-        description: 'Red owns haste; black is secondary.'
-    }),
-    tagInspection({
-        id: 'gives-deathtouch',
-        title: 'Gives deathtouch',
-        group: 'Creatures & combat',
-        tiers: ColorTiers.of(NONE, NONE, PRIMARY, TERTIARY, PRIMARY),
-        description: 'Black and green own deathtouch.'
-    }),
-    tagInspection({
-        id: 'gives-first-strike',
-        title: 'Gives first strike',
-        group: 'Creatures & combat',
-        tiers: ColorTiers.of(PRIMARY, NONE, TERTIARY, PRIMARY, NONE),
-        description: 'White and red own first strike.'
-    }),
-    tagInspection({
-        id: 'gives-trample',
-        title: 'Gives trample',
-        group: 'Creatures & combat',
-        tiers: ColorTiers.of(NONE, NONE, TERTIARY, SECONDARY, PRIMARY),
-        description: 'Green owns trample; red is secondary.'
-    }),
-    tagInspection({
         id: 'unblockable',
         title: 'Can’t be blocked',
         group: 'Creatures & combat',

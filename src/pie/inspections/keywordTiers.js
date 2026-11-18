@@ -1,0 +1,21 @@
+import ColorTiers from '../ColorTiers.js';
+import { PRIMARY, SECONDARY, TERTIARY, NONE } from '../ColorTier.js';
+
+export const KEYWORD_TIERS = {
+    'flying': ColorTiers.of(PRIMARY, PRIMARY, SECONDARY, SECONDARY, TERTIARY),
+    'first strike': ColorTiers.of(PRIMARY, NONE, TERTIARY, PRIMARY, NONE),
+    'double strike': ColorTiers.of(SECONDARY, NONE, NONE, PRIMARY, TERTIARY),
+    'deathtouch': ColorTiers.of(NONE, NONE, PRIMARY, TERTIARY, PRIMARY),
+    'haste': ColorTiers.of(TERTIARY, NONE, SECONDARY, PRIMARY, TERTIARY),
+    'hexproof': ColorTiers.of(SECONDARY, SECONDARY, NONE, NONE, PRIMARY),
+    'indestructible': ColorTiers.of(PRIMARY, NONE, TERTIARY, TERTIARY, SECONDARY),
+    'lifelink': ColorTiers.of(PRIMARY, NONE, PRIMARY, NONE, TERTIARY),
+    'menace': ColorTiers.of(NONE, NONE, PRIMARY, PRIMARY, TERTIARY),
+    'reach': ColorTiers.of(NONE, NONE, NONE, TERTIARY, PRIMARY),
+    'trample': ColorTiers.of(NONE, NONE, TERTIARY, SECONDARY, PRIMARY),
+    'vigilance': ColorTiers.of(PRIMARY, TERTIARY, NONE, TERTIARY, SECONDARY),
+    'defender': ColorTiers.of(PRIMARY, PRIMARY, SECONDARY, SECONDARY, SECONDARY),
+    'flash': ColorTiers.of(SECONDARY, PRIMARY, SECONDARY, SECONDARY, SECONDARY),
+    'ward': ColorTiers.of(SECONDARY, PRIMARY, TERTIARY, TERTIARY, SECONDARY),
+    'prowess': ColorTiers.of(TERTIARY, PRIMARY, NONE, PRIMARY, NONE)
+};

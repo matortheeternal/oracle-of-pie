@@ -32,20 +32,6 @@ export const SUPPORT_INSPECTIONS = [
         description: 'Black owns drain; white is secondary.'
     }),
     tagInspection({
-        id: 'gives-hexproof',
-        title: 'Gives hexproof',
-        group: 'Protection',
-        tiers: ColorTiers.of(SECONDARY, SECONDARY, NONE, NONE, PRIMARY),
-        description: 'Green owns hexproof; white and blue are secondary.'
-    }),
-    tagInspection({
-        id: 'gives-indestructible',
-        title: 'Gives indestructible',
-        group: 'Protection',
-        tiers: ColorTiers.of(PRIMARY, NONE, TERTIARY, TERTIARY, SECONDARY),
-        description: 'White owns indestructible; green is secondary.'
-    }),
-    tagInspection({
         id: 'cost-increaser',
         title: 'Taxes spells',
         group: 'Costs',

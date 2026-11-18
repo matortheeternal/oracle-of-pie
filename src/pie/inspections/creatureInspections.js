@@ -1,8 +1,6 @@
 import ColorTiers from '../ColorTiers.js';
 import { PRIMARY, SECONDARY, TERTIARY, NONE } from '../ColorTier.js';
 
-const NOT_SELF = { refersToSelf: false };
-
 export const CREATURE_INSPECTIONS = [
     {
         id: 'tap-creature',
@@ -35,23 +33,6 @@ export const CREATURE_INSPECTIONS = [
         tiers: ColorTiers.of(NONE, TERTIARY, TERTIARY, PRIMARY, NONE),
         description: 'Red owns temporary theft.',
         match: { kind: 'GainControlEffect', duration: { isUntilEndOfTurn: true } }
-    },
-    {
-        id: 'grant-flying',
-        title: 'Gives other creatures flying',
-        group: 'Creatures & combat',
-        tiers: ColorTiers.of(PRIMARY, PRIMARY, SECONDARY, TERTIARY, NONE),
-        description: 'White and blue give flying; green gives reach instead.',
-        match: {
-            any: [
-                { kind: 'GrantEffect', grantsKeyword: 'flying', subject: NOT_SELF },
-                {
-                    kind: 'ModifyPTEffect',
-                    keywords: { names: 'flying' },
-                    subject: NOT_SELF
-                }
-            ]
-        }
     },
     {
         id: 'flicker',
