@@ -4,8 +4,24 @@ import {
 
 const STRUCTURAL_KEYWORDS = ['Enchant', 'Equip'];
 
+const REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
+
+function cardText(card) {
+    return card.faces.map(face => face.oracle_text ?? '').join('\n');
+}
+
+function usedOutsideLabel(keyword, card) {
+    const escaped = keyword.replace(REGEX_SPECIAL, '\\$&');
+    const unlabeled = new RegExp(`(?<![\\w-])${escaped}(?![\\w-])(?! —| counter)`, 'i');
+    return unlabeled.test(cardText(card));
+}
+
+function cardKeywords(card) {
+    return (card.keywords ?? []).filter(keyword => usedOutsideLabel(keyword, card));
+}
+
 function corpusKeywords(corpus) {
-    return new Set(corpus.flatMap(card => card.keywords ?? []));
+    return new Set(corpus.flatMap(cardKeywords));
 }
 
 function familyTags(spec, keywords, tree) {
