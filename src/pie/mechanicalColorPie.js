@@ -38,5 +38,11 @@ export const MECHANICAL_COLOR_PIE = {
     'Destroy target creature with flying': { G: 'primary' },
     '+N/+0 (on creatures)': { W: 'secondary', R: 'primary', G: 'secondary' },
     '"Bite"': { R: 'secondary', G: 'primary' },
-    'Fight': { R: 'secondary', G: 'primary' }
+    'Fight': { R: 'secondary', G: 'primary' },
+    'Deal N damage to creature, planeswalker, and/or player.': {
+        W: 'secondary', B: 'secondary', R: 'primary'
+    },
+    'Return target creature from graveyard to hand.': { W: 'secondary', B: 'primary' },
+    '"Reanimation"': { W: 'primary', B: 'primary', R: 'secondary', G: 'secondary' },
+    'Can\'t be blocked': { U: 'primary' }
 };

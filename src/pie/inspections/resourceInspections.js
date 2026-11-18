@@ -40,6 +40,7 @@ export const RESOURCE_INSPECTIONS = [
         id: 'reanimate',
         title: 'Returns creature cards from graveyard to battlefield',
         group: 'Graveyard',
+        cites: '"Reanimation"',
         match: {
             any: [
                 {
@@ -60,6 +61,7 @@ export const RESOURCE_INSPECTIONS = [
         id: 'regrowth',
         title: 'Returns creature cards from graveyard to hand',
         group: 'Graveyard',
+        cites: 'Return target creature from graveyard to hand.',
         match: {
             kind: 'ReturnEffect',
             destination: 'hand',

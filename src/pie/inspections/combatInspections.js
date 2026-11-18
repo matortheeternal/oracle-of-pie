@@ -4,7 +4,8 @@ export const COMBAT_INSPECTIONS = [
     tagInspection({
         id: 'unblockable',
         title: 'Can’t be blocked',
-        group: 'Creatures & combat'
+        group: 'Creatures & combat',
+        cites: 'Can\'t be blocked'
     }),
     tagInspection({
         id: 'firebreathing',

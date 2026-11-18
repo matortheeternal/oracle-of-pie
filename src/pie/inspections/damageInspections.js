@@ -3,6 +3,7 @@ import {
     TAPPED_CREATURE_DAMAGE
 } from './exceptions.js';
 
+const ANY_TARGET_DAMAGE = 'Deal N damage to creature, planeswalker, and/or player.';
 const DIRECT_DAMAGE = { kind: 'DamageEffect', isPowerBased: false };
 
 export const DAMAGE_INSPECTIONS = [
@@ -10,6 +11,7 @@ export const DAMAGE_INSPECTIONS = [
         id: 'damage-creature',
         title: 'Deals direct damage to creatures',
         group: 'Damage',
+        cites: ANY_TARGET_DAMAGE,
         exceptions: [
             REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, COMBATANT_DAMAGE,
             TAPPED_CREATURE_DAMAGE
@@ -20,6 +22,7 @@ export const DAMAGE_INSPECTIONS = [
         id: 'damage-player',
         title: 'Deals direct damage to players',
         group: 'Damage',
+        cites: ANY_TARGET_DAMAGE,
         exceptions: [REDIRECTED_DAMAGE],
         match: { ...DIRECT_DAMAGE, phrases: { hitsPlayer: true } }
     },
