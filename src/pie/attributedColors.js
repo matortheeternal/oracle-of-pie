@@ -15,7 +15,7 @@ function kickerColors(parsedFace) {
 
 function conditionColors(face, condition) {
     if (!condition?.requiresKicker) return [];
-    return kickerColors(face.parsed);
+    return condition.namedKickerColors ?? kickerColors(face.parsed);
 }
 
 function baseColors(face, condition) {

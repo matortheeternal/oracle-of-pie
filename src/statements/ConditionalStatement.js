@@ -1,3 +1,4 @@
+import { ActivationCost } from 'mana-scribe';
 import Statement from './Statement.js';
 
 const CONDITION_ALTERNATIVES = [
@@ -26,6 +27,7 @@ const CONDITION_ALTERNATIVES = [
 ];
 const SPENT_COLOR = /\{([WUBRG])\}(?:\{\1\})* was spent to cast/;
 const KICKED = /\bwas kicked\b/i;
+const NAMED_KICKER = /\bkicked with its ((?:\{[^}]+\})+) kicker\b/i;
 const DURATION = /^until /i;
 const FOR_EACH = /^for each /i;
 const IF_YOU_DO = /^if you do$|^if you [a-z]+ [^,]* this way$/i;
@@ -77,6 +79,11 @@ export default class ConditionalStatement extends Statement {
 
     get requiresKicker() {
         return KICKED.test(this.condition);
+    }
+
+    get namedKickerColors() {
+        const cost = this.condition.match(NAMED_KICKER)?.[1];
+        return cost ? ActivationCost.parse(cost).colors : null;
     }
 
     get children() {
