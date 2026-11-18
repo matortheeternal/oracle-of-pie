@@ -7,7 +7,7 @@ export default class Attribution {
         this.face = face;
         this.faceIndex = faceIndex;
         this.exception = inspection.exceptionFor(node, context);
-        this.colors = attributedColors(face, context);
+        this.colors = attributedColors(face, context, node);
         this.evidence = evidenceOf(node, context);
     }
 

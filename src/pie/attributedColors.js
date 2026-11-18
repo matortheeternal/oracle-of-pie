@@ -1,5 +1,6 @@
 import CardColors from './CardColors.js';
 import Keyword from '../values/Keyword.js';
+import Ability from '../abilities/Ability.js';
 
 const KICKER = 'kicker';
 
@@ -23,9 +24,14 @@ function baseColors(face, condition) {
     return spent.length ? new CardColors({ colors: spent }) : face.colors;
 }
 
-export default function attributedColors(face, context) {
-    const condition = context.condition;
+function abilityChain(context, node) {
     const abilities = context.abilities ?? [];
+    return node instanceof Ability ? [...abilities, node] : abilities;
+}
+
+export default function attributedColors(face, context, node = null) {
+    const condition = context.condition;
+    const abilities = abilityChain(context, node);
     const abilityColors = abilities.flatMap(ability => ability.manaColors ?? []);
     const extra = [...abilityColors, ...conditionColors(face, condition)];
     return baseColors(face, condition).withAbilityColors(extra);
