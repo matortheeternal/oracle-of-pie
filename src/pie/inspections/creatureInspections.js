@@ -1,3 +1,5 @@
+const OPPOSING_OBJECT = { isOpposingObject: true };
+
 export const CREATURE_INSPECTIONS = [
     {
         id: 'tap-creature',
@@ -17,13 +19,17 @@ export const CREATURE_INSPECTIONS = [
         id: 'steal-permanently',
         title: 'Gains control permanently',
         group: 'Control',
-        match: { kind: 'GainControlEffect', duration: null }
+        match: { kind: 'GainControlEffect', duration: null, phrases: OPPOSING_OBJECT }
     },
     {
         id: 'threaten',
         title: 'Gains control until end of turn',
         group: 'Control',
-        match: { kind: 'GainControlEffect', duration: { isUntilEndOfTurn: true } }
+        match: {
+            kind: 'GainControlEffect',
+            duration: { isUntilEndOfTurn: true },
+            phrases: OPPOSING_OBJECT
+        }
     },
     {
         id: 'flicker',

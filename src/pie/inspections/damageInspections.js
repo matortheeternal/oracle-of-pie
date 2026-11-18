@@ -30,6 +30,6 @@ export const DAMAGE_INSPECTIONS = [
         id: 'fight',
         title: 'Fights',
         group: 'Damage',
-        match: { kind: 'FightEffect' }
+        match: { kind: 'FightEffect', phrases: { isOpposingObject: true } }
     }
 ];

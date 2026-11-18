@@ -57,7 +57,7 @@ export const CANON_TIERS = {
         W: 'primary', U: 'primary', B: 'none', R: 'none', G: 'none'
     },
     'steal-permanently': {
-        W: 'secondary', U: 'primary', B: 'secondary', R: 'secondary', G: 'none'
+        W: 'none', U: 'primary', B: 'tertiary', R: 'secondary', G: 'none'
     },
     'threaten': {
         W: 'none', U: 'none', B: 'none', R: 'primary', G: 'none'
