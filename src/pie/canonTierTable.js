@@ -39,7 +39,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'
     },
     'mill-opponent': {
-        W: 'none', U: 'primary', B: 'tertiary', R: 'none', G: 'none'
+        W: 'none', U: 'primary', B: 'secondary', R: 'none', G: 'tertiary'
     },
     'tutor-nonland': {
         W: 'primary', U: 'primary', B: 'primary', R: 'secondary', G: 'secondary'
@@ -72,7 +72,7 @@ export const CANON_TIERS = {
         W: 'secondary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
     },
     'loot': {
-        W: 'none', U: 'primary', B: 'none', R: 'none', G: 'none'
+        W: 'tertiary', U: 'primary', B: 'secondary', R: 'none', G: 'none'
     },
     'rummage': {
         W: 'none', U: 'tertiary', B: 'none', R: 'primary', G: 'none'

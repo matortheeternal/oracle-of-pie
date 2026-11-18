@@ -12,7 +12,7 @@ export const RESOURCE_INSPECTIONS = [
         id: 'mill-opponent',
         title: 'Mills opponents',
         group: 'Graveyard',
-        match: { kind: 'MillEffect', ...FORCED_OPPONENT }
+        match: { kind: 'MillEffect', isOptional: false, subject: { canBeOpponent: true } }
     },
     {
         id: 'tutor-nonland',
