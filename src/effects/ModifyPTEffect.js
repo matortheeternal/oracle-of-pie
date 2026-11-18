@@ -20,4 +20,12 @@ export default class ModifyPTEffect extends Effect {
     get parts() {
         return [this.modifier, this.keywords].filter(Boolean);
     }
+
+    get grantsKeywords() {
+        return Boolean(this.keywords);
+    }
+
+    grantsKeyword(name) {
+        return Boolean(this.keywords?.names.includes(name));
+    }
 }

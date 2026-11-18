@@ -2,6 +2,7 @@ import { ActivationCost } from 'mana-scribe';
 import CostItem from './CostItem.js';
 
 const SYMBOLS = /^(?:\{[^}]+\})+/;
+const VARIABLE_MANA = 'variableMana';
 
 export default class ManaCostItem extends CostItem {
     static match(scribe, str) {
@@ -16,6 +17,14 @@ export default class ManaCostItem extends CostItem {
 
     get manaColors() {
         return this.cost.colors;
+    }
+
+    get manaValue() {
+        return this.cost.symbols.reduce((sum, symbol) => sum + symbol.cmcValue(), 0);
+    }
+
+    get hasVariableMana() {
+        return this.cost.symbols.some(symbol => symbol.type === VARIABLE_MANA);
     }
 
     get includesTap() {

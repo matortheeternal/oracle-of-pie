@@ -24,6 +24,10 @@ export default class GrantEffect extends Effect {
         return Boolean(this.keywords || this.quoted);
     }
 
+    get grantsKeywords() {
+        return Boolean(this.keywords);
+    }
+
     grantsKeyword(name) {
         return Boolean(this.keywords?.names.includes(name));
     }

@@ -28,6 +28,10 @@ export default class PTModifier extends Node {
         return this.toughness.sign === '-' && this.toughness.magnitude !== 0;
     }
 
+    get raisesToughness() {
+        return this.toughness.sign === '+' && this.toughness.magnitude !== 0;
+    }
+
     get isPowerBoost() {
         const raisesPower = this.power.sign === '+' && this.power.magnitude !== 0;
         return raisesPower && this.toughness.sign !== '-';

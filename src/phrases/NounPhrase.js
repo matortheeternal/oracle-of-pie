@@ -1,7 +1,7 @@
 import Phrase from './Phrase.js';
 import { MODIFIER_PARSERS } from './modifiers/index.js';
 import {
-    TYPE_WORDS, QUALIFIER_WORDS, NEGATED_QUALIFIER, SUBTYPE_WORD
+    TYPE_WORDS, QUALIFIER_WORDS, NEGATED_QUALIFIER, SUBTYPE_WORD, NONCREATURE_SUBTYPES
 } from './vocabulary.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
@@ -24,6 +24,7 @@ const PERMANENT_TYPES = [
 ];
 const ADJECTIVAL_TYPES = new Set(['card', 'spell', 'token', 'permanent']);
 
+const PLURAL_S = /(?<=[^s])s$/;
 function classifyWord(word) {
     const lower = word.toLowerCase();
     if (Object.hasOwn(TYPE_WORDS, lower)) return 'type';
@@ -35,6 +36,10 @@ function classifyWord(word) {
 function nextWordClass(str) {
     const match = str.match(WORD);
     return match ? classifyWord(match[1]) : null;
+}
+
+function singular(word) {
+    return word.replace(PLURAL_S, '');
 }
 
 export default class NounPhrase extends Phrase {
@@ -147,7 +152,12 @@ export default class NounPhrase extends Phrase {
     impliesType(type) {
         if (type === 'player' || type === 'spell') return false;
         if (this.types.includes('permanent')) return true;
-        return type === 'creature' && !this.types.length && this.subtypes.length > 0;
+        return type === 'creature' && !this.types.length && this.namesCreatureSubtype;
+    }
+
+    get namesCreatureSubtype() {
+        const isCreatureSubtype = subtype => !NONCREATURE_SUBTYPES.has(singular(subtype));
+        return this.subtypes.some(isCreatureSubtype);
     }
 
     get isPermanentObject() {

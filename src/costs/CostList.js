@@ -37,6 +37,22 @@ export default class CostList extends Parser {
         return this.items.some(item => item.discards && !item.discardsSelf);
     }
 
+    get manaValue() {
+        return this.items.reduce((sum, item) => sum + item.manaValue, 0);
+    }
+
+    get hasVariableMana() {
+        return this.items.some(item => item.hasVariableMana);
+    }
+
+    get paysMana() {
+        return this.manaValue > 0 || this.hasVariableMana;
+    }
+
+    get includesTap() {
+        return this.items.some(item => item.includesTap);
+    }
+
     get removesSource() {
         return this.items.some(item => item.removesSource);
     }

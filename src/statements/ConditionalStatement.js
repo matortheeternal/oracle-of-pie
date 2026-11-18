@@ -26,6 +26,7 @@ const CONDITION_ALTERNATIVES = [
 ];
 const SPENT_COLOR = /\{([WUBRG])\}(?:\{\1\})* was spent to cast/;
 const KICKED = /\bwas kicked\b/i;
+const DURATION = /^until /i;
 const IF_YOU_DO = /^if you do$|^if you [a-z]+ [^,]* this way$/i;
 const INTERVENING_IF = /^if (?!you do\b|you don't\b)/i;
 const ADDITIONAL_COST = /^as an additional cost to cast this spell/i;
@@ -51,6 +52,10 @@ export default class ConditionalStatement extends Statement {
 
     get isInterveningIf() {
         return INTERVENING_IF.test(this.condition);
+    }
+
+    get isDuration() {
+        return DURATION.test(this.condition);
     }
 
     get isIfYouDo() {
