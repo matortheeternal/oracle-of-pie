@@ -11,13 +11,24 @@ const GRANTED_MANA = {
     not: { parentEffect: { subject: { hasType: 'land' } } }
 };
 
+const REPEATED_MANA_TRIGGER = {
+    granted: false,
+    expansion: null,
+    ability: { kind: 'TriggeredAbility', isRepeatable: true }
+};
+const MANA_TOKEN = { tokenDefinitions: { name: ['Treasure', 'Gold', 'Powerstone'] } };
+
+const RAMP_TAGS = ['land-ramp', 'mana-dork', 'mana-rock', 'mana-producer', 'ritual'];
+
 export const MANA_TAGS = [
     {
         tag: 'mana-dork',
         match: {
-            kind: 'AddManaEffect',
             card: { isCreature: true },
-            context: FREE_MANA_ABILITY
+            any: [
+                { kind: 'AddManaEffect', context: FREE_MANA_ABILITY },
+                { kind: 'CreateTokenEffect', ...MANA_TOKEN, context: FREE_MANA_ABILITY }
+            ]
         }
     },
     {
@@ -26,6 +37,14 @@ export const MANA_TAGS = [
             kind: 'AddManaEffect',
             card: { isArtifact: true, isCreature: false, isLand: false },
             context: FREE_MANA_ABILITY
+        }
+    },
+    {
+        tag: 'mana-producer',
+        match: {
+            kind: 'AddManaEffect',
+            card: { isLand: false },
+            context: REPEATED_MANA_TRIGGER
         }
     },
     {
@@ -40,7 +59,7 @@ export const MANA_TAGS = [
         tag: 'ramp',
         match: {
             any: [
-                { tag: ['land-ramp', 'mana-dork', 'mana-rock', 'ritual'] },
+                { tag: RAMP_TAGS },
                 { kind: 'AddManaEffect', context: YOUR_TOKEN_MANA },
                 { kind: 'AddManaEffect', context: GRANTED_MANA }
             ]
