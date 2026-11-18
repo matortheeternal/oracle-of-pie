@@ -9,7 +9,8 @@ export default class MonocolorPolicy extends ColorPolicy {
         return cardColors.isMonocolored;
     }
 
-    static offendingColors(cardColors, profile, excluded) {
-        return this.rareColors(cardColors, profile, excluded);
+    static judge(cardColors, tiers) {
+        const offending = tiers.flaggedColors(cardColors.colors);
+        return this.verdict(offending, tiers.worstOf(cardColors.colors));
     }
 }

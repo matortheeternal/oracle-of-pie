@@ -42,20 +42,18 @@ export default class PieInspector {
             .filter(Boolean);
     }
 
-    judge(attribution, excludeSelf) {
-        const profile = this.profiles.get(attribution.inspection.id);
+    judge(attribution) {
         const colors = attribution.colors;
         const policy = COLOR_POLICIES.find(candidate => candidate.appliesTo(colors));
-        if (!profile || !policy) return null;
-        const excluded = excludeSelf ? attribution.colors.soleColor : null;
-        const offending = policy.offendingColors(attribution.colors, profile, excluded);
-        if (!offending.length) return null;
-        return new PieFlag(attribution, policy, offending, profile);
+        const verdict = policy?.judge(colors, attribution.inspection.tiers);
+        if (!verdict) return null;
+        const profile = this.profiles.get(attribution.inspection.id) ?? null;
+        return new PieFlag(attribution, policy, verdict, profile);
     }
 
-    inspect(faces, { excludeSelf = false } = {}) {
+    inspect(faces) {
         return this.attributions(faces)
-            .map(attribution => this.judge(attribution, excludeSelf))
+            .map(attribution => this.judge(attribution))
             .filter(Boolean);
     }
 }

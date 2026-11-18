@@ -9,8 +9,9 @@ export default class GoldPolicy extends ColorPolicy {
         return cardColors.isGold;
     }
 
-    static offendingColors(cardColors, profile) {
-        const rare = this.rareColors(cardColors, profile, null);
-        return rare.length === cardColors.colors.length ? rare : [];
+    static judge(cardColors, tiers) {
+        const offending = tiers.flaggedColors(cardColors.colors);
+        if (offending.length < cardColors.colors.length) return null;
+        return this.verdict(offending, tiers.mildestOf(cardColors.colors));
     }
 }

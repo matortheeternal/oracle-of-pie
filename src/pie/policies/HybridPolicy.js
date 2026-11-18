@@ -9,7 +9,8 @@ export default class HybridPolicy extends ColorPolicy {
         return cardColors.isHybrid;
     }
 
-    static offendingColors(cardColors, profile) {
-        return this.rareColors(cardColors, profile, null);
+    static judge(cardColors, tiers) {
+        const offending = tiers.flaggedColors(cardColors.colors);
+        return this.verdict(offending, tiers.worstOf(cardColors.colors));
     }
 }
