@@ -6,10 +6,10 @@ export const CANON_TIERS = {
         W: 'tertiary', U: 'primary', B: 'none', R: 'none', G: 'tertiary'
     },
     'destroy-creature': {
-        W: 'secondary', U: 'none', B: 'primary', R: 'tertiary', G: 'none'
+        W: 'secondary', U: 'none', B: 'primary', R: 'none', G: 'none'
     },
     'exile-creature': {
-        W: 'primary', U: 'tertiary', B: 'primary', R: 'tertiary', G: 'none'
+        W: 'primary', U: 'tertiary', B: 'primary', R: 'none', G: 'none'
     },
     'bounce-creature': {
         W: 'none', U: 'primary', B: 'none', R: 'none', G: 'none'
