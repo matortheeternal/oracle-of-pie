@@ -30,8 +30,13 @@ export default class DrawEffect extends Effect {
         return this.count === 1;
     }
 
+    get isVariable() {
+        if (!this.isComplete || this.amount?.isPrevious) return false;
+        return this.count === null;
+    }
+
     get isBurst() {
-        return this.count >= BURST_COUNT;
+        return this.isVariable || this.count >= BURST_COUNT;
     }
 
     get isComplete() {

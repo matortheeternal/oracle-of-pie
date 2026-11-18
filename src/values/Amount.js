@@ -3,8 +3,9 @@ import { NUMBER_PATTERN, numberValue } from './numberWords.js';
 
 const COUNT = `(a number of|that many|${NUMBER_PATTERN}|half|twice)`;
 const AMOUNT = new RegExp(`^(up to |at least )?${COUNT}\\b`, 'i');
+const PREVIOUS = 'previous';
 const SPECIAL = {
-    'that many': 'previous', 'a number of': 'variable', half: 'half', twice: 'double'
+    'that many': PREVIOUS, 'a number of': 'variable', half: 'half', twice: 'double'
 };
 
 export default class Amount extends Node {
@@ -17,5 +18,9 @@ export default class Amount extends Node {
         const word = match[2].toLowerCase();
         this.value = SPECIAL[word] ?? numberValue(word);
         this.isUpTo = Boolean(match[1]?.startsWith('up'));
+    }
+
+    get isPrevious() {
+        return this.value === PREVIOUS;
     }
 }
