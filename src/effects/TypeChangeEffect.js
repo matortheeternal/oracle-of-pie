@@ -1,6 +1,9 @@
 import Effect from './Effect.js';
 
-const NEW_TYPE = '(an? [^,.]+|all colors|legendary|colorless|the chosen [^,.]+)';
+const TYPE_ALTERNATIVES = [
+    'an? (?:"[^"]*"|[^,."])+', 'all colors', 'legendary', 'colorless', 'the chosen [^,.]+'
+];
+const NEW_TYPE = `(${TYPE_ALTERNATIVES.join('|')})`;
 const TYPE_CHANGE = new RegExp(`^(?:it's|it is|is|are) ${NEW_TYPE}`, 'i');
 const CREATURE = /\bcreatures?\b/i;
 

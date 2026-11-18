@@ -6,7 +6,7 @@ const CREATURE_TOKEN = /\bcreature tokens?\b/i;
 const LAND_TOKEN = /\bland tokens?\b/i;
 const TOKEN_DESCRIPTION_ALTERNATIVES = [
     ' with (?:"[^"]*"|[^,."])+(?:, and [^.,]+)?',
-    ' named [^,.]+',
+    ' named (?:"[^"]*"|[^,."])+',
     ' that\'s a copy of [^,.]+',
     ' attached to [^,.]+',
     ' for each [^,.]+',
