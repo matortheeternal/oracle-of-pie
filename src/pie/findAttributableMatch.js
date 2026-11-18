@@ -1,5 +1,5 @@
 function isAttributableMatch(inspection, node, context) {
-    if (context.forOpponent || context.expansion?.isToken) return false;
+    if (context.forOpponent || context.expansion) return false;
     return inspection.matches(node, context);
 }
 
