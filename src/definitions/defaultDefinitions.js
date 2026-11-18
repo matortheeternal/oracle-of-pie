@@ -3,6 +3,11 @@ const TYPECYCLING = /(?<type>[a-z]+(?: land)?)cycling/;
 export const DEFAULT_DEFINITIONS = {
     keywords: [
         {
+            name: 'Battle cry',
+            reminder: 'Whenever this creature attacks, each other attacking creature '
+                + 'gets +1/+0 until end of turn.'
+        },
+        {
             name: 'Cycling',
             reminder: '{parameter}, Discard this card: Draw a card.'
         },
