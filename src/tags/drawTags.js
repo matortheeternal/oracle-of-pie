@@ -12,6 +12,7 @@ const SELF_ENTERS = {
     event: { kind: 'EntersEvent', isSelf: true }
 };
 const RESOLVES_OR_ENTERS = {
+    delayedTrigger: null,
     any: [
         { card: { isInstantOrSorcery: true }, ability: { kind: 'SpellAbility' } },
         { ability: SELF_ENTERS }
