@@ -3,7 +3,8 @@ import { normalizeCounterKind, isPlusOneKind, lowersToughness } from './counterK
 
 const COUNTERS_ON_IT = '.*counters? on (?:it|them)\\b';
 const ENTERS_WITH = new RegExp(
-    `^enters? (?:the battlefield )?(?:tapped )?with (?=${COUNTERS_ON_IT})`, 'i'
+    `^(?:enters?|escapes?) (?:the battlefield )?(?:tapped )?with (?=${COUNTERS_ON_IT})`,
+    'i'
 );
 const DESCRIPTION = /^(.*?\bcounters? on (?:it|them)\b(?: equal to [^,.]+)?)/i;
 const KIND = /([+\-−]\d+\/[+\-−]\d+|[a-z]+) counters?\b/gi;

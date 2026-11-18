@@ -45,13 +45,19 @@ import DoubleCountersEffect from './DoubleCountersEffect.js';
 import PreventDamageEffect from './PreventDamageEffect.js';
 import CostModificationEffect from './CostModificationEffect.js';
 import DefinePTEffect from './DefinePTEffect.js';
+import EntersAsCopyEffect from './EntersAsCopyEffect.js';
+import CausativeEffect from './CausativeEffect.js';
+import SpendManaEffect from './SpendManaEffect.js';
+import CombatPermissionEffect from './CombatPermissionEffect.js';
+import PhaseEffect from './PhaseEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
 export const EFFECT_PARSERS = [
     SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
     CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect, ReturnEffect,
-    DrawEffect, DiscardEffect, DamageEffect, ModifyPTEffect, HandSizeEffect, GrantEffect,
+    DrawEffect, DiscardEffect, DamageEffect, ModifyPTEffect, HandSizeEffect,
+    CausativeEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
     CantEffect, EntersWithCountersEffect,
@@ -60,6 +66,7 @@ export const EFFECT_PARSERS = [
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
+    EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     OpaqueEffect
 ];
 
@@ -75,5 +82,6 @@ export {
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
+    EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     OpaqueEffect
 };
