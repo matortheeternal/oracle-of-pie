@@ -22,7 +22,7 @@ export const REMOVAL_INSPECTIONS = [
         exceptions: [FLYER_DESTRUCTION],
         match: {
             kind: 'DestroyEffect',
-            phrases: { ...OPPOSING_CREATURE, requiresFlying: false }
+            phrases: OPPOSING_CREATURE
         }
     },
     {
