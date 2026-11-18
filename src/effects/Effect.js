@@ -3,6 +3,8 @@ import Duration from '../values/Duration.js';
 import PhraseList from '../phrases/PhraseList.js';
 import { NotImplementedError } from '../core/customErrors.js';
 
+const LEADING_SPACE = /^\s+/;
+
 export default class Effect extends Parser {
     static get pattern() {
         throw new NotImplementedError('pattern');
@@ -17,10 +19,18 @@ export default class Effect extends Parser {
         this.subject = null;
         this.isOptional = false;
         this.parseArguments(match);
-        this.duration = this.consume([Duration]);
+        this.duration = this.consumeDuration();
     }
 
     parseArguments(match) {
+    }
+
+    consumeDuration() {
+        const start = this.remainingStr;
+        this.consumeText(LEADING_SPACE);
+        const duration = this.consume([Duration]);
+        if (!duration) this.remainingStr = start;
+        return duration;
     }
 
     consumeObjects() {
