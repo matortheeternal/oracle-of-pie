@@ -142,6 +142,13 @@ export const WALL_REMOVAL = {
     tiers: { R: TERTIARY }
 };
 
+export const SACRIFICIAL_MANA = {
+    id: 'sacrifice-cost',
+    title: 'Mana paid for by sacrificing another permanent',
+    match: { context: { ability: { cost: { sacrificesOther: true } } } },
+    cites: 'Mana production, temporary'
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',

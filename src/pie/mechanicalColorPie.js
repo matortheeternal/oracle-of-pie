@@ -49,5 +49,6 @@ export const MECHANICAL_COLOR_PIE = {
     'Destroy target attacking or blocking creature.': { W: 'primary' },
     '"Polymorph"': { U: 'secondary', R: 'primary' },
     'Land destruction': { B: 'tertiary', R: 'primary', G: 'tertiary' },
+    'Mana production, temporary': { B: 'secondary', R: 'primary' },
     'Deal N damage to target attacking or blocking creature.': { W: 'primary' }
 };

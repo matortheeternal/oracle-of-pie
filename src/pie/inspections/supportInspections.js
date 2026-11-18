@@ -1,5 +1,5 @@
 import tagInspection from './tagInspection.js';
-import { EXTRA_ATTACK, UNTAPPED_CREATURES } from './exceptions.js';
+import { EXTRA_ATTACK, UNTAPPED_CREATURES, SACRIFICIAL_MANA } from './exceptions.js';
 
 const OPPONENT_LOSES_LIFE = { kind: 'LoseLifeEffect', subjectIsOpponent: true };
 const YOUR_OWN_PERMANENTS = {
@@ -11,7 +11,8 @@ export const SUPPORT_INSPECTIONS = [
     tagInspection({
         id: 'mana-dork',
         title: 'Creatures that tap for mana',
-        group: 'Mana & lands'
+        group: 'Mana & lands',
+        exceptions: [SACRIFICIAL_MANA]
     }),
     tagInspection({
         id: 'extra-untap',
