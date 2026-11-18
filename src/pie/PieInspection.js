@@ -8,11 +8,17 @@ function canonTiersOf(id) {
     return ColorTiers.fromNames(CANON_TIERS[id] ?? {});
 }
 
-function defaultTiers(id, citation, allowedWherever) {
-    const canon = canonTiersOf(id);
-    const own = citation ? canon.loosenedBy(citation.tiers) : canon;
-    if (!allowedWherever) return own;
-    return own.loosenedBy(canonTiersOf(allowedWherever));
+function floorsOf(spec, citation) {
+    return [
+        citation?.tiers,
+        spec.atLeast && ColorTiers.fromNames(spec.atLeast),
+        spec.allowedWherever && canonTiersOf(spec.allowedWherever)
+    ].filter(Boolean);
+}
+
+function defaultTiers(spec, citation) {
+    const loosen = (tiers, floor) => tiers.loosenedBy(floor);
+    return floorsOf(spec, citation).reduce(loosen, canonTiersOf(spec.id));
 }
 
 export default class PieInspection {
@@ -22,7 +28,7 @@ export default class PieInspection {
         this.title = title;
         this.group = group;
         this.citation = Citation.of(spec.cites);
-        this.tiers = tiers ?? defaultTiers(id, this.citation, spec.allowedWherever);
+        this.tiers = tiers ?? defaultTiers(spec, this.citation);
         this.description = description;
         this.exceptions = exceptions.map(exception => new PieException(exception));
         this.query = Query.compile(spec.match);
