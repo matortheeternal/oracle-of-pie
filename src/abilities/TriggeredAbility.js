@@ -1,19 +1,9 @@
 import BodyAbility from './BodyAbility.js';
 import { parseTriggerEvent } from '../triggers/index.js';
+import splitTrigger from '../triggers/splitTrigger.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const TRIGGER_WORD = /^(when|whenever|at) /i;
-const COMMA = ', ';
-
-function splitTrigger(scribe, rest) {
-    let index = rest.indexOf(COMMA);
-    while (index >= 0) {
-        const body = rest.slice(index + COMMA.length);
-        if (scribe.startsClause(body)) return [rest.slice(0, index), body];
-        index = rest.indexOf(COMMA, index + 1);
-    }
-    return null;
-}
 
 export default class TriggeredAbility extends BodyAbility {
     static match(scribe, str) {
