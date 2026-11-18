@@ -16,9 +16,15 @@ const EXCLUDED_TYPES = [
     'vanguard', 'dungeon'
 ];
 const QUERY = [
-    'game:paper', 'not:reprint', '-is:promo', '-st:funny', '-st:memorabilia', '-st:token',
+    'game:paper', '-is:promo', '-st:funny', '-st:memorabilia', '-st:token',
     ...EXCLUDED_TYPES.map(type => `-t:${type}`)
 ].join(' ');
+const STANDARD_SET_TYPES = new Set(['expansion', 'core']);
+
+function isModernPrint(card) {
+    if (card.released_at < since) return false;
+    return !card.reprint || STANDARD_SET_TYPES.has(card.set_type);
+}
 
 async function* jsonl(path) {
     const input = fs.createReadStream(path).pipe(zlib.createGunzip());
@@ -63,7 +69,7 @@ let total = 0;
 fs.mkdirSync(outDir, { recursive: true });
 for await (const card of jsonl(cardsPath)) {
     total++;
-    if (card.released_at >= since) candidates.push(card);
+    if (isModernPrint(card)) candidates.push(card);
 }
 const sifterStart = Date.now();
 const matched = sifter.filter(candidates, QUERY);
