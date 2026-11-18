@@ -35,6 +35,11 @@ export default class CardText extends Parser {
         return this.abilities;
     }
 
+    get hasOnlyKeywordAbilities() {
+        return this.abilities.length > 0
+            && this.abilities.every(ability => ability.isKeywordOnly);
+    }
+
     get hasAdditionalCost() {
         return this.abilities.some(ability => ability.hasAdditionalCost);
     }

@@ -29,6 +29,10 @@ function isKeywordRest(list, rest) {
 }
 
 export default class KeywordAbility extends Ability {
+    get isKeywordOnly() {
+        return true;
+    }
+
     static match(scribe, str) {
         if (!KeywordList.match(scribe, str)) return null;
         const list = KeywordList.parse(scribe, [''], str);

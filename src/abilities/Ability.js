@@ -19,6 +19,10 @@ export default class Ability extends Parser {
         this.modes.push(mode);
     }
 
+    get isKeywordOnly() {
+        return false;
+    }
+
     get reminderLimitsToOnce() {
         return this.reminders.some(reminder => ONLY_ONCE.test(reminder));
     }
