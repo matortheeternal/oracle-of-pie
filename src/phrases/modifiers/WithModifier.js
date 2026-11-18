@@ -39,6 +39,8 @@ const WITH = new RegExp(
     'i'
 );
 
+const SAME_NAME = /^the same name as /;
+
 export default class WithModifier extends Modifier {
     static match(scribe, str) {
         return str.match(WITH);
@@ -49,6 +51,10 @@ export default class WithModifier extends Modifier {
         this.negated = match[1].toLowerCase() === 'without';
         this.property = match[2].toLowerCase();
         this.comparison = match[3]?.trim() ?? null;
+    }
+
+    get relatesToObject() {
+        return SAME_NAME.test(this.property);
     }
 
     get keyword() {

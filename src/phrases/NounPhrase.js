@@ -18,6 +18,7 @@ const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i')
 const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
 const TYPE_JOINER = /^(?:,? ?(?:and\/or|or|and) |, )/;
 const COMMANDER = 'commander';
+const CHOSEN = 'chosen';
 const MASS_DETERMINER = /^(each|all)/i;
 const TARGET_DETERMINER = /target/i;
 const PLURAL = /s$/;
@@ -145,6 +146,11 @@ export default class NounPhrase extends Phrase {
     get isMass() {
         if (!this.determiner) return Boolean(this.pluralTypes);
         return MASS_DETERMINER.test(this.determiner);
+    }
+
+    get isRelativeGroup() {
+        if (this.qualifiers.includes(CHOSEN)) return true;
+        return this.modifiers.some(modifier => modifier.relatesToObject);
     }
 
     get isCommanderGroup() {

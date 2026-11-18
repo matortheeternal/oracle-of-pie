@@ -1,5 +1,7 @@
 const MASS_OPPOSING = {
     isMass: true,
+    isRelativeGroup: false,
+    isPermanentObject: true,
     isPlayer: false,
     controlledByYou: false,
     isCardInZone: false
@@ -120,7 +122,12 @@ export const REMOVAL_TAGS = [
                 },
                 {
                     kind: 'DamageEffect',
-                    phrases: { isMass: true, hasType: 'creature', controlledByYou: false }
+                    phrases: {
+                        isMass: true,
+                        isRelativeGroup: false,
+                        hasType: 'creature',
+                        controlledByYou: false
+                    }
                 },
                 { removesPermanently: true, phrases: MASS_OPPOSING }
             ]
