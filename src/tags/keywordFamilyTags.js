@@ -1,4 +1,5 @@
 const GRANTING_EFFECTS = ['GrantEffect', 'ModifyPTEffect'];
+const SELF_GRANTING_EFFECTS = [...GRANTING_EFFECTS, 'BecomesEffect'];
 const GRANT_RECIPIENT = {
     refersToSelf: false,
     any: [{ isBackReference: false }, { antecedent: { isTargeted: true } }]
@@ -6,7 +7,7 @@ const GRANT_RECIPIENT = {
 const GRANTED = 'grantedKeywordNames';
 const COUNTER_EFFECTS = ['PutCountersEffect', 'EntersWithCountersEffect'];
 const ONTO_SELF = [
-    { kind: GRANTING_EFFECTS, subject: { refersToSelf: true } },
+    { kind: SELF_GRANTING_EFFECTS, subject: { refersToSelf: true } },
     { kind: COUNTER_EFFECTS, card: { isCreature: true }, phrases: { refersToSelf: true } }
 ];
 
