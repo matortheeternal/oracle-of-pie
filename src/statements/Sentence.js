@@ -3,6 +3,7 @@ import { STATEMENT_PARSERS } from './index.js';
 
 const SENTENCE = /^((?:"[^"]*"|[^."]|\.(?=\d))+)(?:\.|$)/;
 const THEN = /^then,? /i;
+const X_FROM_CREATURE_STATS = /\bwhere X is [^.]*\b(?:power|toughness)\b/i;
 
 export default class Sentence extends Parser {
     static match(scribe, str) {
@@ -23,6 +24,10 @@ export default class Sentence extends Parser {
     link(previous, next) {
         this.previous = previous ?? null;
         this.next = next ?? null;
+    }
+
+    get definesXByCreatureStats() {
+        return X_FROM_CREATURE_STATS.test(this.raw);
     }
 
     get dependsOnPrevious() {

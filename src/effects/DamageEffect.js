@@ -16,6 +16,7 @@ const FOR_EACH = /^for each [^,.]+/i;
 const EACH_OF = /^each of /i;
 const EQUAL_TO = /^equal to [^,.]+/i;
 const PING_LIMIT = 2;
+const CREATURE_STAT = /\b(?:power|toughness)\b/i;
 
 export default class DamageEffect extends Effect {
     static get pattern() {
@@ -27,7 +28,8 @@ export default class DamageEffect extends Effect {
         this.amountText = amount?.[0] ?? null;
         this.isPowerBased = Boolean(amount?.[2]);
         this.targets = this.consumeText(TO_TARGETS) ? this.consumeTargets() : null;
-        this.consumeText(FOR_EACH) ?? this.consumeText(EQUAL_TO);
+        const scaling = this.consumeText(FOR_EACH) ?? this.consumeText(EQUAL_TO);
+        this.scalingText = scaling?.[0] ?? null;
     }
 
     consumeTargets() {
@@ -38,6 +40,10 @@ export default class DamageEffect extends Effect {
     get fixedAmount() {
         const count = this.amountText?.split(' ')[0] ?? '';
         return numberValue(count) ?? null;
+    }
+
+    get scalesWithCreatureStats() {
+        return CREATURE_STAT.test(`${this.amountText} ${this.scalingText}`);
     }
 
     get isPing() {

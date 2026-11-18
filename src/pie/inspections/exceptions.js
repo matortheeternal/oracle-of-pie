@@ -23,6 +23,18 @@ export const FLYER_DAMAGE = {
     tiers: { G: PRIMARY, W: SECONDARY }
 };
 
+export const STAT_SCALED_DAMAGE = {
+    id: 'creature-stats',
+    title: 'Damage scaled by a creature\'s power or toughness',
+    match: {
+        any: [
+            { scalesWithCreatureStats: true },
+            { context: { sentence: { definesXByCreatureStats: true } } }
+        ]
+    },
+    tiers: { G: PRIMARY }
+};
+
 export const COMBATANT_DAMAGE = {
     id: 'attacking-or-blocking',
     title: 'Attacking or blocking creatures',
