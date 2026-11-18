@@ -1,0 +1,297 @@
+{"id":"mtg-the-pale-age:Abduction Angel|removal-exile","verdict":"wrong","note":"Per Voidwalk, no.","at":"2026-11-17T23:12:11.668Z"}
+{"id":"mtg-the-pale-age:Aberrant Nemesis|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:12:28.072Z"}
+{"id":"mtg-the-pale-age:Bearer of Hope|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:12:33.720Z"}
+{"id":"mtg-the-pale-age:Break Wings|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:12:39.623Z"}
+{"id":"mtg-the-pale-age:Cataclysmic Wake|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:12:44.133Z"}
+{"id":"mtg-the-pale-age:Cataclysmic Wake|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:12:47.753Z"}
+{"id":"mtg-the-pale-age:Cataclysmic Wake|removal-artifact","verdict":"correct","note":"yes, it already has removal-artifact (?)","at":"2026-11-17T23:12:59.139Z"}
+{"id":"mtg-the-pale-age:Cataclysmic Wake|removal-enchantment","verdict":"correct","note":"yes, already has this tag","at":"2026-11-17T23:13:06.085Z"}
+{"id":"mtg-the-pale-age:Cinder Sprite|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:15:08.685Z"}
+{"id":"mtg-the-pale-age:Cloud Eater|removal-exile","verdict":"correct","note":"","at":"2026-11-17T23:15:13.303Z"}
+{"id":"mtg-the-pale-age:Cloud Skimmer|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:15:17.602Z"}
+{"id":"mtg-the-pale-age:Clue|draw","verdict":"correct","note":"","at":"2026-11-17T23:15:20.005Z"}
+{"id":"mtg-the-pale-age:Colorsight|scry","verdict":"correct","note":"","at":"2026-11-17T23:15:30.763Z"}
+{"id":"mtg-the-pale-age:Desert Assault Vehicle|draw","verdict":"correct","note":"","at":"2026-11-17T23:15:32.596Z"}
+{"id":"mtg-the-pale-age:Devour the Weak|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:15:44.308Z"}
+{"id":"mtg-the-pale-age:Devour the Weak|removal-fight","verdict":"wrong","note":"They don't actually fight, so I don't think so?","at":"2026-11-17T23:16:01.650Z"}
+{"id":"mtg-the-pale-age:Disgrace|removal-exile","verdict":"correct","note":"","at":"2026-11-17T23:16:08.939Z"}
+{"id":"mtg-the-pale-age:Disgrace|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:16:10.504Z"}
+{"id":"mtg-the-pale-age:Divine Duality|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:16:12.930Z"}
+{"id":"mtg-the-pale-age:Dune Priest|draw","verdict":"correct","note":"yes, and the old tags of mill and mill-self are based on an older design and should be removed.","at":"2026-11-17T23:16:35.270Z"}
+{"id":"mtg-the-pale-age:Dune Priest|loot","verdict":"correct","note":"","at":"2026-11-17T23:16:36.483Z"}
+{"id":"mtg-the-pale-age:Ea, Forgotten Queen|draw","verdict":"correct","note":"","at":"2026-11-17T23:16:39.829Z"}
+{"id":"mtg-the-pale-age:Electric Inspiration|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:16:42.962Z"}
+{"id":"mtg-the-pale-age:Electric Inspiration|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:16:44.137Z"}
+{"id":"mtg-the-pale-age:Electric Inspiration|draw","verdict":"correct","note":"","at":"2026-11-17T23:16:46.969Z"}
+{"id":"mtg-the-pale-age:Electric Inspiration|loot","verdict":"correct","note":"","at":"2026-11-17T23:16:49.385Z"}
+{"id":"mtg-the-pale-age:Ember Invocation|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:16:53.596Z"}
+{"id":"mtg-the-pale-age:Ember Invocation|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:16:54.156Z"}
+{"id":"mtg-the-pale-age:Ember Invocation|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:16:55.223Z"}
+{"id":"mtg-the-pale-age:Ember Invocation|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:16:59.367Z"}
+{"id":"mtg-the-pale-age:Embrace the Void|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:17:01.810Z"}
+{"id":"mtg-the-pale-age:Endless Explosion|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:17:43.793Z"}
+{"id":"mtg-the-pale-age:Exaltation|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:17:45.562Z"}
+{"id":"mtg-the-pale-age:Experimental Mutation|removal-bounce","verdict":"correct","note":"","at":"2026-11-17T23:17:48.602Z"}
+{"id":"mtg-the-pale-age:Fall from Grace|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:17:50.961Z"}
+{"id":"mtg-the-pale-age:Ferocious Invocation|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:18:10.444Z"}
+{"id":"mtg-the-pale-age:Ferocious Invocation|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:18:11.425Z"}
+{"id":"mtg-the-pale-age:Ferocious Invocation|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:18:12.764Z"}
+{"id":"mtg-the-pale-age:Ferocious Invocation|removal-fight","verdict":"correct","note":"","at":"2026-11-17T23:18:31.425Z"}
+{"id":"mtg-the-pale-age:Fields of Gold|draw","verdict":"correct","note":"","at":"2026-11-17T23:18:36.565Z"}
+{"id":"mtg-the-pale-age:Filibus, the Terrible|draw","verdict":"correct","note":"","at":"2026-11-17T23:18:40.444Z"}
+{"id":"mtg-the-pale-age:Floating Rock|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:18:43.624Z"}
+{"id":"mtg-the-pale-age:Frenzied Giant|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:18:51.076Z"}
+{"id":"mtg-the-pale-age:Frenzied Giant|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:18:51.934Z"}
+{"id":"mtg-the-pale-age:Frenzied Giant|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:18:52.884Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|burn-creature","verdict":"correct","note":"I notice a lot of our burn tags are asking about burn-creature, then burn-player, then burn-any.  that may be necessary, but we could also consider having it only ask about burn-any and then if I say yes, we don't have to have it ask me about burn-creature and burn-player?","at":"2026-11-17T23:19:47.480Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:19:48.012Z"}
+{"id":"mtg-the-pale-age:Gg'kah, the Calamity|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:19:49.731Z"}
+{"id":"mtg-the-pale-age:Ghost Blade|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:19:51.082Z"}
+{"id":"mtg-the-pale-age:Go with the Flow|loot","verdict":"correct","note":"","at":"2026-11-17T23:19:55.126Z"}
+{"id":"mtg-the-pale-age:Grace of the Hunt|draw","verdict":"correct","note":"","at":"2026-11-17T23:20:01.278Z"}
+{"id":"mtg-the-pale-age:Great Northern Owl|scry","verdict":"correct","note":"","at":"2026-11-17T23:20:05.040Z"}
+{"id":"mtg-the-pale-age:Devour the Weak|one-sided-fight","verdict":"correct","note":"","at":"2026-11-17T23:21:56.975Z"}
+{"id":"mtg-the-pale-age:Greener Pastures|draw","verdict":"correct","note":"","at":"2026-11-17T23:21:59.018Z"}
+{"id":"mtg-the-pale-age:How to Become a Giant|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:22:01.322Z"}
+{"id":"mtg-the-pale-age:How to Become a Giant|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:22:02.095Z"}
+{"id":"mtg-the-pale-age:Ichor Eruption|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:22:04.702Z"}
+{"id":"mtg-the-pale-age:Ichor Eruption|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:22:05.366Z"}
+{"id":"mtg-the-pale-age:Ichor Eruption|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:22:05.897Z"}
+{"id":"mtg-the-pale-age:Immolation|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:24:26.028Z"}
+{"id":"mtg-the-pale-age:Immolation|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:24:26.881Z"}
+{"id":"mtg-the-pale-age:Immolation|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:24:29.329Z"}
+{"id":"mtg-the-pale-age:Infernal Impulse|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:24:33.427Z"}
+{"id":"mtg-the-pale-age:Knowledge Warden|tapper-creature","verdict":"correct","note":"","at":"2026-11-17T23:24:37.492Z"}
+{"id":"mtg-the-pale-age:Law of the Jungle|removal-fight","verdict":"correct","note":"","at":"2026-11-17T23:24:40.532Z"}
+{"id":"mtg-the-pale-age:Magic Greenhouse|land-ramp","verdict":"wrong","note":"no, per Terramorphic Expanse and Evolving wilds, this is a fetchland, and not land-ramp.","at":"2026-11-17T23:25:24.420Z"}
+{"id":"mtg-the-pale-age:Morsel|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:25:26.754Z"}
+{"id":"mtg-the-pale-age:Mystic Revelation|scry","verdict":"correct","note":"","at":"2026-11-17T23:25:29.204Z"}
+{"id":"mtg-the-pale-age:Nibble|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:25:31.412Z"}
+{"id":"mtg-the-pale-age:Nyxie, the Nurturer|reanimate-creature","verdict":"correct","note":"","at":"2026-11-17T23:25:40.103Z"}
+{"id":"mtg-the-pale-age:Old Green Guardian|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:25:44.228Z"}
+{"id":"mtg-the-pale-age:Origin- The Guest|scry","verdict":"correct","note":"","at":"2026-11-17T23:25:53.348Z"}
+{"id":"mtg-the-pale-age:Origin- The Killer|loot","verdict":"correct","note":"","at":"2026-11-17T23:25:56.725Z"}
+{"id":"mtg-the-pale-age:Origin- The Killer|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:26:00.844Z"}
+{"id":"mtg-the-pale-age:Panopticon|draw","verdict":"correct","note":"","at":"2026-11-17T23:26:05.601Z"}
+{"id":"mtg-the-pale-age:Panopticon|discard","verdict":"correct","note":"","at":"2026-11-17T23:26:06.990Z"}
+{"id":"mtg-the-pale-age:Path to Paradise|removal-bounce","verdict":"correct","note":"","at":"2026-11-17T23:26:11.462Z"}
+{"id":"mtg-the-pale-age:Population Regulator|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:26:20.806Z"}
+{"id":"mtg-the-pale-age:Pristine Prism|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:26:22.809Z"}
+{"id":"mtg-the-pale-age:Pure Intent|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:26:25.963Z"}
+{"id":"mtg-the-pale-age:Quinn, Inexorable|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:26:28.958Z"}
+{"id":"mtg-the-pale-age:Roach Chef|draw","verdict":"correct","note":"","at":"2026-11-17T23:26:32.152Z"}
+{"id":"mtg-the-pale-age:Rot, Spoil, and Fester|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:26:42.687Z"}
+{"id":"mtg-the-pale-age:Ruminate|loot","verdict":"correct","note":"","at":"2026-11-17T23:26:46.327Z"}
+{"id":"mtg-the-pale-age:Sabotage Their Systems|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:26:49.861Z"}
+{"id":"mtg-the-pale-age:Scrabbling Ogre|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:26:51.879Z"}
+{"id":"mtg-the-pale-age:Seaborn Hustler|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:26:56.798Z"}
+{"id":"mtg-the-pale-age:Sizzle Splitter|loot","verdict":"correct","note":"","at":"2026-11-17T23:27:03.417Z"}
+{"id":"mtg-the-pale-age:Snuff, Silence, and Subdue|removal-toughness","verdict":"correct","note":"","at":"2026-11-17T23:27:08.167Z"}
+{"id":"mtg-the-pale-age:Snuff, Silence, and Subdue|counterspell","verdict":"correct","note":"","at":"2026-11-17T23:27:10.233Z"}
+{"id":"mtg-the-pale-age:Spontaneous Collapse|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:27:15.648Z"}
+{"id":"mtg-the-pale-age:Spontaneous Collapse|rummage","verdict":"correct","note":"","at":"2026-11-17T23:27:19.262Z"}
+{"id":"mtg-the-pale-age:Staff of the Stars|gives-flying","verdict":"correct","note":"","at":"2026-11-17T23:27:22.643Z"}
+{"id":"mtg-the-pale-age:Take Root|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:27:24.370Z"}
+{"id":"mtg-the-pale-age:Tenured Professor|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:27:27.058Z"}
+{"id":"mtg-the-pale-age:The One at the End|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:27:31.019Z"}
+{"id":"mtg-the-pale-age:The Portal|tutor-to-hand","verdict":"correct","note":"","at":"2026-11-17T23:27:41.726Z"}
+{"id":"mtg-the-pale-age:The Search for Meredith|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:27:48.752Z"}
+{"id":"mtg-the-pale-age:The Thunderstrider|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:27:56.499Z"}
+{"id":"mtg-the-pale-age:Thirst of the Dead|reanimate-creature","verdict":"correct","note":"","at":"2026-11-17T23:28:02.235Z"}
+{"id":"mtg-the-pale-age:Threads of Grace|reanimate-creature","verdict":"correct","note":"","at":"2026-11-17T23:28:07.445Z"}
+{"id":"mtg-the-pale-age:Tomi, Enlightened Archivist|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:28:16.639Z"}
+{"id":"mtg-the-pale-age:Vandalbomber|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:28:21.621Z"}
+{"id":"mtg-the-pale-age:Vandalbomber|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:28:22.972Z"}
+{"id":"mtg-the-pale-age:Wandering Bloodseeker|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:28:26.950Z"}
+{"id":"mtg-the-pale-age:Warden of Death|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:28:30.165Z"}
+{"id":"mtg-the-pale-age:Way of the Wild|draw","verdict":"correct","note":"","at":"2026-11-17T23:28:35.066Z"}
+{"id":"mtg-the-pale-age:Ylexa, Blood Enjoyer|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:28:40.296Z"}
+{"id":"mtg-the-pale-age:Ylexa, Blood Enjoyer|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:28:41.525Z"}
+{"id":"mtg-underground:Abduct|discard","verdict":"correct","note":"","at":"2026-11-17T23:28:50.144Z"}
+{"id":"mtg-underground:Abduct|draw","verdict":"correct","note":"","at":"2026-11-17T23:28:51.478Z"}
+{"id":"mtg-underground:Aggressive Ants|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:28:53.680Z"}
+{"id":"mtg-underground:Akpo Furen|draw","verdict":"correct","note":"","at":"2026-11-17T23:28:56.219Z"}
+{"id":"mtg-underground:Akpo Furen|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:28:57.949Z"}
+{"id":"mtg-underground:Ancient Metalmind|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:29:00.025Z"}
+{"id":"mtg-underground:Ancient Metalmind|draw","verdict":"correct","note":"","at":"2026-11-17T23:29:01.434Z"}
+{"id":"mtg-underground:Antares|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:29:03.960Z"}
+{"id":"mtg-underground:Antares|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:29:04.833Z"}
+{"id":"mtg-underground:Araphor, Radiant Protector|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:29:06.559Z"}
+{"id":"mtg-underground:Arcane Shift|removal-exile","verdict":"correct","note":"","at":"2026-11-17T23:29:09.969Z"}
+{"id":"mtg-underground:Arcane Shift|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:29:11.411Z"}
+{"id":"mtg-underground:Arcane Shift|removal-enchantment","verdict":"correct","note":"","at":"2026-11-17T23:29:12.049Z"}
+{"id":"mtg-underground:Arcmaw Carnivore|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:29:15.275Z"}
+{"id":"mtg-underground:Avatar of Annihilation|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:29:17.367Z"}
+{"id":"mtg-underground:Avatar of Annihilation|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:29:18.869Z"}
+{"id":"mtg-underground:Avatar of Annihilation|removal-enchantment","verdict":"correct","note":"","at":"2026-11-17T23:29:19.989Z"}
+{"id":"mtg-underground:Azorius Estuary|scry","verdict":"correct","note":"","at":"2026-11-17T23:29:21.887Z"}
+{"id":"mtg-underground:Balthasar Quaid|draw","verdict":"correct","note":"","at":"2026-11-17T23:29:26.000Z"}
+{"id":"mtg-underground:Balthasar Quaid|removal-bounce","verdict":"correct","note":"","at":"2026-11-17T23:29:32.840Z"}
+{"id":"mtg-underground:Beast King|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:29:35.738Z"}
+{"id":"mtg-underground:Bereave|discard","verdict":"correct","note":"","at":"2026-11-17T23:29:42.815Z"}
+{"id":"mtg-underground:Blank|draw","verdict":"correct","note":"","at":"2026-11-17T23:29:51.731Z"}
+{"id":"mtg-underground:Blasting Fields Expedition|tutor-to-hand","verdict":"correct","note":"","at":"2026-11-17T23:29:56.533Z"}
+{"id":"mtg-underground:Blasting Fields Expedition|draw","verdict":"correct","note":"","at":"2026-11-17T23:29:58.243Z"}
+{"id":"mtg-underground:Bloodlake Brawler|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:30:01.038Z"}
+{"id":"mtg-underground:Boneheap Curator|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-17T23:30:03.764Z"}
+{"id":"mtg-underground:Boros Boroughs|scry","verdict":"correct","note":"","at":"2026-11-17T23:30:06.696Z"}
+{"id":"mtg-underground:Burning-Spirit Shaman|rummage","verdict":"correct","note":"","at":"2026-11-17T23:30:09.775Z"}
+{"id":"mtg-underground:Catacomb Crawler|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:30:13.787Z"}
+{"id":"mtg-underground:Caught in a Cave-In|removal-exile","verdict":"correct","note":"","at":"2026-11-17T23:30:16.288Z"}
+{"id":"mtg-underground:Caught in a Cave-In|removal-enchantment","verdict":"correct","note":"","at":"2026-11-17T23:30:17.238Z"}
+{"id":"mtg-underground:Cave Wave|removal-bounce","verdict":"correct","note":"","at":"2026-11-17T23:30:23.474Z"}
+{"id":"mtg-underground:Ceremonial Sword|reanimate-creature","verdict":"correct","note":"","at":"2026-11-17T23:30:28.926Z"}
+{"id":"mtg-underground:Cruel Selection|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-17T23:30:33.367Z"}
+{"id":"mtg-underground:Cruel Selection|draw","verdict":"correct","note":"","at":"2026-11-17T23:30:35.070Z"}
+{"id":"mtg-underground:Crush Beneath|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:30:36.459Z"}
+{"id":"mtg-underground:Crystal Pioneer|removal-bounce","verdict":"correct","note":"","at":"2026-11-17T23:30:40.426Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:30:47.885Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:30:51.484Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|removal-enchantment","verdict":"correct","note":"","at":"2026-11-17T23:30:56.801Z"}
+{"id":"mtg-underground:Dark Abyss Expedition|tutor-to-hand","verdict":"correct","note":"","at":"2026-11-17T23:30:59.185Z"}
+{"id":"mtg-underground:Dead End|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:31:02.782Z"}
+{"id":"mtg-underground:Dead End|draw","verdict":"correct","note":"","at":"2026-11-17T23:31:04.302Z"}
+{"id":"mtg-underground:Deepway Informant|draw","verdict":"correct","note":"","at":"2026-11-17T23:31:11.965Z"}
+{"id":"mtg-underground:Defective Elevator|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:31:38.385Z"}
+{"id":"mtg-underground:Demera von Freyden|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-17T23:31:41.801Z"}
+{"id":"mtg-underground:Demera von Freyden|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:31:43.527Z"}
+{"id":"mtg-underground:Depthdiver Troll|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:31:46.231Z"}
+{"id":"mtg-underground:Desperate Hex|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:31:47.646Z"}
+{"id":"mtg-underground:Devastating Blow|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:31:52.689Z"}
+{"id":"mtg-underground:Dimir Derelict|scry","verdict":"correct","note":"","at":"2026-11-17T23:31:54.129Z"}
+{"id":"mtg-underground:Discover Lost Technology|draw","verdict":"correct","note":"","at":"2026-11-17T23:31:55.786Z"}
+{"id":"mtg-underground:Disrupt Passage|counterspell","verdict":"correct","note":"","at":"2026-11-17T23:31:56.961Z"}
+{"id":"mtg-underground:Disrupt Passage|tapper-creature","verdict":"correct","note":"","at":"2026-11-17T23:31:58.273Z"}
+{"id":"mtg-underground:Door to Destruction|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:32:01.504Z"}
+{"id":"mtg-underground:Drown in Memories|draw","verdict":"correct","note":"","at":"2026-11-17T23:32:02.676Z"}
+{"id":"mtg-underground:Entrance to Eternity|draw","verdict":"correct","note":"","at":"2026-11-17T23:32:05.710Z"}
+{"id":"mtg-underground:Envelop in Roots|removal-exile","verdict":"correct","note":"","at":"2026-11-17T23:32:08.433Z"}
+{"id":"mtg-underground:Envelop in Roots|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:32:09.511Z"}
+{"id":"mtg-underground:Envelop in Roots|removal-enchantment","verdict":"correct","note":"","at":"2026-11-17T23:32:10.305Z"}
+{"id":"mtg-underground:Envelop in Roots|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:32:11.282Z"}
+{"id":"mtg-underground:Escort Training|draw","verdict":"correct","note":"","at":"2026-11-17T23:32:12.230Z"}
+{"id":"mtg-underground:Exhausted Mage|draw","verdict":"correct","note":"","at":"2026-11-17T23:32:13.360Z"}
+{"id":"mtg-underground:Exhausted Mage|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:32:14.345Z"}
+{"id":"mtg-underground:Falling Stones|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:32:16.001Z"}
+{"id":"mtg-underground:Feast on Their Sanity|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:32:18.265Z"}
+{"id":"mtg-underground:Feast on Their Sanity|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:32:19.546Z"}
+{"id":"mtg-underground:Fel, the Burning Badlands|burn-player","verdict":"correct","note":"","at":"2026-11-17T23:32:21.761Z"}
+{"id":"mtg-underground:Field of Negation|counterspell","verdict":"correct","note":"","at":"2026-11-17T23:32:22.732Z"}
+{"id":"mtg-underground:Fourfold Vengeance|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:32:24.712Z"}
+{"id":"mtg-underground:Fungal Revival|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:32:26.214Z"}
+{"id":"mtg-underground:Goblin Archivist|draw","verdict":"correct","note":"","at":"2026-11-17T23:32:27.941Z"}
+{"id":"mtg-underground:Goblin Bomb-Tosser|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:32:29.714Z"}
+{"id":"mtg-underground:Goblin Bomb-Tosser|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:32:30.277Z"}
+{"id":"mtg-underground:Goblin Powderkeg|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:32:32.896Z"}
+{"id":"mtg-underground:Goblin Throat-Slitter|removal-toughness","verdict":"correct","note":"","at":"2026-11-17T23:32:37.463Z"}
+{"id":"mtg-underground:Golgari Grove|scry","verdict":"correct","note":"","at":"2026-11-17T23:32:38.323Z"}
+{"id":"mtg-underground:Grasping Aberration|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:32:40.784Z"}
+{"id":"mtg-underground:Grotesque Abomination|discard","verdict":"correct","note":"","at":"2026-11-17T23:32:57.938Z"}
+{"id":"mtg-underground:Gruul Moor|scry","verdict":"correct","note":"","at":"2026-11-17T23:33:00.128Z"}
+{"id":"mtg-underground:Harmond, Crime Baron|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:33:03.445Z"}
+{"id":"mtg-underground:Heartblade|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:33:04.841Z"}
+{"id":"mtg-underground:Heathen Prophet|scry","verdict":"correct","note":"","at":"2026-11-17T23:33:05.886Z"}
+{"id":"mtg-underground:Holy Hammer|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:33:06.986Z"}
+{"id":"mtg-underground:Holy Hammer|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:33:07.553Z"}
+{"id":"mtg-underground:Holy Hammer|removal-enchantment","verdict":"correct","note":"","at":"2026-11-17T23:33:08.056Z"}
+{"id":"mtg-underground:Holy Hammer|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:33:08.954Z"}
+{"id":"mtg-underground:Host of Hungry Spirits|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:33:10.638Z"}
+{"id":"mtg-underground:Hot Sludge|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:33:12.547Z"}
+{"id":"mtg-underground:Huge Hart|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:33:13.556Z"}
+{"id":"mtg-underground:Incite the Mob|draw","verdict":"correct","note":"","at":"2026-11-17T23:33:14.460Z"}
+{"id":"mtg-underground:Instrument Explosion|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:33:15.436Z"}
+{"id":"mtg-underground:Instrument Explosion|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:33:16.003Z"}
+{"id":"mtg-underground:Izzet Aqueducts|scry","verdict":"correct","note":"","at":"2026-11-17T23:33:16.915Z"}
+{"id":"mtg-underground:Kapilikua, Walking Volcano|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:33:19.982Z"}
+{"id":"mtg-underground:Kapilikua, Walking Volcano|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:33:20.715Z"}
+{"id":"mtg-underground:Lost in the Dark|removal-exile","verdict":"correct","note":"","at":"2026-11-17T23:33:23.200Z"}
+{"id":"mtg-underground:Lost in the Dark|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:33:24.501Z"}
+{"id":"mtg-underground:Many-legged Death|removal-sacrifice","verdict":"correct","note":"","at":"2026-11-17T23:33:25.616Z"}
+{"id":"mtg-underground:Megaton Mallet|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:33:26.498Z"}
+{"id":"mtg-underground:Melancholy|reanimate-creature","verdict":"correct","note":"","at":"2026-11-17T23:33:29.555Z"}
+{"id":"mtg-underground:Mushroom Grove Expedition|land-ramp","verdict":"correct","note":"","at":"2026-11-17T23:33:30.805Z"}
+{"id":"mtg-underground:Mushroom Grove Expedition|scry","verdict":"correct","note":"","at":"2026-11-17T23:33:31.645Z"}
+{"id":"mtg-underground:Mysterious Orb|flicker-creature","verdict":"correct","note":"","at":"2026-11-17T23:33:33.306Z"}
+{"id":"mtg-underground:Negotiate with Death|draw","verdict":"correct","note":"","at":"2026-11-17T23:33:34.344Z"}
+{"id":"mtg-underground:Netherworld Mesmer|tapper-creature","verdict":"correct","note":"","at":"2026-11-17T23:33:35.913Z"}
+{"id":"mtg-underground:Nonna, She Who Sees|scry","verdict":"correct","note":"","at":"2026-11-17T23:33:37.504Z"}
+{"id":"mtg-underground:Nonna, She Who Sees|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:33:38.378Z"}
+{"id":"mtg-underground:Old Barnaby|scry","verdict":"correct","note":"","at":"2026-11-17T23:33:39.504Z"}
+{"id":"mtg-underground:Old Barnaby|draw","verdict":"correct","note":"","at":"2026-11-17T23:33:40.353Z"}
+{"id":"mtg-underground:Orzhov Oddity|scry","verdict":"correct","note":"","at":"2026-11-17T23:33:41.263Z"}
+{"id":"mtg-underground:Promising Tunnel|land-ramp","verdict":"wrong","note":"I think no, it's a fetchland.  It technically ramps you by 1 mana the turn it pops, but I still think it would count as a fetchland.","at":"2026-11-17T23:34:17.991Z"}
+{"id":"mtg-underground:Puapua, Foul Beast|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:34:24.165Z"}
+{"id":"mtg-underground:Rakdos Reaches|scry","verdict":"correct","note":"","at":"2026-11-17T23:34:26.200Z"}
+{"id":"mtg-underground:Rapacious Bogbeast|draw","verdict":"correct","note":"","at":"2026-11-17T23:34:27.450Z"}
+{"id":"mtg-underground:Rare Discovery|scry","verdict":"correct","note":"","at":"2026-11-17T23:34:28.434Z"}
+{"id":"mtg-underground:Rare Discovery|draw","verdict":"correct","note":"","at":"2026-11-17T23:34:30.079Z"}
+{"id":"mtg-underground:Razorplate Behemoth|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:34:31.789Z"}
+{"id":"mtg-underground:Rebirth of a World|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:34:33.541Z"}
+{"id":"mtg-underground:Rebirth of a World|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:34:34.227Z"}
+{"id":"mtg-underground:Rebirth of a World|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:34:35.100Z"}
+{"id":"mtg-underground:Rebirth of a World|removal-enchantment","verdict":"correct","note":"","at":"2026-11-17T23:34:35.577Z"}
+{"id":"mtg-underground:Recycle Souls|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:34:37.046Z"}
+{"id":"mtg-underground:Relinquish Attachments|rummage","verdict":"correct","note":"","at":"2026-11-17T23:34:40.995Z"}
+{"id":"mtg-underground:Reviver of the Depths|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:34:45.135Z"}
+{"id":"mtg-underground:Ritual of Resurgence|regrowth-creature","verdict":"correct","note":"","at":"2026-11-17T23:34:48.650Z"}
+{"id":"mtg-underground:Rokir, Elite Firewielder|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:34:52.181Z"}
+{"id":"mtg-underground:Rouse the Roots|land-ramp","verdict":"correct","note":"","at":"2026-11-17T23:34:53.445Z"}
+{"id":"mtg-underground:Ruined City Expedition|tapper-creature","verdict":"correct","note":"","at":"2026-11-17T23:34:55.194Z"}
+{"id":"mtg-underground:Sage of the Spores|loot","verdict":"correct","note":"","at":"2026-11-17T23:34:56.651Z"}
+{"id":"mtg-underground:Saltmine Surveyor|scry","verdict":"correct","note":"","at":"2026-11-17T23:34:58.235Z"}
+{"id":"mtg-underground:Selesnya Snarl|scry","verdict":"correct","note":"","at":"2026-11-17T23:34:59.084Z"}
+{"id":"mtg-underground:Sickle of Separation|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:35:01.916Z"}
+{"id":"mtg-underground:Sickle of Separation|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:35:02.717Z"}
+{"id":"mtg-underground:Simian Ritespeaker|draw","verdict":"correct","note":"","at":"2026-11-17T23:35:03.957Z"}
+{"id":"mtg-underground:Simian Scouting Unit|scry","verdict":"correct","note":"","at":"2026-11-17T23:35:05.120Z"}
+{"id":"mtg-underground:Simic Thicket|scry","verdict":"correct","note":"","at":"2026-11-17T23:35:05.961Z"}
+{"id":"mtg-underground:Skullblast|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:35:07.050Z"}
+{"id":"mtg-underground:Slimy Sewerslug|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:35:08.603Z"}
+{"id":"mtg-underground:Slimy Sewerslug|removal-artifact","verdict":"correct","note":"","at":"2026-11-17T23:35:09.243Z"}
+{"id":"mtg-underground:Smite the Wicked|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:35:10.931Z"}
+{"id":"mtg-underground:Soulsip Scavenger|mill-opponent","verdict":"correct","note":"","at":"2026-11-17T23:35:12.250Z"}
+{"id":"mtg-underground:Sow Spores|draw","verdict":"correct","note":"","at":"2026-11-17T23:35:13.195Z"}
+{"id":"mtg-underground:Spectral Slug|tapper-creature","verdict":"correct","note":"","at":"2026-11-17T23:35:14.494Z"}
+{"id":"mtg-underground:Spirit Drinker|draw","verdict":"correct","note":"","at":"2026-11-17T23:35:15.847Z"}
+{"id":"mtg-underground:Splitspell|counterspell","verdict":"correct","note":"","at":"2026-11-17T23:35:16.745Z"}
+{"id":"mtg-underground:Splitspell|draw","verdict":"correct","note":"","at":"2026-11-17T23:35:18.118Z"}
+{"id":"mtg-underground:Stone-Faced Sentinel|tapper-creature","verdict":"correct","note":"","at":"2026-11-17T23:35:20.202Z"}
+{"id":"mtg-underground:Terramorphic Expanse|land-ramp","verdict":"wrong","note":"Evolving wilds, same as other fetch lands.","at":"2026-11-17T23:35:35.642Z"}
+{"id":"mtg-underground:Terrible Tremors|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:35:39.402Z"}
+{"id":"mtg-underground:Terrible Tremors|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:35:40.237Z"}
+{"id":"mtg-underground:Terrifying Might|draw","verdict":"correct","note":"","at":"2026-11-17T23:35:42.030Z"}
+{"id":"mtg-underground:Territorial Aggression|removal-fight","verdict":"correct","note":"","at":"2026-11-17T23:35:43.870Z"}
+{"id":"mtg-underground:The Lord of Hunger|removal-fight","verdict":"correct","note":"","at":"2026-11-17T23:35:45.763Z"}
+{"id":"mtg-underground:This Area is Off Limits|removal-bounce","verdict":"correct","note":"","at":"2026-11-17T23:35:49.102Z"}
+{"id":"mtg-underground:This Area is Off Limits|scry","verdict":"correct","note":"","at":"2026-11-17T23:35:50.198Z"}
+{"id":"mtg-underground:Toll Taker|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:35:52.435Z"}
+{"id":"mtg-underground:Total Annihilation|removal-destroy","verdict":"correct","note":"","at":"2026-11-17T23:35:55.576Z"}
+{"id":"mtg-underground:Total Annihilation|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:35:56.314Z"}
+{"id":"mtg-underground:Total Annihilation|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:35:57.868Z"}
+{"id":"mtg-underground:Trace|scry","verdict":"correct","note":"","at":"2026-11-17T23:36:01.179Z"}
+{"id":"mtg-underground:Trace|draw","verdict":"correct","note":"","at":"2026-11-17T23:36:02.026Z"}
+{"id":"mtg-underground:Troll Catapulter|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:36:12.433Z"}
+{"id":"mtg-underground:Trusty Crossbow|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:36:14.038Z"}
+{"id":"mtg-underground:Tsolus, the Storyteller|draw","verdict":"correct","note":"","at":"2026-11-17T23:36:15.813Z"}
+{"id":"mtg-underground:UDG New Keywords + UDG New Keywords (cont.)|mill-opponent","verdict":"wrong","note":"This is an ad card (rarity: ad) so it shouldn't be tagged at all.","at":"2026-11-17T23:36:41.973Z"}
+{"id":"mtg-underground:UDG New Keywords + UDG New Keywords (cont.)|lifegain","verdict":"wrong","note":"","at":"2026-11-17T23:36:45.153Z"}
+{"id":"mtg-underground:Unlock Lost Secrets|draw","verdict":"correct","note":"","at":"2026-11-17T23:36:48.860Z"}
+{"id":"mtg-underground:Unseal|scry","verdict":"correct","note":"","at":"2026-11-17T23:36:50.273Z"}
+{"id":"mtg-underground:Voci, the Silent District|draw","verdict":"correct","note":"","at":"2026-11-17T23:36:51.648Z"}
+{"id":"mtg-underground:Wild Revelation|draw","verdict":"correct","note":"","at":"2026-11-17T23:36:53.396Z"}
+{"id":"mtg-narou:Albedo|burn-any","verdict":"correct","note":"","at":"2026-11-17T23:37:04.203Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:37:09.891Z"}
+{"id":"mtg-narou:Aura and Mare, Belli Fiori|sweeper","verdict":"correct","note":"","at":"2026-11-17T23:37:11.054Z"}
+{"id":"mtg-narou:Cheat Item|draw","verdict":"wrong","note":"no, it replaces the draw action.","at":"2026-11-17T23:37:34.691Z"}
+{"id":"mtg-narou:Cocytus, Weapon Master|tapper-creature","verdict":"correct","note":"","at":"2026-11-17T23:37:45.802Z"}
+{"id":"mtg-narou:Deem Worthless|removal-exile","verdict":"correct","note":"","at":"2026-11-17T23:37:47.126Z"}
+{"id":"mtg-narou:Demiurge|draw","verdict":"correct","note":"","at":"2026-11-17T23:37:50.699Z"}
+{"id":"mtg-narou:Dragon Lightning|burn-creature","verdict":"correct","note":"","at":"2026-11-17T23:37:53.976Z"}
+{"id":"mtg-narou:Harem Plot|draw","verdict":"correct","note":"","at":"2026-11-17T23:37:59.270Z"}
+{"id":"mtg-narou:Ivy, the Weakest Tamer|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:38:00.840Z"}
+{"id":"mtg-narou:Light Healing|draw","verdict":"correct","note":"","at":"2026-11-17T23:38:05.030Z"}
+{"id":"mtg-narou:Plotting Village Chief|removal-toughness","verdict":"correct","note":"","at":"2026-11-17T23:38:13.634Z"}
+{"id":"mtg-narou:Scheming Princess + Renner, Servant of Nazarick|discard","verdict":"correct","note":"","at":"2026-11-17T23:38:21.267Z"}
+{"id":"mtg-narou:Sort Through Trash|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:38:23.497Z"}
+{"id":"mtg-narou:Transparent Slime + Sora, Beloved Slime|lifegain","verdict":"correct","note":"","at":"2026-11-17T23:38:25.588Z"}
+{"id":"mtg-narou:Wild Adandara + Ciel, Watchful Guardian|removal-fight","verdict":"correct","note":"","at":"2026-11-17T23:38:29.324Z"}

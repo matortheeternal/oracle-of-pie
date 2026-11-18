@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Label Review</title>
+<style>
+:root {
+    --bg: #f6f5f2; --surface: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --border: #dedcd6;
+    --accent: #3b5bdb; --good: #2b8a3e; --bad: #c92a2a; --skip: #868e96; --code: #f1efe9;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #17171a; --surface: #212125; --text: #ececf0; --muted: #9a9aa3; --border: #34343a;
+        --accent: #748ffc; --good: #51cf66; --bad: #ff6b6b; --skip: #adb5bd; --code: #2a2a30;
+    }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, sans-serif; }
+header { display: flex; gap: 16px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); flex-wrap: wrap; }
+header h1 { font-size: 16px; margin: 0; }
+select, input, button { font: inherit; color: inherit; }
+select, input[type=text] { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; }
+.progress { flex: 1; min-width: 180px; display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 13px; }
+.bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.bar > div { height: 100%; background: var(--accent); width: 0; }
+main { max-width: 1040px; margin: 0 auto; padding: 20px 16px 120px; display: grid; grid-template-columns: 300px 1fr; gap: 24px; }
+@media (max-width: 760px) { main { grid-template-columns: 1fr; } }
+.card-image img { width: 100%; border-radius: 12px; display: block; }
+.card-image a { font-size: 13px; color: var(--accent); }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+.question { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+.status { font-size: 13px; color: var(--muted); }
+.status strong.correct { color: var(--good); } .status strong.wrong { color: var(--bad); } .status strong.skip { color: var(--skip); }
+.face h3 { margin: 0; font-size: 15px; display: flex; justify-content: space-between; gap: 8px; }
+.face small { color: var(--muted); display: block; margin-bottom: 6px; }
+.face p { margin: 0 0 6px; white-space: pre-wrap; }
+.face + .face { border-top: 1px dashed var(--border); margin-top: 10px; padding-top: 10px; }
+dl { margin: 0; } dt { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-top: 10px; }
+dt:first-child { margin-top: 0; } dd { margin: 2px 0 0; }
+dd code { background: var(--code); padding: 2px 6px; border-radius: 4px; white-space: pre-wrap; }
+footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); padding: 12px 16px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+footer input { width: min(320px, 100%); }
+footer button { border: 0; border-radius: 8px; padding: 10px 18px; font-weight: 600; cursor: pointer; color: #fff; }
+footer kbd { font-size: 11px; opacity: .75; margin-left: 6px; }
+.correct-button { background: var(--good); } .wrong-button { background: var(--bad); } .skip-button { background: var(--skip); }
+.back-button { background: transparent !important; color: var(--text) !important; border: 1px solid var(--border) !important; }
+.empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 60px 0; }
+</style>
+</head>
+<body>
+<header>
+    <h1>Label review</h1>
+    <select id="queue-select" aria-label="Queue"></select>
+    <label class="status"><input type="checkbox" id="undecided-only" checked> undecided only</label>
+    <div class="progress"><div class="bar"><div id="bar"></div></div><span id="progress-text"></span></div>
+</header>
+<main id="main"></main>
+<footer>
+    <button class="back-button" id="back">Back<kbd>Z</kbd></button>
+    <input type="text" id="note" placeholder="Note (optional, N to focus)">
+    <button class="correct-button" id="correct">Correct<kbd>1</kbd></button>
+    <button class="wrong-button" id="wrong">Wrong<kbd>2</kbd></button>
+    <button class="skip-button" id="skip">Skip<kbd>S</kbd></button>
+</footer>
+<script>
+const state = { queue: null, items: [], decisions: {}, index: 0, history: [] };
+const $ = id => document.getElementById(id);
+const escapeHtml = text => String(text ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+
+async function loadQueues() {
+    const queues = await (await fetch('/api/queues')).json();
+    const modes = { custom: 'Custom cards', scryfall: 'Scryfall disagreements' };
+    const option = q => `<option value="${q.name}">${q.name.replace(/^[a-z]+-/, '')} (${q.decided}/${q.total})</option>`;
+    $('queue-select').innerHTML = Object.entries(modes).map(([prefix, label]) =>
+        `<optgroup label="${label}">${queues.filter(q => q.name.startsWith(prefix + '-')).map(option).join('')}</optgroup>`
+    ).join('');
+    const saved = localStorage.getItem('queue');
+    if (queues.some(q => q.name === saved)) $('queue-select').value = saved;
+    if (queues.length) await openQueue($('queue-select').value);
+}
+
+async function openQueue(name) {
+    localStorage.setItem('queue', name);
+    const data = await (await fetch(`/api/queues/${name}`)).json();
+    Object.assign(state, { queue: name, items: data.items, decisions: data.decisions, history: [] });
+    state.index = nextIndex(-1);
+    render();
+}
+
+const isPending = item => !state.decisions[item.id] || state.decisions[item.id].verdict === 'skip';
+
+function nextIndex(from) {
+    for (let i = from + 1; i < state.items.length; i++)
+        if (!$('undecided-only').checked || isPending(state.items[i])) return i;
+    return state.items.length;
+}
+
+function renderFace(face) {
+    return `<div class="face"><h3><span>${escapeHtml(face.name)}</span><span>${escapeHtml(face.mana_cost)}</span></h3>
+        <small>${escapeHtml(face.type_line)}</small><p>${escapeHtml(face.oracle_text)}</p></div>`;
+}
+
+function renderEvidence(evidence) {
+    return evidence.map(e => `<dt>${escapeHtml(e.label)}</dt><dd>${e.code ? `<code>${escapeHtml(e.text)}</code>` : escapeHtml(e.text)}</dd>`).join('');
+}
+
+function renderProgress() {
+    const verdicts = Object.values(state.decisions).map(d => d.verdict);
+    const decided = verdicts.filter(v => v !== 'skip').length;
+    $('bar').style.width = `${state.items.length ? decided / state.items.length * 100 : 0}%`;
+    $('progress-text').textContent = `${decided}/${state.items.length} · ✓ ${verdicts.filter(v => v === 'correct').length} · ✗ ${verdicts.filter(v => v === 'wrong').length}`;
+}
+
+function render() {
+    renderProgress();
+    const item = state.items[state.index];
+    if (!item) {
+        $('main').innerHTML = '<p class="empty">Nothing left to review in this queue.</p>';
+        return;
+    }
+    const decision = state.decisions[item.id];
+    const card = item.card;
+    $('note').value = decision?.note ?? '';
+    $('main').innerHTML = `
+        <div class="card-image">
+            ${card.image ? `<img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.name)}">` : ''}
+            ${card.scryfall_uri ? `<a href="${escapeHtml(card.scryfall_uri)}" target="_blank" rel="noreferrer">Open on Scryfall</a>` : ''}
+        </div>
+        <div>
+            <section class="panel">
+                <p class="question">${escapeHtml(item.question)}</p>
+                <div class="status">Item ${state.index + 1} of ${state.items.length} · ${escapeHtml(card.rarity)}
+                    ${decision ? ` · previously <strong class="${decision.verdict}">${decision.verdict}</strong>` : ''}</div>
+            </section>
+            <section class="panel"><dl>${renderEvidence(item.evidence)}</dl></section>
+            <section class="panel">${card.faces.map(renderFace).join('')}</section>
+        </div>`;
+}
+
+async function decide(verdict) {
+    const item = state.items[state.index];
+    if (!item) return;
+    const response = await fetch(`/api/queues/${state.queue}/decisions`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: item.id, verdict, note: $('note').value })
+    });
+    state.decisions[item.id] = await response.json();
+    state.history.push(state.index);
+    state.index = nextIndex(state.index);
+    render();
+}
+
+function back() {
+    if (!state.history.length) return;
+    state.index = state.history.pop();
+    render();
+}
+
+const shortcuts = { '1': () => decide('correct'), '2': () => decide('wrong'), 's': () => decide('skip'), 'z': back, 'n': () => $('note').focus() };
+
+document.addEventListener('keydown', event => {
+    if (event.target === $('note')) {
+        if (event.key === 'Escape' || event.key === 'Enter') $('note').blur();
+        return;
+    }
+    const action = shortcuts[event.key.toLowerCase()];
+    if (!action || event.ctrlKey || event.metaKey || event.altKey) return;
+    event.preventDefault();
+    action();
+});
+$('correct').onclick = () => decide('correct');
+$('wrong').onclick = () => decide('wrong');
+$('skip').onclick = () => decide('skip');
+$('back').onclick = back;
+$('queue-select').onchange = event => openQueue(event.target.value);
+$('undecided-only').onchange = () => { state.index = nextIndex(-1); render(); };
+loadQueues();
+</script>
+</body>
+</html>
