@@ -3,6 +3,8 @@ import KeywordList from '../values/KeywordList.js';
 import Expansion from '../definitions/Expansion.js';
 import Definition from '../definitions/Definition.js';
 
+const LIFE_COST = /\bpay \d+ life\b/i;
+
 const KEYWORD_WITH_COST = /^—(?! )[^.]+\.?$/;
 const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+|— \d+\/\d+)\.?$/;
 const CARD_NAME = /^[A-Z][^.]*$/;
@@ -82,6 +84,10 @@ export default class KeywordAbility extends Ability {
 
     get isKeywordAbility() {
         return true;
+    }
+
+    get paysLifeCost() {
+        return LIFE_COST.test(this.costText ?? '');
     }
 
     get conferredKeywordNames() {

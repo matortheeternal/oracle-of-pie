@@ -1,4 +1,4 @@
-import { NON_MANA_WARD, DEMON_TRAMPLE } from './exceptions.js';
+import { LIFE_WARD, NON_MANA_WARD, DEMON_TRAMPLE } from './exceptions.js';
 
 export const CANON_KEYWORDS = [
     'flying', 'first strike', 'double strike', 'deathtouch', 'haste', 'hexproof',
@@ -7,6 +7,6 @@ export const CANON_KEYWORDS = [
 ];
 
 export const KEYWORD_EXCEPTIONS = {
-    'ward': [NON_MANA_WARD],
+    'ward': [LIFE_WARD, NON_MANA_WARD],
     'trample': [DEMON_TRAMPLE]
 };

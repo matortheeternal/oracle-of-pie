@@ -65,6 +65,13 @@ export const TAPPED_CREATURE_DAMAGE = {
     tiers: { W: SECONDARY }
 };
 
+export const LIFE_WARD = {
+    id: 'life-cost',
+    title: 'Ward costs paid in life',
+    match: { kind: 'KeywordAbility', paysLifeCost: true },
+    tiers: { B: PRIMARY, R: PRIMARY }
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',
