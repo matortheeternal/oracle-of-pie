@@ -18,7 +18,18 @@ const REPEATED_MANA_TRIGGER = {
 };
 const MANA_TOKEN = { tokenDefinitions: { name: ['Treasure', 'Gold', 'Powerstone'] } };
 
-const RAMP_TAGS = ['land-ramp', 'mana-dork', 'mana-rock', 'mana-producer', 'ritual'];
+const RAMP_TAGS = [
+    'land-ramp', 'mana-dork', 'mana-rock', 'mana-producer', 'ritual', 'combat-ramp'
+];
+const COMBAT_TRIGGER = {
+    granted: false,
+    ability: {
+        kind: 'TriggeredAbility',
+        event: {
+            any: [{ kind: 'AttacksEvent' }, { kind: 'DealsDamageEvent', isCombat: true }]
+        }
+    }
+};
 
 export const MANA_TAGS = [
     {
@@ -45,6 +56,15 @@ export const MANA_TAGS = [
             kind: 'AddManaEffect',
             card: { isLand: false },
             context: REPEATED_MANA_TRIGGER
+        }
+    },
+    {
+        tag: 'combat-ramp',
+        match: {
+            any: [
+                { kind: 'AddManaEffect', context: COMBAT_TRIGGER },
+                { kind: 'CreateTokenEffect', ...MANA_TOKEN, context: COMBAT_TRIGGER }
+            ]
         }
     },
     {
