@@ -19,6 +19,14 @@ const RESOLVES_OR_ENTERS = {
     ]
 };
 
+const VARIABLE_DRAW = {
+    any: [
+        { condition: { any: [{ isForEach: true }, { isIfYouDo: true }] } },
+        { sentence: { effects: { kind: 'DrawEffect', isSingleCard: false } } }
+    ]
+};
+const SINGLE_DRAW = { ...RESOLVES_OR_ENTERS, not: VARIABLE_DRAW };
+
 export const DRAW_TAGS = [
     {
         tag: 'pure-draw',
@@ -30,6 +38,6 @@ export const DRAW_TAGS = [
     },
     {
         tag: 'cantrip',
-        match: { tag: 'pure-draw', isSingleCard: true, context: RESOLVES_OR_ENTERS }
+        match: { tag: 'pure-draw', isSingleCard: true, context: SINGLE_DRAW }
     }
 ];
