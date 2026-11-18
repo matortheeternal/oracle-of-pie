@@ -57,5 +57,13 @@ export const CREATURE_TAGS = [
     {
         tag: 'cda-toughness',
         match: { kind: 'DefinePTEffect', definesToughness: true }
+    },
+    {
+        tag: 'clone',
+        match: { kind: 'EntersAsCopyEffect', subject: { refersToSelf: true } }
+    },
+    {
+        tag: 'phasing',
+        match: { kind: 'PhaseEffect', phasesOut: true }
     }
 ];
