@@ -1,4 +1,4 @@
-import RulesScribe from './RulesScribe.js';
+import Oracle from './Oracle.js';
 
 export { default as CardText } from './CardText.js';
 export { default as ParsedCard } from './ParsedCard.js';
@@ -9,8 +9,8 @@ export {
 } from './evaluators/KeywordFamilyEvaluator.js';
 export { default as Query } from './evaluators/Query.js';
 export { default as TagLibrary } from './evaluators/TagLibrary.js';
-export { RulesScribe };
-export default RulesScribe;
+export { Oracle };
+export default Oracle;
 export { default as RulesDefinitions } from './definitions/RulesDefinitions.js';
 export { default as KeywordDefinition } from './definitions/KeywordDefinition.js';
 export {

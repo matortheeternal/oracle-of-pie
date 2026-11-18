@@ -1,8 +1,8 @@
 {
-  "name": "rules-scribe",
+  "name": "oracle-of-pie",
   "version": "0.1.0",
   "private": true,
-  "description": "Parser for Magic: The Gathering rules text, producing a semantic tree and tag suggestions.",
+  "description": "Reads Magic: The Gathering Oracle text into a semantic tree, suggests Scryfall oracle tags, and inspects cards for color pie breaks.",
   "type": "module",
   "main": "./src/index.js",
   "exports": {

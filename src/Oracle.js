@@ -26,7 +26,7 @@ function escapeNames(names) {
     return names.map(name => name.replace(REGEX_SPECIAL, '\\$&'));
 }
 
-export default class RulesScribe {
+export default class Oracle {
     constructor({ keywords = DEFAULT_KEYWORDS, definitions = {}, tags = [] } = {}) {
         this.tagLibrary = TagLibrary.withDefaults(tags);
         this.definitions = RulesDefinitions.withDefaults(definitions);
