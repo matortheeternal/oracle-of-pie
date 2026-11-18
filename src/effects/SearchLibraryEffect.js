@@ -13,6 +13,7 @@ const SEARCH = new RegExp(
         + '(?: and(?:\\/or)? (?:your )?graveyard)? for ',
     'i'
 );
+const WHERE_X = /^, where X is [^,.]+/i;
 const REVEAL = /^,? reveal (?:it|them|that card|those cards)/i;
 const PUT_DESTINATION_ALTERNATIVES = [
     'into your hand',
@@ -22,6 +23,11 @@ const PUT_DESTINATION_ALTERNATIVES = [
     'into exile'
 ];
 const PUT_OBJECT = '(?:it|them|that card|those cards|one of them|the rest)';
+const SPLIT_DESTINATION = new RegExp(
+    '^,? (?:and |then )?put one (onto the battlefield tapped) '
+        + 'and the other into your hand',
+    'i'
+);
 const PUT_DESTINATION = new RegExp(
     `^,? (?:and |then )?put ${PUT_OBJECT}(?: (?:onto|into) [^,.]+?)? `
         + `(${PUT_DESTINATION_ALTERNATIVES.join('|')})`,
@@ -41,8 +47,10 @@ export default class SearchLibraryEffect extends Effect {
 
     parseArguments(match) {
         this.wanted = this.consume([PhraseList]);
+        this.consumeText(WHERE_X);
         this.revealed = Boolean(this.consumeText(REVEAL));
-        const destination = this.consumeText(PUT_DESTINATION);
+        const destination = this.consumeText(SPLIT_DESTINATION)
+            ?? this.consumeText(PUT_DESTINATION);
         this.destination = destination?.[1].toLowerCase() ?? null;
         this.shuffles = Boolean(this.consumeText(SHUFFLE));
     }

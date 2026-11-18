@@ -11,6 +11,7 @@ const DETERMINER_ALTERNATIVES = [
     'any number of (?:other )?target',
     `(${N}) (?:other )?target`,
     `up to (${N})`,
+    'up to that many',
     'another target', 'other target', 'target', 'each other', 'each', 'all other',
     'all', 'another', 'one or more', 'any number of', 'any', N, 'the', 'that', 'those'
 ];
