@@ -70,7 +70,7 @@ const escapeHtml = text => String(text ?? '').replace(/[&<>"]/g, c => ({ '&': '&
 
 async function loadQueues() {
     const queues = await (await fetch('/api/queues')).json();
-    const modes = { custom: 'Custom cards', scryfall: 'Scryfall disagreements' };
+    const modes = { custom: 'Custom cards', printed: 'Printed cards', scryfall: 'Scryfall disagreements' };
     const option = q => `<option value="${q.name}">${q.name.replace(/^[a-z]+-/, '')} (${q.decided}/${q.total})</option>`;
     $('queue-select').innerHTML = Object.entries(modes).map(([prefix, label]) =>
         `<optgroup label="${label}">${queues.filter(q => q.name.startsWith(prefix + '-')).map(option).join('')}</optgroup>`
