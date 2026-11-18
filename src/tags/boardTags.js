@@ -1,20 +1,9 @@
+import { selfOrIncludingSelf } from './selfInclusion.js';
+
 const PLUS_COUNTERS = {
     kind: ['PutCountersEffect', 'EntersWithCountersEffect'],
     isPlusCounters: true
 };
-const CREATURES_INCLUDING_SELF = {
-    hasType: 'creature',
-    excludesSelf: false,
-    controlledByOpponent: false,
-    isBackReference: false,
-    hasSubtypes: false,
-    not: { hasExactType: 'token' }
-};
-const SOURCE_GONE = [
-    { ability: { event: { kind: 'DiesEvent' } } },
-    { ability: { cost: { removesSource: true } } }
-];
-const SOURCE_ON_BATTLEFIELD = { expansion: null, not: { any: SOURCE_GONE } };
 const OTHER_OBJECTS = { refersToSelf: false, isPlayer: false };
 const OTHER_OBJECT_REFERENCES = [
     { isBackReference: false },
@@ -36,14 +25,7 @@ export const BOARD_TAGS = [
         tag: 'gains-pp-counters',
         match: {
             ...PLUS_COUNTERS,
-            any: [
-                { phrases: { refersToSelf: true } },
-                {
-                    card: { isCreature: true },
-                    context: SOURCE_ON_BATTLEFIELD,
-                    phrases: CREATURES_INCLUDING_SELF
-                }
-            ]
+            any: selfOrIncludingSelf('phrases')
         }
     },
     {
