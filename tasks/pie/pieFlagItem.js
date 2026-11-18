@@ -23,6 +23,18 @@ function exceptionEvidence(flag) {
     return flag.exception ? [{ label: 'Exception applied', text: flag.exception }] : [];
 }
 
+function citedTiers(tiers) {
+    return COLORS.filter(color => tiers[color])
+        .map(color => `${color} ${tiers[color]}`)
+        .join(' · ');
+}
+
+function citationEvidence(flag) {
+    if (!flag.citation) return [];
+    const { source, line, tiers } = flag.citation;
+    return [{ label: source, text: `${line}: ${citedTiers(tiers)}` }];
+}
+
 export default function pieFlagItem({ id, card, flag, profile }) {
     const word = SEVERITY_WORDS[flag.severity];
     const colors = flag.offending.join('');
@@ -35,6 +47,7 @@ export default function pieFlagItem({ id, card, flag, profile }) {
             { label: 'Matched text', text: flag.evidence, code: true },
             { label: 'Judged as', text: judgement(flag, word, colors) },
             ...exceptionEvidence(flag),
+            ...citationEvidence(flag),
             { label: 'Printed mono cards with this effect', text: canonCounts(profile) },
             { label: 'Printed examples', text: printedExamples(profile, flag.offending) },
             { label: 'Verdict', text: VERDICT_HINT }
