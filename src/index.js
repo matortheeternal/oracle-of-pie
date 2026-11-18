@@ -4,6 +4,9 @@ export { default as CardText } from './CardText.js';
 export { default as ParsedCard } from './ParsedCard.js';
 export { DEFAULT_TAG_SPECS } from './tags/index.js';
 export { default as Evaluator } from './evaluators/Evaluator.js';
+export {
+    default as KeywordFamilyEvaluator
+} from './evaluators/KeywordFamilyEvaluator.js';
 export { default as Query } from './evaluators/Query.js';
 export { default as TagLibrary } from './evaluators/TagLibrary.js';
 export { RulesScribe };

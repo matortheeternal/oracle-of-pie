@@ -1,9 +1,14 @@
 import Evaluator from './Evaluator.js';
+import KeywordFamilyEvaluator from './KeywordFamilyEvaluator.js';
 import { DEFAULT_TAG_SPECS } from '../tags/index.js';
 import { QueryError } from '../core/customErrors.js';
 
+const EVALUATOR_CLASSES = [KeywordFamilyEvaluator, Evaluator];
+
 function toEvaluator(spec) {
-    return spec instanceof Evaluator ? spec : new Evaluator(spec);
+    if (spec instanceof Evaluator) return spec;
+    const EvaluatorClass = EVALUATOR_CLASSES.find(candidate => candidate.matches(spec));
+    return new EvaluatorClass(spec);
 }
 
 export default class TagLibrary {
@@ -13,7 +18,8 @@ export default class TagLibrary {
 
     constructor(specs) {
         this.byTag = new Map();
-        for (const spec of specs) this.byTag.set(spec.tag, toEvaluator(spec));
+        for (const evaluator of specs.map(toEvaluator))
+            this.byTag.set(evaluator.tag, evaluator);
     }
 
     get evaluators() {
