@@ -1,0 +1,20 @@
+import Effect from './Effect.js';
+import { NUMBER_PATTERN } from '../values/numberWords.js';
+
+const LOOK_VERB = '(?:look at|reveal|reveals|exile|exiles)';
+const TOP_CARDS = `(?:(${NUMBER_PATTERN}) cards|card)`;
+const LIBRARY_OWNER = `(?:your|their|target player's|that player's|each player's)`;
+const LOOK = new RegExp(
+    `^${LOOK_VERB} the top ${TOP_CARDS} of ${LIBRARY_OWNER} library(?: face down)?`,
+    'i'
+);
+
+export default class LookAtTopEffect extends Effect {
+    static get pattern() {
+        return LOOK;
+    }
+
+    parseArguments(match) {
+        this.verb = match[0].split(' ')[0].toLowerCase();
+    }
+}

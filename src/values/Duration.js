@@ -1,0 +1,30 @@
+import Node from '../core/Node.js';
+
+const DURATION_ALTERNATIVES = [
+    'until end of turn',
+    'until end of combat',
+    'until your next turn',
+    'until the end of your next turn',
+    'this turn',
+    'for as long as [^,.]+',
+    'until ~ leaves the battlefield',
+    'until [^,.]+ leaves the battlefield'
+];
+const DURATION = new RegExp(
+    `^(${DURATION_ALTERNATIVES.join('|')})`, 'i'
+);
+
+export default class Duration extends Node {
+    static match(scribe, str) {
+        return str.match(DURATION);
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.text = match[1].toLowerCase();
+    }
+
+    get isUntilEndOfTurn() {
+        return this.text === 'until end of turn' || this.text === 'this turn';
+    }
+}
