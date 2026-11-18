@@ -3,7 +3,8 @@ function parseFace(scribe, card, face) {
         name: face.name,
         typeLine: face.type_line ?? card.type_line ?? '',
         text: face.oracle_text ?? '',
-        loyalty: face.loyalty ?? null
+        loyalty: face.loyalty ?? null,
+        faceCount: card.faces.length
     });
 }
 
