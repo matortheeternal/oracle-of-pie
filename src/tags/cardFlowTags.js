@@ -12,6 +12,14 @@ export const CARD_FLOW_TAGS = [
         match: { kind: 'MillEffect', subjectIsOpponent: true }
     },
     {
+        tag: 'mill-self',
+        match: { kind: 'MillEffect', subjectIsYou: true }
+    },
+    {
+        tag: 'mill-each',
+        match: { kind: 'MillEffect', subjectIsYou: false, affectsYou: true }
+    },
+    {
         tag: 'scry',
         match: { kind: 'KeywordActionEffect', action: 'scry' }
     },
