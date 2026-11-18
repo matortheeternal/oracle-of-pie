@@ -15,4 +15,5 @@ for (const { card, faces, colors } of pieCards(scribe, corpus))
     report.add(card, colors, inspector.inspect(faces));
 
 writeJson(PATHS.pieFlags, report.flags);
+writeJson(PATHS.pieSummary, report.summary);
 for (const line of report.lines()) console.log(line);

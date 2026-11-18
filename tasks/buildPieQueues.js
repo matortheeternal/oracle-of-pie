@@ -6,10 +6,12 @@ import loadProjects from '../src/custom/loadProjects.js';
 import ReviewPriority from '../src/queues/ReviewPriority.js';
 import ProjectPieFlags from '../src/pie/projectPieFlags.js';
 import pieFlagItem from '../src/pie/pieFlagItem.js';
+import sampleFlaggedCards from '../src/pie/sampleFlaggedCards.js';
+import { PIE_GATES } from '../src/pie/pieGates.js';
 
 const CUSTOM_QUEUE = 'custom-pie-flags';
-const HYBRID_QUEUE = 'printed-hybrid-pie-flags';
-const HYBRID = 'hybrid';
+const MONO_SAMPLE_SIZE = 50;
+const SAMPLE_SIZES = { monocolor: MONO_SAMPLE_SIZE, hybrid: Infinity };
 
 const corpus = readJson(PATHS.corpus);
 const profiles = readJson(PATHS.pieProfiles);
@@ -32,10 +34,13 @@ function customItems() {
     return items;
 }
 
-function hybridItems() {
-    const byName = new Map(corpus.map(card => [card.name, card]));
-    const flags = readJson(PATHS.pieFlags).filter(flag => flag.policy === HYBRID);
-    return flags.map(flag => {
+const byName = new Map(corpus.map(card => [card.name, card]));
+const printedFlags = readJson(PATHS.pieFlags);
+
+function printedItems(policy) {
+    const flags = printedFlags.filter(flag => flag.policy === policy);
+    const sampled = sampleFlaggedCards(flags, SAMPLE_SIZES[policy]);
+    return sampled.map(flag => {
         const card = byName.get(flag.name);
         const profile = profiles[flag.inspection];
         const view = printedView(card);
@@ -43,7 +48,8 @@ function hybridItems() {
     });
 }
 
-const QUEUES = [[CUSTOM_QUEUE, customItems()], [HYBRID_QUEUE, hybridItems()]];
+const PRINTED_QUEUES = PIE_GATES.map(gate => [gate.queue, printedItems(gate.policy)]);
+const QUEUES = [[CUSTOM_QUEUE, customItems()], ...PRINTED_QUEUES];
 for (const [queue, items] of QUEUES) {
     const ordered = new ReviewPriority(ReviewLog.forQueue(queue)).order(items);
     writeJsonl(queuePath(queue), ordered);

@@ -37,6 +37,10 @@ export default class PieReport {
         this.flags.push({ name: card.name, uri: card.scryfall_uri, ...flag.toJSON() });
     }
 
+    get summary() {
+        return { totals: this.policyTotals, flagged: this.policyFlagged };
+    }
+
     policyLine([policy, total]) {
         const flagged = this.policyFlagged[policy] ?? 0;
         const rate = percent(flagged / total);
