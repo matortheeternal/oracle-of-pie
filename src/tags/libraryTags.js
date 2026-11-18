@@ -1,4 +1,5 @@
 const CREATURE_CARD = { isCreatureCard: true };
+const LAND_SWAP = { ability: { cost: { sacrificesOther: true } } };
 
 export const LIBRARY_TAGS = [
     {
@@ -22,7 +23,9 @@ export const LIBRARY_TAGS = [
                     kind: 'SearchLibraryEffect',
                     card: { isLand: false },
                     findsLand: true,
-                    toBattlefield: true
+                    toBattlefield: true,
+                    affectsYou: true,
+                    context: { not: LAND_SWAP }
                 },
                 {
                     kind: 'PutEffect',
