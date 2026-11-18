@@ -1,5 +1,5 @@
 const CREATURE_CARD = { isCreatureCard: true };
-const FORCED_OPPONENT = { isOptional: false, subject: { isOpponent: true } };
+const FORCED_OPPONENT = { isOptional: false, subject: { canBeOpponent: true } };
 
 export const RESOURCE_INSPECTIONS = [
     {
@@ -12,7 +12,7 @@ export const RESOURCE_INSPECTIONS = [
         id: 'mill-opponent',
         title: 'Mills opponents',
         group: 'Graveyard',
-        match: { kind: 'MillEffect', isOptional: false, subject: { canBeOpponent: true } }
+        match: { kind: 'MillEffect', ...FORCED_OPPONENT }
     },
     {
         id: 'tutor-nonland',

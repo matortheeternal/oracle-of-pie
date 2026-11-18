@@ -47,7 +47,11 @@ export const REMOVAL_INSPECTIONS = [
         id: 'edict',
         title: 'Makes opponents sacrifice',
         group: 'Removal',
-        match: { kind: 'SacrificeEffect', subject: { isOpponent: true } }
+        match: {
+            kind: 'SacrificeEffect',
+            isOptional: false,
+            subject: { canBeOpponent: true }
+        }
     },
     {
         id: 'shrink-creature',
