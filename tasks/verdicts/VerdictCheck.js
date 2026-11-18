@@ -6,8 +6,8 @@ const KNOWN = 'known';
 const FIXED = 'fixed';
 
 export default class VerdictCheck {
-    constructor({ scribe, tree, cards, known }) {
-        this.scribe = scribe;
+    constructor({ scribes, tree, cards, known }) {
+        this.scribes = scribes;
         this.tree = tree;
         this.cards = cards;
         this.known = known;
@@ -20,7 +20,8 @@ export default class VerdictCheck {
     }
 
     tag(cardId) {
-        const { tags } = tagCard(this.scribe, this.cards.get(cardId));
+        const card = this.cards.get(cardId);
+        const { tags } = tagCard(this.scribes.forCard(card), card);
         return this.tree.withAncestors(Object.keys(tags));
     }
 

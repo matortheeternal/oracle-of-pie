@@ -4,9 +4,10 @@ const STRUCTURAL_KEYWORDS = ['Enchant', 'Equip'];
 
 export const EVALUATED_TAGS = DEFAULT_TAG_SPECS.map(spec => spec.tag);
 
-export function createCorpusScribe(corpus) {
+export function createCorpusScribe(corpus, definitions = {}) {
     const keywords = new Set(corpus.flatMap(card => card.keywords ?? []));
-    return new RulesScribe({ keywords: [...keywords, ...STRUCTURAL_KEYWORDS] });
+    const allKeywords = [...keywords, ...STRUCTURAL_KEYWORDS];
+    return new RulesScribe({ keywords: allKeywords, definitions });
 }
 
 export function cardKey(card) {

@@ -1,6 +1,7 @@
 import { readJson, writeJson, writeJsonl } from '../src/files.js';
 import { PATHS, QUEUES, queuePath } from '../src/paths.js';
-import { createCorpusScribe, EVALUATED_TAGS } from '../src/corpusScribe.js';
+import { EVALUATED_TAGS } from '../src/corpusScribe.js';
+import ProjectScribes from '../src/keywords/ProjectScribes.js';
 import TagTree from '../src/TagTree.js';
 import TagScore from '../src/TagScore.js';
 import ReviewLog from '../src/ReviewLog.js';
@@ -14,13 +15,16 @@ const QUEUE = 'custom-suggested-tags';
 const WIDTHS = [-22, 6, 6, 0];
 
 const reviews = ReviewLog.forQueue(QUEUE);
+const cards = loadProjects(PATHS.projects);
+const scribes = new ProjectScribes(readJson(PATHS.corpus), cards);
+writeJson(PATHS.customKeywords, scribes.definitionsByProject);
 const suggestions = new CustomSuggestions({
-    scribe: createCorpusScribe(readJson(PATHS.corpus)),
+    scribes,
     tree: TagTree.load(PATHS.tags),
     reviews,
     agreement: new TagScore(EVALUATED_TAGS)
 });
-for (const card of loadProjects(PATHS.projects)) suggestions.addCard(card);
+for (const card of cards) suggestions.addCard(card);
 
 function printAgreement(agreement) {
     console.log(formatRow(['tag (vs your tags)', 'P', 'R', ' tp/fp/fn'], WIDTHS));

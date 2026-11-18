@@ -4,8 +4,8 @@ import customQueueItem from './customQueueItem.js';
 const SCRYFALL_TAG_SHARE = 0.8;
 
 export default class CustomSuggestions {
-    constructor({ scribe, tree, reviews, agreement }) {
-        this.scribe = scribe;
+    constructor({ scribes, tree, reviews, agreement }) {
+        this.scribes = scribes;
         this.tree = tree;
         this.reviews = reviews;
         this.agreement = agreement;
@@ -36,7 +36,7 @@ export default class CustomSuggestions {
 
     addCard(card) {
         if (!card.isPlayable) return;
-        const result = tagCard(this.scribe, card);
+        const result = tagCard(this.scribes.forCard(card), card);
         this.count(card, 'cards');
         this.count(card, 'fully recognized', Number(result.recognized));
         this.count(card, 'suggestions', Object.keys(result.tags).length);

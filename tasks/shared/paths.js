@@ -16,6 +16,7 @@ export const PATHS = {
     pieFlags: path.join(DATA, 'pie-flags.json'),
     gapReport: path.join(DATA, 'gap-report.json'),
     score: path.join(DATA, 'tag-score.json'),
+    customKeywords: path.join(DATA, 'custom-keywords.json'),
     projects: path.join(ROOT, 'review', 'projects.json'),
     knownDisagreements: path.join(ROOT, 'review', 'known-disagreements.json')
 };

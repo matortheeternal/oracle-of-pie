@@ -1,0 +1,26 @@
+import KeywordHarvest from './KeywordHarvest.js';
+import projectSettings from './projectSettings.js';
+
+function keyOf(definition) {
+    return definition.name.toLowerCase();
+}
+
+export default class ProjectKeywords {
+    constructor(scribe, projectDir) {
+        this.harvest = new KeywordHarvest(scribe);
+        this.configured = projectSettings(projectDir).customKeywords ?? [];
+    }
+
+    addCard(card) {
+        this.harvest.addCard(card);
+    }
+
+    get definitions() {
+        const merged = new Map();
+        for (const definition of this.harvest.definitions)
+            merged.set(keyOf(definition), { ...definition, source: 'harvested' });
+        for (const definition of this.configured)
+            merged.set(keyOf(definition), { ...definition, source: 'configured' });
+        return [...merged.values()].filter(definition => !definition.disabled);
+    }
+}

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { readJson, writeReadableJson } from '../src/files.js';
 import { PATHS } from '../src/paths.js';
-import { createCorpusScribe } from '../src/corpusScribe.js';
+import ProjectScribes from '../src/keywords/ProjectScribes.js';
 import TagTree from '../src/TagTree.js';
 import ReviewLog from '../src/ReviewLog.js';
 import VerdictCheck from '../src/verdicts/VerdictCheck.js';
@@ -18,10 +18,11 @@ function readKnown() {
 }
 
 const corpus = readJson(PATHS.corpus);
+const cards = reviewedCards(corpus, PATHS.projects);
 const check = new VerdictCheck({
-    scribe: createCorpusScribe(corpus),
+    scribes: new ProjectScribes(corpus, [...cards.values()]),
     tree: TagTree.load(PATHS.tags),
-    cards: reviewedCards(corpus, PATHS.projects),
+    cards,
     known: readKnown()
 });
 
