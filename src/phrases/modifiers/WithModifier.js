@@ -17,6 +17,7 @@ const WITH_ALTERNATIVES = [
     'converted mana cost',
     'a [\\w+\\-/]+ counter on it',
     '[\\w+\\-/]+ counters on (?:it|them)',
+    'counters on (?:it|them)',
     'the greatest power[^,.]*',
     'the same name as [^,.]+',
     'that name',

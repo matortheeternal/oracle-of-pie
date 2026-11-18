@@ -10,6 +10,7 @@ const OWNED_ZONE = `^(?:from|in) (${ZONE_OWNERS.join('|')}) (${ZONE_NAMES.join('
 const ZONE_ALTERNATIVES = [
     OWNED_ZONE,
     '^(?:from|in) graveyards\\b',
+    '^from (?:it|among them|among those cards)\\b',
     '^from exile\\b',
     '^(?:on|from) the battlefield\\b'
 ];
@@ -23,7 +24,8 @@ export default class ZoneModifier extends Modifier {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         const zone = (match[2] ?? match[0].split(' ').pop()).toLowerCase();
-        this.zoneName = zone.replace('graveyards', 'graveyard');
+        const zoneName = zone.replace('graveyards', 'graveyard');
+        this.zoneName = ZONE_NAMES.includes(zone) ? zoneName : null;
         this.owner = match[1]?.toLowerCase() ?? null;
     }
 
