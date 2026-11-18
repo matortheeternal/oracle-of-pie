@@ -8,9 +8,10 @@ function evaluateNode(found, evaluators, node, context) {
     }
 }
 
-export default function evaluateCard(cardText, card, evaluators) {
+export default function evaluateCard(parsedCard) {
     const found = new Map();
-    for (const [node, context] of cardText.walk({ card }))
+    const evaluators = parsedCard.tagLibrary.evaluators;
+    for (const [node, context] of parsedCard.walk())
         evaluateNode(found, evaluators, node, context);
     return found;
 }

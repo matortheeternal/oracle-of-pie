@@ -1,4 +1,9 @@
-const MASS_OPPOSING = { isMass: true, controlledByYou: false, isCardInZone: false };
+const MASS_OPPOSING = {
+    isMass: true,
+    isPlayer: false,
+    controlledByYou: false,
+    isCardInZone: false
+};
 const OPPOSING_CREATURE = { isOpposingObject: true, hasType: 'creature' };
 
 export const REMOVAL_TAGS = [

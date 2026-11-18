@@ -20,6 +20,14 @@ export default class ObjectCost extends CostItem {
         return [this.objects].filter(Boolean);
     }
 
+    get phrases() {
+        return this.objects?.phrases ?? [];
+    }
+
+    get removesSource() {
+        return this.phrases.some(phrase => phrase.refersToSelf);
+    }
+
     get isRecognized() {
         return Boolean(this.objects) && super.isRecognized;
     }

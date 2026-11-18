@@ -27,6 +27,8 @@ const PLAYER = new RegExp(
 const YOU = /^you\b/i;
 const OPPOSING = /opponent|defending|controller|its owner/i;
 const OPPONENT = /opponent|defending player/i;
+const EVERY_PLAYER = /^(?:each|your opponents)\b/i;
+const EACH_PLAYER = /^each player$/i;
 
 export default class PlayerPhrase extends Phrase {
     static match(scribe, str) {
@@ -48,6 +50,14 @@ export default class PlayerPhrase extends Phrase {
 
     get canBeOpponent() {
         return !this.isYou || OPPOSING.test(this.player);
+    }
+
+    get includesYou() {
+        return this.isYou || EACH_PLAYER.test(this.player);
+    }
+
+    get isMass() {
+        return EVERY_PLAYER.test(this.player);
     }
 
     get isOpponent() {

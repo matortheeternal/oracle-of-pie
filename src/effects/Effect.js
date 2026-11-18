@@ -63,6 +63,10 @@ export default class Effect extends Parser {
         return Boolean(this.subject?.isPlayer && this.subject.canBeOpponent);
     }
 
+    get affectsYou() {
+        return !this.subject || Boolean(this.subject.includesYou);
+    }
+
     get subjectIsYou() {
         return !this.subject || Boolean(this.subject.isPlayer && this.subject.isYou);
     }

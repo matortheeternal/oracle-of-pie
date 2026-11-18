@@ -14,4 +14,8 @@ export default class BodyAbility extends Ability {
     get parts() {
         return [this.body];
     }
+
+    get hasAdditionalCost() {
+        return this.body.sentences.some(sentence => sentence.statement?.isAdditionalCost);
+    }
 }

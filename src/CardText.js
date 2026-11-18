@@ -27,4 +27,12 @@ export default class CardText extends Parser {
     get children() {
         return this.abilities;
     }
+
+    get hasAdditionalCost() {
+        return this.abilities.some(ability => ability.hasAdditionalCost);
+    }
+
+    childContext(context) {
+        return { ...context, cardText: context.cardText ?? this };
+    }
 }

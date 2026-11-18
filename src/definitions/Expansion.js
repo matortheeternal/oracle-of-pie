@@ -21,7 +21,8 @@ export default class Expansion extends Node {
     childContext(context) {
         const forOpponent = Boolean(context.forOpponent || this.isOpponents);
         const origin = context.origin ?? context.sentence ?? context.ability;
-        return { ...context, origin, expansion: this, forOpponent };
+        const granted = this.isToken;
+        return { ...context, origin, expansion: this, forOpponent, granted };
     }
 
     toJSON() {

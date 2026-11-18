@@ -37,6 +37,18 @@ export default class Ability extends Parser {
         return false;
     }
 
+    get isRepeatable() {
+        return false;
+    }
+
+    get hasAdditionalCost() {
+        return false;
+    }
+
+    get isModal() {
+        return this.modes.length > 1;
+    }
+
     childContext(context) {
         return { ...context, ability: this };
     }

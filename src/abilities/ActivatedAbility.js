@@ -2,7 +2,7 @@ import BodyAbility from './BodyAbility.js';
 import CostList from '../costs/CostList.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
 
-const ACTIVATED = /^((?:"[^"]*"|[^:"])+?): ([\s\S]+)$/;
+const ACTIVATED = /^(exhaust — )?((?:"[^"]*"|[^:"])+?): ([\s\S]+)$/i;
 
 export default class ActivatedAbility extends BodyAbility {
     static match(scribe, str) {
@@ -11,12 +11,17 @@ export default class ActivatedAbility extends BodyAbility {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.cost = CostList.parse(scribe, [''], match[1]);
+        this.isExhaust = Boolean(match[1]);
+        this.cost = CostList.parse(scribe, [''], match[2]);
         this.costLeftover = UnrecognizedText.fromLeftover(scribe, this.cost.remainingStr);
     }
 
     get parts() {
         return [this.cost, this.costLeftover, this.body].filter(Boolean);
+    }
+
+    get isRepeatable() {
+        return !this.isExhaust && !this.cost.removesSource;
     }
 
     get manaColors() {

@@ -20,8 +20,23 @@ export default class Sentence extends Parser {
         return [this.statement].filter(Boolean);
     }
 
+    link(previous, next) {
+        this.previous = previous ?? null;
+        this.next = next ?? null;
+    }
+
+    get dependsOnPrevious() {
+        return Boolean(this.statement?.isIfYouDo && this.previous);
+    }
+
     get effects() {
         return this.statement?.effects ?? [];
+    }
+
+    get linkedEffects() {
+        const previous = this.dependsOnPrevious ? this.previous.effects : [];
+        const next = this.next?.dependsOnPrevious ? this.next.effects : [];
+        return [...previous, ...this.effects, ...next];
     }
 
     childContext(context) {

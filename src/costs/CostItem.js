@@ -9,6 +9,14 @@ export default class CostItem extends Parser {
         return false;
     }
 
+    get removesSource() {
+        return false;
+    }
+
+    get sacrificesOther() {
+        return false;
+    }
+
     get discards() {
         return false;
     }

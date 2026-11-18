@@ -26,7 +26,10 @@ see expansions, recognition coverage ignores them. Projects add or override defi
 
 Tags are evaluators: data queries over the parsed tree. Keys are node properties (getters,
 methods such as `hasType: 'creature'`, arrays match when some element matches, nested objects
-query child nodes) or special predicates (`kind`, `any`, `not`, `card`, `effectOrder`). Values:
+query child nodes) or special predicates (`kind`, `any`, `not`, `card`, `effectOrder`, `context` to query the
+enclosing ability/sentence/condition/card text, and `tag` to reuse other tags, e.g.
+`{ tag: 'pure-draw', context: { ability: { isRepeatable: true } } }`). Triggered abilities
+expose a parsed `event` (triggers/: enters, dies, attacks, cast, phase, deals damage). Values:
 boolean, string/number, array (one of), RegExp, `null` (absent), or a nested query. Projects add
 tags or override defaults by tag name:
 

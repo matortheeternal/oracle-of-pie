@@ -15,4 +15,8 @@ export default class QuotedAbility extends Node {
     get children() {
         return [this.text];
     }
+
+    childContext(context) {
+        return { ...context, granted: true };
+    }
 }

@@ -1,4 +1,5 @@
 import BodyAbility from './BodyAbility.js';
+import { parseTriggerEvent } from '../triggers/index.js';
 
 const TRIGGER_WORD = /^(when|whenever|at) /i;
 const COMMA = ', ';
@@ -24,5 +25,14 @@ export default class TriggeredAbility extends BodyAbility {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.trigger = `${match[1]} ${match[2]}`;
+        this.event = parseTriggerEvent(match[2]);
+    }
+
+    get isRepeatable() {
+        return this.event.isRepeatable;
+    }
+
+    get hasInterveningIf() {
+        return Boolean(this.body.sentences[0]?.statement?.isInterveningIf);
     }
 }

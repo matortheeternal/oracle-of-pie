@@ -6,14 +6,18 @@ import Clause from './clauses/Clause.js';
 const UNRECOGNIZED = [UnrecognizedText, UnrecognizedCost];
 
 export default class ParsedCard {
-    constructor(card, text, evaluators) {
+    constructor(card, text, tagLibrary) {
         this.card = card;
         this.text = text;
-        this.evaluators = evaluators;
+        this.tagLibrary = tagLibrary;
+    }
+
+    walk() {
+        return this.text.walk({ card: this.card, tagLibrary: this.tagLibrary });
     }
 
     get tags() {
-        this.cachedTags ??= evaluateCard(this.text, this.card, this.evaluators);
+        this.cachedTags ??= evaluateCard(this);
         return this.cachedTags;
     }
 

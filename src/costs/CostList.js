@@ -37,6 +37,14 @@ export default class CostList extends Parser {
         return this.items.some(item => item.discards && !item.discardsSelf);
     }
 
+    get removesSource() {
+        return this.items.some(item => item.removesSource);
+    }
+
+    get sacrificesOther() {
+        return this.items.some(item => item.sacrificesOther);
+    }
+
     get discards() {
         return this.items.some(item => item.discards);
     }

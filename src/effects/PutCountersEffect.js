@@ -12,6 +12,7 @@ const PUT_COUNTERS = new RegExp(
 const COUNTER_KIND = /^([+\-−]\d+\/[+\-−]\d+|[a-z]+(?: [a-z]+)?) counters? on /i;
 const EACH_OF = /^each of /i;
 const MINUS_TOUGHNESS = /\/-\d/;
+const PLUS_ONE = '+1/+1';
 
 export default class PutCountersEffect extends Effect {
     static get pattern() {
@@ -35,6 +36,10 @@ export default class PutCountersEffect extends Effect {
 
     get phrases() {
         return this.objects?.phrases ?? [];
+    }
+
+    get isPlusCounters() {
+        return this.kind === PLUS_ONE;
     }
 
     get isMinusCounters() {

@@ -4,8 +4,7 @@ function isAttributableMatch(inspection, node, context) {
 }
 
 export default function findAttributableMatch(face, inspection) {
-    const { text, card } = face.parsed;
-    for (const [node, context] of text.walk({ card }))
+    for (const [node, context] of face.parsed.walk())
         if (isAttributableMatch(inspection, node, context)) return { node, context };
     return null;
 }

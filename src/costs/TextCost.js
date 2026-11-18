@@ -33,6 +33,10 @@ export default class TextCost extends CostItem {
         return this.text.startsWith('discard');
     }
 
+    get removesSource() {
+        return this.discardsSelf;
+    }
+
     get discardsSelf() {
         return this.text === 'discard this card';
     }

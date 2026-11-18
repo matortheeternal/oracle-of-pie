@@ -9,6 +9,10 @@ export default class EffectSequence extends Parser {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.sentences = this.consumeAll([Sentence], []);
+        this.sentences.forEach((sentence, index) => sentence.link(
+            this.sentences[index - 1],
+            this.sentences[index + 1]
+        ));
     }
 
     get children() {
