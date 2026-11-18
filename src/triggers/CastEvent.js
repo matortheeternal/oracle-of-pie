@@ -13,6 +13,10 @@ export default class CastEvent extends TriggerEvent {
         this.spell = match.groups.spell;
     }
 
+    get isRepeatable() {
+        return !this.castsSelf;
+    }
+
     get castsSelf() {
         return THIS_SPELL.test(this.spell);
     }

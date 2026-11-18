@@ -21,7 +21,8 @@ export default class ActivatedAbility extends BodyAbility {
     }
 
     get isRepeatable() {
-        return !this.isExhaust && !this.cost.removesSource;
+        if (this.isExhaust || this.cost.removesSource) return false;
+        return !this.consumesSource;
     }
 
     get manaColors() {

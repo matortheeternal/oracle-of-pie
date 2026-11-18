@@ -57,6 +57,14 @@ export default class Effect extends Parser {
         return false;
     }
 
+    get consumesSource() {
+        return false;
+    }
+
+    childContext(context) {
+        return { ...context, effectDuration: this.duration };
+    }
+
     get isExile() {
         return false;
     }

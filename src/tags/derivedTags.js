@@ -2,7 +2,11 @@ const REMOVAL = [
     'removal-destroy', 'removal-exile', 'removal-bounce', 'removal-sacrifice',
     'removal-toughness', 'burn-creature', 'removal-fight', 'one-sided-fight'
 ];
-const REPEATABLE = { ability: { isRepeatable: true }, delayedTrigger: null };
+const REPEATABLE = {
+    ability: { isRepeatable: true },
+    delayedTrigger: null,
+    temporaryGrant: null
+};
 
 export const DERIVED_TAGS = [
     {

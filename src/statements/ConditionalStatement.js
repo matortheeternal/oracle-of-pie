@@ -54,6 +54,10 @@ export default class ConditionalStatement extends Statement {
         return INTERVENING_IF.test(this.condition);
     }
 
+    get isConditional() {
+        return !this.isDuration;
+    }
+
     get isDuration() {
         return DURATION.test(this.condition);
     }

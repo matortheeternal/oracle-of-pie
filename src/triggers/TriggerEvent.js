@@ -1,4 +1,4 @@
-const SELF = /^(?:~|this [a-z]+)$/i;
+const SELF = /^(?:~|this (?:[a-z]+|~))$/i;
 const YOU = /^you$/i;
 
 export default class TriggerEvent {

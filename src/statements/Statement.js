@@ -18,6 +18,14 @@ export default class Statement extends Parser {
         return false;
     }
 
+    get limitsToOnce() {
+        return false;
+    }
+
+    get isConditional() {
+        return false;
+    }
+
     get effects() {
         return this.children.flatMap(child => child.effects ?? []);
     }

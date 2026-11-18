@@ -25,7 +25,7 @@ export default class TriggeredAbility extends BodyAbility {
     }
 
     get isRepeatable() {
-        return this.event.isRepeatable;
+        return this.event.isRepeatable && !this.consumesSource;
     }
 
     get hasInterveningIf() {

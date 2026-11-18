@@ -15,6 +15,8 @@ const DURATION = new RegExp(
     `^(${DURATION_ALTERNATIVES.join('|')})`, 'i'
 );
 
+const LASTING = /^for as long as|leaves the battlefield$/;
+
 export default class Duration extends Node {
     static match(scribe, str) {
         return str.match(DURATION);
@@ -23,6 +25,10 @@ export default class Duration extends Node {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.text = match[1].toLowerCase();
+    }
+
+    get isTemporary() {
+        return !LASTING.test(this.text);
     }
 
     get isUntilEndOfTurn() {

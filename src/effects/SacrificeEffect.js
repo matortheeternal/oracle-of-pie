@@ -19,6 +19,11 @@ export default class SacrificeEffect extends ObjectEffect {
         return Boolean(this.alternative);
     }
 
+    get consumesSource() {
+        if (this.isDelayed || !this.affectsYou) return false;
+        return this.phrases.some(phrase => phrase.refersToSelf);
+    }
+
     get isDelayed() {
         return Boolean(this.timing);
     }

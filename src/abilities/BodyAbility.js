@@ -1,5 +1,10 @@
 import Ability from './Ability.js';
 
+function consumesSourceAlways(sentence) {
+    if (sentence.statement?.isConditional) return false;
+    return sentence.effects.some(effect => effect.consumesSource);
+}
+
 export default class BodyAbility extends Ability {
     constructor(scribe, match, str) {
         super(scribe, match, str);
@@ -13,6 +18,14 @@ export default class BodyAbility extends Ability {
 
     get parts() {
         return [this.body];
+    }
+
+    get consumesSource() {
+        return this.limitsToOnce || this.body.sentences.some(consumesSourceAlways);
+    }
+
+    get limitsToOnce() {
+        return this.body.sentences.some(sentence => sentence.statement?.limitsToOnce);
     }
 
     get hasAdditionalCost() {

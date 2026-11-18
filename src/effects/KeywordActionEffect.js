@@ -18,6 +18,7 @@ const KEYWORD_ACTION = new RegExp(
     `^(${KEYWORD_ACTION_ALTERNATIVES.join('|')})(?![\\w])${ACTION_AMOUNT}`, 'i'
 );
 
+const TRANSFORM_SELF = /^transform (?:~|this\b|it\b)/i;
 const THIRD_PERSON = /(?<=connive|explore|endure)s$/;
 
 export default class KeywordActionEffect extends Effect {
@@ -40,5 +41,10 @@ export default class KeywordActionEffect extends Effect {
     parseArguments(match) {
         this.action = match[1].toLowerCase().split(' ')[0].replace(THIRD_PERSON, '');
         this.amountText = match[2] ?? null;
+        this.actionText = match[1];
+    }
+
+    get consumesSource() {
+        return TRANSFORM_SELF.test(this.actionText);
     }
 }
