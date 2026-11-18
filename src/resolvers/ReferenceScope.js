@@ -22,6 +22,7 @@ export default class ReferenceScope {
         if (node instanceof QuotedAbility)
             return ReferenceScope.resolveAbilities(node.text);
         const owner = node instanceof Effect ? node : effect;
+        for (const seed of node.referenceSeeds ?? []) this.register(seed, null);
         if (node instanceof Phrase) this.register(node, owner);
         for (const child of node.children) this.visit(child, owner);
     }

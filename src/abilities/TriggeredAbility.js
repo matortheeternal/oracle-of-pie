@@ -1,5 +1,6 @@
 import BodyAbility from './BodyAbility.js';
 import { parseTriggerEvent } from '../triggers/index.js';
+import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const TRIGGER_WORD = /^(when|whenever|at) /i;
 const COMMA = ', ';
@@ -26,6 +27,11 @@ export default class TriggeredAbility extends BodyAbility {
         super(scribe, match, str);
         this.trigger = `${match[1]} ${match[2]}`;
         this.event = parseTriggerEvent(match[2]);
+        this.triggerSubject = this.parseNext(this.event.subject, PHRASE_PARSERS);
+    }
+
+    get referenceSeeds() {
+        return [this.triggerSubject].filter(Boolean);
     }
 
     get isRepeatable() {

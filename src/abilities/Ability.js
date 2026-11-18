@@ -41,6 +41,10 @@ export default class Ability extends Parser {
         return false;
     }
 
+    get referenceSeeds() {
+        return [];
+    }
+
     get hasAdditionalCost() {
         return false;
     }
