@@ -2,24 +2,29 @@
 
 ## Priorities
 1. **Tag suggestions (primary, expected to ship).** Suggest Scryfall oracle tags for card-magician cards; the designer accepts or dismisses each one.
-2. **Pie-break inspection (experimental).** Determine whether conventional algorithms can flag color pie breaks reliably enough to ship. An acceptable outcome is "no", with LLM assistance as the alternative to evaluate.
+2. **Color pie inspections (expected to ship).** Flag color pie bends and breaks on card-magician cards as toggleable inspections, each citing its evidence. Started as an experiment; review results (2026-11-18) made it a shipping goal.
+
+The parser, tags, and inspections live in the sibling repository oracle-of-pie; this repository is the harness that measures them.
 
 ## Decisions
 - Tag vocabulary: Scryfall oracle tags. A limited supplement only for the largest gaps, as measured.
-- Pie: the modern pie only (cards first printed 2016 and later). Users of older-era sets can disable pie suggestions.
+- Pie: the modern pie only (cards printed 2016 and later, plus older cards reprinted in expansion or core sets since then). Users of older-era sets can disable pie suggestions.
 - Inspections favor avoiding false positives over catching every break.
-- Maro's mechanical color pie table and bend severity tiers: out of scope for now; possible later spike.
+- Each inspection has a tier per color (primary, secondary, tertiary, none) derived from canon card frequency. Tertiary flags a bend, none a break. Hand-written exceptions refine specific cases, and designers override defaults per project.
 
 ## Tagging success
 - A tag ships only if its suggestion precision is at least 95% against the Scryfall oracle tags, after hand review of disagreements (many apparent false positives are untagged Scryfall cards).
 - Recall is reported per tag but doesn't block shipping.
 - Every card reports whether all of its abilities were recognized, so silence is never mistaken for approval.
 
-## Pie experiment success
-- Primary gate: few false alarms on printed modern cards (target: monocolor ≤ 0.5%, hybrid ≤ 2%).
+## Pie success
+- Primary gate: few wrong flags on printed modern cards (target: monocolor ≤ 0.5%, hybrid ≤ 2% of cards).
+  A flag on a printed card is not automatically wrong, since printed cards do bend the pie. A flag is wrong when the text was misread, the colors were misattributed, or the effect is fine in those colors.
+  The rate is measured by hand review: every flagged hybrid card, and a fixed sample of 50 flagged monocolored cards (`printed-*-pie-flags` queues). `npm run pie-gate` multiplies the share of reviewed cards with a wrong flag by the share of cards flagged.
+- Hybrid fixes came from reviewing these same cards, so its pass is optimistic until newly printed hybrid cards are reviewed.
 - Secondary: the catch rate on a labeled break set (synthetic breaks, community-sourced breaks, Scryfall `color-break`).
 - Every flag cites a color distribution and printed examples, checkable the way a Scryfall search is.
-- Compare against an LLM baseline on the same labeled set to answer the conventional-vs-LLM question with data.
+- Later: compare against an LLM baseline on the same labeled set.
 
 ## Non-goals
 Full rules-text parsing, authoritative verdicts, balance or power evaluation, the semantics of custom mechanics.
