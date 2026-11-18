@@ -5,12 +5,15 @@ import PhraseList from '../phrases/PhraseList.js';
 
 const PUT_COUNTERS_ALTERNATIVES = [
     '(?:\\w+ )?(?:[+\\-−]\\d+\\/[+\\-−]\\d+|[a-z]+) counters? on ',
-    '(?:a|an|\\w+) [^,.]*counters? on each'
+    '(?:a|an|\\w+) [^,.]*counters? on each',
+    '(?:that many|a number of) [^,.]*?counters? (?:on|equal to) '
 ];
 const PUT_COUNTERS = new RegExp(
     `^puts? (?=${PUT_COUNTERS_ALTERNATIVES.join('|')})`, 'i'
 );
-const COUNTER_KIND = /^([+\-−]\d+\/[+\-−]\d+|[a-z]+(?: [a-z]+)?) counters? on /i;
+const KIND_NAME = '([+\\-−]\\d+/[+\\-−]\\d+|[a-z]+(?: [a-z]+)?)';
+const COUNTER_KIND = new RegExp(`^${KIND_NAME} counters? (?:equal to [^,.]+? )?on `, 'i');
+const EQUAL_TO = /^equal to [^,.]+/i;
 const EACH_OF = /^each of /i;
 
 export default class PutCountersEffect extends Effect {
@@ -23,6 +26,7 @@ export default class PutCountersEffect extends Effect {
         this.kind = normalizeCounterKind(this.consumeText(COUNTER_KIND)?.[1]);
         this.consumeText(EACH_OF);
         this.objects = this.consume([PhraseList]);
+        this.consumeText(EQUAL_TO);
     }
 
     get parts() {

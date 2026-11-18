@@ -9,6 +9,7 @@ const TOKEN_DESCRIPTION_ALTERNATIVES = [
     ' that\'s a copy of [^,.]+',
     ' attached to [^,.]+',
     ' for each [^,.]+',
+    ' equal to [^,.]+',
     ' tapped and attacking',
     ' that\'s tapped and attacking',
     ',? except (?:[^."]|"[^"]*")+',

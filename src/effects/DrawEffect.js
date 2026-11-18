@@ -14,7 +14,7 @@ export default class DrawEffect extends Effect {
 
     parseArguments(match) {
         this.amount = this.consume([Amount]);
-        this.cards = this.consumeText(CARDS) ?? this.consumeText(CARDS_EQUAL);
+        this.cards = this.consumeText(CARDS_EQUAL) ?? this.consumeText(CARDS);
     }
 
     get parts() {

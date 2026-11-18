@@ -1,9 +1,11 @@
 import Node from '../core/Node.js';
 import { NUMBER_PATTERN, numberValue } from './numberWords.js';
 
-const COUNT = `(${NUMBER_PATTERN}|that many|half|twice)`;
+const COUNT = `(a number of|that many|${NUMBER_PATTERN}|half|twice)`;
 const AMOUNT = new RegExp(`^(up to |at least )?${COUNT}\\b`, 'i');
-const SPECIAL = { 'that many': 'previous', half: 'half', twice: 'double' };
+const SPECIAL = {
+    'that many': 'previous', 'a number of': 'variable', half: 'half', twice: 'double'
+};
 
 export default class Amount extends Node {
     static match(scribe, str) {
