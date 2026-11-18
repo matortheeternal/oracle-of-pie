@@ -16,6 +16,7 @@ const TEXT_COST_ALTERNATIVES = [
     'tap (?:an?|\\w+) untapped [^,:]+'
 ];
 const REMOVE_COUNTERS = /^remove /;
+const PAY_LIFE = /^pay [^{]*life$/;
 const TEXT_COST = new RegExp(
     `^(${TEXT_COST_ALTERNATIVES.join('|')})`, 'i'
 );
@@ -36,6 +37,10 @@ export default class TextCost extends CostItem {
 
     get removesSource() {
         return this.discardsSelf;
+    }
+
+    get paysLife() {
+        return PAY_LIFE.test(this.text);
     }
 
     get removesCounters() {

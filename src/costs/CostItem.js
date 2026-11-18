@@ -40,4 +40,8 @@ export default class CostItem extends Parser {
     get removesCounters() {
         return false;
     }
+
+    get paysLife() {
+        return false;
+    }
 }

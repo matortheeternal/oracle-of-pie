@@ -61,6 +61,10 @@ export default class CostList extends Parser {
         return this.items.some(item => item.sacrificesOther);
     }
 
+    get paysLife() {
+        return this.items.some(item => item.paysLife);
+    }
+
     get removesCounters() {
         return this.items.some(item => item.removesCounters);
     }
