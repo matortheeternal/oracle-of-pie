@@ -11,7 +11,7 @@ const ATTACHED_TARGET = {
 const SINGLE_TARGET = { isTargeted: true, isMass: false };
 const REPEATABLE = {
     card: { isInstantOrSorcery: false },
-    ability: { isRepeatable: true },
+    ability: { isRepeatable: true, isUltimate: false },
     delayedTrigger: null,
     temporaryGrant: null
 };

@@ -11,10 +11,11 @@ import PatternPredicate from './PatternPredicate.js';
 import NestedPredicate from './NestedPredicate.js';
 import OneOfPredicate from './OneOfPredicate.js';
 import ValuePredicate from './ValuePredicate.js';
+import UltimatePredicate from './UltimatePredicate.js';
 
 export const PREDICATES = [
     KindPredicate, AnyPredicate, NotPredicate, CardPredicate, ContextPredicate,
-    TagPredicate, EffectOrderPredicate,
+    TagPredicate, EffectOrderPredicate, UltimatePredicate,
     AbsentPredicate, BooleanPredicate, PatternPredicate, NestedPredicate, OneOfPredicate,
     ValuePredicate
 ];

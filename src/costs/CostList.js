@@ -61,6 +61,10 @@ export default class CostList extends Parser {
         return this.items.some(item => item.sacrificesOther);
     }
 
+    get loyaltyLoss() {
+        return Math.max(0, ...this.items.map(item => item.loyaltyLoss));
+    }
+
     get discards() {
         return this.items.some(item => item.discards);
     }

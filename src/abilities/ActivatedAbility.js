@@ -26,6 +26,10 @@ export default class ActivatedAbility extends BodyAbility {
         return !this.consumesSource;
     }
 
+    get loyaltyLoss() {
+        return this.cost.loyaltyLoss;
+    }
+
     get manaColors() {
         return this.cost.manaColors;
     }

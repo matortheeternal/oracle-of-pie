@@ -6,9 +6,19 @@ const ARTIFACT = /\bArtifact\b/;
 const EQUIPMENT = /\bEquipment\b/;
 
 export default class CardContext {
-    constructor({ name = '', typeLine = '' } = {}) {
+    constructor({ name = '', typeLine = '', loyalty = null } = {}) {
         this.name = name;
         this.typeLine = typeLine;
+        this.loyalty = loyalty;
+    }
+
+    get startingLoyalty() {
+        const loyalty = Number.parseInt(this.loyalty, 10);
+        return Number.isNaN(loyalty) ? null : loyalty;
+    }
+
+    isUltimate(loyaltyLoss) {
+        return this.startingLoyalty !== null && loyaltyLoss >= this.startingLoyalty;
     }
 
     get isLand() {

@@ -11,4 +11,9 @@ export default class LoyaltyCost extends CostItem {
         super(scribe, match, str);
         this.change = `${match[1].replace('−', '-')}${match[2]}`;
     }
+
+    get loyaltyLoss() {
+        const amount = Number(this.change);
+        return amount < 0 ? -amount : 0;
+    }
 }

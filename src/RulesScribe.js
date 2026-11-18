@@ -56,8 +56,8 @@ export default class RulesScribe {
         return cardText;
     }
 
-    parseFace({ name = '', typeLine = '', text = '' }) {
-        const card = new CardContext({ name, typeLine });
+    parseFace({ name = '', typeLine = '', text = '', loyalty = null }) {
+        const card = new CardContext({ name, typeLine, loyalty });
         const parsed = this.parseText(normalizeCardText(text, name));
         return new ParsedCard(card, parsed, this.tagLibrary);
     }
