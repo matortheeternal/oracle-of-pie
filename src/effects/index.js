@@ -62,6 +62,8 @@ import BeginGameEffect from './BeginGameEffect.js';
 import TuckEffect from './TuckEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
+import MoveCountersEffect from './MoveCountersEffect.js';
+import RemoveCountersEffect from './RemoveCountersEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
 export const EFFECT_PARSERS = [
@@ -72,6 +74,7 @@ export const EFFECT_PARSERS = [
     CausativeEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, ShuffleIntoLibraryEffect,
+    MoveCountersEffect, RemoveCountersEffect,
     KeywordActionEffect, AddManaEffect, CantEffect, EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
