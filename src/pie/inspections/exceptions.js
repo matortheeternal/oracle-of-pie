@@ -49,5 +49,4 @@ function creatureTypeException(subtype, tiers) {
     };
 }
 
-export const KNIGHT_FIRST_STRIKE = creatureTypeException('Knight', { B: SECONDARY });
 export const DEMON_TRAMPLE = creatureTypeException('Demon', { B: SECONDARY });
