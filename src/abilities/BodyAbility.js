@@ -24,6 +24,10 @@ export default class BodyAbility extends Ability {
         return this.limitsToOnce || this.body.sentences.some(consumesSourceAlways);
     }
 
+    get limitsUses() {
+        return this.body.sentences.some(sentence => sentence.statement?.limitsUses);
+    }
+
     get limitsToOnce() {
         return this.body.sentences.some(sentence => sentence.statement?.limitsToOnce);
     }

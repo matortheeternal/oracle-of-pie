@@ -23,6 +23,7 @@ const RESTRICTION = new RegExp(
 );
 
 const ONLY_ONCE = /\bonly once\b(?! each)/i;
+const LIMITED_USES = /\bonly (?:once|twice|\w+ times) each\b/i;
 
 export default class RestrictionStatement extends Statement {
     static match(scribe, str) {
@@ -36,5 +37,9 @@ export default class RestrictionStatement extends Statement {
 
     get limitsToOnce() {
         return ONLY_ONCE.test(this.text);
+    }
+
+    get limitsUses() {
+        return this.limitsToOnce || LIMITED_USES.test(this.text);
     }
 }

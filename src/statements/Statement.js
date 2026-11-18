@@ -22,6 +22,10 @@ export default class Statement extends Parser {
         return false;
     }
 
+    get limitsUses() {
+        return false;
+    }
+
     get isConditional() {
         return false;
     }

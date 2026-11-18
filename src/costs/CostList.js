@@ -61,6 +61,10 @@ export default class CostList extends Parser {
         return this.items.some(item => item.sacrificesOther);
     }
 
+    get isOnlyDiscard() {
+        return this.items.length === 1 && this.discards;
+    }
+
     get loyaltyLoss() {
         return Math.max(0, ...this.items.map(item => item.loyaltyLoss));
     }
