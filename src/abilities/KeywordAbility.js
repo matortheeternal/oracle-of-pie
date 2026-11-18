@@ -3,15 +3,27 @@ import KeywordList from '../values/KeywordList.js';
 import Expansion from '../definitions/Expansion.js';
 import Definition from '../definitions/Definition.js';
 
-const KEYWORD_WITH_COST = /^—(?:[^.]+\.?)$/;
-const PARAMETER = /^[a-z][a-z ,'-]*$/;
+const KEYWORD_WITH_COST = /^—(?! )[^.]+\.?$/;
+const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+)\.?$/;
+const PARAMETER = /^(?:[a-z][A-Za-z ,'-]*|with [^.]+)$/;
+
+function isSingle(list) {
+    return list.keywords.length === 1;
+}
 
 function isKeywordParameter(list, rest) {
-    return list.keywords.length === 1 && PARAMETER.test(rest);
+    return isSingle(list) && PARAMETER.test(rest);
+}
+
+function isManaCostContinuation(list, rest) {
+    const [keyword] = list.keywords;
+    if (!isSingle(list) || !keyword.hasManaParameter) return false;
+    return MANA_COST_CONTINUATION.test(rest);
 }
 
 function isKeywordRest(list, rest) {
-    return !rest || KEYWORD_WITH_COST.test(rest) || isKeywordParameter(list, rest);
+    if (!rest || KEYWORD_WITH_COST.test(rest)) return true;
+    return isKeywordParameter(list, rest) || isManaCostContinuation(list, rest);
 }
 
 export default class KeywordAbility extends Ability {

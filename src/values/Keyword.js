@@ -11,7 +11,7 @@ const PARAMETER_ALTERNATIVES = [
 ];
 const MANA_PARAMETER = /^\{/;
 const PARAMETER = new RegExp(
-    `^(?:—| )?(${PARAMETER_ALTERNATIVES.join('|')})?`
+    `^(?:—| )?(${PARAMETER_ALTERNATIVES.join('|')})`
 );
 
 export default class Keyword extends Node {
@@ -26,6 +26,10 @@ export default class Keyword extends Node {
         this.parameter = parameter?.[1] ?? null;
         if (parameter?.[0])
             this.remainingStr = this.remainingStr.slice(parameter[0].length);
+    }
+
+    get hasManaParameter() {
+        return MANA_PARAMETER.test(this.parameter ?? '');
     }
 
     get manaColors() {
