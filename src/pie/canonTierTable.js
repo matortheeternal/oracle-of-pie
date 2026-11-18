@@ -2,6 +2,9 @@ export const CANON_TIERS = {
     'counterspell': {
         W: 'tertiary', U: 'primary', B: 'none', R: 'none', G: 'none'
     },
+    'counter-ability': {
+        W: 'tertiary', U: 'primary', B: 'none', R: 'none', G: 'tertiary'
+    },
     'destroy-creature': {
         W: 'primary', U: 'none', B: 'primary', R: 'tertiary', G: 'none'
     },

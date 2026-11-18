@@ -1,4 +1,3 @@
-import tagInspection from './tagInspection.js';
 import { FLYER_DESTRUCTION, FLYER_EXILE } from './exceptions.js';
 
 const OPPOSING_CREATURE = {
@@ -7,14 +6,24 @@ const OPPOSING_CREATURE = {
     hasExactType: 'creature',
     not: { kind: 'AttachedReference' }
 };
+const ABILITY_ONLY = { hasExactType: 'ability', not: { hasExactType: 'spell' } };
+const OPPOSING_ABILITY = { ...ABILITY_ONLY, controlledByYou: false };
+const COUNTERS_ABILITY = { kind: 'CounterEffect', phrases: ABILITY_ONLY };
 const DESTROY_OR_EXILE = ['DestroyEffect', 'ExileEffect'];
 
 export const REMOVAL_INSPECTIONS = [
-    tagInspection({
+    {
         id: 'counterspell',
         title: 'Counters spells',
-        group: 'Removal'
-    }),
+        group: 'Removal',
+        match: { tag: 'counterspell', not: COUNTERS_ABILITY }
+    },
+    {
+        id: 'counter-ability',
+        title: 'Counters abilities',
+        group: 'Removal',
+        match: { ...COUNTERS_ABILITY, phrases: OPPOSING_ABILITY }
+    },
     {
         id: 'destroy-creature',
         title: 'Destroys creatures',
