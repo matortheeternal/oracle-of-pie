@@ -52,6 +52,7 @@ import CombatPermissionEffect from './CombatPermissionEffect.js';
 import PhaseEffect from './PhaseEffect.js';
 import BecomesEffect from './BecomesEffect.js';
 import DamageModificationEffect from './DamageModificationEffect.js';
+import DistributeCountersEffect from './DistributeCountersEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
@@ -70,7 +71,7 @@ export const EFFECT_PARSERS = [
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    BecomesEffect, OpaqueEffect
+    BecomesEffect, DistributeCountersEffect, OpaqueEffect
 ];
 
 export {
@@ -86,5 +87,5 @@ export {
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    BecomesEffect, OpaqueEffect
+    BecomesEffect, DistributeCountersEffect, OpaqueEffect
 };

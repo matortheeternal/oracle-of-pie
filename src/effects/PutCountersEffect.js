@@ -23,10 +23,14 @@ export default class PutCountersEffect extends Effect {
 
     parseArguments(match) {
         this.amount = this.consume([Amount]);
-        this.kind = normalizeCounterKind(this.consumeText(COUNTER_KIND)?.[1]);
+        this.kind = normalizeCounterKind(this.consumeText(this.kindPattern)?.[1]);
         this.consumeText(EACH_OF);
         this.objects = this.consume([PhraseList]);
         this.consumeText(EQUAL_TO);
+    }
+
+    get kindPattern() {
+        return COUNTER_KIND;
     }
 
     get parts() {
