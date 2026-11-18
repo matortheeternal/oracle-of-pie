@@ -45,6 +45,17 @@ export const DEFAULT_DEFINITIONS = {
             reminder: '{T}, Sacrifice this token: Add one mana of any color.'
         },
         {
+            name: 'Powerstone',
+            typeLine: 'Token Artifact — Powerstone',
+            reminder: '{T}: Add {C}. This mana can\'t be spent to cast a '
+                + 'nonartifact spell.'
+        },
+        {
+            name: 'Gold',
+            typeLine: 'Token Artifact — Gold',
+            reminder: 'Sacrifice this token: Add one mana of any color.'
+        },
+        {
             name: 'Lander',
             typeLine: 'Token Artifact — Lander',
             reminder: '{2}, {T}, Sacrifice this token: Search your library for a basic '
