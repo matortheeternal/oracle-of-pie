@@ -62,7 +62,7 @@ export default class Effect extends Parser {
     }
 
     childContext(context) {
-        return { ...context, effectDuration: this.duration };
+        return { ...context, effectDuration: this.duration, parentEffect: this };
     }
 
     get isExile() {
