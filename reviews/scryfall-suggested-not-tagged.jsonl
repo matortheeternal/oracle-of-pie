@@ -1,2 +1,14 @@
 {"id":"c6040e8d-dac3-4bed-8d1d-d7d44aa10c86|counterspell","verdict":"skip","note":"","at":"2026-11-17T23:48:40.173Z"}
 {"id":"35ae7b25-6d0f-49f8-a40d-dd2cf88e6f44|counterspell","verdict":"skip","note":"","at":"2026-11-17T23:48:50.926Z"}
+{"id":"46ef7e80-5e67-4e13-a145-afca70eec64b|activated-ability","verdict":"wrong","note":"this is an ad card, so it shouldn't be parsed.","at":"2026-11-18T19:09:42.156Z"}
+{"id":"d772b16b-31db-48aa-8bb6-da32f45eebe4|anthem","verdict":"correct","note":"","at":"2026-11-18T19:09:45.785Z"}
+{"id":"70e247e5-6ca4-458c-9519-d19b400955f6|attack-trigger","verdict":"correct","note":"","at":"2026-11-18T19:09:51.032Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-any","verdict":"wrong","note":"the ability is on the token, not this card, so we just need to decide a consistent policy.","at":"2026-11-18T19:10:30.978Z"}
+{"id":"e35d4c62-5211-4785-b683-a83719195d87|burn-creature","verdict":"wrong","note":"wither is not burn.","at":"2026-11-18T19:11:35.429Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-player","verdict":"wrong","note":"","at":"2026-11-18T19:11:40.669Z"}
+{"id":"bc163b5a-0b1a-4257-8c07-5c7d5284015f|burst-draw","verdict":"wrong","note":"\"the card should let you draw at least three cards at a time and come out ahead by at least +1.\" because you discard three later, it doesn't count here.","at":"2026-11-18T19:12:14.402Z"}
+{"id":"10389ff7-2ea4-4413-90cc-0e3ca268c64d|cantrip","verdict":"skip","note":"this is a weird edge case.  the prepared spell is a cantrip, but the card itself isn't.  So I think not tagging this cantrip is probably correct, but I'm not sure if it is worth coding an explicit rule around prepared spells that cantrip.","at":"2026-11-18T19:14:09.133Z"}
+{"id":"0a994401-d37c-4e30-9410-422e7ae5a715|cast-trigger-you","verdict":"wrong","note":"this is a cast-trigger, and cast-trigger-self, but not cast-trigger-you.","at":"2026-11-18T19:15:29.206Z"}
+{"id":"143d3fcf-2152-4911-b95a-d23b91662f33|combat-trick","verdict":"wrong","note":"this seems very subjective.  it could function like a combat trick some of the time, but whether or not it should be tagged as a combat trick is hard to say.  I'll defer to scryfall's judgement for now.","at":"2026-11-18T19:16:46.281Z"}
+{"id":"10389ff7-2ea4-4413-90cc-0e3ca268c64d|cantrip","verdict":"skip","note":"this is a weird edge case.  the prepared spell is a cantrip, but the card itself isn't.  So I think not tagging this cantrip is probably correct, but I'm not sure if it is worth coding an explicit rule around prepared spells that cantrip.","at":"2026-11-18T19:17:00.803Z"}
+{"id":"7d32c63d-aa9e-4f5d-a3e6-51377a786009|copy-spell","verdict":"wrong","note":"granted ability should not be counted","at":"2026-11-18T19:17:23.511Z"}

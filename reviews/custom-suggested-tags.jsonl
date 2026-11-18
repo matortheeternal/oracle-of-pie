@@ -1184,3 +1184,115 @@
 {"id":"mtg-underground:Old Barnaby|pure-draw","verdict":"correct","note":"","at":"2026-11-18T07:01:03.805Z"}
 {"id":"mtg-underground:Entrance to Eternity|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T07:01:05.748Z"}
 {"id":"mtg-underground:Sporespreading Shaman|death-trigger-self","verdict":"correct","note":"","at":"2026-11-18T07:01:07.431Z"}
+{"id":"mtg-the-pale-age:Ocean Researcher|curious-counter","verdict":"correct","note":"","at":"2026-11-18T19:04:32.218Z"}
+{"id":"mtg-the-pale-age:Kaeda|devoid-counter","verdict":"correct","note":"","at":"2026-11-18T19:04:33.653Z"}
+{"id":"mtg-the-pale-age:Hildi, Princess of the Wind|flying-counter","verdict":"correct","note":"","at":"2026-11-18T19:04:36.840Z"}
+{"id":"mtg-underground:Flood Tyrant|gains-bulwark","verdict":"correct","note":"","at":"2026-11-18T19:04:40.894Z"}
+{"id":"mtg-the-pale-age:Terror Injector|gains-deathtouch","verdict":"correct","note":"","at":"2026-11-18T19:04:42.897Z"}
+{"id":"mtg-underground:Crystal Pioneer|gains-escort","verdict":"correct","note":"","at":"2026-11-18T19:04:46.525Z"}
+{"id":"mtg-the-pale-age:Spined Altisaur|gains-first-strike","verdict":"correct","note":"","at":"2026-11-18T19:04:49.103Z"}
+{"id":"mtg-the-pale-age:Skyleaper|gains-flying","verdict":"correct","note":"","at":"2026-11-18T19:04:50.851Z"}
+{"id":"mtg-underground:Disturbed Denizen|gains-ravage","verdict":"correct","note":"","at":"2026-11-18T19:04:52.231Z"}
+{"id":"mtg-underground:Aegis Crawler|gives-barrier","verdict":"correct","note":"","at":"2026-11-18T19:04:53.747Z"}
+{"id":"mtg-the-pale-age:Grace of the Hunt|gives-bloodthirst","verdict":"correct","note":"","at":"2026-11-18T19:04:55.263Z"}
+{"id":"mtg-underground:Become Impassable|gives-bulwark","verdict":"correct","note":"","at":"2026-11-18T19:04:56.579Z"}
+{"id":"mtg-underground:Ambush from Above|gives-climbing","verdict":"correct","note":"","at":"2026-11-18T19:04:57.737Z"}
+{"id":"mtg-the-pale-age:Edification|gives-curious","verdict":"correct","note":"","at":"2026-11-18T19:04:59.411Z"}
+{"id":"mtg-underground:Vicious Delight|gives-deathlink","verdict":"correct","note":"","at":"2026-11-18T19:05:01.575Z"}
+{"id":"mtg-the-pale-age:Challenge Divinity|gives-double-strike","verdict":"correct","note":"","at":"2026-11-18T19:05:04.602Z"}
+{"id":"mtg-underground:Escort Training|gives-escort","verdict":"correct","note":"","at":"2026-11-18T19:05:06.101Z"}
+{"id":"mtg-underground:Madman's Vigor|gives-grind","verdict":"correct","note":"","at":"2026-11-18T19:05:07.555Z"}
+{"id":"mtg-underground:General Blanth|gives-nullify","verdict":"correct","note":"","at":"2026-11-18T19:05:09.781Z"}
+{"id":"mtg-the-pale-age:Kaeda|gives-protection","verdict":"correct","note":"","at":"2026-11-18T19:05:22.785Z"}
+{"id":"mtg-underground:Antares|gives-ravage","verdict":"correct","note":"","at":"2026-11-18T19:05:24.436Z"}
+{"id":"mtg-the-pale-age:Ferocious Leap|gives-reach","verdict":"correct","note":"","at":"2026-11-18T19:05:26.744Z"}
+{"id":"mtg-underground:Trusty Crossbow|gives-retreat","verdict":"correct","note":"","at":"2026-11-18T19:05:38.796Z"}
+{"id":"mtg-underground:D.X. Dreadnought-|gives-riposte","verdict":"correct","note":"","at":"2026-11-18T19:05:41.123Z"}
+{"id":"mtg-the-pale-age:Falroth Integrator|gives-transfuse","verdict":"correct","note":"","at":"2026-11-18T19:05:42.587Z"}
+{"id":"mtg-the-pale-age:Cyberoptic Camouflage|gives-ward","verdict":"correct","note":"","at":"2026-11-18T19:05:44.135Z"}
+{"id":"mtg-underground:Channel Rage|gives-zeal","verdict":"correct","note":"","at":"2026-11-18T19:05:47.697Z"}
+{"id":"mtg-the-pale-age:Kaeda|indestructible-counter","verdict":"correct","note":"","at":"2026-11-18T19:05:53.353Z"}
+{"id":"mtg-the-pale-age:Kevala, Archdemon Apostate|lifelink-counter","verdict":"correct","note":"","at":"2026-11-18T19:05:56.699Z"}
+{"id":"mtg-the-pale-age:Falroth Integrator|keyword-anthem","verdict":"correct","note":"","at":"2026-11-18T19:05:58.133Z"}
+{"id":"mtg-underground:Ardent Cultist|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:06:04.760Z"}
+{"id":"mtg-underground:Depthdiver Troll|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:06:06.754Z"}
+{"id":"mtg-underground:Bloodlake Brawler|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T19:06:10.263Z"}
+{"id":"mtg-the-pale-age:Clarity|draw-engine","verdict":"correct","note":"","at":"2026-11-18T19:06:17.096Z"}
+{"id":"mtg-the-pale-age:Clarity|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T19:06:18.508Z"}
+{"id":"mtg-underground:Boneheap Curator|lifegain","verdict":"correct","note":"","at":"2026-11-18T19:06:22.507Z"}
+{"id":"mtg-the-pale-age:The Thunderstrider|activated-ability","verdict":"correct","note":"","at":"2026-11-18T19:06:25.027Z"}
+{"id":"mtg-narou:Sebas Tian|gains-deathtouch","verdict":"correct","note":"","at":"2026-11-18T19:06:31.840Z"}
+{"id":"mtg-the-pale-age:Terror Injector|gains-first-strike","verdict":"correct","note":"","at":"2026-11-18T19:06:32.877Z"}
+{"id":"mtg-underground:Barrier Stone|gives-barrier","verdict":"correct","note":"","at":"2026-11-18T19:06:34.390Z"}
+{"id":"mtg-underground:Megaton Mallet|gives-bulwark","verdict":"correct","note":"","at":"2026-11-18T19:06:37.516Z"}
+{"id":"mtg-underground:Climbing Gear|gives-climbing","verdict":"correct","note":"","at":"2026-11-18T19:06:38.538Z"}
+{"id":"mtg-underground:Lead the Way|gives-escort","verdict":"correct","note":"","at":"2026-11-18T19:07:12.363Z"}
+{"id":"mtg-underground:Terrifying Might|gives-grind","verdict":"correct","note":"","at":"2026-11-18T19:07:13.942Z"}
+{"id":"mtg-underground:Razorplate Behemoth|gives-ravage","verdict":"correct","note":"","at":"2026-11-18T19:07:15.426Z"}
+{"id":"mtg-the-pale-age:Giant Slaying Sword|gives-reach","verdict":"correct","note":"","at":"2026-11-18T19:07:24.225Z"}
+{"id":"mtg-underground:Perfect Parry|gives-riposte","verdict":"correct","note":"","at":"2026-11-18T19:07:44.241Z"}
+{"id":"mtg-underground:Expedition Captain|gives-zeal","verdict":"correct","note":"","at":"2026-11-18T19:07:45.319Z"}
+{"id":"mtg-underground:Expedition Captain|keyword-anthem","verdict":"correct","note":"","at":"2026-11-18T19:07:46.218Z"}
+{"id":"mtg-underground:Burning-Spirit Shaman|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:07:47.387Z"}
+{"id":"mtg-underground:Flood Tyrant|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:07:48.955Z"}
+{"id":"mtg-underground:Bloodsoaked Terror|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T19:07:50.035Z"}
+{"id":"mtg-the-pale-age:Mr. Cosmos|draw-engine","verdict":"correct","note":"","at":"2026-11-18T19:07:51.184Z"}
+{"id":"mtg-the-pale-age:Mr. Cosmos|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-18T19:07:52.003Z"}
+{"id":"mtg-underground:Grieving Ghost|lifegain","verdict":"correct","note":"","at":"2026-11-18T19:07:53.079Z"}
+{"id":"mtg-underground:Field of Negation|gives-barrier","verdict":"correct","note":"","at":"2026-11-18T19:07:54.402Z"}
+{"id":"mtg-underground:Warp Mind|gives-grind","verdict":"correct","note":"","at":"2026-11-18T19:07:55.472Z"}
+{"id":"mtg-underground:Rush of Violence|gives-ravage","verdict":"correct","note":"","at":"2026-11-18T19:07:56.811Z"}
+{"id":"mtg-underground:Silaksamar, Pure Blade|gives-riposte","verdict":"correct","note":"","at":"2026-11-18T19:07:58.830Z"}
+{"id":"mtg-underground:Confident Rookie|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:07:59.886Z"}
+{"id":"mtg-underground:Grotesque Abomination|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:08:00.896Z"}
+{"id":"mtg-underground:Chaos Aberration|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T19:08:01.930Z"}
+{"id":"mtg-underground:Heathen Prophet|lifegain","verdict":"correct","note":"","at":"2026-11-18T19:08:02.708Z"}
+{"id":"mtg-underground:Forgotten Foundry Expedition|gives-barrier","verdict":"correct","note":"","at":"2026-11-18T19:08:03.655Z"}
+{"id":"mtg-underground:Violent Growth|gives-ravage","verdict":"correct","note":"","at":"2026-11-18T19:08:06.770Z"}
+{"id":"mtg-underground:Crafty Conjurer|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:07.652Z"}
+{"id":"mtg-underground:Many-legged Death|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:08:08.703Z"}
+{"id":"mtg-underground:Ossuary Omnivores|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T19:08:09.626Z"}
+{"id":"mtg-underground:Melancholy|lifegain","verdict":"correct","note":"","at":"2026-11-18T19:08:10.592Z"}
+{"id":"mtg-underground:Metra's Blessing|gives-barrier","verdict":"correct","note":"","at":"2026-11-18T19:08:12.131Z"}
+{"id":"mtg-underground:Flame-Blessed Zealot|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:13.035Z"}
+{"id":"mtg-underground:Mindcrawler|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:08:13.929Z"}
+{"id":"mtg-underground:Oxa, All-Consuming|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T19:08:15.027Z"}
+{"id":"mtg-underground:Mourning Horror|lifegain","verdict":"correct","note":"","at":"2026-11-18T19:08:15.745Z"}
+{"id":"mtg-underground:Nirn, the Perfect Shelter|gives-barrier","verdict":"correct","note":"","at":"2026-11-18T19:08:17.453Z"}
+{"id":"mtg-underground:Karthos Elite|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:18.751Z"}
+{"id":"mtg-underground:Oxa, All-Consuming|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:08:20.426Z"}
+{"id":"mtg-underground:Simian Spearmaster|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T19:08:21.233Z"}
+{"id":"mtg-underground:Sickle of Separation|lifegain","verdict":"correct","note":"","at":"2026-11-18T19:08:22.455Z"}
+{"id":"mtg-underground:Resist the Cold|gives-barrier","verdict":"correct","note":"","at":"2026-11-18T19:08:23.701Z"}
+{"id":"mtg-underground:Mahabal, Valiant Lord|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:25.741Z"}
+{"id":"mtg-underground:Shadow of the Beast|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:08:27.145Z"}
+{"id":"mtg-underground:Thing in the Dark|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-18T19:08:28.273Z"}
+{"id":"mtg-underground:Spirit Drinker|lifegain","verdict":"correct","note":"","at":"2026-11-18T19:08:29.199Z"}
+{"id":"mtg-underground:Mycelial Missionary|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:30.089Z"}
+{"id":"mtg-underground:The Spirit Between|mill-opponent","verdict":"correct","note":"","at":"2026-11-18T19:08:30.918Z"}
+{"id":"mtg-underground:Saltmine Surveyor|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:31.903Z"}
+{"id":"mtg-underground:Silaksamar, Pure Blade|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:32.925Z"}
+{"id":"mtg-underground:Simian Ritespeaker|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:33.803Z"}
+{"id":"mtg-underground:Veteran Expeditioner|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:34.557Z"}
+{"id":"mtg-underground:Viashino Explorer|cast-trigger-you","verdict":"correct","note":"","at":"2026-11-18T19:08:35.188Z"}
+{"id":"mtg-the-pale-age:Mr. Cosmos|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:37.037Z"}
+{"id":"mtg-underground:Ancient Stone Spirit|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:38.515Z"}
+{"id":"mtg-underground:Ancient Vault Guard|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:39.771Z"}
+{"id":"mtg-underground:Bloodsoaked Terror|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:41.261Z"}
+{"id":"mtg-underground:Boneheap Curator|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:41.925Z"}
+{"id":"mtg-underground:Chaos Aberration|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:42.531Z"}
+{"id":"mtg-underground:Expedition Thurifer|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:43.111Z"}
+{"id":"mtg-underground:Flood Tyrant|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:43.849Z"}
+{"id":"mtg-underground:Giant Golden Snail|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:44.409Z"}
+{"id":"mtg-underground:Grieving Ghost|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:45.093Z"}
+{"id":"mtg-underground:Mindcrawler|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:45.741Z"}
+{"id":"mtg-underground:Mintrea, Drowning Sorrow|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:46.344Z"}
+{"id":"mtg-underground:Mourning Horror|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:46.885Z"}
+{"id":"mtg-underground:Ossuary Omnivores|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:47.461Z"}
+{"id":"mtg-underground:Oxa, All-Consuming|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:48.059Z"}
+{"id":"mtg-underground:Shadow of the Beast|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:48.779Z"}
+{"id":"mtg-underground:Sickle of Separation|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:49.349Z"}
+{"id":"mtg-underground:Simian Spearmaster|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:49.909Z"}
+{"id":"mtg-underground:Soulsip Scavenger|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:50.497Z"}
+{"id":"mtg-underground:Thing in the Dark|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:51.102Z"}
+{"id":"mtg-underground:Zarun Spirit Guide|triggered-ability","verdict":"correct","note":"","at":"2026-11-18T19:08:51.649Z"}

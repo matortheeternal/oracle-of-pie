@@ -1,0 +1,49 @@
+{"id":"746e494e-fdc4-415e-8a82-d35e11ebeccb|cost-increaser","verdict":"correct","note":"","at":"2026-11-18T19:31:59.435Z"}
+{"id":"a43ecf8b-5dc9-4ac4-ae1f-b663aa8c9d7b|counterspell","verdict":"correct","note":"","at":"2026-11-18T19:32:11.377Z"}
+{"id":"10db57b4-f895-4514-b610-2252ba676353|damage-creature","verdict":"correct","note":"","at":"2026-11-18T19:32:21.688Z"}
+{"id":"d7dddeac-c6ed-4111-ba40-e2830c08d480|discard-opponent","verdict":"wrong","note":"This is a parsing error.","at":"2026-11-18T19:32:38.339Z"}
+{"id":"81ff5764-72ce-4b9a-a14f-07413700d935|discard-outlet","verdict":"correct","note":"","at":"2026-11-18T19:32:51.836Z"}
+{"id":"57f39ce2-ecbb-4262-8140-03aba5c4303f|extra-combat-phase","verdict":"correct","note":"","at":"2026-11-18T19:33:01.150Z"}
+{"id":"52867cdd-8bf2-4cae-bb8d-0f16a18a455b|gain-life","verdict":"wrong","note":"parsing error.","at":"2026-11-18T19:33:11.334Z"}
+{"id":"6e737c52-cbe0-493f-ae46-7bf068e04882|keyword-first-strike","verdict":"correct","note":"","at":"2026-11-18T19:33:15.309Z"}
+{"id":"6e737c52-cbe0-493f-ae46-7bf068e04882|keyword-first-strike","verdict":"correct","note":"","at":"2026-11-18T19:33:23.552Z"}
+{"id":"191ba5f0-45f4-4b7f-910d-4bd4d2d28b33|keyword-flying","verdict":"correct","note":"","at":"2026-11-18T19:33:30.897Z"}
+{"id":"f96f1a94-6226-4e1f-a7fb-a43a276b3c3a|keyword-haste","verdict":"correct","note":"","at":"2026-11-18T19:33:38.062Z"}
+{"id":"01758a4a-ac29-47ad-8e88-158374f1ae4c|keyword-menace","verdict":"correct","note":"","at":"2026-11-18T19:33:41.502Z"}
+{"id":"6c44d62f-52de-446c-9824-6b474534a612|keyword-prowess","verdict":"correct","note":"","at":"2026-11-18T19:33:53.753Z"}
+{"id":"efd5f51f-931d-46a9-9773-f74cfc318c23|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:33:59.688Z"}
+{"id":"97acd977-164d-49d5-b3a1-72e0d75c9016|keyword-trample","verdict":"correct","note":"","at":"2026-11-18T19:34:04.374Z"}
+{"id":"e5e8fce4-c97a-4ae4-9583-003c565e3bd6|loot","verdict":"wrong","note":"also parsing error","at":"2026-11-18T19:34:15.640Z"}
+{"id":"b5b26cea-9be3-46f7-9603-a6eee0dd107e|mana-dork","verdict":"correct","note":"","at":"2026-11-18T19:34:34.421Z"}
+{"id":"7e050495-bed7-43b9-abce-866c61beb1da|reanimate","verdict":"correct","note":"yeah, I actually discussed this exact card the other day.  it's technically borderline because as a bend because you sacrifice the creatures later, but the unrestricted targetting pushes it towards a break.","at":"2026-11-18T19:35:29.729Z"}
+{"id":"59a10335-72df-44a5-a514-5bac392cd282|rummage","verdict":"wrong","note":"no because looting is in pie for U and rummaging is kind of just worse looting.","at":"2026-11-18T19:36:07.052Z"}
+{"id":"b77695da-86fb-4675-b2d3-51732ad0325f|shade-pump","verdict":"correct","note":"","at":"2026-11-18T19:36:14.242Z"}
+{"id":"b8bb97a8-5f5d-48e9-a4c1-b4c20efe7739|shrink-creature","verdict":"correct","note":"I might consider it more of a bend personally, but this is fine to flag.","at":"2026-11-18T19:37:34.598Z"}
+{"id":"6e07e7ae-1bb7-4831-adb9-a5e71b7d79e3|steal-permanently","verdict":"correct","note":"","at":"2026-11-18T19:38:37.880Z"}
+{"id":"f01c779a-97be-4727-ab62-33579f52447a|tap-creature","verdict":"correct","note":"hmm.  this is questionable because it might be considered a parsing issue because the ability triggers when you cast a blue spell, but you could cast a blue spell without blue mana if it is hybrid, so I think this could be left as-is tbh.","at":"2026-11-18T19:39:32.301Z"}
+{"id":"286be139-1ddf-4b04-86b2-cf17a06c262a|unblockable","verdict":"correct","note":"","at":"2026-11-18T19:39:38.185Z"}
+{"id":"77a5305a-2611-4a64-adb4-da131dcea233|damage-creature","verdict":"correct","note":"","at":"2026-11-18T19:39:45.031Z"}
+{"id":"aaded61e-32c2-4e02-8557-3f8cd927a64e|discard-outlet","verdict":"correct","note":"","at":"2026-11-18T19:39:52.135Z"}
+{"id":"48a773d0-c433-4463-b50f-b6d4604a042c|keyword-first-strike","verdict":"correct","note":"","at":"2026-11-18T19:39:54.662Z"}
+{"id":"73346137-3117-4dc3-b5a4-1aca1da54548|keyword-haste","verdict":"correct","note":"","at":"2026-11-18T19:39:59.085Z"}
+{"id":"73346137-3117-4dc3-b5a4-1aca1da54548|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:40:00.933Z"}
+{"id":"73346137-3117-4dc3-b5a4-1aca1da54548|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:40:05.555Z"}
+{"id":"73346137-3117-4dc3-b5a4-1aca1da54548|keyword-trample","verdict":"correct","note":"","at":"2026-11-18T19:40:07.583Z"}
+{"id":"bddd7e99-ec74-4ca6-9137-155b85695a95|loot","verdict":"correct","note":"","at":"2026-11-18T19:40:24.899Z"}
+{"id":"88f34d15-c338-40a7-b56c-c5b650847430|unblockable","verdict":"correct","note":"","at":"2026-11-18T19:40:31.418Z"}
+{"id":"88f34d15-c338-40a7-b56c-c5b650847430|unblockable","verdict":"correct","note":"","at":"2026-11-18T19:40:44.397Z"}
+{"id":"77cd2246-6906-4dce-8580-4c9d2e68c477|damage-creature","verdict":"correct","note":"","at":"2026-11-18T19:40:47.831Z"}
+{"id":"e380e37d-926b-4a4b-a275-7844bf4956d5|discard-outlet","verdict":"correct","note":"","at":"2026-11-18T19:40:52.798Z"}
+{"id":"e1ffb884-a89e-4e2a-9beb-8bd5838b6a94|keyword-haste","verdict":"correct","note":"","at":"2026-11-18T19:41:10.217Z"}
+{"id":"85dec6cf-6f27-4eb0-834b-5f6fbbe25fc8|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:41:13.873Z"}
+{"id":"c51c429d-d8d7-40d6-9760-72c26acaed42|keyword-trample","verdict":"correct","note":"this also has the spell trigger thing, but I think it is correct to call it a break.","at":"2026-11-18T19:41:35.450Z"}
+{"id":"ff135dc7-31c8-41d6-a5d5-626217844d09|unblockable","verdict":"correct","note":"","at":"2026-11-18T19:41:42.115Z"}
+{"id":"37827e84-9f5f-49ed-b939-0cf80dac82e7|damage-creature","verdict":"correct","note":"","at":"2026-11-18T19:41:48.438Z"}
+{"id":"7e050495-bed7-43b9-abce-866c61beb1da|keyword-haste","verdict":"correct","note":"","at":"2026-11-18T19:41:54.309Z"}
+{"id":"930035c6-cde7-40ac-98ef-0840812037db|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:41:59.884Z"}
+{"id":"94dd397e-0127-4c79-b9d9-22ce62ccdfe7|keyword-trample","verdict":"correct","note":"","at":"2026-11-18T19:42:04.868Z"}
+{"id":"fad0118b-d046-4ee7-87d9-e6799f70a7a8|damage-creature","verdict":"correct","note":"","at":"2026-11-18T19:42:09.222Z"}
+{"id":"db906e6b-b006-4035-b799-721d5921cfee|keyword-haste","verdict":"wrong","note":"this might be an issue with color judgement, because you have to pay either red or green to cast this, so it is technically a gold Red+white, gold green+white, gold red+green, or mono-green.  we probably need to update our hybrid resolution to come up with the specific criteria a card has to pass.","at":"2026-11-18T19:43:23.529Z"}
+{"id":"24059283-edbd-4817-9f35-4be02f07b8f8|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:43:25.810Z"}
+{"id":"b996ae86-3bf6-4e84-8302-6ec6edaa6ff0|damage-creature","verdict":"correct","note":"","at":"2026-11-18T19:43:29.356Z"}
+{"id":"26a1b36c-3c27-4eb4-b85f-63459653b773|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:43:31.847Z"}
