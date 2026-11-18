@@ -147,7 +147,7 @@ export const CANON_TIERS = {
         W: 'primary', U: 'secondary', B: 'none', R: 'none', G: 'primary'
     },
     'keyword-defender': {
-        W: 'primary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
+        W: 'secondary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
     },
     'keyword-flash': {
         W: 'primary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
