@@ -23,6 +23,7 @@ export const SACRIFICE_TAGS = [
         tag: 'repeatable-sacrifice-outlet',
         match: {
             kind: 'ActivatedAbility',
+            isRepeatable: true,
             context: { granted: false },
             cost: { sacrificesOther: true }
         }

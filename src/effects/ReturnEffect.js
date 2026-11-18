@@ -64,6 +64,10 @@ export default class ReturnEffect extends ObjectEffect {
         return this.isBounce;
     }
 
+    get consumesSource() {
+        return this.fromGraveyard && this.phrases.some(phrase => phrase.refersToSelf);
+    }
+
     get returnsToBattlefield() {
         return this.destination === 'battlefield';
     }
