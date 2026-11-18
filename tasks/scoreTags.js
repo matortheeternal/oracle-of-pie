@@ -1,6 +1,6 @@
 import { readJson, writeJson } from '../src/files.js';
 import { PATHS } from '../src/paths.js';
-import { cardKey, EVALUATED_TAGS } from '../src/corpusScribe.js';
+import { cardKey, evaluatedTags } from '../src/corpusScribe.js';
 import TagTree from '../src/TagTree.js';
 import TagScore from '../src/TagScore.js';
 import { formatRow, percent } from '../src/table.js';
@@ -10,7 +10,7 @@ const WIDTHS = [-22, 5, 6, 6, 6];
 const corpus = readJson(PATHS.corpus);
 const predictions = readJson(PATHS.predictions);
 const tree = TagTree.load(PATHS.tags);
-const score = new TagScore(EVALUATED_TAGS);
+const score = new TagScore(evaluatedTags(corpus, tree));
 
 for (const card of corpus) {
     const key = cardKey(card);

@@ -1,6 +1,6 @@
 import { readJson, writeJson, writeJsonl } from '../src/files.js';
 import { PATHS, QUEUES, queuePath } from '../src/paths.js';
-import { EVALUATED_TAGS } from '../src/corpusScribe.js';
+import { evaluatedTags } from '../src/corpusScribe.js';
 import ProjectScribes from '../src/keywords/ProjectScribes.js';
 import TagTree from '../src/TagTree.js';
 import TagScore from '../src/TagScore.js';
@@ -16,13 +16,15 @@ const WIDTHS = [-22, 6, 6, 0];
 
 const reviews = ReviewLog.forQueue(QUEUE);
 const cards = loadProjects(PATHS.projects);
-const scribes = new ProjectScribes(readJson(PATHS.corpus), cards);
+const corpus = readJson(PATHS.corpus);
+const tree = TagTree.load(PATHS.tags);
+const scribes = new ProjectScribes(corpus, cards);
 writeJson(PATHS.customKeywords, scribes.definitionsByProject);
 const suggestions = new CustomSuggestions({
     scribes,
-    tree: TagTree.load(PATHS.tags),
+    tree,
     reviews,
-    agreement: new TagScore(EVALUATED_TAGS)
+    agreement: new TagScore(evaluatedTags(corpus, tree))
 });
 for (const card of cards) suggestions.addCard(card);
 
