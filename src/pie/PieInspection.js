@@ -3,15 +3,26 @@ import PieException from './PieException.js';
 import ColorTiers from './ColorTiers.js';
 import { CANON_TIERS } from './canonTierTable.js';
 
+function canonTiersOf(id) {
+    return ColorTiers.fromNames(CANON_TIERS[id] ?? {});
+}
+
+function defaultTiers(id, allowedWherever) {
+    const own = canonTiersOf(id);
+    if (!allowedWherever) return own;
+    return own.loosenedBy(canonTiersOf(allowedWherever));
+}
+
 export default class PieInspection {
-    constructor({ id, title, group, tiers, description = '', exceptions = [], match }) {
+    constructor(spec) {
+        const { id, title, group, tiers, description = '', exceptions = [] } = spec;
         this.id = id;
         this.title = title;
         this.group = group;
-        this.tiers = tiers ?? ColorTiers.fromNames(CANON_TIERS[id] ?? {});
+        this.tiers = tiers ?? defaultTiers(id, spec.allowedWherever);
         this.description = description;
         this.exceptions = exceptions.map(exception => new PieException(exception));
-        this.query = Query.compile(match);
+        this.query = Query.compile(spec.match);
     }
 
     exceptionFor(node, context) {

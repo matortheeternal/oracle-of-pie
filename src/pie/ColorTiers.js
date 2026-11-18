@@ -19,6 +19,17 @@ export default class ColorTiers {
         return new ColorTiers({ ...this.byColor, ...overrides });
     }
 
+    loosenedBy(other) {
+        const entries = COLORS.map(color => [color, this.milderOf(color, other)]);
+        return new ColorTiers(Object.fromEntries(entries));
+    }
+
+    milderOf(color, other) {
+        const own = this.tierOf(color);
+        const theirs = other.tierOf(color);
+        return own.isWorseThan(theirs) ? theirs : own;
+    }
+
     tierOf(color) {
         return this.byColor[color];
     }

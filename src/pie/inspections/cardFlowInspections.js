@@ -15,7 +15,8 @@ export const CARD_FLOW_INSPECTIONS = [
     tagInspection({
         id: 'rummage',
         title: 'Discards, then draws',
-        group: 'Card flow'
+        group: 'Card flow',
+        allowedWherever: 'loot'
     }),
     tagInspection({
         id: 'discard-outlet',
