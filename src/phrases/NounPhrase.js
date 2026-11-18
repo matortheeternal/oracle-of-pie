@@ -99,8 +99,13 @@ export default class NounPhrase extends Phrase {
         const lower = word.toLowerCase();
         this.followsType = wordClass === 'type' && this.followsType;
         if (wordClass === 'type') return this.addType(lower);
-        if (wordClass === 'subtype') return this.subtypes.push(word);
+        if (wordClass === 'subtype') return this.addSubtype(word);
         this.qualifiers.push(lower);
+    }
+
+    addSubtype(word) {
+        this.subtypes.push(word);
+        this.pluralTypes = this.pluralTypes || PLURAL.test(word);
     }
 
     addType(word) {
