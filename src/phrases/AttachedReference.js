@@ -24,6 +24,10 @@ export default class AttachedReference extends Phrase {
         this.objectType = match[2].toLowerCase();
     }
 
+    get isAttached() {
+        return true;
+    }
+
     get controlledByYou() {
         return this.attachment !== ENCHANTED;
     }

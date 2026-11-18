@@ -47,6 +47,10 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    get isAttached() {
+        return false;
+    }
+
     get isRelativeGroup() {
         return false;
     }

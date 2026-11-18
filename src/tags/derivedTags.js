@@ -5,6 +5,9 @@ const REMOVAL = [
     'removal-toughness', 'burn-creature', 'removal-fight', 'one-sided-fight',
     'removal-tuck'
 ];
+const ATTACHED_TARGET = {
+    any: [{ phrases: { isAttached: true } }, { subject: { isAttached: true } }]
+};
 const SINGLE_TARGET = { isTargeted: true, isMass: false };
 const REPEATABLE = {
     card: { isInstantOrSorcery: false },
@@ -35,7 +38,11 @@ export const DERIVED_TAGS = [
     },
     {
         tag: 'repeatable-removal',
-        match: { tag: REMOVAL, context: REPEATABLE }
+        match: {
+            tag: REMOVAL,
+            context: REPEATABLE,
+            not: ATTACHED_TARGET
+        }
     },
     {
         tag: 'repeatable-pure-draw',
