@@ -4,7 +4,7 @@ import Expansion from '../definitions/Expansion.js';
 import Definition from '../definitions/Definition.js';
 
 const KEYWORD_WITH_COST = /^—(?! )[^.]+\.?$/;
-const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+)\.?$/;
+const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+|— \d+\/\d+)\.?$/;
 const PARAMETER = /^(?:[a-z][A-Za-z ,'-]*|with [^.]+)$/;
 
 function isSingle(list) {

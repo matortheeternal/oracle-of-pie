@@ -2,6 +2,7 @@ import { ActivationCost } from 'mana-scribe';
 import Node from '../core/Node.js';
 
 const PARAMETER_ALTERNATIVES = [
+    'with [^.]+',
     '\\{[^}]+\\}(?:\\{[^}]+\\})*',
     '\\d+',
     'X',
