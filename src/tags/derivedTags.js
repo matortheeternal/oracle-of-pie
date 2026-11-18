@@ -2,7 +2,8 @@ import { STATIC_GRANT } from './staticGrant.js';
 
 const REMOVAL = [
     'removal-destroy', 'removal-exile', 'removal-bounce', 'removal-sacrifice',
-    'removal-toughness', 'burn-creature', 'removal-fight', 'one-sided-fight'
+    'removal-toughness', 'burn-creature', 'removal-fight', 'one-sided-fight',
+    'removal-tuck'
 ];
 const REPEATABLE = {
     ability: { isRepeatable: true },

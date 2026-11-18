@@ -68,6 +68,14 @@ export const REMOVAL_TAGS = [
         }
     },
     {
+        tag: 'removal-tuck',
+        match: {
+            kind: ['TuckEffect', 'PutEffect'],
+            removesPermanently: true,
+            phrases: { isOpposingObject: true, isPermanentObject: true, isTargeted: true }
+        }
+    },
+    {
         tag: 'removal-artifact',
         match: removesType('artifact')
     },
