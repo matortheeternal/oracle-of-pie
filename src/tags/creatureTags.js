@@ -1,5 +1,3 @@
-const NOT_SELF = { refersToSelf: false };
-const GRANTS_FLYING = { names: 'flying' };
 
 export const CREATURE_TAGS = [
     {
@@ -27,15 +25,6 @@ export const CREATURE_TAGS = [
         }
     },
     {
-        tag: 'gives-flying',
-        match: {
-            any: [
-                { kind: 'GrantEffect', grantsKeyword: 'flying', subject: NOT_SELF },
-                { kind: 'ModifyPTEffect', keywords: GRANTS_FLYING, subject: NOT_SELF }
-            ]
-        }
-    },
-    {
         tag: 'anthem',
         match: {
             kind: 'ModifyPTEffect',
@@ -50,6 +39,15 @@ export const CREATURE_TAGS = [
             kind: 'ExileEffect',
             isTemporary: true,
             phrases: { hasType: 'creature' }
+        }
+    },
+    {
+        tag: 'combat-trick',
+        match: {
+            kind: ['ModifyPTEffect', 'GrantEffect'],
+            card: { isInstant: true },
+            subject: { isTargeted: true, controlledByYou: true },
+            context: { ability: { kind: 'SpellAbility' } }
         }
     }
 ];

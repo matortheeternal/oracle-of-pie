@@ -22,6 +22,10 @@ export const DERIVED_TAGS = [
         match: { tag: 'pure-draw', context: REPEATABLE }
     },
     {
+        tag: 'draw-engine',
+        match: { tag: 'repeatable-pure-draw' }
+    },
+    {
         tag: 'repeatable-lifegain',
         match: { tag: 'lifegain', context: REPEATABLE }
     },

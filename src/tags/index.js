@@ -7,6 +7,9 @@ import { CREATURE_TAGS } from './creatureTags.js';
 import { BOARD_TAGS } from './boardTags.js';
 import { STRUCTURE_TAGS } from './structureTags.js';
 import { DERIVED_TAGS } from './derivedTags.js';
+import { KEYWORD_GRANT_TAGS } from './keywordGrantTags.js';
+import { MANA_TAGS } from './manaTags.js';
+import { SACRIFICE_TAGS } from './sacrificeTags.js';
 
 export const DEFAULT_TAG_SPECS = [
     ...REMOVAL_TAGS,
@@ -16,6 +19,9 @@ export const DEFAULT_TAG_SPECS = [
     ...LIBRARY_TAGS,
     ...CREATURE_TAGS,
     ...BOARD_TAGS,
+    ...KEYWORD_GRANT_TAGS,
+    ...MANA_TAGS,
+    ...SACRIFICE_TAGS,
     ...STRUCTURE_TAGS,
     ...DERIVED_TAGS
 ];
