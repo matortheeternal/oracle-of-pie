@@ -15,6 +15,11 @@ const SOURCE_GONE = [
     { ability: { cost: { removesSource: true } } }
 ];
 const SOURCE_ON_BATTLEFIELD = { expansion: null, not: { any: SOURCE_GONE } };
+const OTHER_OBJECTS = { refersToSelf: false, isPlayer: false };
+const OTHER_OBJECT_REFERENCES = [
+    { isBackReference: false },
+    { antecedent: { refersToSelf: false, isPlayer: false } }
+];
 const MASS_PLAYERS = { isPlayer: true, isMass: true, canBeOpponent: true };
 const TEAM_PUMP = 'ModifyPTEffect';
 const YOUR_TEAM = { isMass: true, controlledByYou: true, hasType: 'creature' };
@@ -24,7 +29,7 @@ export const BOARD_TAGS = [
         tag: 'gives-pp-counters',
         match: {
             ...PLUS_COUNTERS,
-            phrases: { refersToSelf: false, isBackReference: false, isPlayer: false }
+            phrases: { ...OTHER_OBJECTS, any: OTHER_OBJECT_REFERENCES }
         }
     },
     {
