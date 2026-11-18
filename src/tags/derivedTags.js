@@ -1,3 +1,5 @@
+import { STATIC_GRANT } from './staticGrant.js';
+
 const REMOVAL = [
     'removal-destroy', 'removal-exile', 'removal-bounce', 'removal-sacrifice',
     'removal-toughness', 'burn-creature', 'removal-fight', 'one-sided-fight'
@@ -7,6 +9,10 @@ const REPEATABLE = {
     delayedTrigger: null,
     temporaryGrant: null
 };
+
+const OWN_ABILITY = { granted: false, expansion: null };
+const GRANTING_EFFECTS = ['GrantEffect', 'ModifyPTEffect'];
+const LASTING_GRANT = { ...STATIC_GRANT, expansion: null };
 
 export const DERIVED_TAGS = [
     {
@@ -31,7 +37,28 @@ export const DERIVED_TAGS = [
     },
     {
         tag: 'repeatable-lifegain',
-        match: { tag: 'lifegain', context: REPEATABLE }
+        match: {
+            any: [
+                { tag: 'lifegain', context: REPEATABLE },
+                {
+                    kind: 'KeywordAbility',
+                    keywords: { names: 'lifelink' },
+                    card: { isCreature: true },
+                    context: OWN_ABILITY
+                },
+                {
+                    kind: GRANTING_EFFECTS,
+                    grantsKeyword: 'lifelink',
+                    context: LASTING_GRANT
+                },
+                {
+                    kind: 'CreateTokenEffect',
+                    tokenDefinitions: { name: 'Food' },
+                    affectsYou: true,
+                    context: REPEATABLE
+                }
+            ]
+        }
     },
     {
         tag: 'repeatable-creature-tokens',
