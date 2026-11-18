@@ -1,6 +1,6 @@
 import Effect from './Effect.js';
 import PTModifier from '../values/PTModifier.js';
-import KeywordList from '../values/KeywordList.js';
+import consumeGrantedAbilities from '../values/consumeGrantedAbilities.js';
 
 const GETS = /^gets? (?=[+\-−]?(?:\d+|X|\*)\/)/i;
 const AND_GAINS = /^and (?:gains?|has|have) /i;
@@ -13,12 +13,17 @@ export default class ModifyPTEffect extends Effect {
 
     parseArguments(match) {
         this.modifier = this.consume([PTModifier]);
-        this.keywords = this.consumeText(AND_GAINS) ? this.consume([KeywordList]) : null;
+        Object.assign(this, this.consumeGrants());
         this.scaling = this.consumeText(SCALING)?.[1] ?? null;
     }
 
+    consumeGrants() {
+        if (!this.consumeText(AND_GAINS)) return { keywords: null, quoted: null };
+        return consumeGrantedAbilities(this);
+    }
+
     get parts() {
-        return [this.modifier, this.keywords].filter(Boolean);
+        return [this.modifier, this.keywords, this.quoted].filter(Boolean);
     }
 
     get grantsKeywords() {

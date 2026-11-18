@@ -1,4 +1,5 @@
 const TRIGGERED = 'TriggeredAbility';
+const OWN_DEATH_TRIGGER = { kind: TRIGGERED, context: { granted: false } };
 
 export const STRUCTURE_TAGS = [
     {
@@ -15,11 +16,11 @@ export const STRUCTURE_TAGS = [
     },
     {
         tag: 'death-trigger',
-        match: { kind: TRIGGERED, event: { kind: 'DiesEvent' } }
+        match: { ...OWN_DEATH_TRIGGER, event: { kind: 'DiesEvent' } }
     },
     {
         tag: 'death-trigger-self',
-        match: { kind: TRIGGERED, event: { kind: 'DiesEvent', isSelf: true } }
+        match: { ...OWN_DEATH_TRIGGER, event: { kind: 'DiesEvent', isSelf: true } }
     },
     {
         tag: 'cast-trigger-you',
