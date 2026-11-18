@@ -12,6 +12,8 @@ export const PATHS = {
     corpus: path.join(DATA, 'corpus.json'),
     tags: path.join(DATA, 'tags.json'),
     predictions: path.join(DATA, 'predictions.json'),
+    pieProfiles: path.join(DATA, 'pie-profiles.json'),
+    pieFlags: path.join(DATA, 'pie-flags.json'),
     score: path.join(DATA, 'tag-score.json'),
     projects: path.join(ROOT, 'review', 'projects.json')
 };
