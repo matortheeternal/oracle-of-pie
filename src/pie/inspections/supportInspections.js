@@ -1,6 +1,9 @@
 import tagInspection from './tagInspection.js';
 
 const OPPONENT_LOSES_LIFE = { kind: 'LoseLifeEffect', subjectIsOpponent: true };
+const YOUR_OWN_PERMANENTS = {
+    any: [{ phrases: { controlledByYou: true } }, { subject: { controlledByYou: true } }]
+};
 const LIFE_LOSS_SENTENCE = { sentence: { effects: { any: [OPPONENT_LOSES_LIFE] } } };
 
 export const SUPPORT_INSPECTIONS = [
@@ -14,11 +17,12 @@ export const SUPPORT_INSPECTIONS = [
         title: 'Untaps your permanents en masse',
         group: 'Mana & lands'
     }),
-    tagInspection({
+    {
         id: 'freeze-creature',
         title: 'Keeps creatures tapped',
-        group: 'Control'
-    }),
+        group: 'Control',
+        match: { tag: 'freeze-creature', not: YOUR_OWN_PERMANENTS }
+    },
     {
         id: 'drain-life',
         title: 'Drains life',
