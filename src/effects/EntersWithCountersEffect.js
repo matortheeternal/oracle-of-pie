@@ -1,14 +1,12 @@
 import Effect from './Effect.js';
-import Amount from '../values/Amount.js';
 import { normalizeCounterKind, isPlusOneKind, lowersToughness } from './counterKinds.js';
 
 const COUNTERS_ON_IT = '.*counters? on (?:it|them)\\b';
 const ENTERS_WITH = new RegExp(
     `^enters? (?:the battlefield )?(?:tapped )?with (?=${COUNTERS_ON_IT})`, 'i'
 );
-const ADDITIONAL = /^additional /i;
-const KIND = '[+\\-−]\\d+\\/[+\\-−]\\d+|[a-z]+(?: [a-z]+)?';
-const COUNTER_KIND = new RegExp(`^(${KIND}) counters? on (?:it|them)\\b`, 'i');
+const DESCRIPTION = /^(.*?\bcounters? on (?:it|them)\b(?: equal to [^,.]+)?)/i;
+const KIND = /([+\-−]\d+\/[+\-−]\d+|[a-z]+) counters?\b/gi;
 
 export default class EntersWithCountersEffect extends Effect {
     static get pattern() {
@@ -16,17 +14,16 @@ export default class EntersWithCountersEffect extends Effect {
     }
 
     parseArguments(match) {
-        this.amount = this.consume([Amount]);
-        this.isAdditional = Boolean(this.consumeText(ADDITIONAL));
-        this.kind = normalizeCounterKind(this.consumeText(COUNTER_KIND)?.[1]);
+        this.description = this.consumeText(DESCRIPTION)?.[1] ?? null;
     }
 
-    get parts() {
-        return [this.amount].filter(Boolean);
+    get kinds() {
+        const matches = [...(this.description ?? '').matchAll(KIND)];
+        return matches.map(([, kind]) => normalizeCounterKind(kind.toLowerCase()));
     }
 
     get isComplete() {
-        return Boolean(this.kind);
+        return Boolean(this.description);
     }
 
     get phrases() {
@@ -34,10 +31,10 @@ export default class EntersWithCountersEffect extends Effect {
     }
 
     get isPlusCounters() {
-        return isPlusOneKind(this.kind);
+        return this.kinds.some(isPlusOneKind);
     }
 
     get isMinusCounters() {
-        return lowersToughness(this.kind);
+        return this.kinds.some(lowersToughness);
     }
 }
