@@ -36,4 +36,8 @@ export default class CostItem extends Parser {
     get loyaltyLoss() {
         return 0;
     }
+
+    get removesCounters() {
+        return false;
+    }
 }

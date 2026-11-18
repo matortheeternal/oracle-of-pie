@@ -61,6 +61,10 @@ export default class CostList extends Parser {
         return this.items.some(item => item.sacrificesOther);
     }
 
+    get removesCounters() {
+        return this.items.some(item => item.removesCounters);
+    }
+
     get isOnlyDiscard() {
         return this.items.length === 1 && this.discards;
     }

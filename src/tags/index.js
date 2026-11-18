@@ -4,6 +4,7 @@ import { CARD_FLOW_TAGS } from './cardFlowTags.js';
 import { DRAW_TAGS } from './drawTags.js';
 import { WHEEL_TAGS } from './wheelTags.js';
 import { DISCARD_TAGS } from './discardTags.js';
+import { COUNTER_TAGS } from './counterTags.js';
 import { LIBRARY_TAGS } from './libraryTags.js';
 import { CREATURE_TAGS } from './creatureTags.js';
 import { BOARD_TAGS } from './boardTags.js';
@@ -23,6 +24,7 @@ export const DEFAULT_TAG_SPECS = [
     ...DRAW_TAGS,
     ...WHEEL_TAGS,
     ...DISCARD_TAGS,
+    ...COUNTER_TAGS,
     ...LIBRARY_TAGS,
     ...CREATURE_TAGS,
     ...BOARD_TAGS,

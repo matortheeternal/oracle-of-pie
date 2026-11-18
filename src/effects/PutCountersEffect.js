@@ -14,6 +14,7 @@ const PUT_COUNTERS = new RegExp(
 const KIND_NAME = '([+\\-−]\\d+/[+\\-−]\\d+|[a-z]+(?: [a-z]+)?)';
 const COUNTER_KIND = new RegExp(`^${KIND_NAME} counters? (?:equal to [^,.]+? )?on `, 'i');
 const EQUAL_TO = /^equal to [^,.]+/i;
+const EXISTING_COUNTERS = /^(?:its|their|those)$/i;
 const EACH_OF = /^each of /i;
 
 export default class PutCountersEffect extends Effect {
@@ -27,6 +28,10 @@ export default class PutCountersEffect extends Effect {
         this.consumeText(EACH_OF);
         this.objects = this.consume([PhraseList]);
         this.consumeText(EQUAL_TO);
+    }
+
+    get movesCounters() {
+        return EXISTING_COUNTERS.test(this.kind ?? '');
     }
 
     get keywordCounterNames() {

@@ -15,6 +15,7 @@ const TEXT_COST_ALTERNATIVES = [
     'waterbend \\{[^,:]+',
     'tap (?:an?|\\w+) untapped [^,:]+'
 ];
+const REMOVE_COUNTERS = /^remove /;
 const TEXT_COST = new RegExp(
     `^(${TEXT_COST_ALTERNATIVES.join('|')})`, 'i'
 );
@@ -35,6 +36,10 @@ export default class TextCost extends CostItem {
 
     get removesSource() {
         return this.discardsSelf;
+    }
+
+    get removesCounters() {
+        return REMOVE_COUNTERS.test(this.text);
     }
 
     get discardsSelf() {
