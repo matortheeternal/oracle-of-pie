@@ -42,6 +42,10 @@ export default class Clause extends Parser {
         return [this.effect].filter(Boolean);
     }
 
+    get isUnrecognizedSpan() {
+        return !this.effect && Boolean(this.raw);
+    }
+
     get isRecognized() {
         return Boolean(this.effect) && super.isRecognized;
     }

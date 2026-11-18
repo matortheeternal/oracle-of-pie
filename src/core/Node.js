@@ -35,6 +35,10 @@ export default class Node {
         return this.children.every(child => child.isRecognized);
     }
 
+    get isUnrecognizedSpan() {
+        return false;
+    }
+
     apply(nodes) {
         nodes.push(this);
     }

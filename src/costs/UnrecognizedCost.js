@@ -10,4 +10,8 @@ export default class UnrecognizedCost extends CostItem {
     get isRecognized() {
         return false;
     }
+
+    get isUnrecognizedSpan() {
+        return Boolean(this.raw);
+    }
 }

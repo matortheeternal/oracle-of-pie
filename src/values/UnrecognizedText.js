@@ -19,4 +19,8 @@ export default class UnrecognizedText extends Node {
     get isRecognized() {
         return false;
     }
+
+    get isUnrecognizedSpan() {
+        return Boolean(this.raw);
+    }
 }

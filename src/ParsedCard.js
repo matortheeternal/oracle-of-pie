@@ -1,9 +1,4 @@
 import evaluateCard from './evaluators/evaluateCard.js';
-import UnrecognizedText from './values/UnrecognizedText.js';
-import UnrecognizedCost from './costs/UnrecognizedCost.js';
-import Clause from './clauses/Clause.js';
-
-const UNRECOGNIZED = [UnrecognizedText, UnrecognizedCost];
 
 export default class ParsedCard {
     constructor(card, text, tagLibrary) {
@@ -22,12 +17,8 @@ export default class ParsedCard {
     }
 
     get unrecognized() {
-        const spans = [];
-        for (const [node] of this.text.walk()) {
-            if (UNRECOGNIZED.some(type => node instanceof type)) spans.push(node.raw);
-            if (node instanceof Clause && !node.effect && node.raw) spans.push(node.raw);
-        }
-        return spans;
+        const nodes = [...this.text.walk()].map(([node]) => node);
+        return nodes.filter(node => node.isUnrecognizedSpan).map(node => node.raw);
     }
 
     get opaque() {
