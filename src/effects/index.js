@@ -31,6 +31,7 @@ import PayManaEffect from './PayManaEffect.js';
 import PayLifeEffect from './PayLifeEffect.js';
 import PlayerCountersEffect from './PlayerCountersEffect.js';
 import RevealHandEffect from './RevealHandEffect.js';
+import RevealUntilEffect from './RevealUntilEffect.js';
 import AttachEffect from './AttachEffect.js';
 import ExtraLandEffect from './ExtraLandEffect.js';
 import PlayCardsEffect from './PlayCardsEffect.js';
@@ -77,7 +78,8 @@ export const EFFECT_PARSERS = [
     MoveCountersEffect, RemoveCountersEffect,
     KeywordActionEffect, AddManaEffect, CantEffect, EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
-    PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
+    PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect,
+    RevealUntilEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
@@ -94,7 +96,8 @@ export {
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
     CantEffect, EntersWithCountersEffect, ShuffleIntoLibraryEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
-    PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
+    PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect,
+    RevealUntilEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
