@@ -10,6 +10,8 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'the (?:creature|token|tokens|card|permanent)',
     'each of them',
     'one of them',
+    '(?:two|three|four|five|\\d+|x) of them',
+    '(?:one|two|three|\\d+|x) of those (?:cards|creatures|permanents)',
     'each of those creatures',
     'the rest',
     'the cop(?:y|ies)',
