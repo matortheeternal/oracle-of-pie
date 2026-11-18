@@ -12,6 +12,7 @@ export default class TagPredicate extends Predicate {
 
     test(subject, context) {
         const library = context.tagLibrary;
-        return this.tags.some(tag => library.get(tag).matches(subject, context));
+        return this.tags.some(tag =>
+            library.get(tag).tagsFor(subject, context).includes(tag));
     }
 }

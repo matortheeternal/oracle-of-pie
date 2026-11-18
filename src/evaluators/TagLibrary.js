@@ -27,8 +27,12 @@ export default class TagLibrary {
     }
 
     get(tag) {
-        const evaluator = this.byTag.get(tag);
+        const evaluator = this.byTag.get(tag) ?? this.familyOwning(tag);
         if (!evaluator) throw new QueryError(`Unknown tag "${tag}"`);
         return evaluator;
+    }
+
+    familyOwning(tag) {
+        return this.evaluators.find(evaluator => evaluator.ownsTag(tag));
     }
 }

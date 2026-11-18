@@ -18,6 +18,12 @@ export default class KeywordFamilyEvaluator extends Evaluator {
         this.keywordsKey = keywords;
     }
 
+    ownsTag(tag) {
+        const [prefix, suffix] = this.family.split(KEYWORD_PLACEHOLDER);
+        return tag.length > prefix.length + suffix.length
+            && tag.startsWith(prefix) && tag.endsWith(suffix);
+    }
+
     tagFor(keyword) {
         const slug = KeywordFamilyEvaluator.slug(keyword);
         return this.family.replace(KEYWORD_PLACEHOLDER, slug);

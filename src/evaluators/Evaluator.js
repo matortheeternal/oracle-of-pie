@@ -15,6 +15,10 @@ export default class Evaluator {
         return this.query.test(node, context);
     }
 
+    ownsTag(tag) {
+        return tag === this.tag;
+    }
+
     tagsFor(node, context) {
         return this.matches(node, context) ? [this.tag] : [];
     }
