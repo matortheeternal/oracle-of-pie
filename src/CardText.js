@@ -1,4 +1,5 @@
 import Parser from './core/Parser.js';
+import Effect from './effects/Effect.js';
 
 const REMINDER = /\s*\([^()]*\)/g;
 const LINE_BREAK = /\n+/;
@@ -38,6 +39,13 @@ export default class CardText extends Parser {
     get hasOnlyKeywordAbilities() {
         return this.abilities.length > 0
             && this.abilities.every(ability => ability.isKeywordOnly);
+    }
+
+    get effects() {
+        this.cachedEffects ??= [...this.walk()]
+            .map(([node]) => node)
+            .filter(node => node instanceof Effect);
+        return this.cachedEffects;
     }
 
     get hasAdditionalCost() {

@@ -1,3 +1,5 @@
+import { WHEEL } from './exceptions.js';
+
 const CREATURE_CARD = { isCreatureCard: true };
 const FORCED_OPPONENT = { isOptional: false, subject: { canBeOpponent: true } };
 const DRAWS_IN_SENTENCE = { sentence: { effects: { any: [{ kind: 'DrawEffect' }] } } };
@@ -8,6 +10,7 @@ export const RESOURCE_INSPECTIONS = [
         id: 'discard-opponent',
         title: 'Makes opponents discard',
         group: 'Card flow',
+        exceptions: [WHEEL],
         match: { kind: 'DiscardEffect', ...FORCED_OPPONENT, not: REPLACED_BY_DRAW }
     },
     {

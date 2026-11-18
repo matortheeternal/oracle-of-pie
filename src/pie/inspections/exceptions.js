@@ -72,6 +72,15 @@ export const LIFE_WARD = {
     tiers: { B: PRIMARY, R: PRIMARY }
 };
 
+const OPPONENT_DRAWS = { kind: 'DrawEffect', subject: { canBeOpponent: true } };
+
+export const WHEEL = {
+    id: 'wheel',
+    title: 'Discarding paired with drawing',
+    match: { context: { cardText: { effects: { any: [OPPONENT_DRAWS] } } } },
+    tiers: { R: PRIMARY }
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',
