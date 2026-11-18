@@ -8,6 +8,7 @@ import { COUNTER_TAGS } from './counterTags.js';
 import { UNTAP_TAGS } from './untapTags.js';
 import { PUMP_TAGS } from './pumpTags.js';
 import { LIFE_TAGS } from './lifeTags.js';
+import { TURN_TAGS } from './turnTags.js';
 import { LIBRARY_TAGS } from './libraryTags.js';
 import { CREATURE_TAGS } from './creatureTags.js';
 import { BOARD_TAGS } from './boardTags.js';
@@ -31,6 +32,7 @@ export const DEFAULT_TAG_SPECS = [
     ...UNTAP_TAGS,
     ...PUMP_TAGS,
     ...LIFE_TAGS,
+    ...TURN_TAGS,
     ...LIBRARY_TAGS,
     ...CREATURE_TAGS,
     ...BOARD_TAGS,
