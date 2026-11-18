@@ -1,5 +1,6 @@
 import { ActivationCost } from 'mana-scribe';
 import Statement from './Statement.js';
+import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const CONDITION_ALTERNATIVES = [
     'if',
@@ -25,6 +26,7 @@ const CONDITION_ALTERNATIVES = [
     'as an additional cost to cast this spell',
     'as long as [^,]+'
 ];
+const CAST_FOR_ALTERNATIVE_COST = /\bcast (this spell|~) for its [a-z]+ cost\b/i;
 const SPENT_COLOR = /\{([WUBRG])\}(?:\{\1\})* was spent to cast/;
 const KICKED = /\bwas kicked\b/i;
 const NAMED_KICKER = /\bkicked with its ((?:\{[^}]+\})+) kicker\b/i;
@@ -45,7 +47,17 @@ export default class ConditionalStatement extends Statement {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.condition = `${match[1]}${match[2]}`.trim();
+        this.castObject = this.parseCastObject();
         this.clauses = this.consumeClauses();
+    }
+
+    parseCastObject() {
+        const phrase = this.condition.match(CAST_FOR_ALTERNATIVE_COST)?.[1];
+        return phrase ? this.parseNext(phrase, PHRASE_PARSERS) : null;
+    }
+
+    get referenceSeeds() {
+        return [this.castObject].filter(Boolean);
     }
 
     get spentColors() {
