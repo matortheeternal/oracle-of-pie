@@ -208,6 +208,10 @@ export default class NounPhrase extends Phrase {
         return PERMANENT_TYPES.some(type => this.hasType(type));
     }
 
+    get hasSubtypes() {
+        return this.subtypes.length > 0;
+    }
+
     hasExactType(type) {
         return this.types.includes(type) || this.qualifiers.includes(type);
     }
