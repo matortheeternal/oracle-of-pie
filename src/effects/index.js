@@ -43,6 +43,8 @@ import AdditionalTriggerEffect from './AdditionalTriggerEffect.js';
 import CombatRequirementEffect from './CombatRequirementEffect.js';
 import DoubleCountersEffect from './DoubleCountersEffect.js';
 import PreventDamageEffect from './PreventDamageEffect.js';
+import CostModificationEffect from './CostModificationEffect.js';
+import DefinePTEffect from './DefinePTEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
@@ -57,7 +59,7 @@ export const EFFECT_PARSERS = [
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
-    DoubleCountersEffect, PreventDamageEffect,
+    DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     OpaqueEffect
 ];
 
@@ -72,6 +74,6 @@ export {
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
-    DoubleCountersEffect, PreventDamageEffect,
+    DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     OpaqueEffect
 };

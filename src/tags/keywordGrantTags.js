@@ -37,7 +37,7 @@ export const KEYWORD_GRANT_TAGS = [
                 isMass: true,
                 controlledByYou: true,
                 hasType: 'creature',
-                not: { hasExactType: 'permanent' }
+                not: { any: [{ hasExactType: 'permanent' }, { hasExactType: 'spell' }] }
             },
             context: { not: TEMPORARY_SENTENCE }
         }

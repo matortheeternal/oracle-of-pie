@@ -15,12 +15,15 @@ const CONTROLLER_ALTERNATIVES = [
     'its controller controls',
     'that opponent controls',
     'you own but don\'t control',
-    'you control but don\'t own'
+    'you control but don\'t own',
+    'you cast',
+    'your opponents cast',
+    'opponents cast'
 ];
 const CONTROLLER = new RegExp(
     `^(${CONTROLLER_ALTERNATIVES.join('|')})\\b`, 'i'
 );
-const YOURS = /^you (?:control|own|both)/i;
+const YOURS = /^you (?:control|own|both|cast)/i;
 
 export default class ControllerModifier extends Modifier {
     static match(scribe, str) {
