@@ -1,5 +1,6 @@
 import KeywordHarvest from './KeywordHarvest.js';
 import projectSettings from './projectSettings.js';
+import { ColorTiers } from '../../../rules-scribe/src/index.js';
 
 function keyOf(definition) {
     return definition.name.toLowerCase();
@@ -22,5 +23,12 @@ export default class ProjectKeywords {
         for (const definition of this.configured)
             merged.set(keyOf(definition), { ...definition, source: 'configured' });
         return [...merged.values()].filter(definition => !definition.disabled);
+    }
+
+    get pieTiers() {
+        const tiered = this.definitions.filter(definition => definition.tiers);
+        const entries = tiered.map(definition =>
+            [definition.name.toLowerCase(), ColorTiers.fromNames(definition.tiers)]);
+        return Object.fromEntries(entries);
     }
 }
