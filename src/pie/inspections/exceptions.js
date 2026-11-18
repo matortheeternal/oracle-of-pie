@@ -88,6 +88,15 @@ export const UNTAPPED_CREATURES = {
     cites: 'Untapping creatures'
 };
 
+const UNBLOCKABLE_IN_SENTENCE = { kind: 'CantEffect', makesUnblockable: true };
+
+export const EVASIVE_POWER_PUMP = {
+    id: 'with-unblockable',
+    title: 'Power boosts bundled with unblockability',
+    match: { context: { sentence: { effects: { any: [UNBLOCKABLE_IN_SENTENCE] } } } },
+    tiers: { U: TERTIARY }
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',

@@ -1,4 +1,5 @@
 import tagInspection from './tagInspection.js';
+import { EVASIVE_POWER_PUMP } from './exceptions.js';
 
 export const COMBAT_INSPECTIONS = [
     tagInspection({
@@ -11,6 +12,7 @@ export const COMBAT_INSPECTIONS = [
         id: 'firebreathing',
         title: 'Pumps its own power',
         group: 'Creatures & combat',
+        exceptions: [EVASIVE_POWER_PUMP],
         cites: '+N/+0 (on creatures)'
     }),
     tagInspection({
