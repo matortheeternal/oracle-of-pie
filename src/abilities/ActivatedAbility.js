@@ -22,7 +22,8 @@ export default class ActivatedAbility extends BodyAbility {
     }
 
     get isRepeatable() {
-        if (this.isExhaust || this.cost.removesSource) return false;
+        if (this.isExhaust || this.cost.removesSource || this.reminderLimitsToOnce)
+            return false;
         return !this.consumesSource;
     }
 

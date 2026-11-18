@@ -2,6 +2,8 @@ import Parser from '../core/Parser.js';
 import EffectSequence from '../statements/EffectSequence.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
 
+const ONLY_ONCE = /\bonly once\b(?! each)/i;
+
 export default class Ability extends Parser {
     constructor(scribe, match, str) {
         super(scribe, match, str);
@@ -15,6 +17,10 @@ export default class Ability extends Parser {
 
     addMode(mode) {
         this.modes.push(mode);
+    }
+
+    get reminderLimitsToOnce() {
+        return this.reminders.some(reminder => ONLY_ONCE.test(reminder));
     }
 
     get parts() {

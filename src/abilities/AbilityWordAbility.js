@@ -13,6 +13,7 @@ export default class AbilityWordAbility extends Ability {
         super(scribe, match, str);
         this.abilityWord = match[1];
         this.inner = this.consume(scribe.innerAbilityParsers);
+        if (this.inner) this.inner.reminders = this.reminders;
     }
 
     get parts() {
