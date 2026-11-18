@@ -2,6 +2,7 @@ import Node from '../core/Node.js';
 
 const PT = /^([+\-−]?)(\d+|X|\*)\/([+\-−]?)(\d+|X|\*)/;
 
+const LETHAL_SHRINK = 4;
 const SIGNS = { '': '', '+': '+', '-': '-', '−': '-' };
 
 function magnitude(value) {
@@ -26,6 +27,12 @@ export default class PTModifier extends Node {
 
     get lowersToughness() {
         return this.toughness.sign === '-' && this.toughness.magnitude !== 0;
+    }
+
+    get isLethalShrink() {
+        if (!this.lowersToughness) return false;
+        const amount = this.toughness.magnitude;
+        return typeof amount !== 'number' || amount >= LETHAL_SHRINK;
     }
 
     get raisesToughness() {

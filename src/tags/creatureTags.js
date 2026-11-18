@@ -51,10 +51,14 @@ export const CREATURE_TAGS = [
     {
         tag: 'combat-trick',
         match: {
-            kind: ['ModifyPTEffect', 'GrantEffect'],
+            kind: ['ModifyPTEffect', 'GrantEffect', 'SetBasePTEffect'],
             card: { isInstant: true },
-            subject: { isTargeted: true, controlledByYou: true },
-            context: { ability: { kind: 'SpellAbility' } }
+            context: { ability: { kind: 'SpellAbility' } },
+            subject: {
+                hasType: 'creature',
+                any: [{ isTargeted: true }, { isMass: true, controlledByYou: true }]
+            },
+            not: { modifier: { isLethalShrink: true } }
         }
     },
     {
