@@ -7,13 +7,14 @@ const OPPOSING_CREATURE = {
     not: { kind: 'AttachedReference' }
 };
 const DESTROY_OR_EXILE = ['DestroyEffect', 'ExileEffect'];
+const SPELL_REMOVERS = ['CounterEffect', 'ReturnEffect'];
 
 export const REMOVAL_INSPECTIONS = [
     {
         id: 'counterspell',
         title: 'Counters spells',
         group: 'Removal',
-        match: { kind: 'CounterEffect', phrases: { hasExactType: 'spell' } }
+        match: { kind: SPELL_REMOVERS, phrases: { hasExactType: 'spell' } }
     },
     {
         id: 'destroy-creature',
