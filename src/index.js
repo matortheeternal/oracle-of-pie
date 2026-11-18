@@ -26,4 +26,5 @@ export { default as CardColors } from './pie/CardColors.js';
 export { default as ColorProfileBuilder } from './pie/ColorProfileBuilder.js';
 export { DEFAULT_PIE_INSPECTIONS } from './pie/inspections/index.js';
 export { keywordInspections } from './pie/inspections/keywordInspection.js';
+export { default as ColorTiers } from './pie/ColorTiers.js';
 export { COLOR_POLICIES } from './pie/policies/index.js';

@@ -26,3 +26,7 @@ export const PRIMARY = new ColorTier('primary', 0, SEVERITY_NONE);
 export const SECONDARY = new ColorTier('secondary', 1, SEVERITY_NONE);
 export const TERTIARY = new ColorTier('tertiary', 2, WEAK_WARNING);
 export const NONE = new ColorTier('none', 3, WARNING);
+
+export const TIERS_BY_NAME = Object.fromEntries(
+    [PRIMARY, SECONDARY, TERTIARY, NONE].map(tier => [tier.name, tier])
+);

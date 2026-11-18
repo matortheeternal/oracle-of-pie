@@ -1,8 +1,14 @@
 import { COLORS } from './ColorProfile.js';
+import { TIERS_BY_NAME, NONE } from './ColorTier.js';
 
 export default class ColorTiers {
     static of(W, U, B, R, G) {
         return new ColorTiers({ W, U, B, R, G });
+    }
+
+    static fromNames(names) {
+        const byColor = COLORS.map(color => [color, TIERS_BY_NAME[names[color]] ?? NONE]);
+        return new ColorTiers(Object.fromEntries(byColor));
     }
 
     constructor(byColor) {
