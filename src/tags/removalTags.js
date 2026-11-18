@@ -33,6 +33,7 @@ export const REMOVAL_TAGS = [
                 {
                     kind: 'CounterEffect',
                     countersSpell: true,
+                    phrases: { controlledByYou: false },
                     context: { not: { ability: { event: { kind: 'TargetedEvent' } } } }
                 },
                 {
