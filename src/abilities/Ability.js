@@ -64,6 +64,7 @@ export default class Ability extends Parser {
     }
 
     childContext(context) {
-        return { ...context, ability: this };
+        const abilities = [...(context.abilities ?? []), this];
+        return { ...context, ability: this, abilities };
     }
 }

@@ -25,7 +25,8 @@ function baseColors(face, condition) {
 
 export default function attributedColors(face, context) {
     const condition = context.condition;
-    const abilityColors = context.ability?.manaColors ?? [];
+    const abilities = context.abilities ?? [];
+    const abilityColors = abilities.flatMap(ability => ability.manaColors ?? []);
     const extra = [...abilityColors, ...conditionColors(face, condition)];
     return baseColors(face, condition).withAbilityColors(extra);
 }
