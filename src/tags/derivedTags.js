@@ -5,6 +5,7 @@ const REMOVAL = [
     'removal-toughness', 'burn-creature', 'removal-fight', 'one-sided-fight',
     'removal-tuck'
 ];
+const SINGLE_TARGET = { isTargeted: true, isMass: false };
 const REPEATABLE = {
     ability: { isRepeatable: true },
     delayedTrigger: null,
@@ -18,7 +19,14 @@ const LASTING_GRANT = { ...STATIC_GRANT, expansion: null };
 export const DERIVED_TAGS = [
     {
         tag: 'spot-removal',
-        match: { tag: REMOVAL, phrases: { isTargeted: true, isMass: false } }
+        match: {
+            any: [
+                { tag: REMOVAL, phrases: SINGLE_TARGET },
+                { tag: REMOVAL, subject: SINGLE_TARGET },
+                { tag: 'removal-sacrifice', primaryObject: { isMass: false } },
+                { tag: 'burn-any' }
+            ]
+        }
     },
     {
         tag: 'removal-creature',
