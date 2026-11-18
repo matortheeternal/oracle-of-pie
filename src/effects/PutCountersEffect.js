@@ -1,4 +1,5 @@
 import Effect from './Effect.js';
+import { normalizeCounterKind, isPlusOneKind, lowersToughness } from './counterKinds.js';
 import Amount from '../values/Amount.js';
 import PhraseList from '../phrases/PhraseList.js';
 
@@ -11,8 +12,6 @@ const PUT_COUNTERS = new RegExp(
 );
 const COUNTER_KIND = /^([+\-−]\d+\/[+\-−]\d+|[a-z]+(?: [a-z]+)?) counters? on /i;
 const EACH_OF = /^each of /i;
-const MINUS_TOUGHNESS = /\/-\d/;
-const PLUS_ONE = '+1/+1';
 
 export default class PutCountersEffect extends Effect {
     static get pattern() {
@@ -21,7 +20,7 @@ export default class PutCountersEffect extends Effect {
 
     parseArguments(match) {
         this.amount = this.consume([Amount]);
-        this.kind = this.consumeText(COUNTER_KIND)?.[1].replace('−', '-') ?? null;
+        this.kind = normalizeCounterKind(this.consumeText(COUNTER_KIND)?.[1]);
         this.consumeText(EACH_OF);
         this.objects = this.consume([PhraseList]);
     }
@@ -39,10 +38,10 @@ export default class PutCountersEffect extends Effect {
     }
 
     get isPlusCounters() {
-        return this.kind === PLUS_ONE;
+        return isPlusOneKind(this.kind);
     }
 
     get isMinusCounters() {
-        return MINUS_TOUGHNESS.test(this.kind ?? '');
+        return lowersToughness(this.kind);
     }
 }

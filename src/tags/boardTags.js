@@ -1,4 +1,7 @@
-const PLUS_COUNTERS = { kind: 'PutCountersEffect', isPlusCounters: true };
+const PLUS_COUNTERS = {
+    kind: ['PutCountersEffect', 'EntersWithCountersEffect'],
+    isPlusCounters: true
+};
 const MASS_PLAYERS = { isPlayer: true, isMass: true, canBeOpponent: true };
 
 export const BOARD_TAGS = [

@@ -24,6 +24,7 @@ import KeywordActionEffect from './KeywordActionEffect.js';
 import AddManaEffect from './AddManaEffect.js';
 import CantEffect from './CantEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
+import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 
 export const EFFECT_PARSERS = [
     SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
@@ -31,7 +32,7 @@ export const EFFECT_PARSERS = [
     DrawEffect, DiscardEffect, DamageEffect, ModifyPTEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
-    CantEffect, OpaqueEffect
+    CantEffect, EntersWithCountersEffect, OpaqueEffect
 ];
 
 export {
@@ -40,5 +41,5 @@ export {
     DrawEffect, DiscardEffect, DamageEffect, ModifyPTEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
-    CantEffect, OpaqueEffect
+    CantEffect, EntersWithCountersEffect, OpaqueEffect
 };
