@@ -1,0 +1,37 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: b
+      name: black
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Grave Prospector
+  manaCost:
+    __type: ManaCost
+    symbols: 1B
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Sorcery
+  subType: ""
+  rulesText: Search your library for a basic land card, put it onto the
+    battlefield tapped, then shuffle.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CB01
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Grave Prospector - 419bc5f1.jpg

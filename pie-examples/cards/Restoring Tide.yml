@@ -1,0 +1,36 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: u
+      name: blue
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Restoring Tide
+  manaCost:
+    __type: ManaCost
+    symbols: 1U
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Instant
+  subType: ""
+  rulesText: You gain 4 life.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CU03
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Restoring Tide - 43781d0d.jpg

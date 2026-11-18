@@ -1,0 +1,36 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: g
+      name: green
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Overgrowth Swallows
+  manaCost:
+    __type: ManaCost
+    symbols: 3G
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Sorcery
+  subType: ""
+  rulesText: Exile target creature.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CG05
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Overgrowth Swallows - 763ba221.jpg

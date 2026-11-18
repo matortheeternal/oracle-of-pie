@@ -1,0 +1,37 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: w
+      name: white
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Rally the Wayward
+  manaCost:
+    __type: ManaCost
+    symbols: 2W
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Sorcery
+  subType: ""
+  rulesText: Gain control of target creature until end of turn. Untap that
+    creature. It gains haste until end of turn.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CW02
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Rally the Wayward - d0870c91.jpg

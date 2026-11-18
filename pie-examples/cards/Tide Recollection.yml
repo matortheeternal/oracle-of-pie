@@ -1,0 +1,36 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: u
+      name: blue
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Tide Recollection
+  manaCost:
+    __type: ManaCost
+    symbols: 1U
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Sorcery
+  subType: ""
+  rulesText: Return target creature card from your graveyard to your hand.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CU04
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Tide Recollection - 19119687.jpg

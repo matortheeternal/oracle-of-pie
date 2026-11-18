@@ -1,0 +1,37 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: w
+      name: white
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Righteous Strike
+  manaCost:
+    __type: ManaCost
+    symbols: 1W
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Instant
+  subType: ""
+  rulesText: Target creature you control deals damage equal to its power to target
+    creature you don't control.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CW01
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Righteous Strike - b6846192.jpg

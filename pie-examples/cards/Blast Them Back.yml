@@ -1,0 +1,36 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: r
+      name: red
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Blast Them Back
+  manaCost:
+    __type: ManaCost
+    symbols: 1R
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Instant
+  subType: ""
+  rulesText: Return target creature to its owner's hand.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CR01
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Blast Them Back - 677058c1.jpg

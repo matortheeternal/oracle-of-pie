@@ -1,0 +1,36 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: b
+      name: black
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Rust Hex
+  manaCost:
+    __type: ManaCost
+    symbols: 1B
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Instant
+  subType: ""
+  rulesText: Destroy target artifact.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CB02
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Rust Hex - c8c3a08f.jpg

@@ -1,0 +1,36 @@
+front:
+  template: magic/M15/Main
+  colors:
+    - char: g
+      name: green
+      sources:
+        normal: true
+  colorOverride: []
+  faceSymbol: null
+  name: Updraft Grove
+  manaCost:
+    __type: ManaCost
+    symbols: 2G
+  artImage:
+    __type: image
+    width: 0
+    height: 0
+    cropWidth: 1
+    cropHeight: 1
+    xOffset: 0
+    yOffset: 0
+  superType: Instant
+  subType: ""
+  rulesText: Creatures you control gain flying until end of turn.
+  flavorText: null
+  watermark: null
+  power: ""
+  toughness: ""
+  showPT: ""
+  rarity: common
+  autoCollectorNumber: CG04
+notes: ""
+tags:
+  - pie-example
+imageExports:
+  front: Updraft Grove - 7aa1cb6f.jpg
