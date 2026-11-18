@@ -37,4 +37,14 @@ export default class TriggeredAbility extends BodyAbility {
     get hasInterveningIf() {
         return Boolean(this.body.sentences[0]?.statement?.isInterveningIf);
     }
+
+    get interveningCondition() {
+        return this.hasInterveningIf ? this.body.sentences[0].statement : null;
+    }
+
+    childContext(context) {
+        const childContext = super.childContext(context);
+        const condition = this.interveningCondition;
+        return condition ? { ...childContext, condition } : childContext;
+    }
 }
