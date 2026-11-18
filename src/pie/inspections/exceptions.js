@@ -44,6 +44,19 @@ export const COMBATANT_DAMAGE = {
     tiers: { W: SECONDARY }
 };
 
+const PREVENTED_DAMAGE = { event: { kind: 'DamagePreventedEvent' } };
+const PREVENTION_TRIGGERS = [
+    { ability: PREVENTED_DAMAGE },
+    { delayedTrigger: PREVENTED_DAMAGE }
+];
+
+export const REDIRECTED_DAMAGE = {
+    id: 'redirection',
+    title: 'Redirected prevented damage',
+    match: { context: { any: PREVENTION_TRIGGERS } },
+    tiers: { W: PRIMARY }
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',

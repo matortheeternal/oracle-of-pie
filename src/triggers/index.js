@@ -6,11 +6,12 @@ import EntersEvent from './EntersEvent.js';
 import AttacksEvent from './AttacksEvent.js';
 import DealsDamageEvent from './DealsDamageEvent.js';
 import TargetedEvent from './TargetedEvent.js';
+import DamagePreventedEvent from './DamagePreventedEvent.js';
 import OtherEvent from './OtherEvent.js';
 
 export const TRIGGER_EVENTS = [
     PhaseEvent, CastEvent, EntersOrDiesEvent, DiesEvent, EntersEvent, AttacksEvent,
-    DealsDamageEvent, TargetedEvent, OtherEvent
+    DealsDamageEvent, TargetedEvent, DamagePreventedEvent, OtherEvent
 ];
 
 export function parseTriggerEvent(text) {

@@ -1,4 +1,6 @@
-import { FLYER_DAMAGE, STAT_SCALED_DAMAGE, COMBATANT_DAMAGE } from './exceptions.js';
+import {
+    REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, COMBATANT_DAMAGE
+} from './exceptions.js';
 
 const DIRECT_DAMAGE = { kind: 'DamageEffect', isPowerBased: false };
 
@@ -7,13 +9,16 @@ export const DAMAGE_INSPECTIONS = [
         id: 'damage-creature',
         title: 'Deals direct damage to creatures',
         group: 'Damage',
-        exceptions: [FLYER_DAMAGE, STAT_SCALED_DAMAGE, COMBATANT_DAMAGE],
+        exceptions: [
+            REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, COMBATANT_DAMAGE
+        ],
         match: { ...DIRECT_DAMAGE, phrases: { hitsCreature: true } }
     },
     {
         id: 'damage-player',
         title: 'Deals direct damage to players',
         group: 'Damage',
+        exceptions: [REDIRECTED_DAMAGE],
         match: { ...DIRECT_DAMAGE, phrases: { hitsPlayer: true } }
     },
     {
