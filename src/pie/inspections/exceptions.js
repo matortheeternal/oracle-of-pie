@@ -81,6 +81,13 @@ export const WHEEL = {
     tiers: { R: PRIMARY }
 };
 
+export const UNTAPPED_CREATURES = {
+    id: 'creatures',
+    title: 'Untapping creatures',
+    match: { phrases: { hasExactType: 'creature' } },
+    tiers: { W: SECONDARY, U: PRIMARY, G: PRIMARY }
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',
