@@ -7,7 +7,7 @@ export const FLYER_REMOVAL = {
     id: 'flying',
     title: 'Creatures with flying',
     match: { any: [FLYING_TARGET, { subject: FLYING }] },
-    tiers: { G: PRIMARY }
+    cites: 'Destroy target creature with flying'
 };
 
 export const FLYER_EXILE = {
@@ -55,7 +55,7 @@ export const REDIRECTED_DAMAGE = {
     id: 'redirection',
     title: 'Redirected prevented damage',
     match: { context: { any: PREVENTION_TRIGGERS } },
-    tiers: { W: PRIMARY }
+    cites: 'Damage redirection'
 };
 
 export const TAPPED_CREATURE_DAMAGE = {
@@ -69,7 +69,7 @@ export const LIFE_WARD = {
     id: 'life-cost',
     title: 'Ward costs paid in life',
     match: { kind: 'KeywordAbility', paysLifeCost: true },
-    tiers: { B: PRIMARY, R: PRIMARY }
+    cites: 'Ward (for life)'
 };
 
 const OPPONENT_DRAWS = { kind: 'DrawEffect', subject: { canBeOpponent: true } };
@@ -78,14 +78,14 @@ export const WHEEL = {
     id: 'wheel',
     title: 'Discarding paired with drawing',
     match: { context: { cardText: { effects: { any: [OPPONENT_DRAWS] } } } },
-    tiers: { R: PRIMARY }
+    cites: '"Wheeling"'
 };
 
 export const UNTAPPED_CREATURES = {
     id: 'creatures',
     title: 'Untapping creatures',
     match: { phrases: { hasExactType: 'creature' } },
-    tiers: { W: SECONDARY, U: PRIMARY, G: PRIMARY }
+    cites: 'Untapping creatures'
 };
 
 export const NON_MANA_WARD = {
