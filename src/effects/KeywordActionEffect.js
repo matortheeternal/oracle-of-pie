@@ -9,7 +9,8 @@ const KEYWORD_ACTION_ALTERNATIVES = [
     'the ring tempts you', 'become the monarch', 'take the initiative', 'goad [^,.]+',
     'transform [^,.]+', 'regenerate [^,.]+', 'shuffle(?: [^,.]*)?', 'time travel',
     'forage', 'collect evidence', 'exert [^,.]+', 'suspect [^,.]+', 'earthbend',
-    'endures', 'monstrosity', 'blight', 'behold an? [^,.]+'
+    'endures', 'monstrosity', 'blight', 'behold an? [^,.]+', 'recruit',
+    'empower [A-Z][a-z]+', 'airbend [^,.]+'
 ];
 const REPEAT = '(?: twice| (?:\\w+ )?times)?';
 const ACTION_AMOUNT = `(?: (${NUMBER_PATTERN}))?${REPEAT}`;
