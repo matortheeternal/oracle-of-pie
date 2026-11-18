@@ -49,5 +49,13 @@ export const CREATURE_TAGS = [
             subject: { isTargeted: true, controlledByYou: true },
             context: { ability: { kind: 'SpellAbility' } }
         }
+    },
+    {
+        tag: 'cda-power',
+        match: { kind: 'DefinePTEffect', definesPower: true }
+    },
+    {
+        tag: 'cda-toughness',
+        match: { kind: 'DefinePTEffect', definesToughness: true }
     }
 ];

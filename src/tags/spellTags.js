@@ -1,4 +1,22 @@
+const SPELL_COST_REDUCER = {
+    kind: 'CostModificationEffect',
+    reducesCost: true,
+    modifiesSpellCost: true,
+    subject: { controlledByYou: true, refersToSelf: false }
+};
+
 export const SPELL_TAGS = [
+    {
+        tag: 'cost-reducer',
+        match: SPELL_COST_REDUCER
+    },
+    {
+        tag: 'cost-reducer-creature',
+        match: {
+            ...SPELL_COST_REDUCER,
+            subject: { ...SPELL_COST_REDUCER.subject, hasExactType: 'creature' }
+        }
+    },
     {
         tag: 'copy-spell',
         match: {
