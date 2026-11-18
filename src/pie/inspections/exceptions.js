@@ -115,6 +115,33 @@ export const EVASIVE_POWER_PUMP = {
     tiers: { U: TERTIARY }
 };
 
+const CONTROLLER_REVEALS_REPLACEMENT = {
+    kind: 'RevealUntilEffect',
+    subject: { canBeOpponent: true }
+};
+const REPLACED_FROM_LIBRARY = { effects: { any: [CONTROLLER_REVEALS_REPLACEMENT] } };
+
+export const POLYMORPH = {
+    id: 'polymorph',
+    title: 'Replaced by a random card from its controller\'s library',
+    match: { context: { cardText: REPLACED_FROM_LIBRARY } },
+    cites: '"Polymorph"'
+};
+
+export const LAND_DESTRUCTION = {
+    id: 'lands',
+    title: 'Land creatures',
+    match: { phrases: { hasType: 'land' } },
+    cites: 'Land destruction'
+};
+
+export const WALL_REMOVAL = {
+    id: 'defender',
+    title: 'Creatures with defender',
+    match: { phrases: { requiresKeyword: 'defender' } },
+    tiers: { R: TERTIARY }
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',

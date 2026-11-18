@@ -47,5 +47,7 @@ export const MECHANICAL_COLOR_PIE = {
     'Can\'t be blocked': { U: 'primary' },
     'Extra attack': { W: 'tertiary', R: 'primary' },
     'Destroy target attacking or blocking creature.': { W: 'primary' },
+    '"Polymorph"': { U: 'secondary', R: 'primary' },
+    'Land destruction': { B: 'tertiary', R: 'primary', G: 'tertiary' },
     'Deal N damage to target attacking or blocking creature.': { W: 'primary' }
 };
