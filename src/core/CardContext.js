@@ -6,10 +6,15 @@ const ARTIFACT = /\bArtifact\b/;
 const EQUIPMENT = /\bEquipment\b/;
 
 export default class CardContext {
-    constructor({ name = '', typeLine = '', loyalty = null } = {}) {
+    constructor({ name = '', typeLine = '', loyalty = null, faceCount = 1 } = {}) {
         this.name = name;
         this.typeLine = typeLine;
         this.loyalty = loyalty;
+        this.faceCount = faceCount;
+    }
+
+    get isSingleFaced() {
+        return this.faceCount === 1;
     }
 
     get startingLoyalty() {
