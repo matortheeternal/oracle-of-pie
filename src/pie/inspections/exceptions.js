@@ -57,6 +57,13 @@ export const REDIRECTED_DAMAGE = {
     tiers: { W: PRIMARY }
 };
 
+export const TAPPED_CREATURE_DAMAGE = {
+    id: 'tapped',
+    title: 'Tapped creatures',
+    match: { phrases: { hasQualifier: 'tapped' } },
+    tiers: { W: SECONDARY }
+};
+
 export const NON_MANA_WARD = {
     id: 'non-mana-cost',
     title: 'Non-mana ward costs',
