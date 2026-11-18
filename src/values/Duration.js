@@ -5,6 +5,7 @@ const DURATION_ALTERNATIVES = [
     'until end of combat',
     'until your next turn',
     'until the end of your next turn',
+    'until your next end step',
     'this turn',
     'for as long as [^,.]+',
     'until ~ leaves the battlefield',

@@ -12,6 +12,7 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'one of them',
     'each of those creatures',
     'the rest',
+    'the cop(?:y|ies)',
     'that one'
 ];
 const BACK_REFERENCE = new RegExp(

@@ -33,14 +33,10 @@ const OPAQUE_ALTERNATIVES = [
     'loses? all abilities[^,.]*',
     'chooses? [^,.]+',
     'may [^,.]+ any time[^,.]*',
-    'you get [^,.]+',
+    'you get (?![^,.]*(?:\\{E\\}|counters?\\b))[^,.]+',
     'reveals? (?:their|your) hand',
     'you may exert [^,.]+',
     'that ability triggers an additional time',
-    'has no maximum hand size',
-    'you have no maximum hand size',
-    'you win the game',
-    'you lose the game',
     'get [^,.]+ \\{E\\}[^,.]*'
 ];
 const OPAQUE = new RegExp(

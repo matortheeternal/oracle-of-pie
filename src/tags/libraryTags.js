@@ -1,4 +1,3 @@
-const ADDITIONAL_LAND = /^(?:you may )?play an additional land/i;
 const CREATURE_CARD = { isCreatureCard: true };
 
 export const LIBRARY_TAGS = [
@@ -30,7 +29,7 @@ export const LIBRARY_TAGS = [
                     toBattlefield: true,
                     phrases: { hasExactType: 'land', zone: 'hand' }
                 },
-                { kind: 'OpaqueEffect', text: ADDITIONAL_LAND }
+                { kind: 'ExtraLandEffect' }
             ]
         }
     },
