@@ -12,7 +12,7 @@ const inspector = new PieInspector({ profiles: readJson(PATHS.pieProfiles), disa
 const report = new PieReport();
 
 for (const { card, faces, colors } of pieCards(scribe, corpus))
-    report.add(card, colors, inspector.inspect(faces, { excludeSelf: true }));
+    report.add(card, colors, inspector.inspect(faces));
 
 writeJson(PATHS.pieFlags, report.flags);
 for (const line of report.lines()) console.log(line);
