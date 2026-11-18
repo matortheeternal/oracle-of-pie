@@ -1,14 +1,19 @@
 import Modifier from './Modifier.js';
 
 const ZONE_OWNERS = [
-    'your', 'a', 'an opponent\'s', 'their', 'its owner\'s', 'target player\'s',
-    'that player\'s', 'each player\'s', 'any'
+    'your', 'a', 'a single', 'an opponent\'s', 'their', 'its owner\'s',
+    'target player\'s', 'target opponent\'s', 'that player\'s', 'each player\'s',
+    'each opponent\'s', 'any', 'all'
 ];
 const ZONE_NAMES = ['graveyard', 'graveyards', 'hand', 'library', 'exile'];
 const OWNED_ZONE = `^(?:from|in) (${ZONE_OWNERS.join('|')}) (${ZONE_NAMES.join('|')})\\b`;
-const ZONE = new RegExp(
-    `${OWNED_ZONE}|^from exile\\b|^(?:on|from) the battlefield\\b`, 'i'
-);
+const ZONE_ALTERNATIVES = [
+    OWNED_ZONE,
+    '^(?:from|in) graveyards\\b',
+    '^from exile\\b',
+    '^(?:on|from) the battlefield\\b'
+];
+const ZONE = new RegExp(ZONE_ALTERNATIVES.join('|'), 'i');
 
 export default class ZoneModifier extends Modifier {
     static match(scribe, str) {
@@ -24,5 +29,9 @@ export default class ZoneModifier extends Modifier {
 
     get zone() {
         return this.zoneName;
+    }
+
+    get ownedByYou() {
+        return this.owner === 'your';
     }
 }

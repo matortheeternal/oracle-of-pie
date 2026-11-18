@@ -136,6 +136,10 @@ export default class NounPhrase extends Phrase {
         return this.modifiers.map(modifier => modifier.zone).find(Boolean) ?? null;
     }
 
+    get zoneOwnedByYou() {
+        return this.modifiers.some(modifier => modifier.ownedByYou);
+    }
+
     get isCardInZone() {
         if (this.zone && this.zone !== 'battlefield') return true;
         return this.types.includes('card') || this.qualifiers.includes('card');
