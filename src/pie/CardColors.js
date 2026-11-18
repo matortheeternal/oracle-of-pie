@@ -1,3 +1,5 @@
+import hybridPayments from './hybridPayments.js';
+
 const COLOR_ORDER = 'WUBRG';
 const HYBRID_SYMBOL = /\{[WUBRG]\/[WUBRG]\}/;
 const SINGLE_COLOR_SYMBOL = /\{[WUBRG]\}/;
@@ -23,6 +25,12 @@ export default class CardColors {
     constructor({ colors = [], manaCost = '', hybrid = isHybridCost(manaCost) } = {}) {
         this.colors = sortColors(colors);
         this.hybridCost = hybrid;
+        this.manaCost = manaCost;
+    }
+
+    get paymentOptions() {
+        const payments = hybridPayments(this.manaCost);
+        return payments.map(colors => new CardColors({ colors, hybrid: false }));
     }
 
     withAbilityColors(abilityColors) {
