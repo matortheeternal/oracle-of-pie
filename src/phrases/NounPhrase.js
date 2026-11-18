@@ -22,6 +22,7 @@ const COMMANDER = 'commander';
 const CHOSEN = 'chosen';
 const MASS_DETERMINER = /^(each|all)/i;
 const TARGET_DETERMINER = /target/i;
+const OTHER = /\b(?:an)?other\b/i;
 const PLURAL = /s$/;
 const PERMANENT_TYPES = [
     'creature', 'artifact', 'enchantment', 'land', 'planeswalker', 'battle', 'permanent'
@@ -147,6 +148,10 @@ export default class NounPhrase extends Phrase {
 
     get isTargeted() {
         return TARGET_DETERMINER.test(this.determiner ?? '');
+    }
+
+    get excludesSelf() {
+        return OTHER.test(this.determiner ?? '') || this.qualifiers.includes('other');
     }
 
     get isMass() {

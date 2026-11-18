@@ -23,6 +23,10 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    get excludesSelf() {
+        return false;
+    }
+
     get isBackReference() {
         return false;
     }
