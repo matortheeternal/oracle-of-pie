@@ -1,7 +1,4 @@
-function evidenceOf(node, context) {
-    const source = context.origin ?? context.sentence ?? context.ability;
-    return source?.raw || node.raw;
-}
+import evidenceOf from './evidenceOf.js';
 
 function evaluateNode(found, evaluators, node, context) {
     if (context.forOpponent) return;
