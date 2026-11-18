@@ -14,6 +14,7 @@ export const PATHS = {
     predictions: path.join(DATA, 'predictions.json'),
     pieProfiles: path.join(DATA, 'pie-profiles.json'),
     pieFlags: path.join(DATA, 'pie-flags.json'),
+    canonTiers: path.join(ROOT, 'rules-scribe', 'src', 'pie', 'canonTierTable.js'),
     gapReport: path.join(DATA, 'gap-report.json'),
     score: path.join(DATA, 'tag-score.json'),
     customKeywords: path.join(DATA, 'custom-keywords.json'),
