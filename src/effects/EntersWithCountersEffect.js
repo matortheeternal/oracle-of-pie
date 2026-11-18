@@ -38,4 +38,12 @@ export default class EntersWithCountersEffect extends Effect {
     get isMinusCounters() {
         return this.kinds.some(lowersToughness);
     }
+
+    get keywordCounterNames() {
+        return this.kinds.filter(kind => this.scribe.isKeyword(kind));
+    }
+
+    get conferredKeywordNames() {
+        return this.keywordCounterNames;
+    }
 }

@@ -34,6 +34,10 @@ export default class ModifyPTEffect extends Effect {
         return this.keywords?.names ?? [];
     }
 
+    get conferredKeywordNames() {
+        return this.grantedKeywordNames;
+    }
+
     grantsKeyword(name) {
         return Boolean(this.keywords?.names.includes(name));
     }

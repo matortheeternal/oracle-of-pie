@@ -43,6 +43,10 @@ export default class PutCountersEffect extends Effect {
         return this.kind && this.scribe.isKeyword(this.kind) ? [this.kind] : [];
     }
 
+    get conferredKeywordNames() {
+        return this.keywordCounterNames;
+    }
+
     get kindPattern() {
         return COUNTER_KIND;
     }
