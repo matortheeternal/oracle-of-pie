@@ -5,6 +5,21 @@ const MASS_OPPOSING = {
     isCardInZone: false
 };
 const OPPOSING_CREATURE = { isOpposingObject: true, hasType: 'creature' };
+function removesType(type) {
+    return {
+        any: [
+            {
+                removesPermanently: true,
+                phrases: { isOpposingObject: true, allowsTypeAlone: type }
+            },
+            {
+                kind: 'SacrificeEffect',
+                subjectIsOpponent: true,
+                phrases: { allowsTypeAlone: type }
+            }
+        ]
+    };
+}
 
 export const REMOVAL_TAGS = [
     {
@@ -49,17 +64,11 @@ export const REMOVAL_TAGS = [
     },
     {
         tag: 'removal-artifact',
-        match: {
-            removesPermanently: true,
-            phrases: { isOpposingObject: true, hasType: 'artifact' }
-        }
+        match: removesType('artifact')
     },
     {
         tag: 'removal-enchantment',
-        match: {
-            removesPermanently: true,
-            phrases: { isOpposingObject: true, hasType: 'enchantment' }
-        }
+        match: removesType('enchantment')
     },
     {
         tag: 'hate-flying',

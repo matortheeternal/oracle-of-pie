@@ -39,6 +39,11 @@ function nextWordClass(str) {
     return match ? classifyWord(match[1]) : null;
 }
 
+function isLoneType(group, type) {
+    if (!group.includes(type)) return false;
+    return !group.some(other => other !== type && PERMANENT_TYPES.includes(other));
+}
+
 function singular(word) {
     return word.replace(PLURAL_S, '');
 }
@@ -59,6 +64,8 @@ export default class NounPhrase extends Phrase {
         this.types = [];
         this.subtypes = [];
         this.pluralTypes = false;
+        this.typeGroups = [];
+        this.followsType = false;
         this.consumeWords();
         this.modifiers = this.consumeAll(MODIFIER_PARSERS, []);
     }
@@ -81,11 +88,13 @@ export default class NounPhrase extends Phrase {
         if (!joiner || !this.hasWords) return false;
         if (!nextWordClass(this.remainingStr.slice(joiner[0].length))) return false;
         this.consumeText(TYPE_JOINER);
+        this.followsType = false;
         return true;
     }
 
     addWord(word, wordClass) {
         const lower = word.toLowerCase();
+        this.followsType = wordClass === 'type' && this.followsType;
         if (wordClass === 'type') return this.addType(lower);
         if (wordClass === 'subtype') return this.subtypes.push(word);
         this.qualifiers.push(lower);
@@ -93,10 +102,22 @@ export default class NounPhrase extends Phrase {
 
     addType(word) {
         const type = TYPE_WORDS[word];
+        this.groupType(type);
         if (this.types.length && this.isAdjectivalType(type))
             this.qualifiers.push(this.types.pop());
         this.types.push(type);
         this.pluralTypes = this.pluralTypes || PLURAL.test(word);
+    }
+
+    groupType(type) {
+        if (this.followsType) this.typeGroups.at(-1).push(type);
+        if (!this.followsType) this.typeGroups.push([type]);
+        this.followsType = true;
+    }
+
+    allowsTypeAlone(type) {
+        if (this.types.includes('permanent')) return this.hasType(type);
+        return this.typeGroups.some(group => isLoneType(group, type));
     }
 
     isAdjectivalType(type) {

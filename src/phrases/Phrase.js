@@ -81,6 +81,10 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    allowsTypeAlone(type) {
+        return this.hasType(type);
+    }
+
     hasExactType(type) {
         return false;
     }

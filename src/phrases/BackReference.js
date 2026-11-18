@@ -83,6 +83,11 @@ export default class BackReference extends Phrase {
         return !this.refersToExiled || Boolean(candidate.owner?.isExile);
     }
 
+    allowsTypeAlone(type) {
+        if (this.objectType === type) return true;
+        return Boolean(this.antecedent?.allowsTypeAlone(type));
+    }
+
     hasType(type) {
         return this.objectType === type || Boolean(this.antecedent?.hasType(type));
     }
