@@ -152,12 +152,12 @@ export const DEFAULT_DEFINITIONS = {
     noncreatureSubtypes: [
         'Food', 'Treasure', 'Clue', 'Blood', 'Map', 'Powerstone', 'Gold', 'Incubator',
         'Junk', 'Equipment', 'Vehicle', 'Fortification', 'Contraption', 'Attraction',
-        'Bobblehead', 'Infinity', 'Stone', 'Communicator', 'Aura', 'Saga', 'Shrine',
-        'Class', 'Room', 'Case', 'Curse', 'Role', 'Background', 'Cartouche', 'Rune',
-        'Plan', 'Quest', 'Vengeance', 'Adventure', 'Arcane', 'Lesson', 'Omen',
-        'Siege', 'Plains', 'Island', 'Swamp', 'Mountain', 'Forest', 'Desert', 'Gate',
-        'Cave', 'Sphere', 'Town', 'Lair', 'Locus', 'Mine', 'Tower', 'Power-Plant',
-        'Urza\'s', 'Ulamog\'s', 'Omenpath', 'Planet', 'Realm', 'Spacecraft'
+        'Bobblehead', 'Communicator', 'Aura', 'Saga', 'Shrine', 'Class', 'Room',
+        'Case', 'Curse', 'Role', 'Background', 'Cartouche', 'Rune', 'Plan',
+        'Adventure', 'Lesson', 'Omen', 'Siege', 'Plains', 'Island', 'Swamp',
+        'Mountain', 'Forest', 'Desert', 'Gate', 'Cave', 'Sphere', 'Town', 'Lair',
+        'Locus', 'Mine', 'Tower', 'Power-Plant', 'Urza\'s', 'Planet', 'Realm',
+        'Spacecraft'
     ],
     batchWords: ['historic', 'outlaw', 'modified']
 };
