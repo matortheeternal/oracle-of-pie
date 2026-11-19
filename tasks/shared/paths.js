@@ -20,6 +20,7 @@ export const PATHS = {
     keywordCanon: path.join(PIE_SOURCE, 'keywordCanon.json'),
     gapReport: path.join(DATA, 'gap-report.json'),
     score: path.join(DATA, 'tag-score.json'),
+    adjudicatedScore: path.join(DATA, 'tag-score-adjudicated.json'),
     customKeywords: path.join(DATA, 'custom-keywords.json'),
     projects: path.join(REVIEWS, 'projects.json'),
     knownDisagreements: path.join(REVIEWS, 'known-disagreements.json'),
