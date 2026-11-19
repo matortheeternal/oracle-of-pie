@@ -22,7 +22,7 @@ function printedView(card) {
 }
 
 function customItems() {
-    const cards = loadProjects(PATHS.projects).filter(card => card.isPlayable);
+    const cards = loadProjects().filter(card => card.isPlayable);
     const pieFlags = new ProjectPieFlags(new ProjectScribes(corpus, cards), profiles);
     const items = [];
     for (const card of cards) {

@@ -11,3 +11,6 @@ node_modules/
 
 # Assistant helper scripts
 /.ai/
+
+# Local custom-card projects to review (see reviews/projects.example.json)
+/reviews/projects.json

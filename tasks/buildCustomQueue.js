@@ -15,7 +15,7 @@ const QUEUE = 'custom-suggested-tags';
 const WIDTHS = [-22, 6, 6, 0];
 
 const reviews = ReviewLog.forQueue(QUEUE);
-const cards = loadProjects(PATHS.projects);
+const cards = loadProjects();
 const corpus = readJson(PATHS.corpus);
 const tree = TagTree.load(PATHS.tags);
 const scribes = new ProjectScribes(corpus, cards);

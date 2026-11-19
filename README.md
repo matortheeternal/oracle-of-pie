@@ -227,7 +227,8 @@ devoid cards count in their cost's colors.
 ### Custom card review
 
 The custom-card queues read Card Magician projects (`.cmproj` with YAML card files), listed by
-name and folder in `reviews/projects.json`. Custom cards are parsed with their project's custom
+name and folder in `reviews/projects.json`. That file is local to each checkout; copy
+`reviews/projects.example.json` to start one. Without it, the tasks skip custom cards. Custom cards are parsed with their project's custom
 keywords. Keywords the parser does not already know are harvested from reminder-text lines such
 as `Grind (Whenever this creature deals combat damage, …)` and from reference entries such as
 `*Barrier [cost]*: …`; a parameter like `{2}` or `[cost]` becomes `{parameter}`. A project can

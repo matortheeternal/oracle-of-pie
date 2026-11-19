@@ -1,15 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
-import { readJson } from '../shared/files.js';
+import getProjectDirs from '../shared/projects.js';
 import CustomCard from './CustomCard.js';
 
-const HOME_PREFIX = /^~/;
 const CARD_FILE = /\.yml$/;
-
-function expandHome(dir) {
-    return dir.replace(HOME_PREFIX, process.env.HOME);
-}
 
 function loadCard(projectDir, file) {
     const text = fs.readFileSync(path.join(projectDir, 'cards', file), 'utf8');
@@ -25,7 +20,7 @@ function loadProject(projectDir) {
     return cards.filter(card => card.rawFaces.length > 0);
 }
 
-export default function loadProjects(projectsFile) {
-    const dirs = Object.values(readJson(projectsFile)).map(expandHome);
+export default function loadProjects() {
+    const dirs = Object.values(getProjectDirs());
     return dirs.flatMap(loadProject);
 }

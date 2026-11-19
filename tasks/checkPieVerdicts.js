@@ -23,7 +23,7 @@ function readBaseline() {
 const corpus = readJson(PATHS.corpus);
 const profiles = readJson(PATHS.pieProfiles);
 const baseline = readBaseline();
-const projectCards = loadProjects(PATHS.projects).filter(card => card.isPlayable);
+const projectCards = loadProjects().filter(card => card.isPlayable);
 
 const printed = new PieVerdictCheck({
     cards: new Map(corpus.map(card => [cardKey(card), card])),

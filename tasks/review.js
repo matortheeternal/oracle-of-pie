@@ -4,15 +4,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { HTML, send, sendError, readBody } from './review/http.js';
 import { AST_ROUTES } from './review/astRoutes.js';
-import { PATHS, QUEUES, REVIEWS } from './shared/paths.js';
+import { QUEUES, REVIEWS } from './shared/paths.js';
+import getProjectDirs from './shared/projects.js';
 
 const REVIEW_UI = path.join(path.dirname(fileURLToPath(import.meta.url)), 'review');
 const PAGE = path.join(REVIEW_UI, 'index.html');
-const PROJECTS_FILE = PATHS.projects;
 const PORT = Number(process.env.PORT ?? 5178);
 const QUEUE_NAME = /^[\w-]+$/;
 const JSONL_EXTENSION = /\.jsonl$/;
-const HOME_PREFIX = /^~/;
 const IMAGE_ROUTE = /^\/files\/([^/]+)\/([^/]+)$/;
 const PAGE_ROUTE = /^\/$/;
 const QUEUES_ROUTE = /^\/api\/queues$/;
@@ -26,19 +25,13 @@ const IMAGE_TYPES = {
     '.webp': 'image/webp'
 };
 
-function imageDirectory(projectDir) {
-    const expanded = projectDir.replace(HOME_PREFIX, process.env.HOME);
-    return path.join(expanded, 'dist', 'images');
+function imageDirectories() {
+    const entries = Object.entries(getProjectDirs());
+    const imageEntry = ([name, dir]) => [name, path.join(dir, 'dist', 'images')];
+    return Object.fromEntries(entries.map(imageEntry));
 }
 
-function readProjects() {
-    const projects = JSON.parse(fs.readFileSync(PROJECTS_FILE, 'utf8'));
-    return Object.fromEntries(
-        Object.entries(projects).map(([name, dir]) => [name, imageDirectory(dir)])
-    );
-}
-
-const PROJECTS = readProjects();
+const PROJECTS = imageDirectories();
 
 fs.mkdirSync(REVIEWS, { recursive: true });
 

@@ -18,7 +18,7 @@ function readKnown() {
 }
 
 const corpus = readJson(PATHS.corpus);
-const cards = reviewedCards(corpus, PATHS.projects);
+const cards = reviewedCards(corpus);
 const check = new VerdictCheck({
     scribes: new ProjectScribes(corpus, [...cards.values()]),
     tree: TagTree.load(PATHS.tags),
