@@ -74,8 +74,12 @@ export default class Sentence extends Parser {
         return Boolean(this.isIfYouDo && this.previous);
     }
 
+    get antecedentEffects() {
+        return this.previous?.effects ?? [];
+    }
+
     get linkedEffects() {
-        const previous = this.dependsOnPrevious ? this.previous.effects : [];
+        const previous = this.dependsOnPrevious ? this.antecedentEffects : [];
         const next = this.next?.dependsOnPrevious ? this.next.effects : [];
         return [...previous, ...this.effects, ...next];
     }

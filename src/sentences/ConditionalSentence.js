@@ -6,7 +6,6 @@ const CONDITION_ALTERNATIVES = [
     'if',
     'as long as',
     'unless',
-    'when you do(?:, for each [^,]+)?',
     'if you do',
     'if you don\'t',
     'otherwise',

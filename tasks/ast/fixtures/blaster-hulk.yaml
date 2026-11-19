@@ -24,10 +24,6 @@ expect:
                 - raw: pay eight {E}
                   isOptional: true
             - kind: ReflexiveTriggerSentence
-              pending: >-
-                Plan step 3: "When you do" is a reflexive trigger, and it depends only on the
-                optional payment, not on gaining {E}{E}. Today it is a ConditionalSentence linked
-                to nothing.
               dependsOnPrevious: true
               linkedEffects:
                 - raw: pay eight {E}

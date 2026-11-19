@@ -40,9 +40,8 @@ expect:
                     - kind: PlayerPhrase
                       player: you
             - kind: ReflexiveTriggerSentence
-              pending: >-
-                Plan step 3: "When you do" is a reflexive trigger. Today it is a
-                ConditionalSentence that is not linked to the payment it depends on.
+              condition: When you do
+              isIfYouDo: false
               dependsOnPrevious: true
               linkedEffects:
                 - kind: PayManaEffect
