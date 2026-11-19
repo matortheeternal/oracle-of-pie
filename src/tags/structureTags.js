@@ -1,3 +1,13 @@
+const ADDITIONAL_COST_KEYWORDS = [
+    'kicker', 'multikicker', 'casualty', 'bargain', 'spree', 'offspring', 'replicate',
+    'jump-start', 'retrace', 'entwine', 'buyback', 'gift', 'escalate', 'tiered', 'squad',
+    'conspire'
+];
+const ADDITIONAL_COST_KEYWORD = {
+    kind: 'KeywordAbility',
+    keywords: { keywords: { name: ADDITIONAL_COST_KEYWORDS } },
+    context: { granted: false }
+};
 const TRIGGERED = 'TriggeredAbility';
 const OWN_DEATH_TRIGGER = { kind: TRIGGERED, context: { granted: false } };
 
@@ -39,6 +49,11 @@ export const STRUCTURE_TAGS = [
     },
     {
         tag: 'additional-cost',
-        match: { kind: 'ConditionalStatement', isAdditionalCost: true }
+        match: {
+            any: [
+                { kind: 'ConditionalStatement', isAdditionalCost: true },
+                ADDITIONAL_COST_KEYWORD
+            ]
+        }
     }
 ];
