@@ -1,6 +1,6 @@
 import { COLORS } from 'oracle-of-pie';
+import { severityWord, judgementOf } from './pieJudgement.js';
 
-const SEVERITY_WORDS = { 'warning': 'break', 'weak-warning': 'bend' };
 const VERDICT_HINT = 'Correct = the card really bends or breaks the color pie this way. '
     + 'Wrong = misread text, wrong colors, or the effect is fine in these colors.';
 
@@ -13,10 +13,6 @@ function printedExamples(profile, offending) {
     const lines = offending.map(color =>
         `${color}: ${(profile?.examples[color] ?? []).join(', ') || 'none'}`);
     return lines.join('\n');
-}
-
-function judgement(flag, word, colors) {
-    return `${flag.colors} ${flag.policy}, ${word} in ${colors}`;
 }
 
 function exceptionEvidence(flag) {
@@ -36,7 +32,7 @@ function citationEvidence(flag) {
 }
 
 export default function pieFlagItem({ id, card, flag, profile }) {
-    const word = SEVERITY_WORDS[flag.severity];
+    const word = severityWord(flag);
     const colors = flag.offending.join('');
     return {
         id: `${id}|${flag.inspection}`,
@@ -45,7 +41,7 @@ export default function pieFlagItem({ id, card, flag, profile }) {
         card,
         evidence: [
             { label: 'Matched text', text: flag.evidence, code: true },
-            { label: 'Judged as', text: judgement(flag, word, colors) },
+            { label: 'Judged as', text: judgementOf(flag) },
             ...exceptionEvidence(flag),
             ...citationEvidence(flag),
             { label: 'Printed mono cards with this effect', text: canonCounts(profile) },
