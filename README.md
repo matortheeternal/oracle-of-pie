@@ -221,6 +221,7 @@ Generated data goes to data/ and queues/; review verdicts and baselines are kept
 | `npm run pie` | Builds per-inspection color profiles and the canon tier table from the modern corpus, then reports how many printed cards each inspection flags. |
 | `npm run pie-gate` | Estimates the wrong-flag rate per color policy from the reviewed `printed-*-pie-flags` queues and checks it against the targets in `SUCCESS.md`. |
 | `npm run pie-verdicts` | Re-inspects every reviewed pie flag and fails if a verdict changed or regressed; `-- --accept` records the baseline. |
+| `npm run ast -- "Card Name"` | Prints one corpus card's parse tree as JSON, with its tags, Scryfall tags and pie flags (the data behind the review UI's `/ast` page). The name is exact and case-insensitive; on a miss it lists cards whose names contain it. Needs `data/corpus.json`. |
 | `npm run ast-fixtures` | Parses the cards in `tasks/ast/fixtures/` and compares each tree with its expected structure. Fails on regressions and on `pending` markers that now pass. |
 | `npm run keyword-canon` | Rebuilds `src/pie/keywordCanon.json` from the `default-cards` dump. |
 | `npm run lint` | Lints src/ and tasks/. |
