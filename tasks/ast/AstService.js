@@ -1,12 +1,12 @@
 import fs from 'node:fs';
-import { readJson } from '../files.js';
-import { PATHS } from '../paths.js';
-import { createCorpusScribe } from '../corpusScribe.js';
-import { parseCardFaces } from '../pieCorpus.js';
+import { readJson } from '../shared/files.js';
+import { PATHS } from '../shared/paths.js';
+import { createCorpusScribe } from '../corpus/corpusScribe.js';
+import { parseCardFaces } from '../corpus/pieCorpus.js';
 import AstSerializer from './AstSerializer.js';
 import annotateFace from './annotateFace.js';
-import { PieInspector, CardColors } from 'oracle-of-pie';
-import normalizeCardText from 'oracle-of-pie/src/core/normalizeCardText.js';
+import { PieInspector, CardColors } from '../../src/index.js';
+import normalizeCardText from '../../src/core/normalizeCardText.js';
 
 const SEARCH_LIMIT = 20;
 

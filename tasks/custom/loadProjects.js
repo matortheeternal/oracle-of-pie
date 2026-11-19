@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
-import { readJson } from '../files.js';
+import { readJson } from '../shared/files.js';
 import CustomCard from './CustomCard.js';
 
 const HOME_PREFIX = /^~/;

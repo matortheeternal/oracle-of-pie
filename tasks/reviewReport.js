@@ -1,9 +1,9 @@
 import path from 'node:path';
-import { readJson, readJsonl } from '../src/files.js';
-import { PATHS, QUEUES, queuePath } from '../src/paths.js';
-import TagScore from '../src/TagScore.js';
-import ReviewLog from '../src/ReviewLog.js';
-import { formatRow, percent } from '../src/table.js';
+import { readJson, readJsonl } from './shared/files.js';
+import { PATHS, QUEUES, queuePath } from './shared/paths.js';
+import TagScore from './tags/TagScore.js';
+import ReviewLog from './verdicts/ReviewLog.js';
+import { formatRow, percent } from './shared/table.js';
 
 const WIDTHS = [-22, 8, 4, 4, 7, 26];
 const HEADER = ['tag', 'accepted', '✓', '✗', 'pending', 'precision (excl. pending)'];

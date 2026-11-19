@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import zlib from 'node:zlib';
 import readline from 'node:readline';
-import { PATHS } from '../src/paths.js';
-import { writeReadableJson } from '../src/files.js';
-import KeywordCanonBuilder from '../src/keywordCanon/KeywordCanonBuilder.js';
-import canonCard from '../src/keywordCanon/canonCard.js';
+import { PATHS } from './shared/paths.js';
+import { writeReadableJson } from './shared/files.js';
+import KeywordCanonBuilder from './keywordCanon/KeywordCanonBuilder.js';
+import canonCard from './keywordCanon/canonCard.js';
 
 const EXCLUDED_SET_TYPES = new Set([
     'funny', 'token', 'memorabilia', 'alchemy', 'minigame', 'vanguard', 'planechase',

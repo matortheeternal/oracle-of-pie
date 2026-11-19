@@ -1,15 +1,15 @@
 import fs from 'node:fs';
-import { readJson, writeReadableJson } from '../src/files.js';
-import { PATHS } from '../src/paths.js';
-import { cardKey } from '../src/corpusScribe.js';
-import ReviewLog from '../src/ReviewLog.js';
-import loadProjects from '../src/custom/loadProjects.js';
-import ProjectScribes from '../src/keywords/ProjectScribes.js';
-import ProjectPieFlags from '../src/pie/projectPieFlags.js';
-import PrintedPieFlags from '../src/pie/PrintedPieFlags.js';
-import PieVerdictCheck from '../src/verdicts/PieVerdictCheck.js';
-import { FAILING_OUTCOMES } from '../src/verdicts/pieVerdictOutcomes.js';
-import { PIE_GATES } from '../src/pie/pieGates.js';
+import { readJson, writeReadableJson } from './shared/files.js';
+import { PATHS } from './shared/paths.js';
+import { cardKey } from './corpus/corpusScribe.js';
+import ReviewLog from './verdicts/ReviewLog.js';
+import loadProjects from './custom/loadProjects.js';
+import ProjectScribes from './keywords/ProjectScribes.js';
+import ProjectPieFlags from './pie/projectPieFlags.js';
+import PrintedPieFlags from './pie/PrintedPieFlags.js';
+import PieVerdictCheck from './verdicts/PieVerdictCheck.js';
+import { FAILING_OUTCOMES } from './verdicts/pieVerdictOutcomes.js';
+import { PIE_GATES } from './pie/pieGates.js';
 
 const ACCEPT_FLAG = '--accept';
 const CUSTOM_QUEUE = 'custom-pie-flags';

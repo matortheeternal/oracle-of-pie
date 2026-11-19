@@ -1,4 +1,4 @@
-import { createCorpusScribe } from '../corpusScribe.js';
+import { createCorpusScribe } from '../corpus/corpusScribe.js';
 import ProjectKeywords from './ProjectKeywords.js';
 
 export default class ProjectScribes {

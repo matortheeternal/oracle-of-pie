@@ -1,9 +1,9 @@
-import { readJson, writeJson } from '../src/files.js';
-import { PATHS } from '../src/paths.js';
-import { cardKey, evaluatedTags } from '../src/corpusScribe.js';
-import TagTree from '../src/TagTree.js';
-import TagScore from '../src/TagScore.js';
-import { formatRow, percent } from '../src/table.js';
+import { readJson, writeJson } from './shared/files.js';
+import { PATHS } from './shared/paths.js';
+import { cardKey, evaluatedTags } from './corpus/corpusScribe.js';
+import TagTree from './tags/TagTree.js';
+import TagScore from './tags/TagScore.js';
+import { formatRow, percent } from './shared/table.js';
 
 const WIDTHS = [-22, 5, 6, 6, 6];
 

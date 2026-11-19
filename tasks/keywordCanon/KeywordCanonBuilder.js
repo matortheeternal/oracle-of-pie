@@ -1,4 +1,4 @@
-import { COLORS, ColorProfile, canonTiers } from 'oracle-of-pie';
+import { COLORS, ColorProfile, canonTiers } from '../../src/index.js';
 import { textLines, hasAbilityLine } from './keywordLines.js';
 import { keywordColors } from './keywordColors.js';
 

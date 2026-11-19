@@ -1,14 +1,14 @@
-import { readJson, writeJson, writeJsonl } from '../src/files.js';
-import { PATHS, QUEUES, queuePath } from '../src/paths.js';
-import { evaluatedTags } from '../src/corpusScribe.js';
-import ProjectScribes from '../src/keywords/ProjectScribes.js';
-import TagTree from '../src/TagTree.js';
-import TagScore from '../src/TagScore.js';
-import ReviewLog from '../src/ReviewLog.js';
-import loadProjects from '../src/custom/loadProjects.js';
-import CustomSuggestions from '../src/queues/CustomSuggestions.js';
-import ReviewPriority from '../src/queues/ReviewPriority.js';
-import { formatRow, percent } from '../src/table.js';
+import { readJson, writeJson, writeJsonl } from './shared/files.js';
+import { PATHS, QUEUES, queuePath } from './shared/paths.js';
+import { evaluatedTags } from './corpus/corpusScribe.js';
+import ProjectScribes from './keywords/ProjectScribes.js';
+import TagTree from './tags/TagTree.js';
+import TagScore from './tags/TagScore.js';
+import ReviewLog from './verdicts/ReviewLog.js';
+import loadProjects from './custom/loadProjects.js';
+import CustomSuggestions from './queues/CustomSuggestions.js';
+import ReviewPriority from './queues/ReviewPriority.js';
+import { formatRow, percent } from './shared/table.js';
 import path from 'node:path';
 
 const QUEUE = 'custom-suggested-tags';

@@ -1,10 +1,10 @@
 import fs from 'node:fs';
-import { readJson, writeJson } from '../src/files.js';
-import canonTierModule from '../src/canonTierModule.js';
-import { PATHS } from '../src/paths.js';
-import { createCorpusScribe } from '../src/corpusScribe.js';
-import { pieCards } from '../src/pieCorpus.js';
-import { PieInspector, ColorProfileBuilder } from 'oracle-of-pie';
+import { readJson, writeJson } from './shared/files.js';
+import canonTierModule from './pie/canonTierModule.js';
+import { PATHS } from './shared/paths.js';
+import { createCorpusScribe } from './corpus/corpusScribe.js';
+import { pieCards } from './corpus/pieCorpus.js';
+import { PieInspector, ColorProfileBuilder } from '../src/index.js';
 
 const corpus = readJson(PATHS.corpus);
 const scribe = createCorpusScribe(corpus);

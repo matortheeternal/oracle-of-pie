@@ -1,5 +1,5 @@
-import { readJsonl } from './files.js';
-import { reviewPath } from './paths.js';
+import { readJsonl } from '../shared/files.js';
+import { reviewPath } from '../shared/paths.js';
 import TagHistory from './TagHistory.js';
 
 const UNDECIDED = new Set(['pending', 'skip']);

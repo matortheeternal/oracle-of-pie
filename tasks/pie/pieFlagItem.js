@@ -1,4 +1,4 @@
-import { COLORS } from 'oracle-of-pie';
+import { COLORS } from '../../src/index.js';
 import { severityWord, judgementOf } from './pieJudgement.js';
 
 const VERDICT_HINT = 'Correct = the card really bends or breaks the color pie this way. '

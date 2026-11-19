@@ -1,12 +1,12 @@
 import fs from 'node:fs';
-import { readJson, writeReadableJson } from '../src/files.js';
-import { PATHS } from '../src/paths.js';
-import ProjectScribes from '../src/keywords/ProjectScribes.js';
-import TagTree from '../src/TagTree.js';
-import ReviewLog from '../src/ReviewLog.js';
-import VerdictCheck from '../src/verdicts/VerdictCheck.js';
-import reviewedCards from '../src/verdicts/reviewedCards.js';
-import { VERDICT_QUEUES } from '../src/verdicts/verdictQueues.js';
+import { readJson, writeReadableJson } from './shared/files.js';
+import { PATHS } from './shared/paths.js';
+import ProjectScribes from './keywords/ProjectScribes.js';
+import TagTree from './tags/TagTree.js';
+import ReviewLog from './verdicts/ReviewLog.js';
+import VerdictCheck from './verdicts/VerdictCheck.js';
+import reviewedCards from './verdicts/reviewedCards.js';
+import { VERDICT_QUEUES } from './verdicts/verdictQueues.js';
 
 const ACCEPT_FLAG = '--accept-known';
 const LISTED_OUTCOMES = new Set(['regressed', 'fixed']);

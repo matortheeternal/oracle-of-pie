@@ -1,14 +1,10 @@
 import fs from 'node:fs';
 import zlib from 'node:zlib';
 import readline from 'node:readline';
-import { DATA } from '../src/paths.js';
-
-const PACKAGES = `${process.env.HOME}/git/sigil-sifter/packages`;
-const { default: Sifter } = await import(`${PACKAGES}/sigil-sifter/src/index.js`);
-const { default: Magic } = await import(`${PACKAGES}/sigil-sifter-magic/src/index.js`);
-const { default: ScryfallCard } = await import(
-    `${PACKAGES}/sigil-sifter-magic-scryfall/src/index.js`
-);
+import Sifter from 'sigil-sifter';
+import Magic from '@sigil-sifter/magic';
+import ScryfallCard from '@sigil-sifter/magic-scryfall';
+import { DATA } from './shared/paths.js';
 
 const [cardsPath, tagsPath, outDir = DATA, since = '2016-01-01'] = process.argv.slice(2);
 const EXCLUDED_TYPES = [

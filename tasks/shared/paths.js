@@ -1,15 +1,13 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const TOOLS_SRC = path.dirname(fileURLToPath(import.meta.url));
+const TASKS_SHARED = path.dirname(fileURLToPath(import.meta.url));
 
-export const ROOT = path.resolve(TOOLS_SRC, '..', '..');
+export const ROOT = path.resolve(TASKS_SHARED, '..', '..');
+const PIE_SOURCE = path.join(ROOT, 'src', 'pie');
 export const DATA = path.join(ROOT, 'data');
 export const QUEUES = path.join(ROOT, 'queues');
 export const REVIEWS = path.join(ROOT, 'reviews');
-const CANON_TIER_TABLE = import.meta.resolve('oracle-of-pie/src/pie/canonTierTable.js');
-const KEYWORD_CANON_FILE = 'oracle-of-pie/src/pie/keywordCanon.json';
-const KEYWORD_CANON_TABLE = import.meta.resolve(KEYWORD_CANON_FILE);
 
 export const PATHS = {
     corpus: path.join(DATA, 'corpus.json'),
@@ -18,14 +16,14 @@ export const PATHS = {
     pieProfiles: path.join(DATA, 'pie-profiles.json'),
     pieFlags: path.join(DATA, 'pie-flags.json'),
     pieSummary: path.join(DATA, 'pie-summary.json'),
-    canonTiers: fileURLToPath(CANON_TIER_TABLE),
-    keywordCanon: fileURLToPath(KEYWORD_CANON_TABLE),
+    canonTiers: path.join(PIE_SOURCE, 'canonTierTable.js'),
+    keywordCanon: path.join(PIE_SOURCE, 'keywordCanon.json'),
     gapReport: path.join(DATA, 'gap-report.json'),
     score: path.join(DATA, 'tag-score.json'),
     customKeywords: path.join(DATA, 'custom-keywords.json'),
-    projects: path.join(ROOT, 'review', 'projects.json'),
-    knownDisagreements: path.join(ROOT, 'review', 'known-disagreements.json'),
-    pieVerdictBaseline: path.join(ROOT, 'review', 'pie-verdict-baseline.json')
+    projects: path.join(REVIEWS, 'projects.json'),
+    knownDisagreements: path.join(REVIEWS, 'known-disagreements.json'),
+    pieVerdictBaseline: path.join(REVIEWS, 'pie-verdict-baseline.json')
 };
 
 export function queuePath(name) {

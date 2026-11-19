@@ -1,10 +1,10 @@
-import { readJson, writeJson } from '../src/files.js';
-import { PATHS } from '../src/paths.js';
-import { createCorpusScribe } from '../src/corpusScribe.js';
-import { parseCardFaces } from '../src/pieCorpus.js';
-import collectGaps from '../src/gaps/collectGaps.js';
-import GapReport from '../src/gaps/GapReport.js';
-import { percent } from '../src/table.js';
+import { readJson, writeJson } from './shared/files.js';
+import { PATHS } from './shared/paths.js';
+import { createCorpusScribe } from './corpus/corpusScribe.js';
+import { parseCardFaces } from './corpus/pieCorpus.js';
+import collectGaps from './gaps/collectGaps.js';
+import GapReport from './gaps/GapReport.js';
+import { percent } from './shared/table.js';
 
 const DEFAULT_LIMIT = 25;
 const SHAPE_WIDTH = 70;

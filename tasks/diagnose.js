@@ -1,8 +1,8 @@
-import { readJson } from '../src/files.js';
-import { PATHS } from '../src/paths.js';
-import { cardKey } from '../src/corpusScribe.js';
-import TagScore from '../src/TagScore.js';
-import SeededRandom from '../src/SeededRandom.js';
+import { readJson } from './shared/files.js';
+import { PATHS } from './shared/paths.js';
+import { cardKey } from './corpus/corpusScribe.js';
+import TagScore from './tags/TagScore.js';
+import SeededRandom from './shared/SeededRandom.js';
 
 const DEFAULT_LIMIT = 10;
 const [mode, ...args] = process.argv.slice(2);

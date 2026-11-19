@@ -1,4 +1,4 @@
-import { readJson } from './files.js';
+import { readJson } from '../shared/files.js';
 
 const NON_ALPHANUMERIC = /[^\p{L}\p{N}]/gu;
 

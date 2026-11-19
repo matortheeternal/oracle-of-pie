@@ -1,7 +1,7 @@
-import { readJson, writeJson } from '../src/files.js';
-import { PATHS } from '../src/paths.js';
-import { createCorpusScribe, cardKey } from '../src/corpusScribe.js';
-import tagCard from '../src/tagCard.js';
+import { readJson, writeJson } from './shared/files.js';
+import { PATHS } from './shared/paths.js';
+import { createCorpusScribe, cardKey } from './corpus/corpusScribe.js';
+import tagCard from './corpus/tagCard.js';
 
 const [corpusPath = PATHS.corpus, outPath = PATHS.predictions] = process.argv.slice(2);
 const corpus = readJson(corpusPath);

@@ -1,6 +1,6 @@
-import { PieInspector } from 'oracle-of-pie';
-import { createCorpusScribe } from '../corpusScribe.js';
-import { parseCardFaces } from '../pieCorpus.js';
+import { PieInspector } from '../../src/index.js';
+import { createCorpusScribe } from '../corpus/corpusScribe.js';
+import { parseCardFaces } from '../corpus/pieCorpus.js';
 
 export default class PrintedPieFlags {
     constructor(corpus, profiles) {

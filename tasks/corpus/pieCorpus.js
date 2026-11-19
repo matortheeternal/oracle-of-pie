@@ -1,4 +1,4 @@
-import { CardColors } from 'oracle-of-pie';
+import { CardColors } from '../../src/index.js';
 
 export function cardColorsOf(card) {
     return new CardColors({ colors: card.colors ?? [], manaCost: card.mana_cost ?? '' });

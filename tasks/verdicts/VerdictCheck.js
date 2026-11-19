@@ -1,5 +1,5 @@
-import tagCard from '../tagCard.js';
-import ReviewLog from '../ReviewLog.js';
+import tagCard from '../corpus/tagCard.js';
+import ReviewLog from './ReviewLog.js';
 
 const REGRESSED = 'regressed';
 const KNOWN = 'known';

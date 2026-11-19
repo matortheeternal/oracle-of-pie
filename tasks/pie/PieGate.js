@@ -1,5 +1,5 @@
-import ReviewLog from '../ReviewLog.js';
-import { percent } from '../table.js';
+import ReviewLog from '../verdicts/ReviewLog.js';
+import { percent } from '../shared/table.js';
 
 const WRONG = 'wrong';
 

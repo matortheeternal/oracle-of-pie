@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import AstService from '../tools/src/ast/AstService.js';
-import { HTML, send, sendError, readBody, searchParams } from './http.mjs';
+import AstService from '../ast/AstService.js';
+import { HTML, send, sendError, readBody, searchParams } from './http.js';
 
 const PAGE = path.join(path.dirname(fileURLToPath(import.meta.url)), 'ast.html');
 const AST_PAGE_ROUTE = /^\/ast$/;

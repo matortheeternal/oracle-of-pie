@@ -1,6 +1,6 @@
 import KeywordHarvest from './KeywordHarvest.js';
 import projectSettings from './projectSettings.js';
-import { ColorTiers } from 'oracle-of-pie';
+import { ColorTiers } from '../../src/index.js';
 
 const PROJECT_SOURCE = 'project keyword';
 

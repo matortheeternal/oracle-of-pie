@@ -1,12 +1,12 @@
-import { readJson, writeJsonl } from '../src/files.js';
-import { PATHS, queuePath } from '../src/paths.js';
-import { cardKey } from '../src/corpusScribe.js';
-import TagTree from '../src/TagTree.js';
-import TagScore from '../src/TagScore.js';
-import SeededRandom from '../src/SeededRandom.js';
-import ReviewLog from '../src/ReviewLog.js';
-import ReviewPriority from '../src/queues/ReviewPriority.js';
-import { notTaggedItem, notSuggestedItem } from '../src/queues/scryfallQueueItem.js';
+import { readJson, writeJsonl } from './shared/files.js';
+import { PATHS, queuePath } from './shared/paths.js';
+import { cardKey } from './corpus/corpusScribe.js';
+import TagTree from './tags/TagTree.js';
+import TagScore from './tags/TagScore.js';
+import SeededRandom from './shared/SeededRandom.js';
+import ReviewLog from './verdicts/ReviewLog.js';
+import ReviewPriority from './queues/ReviewPriority.js';
+import { notTaggedItem, notSuggestedItem } from './queues/scryfallQueueItem.js';
 
 const MISSED_SAMPLE_PER_TAG = 10;
 

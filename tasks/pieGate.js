@@ -1,8 +1,8 @@
-import { readJson, readJsonl } from '../src/files.js';
-import { PATHS, queuePath } from '../src/paths.js';
-import ReviewLog from '../src/ReviewLog.js';
-import PieGate from '../src/pie/PieGate.js';
-import { PIE_GATES } from '../src/pie/pieGates.js';
+import { readJson, readJsonl } from './shared/files.js';
+import { PATHS, queuePath } from './shared/paths.js';
+import ReviewLog from './verdicts/ReviewLog.js';
+import PieGate from './pie/PieGate.js';
+import { PIE_GATES } from './pie/pieGates.js';
 
 const summary = readJson(PATHS.pieSummary);
 for (const gate of PIE_GATES) {

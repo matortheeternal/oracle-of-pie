@@ -1,3 +1,13 @@
 node_modules/
 .eslintcache
 .idea
+
+# Scryfall bulk data dumps
+*.jsonl.gz
+
+# Generated corpus, predictions, and review queues
+/data/
+/queues/
+
+# Assistant helper scripts
+/.ai/

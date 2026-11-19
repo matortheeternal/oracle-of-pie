@@ -1,7 +1,7 @@
-import { parseCardFaces } from '../pieCorpus.js';
+import { parseCardFaces } from '../corpus/pieCorpus.js';
 import {
     PieInspector, DEFAULT_PIE_INSPECTIONS, keywordInspections
-} from 'oracle-of-pie';
+} from '../../src/index.js';
 
 function cardForInspection(card) {
     return {

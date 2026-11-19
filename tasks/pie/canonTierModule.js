@@ -1,4 +1,4 @@
-import { COLORS, ColorProfile, canonTiers } from 'oracle-of-pie';
+import { COLORS, ColorProfile, canonTiers } from '../../src/index.js';
 
 function tierLine(tiers) {
     return COLORS.map(color => `${color}: '${tiers[color]}'`).join(', ');

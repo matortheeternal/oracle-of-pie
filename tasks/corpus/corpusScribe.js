@@ -1,6 +1,6 @@
 import {
     Oracle, DEFAULT_TAG_SPECS, DEFAULT_KEYWORDS, KeywordFamilyEvaluator
-} from 'oracle-of-pie';
+} from '../../src/index.js';
 
 const STRUCTURAL_KEYWORDS = ['Enchant', 'Equip'];
 

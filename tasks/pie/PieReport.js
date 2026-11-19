@@ -1,5 +1,5 @@
-import { percent } from './table.js';
-import { COLOR_POLICIES } from 'oracle-of-pie';
+import { percent } from '../shared/table.js';
+import { COLOR_POLICIES } from '../../src/index.js';
 
 const COLOR_BREAK_TAG = 'color-break';
 

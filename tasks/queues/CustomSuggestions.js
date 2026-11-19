@@ -1,4 +1,4 @@
-import tagCard from '../tagCard.js';
+import tagCard from '../corpus/tagCard.js';
 import customQueueItem from './customQueueItem.js';
 
 const SCRYFALL_TAG_SHARE = 0.8;

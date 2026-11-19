@@ -1,4 +1,4 @@
-import ReviewLog from '../ReviewLog.js';
+import ReviewLog from './ReviewLog.js';
 import PieVerdict from './PieVerdict.js';
 import { judgementOfAll } from '../pie/pieJudgement.js';
 

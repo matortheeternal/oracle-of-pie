@@ -13,11 +13,29 @@
     "mana-scribe": "file:../mana-scribe"
   },
   "devDependencies": {
+    "@sigil-sifter/magic": "^1.2.0",
+    "@sigil-sifter/magic-scryfall": "^1.0.0",
     "@stylistic/eslint-plugin": "^5.6.1",
     "eslint": "^9.39.2",
-    "globals": "^16.5.0"
+    "globals": "^16.5.0",
+    "sigil-sifter": "^1.0.0",
+    "yaml": "^2.9.1"
   },
   "scripts": {
-    "lint": "eslint src lint eslint.config.js --max-warnings 0"
+    "lint": "eslint src tasks lint eslint.config.js --max-warnings 0",
+    "corpus": "node tasks/buildCorpus.js",
+    "tag": "node tasks/tagCorpus.js",
+    "score": "node tasks/scoreTags.js",
+    "evaluate": "npm run tag && npm run score",
+    "diagnose": "node tasks/diagnose.js",
+    "gaps": "node tasks/gapReport.js",
+    "queues": "node tasks/buildCustomQueue.js && node tasks/buildScryfallQueues.js && node tasks/buildPieQueues.js",
+    "review": "node tasks/review.js",
+    "report": "node tasks/reviewReport.js",
+    "verdicts": "node tasks/checkVerdicts.js",
+    "pie": "node tasks/buildPieProfiles.js && node tasks/inspectPie.js",
+    "pie-gate": "node tasks/pieGate.js",
+    "pie-verdicts": "node tasks/checkPieVerdicts.js",
+    "keyword-canon": "node tasks/buildKeywordCanon.js default-cards-*.jsonl.gz"
   }
 }

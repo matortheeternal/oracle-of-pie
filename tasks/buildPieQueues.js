@@ -1,13 +1,13 @@
-import { readJson, writeJsonl } from '../src/files.js';
-import { PATHS, queuePath } from '../src/paths.js';
-import ProjectScribes from '../src/keywords/ProjectScribes.js';
-import ReviewLog from '../src/ReviewLog.js';
-import loadProjects from '../src/custom/loadProjects.js';
-import ReviewPriority from '../src/queues/ReviewPriority.js';
-import ProjectPieFlags from '../src/pie/projectPieFlags.js';
-import pieFlagItem from '../src/pie/pieFlagItem.js';
-import sampleFlaggedCards from '../src/pie/sampleFlaggedCards.js';
-import { PIE_GATES } from '../src/pie/pieGates.js';
+import { readJson, writeJsonl } from './shared/files.js';
+import { PATHS, queuePath } from './shared/paths.js';
+import ProjectScribes from './keywords/ProjectScribes.js';
+import ReviewLog from './verdicts/ReviewLog.js';
+import loadProjects from './custom/loadProjects.js';
+import ReviewPriority from './queues/ReviewPriority.js';
+import ProjectPieFlags from './pie/projectPieFlags.js';
+import pieFlagItem from './pie/pieFlagItem.js';
+import sampleFlaggedCards from './pie/sampleFlaggedCards.js';
+import { PIE_GATES } from './pie/pieGates.js';
 
 const CUSTOM_QUEUE = 'custom-pie-flags';
 const MONO_SAMPLE_SIZE = 50;

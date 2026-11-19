@@ -1,4 +1,4 @@
-import { cardKey } from '../corpusScribe.js';
+import { cardKey } from '../corpus/corpusScribe.js';
 import loadProjects from '../custom/loadProjects.js';
 
 export default function reviewedCards(corpus, projectsFile) {
