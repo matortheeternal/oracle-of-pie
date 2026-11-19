@@ -81,6 +81,10 @@ export default class Effect extends Parser {
         return Boolean(this.subject?.isPlayer && this.subject.canBeOpponent);
     }
 
+    get cardsGained() {
+        return 0;
+    }
+
     get affectsYou() {
         return !this.subject || Boolean(this.subject.includesYou);
     }

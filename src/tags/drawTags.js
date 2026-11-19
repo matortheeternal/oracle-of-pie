@@ -27,6 +27,7 @@ const VARIABLE_DRAW = {
         { sentence: { effects: { kind: 'DrawEffect', isSingleCard: false } } }
     ]
 };
+const KEEPS_DRAWN_CARDS = { ability: { losesDrawnCards: false } };
 const SINGLE_DRAW = { ...RESOLVES_OR_ENTERS, not: VARIABLE_DRAW };
 
 export const DRAW_TAGS = [
@@ -38,7 +39,7 @@ export const DRAW_TAGS = [
         tag: 'burst-draw',
         match: {
             any: [
-                { tag: 'pure-draw', isBurst: true },
+                { tag: 'pure-draw', isBurst: true, context: KEEPS_DRAWN_CARDS },
                 { kind: 'DrawEffect', isBurst: true, context: WHEEL_SENTENCE }
             ]
         }

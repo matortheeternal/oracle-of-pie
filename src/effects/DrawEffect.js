@@ -26,6 +26,10 @@ export default class DrawEffect extends Effect {
         return typeof this.amount?.value === 'number' ? this.amount.value : null;
     }
 
+    get cardsGained() {
+        return this.count;
+    }
+
     get isSingleCard() {
         return this.count === 1;
     }
