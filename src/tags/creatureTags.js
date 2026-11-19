@@ -15,6 +15,16 @@ const TRICK_SUBJECT = {
     any: [{ isTargeted: true }, { isMass: true, controlledByYou: true }]
 };
 const TRICK_OBJECT = { any: [TRICK_SUBJECT, { resolved: TRICK_SUBJECT }] };
+const SELF_DEATH_TRIGGER = {
+    kind: 'TriggeredAbility',
+    event: { kind: 'DiesEvent', isSelf: true }
+};
+const DEATH_RECOVERY_TRICK = {
+    kind: 'GrantEffect',
+    ...TRICK_TIMING,
+    subject: TRICK_SUBJECT,
+    quoted: { text: { abilities: SELF_DEATH_TRIGGER } }
+};
 const PUMP_COUNTERS_TRICK = {
     kind: 'PutCountersEffect',
     ...TRICK_TIMING,
@@ -92,6 +102,7 @@ export const CREATURE_TAGS = [
                     subject: TRICK_SUBJECT,
                     any: COMBAT_KEYWORDS.map(name => ({ grantsKeyword: name }))
                 },
+                DEATH_RECOVERY_TRICK,
                 PUMP_COUNTERS_TRICK,
                 SHRINK_COUNTERS_REMOVAL_TRICK
             ]
