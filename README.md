@@ -5,19 +5,21 @@ that tree, it suggests Scryfall oracle tags for a card and inspects cards for co
 breaks, citing the evidence for each. It reads printed and custom cards alike, and new mechanics
 can be declared through configuration.
 
-    import { Oracle, PieInspector, CardColors } from 'oracle-of-pie';
+```js
+import { Oracle, PieInspector, CardColors } from 'oracle-of-pie';
 
-    const parsed = new Oracle().parseFace({
-        name: 'Sudden Downpour',
-        typeLine: 'Instant',
-        text: 'Destroy target creature with flying. You gain 2 life.'
-    });
-    parsed.tags;             // Map: 'removal-destroy' → evidence, …
-    parsed.isFullyRecognized;
+const parsed = new Oracle().parseFace({
+    name: 'Sudden Downpour',
+    typeLine: 'Instant',
+    text: 'Destroy target creature with flying. You gain 2 life.'
+});
+parsed.tags;             // Map: 'removal-destroy' → evidence, …
+parsed.isFullyRecognized;
 
-    const colors = CardColors.fromManaCost('{1}{U}');
-    new PieInspector().inspect([{ parsed, colors }]);
-    // flags: destroy-creature breaks in U, gain-life breaks in U
+const colors = CardColors.fromManaCost('{1}{U}');
+new PieInspector().inspect([{ parsed, colors }]);
+// flags: destroy-creature breaks in U, gain-life breaks in U
+```
 
 Structured after sigil-sifter and mana-scribe: node classes with `static match` / `static parse`,
 ordered strategy registries, and nodes that consume `remainingStr`.
@@ -28,10 +30,14 @@ mana-scribe. resolvers/ link across sentences
 (back-references). evaluators/ runs declarative queries over the tree; tags/ holds the tag queries;
 pie/ holds the color pie inspections.
 
-Status (2026-11-19, modern corpus): 73.7% of cards fully recognized; tag micro precision 98.3%,
-recall 79.3%. A card counts as recognized only when every trigger event reads all of its text:
-of 11,452 trigger events, 9,410 are read, 626 partly read (a known event with text it could
-not read, such as "attacks or blocks") and 1,416 unsupported. Goals and decisions are in
+Status (2026-11-19, modern corpus): 71.0% of cards fully recognized; tag micro precision 98.3%,
+recall 79.3%. A card counts as recognized only when every trigger event reads all of its text,
+including all of its subject and object: of 11,452 trigger events, 8,773 are read, 1,263 partly
+read (a known event with text it could not read, such as "attacks or blocks", a step that is not
+modelled yet such as "your first main phase" or "each opponent's upkeep", or the rest of a
+subject after the part that was read, such as "or another Elf you control") and 1,416
+unsupported. Two known gaps still count as read: the rest of a spell in a cast trigger that is
+read only in part, and the middle of "damage … is prevented". Goals and decisions are in
 `SUCCESS.md`; the tasks that measure them are under Development below.
 
 ## How a card is read
@@ -50,7 +56,9 @@ plain object each layer extends: `card`, `ability`, `abilities`, `sentence`, `co
 
 ### Oracle
 
-    new Oracle({ keywords, definitions, tags })
+```js
+new Oracle({ keywords, definitions, tags })
+```
 
 - `keywords`: keyword names the parser recognizes as keyword abilities and in "with/without …"
   phrases. Defaults to `DEFAULT_KEYWORDS`, which includes every keyword ability in the keyword
@@ -60,20 +68,22 @@ plain object each layer extends: `card`, `ability`, `abilities`, `sentence`, `co
 
 ### Definitions
 
-    new Oracle({ definitions: {
-        keywords: [
-            { name: 'Siphon', reminder: 'Whenever this creature attacks, each opponent loses {parameter} life.' },
-            { name: 'Typecycling', pattern: /(?<type>[a-z]+)cycling/, reminder: '... a {type} card ...' }
-        ],
-        actions: [
-            { name: 'Investigate', reminder: 'Create a Clue token.' },
-            { name: 'Discover', pattern: /discovers?/, findsRandomCard: true, reminder: '...' },
-            { name: 'Goad', pattern: /goad [^,.]+/ }
-        ],
-        tokens: [{ name: 'Lantern', typeLine: 'Token Artifact — Lantern', reminder: '{1}, Sacrifice this token: Scry 2.' }],
-        noncreatureSubtypes: ['Gizmo'],
-        batchWords: ['lucky']
-    } });
+```js
+new Oracle({ definitions: {
+    keywords: [
+        { name: 'Siphon', reminder: 'Whenever this creature attacks, each opponent loses {parameter} life.' },
+        { name: 'Typecycling', pattern: /(?<type>[a-z]+)cycling/, reminder: '... a {type} card ...' }
+    ],
+    actions: [
+        { name: 'Investigate', reminder: 'Create a Clue token.' },
+        { name: 'Discover', pattern: /discovers?/, findsRandomCard: true, reminder: '...' },
+        { name: 'Goad', pattern: /goad [^,.]+/ }
+    ],
+    tokens: [{ name: 'Lantern', typeLine: 'Token Artifact — Lantern', reminder: '{1}, Sacrifice this token: Scry 2.' }],
+    noncreatureSubtypes: ['Gizmo'],
+    batchWords: ['lucky']
+} });
+```
 
 - `keywords`: a name and reminder text. `pattern` makes one definition cover a family of names;
   its named groups fill `{placeholders}` in the reminder, and `{parameter}` is the keyword's
@@ -131,8 +141,10 @@ New predicate kinds are classes in evaluators/predicates/ registered in order in
 
 ### Tags
 
-    new Oracle({ tags: [{ tag: 'bounce-to-library',
-        match: { kind: 'ReturnEffect', destination: 'library', phrases: { isOpposingObject: true } } }] });
+```js
+new Oracle({ tags: [{ tag: 'bounce-to-library',
+    match: { kind: 'ReturnEffect', destination: 'library', phrases: { isOpposingObject: true } } }] });
+```
 
 Every tag's query is tested against every node; the first match records the tag with its
 sentence as evidence. Tags may build on other tags with `tag:`. A spec with `family` instead of
@@ -140,16 +152,20 @@ sentence as evidence. Tags may build on other tags with `tag:`. A spec with `fam
 
 ### Pie inspections
 
-    new PieInspector({ profiles, inspections, disabled: ['gain-life'] })
+```js
+new PieInspector({ profiles, inspections, disabled: ['gain-life'] })
+```
 
 An inspection is one kind of color pie break:
 
-    { id: 'destroy-creature', title: 'Destroys creatures', group: 'Removal',
-      match: { kind: 'DestroyEffect', phrases: { isOpposingObject: true } },
-      cites: 'Destroy target creature',
-      atLeast: { W: 'tertiary' },
-      allowedWherever: 'loot',
-      exceptions: [ … ] }
+```js
+{ id: 'destroy-creature', title: 'Destroys creatures', group: 'Removal',
+  match: { kind: 'DestroyEffect', phrases: { isOpposingObject: true } },
+  cites: 'Destroy target creature',
+  atLeast: { W: 'tertiary' },
+  allowedWherever: 'loot',
+  exceptions: [ … ] }
+```
 
 - `match` or `tagInspection({ id, tag })`: what the inspection looks for. The first matching node
   on each face is judged.
