@@ -15,12 +15,26 @@ export default class RulesDefinitions {
             KeywordActionDefinition, KeywordActionFamilyDefinition
         );
         this.tokens = new TokenRegistry();
+        this.noncreatureSubtypes = new Set();
+        this.batchWords = new Set();
     }
 
-    addAll({ keywords = [], actions = [], tokens = [] }) {
+    addAll(definitions) {
+        const { keywords = [], actions = [], tokens = [] } = definitions;
+        const { noncreatureSubtypes = [], batchWords = [] } = definitions;
         this.keywords.addAll(keywords);
         this.actions.addAll(actions);
         this.tokens.addAll(tokens);
+        for (const subtype of noncreatureSubtypes) this.noncreatureSubtypes.add(subtype);
+        for (const word of batchWords) this.batchWords.add(word.toLowerCase());
         return this;
+    }
+
+    isNoncreatureSubtype(subtype) {
+        return this.noncreatureSubtypes.has(subtype);
+    }
+
+    isBatchWord(word) {
+        return this.batchWords.has(word);
     }
 }

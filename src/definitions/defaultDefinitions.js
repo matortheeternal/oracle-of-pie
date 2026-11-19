@@ -148,5 +148,16 @@ export const DEFAULT_DEFINITIONS = {
             typeLine: 'Token Artifact — Blood',
             reminder: '{1}, {T}, Discard a card, Sacrifice this token: Draw a card.'
         }
-    ]
+    ],
+    noncreatureSubtypes: [
+        'Food', 'Treasure', 'Clue', 'Blood', 'Map', 'Powerstone', 'Gold', 'Incubator',
+        'Junk', 'Equipment', 'Vehicle', 'Fortification', 'Contraption', 'Attraction',
+        'Bobblehead', 'Infinity', 'Stone', 'Communicator', 'Aura', 'Saga', 'Shrine',
+        'Class', 'Room', 'Case', 'Curse', 'Role', 'Background', 'Cartouche', 'Rune',
+        'Plan', 'Quest', 'Vengeance', 'Adventure', 'Arcane', 'Lesson', 'Omen',
+        'Siege', 'Plains', 'Island', 'Swamp', 'Mountain', 'Forest', 'Desert', 'Gate',
+        'Cave', 'Sphere', 'Town', 'Lair', 'Locus', 'Mine', 'Tower', 'Power-Plant',
+        'Urza\'s', 'Ulamog\'s', 'Omenpath', 'Planet', 'Realm', 'Spacecraft'
+    ],
+    batchWords: ['historic', 'outlaw', 'modified']
 };

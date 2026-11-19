@@ -1,7 +1,7 @@
 import Phrase from './Phrase.js';
 import { MODIFIER_PARSERS } from './modifiers/index.js';
 import {
-    TYPE_WORDS, QUALIFIER_WORDS, NEGATED_QUALIFIER, SUBTYPE_WORD, NONCREATURE_SUBTYPES
+    TYPE_WORDS, QUALIFIER_WORDS, NEGATED_QUALIFIER, SUBTYPE_WORD
 } from './vocabulary.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
@@ -30,17 +30,22 @@ const PERMANENT_TYPES = [
 const ADJECTIVAL_TYPES = new Set(['card', 'spell', 'token', 'permanent']);
 
 const PLURAL_S = /(?<=[^s])s$/;
-function classifyWord(word) {
+function isQualifier(scribe, word, lower) {
+    if (QUALIFIER_WORDS.has(lower) || NEGATED_QUALIFIER.test(word)) return true;
+    return scribe.definitions.isBatchWord(lower);
+}
+
+function classifyWord(scribe, word) {
     const lower = word.toLowerCase();
     if (Object.hasOwn(TYPE_WORDS, lower)) return 'type';
-    if (QUALIFIER_WORDS.has(lower) || NEGATED_QUALIFIER.test(word)) return 'qualifier';
+    if (isQualifier(scribe, word, lower)) return 'qualifier';
     if (SUBTYPE_WORD.test(word)) return 'subtype';
     return null;
 }
 
-function nextWordClass(str) {
+function nextWordClass(scribe, str) {
     const match = str.match(WORD);
-    return match ? classifyWord(match[1]) : null;
+    return match ? classifyWord(scribe, match[1]) : null;
 }
 
 function isLoneType(group, type) {
@@ -56,7 +61,7 @@ export default class NounPhrase extends Phrase {
     static match(scribe, str) {
         const determiner = str.match(DETERMINER);
         const rest = determiner ? str.slice(determiner[0].length).trimStart() : str;
-        if (!nextWordClass(rest)) return null;
+        if (!nextWordClass(scribe, rest)) return null;
         return determiner ?? [''];
     }
 
@@ -80,7 +85,7 @@ export default class NounPhrase extends Phrase {
 
     consumeWord() {
         const match = this.remainingStr.match(WORD);
-        const wordClass = match && classifyWord(match[1]);
+        const wordClass = match && classifyWord(this.scribe, match[1]);
         if (!wordClass) return false;
         this.consumeText(WORD);
         this.addWord(match[1], wordClass);
@@ -90,7 +95,8 @@ export default class NounPhrase extends Phrase {
     consumeJoiner() {
         const joiner = this.remainingStr.match(TYPE_JOINER);
         if (!joiner || !this.hasWords) return false;
-        if (!nextWordClass(this.remainingStr.slice(joiner[0].length))) return false;
+        const next = this.remainingStr.slice(joiner[0].length);
+        if (!nextWordClass(this.scribe, next)) return false;
         this.consumeText(TYPE_JOINER);
         this.followsType = false;
         return true;
@@ -212,7 +218,9 @@ export default class NounPhrase extends Phrase {
     }
 
     get namesCreatureSubtype() {
-        const isCreatureSubtype = subtype => !NONCREATURE_SUBTYPES.has(singular(subtype));
+        const definitions = this.scribe.definitions;
+        const isCreatureSubtype = subtype =>
+            !definitions.isNoncreatureSubtype(singular(subtype));
         return this.subtypes.some(isCreatureSubtype);
     }
 
