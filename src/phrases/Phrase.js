@@ -97,10 +97,6 @@ export default class Phrase extends Parser {
         return this.hasExactType('player') || this.hasExactType('opponent');
     }
 
-    get requiresFlying() {
-        return Boolean(this.requiredKeywords?.includes('flying'));
-    }
-
     get isCreatureCard() {
         return this.hasExactType('creature') && this.isCardInZone;
     }

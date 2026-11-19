@@ -8,7 +8,7 @@ const MASS_OPPOSING = {
 };
 const OPPOSING_CREATURE = { isOpposingObject: true, hasType: 'creature' };
 const REMOVING_EFFECTS = ['DestroyEffect', 'ExileEffect', 'ReturnEffect', 'DamageEffect'];
-const OPPOSING_FLYERS = { requiresFlying: true, controlledByYou: false };
+const OPPOSING_FLYERS = { requiresKeyword: 'flying', controlledByYou: false };
 const OPPOSING_SPELL = { hasType: 'spell', controlledByYou: false };
 
 function removesType(type) {
