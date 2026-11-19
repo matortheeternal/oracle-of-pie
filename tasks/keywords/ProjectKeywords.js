@@ -2,6 +2,8 @@ import KeywordHarvest from './KeywordHarvest.js';
 import projectSettings from './projectSettings.js';
 import { ColorTiers } from 'oracle-of-pie';
 
+const PROJECT_SOURCE = 'project keyword';
+
 function keyOf(definition) {
     return definition.name.toLowerCase();
 }
@@ -27,8 +29,8 @@ export default class ProjectKeywords {
 
     get pieTiers() {
         const tiered = this.definitions.filter(definition => definition.tiers);
-        const entries = tiered.map(definition =>
-            [definition.name.toLowerCase(), ColorTiers.fromNames(definition.tiers)]);
+        const entries = tiered.map(({ name, tiers }) =>
+            [name.toLowerCase(), ColorTiers.fromNames(tiers, PROJECT_SOURCE)]);
         return Object.fromEntries(entries);
     }
 }

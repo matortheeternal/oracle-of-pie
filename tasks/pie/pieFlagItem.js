@@ -31,6 +31,15 @@ function citationEvidence(flag) {
     return [{ label: source, text: `${line}: ${citedTiers(tiers)}` }];
 }
 
+function tierReason([color, { tier, source }]) {
+    return `${color} ${tier} (${source ?? 'unsourced'})`;
+}
+
+function tierEvidence(flag) {
+    const reasons = Object.entries(flag.tiers).map(tierReason);
+    return [{ label: 'Tiers', text: reasons.join(' · ') }];
+}
+
 export default function pieFlagItem({ id, card, flag, profile }) {
     const word = severityWord(flag);
     const colors = flag.offending.join('');
@@ -42,6 +51,7 @@ export default function pieFlagItem({ id, card, flag, profile }) {
         evidence: [
             { label: 'Matched text', text: flag.evidence, code: true },
             { label: 'Judged as', text: judgementOf(flag) },
+            ...tierEvidence(flag),
             ...exceptionEvidence(flag),
             ...citationEvidence(flag),
             { label: 'Printed mono cards with this effect', text: canonCounts(profile) },
