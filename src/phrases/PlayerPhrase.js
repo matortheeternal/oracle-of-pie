@@ -12,6 +12,7 @@ const PLAYER_ALTERNATIVES = [
     'its controller',
     'its owner',
     'an opponent',
+    'a player(?! or\\b)',
     'any opponent',
     'defending player',
     'they',

@@ -47,7 +47,7 @@ export const SPELL_TAGS = [
             kind: 'AttachEffect',
             card: { isEquipment: true },
             recipientPhrases: { kind: 'NounPhrase' },
-            context: { ability: { event: { kind: 'EntersEvent', isSelf: true } } }
+            context: { ability: { events: { kind: 'EntersEvent', isSelf: true } } }
         }
     }
 ];

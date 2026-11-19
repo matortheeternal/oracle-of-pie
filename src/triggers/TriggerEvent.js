@@ -15,15 +15,22 @@ export default class TriggerEvent extends Parser {
     }
 
     static parse(scribe, match, str) {
+        const event = this.read(scribe, match, str);
+        event.consumeUnreadText();
+        return event;
+    }
+
+    static read(scribe, match, str) {
         const event = super.parse(scribe, match, str);
         event.parseParticipants();
-        event.unreadText = event.consume([UnrecognizedText]);
+        event.claimSpan(str);
         return event;
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.subject = match.groups?.subject?.trim() ?? '';
+        this.unreadText = null;
     }
 
     parseParticipants() {
@@ -36,8 +43,22 @@ export default class TriggerEvent extends Parser {
         return text ? this.parseNext(text, PHRASE_PARSERS) : null;
     }
 
+    consumeUnreadText() {
+        this.unreadText = this.consume([UnrecognizedText]);
+    }
+
+    shareSubject(predicate) {
+        this.subjectPhrase = null;
+        this.sharesSubject = true;
+        this.claimSpan(predicate);
+    }
+
     get children() {
         return [this.subjectPhrase, this.objectPhrase, this.unreadText].filter(Boolean);
+    }
+
+    get alternatives() {
+        return [this];
     }
 
     get isUnsupported() {

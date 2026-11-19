@@ -9,10 +9,7 @@ expect:
       isRepeatable: true
       children:
         - kind: DealsDamageEvent
-          pending: >-
-            Plan step 4: damage recipient. "to a player" is not read; it should become the
-            event's recipient phrase, and "a player" should parse as a PlayerPhrase (today it
-            parses as a bare NounPhrase).
+          raw: this creature deals combat damage to a player
           isSelf: true
           isCombat: true
           isRecognized: true
@@ -21,6 +18,9 @@ expect:
               raw: this creature
             - kind: PlayerPhrase
               raw: a player
+          recipient:
+            kind: PlayerPhrase
+            player: a player
         - kind: EffectSequence
           children:
             - kind: EffectSentence

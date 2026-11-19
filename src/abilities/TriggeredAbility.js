@@ -22,6 +22,10 @@ export default class TriggeredAbility extends BodyAbility {
         return [this.event, ...super.parts];
     }
 
+    get events() {
+        return this.event.alternatives;
+    }
+
     get isRepeatable() {
         return this.event.isRepeatable && !this.consumesSource;
     }

@@ -28,10 +28,10 @@ mana-scribe. resolvers/ link across sentences
 (back-references). evaluators/ runs declarative queries over the tree; tags/ holds the tag queries;
 pie/ holds the color pie inspections.
 
-Status (2026-11-19, modern corpus): 70.6% of cards fully recognized; tag micro precision 98.3%,
-recall 78.9%. A card counts as recognized only when every trigger event reads all of its text:
-of 11,223 trigger events, 8,439 are read, 1,374 partly read (a known event with text it could
-not read, such as "to a player") and 1,410 unsupported. Goals and decisions are in
+Status (2026-11-19, modern corpus): 73.7% of cards fully recognized; tag micro precision 98.3%,
+recall 79.3%. A card counts as recognized only when every trigger event reads all of its text:
+of 11,445 trigger events, 9,411 are read, 624 partly read (a known event with text it could
+not read, such as "attacks alone") and 1,410 unsupported. Goals and decisions are in
 `SUCCESS.md`; the tasks that measure them are under Development below.
 
 ## How a card is read

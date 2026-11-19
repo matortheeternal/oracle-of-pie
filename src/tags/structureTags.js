@@ -22,21 +22,21 @@ export const STRUCTURE_TAGS = [
     },
     {
         tag: 'attack-trigger',
-        match: { kind: TRIGGERED, event: { kind: 'AttacksEvent' } }
+        match: { kind: TRIGGERED, events: { kind: 'AttacksEvent' } }
     },
     {
         tag: 'death-trigger',
-        match: { ...OWN_DEATH_TRIGGER, event: { kind: 'DiesEvent' } }
+        match: { ...OWN_DEATH_TRIGGER, events: { kind: 'DiesEvent' } }
     },
     {
         tag: 'death-trigger-self',
-        match: { ...OWN_DEATH_TRIGGER, event: { kind: 'DiesEvent', isSelf: true } }
+        match: { ...OWN_DEATH_TRIGGER, events: { kind: 'DiesEvent', isSelf: true } }
     },
     {
         tag: 'cast-trigger-you',
         match: {
             kind: TRIGGERED,
-            event: { kind: 'CastEvent', isYou: true, castsSelf: false }
+            events: { kind: 'CastEvent', isYou: true, castsSelf: false }
         }
     },
     {

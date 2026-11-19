@@ -24,6 +24,10 @@ export default class TriggerSentence extends Sentence {
         return [this.event, ...super.children];
     }
 
+    get events() {
+        return this.event.alternatives;
+    }
+
     childContext(context) {
         return { ...super.childContext(context), delayedTrigger: this };
     }

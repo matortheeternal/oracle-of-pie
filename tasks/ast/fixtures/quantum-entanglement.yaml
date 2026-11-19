@@ -15,20 +15,22 @@ expect:
         - kind: Keyword
           name: flash
     - kind: TriggeredAbility
-      pending: >-
-        Plan step 4: compound trigger. "enters and at the beginning of your end step" names two
-        alternative events, but only EntersEvent is read, so the ability is wrongly not
-        repeatable. The compound node's class is undecided, so its kind is not asserted.
       isRepeatable: true
       children:
-        - isRecognized: true
+        - kind: CompoundEvent
+          raw: this enchantment enters and at the beginning of your end step
+          isRecognized: true
           children:
             - kind: EntersEvent
+              raw: this enchantment enters
               isSelf: true
+              isRepeatable: false
               children:
                 - kind: SelfReference
                   raw: this enchantment
             - kind: PhaseEvent
+              raw: the beginning of your end step
+              isRepeatable: true
         - kind: EffectSequence
           children:
             - kind: EffectSentence

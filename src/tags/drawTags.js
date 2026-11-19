@@ -11,7 +11,7 @@ const DRAW_COSTS = {
 };
 const SELF_ENTERS = {
     kind: 'TriggeredAbility',
-    event: { kind: 'EntersEvent', isSelf: true }
+    events: { kind: 'EntersEvent', isSelf: true }
 };
 const RESOLVES_OR_ENTERS = {
     delayedTrigger: null,

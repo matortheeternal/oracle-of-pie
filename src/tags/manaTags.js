@@ -25,7 +25,7 @@ const COMBAT_TRIGGER = {
     granted: false,
     ability: {
         kind: 'TriggeredAbility',
-        event: {
+        events: {
             any: [{ kind: 'AttacksEvent' }, { kind: 'DealsDamageEvent', isCombat: true }]
         }
     }
