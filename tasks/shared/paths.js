@@ -21,7 +21,8 @@ export const PATHS = {
     score: path.join(DATA, 'tag-score.json'),
     customKeywords: path.join(DATA, 'custom-keywords.json'),
     projects: path.join(ROOT, 'review', 'projects.json'),
-    knownDisagreements: path.join(ROOT, 'review', 'known-disagreements.json')
+    knownDisagreements: path.join(ROOT, 'review', 'known-disagreements.json'),
+    pieVerdictBaseline: path.join(ROOT, 'review', 'pie-verdict-baseline.json')
 };
 
 export function queuePath(name) {
