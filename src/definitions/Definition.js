@@ -7,6 +7,10 @@ export default class Definition {
         Object.defineProperty(this, 'parsedTexts', { value: new Map() });
     }
 
+    get hasReminder() {
+        return Boolean(this.reminder);
+    }
+
     get isToken() {
         return false;
     }

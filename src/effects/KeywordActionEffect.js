@@ -2,47 +2,28 @@ import Effect from './Effect.js';
 import Expansion from '../definitions/Expansion.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
-const KEYWORD_ACTION_ALTERNATIVES = [
-    'scry', 'surveil', 'investigate', 'proliferate', 'explores?', 'connives?', 'populate',
-    'learn', 'amass [A-Z][a-z]+', 'adapt', 'bolster', 'support', 'incubate', 'discovers?',
-    'seek', 'endure', 'manifest dread', 'manifest', 'venture into the dungeon',
-    'the ring tempts you', 'become the monarch', 'take the initiative', 'goad [^,.]+',
-    'transform [^,.]+', 'regenerate [^,.]+', 'shuffle(?: [^,.]*)?', 'time travel',
-    'forage', 'collect evidence', 'exert [^,.]+', 'suspect [^,.]+', 'earthbend',
-    'endures', 'monstrosity', 'blight', 'behold an? [^,.]+', 'recruit',
-    'empower [A-Z][a-z]+', 'airbend [^,.]+'
-];
 const REPEAT = '(?: twice| (?:\\w+ )?times)?';
-const ACTION_AMOUNT = `(?: (${NUMBER_PATTERN}))?${REPEAT}`;
-const KEYWORD_ACTION = new RegExp(
-    `^(${KEYWORD_ACTION_ALTERNATIVES.join('|')})(?![\\w])${ACTION_AMOUNT}`, 'i'
-);
+export const ACTION_AMOUNT = `(?: (?<amount>${NUMBER_PATTERN}))?${REPEAT}`;
 
 const TRANSFORM_SELF = /^transform (?:~|this\b|it\b)/i;
-const THIRD_PERSON = /(?<=connive|explore|endure|discover)s$/;
-const RANDOM_FIND_ACTIONS = new Set(['discover']);
 
 export default class KeywordActionEffect extends Effect {
-    static get pattern() {
-        return KEYWORD_ACTION;
-    }
-
     static match(scribe, str) {
-        return str.match(KEYWORD_ACTION) ?? str.match(scribe.actionPattern);
+        return str.match(scribe.actionPattern);
     }
 
     get expansions() {
-        const definition = this.scribe.definitions.actions.definitionFor(this.action);
-        this.cachedExpansions ??= definition
-            ? [Expansion.of(this.scribe, definition, this)]
+        this.cachedExpansions ??= this.definition.hasReminder
+            ? [Expansion.of(this.scribe, this.definition, this)]
             : [];
         return this.cachedExpansions;
     }
 
     parseArguments(match) {
-        this.action = match[1].toLowerCase().split(' ')[0].replace(THIRD_PERSON, '');
-        this.amountText = match[2] ?? null;
         this.actionText = match[1];
+        this.amountText = match.groups.amount ?? null;
+        this.definition = this.scribe.definitions.actions.definitionFor(this.actionText);
+        this.action = this.definition.key;
     }
 
     get isKeywordAction() {
@@ -50,7 +31,7 @@ export default class KeywordActionEffect extends Effect {
     }
 
     get findsRandomCard() {
-        return RANDOM_FIND_ACTIONS.has(this.action);
+        return this.definition.findsRandomCard;
     }
 
     get consumesSource() {

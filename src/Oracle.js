@@ -11,15 +11,18 @@ import Clause from './clauses/Clause.js';
 import { DEFAULT_KEYWORDS } from './defaultKeywords.js';
 import RulesDefinitions from './definitions/RulesDefinitions.js';
 import TagLibrary from './evaluators/TagLibrary.js';
+import { ACTION_AMOUNT } from './effects/KeywordActionEffect.js';
 
 const NEVER = /(?!)/;
 const REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
+const NAMED_GROUP = /\(\?<(?![=!])\w+>/g;
 
-function alternationPattern(sources) {
+function alternationPattern(sources, suffix = '') {
     if (!sources.length) return NEVER;
-    const unique = [...new Set(sources.map(source => source.toLowerCase()))];
+    const unnamed = sources.map(source => source.replace(NAMED_GROUP, '(?:'));
+    const unique = [...new Set(unnamed.map(source => source.toLowerCase()))];
     const sorted = unique.sort((a, b) => b.length - a.length);
-    return new RegExp(`^(${sorted.join('|')})(?![\\w'-])`, 'i');
+    return new RegExp(`^(${sorted.join('|')})(?![\\w'-])${suffix}`, 'i');
 }
 
 function escapeNames(names) {
@@ -33,7 +36,9 @@ export default class Oracle {
         const keywordSources = escapeNames(keywords)
             .concat(this.definitions.keywords.patternSources);
         this.keywordPattern = alternationPattern(keywordSources);
-        this.actionPattern = alternationPattern(this.definitions.actions.patternSources);
+        this.actionPattern = alternationPattern(
+            this.definitions.actions.patternSources, ACTION_AMOUNT
+        );
         this.abilityParsers = ABILITY_PARSERS;
         this.innerAbilityParsers = INNER_ABILITY_PARSERS;
         this.effectParsers = EFFECT_PARSERS;

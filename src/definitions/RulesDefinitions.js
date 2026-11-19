@@ -1,5 +1,6 @@
 import KeywordRegistry from './KeywordRegistry.js';
 import KeywordActionDefinition from './KeywordActionDefinition.js';
+import KeywordActionFamilyDefinition from './KeywordActionFamilyDefinition.js';
 import TokenRegistry from './TokenRegistry.js';
 import { DEFAULT_DEFINITIONS } from './defaultDefinitions.js';
 
@@ -10,7 +11,9 @@ export default class RulesDefinitions {
 
     constructor() {
         this.keywords = new KeywordRegistry();
-        this.actions = new KeywordRegistry(KeywordActionDefinition);
+        this.actions = new KeywordRegistry(
+            KeywordActionDefinition, KeywordActionFamilyDefinition
+        );
         this.tokens = new TokenRegistry();
     }
 
