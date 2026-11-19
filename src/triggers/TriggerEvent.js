@@ -1,4 +1,5 @@
 import Parser from '../core/Parser.js';
+import UnrecognizedText from '../values/UnrecognizedText.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const SELF = /^(?:~|this (?:[a-z]+|~))$/i;
@@ -16,14 +17,13 @@ export default class TriggerEvent extends Parser {
     static parse(scribe, match, str) {
         const event = super.parse(scribe, match, str);
         event.parseParticipants();
+        event.unreadText = event.consume([UnrecognizedText]);
         return event;
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.text = str;
         this.subject = match.groups?.subject?.trim() ?? '';
-        this.remainingStr = '';
     }
 
     parseParticipants() {
@@ -37,7 +37,11 @@ export default class TriggerEvent extends Parser {
     }
 
     get children() {
-        return [this.subjectPhrase, this.objectPhrase].filter(Boolean);
+        return [this.subjectPhrase, this.objectPhrase, this.unreadText].filter(Boolean);
+    }
+
+    get isUnsupported() {
+        return false;
     }
 
     get isSelf() {

@@ -28,9 +28,11 @@ mana-scribe. resolvers/ link across sentences
 (back-references). evaluators/ runs declarative queries over the tree; tags/ holds the tag queries;
 pie/ holds the color pie inspections.
 
-Status (2026-11-19, modern corpus): 82.0% of cards fully recognized; tag micro precision 98.3%,
-recall 78.9%. Goals and decisions are in `SUCCESS.md`; the tasks that measure them are under
-Development below.
+Status (2026-11-19, modern corpus): 70.6% of cards fully recognized; tag micro precision 98.3%,
+recall 78.9%. A card counts as recognized only when every trigger event reads all of its text:
+of 11,223 trigger events, 8,439 are read, 1,374 partly read (a known event with text it could
+not read, such as "to a player") and 1,410 unsupported. Goals and decisions are in
+`SUCCESS.md`; the tasks that measure them are under Development below.
 
 ## How a card is read
 
@@ -208,10 +210,10 @@ Generated data goes to data/ and queues/; review verdicts and baselines are kept
 
 | Command | Does |
 |---|---|
-| `npm run evaluate` | Tags the corpus (`data/predictions.json`) and prints per-tag precision and recall against Scryfall, including parent tags. |
+| `npm run evaluate` | Tags the corpus (`data/predictions.json`) and prints per-tag precision and recall against Scryfall, including parent tags. The tagging summary counts trigger events as read, partial (a known event with text or a phrase it could not read) or unsupported; each card's counts are in its `events` field. |
 | `npm run diagnose -- spans [n]` | Most common text the parser did not recognize. |
 | `npm run diagnose -- fps\|fns <tag> [n]` | Sample of false positives or false negatives for a tag. |
-| `npm run gaps [n]` | Unrecognized text grouped into shapes, ranked by how many cards each alone keeps from full recognition, plus gap families by parser context and the most common opaque effects. Full data in `data/gap-report.json`. |
+| `npm run gaps [n]` | Unrecognized text grouped into shapes, ranked by how many cards each alone keeps from full recognition, plus gap families by parser context and the most common opaque effects. Text a trigger event could not read is labeled `unread <Event> text`, or `unsupported trigger event` when no event pattern matched. Full data in `data/gap-report.json`. |
 | `npm run queues` | Builds the custom-card queue from the projects in `reviews/projects.json` and the Scryfall disagreement queues. Run `evaluate` first. |
 | `npm run review` | Serves the review UI at http://127.0.0.1:5178 (keys: 1 correct, 2 wrong, S skip, Z back, N note). `/ast` explores a card's parse tree, node properties, back-reference links, and the tags and pie inspections matching each node. |
 | `npm run verdicts` | Re-tags every reviewed card and fails if a verdict no longer holds. Disagreements listed in `reviews/known-disagreements.json` are reported as `known`; `-- --accept-known` records the current set. |

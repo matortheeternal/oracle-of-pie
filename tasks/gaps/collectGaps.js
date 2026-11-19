@@ -1,7 +1,9 @@
 import Effect from '../../src/effects/Effect.js';
 import Sentence from '../../src/sentences/Sentence.js';
+import TriggerEvent from '../../src/triggers/TriggerEvent.js';
 
 const EFFECTLESS_CLAUSE = 'clause with no recognized effect';
+const UNSUPPORTED_EVENT = 'unsupported trigger event';
 
 function rightmostPath(node) {
     const path = [node];
@@ -26,7 +28,13 @@ function isEffectlessSentence(node) {
     return node instanceof Sentence && !node.effects.length;
 }
 
+function describeEvent(event) {
+    const unread = `unread ${event.constructor.name} text`;
+    return event.isUnsupported ? UNSUPPORTED_EVENT : unread;
+}
+
 function describeContext(node, children, index, parent) {
+    if (parent instanceof TriggerEvent) return describeEvent(parent);
     if (isEffectlessSentence(parent)) return EFFECTLESS_CLAUSE;
     return describePrevious(children[index - 1], parent);
 }

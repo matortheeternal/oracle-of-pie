@@ -1,4 +1,5 @@
 import Parser from '../core/Parser.js';
+import UnrecognizedText from '../values/UnrecognizedText.js';
 import { SENTENCE_PARSERS } from './index.js';
 
 export default class EffectSequence extends Parser {
@@ -13,10 +14,11 @@ export default class EffectSequence extends Parser {
             this.sentences[index - 1],
             this.sentences[index + 1]
         ));
+        this.unrecognized = this.consume([UnrecognizedText]);
     }
 
     get children() {
-        return this.sentences;
+        return [...this.sentences, this.unrecognized].filter(Boolean);
     }
 
     get effects() {

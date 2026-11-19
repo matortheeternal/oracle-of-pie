@@ -9,6 +9,6 @@ export default class DealsDamageEvent extends TriggerEvent {
     }
 
     get isCombat() {
-        return COMBAT.test(this.text);
+        return COMBAT.test(this.raw);
     }
 }
