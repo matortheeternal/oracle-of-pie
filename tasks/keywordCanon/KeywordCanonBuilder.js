@@ -44,7 +44,7 @@ export default class KeywordCanonBuilder {
         if (hasAbilityLine(lines, keyword)) usage.abilityCards++;
         const colors = keywordColors(card, keyword);
         if (colors.length === 1) increment(usage.mono, colors);
-        increment(usage.colored, colors.length ? colors : card.identity);
+        increment(usage.colored, colors);
     }
 
     isAbility(usage) {

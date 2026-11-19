@@ -21,7 +21,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'
     },
     'destroy-artifact': {
-        W: 'primary', U: 'tertiary', B: 'none', R: 'primary', G: 'primary'
+        W: 'primary', U: 'none', B: 'none', R: 'primary', G: 'primary'
     },
     'destroy-enchantment': {
         W: 'primary', U: 'none', B: 'tertiary', R: 'none', G: 'primary'
@@ -141,7 +141,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'none', B: 'primary', R: 'primary', G: 'none'
     },
     'keyword-reach': {
-        W: 'tertiary', U: 'none', B: 'none', R: 'secondary', G: 'primary'
+        W: 'tertiary', U: 'tertiary', B: 'none', R: 'secondary', G: 'primary'
     },
     'keyword-trample': {
         W: 'none', U: 'none', B: 'tertiary', R: 'primary', G: 'primary'
@@ -150,7 +150,7 @@ export const CANON_TIERS = {
         W: 'primary', U: 'secondary', B: 'none', R: 'none', G: 'primary'
     },
     'keyword-defender': {
-        W: 'secondary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
+        W: 'primary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
     },
     'keyword-flash': {
         W: 'primary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'

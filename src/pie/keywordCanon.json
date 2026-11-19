@@ -33,10 +33,10 @@
         }
     },
     "aftermath": {
-        "canonCards": 6,
+        "canonCards": 27,
         "sets": 6,
         "tiers": {
-            "W": "tertiary",
+            "W": "primary",
             "U": "primary",
             "B": "primary",
             "R": "primary",
@@ -55,11 +55,11 @@
         }
     },
     "annihilator": {
-        "canonCards": 2,
+        "canonCards": 1,
         "sets": 6,
         "tiers": {
             "W": "none",
-            "U": "primary",
+            "U": "none",
             "B": "none",
             "R": "primary",
             "G": "none"
@@ -209,7 +209,7 @@
         }
     },
     "bushido": {
-        "canonCards": 36,
+        "canonCards": 35,
         "sets": 4,
         "tiers": {
             "W": "primary",
@@ -418,7 +418,7 @@
         }
     },
     "deathtouch": {
-        "canonCards": 235,
+        "canonCards": 236,
         "sets": 149,
         "tiers": {
             "W": "none",
@@ -495,10 +495,10 @@
         }
     },
     "devoid": {
-        "canonCards": 154,
+        "canonCards": 115,
         "sets": 10,
         "tiers": {
-            "W": "secondary",
+            "W": "tertiary",
             "U": "primary",
             "B": "primary",
             "R": "primary",
@@ -561,7 +561,7 @@
         }
     },
     "double strike": {
-        "canonCards": 85,
+        "canonCards": 84,
         "sets": 99,
         "tiers": {
             "W": "primary",
@@ -616,7 +616,7 @@
         }
     },
     "enchant": {
-        "canonCards": 1181,
+        "canonCards": 1182,
         "sets": 190,
         "tiers": {
             "W": "primary",
@@ -814,7 +814,7 @@
         }
     },
     "first strike": {
-        "canonCards": 283,
+        "canonCards": 282,
         "sets": 175,
         "tiers": {
             "W": "primary",
@@ -836,7 +836,7 @@
         }
     },
     "flash": {
-        "canonCards": 505,
+        "canonCards": 508,
         "sets": 180,
         "tiers": {
             "W": "primary",
@@ -858,7 +858,7 @@
         }
     },
     "flying": {
-        "canonCards": 2424,
+        "canonCards": 2435,
         "sets": 296,
         "tiers": {
             "W": "primary",
@@ -1001,7 +1001,7 @@
         }
     },
     "haste": {
-        "canonCards": 426,
+        "canonCards": 428,
         "sets": 218,
         "tiers": {
             "W": "tertiary",
@@ -1045,14 +1045,14 @@
         }
     },
     "hidden agenda": {
-        "canonCards": 5,
+        "canonCards": 0,
         "sets": 2,
         "tiers": {
-            "W": "primary",
-            "U": "primary",
-            "B": "primary",
-            "R": "primary",
-            "G": "primary"
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "none"
         }
     },
     "hideaway": {
@@ -1133,7 +1133,7 @@
         }
     },
     "ingest": {
-        "canonCards": 10,
+        "canonCards": 8,
         "sets": 3,
         "tiers": {
             "W": "none",
@@ -1199,7 +1199,7 @@
         }
     },
     "kicker": {
-        "canonCards": 218,
+        "canonCards": 221,
         "sets": 29,
         "tiers": {
             "W": "primary",
@@ -1309,7 +1309,7 @@
         }
     },
     "menace": {
-        "canonCards": 278,
+        "canonCards": 279,
         "sets": 145,
         "tiers": {
             "W": "none",
@@ -1430,7 +1430,7 @@
         }
     },
     "myriad": {
-        "canonCards": 19,
+        "canonCards": 20,
         "sets": 9,
         "tiers": {
             "W": "primary",
@@ -1518,7 +1518,7 @@
         }
     },
     "partner": {
-        "canonCards": 87,
+        "canonCards": 86,
         "sets": 16,
         "tiers": {
             "W": "primary",
@@ -1595,7 +1595,7 @@
         }
     },
     "protection": {
-        "canonCards": 150,
+        "canonCards": 149,
         "sets": 79,
         "tiers": {
             "W": "primary",
@@ -1606,14 +1606,14 @@
         }
     },
     "prototype": {
-        "canonCards": 19,
+        "canonCards": 0,
         "sets": 3,
         "tiers": {
-            "W": "tertiary",
-            "U": "primary",
-            "B": "tertiary",
-            "R": "primary",
-            "G": "primary"
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "none"
         }
     },
     "provoke": {
@@ -1672,7 +1672,7 @@
         }
     },
     "reach": {
-        "canonCards": 328,
+        "canonCards": 331,
         "sets": 164,
         "tiers": {
             "W": "tertiary",
@@ -2090,7 +2090,7 @@
         }
     },
     "trample": {
-        "canonCards": 690,
+        "canonCards": 693,
         "sets": 250,
         "tiers": {
             "W": "tertiary",
@@ -2200,7 +2200,7 @@
         }
     },
     "vigilance": {
-        "canonCards": 477,
+        "canonCards": 478,
         "sets": 208,
         "tiers": {
             "W": "primary",

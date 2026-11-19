@@ -1,7 +1,9 @@
 import { CardColors } from '../../src/index.js';
+import { printedCardColors } from './printedColors.js';
 
 export function cardColorsOf(card) {
-    return new CardColors({ colors: card.colors ?? [], manaCost: card.mana_cost ?? '' });
+    const colors = printedCardColors(card.faces);
+    return new CardColors({ colors, manaCost: card.mana_cost ?? '' });
 }
 
 function faceColorsOf(card, face) {
