@@ -1,0 +1,2268 @@
+{
+    "affinity": {
+        "canonCards": 50,
+        "sets": 39,
+        "tiers": {
+            "W": "secondary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "secondary",
+            "G": "secondary"
+        }
+    },
+    "afflict": {
+        "canonCards": 10,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "afterlife": {
+        "canonCards": 8,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "aftermath": {
+        "canonCards": 6,
+        "sets": 6,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "amplify": {
+        "canonCards": 9,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "annihilator": {
+        "canonCards": 2,
+        "sets": 6,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "ascend": {
+        "canonCards": 22,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "assist": {
+        "canonCards": 16,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "aura swap": {
+        "canonCards": 1,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "awaken": {
+        "canonCards": 14,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "backup": {
+        "canonCards": 24,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "banding": {
+        "canonCards": 21,
+        "sets": 12,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "bargain": {
+        "canonCards": 20,
+        "sets": 3,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "basic landcycling": {
+        "canonCards": 33,
+        "sets": 11,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "battle cry": {
+        "canonCards": 11,
+        "sets": 9,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "beam me up": {
+        "canonCards": 10,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "bestow": {
+        "canonCards": 41,
+        "sets": 6,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "blitz": {
+        "canonCards": 16,
+        "sets": 7,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "bloodthirst": {
+        "canonCards": 19,
+        "sets": 5,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "bushido": {
+        "canonCards": 36,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "secondary",
+            "R": "secondary",
+            "G": "tertiary"
+        }
+    },
+    "buyback": {
+        "canonCards": 39,
+        "sets": 6,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "cascade": {
+        "canonCards": 16,
+        "sets": 12,
+        "tiers": {
+            "W": "none",
+            "U": "tertiary",
+            "B": "none",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "casualty": {
+        "canonCards": 14,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "none"
+        }
+    },
+    "champion": {
+        "canonCards": 12,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "changeling": {
+        "canonCards": 47,
+        "sets": 10,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "choose a background": {
+        "canonCards": 31,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "cipher": {
+        "canonCards": 12,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "cleave": {
+        "canonCards": 12,
+        "sets": 2,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "commander ninjutsu": {
+        "canonCards": 2,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "compleated": {
+        "canonCards": 3,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "conspire": {
+        "canonCards": 5,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "convoke": {
+        "canonCards": 90,
+        "sets": 23,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "secondary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "craft": {
+        "canonCards": 19,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "crew": {
+        "canonCards": 81,
+        "sets": 57,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "secondary"
+        }
+    },
+    "cumulative upkeep": {
+        "canonCards": 71,
+        "sets": 6,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "secondary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "cycling": {
+        "canonCards": 311,
+        "sets": 49,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "dash": {
+        "canonCards": 20,
+        "sets": 7,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "daybound": {
+        "canonCards": 32,
+        "sets": 5,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "deathtouch": {
+        "canonCards": 235,
+        "sets": 149,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "secondary"
+        }
+    },
+    "decayed": {
+        "canonCards": 1,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "defender": {
+        "canonCards": 243,
+        "sets": 128,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "secondary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "delve": {
+        "canonCards": 27,
+        "sets": 10,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "demonstrate": {
+        "canonCards": 6,
+        "sets": 2,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "desertwalk": {
+        "canonCards": 1,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "dethrone": {
+        "canonCards": 7,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "devoid": {
+        "canonCards": 154,
+        "sets": 10,
+        "tiers": {
+            "W": "secondary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "devour": {
+        "canonCards": 18,
+        "sets": 12,
+        "tiers": {
+            "W": "tertiary",
+            "U": "none",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "disguise": {
+        "canonCards": 29,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "disturb": {
+        "canonCards": 21,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "doctor's companion": {
+        "canonCards": 26,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "double agenda": {
+        "canonCards": 0,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "double strike": {
+        "canonCards": 85,
+        "sets": 99,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "dredge": {
+        "canonCards": 11,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "echo": {
+        "canonCards": 43,
+        "sets": 9,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "embalm": {
+        "canonCards": 13,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "none",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "emerge": {
+        "canonCards": 3,
+        "sets": 6,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "enchant": {
+        "canonCards": 1181,
+        "sets": 190,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "encore": {
+        "canonCards": 23,
+        "sets": 8,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "enlist": {
+        "canonCards": 12,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "entwine": {
+        "canonCards": 31,
+        "sets": 8,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "epic": {
+        "canonCards": 5,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "equip": {
+        "canonCards": 207,
+        "sets": 159,
+        "tiers": {
+            "W": "primary",
+            "U": "secondary",
+            "B": "primary",
+            "R": "primary",
+            "G": "secondary"
+        }
+    },
+    "escalate": {
+        "canonCards": 9,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "escape": {
+        "canonCards": 25,
+        "sets": 10,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "eternalize": {
+        "canonCards": 12,
+        "sets": 6,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "evoke": {
+        "canonCards": 28,
+        "sets": 10,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "evolve": {
+        "canonCards": 17,
+        "sets": 13,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "exalted": {
+        "canonCards": 22,
+        "sets": 8,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "exploit": {
+        "canonCards": 21,
+        "sets": 7,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "none"
+        }
+    },
+    "extort": {
+        "canonCards": 9,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "fabricate": {
+        "canonCards": 13,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "fading": {
+        "canonCards": 14,
+        "sets": 1,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "fear": {
+        "canonCards": 33,
+        "sets": 29,
+        "tiers": {
+            "W": "tertiary",
+            "U": "none",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "none"
+        }
+    },
+    "firebending": {
+        "canonCards": 13,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "first strike": {
+        "canonCards": 283,
+        "sets": 175,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "secondary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "flanking": {
+        "canonCards": 28,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "secondary",
+            "G": "tertiary"
+        }
+    },
+    "flash": {
+        "canonCards": 505,
+        "sets": 180,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "secondary",
+            "R": "secondary",
+            "G": "secondary"
+        }
+    },
+    "flashback": {
+        "canonCards": 187,
+        "sets": 39,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "flying": {
+        "canonCards": 2424,
+        "sets": 296,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "secondary",
+            "G": "tertiary"
+        }
+    },
+    "for mirrodin!": {
+        "canonCards": 12,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "none",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "forestcycling": {
+        "canonCards": 9,
+        "sets": 10,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "forestwalk": {
+        "canonCards": 24,
+        "sets": 24,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "tertiary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "foretell": {
+        "canonCards": 49,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "fortify": {
+        "canonCards": 0,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "freerunning": {
+        "canonCards": 11,
+        "sets": 1,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "fuse": {
+        "canonCards": 39,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "gift": {
+        "canonCards": 23,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "graft": {
+        "canonCards": 10,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "gravestorm": {
+        "canonCards": 3,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "halflingcycling": {
+        "canonCards": 0,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "harmonize": {
+        "canonCards": 9,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "haste": {
+        "canonCards": 426,
+        "sets": 218,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "secondary"
+        }
+    },
+    "haunt": {
+        "canonCards": 8,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "hexproof": {
+        "canonCards": 70,
+        "sets": 71,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "secondary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "hexproof from": {
+        "canonCards": 6,
+        "sets": 11,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "hidden agenda": {
+        "canonCards": 5,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "hideaway": {
+        "canonCards": 8,
+        "sets": 8,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "horsemanship": {
+        "canonCards": 28,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "impending": {
+        "canonCards": 5,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "improvise": {
+        "canonCards": 19,
+        "sets": 7,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "increment": {
+        "canonCards": 6,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "indestructible": {
+        "canonCards": 42,
+        "sets": 57,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "infect": {
+        "canonCards": 37,
+        "sets": 3,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "ingest": {
+        "canonCards": 10,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "none"
+        }
+    },
+    "intimidate": {
+        "canonCards": 21,
+        "sets": 13,
+        "tiers": {
+            "W": "tertiary",
+            "U": "none",
+            "B": "primary",
+            "R": "secondary",
+            "G": "tertiary"
+        }
+    },
+    "islandcycling": {
+        "canonCards": 9,
+        "sets": 10,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "islandwalk": {
+        "canonCards": 29,
+        "sets": 26,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "tertiary",
+            "G": "secondary"
+        }
+    },
+    "job select": {
+        "canonCards": 18,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "jump-start": {
+        "canonCards": 9,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "kicker": {
+        "canonCards": 218,
+        "sets": 29,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "legendary landwalk": {
+        "canonCards": 1,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "level up": {
+        "canonCards": 25,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "lifelink": {
+        "canonCards": 240,
+        "sets": 149,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "living metal": {
+        "canonCards": 6,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "none"
+        }
+    },
+    "living weapon": {
+        "canonCards": 4,
+        "sets": 8,
+        "tiers": {
+            "W": "tertiary",
+            "U": "none",
+            "B": "tertiary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "madness": {
+        "canonCards": 58,
+        "sets": 14,
+        "tiers": {
+            "W": "tertiary",
+            "U": "secondary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "mayhem": {
+        "canonCards": 10,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "megamorph": {
+        "canonCards": 31,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "melee": {
+        "canonCards": 10,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "menace": {
+        "canonCards": 278,
+        "sets": 145,
+        "tiers": {
+            "W": "none",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "mentor": {
+        "canonCards": 12,
+        "sets": 8,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "none",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "miracle": {
+        "canonCards": 16,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "mobilize": {
+        "canonCards": 9,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "modular": {
+        "canonCards": 7,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "more than meets the eye": {
+        "canonCards": 6,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "none"
+        }
+    },
+    "morph": {
+        "canonCards": 142,
+        "sets": 14,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "mountaincycling": {
+        "canonCards": 11,
+        "sets": 11,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "mountainwalk": {
+        "canonCards": 17,
+        "sets": 14,
+        "tiers": {
+            "W": "tertiary",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "multikicker": {
+        "canonCards": 17,
+        "sets": 5,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "mutate": {
+        "canonCards": 22,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "myriad": {
+        "canonCards": 19,
+        "sets": 9,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "nightbound": {
+        "canonCards": 31,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "ninjutsu": {
+        "canonCards": 30,
+        "sets": 10,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "nonbasic landwalk": {
+        "canonCards": 1,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "offspring": {
+        "canonCards": 20,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "outlast": {
+        "canonCards": 11,
+        "sets": 5,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "tertiary",
+            "R": "none",
+            "G": "tertiary"
+        }
+    },
+    "overload": {
+        "canonCards": 21,
+        "sets": 12,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "paradigm": {
+        "canonCards": 5,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "partner": {
+        "canonCards": 87,
+        "sets": 16,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "partner with": {
+        "canonCards": 38,
+        "sets": 11,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "persist": {
+        "canonCards": 12,
+        "sets": 5,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "phasing": {
+        "canonCards": 10,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "none",
+            "G": "tertiary"
+        }
+    },
+    "plainscycling": {
+        "canonCards": 11,
+        "sets": 11,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "plainswalk": {
+        "canonCards": 5,
+        "sets": 5,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "plot": {
+        "canonCards": 35,
+        "sets": 3,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "protection": {
+        "canonCards": 150,
+        "sets": 79,
+        "tiers": {
+            "W": "primary",
+            "U": "secondary",
+            "B": "secondary",
+            "R": "secondary",
+            "G": "secondary"
+        }
+    },
+    "prototype": {
+        "canonCards": 19,
+        "sets": 3,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "provoke": {
+        "canonCards": 8,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "prowess": {
+        "canonCards": 74,
+        "sets": 43,
+        "tiers": {
+            "W": "secondary",
+            "U": "primary",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "prowl": {
+        "canonCards": 10,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "rampage": {
+        "canonCards": 7,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "ravenous": {
+        "canonCards": 9,
+        "sets": 2,
+        "tiers": {
+            "W": "tertiary",
+            "U": "none",
+            "B": "none",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "reach": {
+        "canonCards": 328,
+        "sets": 164,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "read ahead": {
+        "canonCards": 10,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "rebound": {
+        "canonCards": 34,
+        "sets": 9,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "reconfigure": {
+        "canonCards": 17,
+        "sets": 4,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "recover": {
+        "canonCards": 7,
+        "sets": 1,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "reinforce": {
+        "canonCards": 10,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "renown": {
+        "canonCards": 19,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "replicate": {
+        "canonCards": 18,
+        "sets": 10,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "retrace": {
+        "canonCards": 13,
+        "sets": 7,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "riot": {
+        "canonCards": 9,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "ripple": {
+        "canonCards": 5,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "saddle": {
+        "canonCards": 26,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "scavenge": {
+        "canonCards": 11,
+        "sets": 6,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "shadow": {
+        "canonCards": 36,
+        "sets": 8,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "shroud": {
+        "canonCards": 30,
+        "sets": 28,
+        "tiers": {
+            "W": "tertiary",
+            "U": "secondary",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "skulk": {
+        "canonCards": 13,
+        "sets": 7,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "slivercycling": {
+        "canonCards": 1,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "sneak": {
+        "canonCards": 23,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "soulbond": {
+        "canonCards": 25,
+        "sets": 4,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "soulshift": {
+        "canonCards": 26,
+        "sets": 3,
+        "tiers": {
+            "W": "secondary",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "spectacle": {
+        "canonCards": 9,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "splice": {
+        "canonCards": 30,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "split second": {
+        "canonCards": 20,
+        "sets": 9,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "spree": {
+        "canonCards": 21,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "squad": {
+        "canonCards": 15,
+        "sets": 5,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "tertiary",
+            "G": "tertiary"
+        }
+    },
+    "start your engines!": {
+        "canonCards": 28,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "station": {
+        "canonCards": 35,
+        "sets": 5,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "storied": {
+        "canonCards": 7,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "storm": {
+        "canonCards": 32,
+        "sets": 16,
+        "tiers": {
+            "W": "tertiary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "secondary"
+        }
+    },
+    "sunburst": {
+        "canonCards": 0,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "surge": {
+        "canonCards": 11,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "suspend": {
+        "canonCards": 64,
+        "sets": 12,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "swampcycling": {
+        "canonCards": 9,
+        "sets": 9,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "swampwalk": {
+        "canonCards": 37,
+        "sets": 30,
+        "tiers": {
+            "W": "tertiary",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "secondary"
+        }
+    },
+    "teamwork": {
+        "canonCards": 17,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "tiered": {
+        "canonCards": 7,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "toxic": {
+        "canonCards": 27,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "training": {
+        "canonCards": 9,
+        "sets": 4,
+        "tiers": {
+            "W": "primary",
+            "U": "none",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "trample": {
+        "canonCards": 690,
+        "sets": 250,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "secondary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "transfigure": {
+        "canonCards": 1,
+        "sets": 1,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "transmute": {
+        "canonCards": 10,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "none",
+            "G": "none"
+        }
+    },
+    "tribute": {
+        "canonCards": 10,
+        "sets": 3,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "umbra armor": {
+        "canonCards": 15,
+        "sets": 6,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "undaunted": {
+        "canonCards": 5,
+        "sets": 1,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "undying": {
+        "canonCards": 21,
+        "sets": 8,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "primary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "unearth": {
+        "canonCards": 27,
+        "sets": 12,
+        "tiers": {
+            "W": "tertiary",
+            "U": "tertiary",
+            "B": "primary",
+            "R": "secondary",
+            "G": "none"
+        }
+    },
+    "unleash": {
+        "canonCards": 9,
+        "sets": 3,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "none"
+        }
+    },
+    "vanishing": {
+        "canonCards": 17,
+        "sets": 7,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "tertiary",
+            "G": "primary"
+        }
+    },
+    "vigilance": {
+        "canonCards": 477,
+        "sets": 208,
+        "tiers": {
+            "W": "primary",
+            "U": "secondary",
+            "B": "tertiary",
+            "R": "tertiary",
+            "G": "secondary"
+        }
+    },
+    "ward": {
+        "canonCards": 124,
+        "sets": 76,
+        "tiers": {
+            "W": "secondary",
+            "U": "primary",
+            "B": "secondary",
+            "R": "secondary",
+            "G": "primary"
+        }
+    },
+    "warp": {
+        "canonCards": 29,
+        "sets": 2,
+        "tiers": {
+            "W": "primary",
+            "U": "primary",
+            "B": "tertiary",
+            "R": "primary",
+            "G": "primary"
+        }
+    },
+    "web-slinging": {
+        "canonCards": 7,
+        "sets": 3,
+        "tiers": {
+            "W": "primary",
+            "U": "tertiary",
+            "B": "none",
+            "R": "none",
+            "G": "primary"
+        }
+    },
+    "wither": {
+        "canonCards": 18,
+        "sets": 4,
+        "tiers": {
+            "W": "none",
+            "U": "none",
+            "B": "primary",
+            "R": "primary",
+            "G": "tertiary"
+        }
+    },
+    "wizardcycling": {
+        "canonCards": 2,
+        "sets": 2,
+        "tiers": {
+            "W": "none",
+            "U": "primary",
+            "B": "none",
+            "R": "none",
+            "G": "none"
+        }
+    }
+}

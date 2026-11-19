@@ -7,6 +7,9 @@ import { COMBAT_INSPECTIONS } from './combatInspections.js';
 import { SUPPORT_INSPECTIONS } from './supportInspections.js';
 import keywordInspection from './keywordInspection.js';
 import { CANON_KEYWORDS, KEYWORD_EXCEPTIONS, KEYWORD_CITATIONS } from './keywords.js';
+import { PRINTED_KEYWORD_INSPECTIONS } from './printedKeywordInspections.js';
+
+const EVERGREEN = 'Evergreen';
 
 export const DEFAULT_PIE_INSPECTIONS = [
     ...REMOVAL_INSPECTIONS,
@@ -19,6 +22,8 @@ export const DEFAULT_PIE_INSPECTIONS = [
     ...CANON_KEYWORDS.map(keyword =>
         keywordInspection(keyword, {
             exceptions: KEYWORD_EXCEPTIONS[keyword],
-            cites: KEYWORD_CITATIONS[keyword]
-        }))
+            cites: KEYWORD_CITATIONS[keyword],
+            subgroup: EVERGREEN
+        })),
+    ...PRINTED_KEYWORD_INSPECTIONS
 ];

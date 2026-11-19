@@ -12,11 +12,16 @@ function keywordTags(slug) {
 
 export default function keywordInspection(keyword, options = {}) {
     const { tiers, exceptions = [], cites = titleOf(keyword) } = options;
+    const { subgroup = null, canonCount = null } = options;
     const slug = KeywordFamilyEvaluator.slug(keyword);
     return {
         id: `keyword-${slug}`,
         title: titleOf(keyword),
         group: KEYWORDS_GROUP,
+        subgroup,
+        keyword,
+        mentions: keyword,
+        canonCount,
         tiers,
         cites,
         exceptions,

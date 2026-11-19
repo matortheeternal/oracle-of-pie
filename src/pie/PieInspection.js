@@ -31,7 +31,11 @@ export default class PieInspection {
         this.id = id;
         this.title = title;
         this.group = group;
+        this.subgroup = spec.subgroup ?? null;
+        this.keyword = spec.keyword ?? null;
+        this.canonCount = spec.canonCount ?? null;
         this.mentions = spec.mentions?.toLowerCase() ?? null;
+        this.usesCanonTiers = !tiers;
         this.citation = Citation.of(spec.cites);
         this.tiers = tiers ?? defaultTiers(spec, this.citation);
         this.description = description;

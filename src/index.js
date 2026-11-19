@@ -10,6 +10,7 @@ export {
 export { default as Query } from './evaluators/Query.js';
 export { default as TagLibrary } from './evaluators/TagLibrary.js';
 export { Oracle };
+export { DEFAULT_KEYWORDS } from './defaultKeywords.js';
 export default Oracle;
 export { default as RulesDefinitions } from './definitions/RulesDefinitions.js';
 export { default as KeywordDefinition } from './definitions/KeywordDefinition.js';
