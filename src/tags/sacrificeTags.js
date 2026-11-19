@@ -23,7 +23,7 @@ function sacrificeOutlet(typeMatch) {
     };
 }
 
-const LAND = { hasType: 'land', not: { hasQualifier: 'nonland' } };
+const LAND = { hasType: 'land' };
 const PLAIN_TOKEN = { hasExactType: 'token', hasSubtypes: false };
 
 const SELF_SACRIFICE = {

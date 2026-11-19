@@ -117,6 +117,18 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    excludesType(type) {
+        return false;
+    }
+
+    excludesSubtype(subtype) {
+        return false;
+    }
+
+    excludesQualifier(qualifier) {
+        return false;
+    }
+
     requiresKeyword(keyword) {
         return false;
     }

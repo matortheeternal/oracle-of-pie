@@ -19,9 +19,9 @@ export const TYPE_WORDS = {
 export const QUALIFIER_WORDS = new Set([
     'white', 'blue', 'black', 'red', 'green', 'colorless', 'monocolored',
     'multicolored', 'tapped', 'untapped', 'attacking', 'blocking', 'blocked',
-    'unblocked', 'other', 'legendary', 'basic', 'nonbasic', 'snow', 'enchanted',
+    'unblocked', 'other', 'legendary', 'basic', 'snow', 'enchanted',
     'equipped', 'face-down', 'activated', 'triggered', 'loyalty', 'chosen', 'exiled',
-    'nontoken', 'token', 'commander'
+    'token', 'commander'
 ]);
 
 export const NEGATED_QUALIFIER = /^non-?[a-z]+$/i;

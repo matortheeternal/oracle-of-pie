@@ -24,7 +24,7 @@ const LASTING_GRANT = { ...STATIC_GRANT, expansion: null };
 export const DERIVED_TAGS = [
     {
         tag: 'removal-nonland',
-        match: { tag: REMOVAL, phrases: { hasQualifier: 'nonland' } }
+        match: { tag: REMOVAL, phrases: { excludesType: 'land' } }
     },
     {
         tag: 'removal-planeswalker',

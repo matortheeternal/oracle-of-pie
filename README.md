@@ -71,7 +71,11 @@ plain object each layer extends: `card`, `ability`, `abilities`, `sentence`, `co
   Gizmo" is read as a creature unless declared here. The defaults list the noncreature subtypes
   canon card text refers to; declare a project's new artifact, enchantment or land subtypes.
 - `batchWords`: lowercase adjectives that qualify objects the way `historic` or `outlaw` do
-  ("target lucky creature"). Undeclared ones leave the phrase unrecognized.
+  ("target lucky creature"). Undeclared ones leave the phrase unrecognized, though their negation
+  ("nonlucky") is always read as an excluded qualifier.
+
+Creature subtypes need no declaration: any capitalized word in an object phrase that isn't a card
+type is read as a subtype.
 
 ### Queries
 
@@ -99,7 +103,9 @@ yet.
 
 Useful generic properties include `requiresKeyword: 'flying'` on objects ("creature with flying";
 works for any keyword the oracle knows, including joined lists such as "with flying or reach"),
-`hasType`, `hasQualifier`, `hasKeyword`, and on restrictions `exceptedBy`, the objects named in
+`hasType`, `hasQualifier`, `hasKeyword`, the exclusions `excludesType`, `excludesSubtype` and
+`excludesQualifier` ("nonland", "non-Dragon", "nonhistoric"; `hasType` respects them, so a
+"nonland permanent" is not a land), and on restrictions `exceptedBy`, the objects named in
 "can't be blocked except by …". Wordings the phrase parser can't fully read leave `exceptedBy`
 empty and keep the raw `exceptionText`.
 

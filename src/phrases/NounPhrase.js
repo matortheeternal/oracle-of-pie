@@ -1,8 +1,8 @@
 import Phrase from './Phrase.js';
 import { MODIFIER_PARSERS } from './modifiers/index.js';
-import {
-    TYPE_WORDS, QUALIFIER_WORDS, NEGATED_QUALIFIER, SUBTYPE_WORD
-} from './vocabulary.js';
+import { TYPE_WORDS } from './vocabulary.js';
+import { classifyWord, TYPE, SUBTYPE, QUALIFIER, EXCLUSION } from './wordClass.js';
+import NegatedWord from './NegatedWord.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const N = NUMBER_PATTERN;
@@ -30,19 +30,6 @@ const PERMANENT_TYPES = [
 const ADJECTIVAL_TYPES = new Set(['card', 'spell', 'token', 'permanent']);
 
 const PLURAL_S = /(?<=[^s])s$/;
-function isQualifier(scribe, word, lower) {
-    if (QUALIFIER_WORDS.has(lower) || NEGATED_QUALIFIER.test(word)) return true;
-    return scribe.definitions.isBatchWord(lower);
-}
-
-function classifyWord(scribe, word) {
-    const lower = word.toLowerCase();
-    if (Object.hasOwn(TYPE_WORDS, lower)) return 'type';
-    if (isQualifier(scribe, word, lower)) return 'qualifier';
-    if (SUBTYPE_WORD.test(word)) return 'subtype';
-    return null;
-}
-
 function nextWordClass(scribe, str) {
     const match = str.match(WORD);
     return match ? classifyWord(scribe, match[1]) : null;
@@ -57,6 +44,13 @@ function singular(word) {
     return word.replace(PLURAL_S, '');
 }
 
+const WORD_ADDERS = {
+    [TYPE]: 'addType',
+    [SUBTYPE]: 'addSubtype',
+    [QUALIFIER]: 'addQualifier',
+    [EXCLUSION]: 'addExclusion'
+};
+
 export default class NounPhrase extends Phrase {
     static match(scribe, str) {
         const determiner = str.match(DETERMINER);
@@ -70,6 +64,7 @@ export default class NounPhrase extends Phrase {
         this.determiner = match[1]?.toLowerCase() ?? null;
         this.count = numberValue(match[2] ?? match[3] ?? match[4] ?? '1');
         this.qualifiers = [];
+        this.exclusions = [];
         this.types = [];
         this.subtypes = [];
         this.pluralTypes = false;
@@ -103,11 +98,16 @@ export default class NounPhrase extends Phrase {
     }
 
     addWord(word, wordClass) {
-        const lower = word.toLowerCase();
-        this.followsType = wordClass === 'type' && this.followsType;
-        if (wordClass === 'type') return this.addType(lower);
-        if (wordClass === 'subtype') return this.addSubtype(word);
-        this.qualifiers.push(lower);
+        this.followsType = wordClass === TYPE && this.followsType;
+        this[WORD_ADDERS[wordClass]](word);
+    }
+
+    addQualifier(word) {
+        this.qualifiers.push(word.toLowerCase());
+    }
+
+    addExclusion(word) {
+        this.exclusions.push(new NegatedWord(this.scribe, word));
     }
 
     addSubtype(word) {
@@ -116,12 +116,13 @@ export default class NounPhrase extends Phrase {
     }
 
     addType(word) {
-        const type = TYPE_WORDS[word];
+        const lower = word.toLowerCase();
+        const type = TYPE_WORDS[lower];
         this.groupType(type);
         if (this.types.length && this.isAdjectivalType(type))
             this.qualifiers.push(this.types.pop());
         this.types.push(type);
-        this.pluralTypes = this.pluralTypes || PLURAL.test(word);
+        this.pluralTypes = this.pluralTypes || PLURAL.test(lower);
     }
 
     groupType(type) {
@@ -140,7 +141,7 @@ export default class NounPhrase extends Phrase {
     }
 
     get hasWords() {
-        const words = [this.types, this.subtypes, this.qualifiers];
+        const words = [this.types, this.subtypes, this.qualifiers, this.exclusions];
         return words.some(list => list.length > 0);
     }
 
@@ -208,7 +209,24 @@ export default class NounPhrase extends Phrase {
     }
 
     hasType(type) {
+        if (this.excludesType(type)) return false;
         return this.hasExactType(type) || this.impliesType(type);
+    }
+
+    excludes(wordClass, word) {
+        return this.exclusions.some(exclusion => exclusion.excludes(wordClass, word));
+    }
+
+    excludesType(type) {
+        return this.excludes(TYPE, type);
+    }
+
+    excludesSubtype(subtype) {
+        return this.excludes(SUBTYPE, subtype);
+    }
+
+    excludesQualifier(qualifier) {
+        return this.excludes(QUALIFIER, qualifier);
     }
 
     impliesType(type) {
