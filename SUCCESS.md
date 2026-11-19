@@ -1,10 +1,10 @@
-# cm-autotag: definition of success
+# oracle-of-pie: definition of success
 
 ## Priorities
-1. **Tag suggestions (primary, expected to ship).** Suggest Scryfall oracle tags for card-magician cards; the designer accepts or dismisses each one.
-2. **Color pie inspections (expected to ship).** Flag color pie bends and breaks on card-magician cards as toggleable inspections, each citing its evidence. Started as an experiment; review results (2026-11-18) made it a shipping goal.
+1. **Tag suggestions (primary, expected to ship).** Suggest Scryfall oracle tags for custom cards; the designer accepts or dismisses each one.
+2. **Color pie inspections (expected to ship).** Flag color pie bends and breaks on custom cards as toggleable inspections, each citing its evidence. Started as an experiment; review results (2026-11-18) made it a shipping goal.
 
-The parser, tags, and inspections live in the sibling repository oracle-of-pie; this repository is the harness that measures them.
+The research tasks in tasks/ measure both against printed cards and reviewed verdicts.
 
 ## Decisions
 - Tag vocabulary: Scryfall oracle tags. A limited supplement only for the largest gaps, as measured.
