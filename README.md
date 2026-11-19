@@ -221,12 +221,13 @@ Generated data goes to data/ and queues/; review verdicts and baselines are kept
 
 | Command | Does |
 |---|---|
-| `npm run evaluate` | Tags the corpus (`data/predictions.json`) and prints per-tag precision and recall against Scryfall, including parent tags. |
+| `npm run evaluate` | Tags the corpus (`data/predictions.json`) and prints per-tag precision and recall against Scryfall, including parent tags, then against adjudicated gold (see below). |
 | `npm run diagnose -- spans [n]` | Most common text the parser did not recognize. |
 | `npm run diagnose -- fps\|fns <tag> [n]` | Sample of false positives or false negatives for a tag. |
 | `npm run gaps [n]` | Unrecognized text grouped into shapes, ranked by how many cards each alone keeps from full recognition, plus gap families by parser context and the most common opaque effects. Full data in `data/gap-report.json`. |
-| `npm run queues` | Builds the custom-card queue from the projects in `reviews/projects.json` and the Scryfall disagreement queues. Run `evaluate` first. |
+| `npm run queues` | Builds the custom-card queue from the projects in `reviews/projects.json` and the Scryfall disagreement queues, leaving out disagreements already settled by a verdict or a tag policy. Run `evaluate` first. |
 | `npm run review` | Serves the review UI at http://127.0.0.1:5178 (keys: 1 correct, 2 wrong, S skip, Z back, N note). `/ast` explores a card's parse tree, node properties, back-reference links, and the tags and pie inspections matching each node. |
+| `npm run policies` | Re-tags each tag policy's example cards and fails if one no longer follows its policy. |
 | `npm run verdicts` | Re-tags every reviewed card and fails if a verdict no longer holds. Disagreements listed in `reviews/known-disagreements.json` are reported as `known`; `-- --accept-known` records the current set. |
 | `npm run report` | Per-tag precision from automatic agreement plus review verdicts. |
 | `npm run pie` | Builds per-inspection color profiles and the canon tier table from the modern corpus, then reports how many printed cards each inspection flags. |
@@ -238,7 +239,23 @@ Generated data goes to data/ and queues/; review verdicts and baselines are kept
 Canon card colors come from mana costs, or a face's color indicator when it has no cost, so
 devoid cards count in their cost's colors.
 
-### Custom card review
+### Scoring against intent
+
+Scryfall's tags are the reference, but they are irregular, so `evaluate` also scores against
+adjudicated gold: Scryfall's tags corrected by decisions.
+
+- Review verdicts on the Scryfall queues settle single cards. A suggestion confirmed in
+  `scryfall-suggested-not-tagged` is added; a Scryfall tag rejected in
+  `scryfall-tagged-not-suggested` is removed.
+- Tag policies in `tasks/tags/policies/` settle whole classes of cards. An `ExtraTagPolicy`
+  explains a tag we predict that Scryfall lacks when the node that earned it matches the
+  policy's query; an `OmittedTagPolicy` explains a Scryfall tag we deliberately do not predict.
+  `evaluate` counts the disagreements each policy explains, and `data/predictions.json`
+  records them per card under `explained`.
+
+Each policy lists example cards, and `npm run policies` checks that they still follow it, so a
+decision is a regression test as well as a scoring rule. To record a new decision, add a policy
+with its examples to the registry in `tasks/tags/policies/index.js`.
 
 The custom-card queues read Card Magician projects (`.cmproj` with YAML card files), listed by
 name and folder in `reviews/projects.json`. That file is local to each checkout; copy
