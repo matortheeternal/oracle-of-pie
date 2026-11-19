@@ -13,6 +13,7 @@ const MISSED_SAMPLE_PER_TAG = 10;
 const corpus = new Map(readJson(PATHS.corpus).map(card => [cardKey(card), card]));
 const predictions = readJson(PATHS.predictions);
 const score = TagScore.fromJSON(readJson(PATHS.score));
+const adjudicated = TagScore.fromJSON(readJson(PATHS.adjudicatedScore));
 const tree = TagTree.load(PATHS.tags);
 const random = new SeededRandom(7);
 
@@ -22,7 +23,7 @@ function context(tag, key) {
 
 const notTagged = [];
 const notSuggested = [];
-for (const [tag, keys] of Object.entries(score.falsePositives))
+for (const [tag, keys] of Object.entries(adjudicated.falsePositives))
     notTagged.push(...keys.map(key => notTaggedItem(context(tag, key))));
 for (const [tag, keys] of Object.entries(score.falseNegatives)) {
     const sample = random.sample(keys, MISSED_SAMPLE_PER_TAG);
