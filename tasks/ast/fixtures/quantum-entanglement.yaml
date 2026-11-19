@@ -1,0 +1,69 @@
+name: Quantum Entanglement
+set: MSC
+typeLine: Enchantment
+text: |-
+  Flash
+  When this enchantment enters and at the beginning of your end step, you may pay {1}{W}. When you do, exile target creature you control, then return that card to the battlefield under its owner's control.
+expect:
+  kind: CardText
+  children:
+    - kind: KeywordAbility
+      pending: >-
+        Plan step 5: KeywordList is an incidental wrapper; the keyword ability should hold its
+        Keyword nodes directly.
+      children:
+        - kind: Keyword
+          name: flash
+    - kind: TriggeredAbility
+      pending: >-
+        Plan step 4: compound trigger. "enters and at the beginning of your end step" names two
+        alternative events, but only EntersEvent is read, so the ability is wrongly not
+        repeatable. The compound node's class is undecided, so its kind is not asserted.
+      isRepeatable: true
+      children:
+        - isRecognized: true
+          children:
+            - kind: EntersEvent
+              isSelf: true
+              children:
+                - kind: SelfReference
+                  raw: this enchantment
+            - kind: PhaseEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PayManaEffect
+                  raw: pay {1}{W}
+                  isOptional: true
+                  children:
+                    - kind: PlayerPhrase
+                      player: you
+            - kind: ReflexiveTriggerSentence
+              pending: >-
+                Plan step 3: "When you do" is a reflexive trigger. Today it is a
+                ConditionalSentence that is not linked to the payment it depends on.
+              dependsOnPrevious: true
+              linkedEffects:
+                - kind: PayManaEffect
+                - kind: ExileEffect
+                - kind: ReturnEffect
+              children:
+                - kind: ExileEffect
+                  pending: >-
+                    Plan step 5: PhraseList is an incidental wrapper; the effect should hold
+                    its phrases directly.
+                  children:
+                    - kind: NounPhrase
+                      raw: target creature you control
+                - kind: ReturnEffect
+                  pending: >-
+                    Plan step 5: PhraseList is an incidental wrapper; the effect should hold
+                    its phrases directly.
+                  destination: battlefield
+                  children:
+                    - kind: BackReference
+                      raw: that card
+                      resolved:
+                        kind: NounPhrase
+                        raw: target creature you control

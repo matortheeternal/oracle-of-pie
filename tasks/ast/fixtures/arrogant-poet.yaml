@@ -1,0 +1,47 @@
+name: Arrogant Poet
+set: STX
+typeLine: Creature — Human Warlock
+text: Whenever this creature attacks, you may pay 2 life. If you do, it gains flying until end of turn.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: AttacksEvent
+          isSelf: true
+          children:
+            - kind: SelfReference
+              raw: this creature
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PayLifeEffect
+                  raw: pay 2 life
+                  isOptional: true
+                  children:
+                    - kind: PlayerPhrase
+                      player: you
+            - kind: ConditionalSentence
+              condition: If you do
+              isIfYouDo: true
+              dependsOnPrevious: true
+              linkedEffects:
+                - kind: PayLifeEffect
+                - kind: GrantEffect
+              children:
+                - kind: GrantEffect
+                  pending: >-
+                    Plan step 5: KeywordList is an incidental wrapper; the effect should hold
+                    its Keyword nodes directly.
+                  children:
+                    - kind: BackReference
+                      raw: it
+                      resolved:
+                        kind: SelfReference
+                    - kind: Keyword
+                      name: flying
+                    - kind: Duration
+                      raw: until end of turn

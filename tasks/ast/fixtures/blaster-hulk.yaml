@@ -1,0 +1,34 @@
+name: Blaster Hulk
+set: M3C
+typeLine: Artifact Creature — Pirate
+text: |-
+  This spell costs {1} less to cast for each {E} (energy counter) you've paid or lost this turn.
+  Haste
+  Whenever this creature attacks, you get {E}{E}, then you may pay eight {E}. When you do, this creature deals 8 damage divided as you choose among up to eight targets.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+    - kind: KeywordAbility
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: AttacksEvent
+          isSelf: true
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PlayerCountersEffect
+                  raw: get {E}{E}
+                - raw: pay eight {E}
+                  isOptional: true
+            - kind: ReflexiveTriggerSentence
+              pending: >-
+                Plan step 3: "When you do" is a reflexive trigger, and it depends only on the
+                optional payment, not on gaining {E}{E}. Today it is a ConditionalSentence linked
+                to nothing.
+              dependsOnPrevious: true
+              linkedEffects:
+                - raw: pay eight {E}
+                - kind: DamageEffect

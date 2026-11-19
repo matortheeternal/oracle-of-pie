@@ -1,0 +1,36 @@
+name: Eiganjo Exemplar
+set: NEO
+typeLine: Enchantment Creature — Human Samurai
+text: Whenever a Samurai or Warrior you control attacks alone, it gets +1/+1 until end of turn.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: AttacksEvent
+          pending: >-
+            Plan step 4: the "alone" qualifier is not read. Expected as an isAlone property on
+            the event (property name provisional).
+          isRecognized: true
+          isAlone: true
+          children:
+            - kind: NounPhrase
+              raw: a Samurai or Warrior you control
+              children:
+                - kind: ControllerModifier
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ModifyPTEffect
+                  children:
+                    - kind: BackReference
+                      raw: it
+                      resolved:
+                        kind: NounPhrase
+                        raw: a Samurai or Warrior you control
+                    - kind: PTModifier
+                      raw: +1/+1
+                    - kind: Duration
+                      raw: until end of turn

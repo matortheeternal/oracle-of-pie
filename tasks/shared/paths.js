@@ -19,6 +19,7 @@ export const PATHS = {
     canonTiers: path.join(PIE_SOURCE, 'canonTierTable.js'),
     keywordCanon: path.join(PIE_SOURCE, 'keywordCanon.json'),
     gapReport: path.join(DATA, 'gap-report.json'),
+    astFixtures: path.join(ROOT, 'tasks', 'ast', 'fixtures'),
     score: path.join(DATA, 'tag-score.json'),
     customKeywords: path.join(DATA, 'custom-keywords.json'),
     projects: path.join(REVIEWS, 'projects.json'),

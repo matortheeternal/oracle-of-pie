@@ -36,6 +36,7 @@
     "pie": "node tasks/buildPieProfiles.js && node tasks/inspectPie.js",
     "pie-gate": "node tasks/pieGate.js",
     "pie-verdicts": "node tasks/checkPieVerdicts.js",
+    "ast-fixtures": "node tasks/checkAstFixtures.js",
     "keyword-canon": "node tasks/buildKeywordCanon.js default-cards-*.jsonl.gz"
   }
 }

@@ -1,0 +1,29 @@
+name: Soulknife Spy
+set: AFR
+typeLine: Creature — Elf Rogue
+text: Whenever this creature deals combat damage to a player, draw a card.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: DealsDamageEvent
+          pending: >-
+            Plan step 4: damage recipient. "to a player" is not read; it should become the
+            event's recipient phrase, and "a player" should parse as a PlayerPhrase (today it
+            parses as a bare NounPhrase).
+          isSelf: true
+          isCombat: true
+          isRecognized: true
+          children:
+            - kind: SelfReference
+              raw: this creature
+            - kind: PlayerPhrase
+              raw: a player
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DrawEffect
+                  raw: draw a card
