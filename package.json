@@ -33,6 +33,7 @@
     "review": "node tasks/review.js",
     "report": "node tasks/reviewReport.js",
     "verdicts": "node tasks/checkVerdicts.js",
+    "policies": "node tasks/checkPolicies.js",
     "pie": "node tasks/buildPieProfiles.js && node tasks/inspectPie.js",
     "pie-gate": "node tasks/pieGate.js",
     "pie-verdicts": "node tasks/checkPieVerdicts.js",
