@@ -1,8 +1,7 @@
 import TriggerEvent from './TriggerEvent.js';
 
-const CAST = /^(?<subject>.+?) casts? (?<spell>.+)$/i;
-const THIS_SPELL = /^(?:this spell|~)\b/i;
-const SPELL_HEAD = /^.*?\bspells?\b/i;
+const CAST = /^(?<subject>.+?) casts? (?<spell>this spell|~|.*?\bspells?\b)/i;
+const THIS_SPELL = /^(?:this spell|~)$/i;
 
 export default class CastEvent extends TriggerEvent {
     static get pattern() {
@@ -21,8 +20,7 @@ export default class CastEvent extends TriggerEvent {
     get objectText() {
         if (this.castsSelf) return null;
         const verb = this.isYou ? 'control' : 'controls';
-        const head = this.spell.match(SPELL_HEAD)?.[0] ?? this.spell;
-        return `${head} ${this.subject} ${verb}`;
+        return `${this.spell} ${this.subject} ${verb}`;
     }
 
     get castsSelf() {
