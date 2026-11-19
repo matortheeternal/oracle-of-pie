@@ -9,10 +9,11 @@ import { DATA } from './shared/paths.js';
 const [cardsPath, tagsPath, outDir = DATA, since = '2016-01-01'] = process.argv.slice(2);
 const EXCLUDED_TYPES = [
     'token', 'basic', 'emblem', 'conspiracy', 'scheme', 'plane', 'phenomenon',
-    'vanguard', 'dungeon'
+    'vanguard', 'dungeon', '/\\bcard\\b/'
 ];
 const QUERY = [
     'game:paper', '-is:promo', '-st:funny', '-st:memorabilia', '-st:token',
+    '-st:minigame',
     ...EXCLUDED_TYPES.map(type => `-t:${type}`)
 ].join(' ');
 const STANDARD_SET_TYPES = new Set(['expansion', 'core']);
