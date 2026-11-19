@@ -1,3 +1,4 @@
+import { PLUS_COUNTERS } from './boardTags.js';
 import { STATIC_GRANT } from './staticGrant.js';
 
 const REMOVAL = [
@@ -47,7 +48,7 @@ export const DERIVED_TAGS = [
     {
         tag: 'repeatable-pp-counters',
         match: {
-            tag: ['gives-pp-counters', 'gains-pp-counters'],
+            ...PLUS_COUNTERS,
             context: { ...REPEATABLE, expansion: null }
         }
     },

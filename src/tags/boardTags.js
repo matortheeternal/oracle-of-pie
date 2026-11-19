@@ -1,6 +1,6 @@
 import { selfOrIncludingSelf } from './selfInclusion.js';
 
-const PLUS_COUNTERS = {
+export const PLUS_COUNTERS = {
     kind: ['PutCountersEffect', 'EntersWithCountersEffect'],
     isPlusCounters: true
 };
@@ -25,7 +25,8 @@ export const BOARD_TAGS = [
         tag: 'gains-pp-counters',
         match: {
             ...PLUS_COUNTERS,
-            any: selfOrIncludingSelf('phrases')
+            any: selfOrIncludingSelf('phrases'),
+            context: { granted: false }
         }
     },
     {

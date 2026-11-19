@@ -31,7 +31,7 @@ export const STRUCTURE_TAGS = [
     },
     {
         tag: 'intervening-if-clause',
-        match: { kind: TRIGGERED, hasInterveningIf: true }
+        match: { kind: TRIGGERED, hasInterveningIf: true, context: { granted: false } }
     },
     {
         tag: 'modal',
