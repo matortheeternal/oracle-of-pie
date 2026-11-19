@@ -63,6 +63,10 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    get isTargeted() {
+        return false;
+    }
+
     get isRelativeGroup() {
         return false;
     }
