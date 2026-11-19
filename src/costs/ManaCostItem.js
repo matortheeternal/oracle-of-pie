@@ -3,6 +3,7 @@ import CostItem from './CostItem.js';
 
 const SYMBOLS = /^(?:\{[^}]+\})+/;
 const VARIABLE_MANA = 'variableMana';
+const PHYREXIAN_SYMBOL = /\/P\}/i;
 
 export default class ManaCostItem extends CostItem {
     static match(scribe, str) {
@@ -25,6 +26,10 @@ export default class ManaCostItem extends CostItem {
 
     get hasVariableMana() {
         return this.cost.symbols.some(symbol => symbol.type === VARIABLE_MANA);
+    }
+
+    get paysLife() {
+        return PHYREXIAN_SYMBOL.test(this.raw);
     }
 
     get includesTap() {
