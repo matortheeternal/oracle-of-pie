@@ -47,3 +47,16 @@
 {"id":"24059283-edbd-4817-9f35-4be02f07b8f8|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:43:25.810Z"}
 {"id":"b996ae86-3bf6-4e84-8302-6ec6edaa6ff0|damage-creature","verdict":"correct","note":"","at":"2026-11-18T19:43:29.356Z"}
 {"id":"26a1b36c-3c27-4eb4-b85f-63459653b773|keyword-reach","verdict":"correct","note":"","at":"2026-11-18T19:43:31.847Z"}
+{"id":"a43ecf8b-5dc9-4ac4-ae1f-b663aa8c9d7b|counter-ability","verdict":"correct","note":"","at":"2026-11-18T21:37:20.114Z"}
+{"id":"a43ecf8b-5dc9-4ac4-ae1f-b663aa8c9d7b|counterspell","verdict":"wrong","note":"[re-marked: counters abilities, not spells; now judged as counter-ability]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"10db57b4-f895-4514-b610-2252ba676353|damage-creature","verdict":"wrong","note":"[re-marked: MCP lists damage to creatures as secondary in this color]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"f96f1a94-6226-4e1f-a7fb-a43a276b3c3a|keyword-haste","verdict":"wrong","note":"[re-marked: MCP lists haste as secondary in black]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"7e050495-bed7-43b9-abce-866c61beb1da|reanimate","verdict":"wrong","note":"yeah, I actually discussed this exact card the other day.  it's technically borderline because as a bend because you sacrifice the creatures later, but the unrestricted targetting pushes it towards a break. [re-marked: MCP lists reanimation as secondary in red]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"77a5305a-2611-4a64-adb4-da131dcea233|damage-creature","verdict":"wrong","note":"[re-marked: MCP lists damage to creatures as secondary in this color]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"73346137-3117-4dc3-b5a4-1aca1da54548|keyword-haste","verdict":"wrong","note":"[re-marked: MCP lists haste as secondary in black]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"77cd2246-6906-4dce-8580-4c9d2e68c477|damage-creature","verdict":"wrong","note":"[re-marked: MCP lists damage to creatures as secondary in this color]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"e1ffb884-a89e-4e2a-9beb-8bd5838b6a94|keyword-haste","verdict":"wrong","note":"[re-marked: MCP lists haste as secondary in black]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"37827e84-9f5f-49ed-b939-0cf80dac82e7|damage-creature","verdict":"wrong","note":"[re-marked: MCP lists damage to creatures as secondary in this color]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"7e050495-bed7-43b9-abce-866c61beb1da|keyword-haste","verdict":"wrong","note":"[re-marked: MCP lists haste as secondary in black]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"fad0118b-d046-4ee7-87d9-e6799f70a7a8|damage-creature","verdict":"wrong","note":"[re-marked: MCP lists damage to creatures as secondary in this color]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"b996ae86-3bf6-4e84-8302-6ec6edaa6ff0|damage-creature","verdict":"wrong","note":"[re-marked: MCP lists damage to creatures as secondary in this color]","at":"2026-11-19T02:46:17.399Z"}
