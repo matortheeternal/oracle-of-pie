@@ -2,15 +2,6 @@ import Modifier from './Modifier.js';
 
 const BEFORE_DESTINATION = '(?=,|\\.|$| to (?:its|their) owners?\'?s? hands?| until\\b)';
 const WITH_ALTERNATIVES = [
-    'flying',
-    'reach',
-    'defender',
-    'trample',
-    'deathtouch',
-    'haste',
-    'vigilance',
-    'menace',
-    'first strike',
     'power',
     'toughness',
     'mana value',
@@ -55,9 +46,5 @@ export default class WithModifier extends Modifier {
 
     get relatesToObject() {
         return SAME_NAME.test(this.property);
-    }
-
-    get keyword() {
-        return this.comparison || this.negated ? null : this.property;
     }
 }
