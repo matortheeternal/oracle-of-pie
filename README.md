@@ -150,6 +150,9 @@ none breaks. Flags report the matched text and its range, the citation and excep
 applied, and for each card color its tier and the layer that chose it (`tiers: { B: { tier:
 'secondary', source: 'MCP Haste' } }`).
 
+An inspection's optional `mentions` text skips faces whose text doesn't contain it, so the
+inspection's query never walks them. Use it only when every match must name that text.
+
 `keywordInspections({ climbing: tiers })` builds keyword inspections from a project's own tiers.
 
 ## References

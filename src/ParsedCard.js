@@ -21,6 +21,15 @@ export default class ParsedCard {
         return this.cachedWalk;
     }
 
+    get lowercaseText() {
+        this.cachedLowercaseText ??= this.text.raw.toLowerCase();
+        return this.cachedLowercaseText;
+    }
+
+    mentions(phrase) {
+        return this.lowercaseText.includes(phrase);
+    }
+
     get tags() {
         this.cachedTags ??= evaluateCard(this);
         return this.cachedTags;

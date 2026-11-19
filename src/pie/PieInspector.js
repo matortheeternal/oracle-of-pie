@@ -11,6 +11,7 @@ function toInspection(spec) {
 }
 
 function attributeFace(face, faceIndex, inspection) {
+    if (!inspection.appliesTo(face)) return null;
     const match = findAttributableMatch(face, inspection);
     return match ? new Attribution(inspection, face, match, faceIndex) : null;
 }

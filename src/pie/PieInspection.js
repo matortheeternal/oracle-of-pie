@@ -31,6 +31,7 @@ export default class PieInspection {
         this.id = id;
         this.title = title;
         this.group = group;
+        this.mentions = spec.mentions?.toLowerCase() ?? null;
         this.citation = Citation.of(spec.cites);
         this.tiers = tiers ?? defaultTiers(spec, this.citation);
         this.description = description;
@@ -41,6 +42,10 @@ export default class PieInspection {
     exceptionFor(node, context) {
         const applies = exception => exception.matches(node, context);
         return this.exceptions.find(applies) ?? null;
+    }
+
+    appliesTo(face) {
+        return !this.mentions || face.parsed.mentions(this.mentions);
     }
 
     matches(node, context) {
