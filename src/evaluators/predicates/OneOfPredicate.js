@@ -1,6 +1,6 @@
-import Predicate from './Predicate.js';
+import PropertyPredicate from './PropertyPredicate.js';
 
-export default class OneOfPredicate extends Predicate {
+export default class OneOfPredicate extends PropertyPredicate {
     static matches(key, expected) {
         return Array.isArray(expected);
     }

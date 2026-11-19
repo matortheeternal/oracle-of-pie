@@ -6,6 +6,6 @@ export default class AbsentPredicate extends Predicate {
     }
 
     test(subject) {
-        return this.read(subject) === null || this.read(subject) === undefined;
+        return subject[this.key] === null || subject[this.key] === undefined;
     }
 }

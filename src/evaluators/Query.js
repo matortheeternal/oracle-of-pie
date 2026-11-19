@@ -15,12 +15,18 @@ export default class Query {
     }
 
     constructor(predicates) {
-        this.predicates = predicates;
+        [this.gate, ...this.checks] = predicates;
+    }
+
+    admits(subject, context) {
+        if (!this.gate) return true;
+        return this.gate.appliesTo(subject) && this.gate.test(subject, context);
     }
 
     test(subject, context) {
         if (subject === null || subject === undefined) return false;
-        return this.predicates.every(predicate => predicate.test(subject, context));
+        if (!this.admits(subject, context)) return false;
+        return this.checks.every(predicate => predicate.test(subject, context));
     }
 
     testAny(subject, context) {

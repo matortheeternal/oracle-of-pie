@@ -1,6 +1,6 @@
-import Predicate from './Predicate.js';
+import PropertyPredicate from './PropertyPredicate.js';
 
-export default class PatternPredicate extends Predicate {
+export default class PatternPredicate extends PropertyPredicate {
     static matches(key, expected) {
         return expected instanceof RegExp;
     }

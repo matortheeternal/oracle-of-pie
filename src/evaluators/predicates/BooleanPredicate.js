@@ -1,6 +1,6 @@
-import Predicate from './Predicate.js';
+import PropertyPredicate from './PropertyPredicate.js';
 
-export default class BooleanPredicate extends Predicate {
+export default class BooleanPredicate extends PropertyPredicate {
     static matches(key, expected) {
         return typeof expected === 'boolean';
     }

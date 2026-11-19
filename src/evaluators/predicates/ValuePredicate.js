@@ -1,4 +1,4 @@
-import Predicate from './Predicate.js';
+import PropertyPredicate from './PropertyPredicate.js';
 
 const VALUE_MATCHERS = [
     [value => typeof value === 'function', (value, expected) => Boolean(value(expected))],
@@ -6,7 +6,7 @@ const VALUE_MATCHERS = [
     [() => true, (value, expected) => value === expected]
 ];
 
-export default class ValuePredicate extends Predicate {
+export default class ValuePredicate extends PropertyPredicate {
     static matches(key, expected) {
         return typeof expected === 'string' || typeof expected === 'number';
     }

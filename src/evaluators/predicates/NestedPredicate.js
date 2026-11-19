@@ -1,11 +1,11 @@
-import Predicate from './Predicate.js';
+import PropertyPredicate from './PropertyPredicate.js';
 import Query from '../Query.js';
 
 function isPlainObject(value) {
     return Object.getPrototypeOf(value ?? 0) === Object.prototype;
 }
 
-export default class NestedPredicate extends Predicate {
+export default class NestedPredicate extends PropertyPredicate {
     static matches(key, expected) {
         return isPlainObject(expected);
     }
@@ -16,6 +16,6 @@ export default class NestedPredicate extends Predicate {
     }
 
     test(subject, context) {
-        return this.query.testAny(subject[this.key], context);
+        return this.query.testAny(this.property(subject), context);
     }
 }

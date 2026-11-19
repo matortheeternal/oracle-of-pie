@@ -10,9 +10,8 @@ export default class Predicate {
         this.expected = expected;
     }
 
-    read(subject) {
-        const value = subject[this.key];
-        return typeof value === 'function' ? value.bind(subject) : value;
+    appliesTo(subject) {
+        return true;
     }
 
     test(subject, context) {
