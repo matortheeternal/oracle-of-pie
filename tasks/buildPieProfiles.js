@@ -18,7 +18,11 @@ for (const { card, faces, colors } of pieCards(scribe, corpus)) {
 }
 
 const profiles = builder.build();
+const canonIds = inspector.inspections
+    .filter(inspection => inspection.usesCanonTiers)
+    .map(inspection => inspection.id);
+const canonProfiles = Object.fromEntries(canonIds.map(id => [id, profiles[id]]));
 writeJson(PATHS.pieProfiles, profiles);
-fs.writeFileSync(PATHS.canonTiers, canonTierModule(profiles));
+fs.writeFileSync(PATHS.canonTiers, canonTierModule(canonProfiles));
 for (const [id, { counts }] of Object.entries(profiles))
     console.log(id.padEnd(22), JSON.stringify(counts));

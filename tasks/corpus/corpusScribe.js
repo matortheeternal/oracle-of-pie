@@ -1,5 +1,5 @@
 import {
-    Oracle, DEFAULT_TAG_SPECS, KeywordFamilyEvaluator
+    Oracle, DEFAULT_TAG_SPECS, DEFAULT_KEYWORDS, KeywordFamilyEvaluator
 } from 'oracle-of-pie';
 
 const STRUCTURAL_KEYWORDS = ['Enchant', 'Equip'];
@@ -43,7 +43,7 @@ export function evaluatedTags(corpus, tree) {
 
 export function createCorpusScribe(corpus, definitions = {}) {
     const keywords = corpusKeywords(corpus);
-    const allKeywords = [...keywords, ...STRUCTURAL_KEYWORDS];
+    const allKeywords = [...keywords, ...DEFAULT_KEYWORDS, ...STRUCTURAL_KEYWORDS];
     return new Oracle({ keywords: allKeywords, definitions });
 }
 
