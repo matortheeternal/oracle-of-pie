@@ -30,6 +30,10 @@ export const CARD_FLOW_TAGS = [
         match: { kind: 'MillEffect', subjectIsYou: false, affectsYou: true }
     },
     {
+        tag: 'surveil',
+        match: { kind: 'KeywordActionEffect', action: 'surveil' }
+    },
+    {
         tag: 'scry',
         match: { kind: 'KeywordActionEffect', action: 'scry' }
     },
