@@ -1,5 +1,33 @@
 import { STATIC_GRANT } from './staticGrant.js';
 
+const COMBAT_KEYWORDS = [
+    'first strike', 'double strike', 'deathtouch', 'indestructible', 'lifelink',
+    'menace', 'trample', 'vigilance', 'flying', 'reach', 'protection', 'infect',
+    'wither', 'intimidate', 'fear', 'skulk', 'shadow', 'horsemanship', 'flanking',
+    'banding'
+];
+const TRICK_TIMING = {
+    card: { isInstant: true },
+    context: { ability: { kind: 'SpellAbility' } }
+};
+const TRICK_SUBJECT = {
+    hasType: 'creature',
+    any: [{ isTargeted: true }, { isMass: true, controlledByYou: true }]
+};
+const TRICK_OBJECT = { any: [TRICK_SUBJECT, { resolved: TRICK_SUBJECT }] };
+const PUMP_COUNTERS_TRICK = {
+    kind: 'PutCountersEffect',
+    ...TRICK_TIMING,
+    isPlusCounters: true,
+    phrases: TRICK_OBJECT
+};
+const SHRINK_COUNTERS_REMOVAL_TRICK = {
+    kind: 'RemoveCountersEffect',
+    ...TRICK_TIMING,
+    isMinusCounters: true,
+    phrases: TRICK_OBJECT
+};
+
 export const CREATURE_TAGS = [
     {
         tag: 'lifegain',
@@ -51,14 +79,22 @@ export const CREATURE_TAGS = [
     {
         tag: 'combat-trick',
         match: {
-            kind: ['ModifyPTEffect', 'GrantEffect', 'SetBasePTEffect'],
-            card: { isInstant: true },
-            context: { ability: { kind: 'SpellAbility' } },
-            subject: {
-                hasType: 'creature',
-                any: [{ isTargeted: true }, { isMass: true, controlledByYou: true }]
-            },
-            not: { modifier: { isLethalShrink: true } }
+            any: [
+                {
+                    kind: ['ModifyPTEffect', 'SetBasePTEffect'],
+                    ...TRICK_TIMING,
+                    subject: TRICK_SUBJECT,
+                    not: { modifier: { isLethalShrink: true } }
+                },
+                {
+                    kind: 'GrantEffect',
+                    ...TRICK_TIMING,
+                    subject: TRICK_SUBJECT,
+                    any: COMBAT_KEYWORDS.map(name => ({ grantsKeyword: name }))
+                },
+                PUMP_COUNTERS_TRICK,
+                SHRINK_COUNTERS_REMOVAL_TRICK
+            ]
         }
     },
     {
