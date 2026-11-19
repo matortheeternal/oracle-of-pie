@@ -196,7 +196,7 @@ export default class NounPhrase extends Phrase {
     }
 
     get requiredKeywords() {
-        return this.modifiers.map(modifier => modifier.keyword).filter(Boolean);
+        return this.modifiers.flatMap(modifier => modifier.keywords);
     }
 
     hasSubtype(subtype) {

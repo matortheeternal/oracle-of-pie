@@ -13,8 +13,8 @@ export default class Modifier extends Node {
         return null;
     }
 
-    get keyword() {
-        return null;
+    get keywords() {
+        return [];
     }
 
     get relatesToObject() {
