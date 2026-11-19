@@ -26,6 +26,10 @@ export default class ModifyPTEffect extends Effect {
         return [this.modifier, this.keywords, this.quoted].filter(Boolean);
     }
 
+    get phrases() {
+        return [this.subject].filter(Boolean);
+    }
+
     get grantsKeywords() {
         return Boolean(this.keywords);
     }

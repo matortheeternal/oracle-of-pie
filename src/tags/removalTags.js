@@ -7,6 +7,8 @@ const MASS_OPPOSING = {
     isCardInZone: false
 };
 const OPPOSING_CREATURE = { isOpposingObject: true, hasType: 'creature' };
+const REMOVING_EFFECTS = ['DestroyEffect', 'ExileEffect', 'ReturnEffect', 'DamageEffect'];
+const OPPOSING_FLYERS = { requiresFlying: true, controlledByYou: false };
 const OPPOSING_SPELL = { hasType: 'spell', controlledByYou: false };
 
 function removesType(type) {
@@ -87,11 +89,17 @@ export const REMOVAL_TAGS = [
     {
         tag: 'hate-flying',
         match: {
-            kind: [
-                'DestroyEffect', 'ExileEffect', 'ReturnEffect', 'DamageEffect',
-                'ModifyPTEffect'
-            ],
-            phrases: { requiresFlying: true, controlledByYou: false }
+            any: [
+                {
+                    kind: REMOVING_EFFECTS,
+                    phrases: OPPOSING_FLYERS
+                },
+                {
+                    kind: 'ModifyPTEffect',
+                    modifier: { lowersToughness: true },
+                    phrases: OPPOSING_FLYERS
+                }
+            ]
         }
     },
     {
