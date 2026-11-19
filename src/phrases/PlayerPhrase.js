@@ -31,6 +31,7 @@ const OPPOSING = /opponent|defending|controller|its owner/i;
 const OPPONENT = /opponent|defending player/i;
 const EVERY_PLAYER = /^(?:each|your opponents)\b/i;
 const EACH_PLAYER = /^each player$/i;
+const CHOSEN_PLAYER = /^(?:target|that|the chosen) player$/i;
 
 export default class PlayerPhrase extends Phrase {
     static match(scribe, str) {
@@ -58,6 +59,10 @@ export default class PlayerPhrase extends Phrase {
 
     get includesYou() {
         return YOU.test(this.player) || EACH_PLAYER.test(this.player);
+    }
+
+    get canBeYou() {
+        return this.includesYou || CHOSEN_PLAYER.test(this.player);
     }
 
     get isMass() {

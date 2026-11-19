@@ -106,6 +106,10 @@ export default class Effect extends Parser {
         return !this.subject || Boolean(this.subject.includesYou);
     }
 
+    get canAffectYou() {
+        return !this.subject || Boolean(this.subject.canBeYou);
+    }
+
     get subjectIsYou() {
         return !this.subject || Boolean(this.subject.isPlayer && this.subject.isYou);
     }

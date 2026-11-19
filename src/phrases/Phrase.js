@@ -55,6 +55,10 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    get canBeYou() {
+        return false;
+    }
+
     get controlledByOpponent() {
         return false;
     }
