@@ -135,6 +135,19 @@ Every tag's query is tested against every node; the first match records the tag 
 sentence as evidence. Tags may build on other tags with `tag:`. A spec with `family` instead of
 `tag` (such as `gives-{keyword}`) produces one tag per keyword its `keywords` property names.
 
+Tags follow Scryfall's vocabulary but encode a consistent policy where Scryfall's own tagging is
+irregular:
+
+- Effect tags (what a card lets you do) count abilities the card grants: to tokens it creates,
+  to equipped or enchanted creatures, to your other permanents, or to a target. Characteristic
+  tags (what the card itself is or has, such as `activated-ability`, `mana-dork`,
+  `unblockable` or `death-trigger-self`) count only the card's own abilities, since "this
+  creature" inside a granted ability means the creature that receives it.
+- `combat-trick` is an instant that changes a creature's stats (power and toughness, base
+  power and toughness, or +1/+1 and -1/-1 counters), grants it a combat keyword, or gives it a
+  death trigger that keeps the card's value when it dies. Granting only hexproof, shroud, ward
+  or haste is not a combat trick.
+
 ### Pie inspections
 
     new PieInspector({ profiles, inspections, disabled: ['gain-life'] })
