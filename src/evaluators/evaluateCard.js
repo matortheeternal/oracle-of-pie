@@ -1,8 +1,6 @@
-import evidenceOf from './evidenceOf.js';
-
 function record(found, tags, node, context) {
     for (const tag of tags)
-        if (!found.has(tag)) found.set(tag, evidenceOf(node, context));
+        if (!found.has(tag)) found.set(tag, { node, context });
 }
 
 function evaluateNode(found, evaluators, node, context) {

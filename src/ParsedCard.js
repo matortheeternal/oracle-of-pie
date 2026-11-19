@@ -1,4 +1,9 @@
 import evaluateCard from './evaluators/evaluateCard.js';
+import evidenceOf from './evaluators/evidenceOf.js';
+
+function evidenceEntry([tag, { node, context }]) {
+    return [tag, evidenceOf(node, context)];
+}
 
 export default class ParsedCard {
     constructor(card, text, tagLibrary, locator = null) {
@@ -30,8 +35,13 @@ export default class ParsedCard {
         return this.lowercaseText.includes(phrase);
     }
 
+    get tagMatches() {
+        this.cachedTagMatches ??= evaluateCard(this);
+        return this.cachedTagMatches;
+    }
+
     get tags() {
-        this.cachedTags ??= evaluateCard(this);
+        this.cachedTags ??= new Map([...this.tagMatches].map(evidenceEntry));
         return this.cachedTags;
     }
 

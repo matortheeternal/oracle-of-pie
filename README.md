@@ -13,6 +13,7 @@ can be declared through configuration.
         text: 'Destroy target creature with flying. You gain 2 life.'
     });
     parsed.tags;             // Map: 'removal-destroy' → evidence, …
+    parsed.tagMatches;       // Map: tag → { node, context } that earned it
     parsed.isFullyRecognized;
 
     const colors = CardColors.fromManaCost('{1}{U}');
