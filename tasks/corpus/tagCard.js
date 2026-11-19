@@ -1,3 +1,5 @@
+import explainDisagreements from '../tags/policies/explainDisagreements.js';
+
 function parseFace(scribe, card, face) {
     return scribe.parseFace({
         name: face.name,
@@ -15,10 +17,17 @@ function mergeTags(faces) {
     return tags;
 }
 
-export default function tagCard(scribe, card) {
+function explanationsFor(faces, tags, gold) {
+    if (!gold) return {};
+    return explainDisagreements(faces, Object.keys(tags), gold);
+}
+
+export default function tagCard(scribe, card, gold = null) {
     const faces = card.faces.map(face => parseFace(scribe, card, face));
+    const tags = mergeTags(faces);
     return {
-        tags: mergeTags(faces),
+        tags,
+        explained: explanationsFor(faces, tags, gold),
         recognized: faces.every(face => face.isFullyRecognized),
         unrecognized: faces.flatMap(face => face.unrecognized),
         opaque: faces.flatMap(face => face.opaque).length
