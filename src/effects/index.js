@@ -10,6 +10,7 @@ import ReturnEffect from './ReturnEffect.js';
 import DrawEffect from './DrawEffect.js';
 import DiscardEffect from './DiscardEffect.js';
 import DamageEffect from './DamageEffect.js';
+import DamageFormEffect from './DamageFormEffect.js';
 import ModifyPTEffect from './ModifyPTEffect.js';
 import GrantEffect from './GrantEffect.js';
 import CreateTokenEffect from './CreateTokenEffect.js';
@@ -70,7 +71,8 @@ import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 export const EFFECT_PARSERS = [
     DigUntilEffect, TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect,
     LoseLifeEffect, CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect,
-    ReturnEffect, DrawEffect, DiscardEffect, DamageModificationEffect, DamageEffect,
+    ReturnEffect, DrawEffect, DiscardEffect, DamageModificationEffect, DamageFormEffect,
+    DamageEffect,
     ModifyPTEffect, HandSizeEffect, SetBasePTEffect,
     CausativeEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
@@ -90,7 +92,8 @@ export const EFFECT_PARSERS = [
 export {
     TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,
     CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect, ReturnEffect,
-    DrawEffect, DiscardEffect, DamageEffect, ModifyPTEffect, GrantEffect,
+    DrawEffect, DiscardEffect, DamageEffect, DamageFormEffect, ModifyPTEffect,
+    GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
     CantEffect, EntersWithCountersEffect, ShuffleIntoLibraryEffect,
