@@ -150,6 +150,9 @@ none breaks. Flags report the matched text and its range, the citation and excep
 applied, and for each card color its tier and the layer that chose it (`tiers: { B: { tier:
 'secondary', source: 'MCP Haste' } }`).
 
+`inspectionsUsedBy(cards)` returns the inspections that match at least one of the given cards
+(each an array of faces), for showing only the inspections a project exercises.
+
 An inspection's optional `mentions` text skips faces whose text doesn't contain it, so the
 inspection's query never walks them. Use it only when every match must name that text.
 

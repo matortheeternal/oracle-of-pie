@@ -43,6 +43,11 @@ export default class PieInspector {
             .filter(Boolean);
     }
 
+    inspectionsUsedBy(cards) {
+        const attributions = cards.flatMap(faces => this.attributions(faces));
+        return new Set(attributions.map(attribution => attribution.inspection));
+    }
+
     judge(attribution) {
         const colors = attribution.colors;
         const policy = COLOR_POLICIES.find(candidate => candidate.appliesTo(colors));
