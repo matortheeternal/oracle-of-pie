@@ -28,7 +28,7 @@ mana-scribe. resolvers/ link across sentences
 (back-references). evaluators/ runs declarative queries over the tree; tags/ holds the tag queries;
 pie/ holds the color pie inspections.
 
-Status (2026-11-18, modern corpus): 82.1% of cards fully recognized; tag micro precision 98.3%,
+Status (2026-11-19, modern corpus): 82.0% of cards fully recognized; tag micro precision 98.3%,
 recall 78.9%. Goals and decisions are in `SUCCESS.md`; the tasks that measure them are under
 Development below.
 
