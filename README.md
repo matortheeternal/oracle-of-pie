@@ -22,8 +22,9 @@ can be declared through configuration.
 Structured after sigil-sifter and mana-scribe: node classes with `static match` / `static parse`,
 ordered strategy registries, and nodes that consume `remainingStr`.
 
-Levels: CardText → abilities/ → statements/ (Sentence, statement registry) → clauses/ → effects/ →
-phrases/ (+ modifiers/) → values/; costs/ use mana-scribe. resolvers/ link across sentences
+Levels: CardText → abilities/ → sentences/ (registry of sentence kinds; clauses/ splits a sentence
+into effects without adding nodes) → effects/ → phrases/ (+ modifiers/) → values/; costs/ use
+mana-scribe. resolvers/ link across sentences
 (back-references). evaluators/ runs declarative queries over the tree; tags/ holds the tag queries;
 pie/ holds the color pie inspections.
 

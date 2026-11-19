@@ -1,7 +1,7 @@
 import Ability from './Ability.js';
 
 function consumesSourceAlways(sentence) {
-    if (sentence.statement?.isConditional) return false;
+    if (sentence.isConditional) return false;
     return sentence.effects.some(effect => effect.consumesSource);
 }
 
@@ -25,14 +25,14 @@ export default class BodyAbility extends Ability {
     }
 
     get limitsUses() {
-        return this.body.sentences.some(sentence => sentence.statement?.limitsUses);
+        return this.body.sentences.some(sentence => sentence.limitsUses);
     }
 
     get limitsToOnce() {
-        return this.body.sentences.some(sentence => sentence.statement?.limitsToOnce);
+        return this.body.sentences.some(sentence => sentence.limitsToOnce);
     }
 
     get hasAdditionalCost() {
-        return this.body.sentences.some(sentence => sentence.statement?.isAdditionalCost);
+        return this.body.sentences.some(sentence => sentence.isAdditionalCost);
     }
 }

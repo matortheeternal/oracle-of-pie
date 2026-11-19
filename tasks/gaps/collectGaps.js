@@ -1,5 +1,5 @@
 import Effect from '../../src/effects/Effect.js';
-import Clause from '../../src/clauses/Clause.js';
+import Sentence from '../../src/sentences/Sentence.js';
 
 const EFFECTLESS_CLAUSE = 'clause with no recognized effect';
 
@@ -22,14 +22,13 @@ function describePrevious(previous, parent) {
     return `after ${effect.constructor.name} … ${leaf}`;
 }
 
-function isEmptyClause(node) {
-    return node instanceof Clause && !node.effect;
+function isEffectlessSentence(node) {
+    return node instanceof Sentence && !node.effects.length;
 }
 
 function describeContext(node, children, index, parent) {
-    const previous = children[index - 1];
-    if (node instanceof Clause || isEmptyClause(previous)) return EFFECTLESS_CLAUSE;
-    return describePrevious(previous, parent);
+    if (isEffectlessSentence(parent)) return EFFECTLESS_CLAUSE;
+    return describePrevious(children[index - 1], parent);
 }
 
 function gapKind(node) {

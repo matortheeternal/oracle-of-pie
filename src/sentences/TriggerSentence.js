@@ -1,26 +1,26 @@
-import Statement from './Statement.js';
+import Sentence from './Sentence.js';
 import { parseTriggerEvent } from '../triggers/index.js';
 import splitTrigger from '../triggers/splitTrigger.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const TRIGGER_WORD = /^(when|whenever) (?!you do\b)/i;
 
-export default class TriggerStatement extends Statement {
-    static match(scribe, str) {
-        const word = str.match(TRIGGER_WORD);
+export default class TriggerSentence extends Sentence {
+    static matchStatement(scribe, text) {
+        const word = text.match(TRIGGER_WORD);
         if (!word) return null;
-        const split = splitTrigger(scribe, str.slice(word[0].length));
+        const split = splitTrigger(scribe, text.slice(word[0].length));
         return split ? [word[0], word[1], ...split] : null;
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.trigger = `${match[1]} ${match[2]}`;
-        this.event = parseTriggerEvent(match[2]);
+        const [, word, eventText, body] = match.statement;
+        this.trigger = `${word} ${eventText}`;
+        this.event = parseTriggerEvent(eventText);
         this.triggerSubject = this.parseNext(this.event.subject, PHRASE_PARSERS);
         this.triggerObject = this.parseTriggerObject();
-        this.remainingStr = match[3];
-        this.clauses = this.consumeClauses();
+        this.readClauses(body);
     }
 
     parseTriggerObject() {
@@ -32,11 +32,7 @@ export default class TriggerStatement extends Statement {
         return [this.triggerSubject, this.triggerObject].filter(Boolean);
     }
 
-    get children() {
-        return [this.clauses].filter(Boolean);
-    }
-
     childContext(context) {
-        return { ...context, delayedTrigger: this };
+        return { ...super.childContext(context), delayedTrigger: this };
     }
 }

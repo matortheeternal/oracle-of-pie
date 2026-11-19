@@ -1,5 +1,5 @@
 import { ActivationCost } from 'mana-scribe';
-import Statement from './Statement.js';
+import Sentence from './Sentence.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const CONDITION_ALTERNATIVES = [
@@ -39,16 +39,17 @@ const CONDITION = new RegExp(
     `^(${CONDITION_ALTERNATIVES.join('|')})\\b([^,]*), `, 'i'
 );
 
-export default class ConditionalStatement extends Statement {
-    static match(scribe, str) {
-        return str.match(CONDITION);
+export default class ConditionalSentence extends Sentence {
+    static matchStatement(scribe, text) {
+        return text.match(CONDITION);
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.condition = `${match[1]}${match[2]}`.trim();
+        const [, opening, qualifier] = match.statement;
+        this.condition = `${opening}${qualifier}`.trim();
         this.castObject = this.parseCastObject();
-        this.clauses = this.consumeClauses();
+        this.readClauses(match.rest);
     }
 
     parseCastObject() {
@@ -98,11 +99,7 @@ export default class ConditionalStatement extends Statement {
         return cost ? ActivationCost.parse(cost).colors : null;
     }
 
-    get children() {
-        return [this.clauses].filter(Boolean);
-    }
-
     childContext(context) {
-        return { ...context, condition: this };
+        return { ...super.childContext(context), condition: this };
     }
 }

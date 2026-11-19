@@ -39,6 +39,6 @@ export const STRUCTURE_TAGS = [
     },
     {
         tag: 'additional-cost',
-        match: { kind: 'ConditionalStatement', isAdditionalCost: true }
+        match: { kind: 'ConditionalSentence', isAdditionalCost: true }
     }
 ];

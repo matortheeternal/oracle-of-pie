@@ -1,4 +1,4 @@
-import Statement from './Statement.js';
+import Sentence from './Sentence.js';
 
 const RESTRICTION_ALTERNATIVES = [
     'activate (?:only|this ability only) [^.]*',
@@ -25,14 +25,14 @@ const RESTRICTION = new RegExp(
 const ONLY_ONCE = /\bonly once\b(?! each)/i;
 const LIMITED_USES = /\bonly (?:once|twice|\w+ times) each\b/i;
 
-export default class RestrictionStatement extends Statement {
-    static match(scribe, str) {
-        return str.match(RESTRICTION);
+export default class RestrictionSentence extends Sentence {
+    static matchStatement(scribe, text) {
+        return text.match(RESTRICTION);
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.text = match[1];
+        this.text = match.statement[1];
     }
 
     get limitsToOnce() {
