@@ -16,6 +16,11 @@ export default class ParsedCard {
         return this.text.walk({ card: this.card, tagLibrary: this.tagLibrary });
     }
 
+    get walked() {
+        this.cachedWalk ??= [...this.walk()];
+        return this.cachedWalk;
+    }
+
     get tags() {
         this.cachedTags ??= evaluateCard(this);
         return this.cachedTags;
