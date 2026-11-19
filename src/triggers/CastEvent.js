@@ -9,8 +9,8 @@ export default class CastEvent extends TriggerEvent {
         return CAST;
     }
 
-    constructor(text, match) {
-        super(text, match);
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
         this.spell = match.groups.spell;
     }
 
@@ -18,7 +18,7 @@ export default class CastEvent extends TriggerEvent {
         return !this.castsSelf;
     }
 
-    get objectPhrase() {
+    get objectText() {
         if (this.castsSelf) return null;
         const verb = this.isYou ? 'control' : 'controls';
         const head = this.spell.match(SPELL_HEAD)?.[0] ?? this.spell;

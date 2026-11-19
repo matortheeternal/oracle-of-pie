@@ -2,7 +2,7 @@ import Sentence from './Sentence.js';
 
 const ALWAYS = /^/;
 
-export default class ClauseSentence extends Sentence {
+export default class EffectSentence extends Sentence {
     static matchStatement(scribe, text) {
         return text.match(ALWAYS);
     }

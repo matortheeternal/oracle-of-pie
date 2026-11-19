@@ -13,11 +13,3 @@ export const TRIGGER_EVENTS = [
     PhaseEvent, CastEvent, EntersOrDiesEvent, DiesEvent, EntersEvent, AttacksEvent,
     DealsDamageEvent, TargetedEvent, DamagePreventedEvent, OtherEvent
 ];
-
-export function parseTriggerEvent(text) {
-    for (const eventClass of TRIGGER_EVENTS) {
-        const match = eventClass.match(text);
-        if (match) return new eventClass(text, match);
-    }
-    return null;
-}
