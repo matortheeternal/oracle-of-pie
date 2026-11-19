@@ -147,6 +147,44 @@ export const DEFAULT_DEFINITIONS = {
             name: 'Blood',
             typeLine: 'Token Artifact — Blood',
             reminder: '{1}, {T}, Discard a card, Sacrifice this token: Draw a card.'
+        },
+        {
+            name: 'Cursed Role',
+            typeLine: 'Token Enchantment — Aura Role',
+            reminder: 'Enchanted creature has base power and toughness 1/1.'
+        },
+        {
+            name: 'Monster Role',
+            typeLine: 'Token Enchantment — Aura Role',
+            reminder: 'Enchanted creature gets +1/+1 and has trample.'
+        },
+        {
+            name: 'Royal Role',
+            typeLine: 'Token Enchantment — Aura Role',
+            reminder: 'Enchanted creature gets +1/+1 and has ward {1}.'
+        },
+        {
+            name: 'Sorcerer Role',
+            typeLine: 'Token Enchantment — Aura Role',
+            reminder: 'Enchanted creature gets +1/+1 and has "Whenever this creature '
+                + 'attacks, scry 1."'
+        },
+        {
+            name: 'Virtuous Role',
+            typeLine: 'Token Enchantment — Aura Role',
+            reminder: 'Enchanted creature gets +1/+1 for each enchantment you control.'
+        },
+        {
+            name: 'Wicked Role',
+            typeLine: 'Token Enchantment — Aura Role',
+            reminder: 'Enchanted creature gets +1/+1. When this token is put into a '
+                + 'graveyard, each opponent loses 1 life.'
+        },
+        {
+            name: 'Young Hero Role',
+            typeLine: 'Token Enchantment — Aura Role',
+            reminder: 'Enchanted creature has "Whenever this creature attacks, if its '
+                + 'toughness is 3 or less, put a +1/+1 counter on it."'
         }
     ],
     noncreatureSubtypes: [
