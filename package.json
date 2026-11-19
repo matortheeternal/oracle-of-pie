@@ -10,7 +10,7 @@
     "./src/*": "./src/*"
   },
   "dependencies": {
-    "mana-scribe": "file:../mana-scribe"
+    "mana-scribe": "^2.4.2"
   },
   "devDependencies": {
     "@sigil-sifter/magic": "^1.2.0",
