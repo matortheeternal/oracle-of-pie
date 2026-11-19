@@ -15,7 +15,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'primary', B: 'none', R: 'none', G: 'none'
     },
     'edict': {
-        W: 'tertiary', U: 'none', B: 'primary', R: 'tertiary', G: 'none'
+        W: 'none', U: 'none', B: 'primary', R: 'tertiary', G: 'none'
     },
     'shrink-creature': {
         W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'
@@ -150,7 +150,7 @@ export const CANON_TIERS = {
         W: 'primary', U: 'secondary', B: 'none', R: 'none', G: 'primary'
     },
     'keyword-defender': {
-        W: 'primary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
+        W: 'secondary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
     },
     'keyword-flash': {
         W: 'primary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'

@@ -51,6 +51,10 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    get isRemainder() {
+        return false;
+    }
+
     get controlledByOpponent() {
         return false;
     }

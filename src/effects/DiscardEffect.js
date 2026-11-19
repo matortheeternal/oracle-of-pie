@@ -18,6 +18,10 @@ const DISCARDED = new RegExp(
 );
 
 export default class DiscardEffect extends Effect {
+    get isPlayerAction() {
+        return true;
+    }
+
     static get pattern() {
         return DISCARD;
     }

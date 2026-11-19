@@ -8,6 +8,10 @@ const PAY_LIFE = new RegExp(
 const ALTERNATIVE = /^rather than pay(?:ing)? [^,.]+/i;
 
 export default class PayLifeEffect extends Effect {
+    get isPlayerAction() {
+        return true;
+    }
+
     static get pattern() {
         return PAY_LIFE;
     }

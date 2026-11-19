@@ -1,5 +1,6 @@
 import Phrase from './Phrase.js';
 
+const REMAINDER = 'the rest';
 const BACK_REFERENCE_ALTERNATIVES = [
     'it',
     'them',
@@ -15,7 +16,7 @@ const BACK_REFERENCE_ALTERNATIVES = [
     '(?:two|three|four|five|\\d+|x) of them',
     '(?:one|two|three|\\d+|x) of those (?:cards|creatures|permanents)',
     'each of those creatures',
-    'the rest',
+    REMAINDER,
     'the cop(?:y|ies)',
     'the chosen spell',
     'that one'
@@ -52,6 +53,10 @@ export default class BackReference extends Phrase {
 
     get isBackReference() {
         return true;
+    }
+
+    get isRemainder() {
+        return this.reference === REMAINDER;
     }
 
     get refersToExiled() {

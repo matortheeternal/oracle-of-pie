@@ -42,7 +42,8 @@ export const DERIVED_TAGS = [
             any: [
                 { phrases: OPPONENTS_GROUP },
                 { subject: OPPONENTS_GROUP }
-            ]
+            ],
+            not: { subject: { includesYou: true } }
         }
     },
     {
@@ -75,7 +76,10 @@ export const DERIVED_TAGS = [
             any: [
                 { tag: REMOVAL, phrases: SINGLE_TARGET },
                 { tag: REMOVAL, subject: SINGLE_TARGET },
-                { tag: 'removal-sacrifice', primaryObject: { isMass: false } },
+                {
+                    tag: 'removal-sacrifice',
+                    primaryObject: { isMass: false, isRemainder: false }
+                },
                 { tag: 'burn-any' }
             ]
         }

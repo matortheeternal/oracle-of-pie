@@ -39,7 +39,7 @@ const EACH_PLAYER_SACRIFICES = {
     kind: 'SacrificeEffect',
     subjectIsYou: false,
     affectsYou: true,
-    phrases: { refersToSelf: false }
+    phrases: { refersToSelf: false, isRemainder: false, isMass: false }
 };
 
 export const SACRIFICE_TAGS = [

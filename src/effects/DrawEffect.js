@@ -8,6 +8,10 @@ const CARDS = /^(?:additional )?cards?\b(?: for each [^,.]+)?/i;
 const CARDS_EQUAL = /^cards equal to [^,.]+/i;
 
 export default class DrawEffect extends Effect {
+    get isPlayerAction() {
+        return true;
+    }
+
     static get pattern() {
         return DRAW;
     }

@@ -14,6 +14,7 @@ export default class ClauseList extends Parser {
         super(scribe, match, str);
         this.clauses = [this.consume([Clause])];
         while (this.consumeNextClause()) continue;
+        this.shareSubjects();
         this.condition = this.consume([TrailingCondition]);
         this.unrecognized = this.consume([UnrecognizedText]);
     }
@@ -27,6 +28,17 @@ export default class ClauseList extends Parser {
         this.consumeText(CONNECTOR);
         this.clauses.push(this.consume([Clause]));
         return true;
+    }
+
+    shareSubjects() {
+        let subject = null;
+        for (const effect of this.effects) {
+            if (effect.subject) {
+                subject = effect.subject;
+                continue;
+            }
+            if (subject && effect.acceptsSubject(subject)) effect.shareSubject(subject);
+        }
     }
 
     startsSubjectEffect(str) {

@@ -41,6 +41,10 @@ function isLandPhrase(phrase) {
 }
 
 export default class SearchLibraryEffect extends Effect {
+    get isPlayerAction() {
+        return true;
+    }
+
     static get pattern() {
         return SEARCH;
     }

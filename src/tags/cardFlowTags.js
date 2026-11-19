@@ -1,3 +1,9 @@
+const OWN_DISCARD = {
+    kind: 'DiscardEffect',
+    any: [{ subjectIsOpponent: false }, { sharesSubject: true }]
+};
+const DRAW_THEN_DISCARD = { effectOrder: [{ kind: 'DrawEffect' }, OWN_DISCARD] };
+
 export const CARD_FLOW_TAGS = [
     {
         tag: 'draw',
@@ -5,7 +11,11 @@ export const CARD_FLOW_TAGS = [
     },
     {
         tag: 'discard',
-        match: { kind: 'DiscardEffect', subjectIsOpponent: true }
+        match: {
+            kind: 'DiscardEffect',
+            subjectIsOpponent: true,
+            not: { context: { sentence: DRAW_THEN_DISCARD } }
+        }
     },
     {
         tag: 'mill-opponent',
@@ -27,10 +37,7 @@ export const CARD_FLOW_TAGS = [
         tag: 'loot',
         match: {
             kind: 'Sentence',
-            effectOrder: [
-                { kind: 'DrawEffect' },
-                { kind: 'DiscardEffect', subjectIsOpponent: false }
-            ]
+            ...DRAW_THEN_DISCARD
         }
     },
     {

@@ -77,6 +77,23 @@ export default class Effect extends Parser {
         return false;
     }
 
+    get isPlayerAction() {
+        return false;
+    }
+
+    acceptsSubject(subject) {
+        return !this.isPlayerAction || Boolean(subject.isPlayer);
+    }
+
+    shareSubject(subject) {
+        this.subject = subject;
+        this.sharedSubject = subject;
+    }
+
+    get sharesSubject() {
+        return Boolean(this.sharedSubject);
+    }
+
     get subjectIsOpponent() {
         return Boolean(this.subject?.isPlayer && this.subject.canBeOpponent);
     }

@@ -9,6 +9,10 @@ const LIFE_AMOUNT_ALTERNATIVES = [
 export const LIFE_AMOUNT = `(?:${LIFE_AMOUNT_ALTERNATIVES.join('|')})`;
 
 export default class LifeEffect extends Effect {
+    get isPlayerAction() {
+        return true;
+    }
+
     parseArguments(match) {
         this.amountText = match[1];
     }

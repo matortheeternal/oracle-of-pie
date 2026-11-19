@@ -67,7 +67,7 @@ export const REMOVAL_INSPECTIONS = [
             kind: 'SacrificeEffect',
             isOptional: false,
             subject: { canBeOpponent: true },
-            phrases: { hasType: 'creature' }
+            phrases: { hasType: 'creature', isMass: false, isRemainder: false }
         }
     },
     {
