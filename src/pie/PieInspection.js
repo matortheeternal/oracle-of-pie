@@ -4,15 +4,19 @@ import ColorTiers from './ColorTiers.js';
 import Citation from './Citation.js';
 import { CANON_TIERS } from './canonTierTable.js';
 
-function canonTiersOf(id) {
-    return ColorTiers.fromNames(CANON_TIERS[id] ?? {});
+const CANON = 'canon';
+const HAND_FLOOR = 'floor';
+
+function canonTiersOf(id, source = CANON) {
+    return ColorTiers.fromNames(CANON_TIERS[id] ?? {}, source);
 }
 
 function floorsOf(spec, citation) {
+    const { atLeast, allowedWherever } = spec;
     return [
         citation?.tiers,
-        spec.atLeast && ColorTiers.fromNames(spec.atLeast),
-        spec.allowedWherever && canonTiersOf(spec.allowedWherever)
+        atLeast && ColorTiers.fromNames(atLeast, HAND_FLOOR),
+        allowedWherever && canonTiersOf(allowedWherever, `canon ${allowedWherever}`)
     ].filter(Boolean);
 }
 

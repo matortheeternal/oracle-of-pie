@@ -14,8 +14,12 @@ export default class Citation {
         this.tierNames = tierNames;
     }
 
+    get label() {
+        return `MCP ${this.line}`;
+    }
+
     get tiers() {
-        return ColorTiers.fromNames(this.tierNames);
+        return ColorTiers.fromNames(this.tierNames, this.label);
     }
 
     toJSON() {

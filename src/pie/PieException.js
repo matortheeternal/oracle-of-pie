@@ -15,6 +15,6 @@ export default class PieException {
     }
 
     tiersOver(baseTiers) {
-        return baseTiers.withOverrides(this.overrides);
+        return baseTiers.withOverrides(this.overrides, `exception ${this.id}`);
     }
 }

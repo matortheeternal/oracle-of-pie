@@ -26,6 +26,7 @@ export default class PieFlag {
             policy: this.policy.id,
             severity: this.severity,
             offending: this.offending,
+            tiers: this.attribution.tiers.reasonsFor(colors.colors),
             evidence,
             face: this.attribution.faceIndex,
             range: this.attribution.range,
