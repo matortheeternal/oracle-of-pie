@@ -1,6 +1,7 @@
 import Parser from '../core/Parser.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
+import TurnWindow from './qualifiers/TurnWindow.js';
 
 const SELF = /^(?:~|this (?:[a-z]+|~))$/i;
 const YOU = /^you$/i;
@@ -8,6 +9,10 @@ const YOU = /^you$/i;
 export default class TriggerEvent extends Parser {
     static get pattern() {
         return null;
+    }
+
+    static get qualifierParsers() {
+        return [];
     }
 
     static match(scribe, str) {
@@ -23,6 +28,7 @@ export default class TriggerEvent extends Parser {
     static read(scribe, match, str) {
         const event = super.parse(scribe, match, str);
         event.parseParticipants();
+        event.qualifiers = event.consumeAll(this.qualifierParsers, []);
         event.claimSpan(str);
         return event;
     }
@@ -30,6 +36,7 @@ export default class TriggerEvent extends Parser {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.subject = match.groups?.subject?.trim() ?? '';
+        this.qualifiers = [];
         this.unreadText = null;
     }
 
@@ -54,7 +61,16 @@ export default class TriggerEvent extends Parser {
     }
 
     get children() {
-        return [this.subjectPhrase, this.objectPhrase, this.unreadText].filter(Boolean);
+        const participants = [this.subjectPhrase, this.objectPhrase, ...this.qualifiers];
+        return [...participants, this.unreadText].filter(Boolean);
+    }
+
+    get turnWindow() {
+        return this.qualifierOfKind(TurnWindow);
+    }
+
+    qualifierOfKind(kind) {
+        return this.qualifiers.find(qualifier => qualifier instanceof kind) ?? null;
     }
 
     get alternatives() {

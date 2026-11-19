@@ -9,9 +9,7 @@ expect:
       isRepeatable: true
       children:
         - kind: AttacksEvent
-          pending: >-
-            Plan step 4: the "alone" qualifier is not read. Expected as an isAlone property on
-            the event (property name provisional).
+          raw: a Samurai or Warrior you control attacks alone
           isRecognized: true
           isAlone: true
           children:
@@ -19,6 +17,8 @@ expect:
               raw: a Samurai or Warrior you control
               children:
                 - kind: ControllerModifier
+            - kind: Alone
+              raw: alone
         - kind: EffectSequence
           children:
             - kind: EffectSentence

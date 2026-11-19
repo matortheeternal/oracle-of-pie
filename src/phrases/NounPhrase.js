@@ -13,7 +13,8 @@ const DETERMINER_ALTERNATIVES = [
     `up to (${N})`,
     'up to that many',
     'another target', 'other target', 'target', 'each other', 'each', 'all other',
-    'all', 'another', 'one or more', 'any number of', 'any', N, 'the', 'that', 'those'
+    'all', 'another', 'one or more', `(${N}) or more`, 'any number of', 'any', N,
+    'the', 'that', 'those'
 ];
 const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i');
 const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
@@ -62,7 +63,7 @@ export default class NounPhrase extends Phrase {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.determiner = match[1]?.toLowerCase() ?? null;
-        this.count = numberValue(match[2] ?? match[3] ?? match[4] ?? '1');
+        this.count = numberValue(match[2] ?? match[3] ?? match[4] ?? match[5] ?? '1');
         this.qualifiers = [];
         this.exclusions = [];
         this.types = [];

@@ -1,0 +1,22 @@
+name: Ledger Shredder
+set: SNC
+typeLine: Creature — Bird Advisor
+text: |-
+  Flying
+  Whenever a player casts their second spell each turn, this creature connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)
+expect:
+  kind: CardText
+  children:
+    - kind: KeywordAbility
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: CastEvent
+          raw: a player casts their second spell each turn
+          isRecognized: true
+          turnWindow:
+            kind: TurnWindow
+            raw: each turn
+            isEachTurn: true
+            isThisTurn: false
+        - kind: EffectSequence
