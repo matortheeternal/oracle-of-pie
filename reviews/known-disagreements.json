@@ -4,11 +4,9 @@
     "mtg-the-pale-age:Population Regulator|lifegain",
     "mtg-the-pale-age:Spontaneous Collapse|rummage",
     "mtg-the-pale-age:Tomi, Enlightened Archivist|lifegain",
-    "mtg-underground:Blasting Fields Expedition|tutor-to-hand",
     "mtg-underground:Caught in a Cave-In|removal-enchantment",
     "mtg-underground:Metra's Blessing|anthem",
     "mtg-underground:Puapua, Foul Beast|burn-creature",
     "mtg-underground:Sickle of Separation|removal-destroy",
-    "mtg-underground:Sickle of Separation|sweeper",
-    "mtg-underground:Slimy Sewerslug|removal-artifact"
+    "mtg-underground:Sickle of Separation|sweeper"
 ]
