@@ -3,12 +3,12 @@
 Results for 381 evaluated tags on 17,836 modern canon cards.
 The evaluation includes parent tags implied by the Scryfall tag hierarchy.
 
-TP: True Positive count
-FP: False Positive count
-TN: True Negative count
-FN: False Negative count
-Accuracy: (TP + TN)/Total
-Recall: TP/(TP+FN)
+- TP: True Positive count
+- FP: False Positive count
+- TN: True Negative count
+- FN: False Negative count
+- Accuracy: (TP + TN)/Total
+- Recall: TP/(TP+FN)
 
 
 | Tag | TP | FP | TN | FN | Accuracy | Recall |
