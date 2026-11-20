@@ -8,12 +8,15 @@ const WITH_ALTERNATIVES = [
     'total power',
     'total mana value',
     'converted mana cost',
-    'a [\\w+\\-/]+ counter on it',
+    'an? [\\w+\\-/]+ counter on it',
+    'one or more (?:[\\w+\\-/]+ )?counters on (?:it|them)',
     '[\\w+\\-/]+ counters on (?:it|them)',
     'counters on (?:it|them)',
     `the greatest (?:power|mana value)[^,.]*?${BEFORE_DESTINATION}`,
     'the same name as [^,.]+',
     'that name',
+    'the chosen name',
+    '\\{X\\} in (?:its|their) mana costs?',
     'an? [a-z]+ (?:mana )?ability'
 ];
 const COMPARED = `[^,.]+?${BEFORE_DESTINATION}`;

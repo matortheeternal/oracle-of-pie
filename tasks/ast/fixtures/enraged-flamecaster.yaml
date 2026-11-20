@@ -19,9 +19,12 @@ expect:
           children:
             - kind: PlayerPhrase
               raw: you
-            - kind: NounPhrase
-            - kind: WithModifier
-              raw: with mana value 4 or greater
-              property: mana value
-              comparison: 4 or greater
+            - kind: CastSpell
+              raw: a spell with mana value 4 or greater
+              controlledByYou: true
+              children:
+                - kind: WithModifier
+                  raw: with mana value 4 or greater
+                  property: mana value
+                  comparison: 4 or greater
         - kind: EffectSequence

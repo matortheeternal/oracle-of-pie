@@ -1,0 +1,36 @@
+name: Ornery Goblin
+set: GRN
+typeLine: Creature — Goblin Warrior
+text: |-
+  Whenever this creature blocks or becomes blocked by a creature, this creature deals 1 damage to that creature.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: CompoundEvent
+          raw: this creature blocks or becomes blocked by a creature
+          children:
+            - kind: BlocksEvent
+              raw: this creature blocks
+              blockedCreature: null
+              children:
+                - kind: SelfReference
+                  raw: this creature
+            - kind: BecomesBlockedEvent
+              raw: becomes blocked by a creature
+              sharesSubject: true
+              children:
+                - kind: NounPhrase
+                  raw: a creature
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DamageEffect
+                  phrases:
+                    - kind: BackReference
+                      raw: that creature
+                      refersToSelf: false

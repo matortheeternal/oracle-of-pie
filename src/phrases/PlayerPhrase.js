@@ -20,7 +20,8 @@ const PLAYER_ALTERNATIVES = [
     'the chosen player',
     'that (?:creature|spell|permanent)\'s controller',
     'its owner',
-    'your opponents'
+    'your opponents',
+    'one (?:or more )?of your opponents'
 ];
 const PLAYER = new RegExp(
     `^(${PLAYER_ALTERNATIVES.join('|')})\\b`, 'i'

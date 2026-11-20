@@ -1,0 +1,25 @@
+name: Mystic Skyfish
+set: M21
+typeLine: Creature — Fish
+text: |-
+  Whenever you draw your second card each turn, this creature gains flying until end of turn.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: DrawsEvent
+          raw: you draw your second card each turn
+          isRecognized: true
+          ordinal: 2
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: OrdinalCard
+              raw: your second card
+            - kind: TurnWindow
+              raw: each turn
+              isEachTurn: true
+        - kind: EffectSequence

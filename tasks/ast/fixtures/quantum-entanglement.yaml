@@ -31,6 +31,13 @@ expect:
             - kind: PhaseEvent
               raw: the beginning of your end step
               isRepeatable: true
+              isRecognized: true
+              children:
+                - kind: OwnedStep
+                  raw: your end step
+                  isEndStep: true
+                  isYourTurn: true
+                  isEachTurn: false
         - kind: EffectSequence
           children:
             - kind: EffectSentence

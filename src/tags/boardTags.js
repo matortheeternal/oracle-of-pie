@@ -25,6 +25,11 @@ export const BOARD_TAGS = [
         tag: 'gains-pp-counters',
         match: {
             ...PLUS_COUNTERS,
+            not: {
+                card: { isCreature: false },
+                context: { granted: true },
+                phrases: { isBackReference: true, refersToSelf: true }
+            },
             any: selfOrIncludingSelf('phrases')
         }
     },

@@ -28,6 +28,10 @@ export default class AttachedReference extends Phrase {
         return true;
     }
 
+    get isEnchanted() {
+        return this.attachment === ENCHANTED;
+    }
+
     get controlledByYou() {
         return this.attachment !== ENCHANTED;
     }

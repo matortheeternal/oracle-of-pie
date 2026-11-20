@@ -6,6 +6,7 @@ text: |-
   Whenever a player casts their second spell each turn, this creature connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)
 expect:
   kind: CardText
+  isRecognized: true
   children:
     - kind: KeywordAbility
     - kind: TriggeredAbility
@@ -14,9 +15,22 @@ expect:
         - kind: CastEvent
           raw: a player casts their second spell each turn
           isRecognized: true
+          isYou: false
+          castsSelf: false
           turnWindow:
             kind: TurnWindow
             raw: each turn
             isEachTurn: true
             isThisTurn: false
+          children:
+            - kind: PlayerPhrase
+              raw: a player
+            - kind: CastSpell
+              raw: their second spell
+              ordinal: 2
+              possessor: their
+              controlledByYou: false
+              controlledByOpponent: false
+            - kind: TurnWindow
+              raw: each turn
         - kind: EffectSequence

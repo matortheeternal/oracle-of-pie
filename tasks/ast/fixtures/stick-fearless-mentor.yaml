@@ -1,0 +1,25 @@
+name: Stick, Fearless Mentor
+set: MSC
+typeLine: Legendary Creature — Human Monk Hero
+text: |-
+  First strike
+  Whenever a source you control deals damage to you, exile the top card of your library. You may play it until the end of your next turn. This ability triggers only once each turn.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+    - kind: TriggeredAbility
+      children:
+        - kind: DealsDamageEvent
+          raw: a source you control deals damage to you
+          isRecognized: true
+          unreadSubject: null
+          children:
+            - kind: DamageSource
+              raw: a source you control
+              controlledByYou: true
+              isAntecedentCandidate: false
+            - kind: PlayerPhrase
+              raw: you
+        - kind: EffectSequence

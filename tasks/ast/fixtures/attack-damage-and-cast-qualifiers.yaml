@@ -1,0 +1,187 @@
+name: Attack, damage and cast qualifiers
+typeLine: Artifact Creature — Equipment Warrior
+text: |-
+  Whenever equipped creature and at least one other creature attack, draw a card.
+  Whenever this creature and at least two Zombies attack, draw a card.
+  Whenever this creature and another creature attack different players, draw a card.
+  Whenever this creature or equipped creature attacks, it gets +2/+0 until end of turn.
+  Whenever this creature attacks and isn't blocked, draw a card.
+  Whenever this creature attacks for the first time each turn, draw a card.
+  Whenever a source you control deals noncombat damage to one or more of your opponents during your turn, draw a card.
+  Whenever a source an opponent controls deals damage to you or a permanent you control, draw a card.
+  Whenever you cast a spell with {X} in its mana cost, draw a card.
+  Whenever you cast a spell with cascade, draw a card.
+  Whenever you cast another spell that has convoke, draw a card.
+  Whenever you cast a creature spell that has an Adventure, draw a card.
+  Whenever you cast a spell with the chosen name for the first time this turn, draw a card.
+  Each creature you control that has an Adventure enters with an additional +1/+1 counter on it.
+expect:
+  kind: CardText
+  isRecognized: false
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: true
+          isSelf: false
+          subjectPhrase:
+            kind: CoordinatedSubject
+            raw: equipped creature and at least one other creature
+            isMinimum: true
+            isAttached: true
+            refersToSelf: false
+            lead:
+              kind: AttachedReference
+              raw: equipped creature
+            companions:
+              kind: NounPhrase
+              raw: one other creature
+              isConditionOnly: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: true
+          subjectPhrase:
+            kind: CoordinatedSubject
+            raw: this creature and at least two Zombies
+            refersToSelf: true
+            companions:
+              kind: NounPhrase
+              raw: two Zombies
+              subtypes: [Zombies]
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: false
+          children:
+            - kind: CoordinatedSubject
+              raw: this creature and another creature
+              isMinimum: false
+            - kind: UnrecognizedText
+              raw: different players
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: true
+          subjectPhrase:
+            kind: SelfOrAttached
+            raw: this creature or equipped creature
+            refersToSelf: true
+            isAntecedentCandidate: true
+            other:
+              kind: AttachedReference
+              raw: equipped creature
+              isAntecedentCandidate: false
+            references:
+              - kind: BackReference
+                raw: it
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: true
+          isUnblocked: true
+          children:
+            - kind: SelfReference
+            - kind: Unblocked
+              raw: and isn't blocked
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: true
+          children:
+            - kind: SelfReference
+            - kind: FirstTime
+              raw: for the first time
+            - kind: TurnWindow
+              raw: each turn
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: DealsDamageEvent
+          isRecognized: true
+          isNoncombat: true
+          isCombat: false
+          children:
+            - kind: DamageSource
+              raw: a source you control
+              controlledByYou: true
+              isAntecedentCandidate: false
+            - kind: PlayerPhrase
+              raw: one or more of your opponents
+            - kind: TurnWindow
+              raw: during your turn
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: DealsDamageEvent
+          isRecognized: false
+          children:
+            - kind: DamageSource
+              raw: a source an opponent controls
+              controlledByOpponent: true
+            - kind: PlayerPhrase
+              raw: you
+            - kind: UnrecognizedText
+              raw: or a permanent you control
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          objectPhrase:
+            kind: CastSpell
+            raw: a spell with {X} in its mana cost
+            children:
+              - kind: WithModifier
+                raw: with {X} in its mana cost
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          objectPhrase:
+            kind: CastSpell
+            raw: a spell with cascade
+            requiredKeywords: [cascade]
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          objectPhrase:
+            kind: CastSpell
+            raw: another spell that has convoke
+            excludesSelf: true
+            requiredKeywords: [convoke]
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          objectPhrase:
+            kind: CastSpell
+            raw: a creature spell that has an Adventure
+            children:
+              - kind: AdventureModifier
+                raw: that has an Adventure
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+            - kind: CastSpell
+              raw: a spell with the chosen name
+            - kind: FirstTime
+              raw: for the first time
+            - kind: TurnWindow
+              raw: this turn
+        - kind: EffectSequence
+    - kind: SpellAbility
+      isRecognized: false

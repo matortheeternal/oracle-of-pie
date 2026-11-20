@@ -30,15 +30,37 @@ mana-scribe. resolvers/ link across sentences
 (back-references). evaluators/ runs declarative queries over the tree; tags/ holds the tag queries;
 pie/ holds the color pie inspections.
 
-Status (2026-11-19, modern corpus): 71.0% of cards fully recognized; tag micro precision 98.3%,
-recall 79.3%. A card counts as recognized only when every trigger event reads all of its text,
-including all of its subject and object: of 11,452 trigger events, 8,773 are read, 1,263 partly
-read (a known event with text it could not read, such as "attacks or blocks", a step that is not
-modelled yet such as "your first main phase" or "each opponent's upkeep", or the rest of a
-subject after the part that was read, such as "or another Elf you control") and 1,416
-unsupported. Two known gaps still count as read: the rest of a spell in a cast trigger that is
-read only in part, and the middle of "damage … is prevented". Goals and decisions are in
-`SUCCESS.md`; the tasks that measure them are under Development below.
+Status (2026-11-19, modern corpus): 80.1% of cards fully recognized (14,295 of 17,836); tag micro
+precision 98.36%, recall 80.18%. A card counts as recognized only when every trigger event reads
+all of its text, including its subject and object. Of 11,588 trigger events, 11,022 are read, 338
+partly read (a known event with unread text, such as "the end step on your next turn" or the
+result of "transforms into a non-Human creature") and 237 unsupported. A subject such as "this
+creature or another Elf you control" is one phrase with a self branch and an other branch;
+references such as "that creature" point to the whole subject. Triggers also read counter
+placement ("one or more +1/+1 counters are put on", "the fourth plan counter is put on"),
+transforming into the card's other face, and "this turn" on enters and damage events. Phase
+triggers model common main phases, combat, upkeep, draw steps, and end steps, including
+possessive owners such as "each opponent's". Cast triggers retain the spell's source wording and
+report unread spell text, including exclusions such as "other than your first spell each turn".
+Trigger participants include Spacecraft self references, common attack recipients,
+and spells or abilities that target the trigger subject. Cast events also read common spell-target
+restrictions. Zone changes ("one or more cards are put into exile from your library and/or your
+graveyard") record their destination and origin zones, and cast events read origin exclusions
+such as "from anywhere other than your hand". Player actions include activating abilities
+("an opponent activates an ability that isn't a mana ability"), putting counters on a recipient,
+tapping a permanent for mana, dice rolls, dilemmas, proliferate, exert, energy and the Ring
+tempting you; status events include becoming crewed, saddled, plotted, monstrous or
+attached, a Class reaching a level, and day and night changing. A trailing "while …" condition
+(controlling a phrase, total power, the monarch, a counter on the subject, the source's zone) is a
+child of the event; phrases inside it are never antecedents for "it". Enters events read
+"untapped". Attack triggers read coordinated subjects ("this creature and at least two other
+creatures attack"; the companions are a condition, never an antecedent), "this creature or
+equipped creature", "and isn't blocked" and "for the first time each turn". Damage triggers read
+"a source you control" (not an antecedent) and "noncombat damage". Cast triggers read spells
+"with {X} in its mana cost", with or that have a keyword, "that has an Adventure", "with the
+chosen name" or "of the chosen color", kicked spells and "for the first time this turn". The
+middle of "damage … is prevented" is a known gap that still counts as read.
+Goals and decisions are in `SUCCESS.md`. The tasks that measure them are under Development below.
 
 ## How a card is read
 

@@ -1,0 +1,17 @@
+import Parser from '../../core/Parser.js';
+
+const ORDINALS = { first: 1, second: 2, third: 3 };
+const ORDINAL_CARD = new RegExp(
+    `^(?:your|their) (?<ordinal>${Object.keys(ORDINALS).join('|')}) card\\b`, 'i'
+);
+
+export default class OrdinalCard extends Parser {
+    static match(scribe, str) {
+        return str.match(ORDINAL_CARD);
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.ordinal = ORDINALS[match.groups.ordinal.toLowerCase()];
+    }
+}

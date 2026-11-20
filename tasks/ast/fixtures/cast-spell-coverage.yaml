@@ -1,0 +1,90 @@
+name: Cast spell coverage
+typeLine: Enchantment
+text: |-
+  When you next cast an artifact spell this turn, draw a card.
+  Whenever you cast a spell from your graveyard, draw a card.
+  Whenever an opponent casts or copies an instant or sorcery spell, draw a card.
+  Whenever you cast a creature or kicked spell, draw a card.
+  Whenever you cast a spell other than your first spell each turn, draw a card.
+  When you cast this spell from anywhere other than exile, draw a card.
+expect:
+  kind: CardText
+  isRecognized: false
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          isNext: true
+          isYou: true
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: CastSpell
+              raw: an artifact spell
+              controlledByYou: true
+            - kind: TurnWindow
+              raw: this turn
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          objectPhrase:
+            kind: CastSpell
+            raw: a spell from your graveyard
+            zone: graveyard
+            zoneOwnedByYou: true
+            children:
+              - kind: ZoneModifier
+                raw: from your graveyard
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          raw: an opponent casts or copies an instant or sorcery spell
+          isRecognized: true
+          includesCopy: true
+          objectPhrase:
+            kind: CastSpell
+            raw: an instant or sorcery spell
+            controlledByOpponent: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: CastSpell
+              raw: a creature or kicked spell
+              qualifiers: [kicked, creature]
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: false
+          objectPhrase:
+            kind: CastSpell
+            raw: a spell
+          unreadText:
+            kind: UnrecognizedText
+            raw: other than your first spell each turn
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: CastEvent
+          castsSelf: true
+          isRecognized: true
+          objectPhrase: null
+          unreadText: null
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: ZoneOrigin
+              raw: from anywhere other than exile
+              isAnywhere: true
+              excludedZone: exile
+        - kind: EffectSequence

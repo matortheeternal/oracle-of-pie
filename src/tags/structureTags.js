@@ -36,7 +36,7 @@ export const STRUCTURE_TAGS = [
         tag: 'cast-trigger-you',
         match: {
             kind: TRIGGERED,
-            events: { kind: 'CastEvent', isYou: true, castsSelf: false }
+            events: { kind: 'CastEvent', isYou: true, castsSelf: false, isNext: false }
         }
     },
     {

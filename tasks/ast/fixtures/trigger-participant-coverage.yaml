@@ -1,0 +1,131 @@
+name: Trigger participant coverage
+typeLine: Artifact - Spacecraft
+text: |-
+  When this Spacecraft enters, draw a card.
+  Whenever this Spacecraft attacks a player alone, draw a card.
+  Whenever this Spacecraft attacks a battle, it becomes tapped.
+  Whenever a creature attacks one of your opponents or a planeswalker they control, draw a card.
+  Whenever a creature attacks you while you're the monarch, draw a card.
+  Whenever this Spacecraft becomes the target of a spell or ability you control for the first time each turn, draw a card.
+  Whenever this Spacecraft becomes the target of an ability of a land you control, draw a card.
+  Whenever you cast a spell that targets only a single creature you control, draw a card.
+  Whenever you cast a spell that targets a creature other than this creature, draw a card.
+  Whenever you cast a spell that targets only Trigger participant coverage, draw a card.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+          isSelf: true
+          isRepeatable: false
+          isRecognized: true
+          subjectPhrase:
+            kind: SelfReference
+            raw: this Spacecraft
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          raw: this Spacecraft attacks a player alone
+          isRecognized: true
+          isAlone: true
+          objectPhrase:
+            kind: AttackRecipient
+            raw: a player
+            isPlayer: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: true
+          subjectPhrase:
+            references:
+              - kind: BackReference
+                raw: it
+          objectPhrase:
+            kind: AttackRecipient
+            raw: a battle
+            objectType: battle
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          isRecognized: true
+          objectPhrase:
+            kind: AttackRecipient
+            raw: one of your opponents or a planeswalker they control
+            player: one of your opponents
+            objectType: planeswalker
+            objectController: they control
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          raw: a creature attacks you while you're the monarch
+          isRecognized: true
+          unreadText: null
+          condition:
+            kind: MonarchCondition
+            raw: while you're the monarch
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: TargetedEvent
+          isRecognized: true
+          children:
+            - kind: SelfReference
+            - kind: TargetingSource
+              raw: a spell or ability you control
+              includesSpell: true
+              includesAbility: true
+              controlledByYou: true
+            - kind: FirstTime
+              raw: for the first time
+            - kind: TurnWindow
+              raw: each turn
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: TargetedEvent
+          raw: this Spacecraft becomes the target of an ability
+          isRecognized: false
+          unreadText:
+            kind: UnrecognizedText
+            raw: of a land you control
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+            - kind: CastSpell
+              raw: a spell
+            - kind: SpellTarget
+              raw: that targets only a single creature you control
+              requiresSingleTarget: true
+              controller: you control
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          raw: you cast a spell that targets a creature
+          isRecognized: false
+          unreadText:
+            kind: UnrecognizedText
+            raw: other than this creature
+        - kind: EffectSequence
+
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+            - kind: CastSpell
+            - kind: SpellTarget
+              raw: that targets only ~
+              refersToSelf: true
+              requiresSingleTarget: true
+        - kind: EffectSequence

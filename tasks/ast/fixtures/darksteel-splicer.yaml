@@ -1,0 +1,27 @@
+name: Darksteel Splicer
+set: MOC
+typeLine: Creature — Phyrexian Artificer
+text: |-
+  Whenever this creature or another nontoken Phyrexian you control enters, create X 3/3 colorless Phyrexian Golem artifact creature tokens, where X is the number of opponents you have.
+  Golems you control have indestructible.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+          raw: this creature or another nontoken Phyrexian you control enters
+          isSelf: false
+          isRepeatable: true
+          isRecognized: true
+          children:
+            - kind: SelfOrAnother
+              raw: this creature or another nontoken Phyrexian you control
+              children:
+                - kind: SelfReference
+                  raw: this creature
+                - kind: NounPhrase
+                  raw: another nontoken Phyrexian you control
+        - kind: EffectSequence
+    - raw: Golems you control have indestructible.
