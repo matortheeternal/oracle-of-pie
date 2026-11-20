@@ -1,0 +1,38 @@
+import Parser from '../../core/Parser.js';
+
+const TURN_OWNERS = [
+    'your', 'an opponent\'s', 'each opponent\'s', 'their', 'each of your'
+];
+const TURN_WINDOW = new RegExp(
+    `^(?:(each|this) turn|during (${TURN_OWNERS.join('|')}) turns?)\\b`, 'i'
+);
+const OPPONENT = /opponent/i;
+const YOURS = /your/i;
+
+export default class TurnWindow extends Parser {
+    static match(scribe, str) {
+        return str.match(TURN_WINDOW);
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.span = match[1]?.toLowerCase() ?? null;
+        this.turnOwner = match[2]?.toLowerCase() ?? null;
+    }
+
+    get isEachTurn() {
+        return this.span === 'each';
+    }
+
+    get isThisTurn() {
+        return this.span === 'this';
+    }
+
+    get isYourTurn() {
+        return YOURS.test(this.turnOwner ?? '');
+    }
+
+    get isOpponentsTurn() {
+        return OPPONENT.test(this.turnOwner ?? '');
+    }
+}

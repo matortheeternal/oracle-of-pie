@@ -4,7 +4,7 @@ import ZoneModifier from './modifiers/ZoneModifier.js';
 const SELF_NOUNS = [
     'creature', 'artifact', 'enchantment', 'land', 'permanent', 'card', 'spell',
     'Equipment', 'Aura', 'Vehicle', 'token', 'Saga', 'planeswalker', 'battle',
-    'Class', 'Room', 'Siege'
+    'Class', 'Room', 'Siege', 'Spacecraft'
 ];
 const SELF_NOUN = `this (?:${SELF_NOUNS.join('|')})\\b`;
 const SELF = new RegExp(`^(?:~|(?:he|she)(?= )|${SELF_NOUN})`, 'i');

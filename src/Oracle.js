@@ -6,8 +6,8 @@ import ParsedCard from './ParsedCard.js';
 import { ABILITY_PARSERS, INNER_ABILITY_PARSERS } from './abilities/index.js';
 import { RESOLVERS } from './resolvers/index.js';
 import { EFFECT_PARSERS } from './effects/index.js';
-import { STATEMENT_PARSERS } from './statements/index.js';
-import Clause from './clauses/Clause.js';
+import { SENTENCE_PARSERS } from './sentences/index.js';
+import ClauseReader from './clauses/ClauseReader.js';
 import { DEFAULT_KEYWORDS } from './defaultKeywords.js';
 import RulesDefinitions from './definitions/RulesDefinitions.js';
 import TagLibrary from './evaluators/TagLibrary.js';
@@ -53,11 +53,12 @@ export default class Oracle {
     }
 
     startsClause(str) {
-        return this.startsStatement(str) || Boolean(Clause.parse(this, [''], str).effect);
+        return this.startsStatement(str) || ClauseReader.startsClause(this, str);
     }
 
     startsStatement(str) {
-        return STATEMENT_PARSERS.slice(0, -1).some(parser => parser.match(this, str));
+        const openers = SENTENCE_PARSERS.slice(0, -1);
+        return openers.some(parser => parser.matchStatement(this, str));
     }
 
     parseText(text) {

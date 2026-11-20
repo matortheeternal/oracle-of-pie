@@ -10,7 +10,7 @@
     "./src/*": "./src/*"
   },
   "dependencies": {
-    "mana-scribe": "file:../mana-scribe"
+    "mana-scribe": "^2.4.2"
   },
   "devDependencies": {
     "@sigil-sifter/magic": "^1.2.0",
@@ -36,6 +36,8 @@
     "pie": "node tasks/buildPieProfiles.js && node tasks/inspectPie.js",
     "pie-gate": "node tasks/pieGate.js",
     "pie-verdicts": "node tasks/checkPieVerdicts.js",
+    "ast-fixtures": "node tasks/checkAstFixtures.js",
+    "ast": "node tasks/inspectAst.js",
     "keyword-canon": "node tasks/buildKeywordCanon.js default-cards-*.jsonl.gz"
   }
 }

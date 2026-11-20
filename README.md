@@ -5,31 +5,62 @@ that tree, it suggests Scryfall oracle tags for a card and inspects cards for co
 breaks, citing the evidence for each. It reads printed and custom cards alike, and new mechanics
 can be declared through configuration.
 
-    import { Oracle, PieInspector, CardColors } from 'oracle-of-pie';
+```js
+import { Oracle, PieInspector, CardColors } from 'oracle-of-pie';
 
-    const parsed = new Oracle().parseFace({
-        name: 'Sudden Downpour',
-        typeLine: 'Instant',
-        text: 'Destroy target creature with flying. You gain 2 life.'
-    });
-    parsed.tags;             // Map: 'removal-destroy' → evidence, …
-    parsed.isFullyRecognized;
+const parsed = new Oracle().parseFace({
+    name: 'Sudden Downpour',
+    typeLine: 'Instant',
+    text: 'Destroy target creature with flying. You gain 2 life.'
+});
+parsed.tags;             // Map: 'removal-destroy' → evidence, …
+parsed.isFullyRecognized;
 
-    const colors = CardColors.fromManaCost('{1}{U}');
-    new PieInspector().inspect([{ parsed, colors }]);
-    // flags: destroy-creature breaks in U, gain-life breaks in U
+const colors = CardColors.fromManaCost('{1}{U}');
+new PieInspector().inspect([{ parsed, colors }]);
+// flags: destroy-creature breaks in U, gain-life breaks in U
+```
 
 Structured after sigil-sifter and mana-scribe: node classes with `static match` / `static parse`,
 ordered strategy registries, and nodes that consume `remainingStr`.
 
-Levels: CardText → abilities/ → statements/ (Sentence, statement registry) → clauses/ → effects/ →
-phrases/ (+ modifiers/) → values/; costs/ use mana-scribe. resolvers/ link across sentences
+Levels: CardText → abilities/ → sentences/ (registry of sentence kinds; clauses/ splits a sentence
+into effects without adding nodes) → effects/ → phrases/ (+ modifiers/) → values/; costs/ use
+mana-scribe. resolvers/ link across sentences
 (back-references). evaluators/ runs declarative queries over the tree; tags/ holds the tag queries;
 pie/ holds the color pie inspections.
 
-Status (2026-11-18, modern corpus): 82.1% of cards fully recognized; tag micro precision 98.3%,
-recall 78.9%. Goals and decisions are in `SUCCESS.md`; the tasks that measure them are under
-Development below.
+Status (2026-11-19, modern corpus): 80.1% of cards fully recognized (14,295 of 17,836); tag micro
+precision 98.36%, recall 80.18%. A card counts as recognized only when every trigger event reads
+all of its text, including its subject and object. Of 11,588 trigger events, 11,022 are read, 338
+partly read (a known event with unread text, such as "the end step on your next turn" or the
+result of "transforms into a non-Human creature") and 237 unsupported. A subject such as "this
+creature or another Elf you control" is one phrase with a self branch and an other branch;
+references such as "that creature" point to the whole subject. Triggers also read counter
+placement ("one or more +1/+1 counters are put on", "the fourth plan counter is put on"),
+transforming into the card's other face, and "this turn" on enters and damage events. Phase
+triggers model common main phases, combat, upkeep, draw steps, and end steps, including
+possessive owners such as "each opponent's". Cast triggers retain the spell's source wording and
+report unread spell text, including exclusions such as "other than your first spell each turn".
+Trigger participants include Spacecraft self references, common attack recipients,
+and spells or abilities that target the trigger subject. Cast events also read common spell-target
+restrictions. Zone changes ("one or more cards are put into exile from your library and/or your
+graveyard") record their destination and origin zones, and cast events read origin exclusions
+such as "from anywhere other than your hand". Player actions include activating abilities
+("an opponent activates an ability that isn't a mana ability"), putting counters on a recipient,
+tapping a permanent for mana, dice rolls, dilemmas, proliferate, exert, energy and the Ring
+tempting you; status events include becoming crewed, saddled, plotted, monstrous or
+attached, a Class reaching a level, and day and night changing. A trailing "while …" condition
+(controlling a phrase, total power, the monarch, a counter on the subject, the source's zone) is a
+child of the event; phrases inside it are never antecedents for "it". Enters events read
+"untapped". Attack triggers read coordinated subjects ("this creature and at least two other
+creatures attack"; the companions are a condition, never an antecedent), "this creature or
+equipped creature", "and isn't blocked" and "for the first time each turn". Damage triggers read
+"a source you control" (not an antecedent) and "noncombat damage". Cast triggers read spells
+"with {X} in its mana cost", with or that have a keyword, "that has an Adventure", "with the
+chosen name" or "of the chosen color", kicked spells and "for the first time this turn". The
+middle of "damage … is prevented" is a known gap that still counts as read.
+Goals and decisions are in `SUCCESS.md`. The tasks that measure them are under Development below.
 
 ## How a card is read
 
@@ -47,7 +78,9 @@ plain object each layer extends: `card`, `ability`, `abilities`, `sentence`, `co
 
 ### Oracle
 
-    new Oracle({ keywords, definitions, tags })
+```js
+new Oracle({ keywords, definitions, tags })
+```
 
 - `keywords`: keyword names the parser recognizes as keyword abilities and in "with/without …"
   phrases. Defaults to `DEFAULT_KEYWORDS`, which includes every keyword ability in the keyword
@@ -57,20 +90,22 @@ plain object each layer extends: `card`, `ability`, `abilities`, `sentence`, `co
 
 ### Definitions
 
-    new Oracle({ definitions: {
-        keywords: [
-            { name: 'Siphon', reminder: 'Whenever this creature attacks, each opponent loses {parameter} life.' },
-            { name: 'Typecycling', pattern: /(?<type>[a-z]+)cycling/, reminder: '... a {type} card ...' }
-        ],
-        actions: [
-            { name: 'Investigate', reminder: 'Create a Clue token.' },
-            { name: 'Discover', pattern: /discovers?/, findsRandomCard: true, reminder: '...' },
-            { name: 'Goad', pattern: /goad [^,.]+/ }
-        ],
-        tokens: [{ name: 'Lantern', typeLine: 'Token Artifact — Lantern', reminder: '{1}, Sacrifice this token: Scry 2.' }],
-        noncreatureSubtypes: ['Gizmo'],
-        batchWords: ['lucky']
-    } });
+```js
+new Oracle({ definitions: {
+    keywords: [
+        { name: 'Siphon', reminder: 'Whenever this creature attacks, each opponent loses {parameter} life.' },
+        { name: 'Typecycling', pattern: /(?<type>[a-z]+)cycling/, reminder: '... a {type} card ...' }
+    ],
+    actions: [
+        { name: 'Investigate', reminder: 'Create a Clue token.' },
+        { name: 'Discover', pattern: /discovers?/, findsRandomCard: true, reminder: '...' },
+        { name: 'Goad', pattern: /goad [^,.]+/ }
+    ],
+    tokens: [{ name: 'Lantern', typeLine: 'Token Artifact — Lantern', reminder: '{1}, Sacrifice this token: Scry 2.' }],
+    noncreatureSubtypes: ['Gizmo'],
+    batchWords: ['lucky']
+} });
+```
 
 - `keywords`: a name and reminder text. `pattern` makes one definition cover a family of names;
   its named groups fill `{placeholders}` in the reminder, and `{parameter}` is the keyword's
@@ -128,8 +163,10 @@ New predicate kinds are classes in evaluators/predicates/ registered in order in
 
 ### Tags
 
-    new Oracle({ tags: [{ tag: 'bounce-to-library',
-        match: { kind: 'ReturnEffect', destination: 'library', phrases: { isOpposingObject: true } } }] });
+```js
+new Oracle({ tags: [{ tag: 'bounce-to-library',
+    match: { kind: 'ReturnEffect', destination: 'library', phrases: { isOpposingObject: true } } }] });
+```
 
 Every tag's query is tested against every node; the first match records the tag with its
 sentence as evidence. Tags may build on other tags with `tag:`. A spec with `family` instead of
@@ -137,16 +174,20 @@ sentence as evidence. Tags may build on other tags with `tag:`. A spec with `fam
 
 ### Pie inspections
 
-    new PieInspector({ profiles, inspections, disabled: ['gain-life'] })
+```js
+new PieInspector({ profiles, inspections, disabled: ['gain-life'] })
+```
 
 An inspection is one kind of color pie break:
 
-    { id: 'destroy-creature', title: 'Destroys creatures', group: 'Removal',
-      match: { kind: 'DestroyEffect', phrases: { isOpposingObject: true } },
-      cites: 'Destroy target creature',
-      atLeast: { W: 'tertiary' },
-      allowedWherever: 'loot',
-      exceptions: [ … ] }
+```js
+{ id: 'destroy-creature', title: 'Destroys creatures', group: 'Removal',
+  match: { kind: 'DestroyEffect', phrases: { isOpposingObject: true } },
+  cites: 'Destroy target creature',
+  atLeast: { W: 'tertiary' },
+  allowedWherever: 'loot',
+  exceptions: [ … ] }
+```
 
 - `match` or `tagInspection({ id, tag })`: what the inspection looks for. The first matching node
   on each face is judged.
@@ -207,10 +248,10 @@ Generated data goes to data/ and queues/; review verdicts and baselines are kept
 
 | Command | Does |
 |---|---|
-| `npm run evaluate` | Tags the corpus (`data/predictions.json`) and prints per-tag precision and recall against Scryfall, including parent tags. |
+| `npm run evaluate` | Tags the corpus (`data/predictions.json`) and prints per-tag precision and recall against Scryfall, including parent tags. The tagging summary counts trigger events as read, partial (a known event with text or a phrase it could not read) or unsupported; each card's counts are in its `events` field. |
 | `npm run diagnose -- spans [n]` | Most common text the parser did not recognize. |
 | `npm run diagnose -- fps\|fns <tag> [n]` | Sample of false positives or false negatives for a tag. |
-| `npm run gaps [n]` | Unrecognized text grouped into shapes, ranked by how many cards each alone keeps from full recognition, plus gap families by parser context and the most common opaque effects. Full data in `data/gap-report.json`. |
+| `npm run gaps [n]` | Unrecognized text grouped into shapes, ranked by how many cards each alone keeps from full recognition, plus gap families by parser context and the most common opaque effects. Text a trigger event could not read is labeled `unread <Event> text`, or `unsupported trigger event` when no event pattern matched. Full data in `data/gap-report.json`. |
 | `npm run queues` | Builds the custom-card queue from the projects in `reviews/projects.json` and the Scryfall disagreement queues. Run `evaluate` first. |
 | `npm run review` | Serves the review UI at http://127.0.0.1:5178 (keys: 1 correct, 2 wrong, S skip, Z back, N note). `/ast` explores a card's parse tree, node properties, back-reference links, and the tags and pie inspections matching each node. |
 | `npm run verdicts` | Re-tags every reviewed card and fails if a verdict no longer holds. Disagreements listed in `reviews/known-disagreements.json` are reported as `known`; `-- --accept-known` records the current set. |
@@ -218,11 +259,39 @@ Generated data goes to data/ and queues/; review verdicts and baselines are kept
 | `npm run pie` | Builds per-inspection color profiles and the canon tier table from the modern corpus, then reports how many printed cards each inspection flags. |
 | `npm run pie-gate` | Estimates the wrong-flag rate per color policy from the reviewed `printed-*-pie-flags` queues and checks it against the targets in `SUCCESS.md`. |
 | `npm run pie-verdicts` | Re-inspects every reviewed pie flag and fails if a verdict changed or regressed; `-- --accept` records the baseline. |
+| `npm run ast -- "Card Name"` | Prints one corpus card's parse tree as JSON, with its tags, Scryfall tags and pie flags (the data behind the review UI's `/ast` page). The name is exact and case-insensitive; on a miss it lists cards whose names contain it. Needs `data/corpus.json`. |
+| `npm run ast-fixtures` | Parses the cards in `tasks/ast/fixtures/` and compares each tree with its expected structure. Fails on regressions and on `pending` markers that now pass. |
 | `npm run keyword-canon` | Rebuilds `src/pie/keywordCanon.json` from the `default-cards` dump. |
 | `npm run lint` | Lints src/ and tasks/. |
 
 Canon card colors come from mana costs, or a face's color indicator when it has no cost, so
 devoid cards count in their cost's colors.
+
+### AST fixtures
+
+Each fixture in `tasks/ast/fixtures/` is a YAML file with a card's `name`, `typeLine` and
+`text`, and an `expect` tree describing the structure the parser should produce. The card is
+parsed with a default `Oracle`, independent of the corpus.
+
+```yaml
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: AttacksEvent
+          pending: Plan step 4, the "alone" qualifier is not read.
+          isAlone: true
+```
+
+`kind` must equal the node's class name; leave it out when only the properties matter. Every
+other key is a node property or getter (`children`, `linkedEffects` and `resolved` included),
+compared exactly; lists must have the same length. Properties not listed are ignored.
+Fixtures describe the correct structure, not the current output: a `pending` reason on a node
+covers mismatches in that node and below it, down to the next `pending`. Mismatches outside any
+pending node fail the task, and so does a pending node that now matches, so its marker is
+removed in the change that fixes it.
 
 ### Custom card review
 

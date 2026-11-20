@@ -1,5 +1,15 @@
 const TRIGGERED = 'TriggeredAbility';
 const OWN_DEATH_TRIGGER = { kind: TRIGGERED, context: { granted: false } };
+const PERMANENT_STATIC_TEXT = {
+    card: { isInstantOrSorcery: false },
+    ability: { kind: 'SpellAbility' }
+};
+const RESOLVING_ABILITY = { expansion: null, not: PERMANENT_STATIC_TEXT };
+const REFLEXIVE_TRIGGER = {
+    kind: 'ReflexiveTriggerSentence',
+    previous: { isAdditionalCost: false },
+    context: RESOLVING_ABILITY
+};
 
 export const STRUCTURE_TAGS = [
     {
@@ -12,21 +22,21 @@ export const STRUCTURE_TAGS = [
     },
     {
         tag: 'attack-trigger',
-        match: { kind: TRIGGERED, event: { kind: 'AttacksEvent' } }
+        match: { kind: TRIGGERED, events: { kind: 'AttacksEvent' } }
     },
     {
         tag: 'death-trigger',
-        match: { ...OWN_DEATH_TRIGGER, event: { kind: 'DiesEvent' } }
+        match: { ...OWN_DEATH_TRIGGER, events: { kind: 'DiesEvent' } }
     },
     {
         tag: 'death-trigger-self',
-        match: { ...OWN_DEATH_TRIGGER, event: { kind: 'DiesEvent', isSelf: true } }
+        match: { ...OWN_DEATH_TRIGGER, events: { kind: 'DiesEvent', isSelf: true } }
     },
     {
         tag: 'cast-trigger-you',
         match: {
             kind: TRIGGERED,
-            event: { kind: 'CastEvent', isYou: true, castsSelf: false }
+            events: { kind: 'CastEvent', isYou: true, castsSelf: false, isNext: false }
         }
     },
     {
@@ -34,11 +44,15 @@ export const STRUCTURE_TAGS = [
         match: { kind: TRIGGERED, hasInterveningIf: true }
     },
     {
+        tag: 'reflexive-trigger',
+        match: REFLEXIVE_TRIGGER
+    },
+    {
         tag: 'modal',
         match: { isModal: true }
     },
     {
         tag: 'additional-cost',
-        match: { kind: 'ConditionalStatement', isAdditionalCost: true }
+        match: { kind: 'ConditionalSentence', isAdditionalCost: true }
     }
 ];

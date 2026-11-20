@@ -1,3 +1,5 @@
+import eventCoverage from './eventCoverage.js';
+
 function parseFace(scribe, card, face) {
     return scribe.parseFace({
         name: face.name,
@@ -21,6 +23,7 @@ export default function tagCard(scribe, card) {
         tags: mergeTags(faces),
         recognized: faces.every(face => face.isFullyRecognized),
         unrecognized: faces.flatMap(face => face.unrecognized),
-        opaque: faces.flatMap(face => face.opaque).length
+        opaque: faces.flatMap(face => face.opaque).length,
+        events: eventCoverage(faces)
     };
 }

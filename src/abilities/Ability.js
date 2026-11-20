@@ -1,5 +1,5 @@
 import Parser from '../core/Parser.js';
-import EffectSequence from '../statements/EffectSequence.js';
+import EffectSequence from '../sentences/EffectSequence.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
 
 const ONLY_ONCE = /\bonly once\b(?! each)/i;

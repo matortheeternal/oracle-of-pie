@@ -1,0 +1,20 @@
+name: Rot Farm Mortipede
+set: MKM
+typeLine: Creature — Insect
+text: |-
+  Whenever one or more creature cards leave your graveyard, this creature gets +1/+0 and gains menace and lifelink until end of turn.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: LeavesEvent
+          raw: one or more creature cards leave your graveyard
+          isFromGraveyard: true
+          isRepeatable: true
+          children:
+            - kind: NounPhrase
+              raw: one or more creature cards
+        - kind: EffectSequence

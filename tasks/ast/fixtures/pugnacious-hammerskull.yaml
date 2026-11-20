@@ -1,0 +1,31 @@
+name: Pugnacious Hammerskull
+set: LCI
+typeLine: Creature — Dinosaur
+text: |-
+  Whenever this creature attacks while you don't control another Dinosaur, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          raw: this creature attacks while you don't control another Dinosaur
+          isRecognized: true
+          subjectPhrase:
+            kind: SelfReference
+            raw: this creature
+            references:
+              - kind: BackReference
+                raw: it
+          condition:
+            kind: ControlsCondition
+            raw: while you don't control another Dinosaur
+            isNegated: true
+            controlled:
+              kind: NounPhrase
+              raw: another Dinosaur
+              isConditionOnly: true
+              isAntecedentCandidate: false
+              references: []
+        - kind: EffectSequence

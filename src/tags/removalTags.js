@@ -36,7 +36,7 @@ export const REMOVAL_TAGS = [
                     kind: 'CounterEffect',
                     countersSpell: true,
                     phrases: { controlledByYou: false },
-                    context: { not: { ability: { event: { kind: 'TargetedEvent' } } } }
+                    context: { not: { ability: { events: { kind: 'TargetedEvent' } } } }
                 },
                 {
                     kind: 'ExileEffect',

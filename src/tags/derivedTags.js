@@ -6,7 +6,11 @@ const REMOVAL = [
     'removal-tuck'
 ];
 const ATTACHED_TARGET = {
-    any: [{ phrases: { isAttached: true } }, { subject: { isAttached: true } }]
+    any: [
+        { phrases: { isAttached: true } },
+        { subject: { isAttached: true } },
+        { phrases: { objectType: null, resolved: { isAttached: true } } }
+    ]
 };
 const SINGLE_TARGET = { isTargeted: true, isMass: false };
 const OPPONENTS_GROUP = { isMass: true, controlledByOpponent: true };

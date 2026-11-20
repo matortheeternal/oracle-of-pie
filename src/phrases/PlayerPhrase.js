@@ -12,6 +12,7 @@ const PLAYER_ALTERNATIVES = [
     'its controller',
     'its owner',
     'an opponent',
+    'a player(?! or\\b)',
     'any opponent',
     'defending player',
     'they',
@@ -19,7 +20,8 @@ const PLAYER_ALTERNATIVES = [
     'the chosen player',
     'that (?:creature|spell|permanent)\'s controller',
     'its owner',
-    'your opponents'
+    'your opponents',
+    'one (?:or more )?of your opponents'
 ];
 const PLAYER = new RegExp(
     `^(${PLAYER_ALTERNATIVES.join('|')})\\b`, 'i'

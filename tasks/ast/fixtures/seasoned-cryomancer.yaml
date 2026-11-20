@@ -1,0 +1,26 @@
+name: Seasoned Cryomancer
+set: FRA
+typeLine: Creature — Human Wizard
+text: |-
+  When this creature enters, draw two cards, then discard two cards. When you discard one or more nonland cards this way, tap up to that many target creatures and put a stun counter on each of them.
+  {3}{U}{U}, Exile this card from your graveyard: Draw two cards.
+expect:
+  kind: CardText
+  isRecognized: false
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+            - kind: TriggerSentence
+              children:
+                - kind: OtherEvent
+                  isUnsupported: true
+                  children:
+                    - kind: UnrecognizedText
+                      raw: you discard one or more nonland cards this way
+                - kind: TapEffect
+                - kind: UnrecognizedText
+    - kind: ActivatedAbility

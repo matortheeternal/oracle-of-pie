@@ -1,0 +1,32 @@
+name: Targeting source references
+typeLine: Creature
+text: |-
+  Whenever this creature becomes the target of a spell an opponent controls, counter that spell unless its controller discards a card.
+  When this creature becomes the target of a spell, sacrifice it.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: TargetedEvent
+          objectPhrase:
+            kind: TargetingSource
+            raw: a spell an opponent controls
+            controlledByOpponent: true
+            references:
+              - kind: BackReference
+                raw: that spell
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: TargetedEvent
+          subjectPhrase:
+            kind: SelfReference
+            references:
+              - kind: BackReference
+                raw: it
+          objectPhrase:
+            kind: TargetingSource
+            references: []
+        - kind: EffectSequence

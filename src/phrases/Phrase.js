@@ -5,6 +5,8 @@ export default class Phrase extends Parser {
         super(scribe, match, str);
         Object.defineProperty(this, 'references', { value: [] });
         Object.defineProperty(this, 'owner', { value: null, writable: true });
+        Object.defineProperty(this, 'union', { value: null, writable: true });
+        Object.defineProperty(this, 'isConditionOnly', { value: false, writable: true });
     }
 
     get resolved() {
@@ -12,7 +14,15 @@ export default class Phrase extends Parser {
     }
 
     get isAntecedentCandidate() {
-        return !this.isPlayer;
+        return !this.isPlayer && !this.union && !this.isConditionOnly;
+    }
+
+    markConditionOnly() {
+        this.isConditionOnly = true;
+    }
+
+    joinUnion(union) {
+        this.union = union;
     }
 
     attachTo(effect) {
@@ -82,7 +92,7 @@ export default class Phrase extends Parser {
 
     get isOpposingObject() {
         if (this.refersToSelf || this.controlledByYou) return false;
-        if (this.isCardInZone) return false;
+        if (this.isCardInZone || this.resolved.hasLeftBattlefield) return false;
         return !this.isPlayer;
     }
 

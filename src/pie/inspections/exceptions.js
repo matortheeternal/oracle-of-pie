@@ -54,7 +54,7 @@ export const COMBATANT_REMOVAL = {
     cites: 'Destroy target attacking or blocking creature.'
 };
 
-const PREVENTED_DAMAGE = { event: { kind: 'DamagePreventedEvent' } };
+const PREVENTED_DAMAGE = { events: { kind: 'DamagePreventedEvent' } };
 const PREVENTION_TRIGGERS = [
     { ability: PREVENTED_DAMAGE },
     { delayedTrigger: PREVENTED_DAMAGE }

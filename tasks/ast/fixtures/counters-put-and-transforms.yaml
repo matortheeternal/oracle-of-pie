@@ -1,0 +1,65 @@
+name: Counters put and transforms
+typeLine: Creature
+text: |-
+  Whenever one or more +1/+1 counters are put on this creature for the first time each turn, draw a card.
+  When the fourth plan counter is put on this creature, sacrifice it.
+  Whenever this creature enters or transforms into ~, create a 1/1 white Human creature token.
+  Whenever a creature you control deals combat damage to a player this turn, draw a card.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: CountersPutEvent
+          raw: one or more +1/+1 counters are put on this creature for the first time each turn
+          isRepeatable: true
+          children:
+            - kind: PlacedCounters
+              quantity: one or more
+              ordinal: null
+              counterKind: +1/+1
+              isThreshold: false
+            - kind: SelfReference
+              raw: this creature
+            - kind: FirstTime
+            - kind: TurnWindow
+              isEachTurn: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: CountersPutEvent
+          isRepeatable: false
+          counters:
+            kind: PlacedCounters
+            ordinal: 4
+            counterKind: plan
+            isThreshold: true
+          recipient:
+            kind: SelfReference
+            references:
+              - kind: BackReference
+                raw: it
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CompoundEvent
+          children:
+            - kind: EntersEvent
+              raw: this creature enters
+            - kind: TransformsEvent
+              raw: transforms into ~
+              isRepeatable: false
+              children:
+                - kind: TransformedFace
+                  raw: into ~
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: DealsDamageEvent
+          turnWindow:
+            kind: TurnWindow
+            isThisTurn: true
+        - kind: EffectSequence

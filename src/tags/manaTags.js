@@ -17,6 +17,12 @@ const REPEATED_MANA_TRIGGER = {
     ability: { kind: 'TriggeredAbility', isRepeatable: true }
 };
 const MANA_TOKEN = { tokenDefinitions: { name: ['Treasure', 'Gold', 'Powerstone'] } };
+const SACRIFICE_EVENT = { events: { kind: 'SacrificesEvent' } };
+const MANA_TAP_EVENT = { events: { kind: ['TapsEvent', 'TappedForManaEvent'] } };
+const SACRIFICE_MANA = {
+    ...REPEATED_MANA_TRIGGER,
+    ability: { ...REPEATED_MANA_TRIGGER.ability, ...SACRIFICE_EVENT }
+};
 
 const RAMP_TAGS = [
     'land-ramp', 'mana-dork', 'mana-rock', 'mana-producer', 'ritual', 'combat-ramp'
@@ -25,7 +31,7 @@ const COMBAT_TRIGGER = {
     granted: false,
     ability: {
         kind: 'TriggeredAbility',
-        event: {
+        events: {
             any: [{ kind: 'AttacksEvent' }, { kind: 'DealsDamageEvent', isCombat: true }]
         }
     }
@@ -55,7 +61,10 @@ export const MANA_TAGS = [
         match: {
             kind: 'AddManaEffect',
             card: { isLand: false },
-            context: REPEATED_MANA_TRIGGER
+            context: {
+                ...REPEATED_MANA_TRIGGER,
+                not: { ability: { any: [SACRIFICE_EVENT, MANA_TAP_EVENT] } }
+            }
         }
     },
     {
@@ -80,6 +89,11 @@ export const MANA_TAGS = [
         match: {
             any: [
                 { tag: RAMP_TAGS },
+                {
+                    kind: 'AddManaEffect',
+                    card: { isLand: false },
+                    context: SACRIFICE_MANA
+                },
                 { kind: 'AddManaEffect', context: YOUR_TOKEN_MANA },
                 { kind: 'AddManaEffect', context: GRANTED_MANA }
             ]
