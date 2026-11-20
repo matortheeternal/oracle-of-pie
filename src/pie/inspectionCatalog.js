@@ -1,4 +1,4 @@
-﻿import { COLORS } from './ColorProfile.js';
+import { COLORS } from './ColorProfile.js';
 import PieInspector from './PieInspector.js';
 import EXAMPLES from './inspectionCatalogExamples.json' with { type: 'json' };
 
@@ -20,7 +20,7 @@ function describeInspection(inspection) {
     };
 }
 
-export default function inspectionCatalog() {
+export function getInspectionCatalog() {
     const inspections = PieInspector.createInspections({}).map(describeInspection);
     return { schemaVersion: SCHEMA_VERSION, inspections };
 }

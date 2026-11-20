@@ -154,12 +154,13 @@ inspection's query never walks them. Use it only when every match must name that
 
 ### Inspection catalog
 
-Import the catalog from the npm dependency and call it at build or update time.
+Import the catalog from the npm dependency at build or registration time. The package
+subpath can be bundled for the browser and runs offline.
 
 ```js
-import { inspectionCatalog } from 'oracle-of-pie';
+import { getInspectionCatalog } from 'oracle-of-pie/inspection-catalog';
 
-const catalog = inspectionCatalog();
+const catalog = getInspectionCatalog();
 ```
 
 The result is a plain object with `schemaVersion: 1` and `inspections` in registry
