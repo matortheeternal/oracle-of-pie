@@ -31,9 +31,10 @@ inspections in the [project reference](docs/reference.md).
 ## Corpus results
 
 On the November 2026 corpus of 17,836 modern cards, **80.1%** were fully recognized
-(14,295 cards). Tag evaluation reports precision and recall per tag. The project uses
-reviewed precision of at least 95% as the shipping gate for each suggestion.
-[Project goals and evaluation criteria](SUCCESS.md)
+(14,295 cards).
+
+- [Scryfall tag coverage](docs/tag-coverage.md)
+- [Color-pie inspections and exceptions](docs/pie-inspections.md)
 
 ## Development
 

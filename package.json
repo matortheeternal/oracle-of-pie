@@ -27,6 +27,7 @@
     "tag": "node tasks/tagCorpus.js",
     "score": "node tasks/scoreTags.js",
     "evaluate": "npm run tag && npm run score",
+    "compare-corpus": "node tasks/compareCorpus.js",
     "diagnose": "node tasks/diagnose.js",
     "gaps": "node tasks/gapReport.js",
     "queues": "node tasks/buildCustomQueue.js && node tasks/buildScryfallQueues.js && node tasks/buildPieQueues.js",
