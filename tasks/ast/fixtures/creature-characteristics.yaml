@@ -1,0 +1,16 @@
+name: Startling Development
+typeLine: Instant
+text: Until end of turn, target creature becomes a blue Serpent with base power and toughness 4/4.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: BecomesEffect
+                  setsColor: true
+                  setsPowerToughness: true
+                  isCopy: false

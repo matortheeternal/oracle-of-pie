@@ -41,8 +41,26 @@ const EACH_PLAYER_SACRIFICES = {
     affectsYou: true,
     phrases: { refersToSelf: false }
 };
+const DRAW_FOR_YOU = { kind: 'DrawEffect', drawsCards: true, subjectIsYou: true };
 
 export const SACRIFICE_TAGS = [
+    {
+        tag: 'egg',
+        match: {
+            kind: 'SacrificeCost',
+            phrases: { refersToSelf: true },
+            context: {
+                ...OWN_ACTION.context,
+                card: { isArtifact: true, isCreature: false, isLand: false },
+                ability: {
+                    kind: 'ActivatedAbility',
+                    body: {
+                        sentences: { effects: DRAW_FOR_YOU }
+                    }
+                }
+            }
+        }
+    },
     { tag: 'sacrifice-outlet-creature', match: sacrificeOutlet({ hasType: 'creature' }) },
     { tag: 'sacrifice-outlet-artifact', match: sacrificeOutlet({ hasType: 'artifact' }) },
     { tag: 'sacrifice-outlet-land', match: sacrificeOutlet(LAND) },

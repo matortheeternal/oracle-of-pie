@@ -1,0 +1,14 @@
+name: Clarion Conqueror
+typeLine: Creature
+text: Activated abilities of artifacts, creatures, and planeswalkers can't be activated.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ActivationBanEffect
+                  sourceTypes: [artifact, creature, planeswalker]

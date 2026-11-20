@@ -7,11 +7,14 @@ const EQUIPMENT = /\bEquipment\b/;
 const TYPE_DASH = ' — ';
 
 export default class CardContext {
-    constructor({ name = '', typeLine = '', loyalty = null, faceCount = 1 } = {}) {
+    constructor({
+        name = '', typeLine = '', loyalty = null, faceCount = 1, colors = null
+    } = {}) {
         this.name = name;
         this.typeLine = typeLine;
         this.loyalty = loyalty;
         this.faceCount = faceCount;
+        this.colors = colors;
     }
 
     get isInsert() {

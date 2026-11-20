@@ -1,9 +1,12 @@
 import Effect from './Effect.js';
+import SelfReference from '../phrases/SelfReference.js';
 import Expansion from '../definitions/Expansion.js';
 import CreatedToken from '../phrases/CreatedToken.js';
 import QuotedAbility from '../values/QuotedAbility.js';
 import DealsDamageEvent from '../triggers/DealsDamageEvent.js';
 
+const TOKEN_COPY = /^(?: that's a copy of | cop(?:y|ies) of )/i;
+const COPY_IT = /^it$/i;
 const CREATE = /^creates? /i;
 const SINGLE_TOKEN = /^(?:an?|one) \b[^"]*?\btoken\b/i;
 const CREATURE_TOKEN = /\bcreature tokens?\b/i;
@@ -40,6 +43,10 @@ export default class CreateTokenEffect extends Effect {
     parseArguments(match) {
         const description = this.consumeText(TOKEN_DESCRIPTION);
         this.description = description?.[0] ?? null;
+        const details = description?.[2] ?? '';
+        this.copySource = TOKEN_COPY.test(details)
+            ? details.replace(TOKEN_COPY, '').split(',')[0]
+            : null;
     }
 
     get isComplete() {
@@ -78,6 +85,15 @@ export default class CreateTokenEffect extends Effect {
         if (creator?.player !== 'that player') return null;
         const events = context.ability?.events;
         return events?.length && events.every(damagesDefendingPlayer) ? 'opponent' : null;
+    }
+
+    get copiesExplicitSource() {
+        const source = this.copySource ?? '';
+        return SelfReference.match(this.scribe, source)?.[0].length === source.length;
+    }
+
+    get copiesIt() {
+        return COPY_IT.test(this.copySource ?? '');
     }
 
     get createsCreature() {

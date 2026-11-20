@@ -30,8 +30,8 @@ inspections in the [project reference](docs/reference.md).
 
 ## Corpus results
 
-On the November 2026 corpus of 17,836 modern cards, **80.1%** were fully recognized
-(14,295 cards).
+On the November 2026 corpus of 17,836 modern cards, **80.3%** were fully recognized
+(14,327 cards).
 
 - [Scryfall tag coverage](docs/tag-coverage.md)
 - [Color-pie inspections and exceptions](docs/pie-inspections.md)

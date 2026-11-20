@@ -16,6 +16,10 @@ const OPPOSING_COMBATANT = {
 
 export const COMBAT_RESTRICTION_TAGS = [
     {
+        tag: 'block-additional',
+        match: { kind: 'CombatPermissionEffect', allowsAdditionalBlocks: true }
+    },
+    {
         tag: 'prevent-blocker',
         match: {
             ...DIRECT_COMBAT_BAN,

@@ -5,6 +5,7 @@ const TOKEN_PLAYER_COUNT = new RegExp(
     '^a number of [^"]+\\btokens equal to the number of (?:players|opponents)\\b', 'i'
 );
 const SOURCE_TEXT = { granted: false, expansion: null };
+const ALL_PLAYERS = /^players$/i;
 const OPPOSED_CHOICE = {
     kind: ['EffectSentence', 'ConditionalSentence', 'TriggerSentence'],
     context: SOURCE_TEXT,
@@ -35,7 +36,11 @@ export const PLAYER_TAGS = [
     },
     {
         tag: 'hand-size-increase',
-        match: { kind: 'HandSizeEffect', subjectIsYou: true }
+        match: {
+            kind: 'HandSizeEffect',
+            increasesMaximum: true,
+            any: [{ affectsYou: true }, { actingSubject: { raw: ALL_PLAYERS } }]
+        }
     },
     {
         tag: 'coin-flip',

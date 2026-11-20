@@ -1,0 +1,17 @@
+name: Improvised Arsenal
+typeLine: Artifact
+text: '{4}{R}: Create a token that''s a copy of this Equipment.'
+expect:
+  kind: CardText
+  children:
+    - kind: ActivatedAbility
+      children:
+        - kind: CostList
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CreateTokenEffect
+                  copySource: this Equipment
+                  copiesExplicitSource: true
+                  createsCreature: false

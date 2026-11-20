@@ -163,6 +163,10 @@ export default class NounPhrase extends Phrase {
         return TARGET_DETERMINER.test(this.determiner ?? '');
     }
 
+    get declaresMultipleTargets() {
+        return this.isTargeted && this.count > 1;
+    }
+
     get excludesSelf() {
         return OTHER.test(this.determiner ?? '') || this.qualifiers.includes('other');
     }

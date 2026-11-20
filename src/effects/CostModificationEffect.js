@@ -1,4 +1,7 @@
 import Effect from './Effect.js';
+import {
+    usesCreatureCount, usesOpposingArtifactCount
+} from '../values/quantityDependencies.js';
 
 const COST_CHANGE = /^costs? ((?:\{[^}]+\})+) (less|more) to (cast|activate)\b/i;
 const COST_TAIL_ALTERNATIVES = [
@@ -38,5 +41,19 @@ export default class CostModificationEffect extends Effect {
 
     get isConditional() {
         return this.conditions.length > 0;
+    }
+
+    get usesOpposingArtifactCount() {
+        return this.conditions.some(usesOpposingArtifactCount);
+    }
+
+    get usesCreatureCount() {
+        return this.conditions.some(usesCreatureCount);
+    }
+
+    get increasesCostPerExtraTarget() {
+        return this.modifiesSpellCost && !this.reducesCost && this.conditions.some(
+            condition => condition.toLowerCase() === 'for each target beyond the first'
+        );
     }
 }

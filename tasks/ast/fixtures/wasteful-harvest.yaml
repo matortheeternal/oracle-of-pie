@@ -1,0 +1,22 @@
+﻿name: Wasteful Harvest
+typeLine: Instant
+text: >-
+  Mill five cards. You may put a permanent card from among the cards milled
+  this way into your hand.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: MillEffect
+                  subjectIsYou: true
+            - kind: EffectSentence
+              children:
+                - kind: PutEffect
+                  raw: put a permanent card from among the cards milled this way into your hand
+                  selectsMilledCards: true
+                  toHand: true

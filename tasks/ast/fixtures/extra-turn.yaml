@@ -1,0 +1,25 @@
+name: Extra turn coverage
+typeLine: Sorcery
+text: >-
+  Take an extra turn after this one.
+  Target player takes an extra turn after this one.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ExtraTurnEffect
+                  raw: Take an extra turn after this one
+                  subjectIsYou: true
+            - kind: EffectSentence
+              children:
+                - kind: ExtraTurnEffect
+                  raw: takes an extra turn after this one
+                  subjectIsYou: false
+                  children:
+                    - kind: PlayerPhrase
+                      player: target player

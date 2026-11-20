@@ -1,0 +1,16 @@
+name: Lily Bowen, Raging Grandma
+typeLine: Legendary Creature — Mutant Warrior
+text: At the beginning of your upkeep, double the number of +1/+1 counters on Lily Bowen if its power is 16 or less.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      body:
+        kind: EffectSequence
+        children:
+          - kind: EffectSentence
+            children:
+              - kind: DoubleCountersEffect
+                counterKind: +1/+1
+              - kind: TrailingCondition
+                text: if its power is 16 or less

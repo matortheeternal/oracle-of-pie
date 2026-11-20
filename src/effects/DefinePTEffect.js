@@ -1,4 +1,7 @@
 import Effect from './Effect.js';
+import {
+    usesManaValue, usesCreatureCount, usesOpposingArtifactCount
+} from '../values/quantityDependencies.js';
 
 const DEFINED = '(power and toughness are each|power is|toughness is)';
 const OWNER = '(?:(?:~|this creature)\'s|its)';
@@ -19,6 +22,18 @@ export default class DefinePTEffect extends Effect {
 
     get definesPower() {
         return POWER.test(this.defined);
+    }
+
+    get usesManaValue() {
+        return usesManaValue(this.amount);
+    }
+
+    get usesOpposingArtifactCount() {
+        return usesOpposingArtifactCount(this.amount);
+    }
+
+    get usesCreatureCount() {
+        return usesCreatureCount(this.amount);
     }
 
     get definesToughness() {

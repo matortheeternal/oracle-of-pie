@@ -1,0 +1,24 @@
+name: Split land search
+typeLine: Sorcery
+text: >-
+  Search your library for two basic land cards, put one onto the battlefield tapped
+  and the other into your hand, then shuffle.
+  Search your library for up to two basic land cards, put them onto the battlefield tapped,
+  then shuffle.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: SearchLibraryEffect
+                  toBattlefield: true
+                  splitsBetweenBattlefieldAndHand: true
+            - kind: EffectSentence
+              children:
+                - kind: SearchLibraryEffect
+                  toBattlefield: true
+                  splitsBetweenBattlefieldAndHand: false

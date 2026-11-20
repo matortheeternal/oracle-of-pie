@@ -10,6 +10,12 @@ const OPPOSING_CREATURE = { isOpposingObject: true, hasType: 'creature' };
 const REMOVING_EFFECTS = ['DestroyEffect', 'ExileEffect', 'ReturnEffect', 'DamageEffect'];
 const OPPOSING_FLYERS = { requiresKeyword: 'flying', controlledByYou: false };
 const OPPOSING_SPELL = { hasType: 'spell', controlledByYou: false };
+const OPPOSING_COUNTER = {
+    kind: 'CounterEffect',
+    countersSpell: true,
+    phrases: { controlledByYou: false }
+};
+const NON_WARD_COUNTER = { not: { ability: { events: { kind: 'TargetedEvent' } } } };
 const COUNTERED_THIS_WAY = /^if that spell is countered this way$/i;
 const SPELL_ONLY = {
     any: [
@@ -48,10 +54,8 @@ export const REMOVAL_TAGS = [
         match: {
             any: [
                 {
-                    kind: 'CounterEffect',
-                    countersSpell: true,
-                    phrases: { controlledByYou: false },
-                    context: { not: { ability: { events: { kind: 'TargetedEvent' } } } }
+                    ...OPPOSING_COUNTER,
+                    context: NON_WARD_COUNTER
                 },
                 {
                     kind: 'ExileEffect',
@@ -59,6 +63,14 @@ export const REMOVAL_TAGS = [
                 },
                 { kind: ['ReturnEffect', 'TuckEffect'], phrases: OPPOSING_SPELL }
             ]
+        }
+    },
+    {
+        tag: 'counterspell-soft',
+        match: {
+            ...OPPOSING_COUNTER,
+            offersPayment: true,
+            context: { ...NON_WARD_COUNTER, expansion: null }
         }
     },
     {

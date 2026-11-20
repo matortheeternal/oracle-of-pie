@@ -1,6 +1,9 @@
 import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
+import {
+    scalesAmountWithManaValue, usesCreatureCount
+} from '../values/quantityDependencies.js';
 
 const DEALS = /^deals? /i;
 const COUNT = `(${NUMBER_PATTERN}|that much|twice that much|N)`;
@@ -17,6 +20,7 @@ const EACH_OF = /^each of /i;
 const EQUAL_TO = /^equal to [^,.]+/i;
 const PING_LIMIT = 2;
 const CREATURE_STAT = /\b(?:power|toughness)\b/i;
+const SOURCE_POWER_OWNERS = ['its', '~\'s', 'this creature\'s'];
 
 export default class DamageEffect extends Effect {
     static get pattern() {
@@ -26,7 +30,7 @@ export default class DamageEffect extends Effect {
     parseArguments(match) {
         const amount = this.consumeText(AMOUNT);
         this.amountText = amount?.[0] ?? null;
-        this.isPowerBased = Boolean(amount?.[2]);
+        this.powerOwner = amount?.[2]?.toLowerCase() ?? null;
         this.targets = this.consumeText(TO_TARGETS) ? this.consumeTargets() : null;
         const scaling = this.consumeText(FOR_EACH) ?? this.consumeText(EQUAL_TO);
         this.scalingText = scaling?.[0] ?? null;
@@ -44,6 +48,24 @@ export default class DamageEffect extends Effect {
 
     get scalesWithCreatureStats() {
         return CREATURE_STAT.test(`${this.amountText} ${this.scalingText}`);
+    }
+
+    get isPowerBased() {
+        return Boolean(this.powerOwner);
+    }
+
+    get usesSourcePower() {
+        return SOURCE_POWER_OWNERS.includes(this.powerOwner)
+            && Boolean(this.actingSubject?.refersToSelf);
+    }
+
+    get usesManaValue() {
+        return scalesAmountWithManaValue(this.amountText)
+            || scalesAmountWithManaValue(this.scalingText);
+    }
+
+    get usesCreatureCount() {
+        return usesCreatureCount(this.scalingText);
     }
 
     get isPing() {

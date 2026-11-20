@@ -14,7 +14,7 @@ const ATTACHED_TARGET = {
 };
 const SINGLE_TARGET = { isTargeted: true, isMass: false };
 const OPPONENTS_GROUP = { isMass: true, controlledByOpponent: true };
-const REPEATABLE_ABILITY = { isRepeatable: true, isUltimate: false };
+export const REPEATABLE_ABILITY = { isRepeatable: true, isUltimate: false };
 const REPEATABLE_CONTEXT = {
     card: { isInstantOrSorcery: false },
     delayedTrigger: null,
@@ -45,7 +45,7 @@ const MODE_NOT_USED_BEFORE = /\bhasn't been chosen\b(?! this turn)/i;
 const ATTACHED_DEATH = { kind: 'DiesEvent', subjectPhrase: { isAttached: true } };
 const UNKNOWN_ENTRANT = { kind: 'EntersEvent', subjectPhrase: null };
 const SINGLE_USE_MODES = { kind: 'ChooseModesEffect', raw: MODE_NOT_USED_BEFORE };
-const REPEATABLE_SOURCE = {
+export const REPEATABLE_SOURCE = {
     ...REPEATABLE_CONTEXT,
     ...OWN_ABILITY,
     any: [
@@ -89,7 +89,6 @@ const REPEATABLE_LIBRARY_ACTION = {
     affectsYou: true,
     context: REPEATABLE_SOURCE
 };
-const TOP_OF_YOUR_LIBRARY = { kind: 'LookAtTopEffect', looksInYourLibrary: true };
 const GRANTING_EFFECTS = ['GrantEffect', 'ModifyPTEffect'];
 const LASTING_GRANT = { ...STATIC_GRANT, expansion: null };
 
@@ -233,52 +232,6 @@ export const DERIVED_TAGS = [
         match: {
             ...REPEATABLE_TOKEN,
             createsArtifact: true
-        }
-    },
-    {
-        tag: 'impulsive-draw',
-        match: {
-            kind: 'PlayCardsEffect',
-            subjectIsYou: true,
-            phrases: { kind: 'BackReference', objectType: 'card' },
-            context: {
-                ...OWN_ABILITY,
-                sentence: {
-                    previous: {
-                        effects: { ...TOP_OF_YOUR_LIBRARY, verb: 'exile' }
-                    }
-                }
-            },
-            any: [
-                { duration: { isTemporary: true } },
-                { context: { condition: { isDuration: true } } }
-            ]
-        }
-    },
-    {
-        tag: 'repeatable-impulse',
-        match: {
-            kind: 'PutEffect',
-            destination: 'into your hand',
-            context: {
-                ...REPEATABLE_SOURCE,
-                sentence: {
-                    previous: {
-                        effects: { ...TOP_OF_YOUR_LIBRARY, verb: 'look' }
-                    }
-                }
-            }
-        }
-    },
-    {
-        tag: 'plunder',
-        match: {
-            tag: 'draw',
-            affectsYou: true,
-            context: {
-                ...OWN_ABILITY,
-                ability: { cost: { sacrificesOther: true } }
-            }
         }
     }
 ];

@@ -1,14 +1,5 @@
 import eventCoverage from './eventCoverage.js';
-
-function parseFace(scribe, card, face) {
-    return scribe.parseFace({
-        name: face.name,
-        typeLine: face.type_line ?? card.type_line ?? '',
-        text: face.oracle_text ?? '',
-        loyalty: face.loyalty ?? null,
-        faceCount: card.faces.length
-    });
-}
+import parsePrintedFace from './parsePrintedFace.js';
 
 function mergeTags(faces) {
     const tags = {};
@@ -18,7 +9,7 @@ function mergeTags(faces) {
 }
 
 export default function tagCard(scribe, card) {
-    const faces = card.faces.map(face => parseFace(scribe, card, face));
+    const faces = card.faces.map(face => parsePrintedFace(scribe, card, face));
     return {
         tags: mergeTags(faces),
         recognized: faces.every(face => face.isFullyRecognized),

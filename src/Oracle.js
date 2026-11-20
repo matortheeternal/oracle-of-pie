@@ -67,8 +67,9 @@ export default class Oracle {
         return cardText;
     }
 
-    parseFace({ name = '', typeLine = '', text = '', loyalty = null, faceCount = 1 }) {
-        const card = new CardContext({ name, typeLine, loyalty, faceCount });
+    parseFace({ text = '', ...metadata }) {
+        const card = new CardContext(metadata);
+        const { name } = card;
         const parsed = this.parseText(normalizeCardText(text, name));
         const locator = new TextLocator(text, name);
         return new ParsedCard(card, parsed, this.tagLibrary, locator);

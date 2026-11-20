@@ -10,6 +10,7 @@ const CONDITION_ALTERNATIVES = [
     'if you don\'t',
     'otherwise',
     'during your turn',
+    'during your next turn',
     'during each of your turns',
     'for each [^,]+',
     'until end of turn',
@@ -29,7 +30,7 @@ const CAST_FOR_ALTERNATIVE_COST = /\bcast (this spell|~) for its [a-z]+ cost\b/i
 const SPENT_COLOR = /\{([WUBRG])\}(?:\{\1\})* was spent to cast/;
 const KICKED = /\bwas kicked\b/i;
 const NAMED_KICKER = /\bkicked with its ((?:\{[^}]+\})+) kicker\b/i;
-const DURATION = /^until /i;
+const DURATION = /^(?:until |during your next turn$)/i;
 const FOR_EACH = /^for each /i;
 const IF_YOU_DO = /^if you do$|^if you [a-z]+ [^,]* this way$/i;
 const INTERVENING_IF = /^if (?!you do\b|you don't\b)/i;

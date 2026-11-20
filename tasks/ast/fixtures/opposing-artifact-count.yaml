@@ -1,0 +1,20 @@
+name: Opposing artifact quantities
+typeLine: Creature
+text: >-
+  This spell costs {X} less to cast, where X is the greatest number of artifacts an opponent controls.
+  This spell costs {1} less to cast for each artifact you control.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+                  usesOpposingArtifactCount: true
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+                  usesOpposingArtifactCount: false

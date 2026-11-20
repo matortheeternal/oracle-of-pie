@@ -1,0 +1,22 @@
+name: Craterhoof Behemoth
+typeLine: Creature — Beast
+text: When this creature enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      body:
+        sentences:
+          - kind: EffectSentence
+            effects:
+              - kind: GrantEffect
+                subject:
+                  kind: NounPhrase
+                  controlledByYou: true
+              - kind: ModifyPTEffect
+                modifier:
+                  kind: PTModifier
+                  raw: +X/+X
+            trailingCondition:
+              kind: TrailingCondition
+              text: where X is the number of creatures you control

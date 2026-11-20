@@ -1,5 +1,8 @@
 import Effect from './Effect.js';
 import Amount from '../values/Amount.js';
+import {
+    scalesAmountWithManaValue, usesCreatureCount
+} from '../values/quantityDependencies.js';
 
 const DRAW = /^draws? /i;
 const BURST_COUNT = 3;
@@ -23,6 +26,14 @@ export default class DrawEffect extends Effect {
 
     get drawsCards() {
         return !this.changesDrawSource;
+    }
+
+    get usesManaValue() {
+        return scalesAmountWithManaValue(this.cards);
+    }
+
+    get usesCreatureCount() {
+        return usesCreatureCount(this.cards);
     }
 
     get parts() {

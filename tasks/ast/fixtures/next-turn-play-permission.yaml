@@ -1,0 +1,24 @@
+name: Galvanic Relay
+typeLine: Sorcery
+text: >-
+  Exile the top card of your library.
+  During your next turn, you may play that card.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: LookAtTopEffect
+                  verb: exile
+                  looksInYourLibrary: true
+            - kind: ConditionalSentence
+              condition: During your next turn
+              isDuration: true
+              children:
+                - kind: PlayCardsEffect
+                  subjectIsYou: true
+                  isOptional: true

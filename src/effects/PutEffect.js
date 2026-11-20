@@ -11,7 +11,8 @@ const DESTINATION_ALTERNATIVES = [
     'into (?:your|their|its owner\'s) library [^,.]+'
 ];
 const DESTINATION = new RegExp(
-    `^(?:from [^,.]+? )?(${DESTINATION_ALTERNATIVES.join('|')})`, 'i'
+    '^(?:(?<source>from [^,.]+?) )?'
+    + `(?<destination>${DESTINATION_ALTERNATIVES.join('|')})`, 'i'
 );
 const PUT_TAIL_ALTERNATIVES = [
     'tapped', 'and attacking', 'under your control', 'transformed', 'attacking',
@@ -23,6 +24,7 @@ const REST_ALTERNATIVES = [
 ];
 const REST = new RegExp(`^,? ?and (?:${REST_ALTERNATIVES.join('|')}) `, 'i');
 const ORDER = /^in (?:a random|any) order/i;
+const MILLED_SOURCE = /^from among (?:the milled cards|the cards milled this way)$/i;
 
 export default class PutEffect extends ObjectEffect {
     static get pattern() {
@@ -31,7 +33,9 @@ export default class PutEffect extends ObjectEffect {
 
     parseArguments(match) {
         super.parseArguments(match);
-        this.destination = this.consumeText(DESTINATION)?.[1].toLowerCase() ?? null;
+        const destination = this.consumeText(DESTINATION)?.groups;
+        this.source = destination?.source?.toLowerCase() ?? null;
+        this.destination = destination?.destination.toLowerCase() ?? null;
         while (this.consumeText(PUT_TAIL)) continue;
         this.restDestination = this.consumeRest();
     }
@@ -42,7 +46,7 @@ export default class PutEffect extends ObjectEffect {
         const destination = this.consumeText(DESTINATION);
         if (!destination) this.remainingStr = start;
         this.consumeText(ORDER);
-        return destination?.[1].toLowerCase() ?? null;
+        return destination?.groups.destination.toLowerCase() ?? null;
     }
 
     get isComplete() {
@@ -59,6 +63,10 @@ export default class PutEffect extends ObjectEffect {
 
     get sendsRestToGraveyard() {
         return Boolean(this.restDestination?.includes('graveyard'));
+    }
+
+    get selectsMilledCards() {
+        return MILLED_SOURCE.test(this.source ?? '');
     }
 
     get toHand() {

@@ -1,6 +1,14 @@
 import ObjectEffect from './ObjectEffect.js';
 import ZoneModifier from '../phrases/modifiers/ZoneModifier.js';
 
+const SPELL_OR_CARD_REFERENCE = /^this (?:spell|card)$/i;
+
+function isBattlefieldSource(phrase) {
+    const source = phrase.resolved;
+    return source.refersToSelf && !source.isCardInZone && !source.hasLeftBattlefield
+        && !SPELL_OR_CARD_REFERENCE.test(source.raw);
+}
+
 const RETURN = /^returns? /i;
 const DESTINATION_ALTERNATIVES = [
     '(its owner\'s|their owners\'|their owner\'s|your|its) hands?',
@@ -70,6 +78,10 @@ export default class ReturnEffect extends ObjectEffect {
 
     get isBounce() {
         return this.destination === 'hand' && !this.fromGraveyard;
+    }
+
+    get bouncesSource() {
+        return this.isBounce && this.phrases.some(isBattlefieldSource);
     }
 
     get removesPermanently() {

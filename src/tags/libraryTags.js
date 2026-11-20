@@ -13,6 +13,10 @@ const REPLACE_SACRIFICED_LANDS = {
 };
 
 const SEARCH = { kind: 'SearchLibraryEffect' };
+const SACRIFICES_LAND = {
+    kind: 'SacrificeEffect',
+    phrases: { hasExactType: 'land' }
+};
 
 export const LIBRARY_TAGS = [
     {
@@ -72,6 +76,21 @@ export const LIBRARY_TAGS = [
                     affectsYou: true,
                     card: { isLand: false }
                 }
+            ]
+        }
+    },
+    {
+        tag: 'multi-land-ramp',
+        match: {
+            tag: 'land-ramp',
+            any: [
+                {
+                    ...SEARCH,
+                    splitsBetweenBattlefieldAndHand: false,
+                    phrases: { count: [2, 3, 4, 5] },
+                    context: { not: { ability: { body: { effects: SACRIFICES_LAND } } } }
+                },
+                { kind: 'ExtraLandEffect', count: 2 }
             ]
         }
     },

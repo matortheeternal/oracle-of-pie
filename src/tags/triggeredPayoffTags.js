@@ -31,6 +31,23 @@ function payoff(effects) {
 
 export const TRIGGERED_PAYOFF_TAGS = [
     {
+        tag: 'opaline-effect',
+        match: {
+            ...SOURCE_TRIGGER,
+            events: {
+                kind: 'TargetedEvent',
+                unreadText: null,
+                objectPhrase: { controlledByOpponent: true },
+                any: [
+                    { isSelf: true },
+                    { isYou: true },
+                    { subjectPhrase: { controlledByYou: true } }
+                ]
+            },
+            body: payoff({ kind: 'DrawEffect', drawsCards: true, subjectIsYou: true })
+        }
+    },
+    {
         tag: 'soul-warden-ability',
         match: {
             ...SOURCE_TRIGGER,

@@ -1,0 +1,25 @@
+name: Copy restrictions
+typeLine: Instant
+text: >-
+  Copy target instant or sorcery spell.
+  Copy target artifact or instant spell.
+  Copy target instant card in a graveyard.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CopyEffect
+                  copiesInstantOrSorcery: true
+            - kind: EffectSentence
+              children:
+                - kind: CopyEffect
+                  copiesInstantOrSorcery: false
+            - kind: EffectSentence
+              children:
+                - kind: CopyEffect
+                  copiesInstantOrSorcery: false

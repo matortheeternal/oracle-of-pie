@@ -1,0 +1,25 @@
+name: Battlefield source return
+typeLine: Creature
+text: >-
+  Return this creature to its owner's hand.
+  Return another creature you control to its owner's hand.
+  Return this card from your graveyard to your hand.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ReturnEffect
+                  bouncesSource: true
+            - kind: EffectSentence
+              children:
+                - kind: ReturnEffect
+                  bouncesSource: false
+            - kind: EffectSentence
+              children:
+                - kind: ReturnEffect
+                  bouncesSource: false

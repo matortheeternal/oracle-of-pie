@@ -1,0 +1,12 @@
+name: Exponential Growth
+typeLine: Sorcery
+text: Until end of turn, double target creature's power X times.
+expect:
+  kind: CardText
+  effects:
+    - kind: DoublePowerEffect
+      doublesToughness: false
+      repeatsForX: true
+      phrases:
+        - kind: NounPhrase
+          isTargeted: true
