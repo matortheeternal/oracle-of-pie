@@ -19,9 +19,15 @@ import { DERIVED_TAGS } from './derivedTags.js';
 import { KEYWORD_GRANT_TAGS } from './keywordGrantTags.js';
 import { KEYWORD_FAMILY_TAGS } from './keywordFamilyTags.js';
 import { MANA_TAGS } from './manaTags.js';
+import { MANA_SINK_TAGS } from './manaSinkTags.js';
 import { SACRIFICE_TAGS } from './sacrificeTags.js';
 import { PLAYER_TAGS } from './playerTags.js';
 import { SPELL_TAGS } from './spellTags.js';
+import { ATTACK_TAGS } from './attackTags.js';
+import { CRIME_TAGS } from './crimeTags.js';
+import { SOURCE_CASTING_TAGS } from './sourceCastingTags.js';
+import { CASTING_MANA_TAGS } from './castingManaTags.js';
+import { ENTRY_TAGS } from './entryTags.js';
 
 export const DEFAULT_TAG_SPECS = [
     ...REMOVAL_TAGS,
@@ -43,9 +49,15 @@ export const DEFAULT_TAG_SPECS = [
     ...KEYWORD_GRANT_TAGS,
     ...KEYWORD_FAMILY_TAGS,
     ...MANA_TAGS,
+    ...MANA_SINK_TAGS,
     ...SACRIFICE_TAGS,
     ...PLAYER_TAGS,
     ...SPELL_TAGS,
+    ...ATTACK_TAGS,
+    ...CRIME_TAGS,
+    ...SOURCE_CASTING_TAGS,
+    ...CASTING_MANA_TAGS,
+    ...ENTRY_TAGS,
     ...STRUCTURE_TAGS,
     ...DERIVED_TAGS
 ];

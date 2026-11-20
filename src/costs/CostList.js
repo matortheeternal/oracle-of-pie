@@ -41,6 +41,10 @@ export default class CostList extends Parser {
         return this.items.reduce((sum, item) => sum + item.manaValue, 0);
     }
 
+    manaValueAtLeast(minimum) {
+        return this.manaValue >= minimum;
+    }
+
     get hasVariableMana() {
         return this.items.some(item => item.hasVariableMana);
     }
