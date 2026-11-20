@@ -1,4 +1,5 @@
 import ObjectEffect from './ObjectEffect.js';
+import ZoneModifier from '../phrases/modifiers/ZoneModifier.js';
 
 const RETURN = /^returns? /i;
 const DESTINATION_ALTERNATIVES = [
@@ -10,6 +11,7 @@ const DESTINATION = new RegExp(
     `^to (?:${DESTINATION_ALTERNATIVES.join('|')})`, 'i'
 );
 const FROM_GRAVEYARD = /^from (?:your|a|their|its owner's) graveyards? /i;
+const OR_FROM_EXILE = /^or (?=from exile\b)/i;
 const RETURN_TAIL_ALTERNATIVES = [
     'tapped',
     'and attacking',
@@ -33,10 +35,20 @@ export default class ReturnEffect extends ObjectEffect {
     parseArguments(match) {
         super.parseArguments(match);
         this.source = this.consumeText(FROM_GRAVEYARD) ? 'graveyard' : null;
+        this.alternativeSource = this.consumeAlternativeSource();
         const destination = this.consumeText(DESTINATION);
         this.destination = this.destinationOf(destination);
         this.manner = [];
         while (this.consumeTail()) continue;
+    }
+
+    consumeAlternativeSource() {
+        if (!this.fromGraveyard || !this.consumeText(OR_FROM_EXILE)) return null;
+        return this.consume([ZoneModifier]);
+    }
+
+    get parts() {
+        return [...super.parts, this.alternativeSource].filter(Boolean);
     }
 
     destinationOf(match) {

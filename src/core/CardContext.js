@@ -14,6 +14,10 @@ export default class CardContext {
         this.faceCount = faceCount;
     }
 
+    get isInsert() {
+        return this.typeLine === 'Card';
+    }
+
     get isSingleFaced() {
         return this.faceCount === 1;
     }

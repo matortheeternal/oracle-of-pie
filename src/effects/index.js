@@ -26,6 +26,7 @@ import CantEffect from './CantEffect.js';
 import ChooseModesEffect from './ChooseModesEffect.js';
 import ChooseValueEffect from './ChooseValueEffect.js';
 import ChooseObjectsEffect from './ChooseObjectsEffect.js';
+import EntersUnderOpponentControlEffect from './EntersUnderOpponentControlEffect.js';
 import EntersTappedEffect from './EntersTappedEffect.js';
 import PayManaEffect from './PayManaEffect.js';
 import PayLifeEffect from './PayLifeEffect.js';
@@ -66,6 +67,7 @@ import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
+import EndTurnOrCombatEffect from './EndTurnOrCombatEffect.js';
 
 export const EFFECT_PARSERS = [
     DigUntilEffect, TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect,
@@ -78,13 +80,15 @@ export const EFFECT_PARSERS = [
     MoveCountersEffect, RemoveCountersEffect,
     KeywordActionEffect, AddManaEffect, CantEffect, EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
+    EntersUnderOpponentControlEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
-    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect, OpaqueEffect
+    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
+    EndTurnOrCombatEffect, OpaqueEffect
 ];
 
 export {
@@ -102,5 +106,6 @@ export {
     DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
-    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect, OpaqueEffect
+    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
+    EndTurnOrCombatEffect, OpaqueEffect
 };

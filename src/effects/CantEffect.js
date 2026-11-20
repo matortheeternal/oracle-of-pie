@@ -2,6 +2,7 @@ import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 
 const CANT_ALTERNATIVES = [
+    'attack, block, or (?:crew Vehicles|transform)\\b',
     'attack or block',
     'attack',
     'block',
@@ -29,9 +30,11 @@ const CANT_QUALIFIERS = [
 const UNBLOCKABLE = /^can't be blocked(?! by)(?![^.]*\bexcept\b)/i;
 const NEXT_UNTAP = /^untap during [^,.]*\bnext\b/;
 const EXCEPT_BY = /\bexcept by ([^,.]+)/i;
+const COMBINED_COMBAT_BAN = /^attack(?: or block|, block, or )/;
+const RESTRICTION_END = /^(?:$|and\b|,)/i;
 const CANT = new RegExp(
     `^(?:can't|cannot|doesn't|don't) (${CANT_ALTERNATIVES.join('|')})`
-        + `(?: (?:${CANT_QUALIFIERS.join('|')}))*`,
+        + `((?: (?:${CANT_QUALIFIERS.join('|')}))*)`,
     'i'
 );
 
@@ -42,6 +45,7 @@ export default class CantEffect extends Effect {
 
     parseArguments(match) {
         this.restriction = match[1].toLowerCase();
+        this.qualifier = match[2].trim().toLowerCase() || null;
         this.exceptionText = match[0].match(EXCEPT_BY)?.[1] ?? null;
         this.excepted = this.parseExcepted();
     }
@@ -63,6 +67,23 @@ export default class CantEffect extends Effect {
 
     get makesUnblockable() {
         return UNBLOCKABLE.test(this.raw);
+    }
+
+    get preventsAttacking() {
+        return this.restriction === 'attack' || this.preventsAttackingAndBlocking;
+    }
+
+    get preventsBlocking() {
+        return this.restriction === 'block' || this.preventsAttackingAndBlocking;
+    }
+
+    get preventsAttackingAndBlocking() {
+        return COMBINED_COMBAT_BAN.test(this.restriction);
+    }
+
+    get isDirectBan() {
+        return (this.qualifier === null || this.qualifier === 'this turn')
+            && RESTRICTION_END.test(this.remainingStr);
     }
 
     get preventsNextUntap() {

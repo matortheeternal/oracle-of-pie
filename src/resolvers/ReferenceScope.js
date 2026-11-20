@@ -1,3 +1,5 @@
+import GrantEffect from '../effects/GrantEffect.js';
+import CreateTokenEffect from '../effects/CreateTokenEffect.js';
 import Effect from '../effects/Effect.js';
 import Phrase from '../phrases/Phrase.js';
 import QuotedAbility from '../values/QuotedAbility.js';
@@ -48,6 +50,8 @@ export default class ReferenceScope {
         for (const seed of node.referenceSeeds ?? []) this.register(seed, null);
         if (node instanceof Phrase) this.register(node, owner);
         this.visitChildren(node, owner);
+        if (node instanceof CreateTokenEffect && node.createdToken)
+            this.register(node.createdToken, node);
     }
 
     visitChildren(node, owner) {
@@ -67,9 +71,22 @@ export default class ReferenceScope {
     }
 
     antecedentFor(reference) {
+        const antecedent = this.existingAntecedentFor(reference);
+        const owner = reference.owner;
+        if (!(owner instanceof GrantEffect) || owner.subject !== reference)
+            return antecedent;
+        if (antecedent && !antecedent.refersToSelf) return antecedent;
+        const latest = this.candidates.at(-1);
+        if (latest?.isCreatedToken && latest.acceptsReference(reference.reference))
+            return latest;
+        return antecedent;
+    }
+
+    existingAntecedentFor(reference) {
         for (let i = this.candidates.length - 1; i >= 0; i--) {
             const candidate = this.candidates[i].resolved;
-            if (candidate === reference || !reference.accepts(candidate)) continue;
+            if (candidate.isCreatedToken || candidate === reference) continue;
+            if (!reference.accepts(candidate)) continue;
             if (candidate.refersToSelf && this.counterpart
                 && reference.reference === 'that creature')
                 return this.counterpart.resolved;

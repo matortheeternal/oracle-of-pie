@@ -18,7 +18,11 @@ export const STRUCTURE_TAGS = [
     },
     {
         tag: 'activated-ability',
-        match: { kind: 'ActivatedAbility', context: { granted: false } }
+        match: {
+            kind: 'ActivatedAbility',
+            context: { granted: false },
+            card: { isInsert: false }
+        }
     },
     {
         tag: 'attack-trigger',

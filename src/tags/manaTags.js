@@ -37,6 +37,11 @@ const COMBAT_TRIGGER = {
     }
 };
 
+const COMBAT_MANA_TOKEN = {
+    kind: 'CreateTokenEffect', ...MANA_TOKEN, context: COMBAT_TRIGGER
+};
+const CONTROLLER_RECIPIENT = { subject: { isObjectController: true } };
+
 export const MANA_TAGS = [
     {
         tag: 'mana-dork',
@@ -72,7 +77,7 @@ export const MANA_TAGS = [
         match: {
             any: [
                 { kind: 'AddManaEffect', context: COMBAT_TRIGGER },
-                { kind: 'CreateTokenEffect', ...MANA_TOKEN, context: COMBAT_TRIGGER }
+                { ...COMBAT_MANA_TOKEN, not: CONTROLLER_RECIPIENT }
             ]
         }
     },
@@ -89,6 +94,7 @@ export const MANA_TAGS = [
         match: {
             any: [
                 { tag: RAMP_TAGS },
+                { ...COMBAT_MANA_TOKEN, ...CONTROLLER_RECIPIENT },
                 {
                     kind: 'AddManaEffect',
                     card: { isLand: false },

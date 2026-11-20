@@ -77,15 +77,22 @@ export default class Effect extends Parser {
         return false;
     }
 
+    get actingSubject() {
+        return this.subject ?? this.inheritedSubject ?? null;
+    }
+
     get subjectIsOpponent() {
-        return Boolean(this.subject?.isPlayer && this.subject.canBeOpponent);
+        const subject = this.actingSubject;
+        return Boolean(subject?.isPlayer && subject.canBeOpponent);
     }
 
     get affectsYou() {
-        return !this.subject || Boolean(this.subject.includesYou);
+        const subject = this.actingSubject;
+        return !subject || Boolean(subject.includesYou);
     }
 
     get subjectIsYou() {
-        return !this.subject || Boolean(this.subject.isPlayer && this.subject.isYou);
+        const subject = this.actingSubject;
+        return !subject || Boolean(subject.isPlayer && subject.isYou);
     }
 }

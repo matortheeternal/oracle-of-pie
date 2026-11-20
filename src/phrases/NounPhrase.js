@@ -137,6 +137,11 @@ export default class NounPhrase extends Phrase {
         return this.typeGroups.some(group => isLoneType(group, type));
     }
 
+    hasTypeConjunction(conjunction) {
+        const types = conjunction.split(' ');
+        return this.typeGroups.some(group => types.every(type => group.includes(type)));
+    }
+
     isAdjectivalType(type) {
         return ADJECTIVAL_TYPES.has(type);
     }
@@ -160,6 +165,10 @@ export default class NounPhrase extends Phrase {
 
     get excludesSelf() {
         return OTHER.test(this.determiner ?? '') || this.qualifiers.includes('other');
+    }
+
+    get isBoundedByPreviousCount() {
+        return this.determiner === 'up to that many';
     }
 
     get isMass() {

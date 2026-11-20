@@ -6,7 +6,11 @@ export const CREATURE_TAGS = [
         match: {
             any: [
                 { kind: 'KeywordAbility', keywords: { names: 'lifelink' } },
-                { kind: 'GainLifeEffect', subjectIsYou: true }
+                {
+                    kind: 'GainLifeEffect',
+                    subjectIsYou: true,
+                    context: { not: { sentence: { replacesLifeGain: true } } }
+                }
             ]
         }
     },

@@ -1,6 +1,12 @@
 const MINIMUM_MANA = 3;
 const BOAST = /^boast$/i;
 const RESTRICTED_ACTIVATION = /^activate (?:only|this ability only) (?!as a sorcery$)/i;
+const EXILES_ENCHANTED_OBJECT = {
+    kind: 'ExileEffect',
+    isTemporary: false,
+    isOptional: false,
+    phrases: { resolved: { kind: 'AttachedReference', isEnchanted: true } }
+};
 
 const REUSABLE_MANA_COST = {
     isRecognized: true,
@@ -32,7 +38,22 @@ export const MANA_SINK_TAGS = [
                 condition: null,
                 sentence: { trailingCondition: null },
                 ability: MANA_SINK_ACTIVATION,
-                not: { abilities: { kind: 'AbilityWordAbility', abilityWord: BOAST } }
+                not: {
+                    any: [
+                        { abilities: { kind: 'AbilityWordAbility', abilityWord: BOAST } },
+                        {
+                            card: { hasSubtype: 'Aura' },
+                            ability: {
+                                body: {
+                                    sentences: {
+                                        isConditional: false,
+                                        effects: EXILES_ENCHANTED_OBJECT
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
             }
         }
     }

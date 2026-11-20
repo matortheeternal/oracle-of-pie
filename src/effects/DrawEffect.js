@@ -5,6 +5,7 @@ const DRAW = /^draws? /i;
 const BURST_COUNT = 3;
 const FOR_EACH = /\bfor each\b/i;
 const CARDS = /^(?:additional )?cards?\b(?: for each [^,.]+)?/i;
+const DRAW_SOURCE_REPLACEMENT = /^from (?:the [^,.]+?) rather than (?:the [^,.]+)\b/i;
 const CARDS_EQUAL = /^cards equal to [^,.]+/i;
 
 export default class DrawEffect extends Effect {
@@ -15,6 +16,13 @@ export default class DrawEffect extends Effect {
     parseArguments(match) {
         this.amount = this.consume([Amount]);
         this.cards = this.consumeText(CARDS_EQUAL) ?? this.consumeText(CARDS);
+        this.changesDrawSource = Boolean(
+            this.cards && this.consumeText(DRAW_SOURCE_REPLACEMENT)
+        );
+    }
+
+    get drawsCards() {
+        return !this.changesDrawSource;
     }
 
     get parts() {

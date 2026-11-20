@@ -31,6 +31,10 @@ export default class DiscardEffect extends Effect {
         return [this.amount].filter(Boolean);
     }
 
+    get hasOpenDiscardCount() {
+        return this.discarded?.toLowerCase() === 'any number of cards';
+    }
+
     get discardsHand() {
         return WHOLE_HAND.test(this.discarded ?? '');
     }

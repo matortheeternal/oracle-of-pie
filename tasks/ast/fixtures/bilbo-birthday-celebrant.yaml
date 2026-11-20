@@ -1,0 +1,23 @@
+name: Bilbo, Birthday Celebrant
+typeLine: Legendary Creature — Halfling Rogue
+text: |-
+  If you would gain life, you gain that much life plus 1 instead.
+  {2}{W}{B}{G}, {T}, Exile Bilbo: Search your library for any number of creature cards, put them onto the battlefield, then shuffle. Activate only if you have 111 or more life.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ReplacementSentence
+              isRecognized: true
+              event: you would gain life
+              replacesScry: false
+              replacesLifeGain: true
+              children:
+                - kind: GainLifeEffect
+                  amountText: that much life plus 1
+                - kind: TrailingCondition
+                  text: instead
+    - kind: ActivatedAbility

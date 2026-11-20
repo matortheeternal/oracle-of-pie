@@ -1,7 +1,7 @@
 import ObjectEffect from './ObjectEffect.js';
 
 const COUNTER_KIND = '(each kind of|[+\\-−]\\d+/[+\\-−]\\d+|\\w+)';
-const DOUBLED = `the number of ${COUNTER_KIND} counters on `;
+const DOUBLED = `the number of ${COUNTER_KIND} counters? on `;
 const DOUBLE_COUNTERS = new RegExp(`^double ${DOUBLED}`, 'i');
 const EACH_KIND = 'each kind of';
 

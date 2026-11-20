@@ -11,6 +11,16 @@ export const LIFE_TAGS = [
     },
     {
         tag: 'life-payment',
-        match: { kind: 'ActivatedAbility', cost: { paysLife: true } }
+        match: {
+            any: [
+                { kind: 'ActivatedAbility', cost: { paysLife: true } },
+                {
+                    kind: 'PayLifeEffect',
+                    subjectIsYou: true,
+                    isAlternativeCost: false,
+                    context: { granted: false, expansion: null }
+                }
+            ]
+        }
     }
 ];

@@ -1,0 +1,24 @@
+name: Kenessos, Priest of Thassa
+typeLine: Legendary Creature — Merfolk Cleric
+text: |-
+  If you would scry a number of cards, scry that many cards plus one instead.
+  {3}{G/U}: Look at the top card of your library. If it's a Kraken, Leviathan, Octopus, or Serpent creature card, you may put it onto the battlefield. If you don't put the card onto the battlefield, you may put it on the bottom of your library.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ReplacementSentence
+              isRecognized: true
+              event: you would scry a number of cards
+              replacesScry: true
+              replacesLifeGain: false
+              children:
+                - kind: KeywordActionEffect
+                  action: scry
+                  amountText: that many cards plus one
+                - kind: TrailingCondition
+                  text: instead
+    - kind: ActivatedAbility

@@ -10,13 +10,28 @@ const OPPOSING_CREATURE = { isOpposingObject: true, hasType: 'creature' };
 const REMOVING_EFFECTS = ['DestroyEffect', 'ExileEffect', 'ReturnEffect', 'DamageEffect'];
 const OPPOSING_FLYERS = { requiresKeyword: 'flying', controlledByYou: false };
 const OPPOSING_SPELL = { hasType: 'spell', controlledByYou: false };
+const COUNTERED_THIS_WAY = /^if that spell is countered this way$/i;
+const SPELL_ONLY = {
+    any: [
+        { kind: 'BackReference', objectType: 'spell' },
+        {
+            hasType: 'spell',
+            not: { any: [{ hasType: 'permanent' }, { hasType: 'creature' }] }
+        }
+    ]
+};
 
 function removesType(type) {
     return {
         any: [
             {
                 removesPermanently: true,
-                phrases: { isOpposingObject: true, allowsTypeAlone: type }
+                not: { context: { sentence: { condition: COUNTERED_THIS_WAY } } },
+                phrases: {
+                    isOpposingObject: true,
+                    allowsTypeAlone: type,
+                    not: SPELL_ONLY
+                }
             },
             {
                 kind: 'SacrificeEffect',
@@ -67,7 +82,11 @@ export const REMOVAL_TAGS = [
         match: {
             kind: 'ReturnEffect',
             isBounce: true,
-            phrases: { isOpposingObject: true, isBackReference: false }
+            phrases: {
+                isOpposingObject: true,
+                isBackReference: false,
+                not: SPELL_ONLY
+            }
         }
     },
     {
@@ -104,7 +123,11 @@ export const REMOVAL_TAGS = [
     },
     {
         tag: 'removal-sacrifice',
-        match: { kind: 'SacrificeEffect', subjectIsOpponent: true }
+        match: {
+            kind: 'SacrificeEffect',
+            subjectIsOpponent: true,
+            not: { isOptional: true, subject: { player: 'any opponent' } }
+        }
     },
     {
         tag: 'removal-toughness',

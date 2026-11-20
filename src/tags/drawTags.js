@@ -1,6 +1,6 @@
 import { WHEEL_SENTENCE } from './handReset.js';
 
-const YOUR_DRAW = { kind: 'DrawEffect', affectsYou: true };
+const YOUR_DRAW = { kind: 'DrawEffect', drawsCards: true, affectsYou: true };
 const PAID_EFFECT = { kind: ['DiscardEffect', 'SacrificeEffect'], affectsYou: true };
 const DRAW_COSTS = {
     any: [

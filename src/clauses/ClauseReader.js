@@ -1,3 +1,4 @@
+import MillEffect from '../effects/MillEffect.js';
 import Parser from '../core/Parser.js';
 import TrailingCondition from './TrailingCondition.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
@@ -5,6 +6,7 @@ import { EFFECT_PARSERS } from '../effects/index.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |, )/i;
+const COORDINATING_CONNECTOR = /^(?:, and |and |, )$/i;
 const MAY = /^may /i;
 const EACH = /^each /i;
 
@@ -38,7 +40,12 @@ export default class ClauseReader extends Parser {
         const rest = this.remainingStr.slice(connector[0].length);
         if (!ClauseReader.startsClause(this.scribe, rest)) return false;
         this.consumeText(CONNECTOR);
-        this.clauseEffects.push(this.readClause());
+        const effect = this.readClause();
+        const subject = this.clauseEffects.at(-1)?.actingSubject;
+        if (effect instanceof MillEffect && !effect.subject && subject?.isPlayer
+            && COORDINATING_CONNECTOR.test(connector[0]))
+            effect.inheritedSubject = subject;
+        this.clauseEffects.push(effect);
         return true;
     }
 

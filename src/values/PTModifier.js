@@ -3,6 +3,7 @@ import Node from '../core/Node.js';
 const PT = /^([+\-−]?)(\d+|X|\*)\/([+\-−]?)(\d+|X|\*)/;
 
 const LETHAL_SHRINK = 4;
+const LARGE_BOOST = 3;
 const SIGNS = { '': '', '+': '+', '-': '-', '−': '-' };
 
 function magnitude(value) {
@@ -29,6 +30,11 @@ export default class PTModifier extends Node {
         return this.toughness.sign === '-' && this.toughness.magnitude !== 0;
     }
 
+    get isPowerOnlyShrink() {
+        return this.power.sign === '-' && this.power.magnitude !== 0
+            && this.toughness.magnitude === 0;
+    }
+
     get isLethalShrink() {
         if (!this.lowersToughness) return false;
         const amount = this.toughness.magnitude;
@@ -50,6 +56,11 @@ export default class PTModifier extends Node {
 
     get isEvenBoost() {
         return this.isBoost && this.power.magnitude === this.toughness.magnitude;
+    }
+
+    get isLargeBoost() {
+        return this.isBoost && this.power.magnitude >= LARGE_BOOST
+            && this.toughness.magnitude >= LARGE_BOOST;
     }
 
     get isBoost() {

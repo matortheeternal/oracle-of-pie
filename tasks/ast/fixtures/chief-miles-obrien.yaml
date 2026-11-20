@@ -1,0 +1,21 @@
+name: Chief Miles O'Brien
+typeLine: Legendary Creature — Human Officer
+text: |-
+  Seek out — Whenever you draw your second card each turn, double the number of each kind of counter on target artifact or creature you control.
+expect:
+  kind: CardText
+  children:
+    - kind: AbilityWordAbility
+      children:
+        - kind: TriggeredAbility
+          children:
+            - kind: DrawsEvent
+              ordinal: 2
+            - kind: EffectSequence
+              children:
+                - kind: EffectSentence
+                  children:
+                    - kind: DoubleCountersEffect
+                      isRecognized: true
+                      doublesAllKinds: true
+                      raw: double the number of each kind of counter on target artifact or creature you control

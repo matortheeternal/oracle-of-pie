@@ -66,6 +66,10 @@ export default class PlayerPhrase extends Phrase {
         return EVERY_PLAYER.test(this.player);
     }
 
+    get isObjectController() {
+        return this.player === 'its controller' || this.player.endsWith('\'s controller');
+    }
+
     get isOpponent() {
         return OPPONENT.test(this.player);
     }

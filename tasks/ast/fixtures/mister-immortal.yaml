@@ -1,0 +1,25 @@
+name: Mister Immortal
+typeLine: Legendary Creature — Mutant Hero
+text: '{2}{G}: Return this card from your graveyard or from exile to the battlefield tapped.'
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: ActivatedAbility
+      children:
+        - kind: CostList
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ReturnEffect
+                  destination: battlefield
+                  fromGraveyard: true
+                  children:
+                    - kind: PhraseList
+                      children:
+                        - kind: SelfReference
+                          zone: graveyard
+                    - kind: ZoneModifier
+                      raw: from exile
+                      zone: exile

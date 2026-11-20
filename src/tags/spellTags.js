@@ -8,13 +8,25 @@ const SPELL_COST_REDUCER = {
 export const SPELL_TAGS = [
     {
         tag: 'cost-reducer',
-        match: SPELL_COST_REDUCER
+        match: {
+            ...SPELL_COST_REDUCER,
+            subject: {
+                refersToSelf: false,
+                any: [{ controlledByYou: true }, { kind: 'NounPhrase' }]
+            }
+        }
     },
     {
         tag: 'cost-reducer-creature',
         match: {
             ...SPELL_COST_REDUCER,
-            subject: { ...SPELL_COST_REDUCER.subject, hasExactType: 'creature' }
+            subject: {
+                ...SPELL_COST_REDUCER.subject,
+                any: [
+                    { hasExactType: 'creature' },
+                    { hasExactType: 'spell', namesCreatureSubtype: true }
+                ]
+            }
         }
     },
     {
@@ -22,13 +34,7 @@ export const SPELL_TAGS = [
         match: {
             kind: 'CopyEffect',
             copiesNonpermanentSpell: true,
-            not: { phrases: { kind: 'SelfReference' } }
-        }
-    },
-    {
-        tag: 'counter-doubler',
-        match: {
-            kind: 'DoubleCountersEffect',
+            context: { granted: false },
             not: { phrases: { kind: 'SelfReference' } }
         }
     },

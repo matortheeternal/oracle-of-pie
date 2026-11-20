@@ -1,0 +1,23 @@
+name: Crystal Barricade
+typeLine: Artifact Creature — Wall
+text: |-
+  Defender (This creature can't attack.)
+  You have hexproof. (You can't be the target of spells or abilities your opponents control.)
+  Prevent all noncombat damage that would be dealt to other creatures you control.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+    - kind: SpellAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PreventDamageEffect
+                  isAll: true
+                  isCombatOnly: false
+                  damageKind: noncombat
+                  scope: to other creatures you control
