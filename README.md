@@ -28,7 +28,7 @@ const flags = new PieInspector().inspect([{ parsed, colors }]);
 Configure custom keywords and token definitions, supply tag queries, or customize
 inspections in the [project reference](docs/reference.md).
 
-## Corpus results
+## Corpus resultszzzzzz
 
 On the November 2026 corpus of 17,836 modern cards, **80.1%** were fully recognized
 (14,295 cards).
