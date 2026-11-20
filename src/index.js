@@ -31,4 +31,4 @@ export { default as ColorTiers } from './pie/ColorTiers.js';
 export { default as ColorProfile, COLORS } from './pie/ColorProfile.js';
 export { default as canonTiers } from './pie/canonTiers.js';
 export { COLOR_POLICIES } from './pie/policies/index.js';
-export { default as inspectionCatalog } from './pie/inspectionCatalog.js';
+export { getInspectionCatalog as inspectionCatalog } from './pie/inspectionCatalog.js';
