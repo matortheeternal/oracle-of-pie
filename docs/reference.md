@@ -152,6 +152,48 @@ applied, and for each card color its tier and the layer that chose it (`tiers: {
 An inspection's optional `mentions` text skips faces whose text doesn't contain it, so the
 inspection's query never walks them. Use it only when every match must name that text.
 
+### Inspection catalog
+
+Import the catalog from the npm dependency and call it at build or update time.
+
+```js
+import { inspectionCatalog } from 'oracle-of-pie';
+
+const catalog = inspectionCatalog();
+```
+
+The result is a plain object with `schemaVersion: 1` and `inspections` in registry
+order. Each inspection includes its ID, title, group, optional subgroup (represented
+by `null`), description, five effective color tiers, ordered exceptions, and examples.
+Tier values are `primary`, `secondary`, `tertiary`, and `none`. Exception tiers list
+only the colors the exception overrides. The function takes no arguments and returns a
+fresh object on each call.
+
+Examples are bundled from the November 2026 printed-card corpus and its inspection
+profiles. The profiles identify cards by name. For multiface examples the catalog
+includes every face in source order. Example rows contain only the face's name,
+type line, mana cost, Oracle text, colors, power, toughness, and loyalty.
+Power, toughness, and loyalty are strings when present and `null` otherwise.
+An inspection with no recorded examples returns an empty array. Catalog generation
+does not read project cards or evaluate inspections. A build can serialize the
+catalog with `JSON.stringify(catalog)` for offline delivery.
+
+#### Future card evaluation
+
+A shared input could carry a stable card ID, its name and layout, and an ordered
+array of faces. Each face would include name, type line, brace-form mana cost, Oracle
+text, printed colors, and optional color indicator, power, toughness, and loyalty.
+Keep printed stats as strings so values such as `*` survive normalization. Preserve
+face boundaries and keep printed colors, mana-cost colors, and color identity distinct.
+
+The Scryfall adapter can map `card_faces ?? [card]` and the existing snake-case face
+fields. Card Magician can map `front` and `back`, combining type fields and normalizing
+mana symbols and name macros as the custom project adapter already does. Keep both
+adapters at the input boundary. Oracle can then derive the parser's face count from
+the face array and apply a consistent color policy. This is a proposed evaluation
+input and is separate from the catalog's example format.
+
+
 ### Keyword inspections
 
 Every keyword ability gets an inspection in the Keywords group that matches having, gaining or
