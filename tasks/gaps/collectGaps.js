@@ -15,13 +15,18 @@ function rightmostPath(node) {
     return path;
 }
 
+function site(type, owner, context) {
+    return { type, owner, context };
+}
+
 function describePrevious(previous, parent) {
-    if (!previous) return `start of ${parent.constructor.name}`;
+    const parentKind = parent.constructor.name;
+    if (!previous) return site('start', parentKind, `start of ${parentKind}`);
     const path = rightmostPath(previous);
     const effect = path.find(node => node instanceof Effect);
     const leaf = path.at(-1).constructor.name;
-    if (!effect) return `after ${previous.constructor.name} … ${leaf}`;
-    return `after ${effect.constructor.name} … ${leaf}`;
+    const owner = (effect ?? previous).constructor.name;
+    return site(effect ? 'after-effect' : 'after', owner, `after ${owner} … ${leaf}`);
 }
 
 function isEffectlessSentence(node) {
@@ -29,13 +34,15 @@ function isEffectlessSentence(node) {
 }
 
 function describeEvent(event) {
-    const unread = `unread ${event.constructor.name} text`;
-    return event.isUnsupported ? UNSUPPORTED_EVENT : unread;
+    const owner = event.constructor.name;
+    if (event.isUnsupported) return site('unsupported-event', owner, UNSUPPORTED_EVENT);
+    return site('event', owner, `unread ${owner} text`);
 }
 
-function describeContext(node, children, index, parent) {
+function describeSite(node, children, index, parent) {
     if (parent instanceof TriggerEvent) return describeEvent(parent);
-    if (isEffectlessSentence(parent)) return EFFECTLESS_CLAUSE;
+    if (isEffectlessSentence(parent))
+        return site('clause', parent.constructor.name, EFFECTLESS_CLAUSE);
     return describePrevious(children[index - 1], parent);
 }
 
@@ -58,8 +65,9 @@ function visit(node, gaps) {
     children.forEach((child, index) => {
         const kind = gapKind(child);
         if (!kind) return visit(child, gaps);
-        const context = describeContext(child, children, index, node);
-        gaps.push({ kind, raw: child.raw, context: labelled(kind, context) });
+        const gapSite = describeSite(child, children, index, node);
+        const context = labelled(kind, gapSite.context);
+        gaps.push({ kind, raw: child.raw, context, site: gapSite, node: child });
         visit(child, gaps);
     });
 }

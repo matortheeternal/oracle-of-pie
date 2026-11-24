@@ -4,6 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { HTML, send, sendError, readBody } from './review/http.js';
 import { AST_ROUTES } from './review/astRoutes.js';
+import { GAP_ROUTES } from './review/gapRoutes.js';
+import { ASSET_ROUTES } from './review/assetRoutes.js';
 import { QUEUES, REVIEWS } from './shared/paths.js';
 import getProjectDirs from './shared/projects.js';
 
@@ -107,7 +109,9 @@ const routes = [
     [QUEUES_ROUTE, 'GET', sendQueues],
     [QUEUE_ROUTE, 'GET', sendQueue],
     [DECISIONS_ROUTE, 'POST', recordDecision],
-    ...AST_ROUTES
+    ...AST_ROUTES,
+    ...GAP_ROUTES,
+    ...ASSET_ROUTES
 ];
 
 function route(req, res) {

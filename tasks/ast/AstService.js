@@ -45,8 +45,12 @@ export default class AstService {
         return names.slice(0, SEARCH_LIMIT).map(name => this.byName.get(name).name);
     }
 
+    findCard(name) {
+        return this.byName.get(name.trim().toLowerCase()) ?? null;
+    }
+
     inspectName(name) {
-        const card = this.byName.get(name.trim().toLowerCase());
+        const card = this.findCard(name);
         return card ? this.inspect(card) : null;
     }
 

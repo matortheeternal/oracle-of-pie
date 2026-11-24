@@ -4,62 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AST Explorer</title>
+<link rel="stylesheet" href="/assets/astView.css">
 <style>
-:root {
-    --bg: #f6f5f2; --surface: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --border: #dedcd6;
-    --accent: #3b5bdb; --good: #2b8a3e; --bad: #c92a2a; --warn: #b35c00; --pie: #862e9c;
-    --code: #f1efe9; --mark: #ffe066;
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: #17171a; --surface: #212125; --text: #ececf0; --muted: #9a9aa3; --border: #34343a;
-        --accent: #748ffc; --good: #51cf66; --bad: #ff6b6b; --warn: #ffa94d; --pie: #da77f2;
-        --code: #2a2a30; --mark: #806600;
-    }
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, sans-serif; }
-header { display: flex; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); flex-wrap: wrap; }
-header h1 { font-size: 16px; margin: 0; }
-header a { color: var(--accent); font-size: 13px; margin-left: auto; }
-input, textarea, button { font: inherit; color: inherit; }
-input, textarea { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; }
-header input { width: min(360px, 100%); }
-button { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
 #custom { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); }
 #custom textarea { grid-column: 1 / -1; min-height: 90px; }
 #custom button { justify-self: start; }
 @media (max-width: 760px) { #custom { grid-template-columns: 1fr; } }
 main { max-width: 1280px; margin: 0 auto; padding: 20px 16px 60px; display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; }
 @media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); } }
-.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
 aside img { width: 100%; border-radius: 12px; display: block; margin-bottom: 16px; }
-dl { margin: 0; } dt { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-top: 12px; }
-dt:first-child { margin-top: 0; } dd { margin: 4px 0 0; }
-.chip { display: inline-block; font-size: 12px; border-radius: 999px; padding: 0 8px; margin: 0 4px 4px 0; border: 1px solid currentColor; }
-.chip.tag { color: var(--accent); } .chip.pie { color: var(--pie); } .chip.miss { opacity: .6; border-style: dashed; }
-.chip.bad { color: var(--bad); } .chip.warn { color: var(--warn); } .chip.muted { color: var(--muted); }
-.face h2 { font-size: 16px; margin: 0; display: flex; justify-content: space-between; gap: 8px; }
-.face > small { color: var(--muted); display: block; margin-bottom: 8px; }
-.card-text { white-space: pre-wrap; background: var(--code); border-radius: 6px; padding: 8px 10px; margin: 0 0 12px; }
-.card-text mark { background: var(--mark); color: inherit; border-radius: 3px; }
-.toolbar { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; font-size: 13px; }
-.tree, .tree .children { padding-left: 0; }
-.node { border-left: 1px solid var(--border); padding-left: 10px; margin: 2px 0 2px 6px; }
-.node > summary { cursor: pointer; list-style-position: outside; font-size: 13px; }
-.node > summary:hover { background: var(--code); }
-.node.unrecognized > summary .kind { color: var(--bad); }
-.node.opaque > summary .kind { color: var(--warn); }
-.node.flash > summary { outline: 2px solid var(--accent); border-radius: 4px; }
-.kind { font-weight: 600; font-family: ui-monospace, monospace; }
-.raw { color: var(--muted); margin: 0 6px; }
-.props { margin: 2px 0 4px; font-size: 12px; }
-.props summary { color: var(--muted); cursor: pointer; }
-.props table { border-collapse: collapse; margin: 4px 0; }
-.props td { padding: 1px 8px 1px 0; vertical-align: top; font-family: ui-monospace, monospace; }
-.props td:first-child { color: var(--muted); }
-.ref { color: var(--accent); cursor: pointer; text-decoration: underline; }
-.empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 60px 0; }
 </style>
 </head>
 <body>
@@ -68,7 +21,7 @@ dt:first-child { margin-top: 0; } dd { margin: 4px 0 0; }
     <input id="search" list="card-names" placeholder="Card name…" aria-label="Card name">
     <datalist id="card-names"></datalist>
     <button id="toggle-custom">Custom text</button>
-    <a href="/">Label review</a>
+    <nav><a href="/gaps">Gap workbench</a><a href="/">Label review</a></nav>
 </header>
 <section id="custom" hidden>
     <input id="custom-name" placeholder="Name" aria-label="Name">
@@ -78,170 +31,8 @@ dt:first-child { margin-top: 0; } dd { margin: 4px 0 0; }
     <button id="parse-custom">Parse</button>
 </section>
 <main id="main"><p class="empty">Search for a card or parse custom text.</p></main>
-<script>
-const $ = selector => document.querySelector(selector);
-
-function element(tag, { className, text, title } = {}, children = []) {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    if (title) node.title = title;
-    node.append(...children);
-    return node;
-}
-
-function chip(text, className, title) {
-    return element('span', { className: `chip ${className}`, text, title });
-}
-
-async function getJson(url, options) {
-    const response = await fetch(url, options);
-    if (!response.ok) throw new Error((await response.json()).error ?? response.statusText);
-    return response.json();
-}
-
-function highlight(textElement, raw) {
-    const text = textElement.dataset.text;
-    const index = raw ? text.indexOf(raw) : -1;
-    if (index < 0) return void (textElement.textContent = text);
-    textElement.replaceChildren(
-        text.slice(0, index),
-        element('mark', { text: raw }),
-        text.slice(index + raw.length)
-    );
-}
-
-function revealNode(tree, id) {
-    const target = tree.querySelector(`.node[data-id="${id}"]`);
-    if (!target) return;
-    for (let node = target; node && node !== tree; node = node.parentElement)
-        if (node.tagName === 'DETAILS') node.open = true;
-    target.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    target.classList.add('flash');
-    setTimeout(() => target.classList.remove('flash'), 1200);
-}
-
-function formatRef(value, tree) {
-    const label = `#${value.ref ?? '?'} ${value.kind} “${value.raw ?? ''}”`;
-    const link = element('span', { className: 'ref', text: label });
-    if (value.ref !== null) link.addEventListener('click', () => revealNode(tree, value.ref));
-    return link;
-}
-
-function isRef(value) {
-    return value && typeof value === 'object' && 'kind' in value && 'ref' in value;
-}
-
-function formatValue(value, tree) {
-    if (isRef(value)) return formatRef(value, tree);
-    if (Array.isArray(value) && value.some(isRef))
-        return element('span', {}, value.flatMap(item => [formatValue(item, tree), ' ']));
-    if (value && typeof value === 'object') return JSON.stringify(value);
-    return String(value);
-}
-
-function propertiesElement(properties, tree) {
-    const rows = Object.entries(properties).map(([name, value]) =>
-        element('tr', {}, [element('td', { text: name }), element('td', {}, [formatValue(value, tree)])]));
-    return element('details', { className: 'props' }, [
-        element('summary', { text: `properties (${rows.length})` }),
-        element('table', {}, [element('tbody', {}, rows)])
-    ]);
-}
-
-function annotationChips(node) {
-    const chips = [];
-    if (node.role !== 'child') chips.push(chip(node.role, 'muted'));
-    if (node.annotations?.forOpponent) chips.push(chip('for opponent', 'muted'));
-    for (const tag of node.annotations?.tags ?? []) chips.push(chip(tag, 'tag'));
-    for (const id of node.annotations?.inspections ?? []) chips.push(chip(id, 'pie', 'pie inspection'));
-    if (!node.isRecognized && !node.children.length) chips.push(chip('unrecognized', 'bad'));
-    if (node.isOpaque) chips.push(chip('opaque', 'warn'));
-    return chips;
-}
-
-function nodeClasses(node) {
-    const classes = ['node'];
-    if (!node.isRecognized) classes.push('unrecognized');
-    if (node.isOpaque) classes.push('opaque');
-    return classes.join(' ');
-}
-
-function nodeElement(node, context) {
-    const summary = element('summary', { title: node.lineage.join(' → ') }, [
-        element('span', { className: 'kind', text: node.kind }),
-        element('span', { className: 'raw', text: node.raw }),
-        ...annotationChips(node)
-    ]);
-    summary.addEventListener('mouseenter', () => highlight(context.textElement, node.raw));
-    const details = element('details', { className: nodeClasses(node) }, [
-        summary,
-        propertiesElement(node.properties, context.tree),
-        element('div', { className: 'children' }, node.children.map(child => nodeElement(child, context)))
-    ]);
-    details.dataset.id = node.id;
-    details.open = true;
-    return details;
-}
-
-function setAllOpen(tree, open) {
-    for (const details of tree.querySelectorAll('.node')) details.open = open;
-}
-
-function toolbar(tree) {
-    const expand = element('button', { text: 'Expand all' });
-    const collapse = element('button', { text: 'Collapse all' });
-    expand.addEventListener('click', () => setAllOpen(tree, true));
-    collapse.addEventListener('click', () => setAllOpen(tree, false));
-    return element('div', { className: 'toolbar' }, [expand, collapse]);
-}
-
-function faceElement(face) {
-    const textElement = element('p', { className: 'card-text', text: face.text });
-    textElement.dataset.text = face.text;
-    const tree = element('div', { className: 'tree' });
-    tree.append(nodeElement(face.tree, { textElement, tree }));
-    tree.addEventListener('mouseleave', () => highlight(textElement, ''));
-    const status = face.recognized ? chip('fully recognized', 'tag') : chip('partly recognized', 'bad');
-    return element('section', { className: 'panel face' }, [
-        element('h2', {}, [element('span', { text: face.name }), element('span', { text: face.manaCost })]),
-        element('small', { text: `${face.typeLine} · colors ${face.colors}` }),
-        textElement,
-        element('div', {}, [status, ...face.unrecognized.map(span => chip(span, 'bad', 'unrecognized'))]),
-        toolbar(tree),
-        tree
-    ]);
-}
-
-function tagChips(card) {
-    const entries = Object.entries(card.tags);
-    if (!entries.length) return [element('span', { text: 'none' })];
-    return entries.map(([tag, evidence]) => {
-        const confirmed = card.scryfallTags.includes(tag);
-        const className = confirmed ? 'tag' : 'tag miss';
-        return chip(tag, className, `${confirmed ? 'Scryfall agrees. ' : ''}${evidence}`);
-    });
-}
-
-function pieChips(card) {
-    if (!card.pieFlags.length) return [element('span', { text: 'none' })];
-    return card.pieFlags.map(flag =>
-        chip(`${flag.inspection} (${flag.offending.join('')})`, 'pie', flag.evidence));
-}
-
-function summaryElement(card) {
-    const children = [];
-    if (card.image) children.push(element('img', { title: card.name }));
-    if (card.image) children.at(-1).src = card.image;
-    const list = element('dl', {}, [
-        element('dt', { text: 'Tags (solid = Scryfall agrees)' }),
-        element('dd', {}, tagChips(card)),
-        element('dt', { text: 'Pie flags' }),
-        element('dd', {}, pieChips(card))
-    ]);
-    children.push(element('div', { className: 'panel' }, [list]));
-    return element('aside', {}, children);
-}
+<script type="module">
+import { $, element, getJson, faceElement, summaryElement } from '/assets/astView.js';
 
 function render(card) {
     const faces = element('div', {}, card.faces.map(faceElement));

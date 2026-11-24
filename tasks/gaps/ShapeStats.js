@@ -41,7 +41,8 @@ export default class ShapeStats {
             unlocks: this.unlocks,
             contexts: Object.fromEntries(this.contexts),
             spans: Object.fromEntries(this.topSpans(10)),
-            examples: this.examples
+            examples: this.examples,
+            cardNames: [...this.cards]
         };
     }
 }

@@ -32,6 +32,7 @@
     "gaps": "node tasks/gapReport.js",
     "queues": "node tasks/buildCustomQueue.js && node tasks/buildScryfallQueues.js && node tasks/buildPieQueues.js",
     "review": "node tasks/review.js",
+    "gap-workbench": "node --watch tasks/review.js",
     "report": "node tasks/reviewReport.js",
     "verdicts": "node tasks/checkVerdicts.js",
     "policies": "node tasks/checkPolicies.js",

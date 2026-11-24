@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import AstService from '../ast/AstService.js';
+import { sharedAstService as astService } from './services.js';
 import { HTML, send, sendError, readBody, searchParams } from './http.js';
 
 const PAGE = path.join(path.dirname(fileURLToPath(import.meta.url)), 'ast.html');
@@ -9,13 +9,6 @@ const AST_PAGE_ROUTE = /^\/ast$/;
 const SEARCH_ROUTE = /^\/api\/ast\/search$/;
 const CARD_ROUTE = /^\/api\/ast\/card$/;
 const PARSE_ROUTE = /^\/api\/ast\/parse$/;
-
-let service = null;
-
-function astService() {
-    service ??= new AstService();
-    return service;
-}
 
 function sendPage(req, res) {
     send(res, 200, fs.readFileSync(PAGE), HTML);

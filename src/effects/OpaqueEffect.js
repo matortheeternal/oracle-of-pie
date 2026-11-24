@@ -1,7 +1,7 @@
 import Effect from './Effect.js';
 
 const MODE_COUNT = '(?:one|two|three|one or more|one or both|any number|up to \\w+)';
-const OPAQUE_ALTERNATIVES = [
+export const OPAQUE_ALTERNATIVES = [
     'prevent all (?:combat )?damage that would be dealt [^,.]+',
     'prevent the next [^,.]+',
     'copy [^,.]+',

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gap Workbench</title>
+<link rel="stylesheet" href="/assets/astView.css">
+<style>
+main { max-width: 1480px; margin: 0 auto; padding: 16px; display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { main { grid-template-columns: minmax(0, 1fr); } }
+#stats { color: var(--muted); font-size: 13px; }
+#list-panel { position: sticky; top: 12px; max-height: calc(100vh - 90px); display: flex; flex-direction: column; padding: 12px; }
+@media (max-width: 900px) { #list-panel { position: static; max-height: 50vh; } }
+.filters { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 6px; margin-bottom: 8px; }
+.filters input { min-width: 0; }
+select { font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 4px; }
+#gap-count { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+#gap-list { overflow-y: auto; margin: 0 -12px; padding: 0; list-style: none; }
+#gap-list li { padding: 6px 12px; border-top: 1px solid var(--border); cursor: pointer; }
+#gap-list li:hover { background: var(--code); }
+#gap-list li.selected { background: var(--code); box-shadow: inset 3px 0 var(--accent); }
+.shape { font-family: ui-monospace, monospace; font-size: 13px; overflow-wrap: anywhere; }
+.counts { font-size: 12px; color: var(--muted); }
+.detail h2 { font-size: 17px; margin: 0 0 8px; overflow-wrap: anywhere; }
+.panel h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 8px; }
+.direction ol { margin: 4px 0 8px; padding-left: 20px; }
+.direction h4 { margin: 0; font-size: 15px; }
+.files { font-family: ui-monospace, monospace; font-size: 12px; color: var(--muted); }
+.files span { display: inline-block; margin-right: 12px; }
+.checklist { margin: 0; padding-left: 20px; }
+.checklist code, .direction code { background: var(--code); border-radius: 4px; padding: 0 4px; }
+.actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+#recheck-result { font-size: 13px; }
+.card-row { display: flex; gap: 8px; align-items: center; padding: 4px 0; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.card-row:first-child { border-top: 0; }
+.card-row button { padding: 0 8px; font-size: 13px; }
+.card-row .name { flex: 1; min-width: 160px; }
+.card-panel h2 { font-size: 16px; margin: 0 0 4px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.card-panel h2 a { font-size: 13px; font-weight: normal; color: var(--accent); }
+.card-panel .face { margin-top: 12px; }
+.card-panel .face h3 { text-transform: none; letter-spacing: 0; color: var(--text); font-size: 14px; }
+.gap-item { border-left: 3px solid var(--bad); padding: 4px 10px; margin: 8px 0; background: var(--code); border-radius: 0 6px 6px 0; }
+.gap-item.other { border-left-color: var(--border); opacity: .8; }
+.gap-item .raw-text { font-family: ui-monospace, monospace; font-size: 13px; }
+.try textarea { width: 100%; min-height: 80px; margin: 6px 0; }
+.try-result { margin-top: 8px; }
+.chip.good { color: var(--good); }
+</style>
+</head>
+<body>
+<header>
+    <h1>Gap workbench</h1>
+    <span id="stats"></span>
+    <button id="refresh">Refresh report</button>
+    <nav><a href="/ast">AST explorer</a><a href="/">Label review</a></nav>
+</header>
+<main>
+    <section id="list-panel" class="panel">
+        <div class="filters">
+            <input id="filter" placeholder="Filter shapes or contexts…" aria-label="Filter gaps">
+            <select id="kind" aria-label="Gap kind">
+                <option value="">all</option>
+                <option value="unread">unread</option>
+                <option value="opaque">opaque</option>
+            </select>
+            <select id="sort" aria-label="Sort by">
+                <option value="unlocks">unlocks</option>
+                <option value="cards">cards</option>
+            </select>
+        </div>
+        <div id="gap-count"></div>
+        <ul id="gap-list"></ul>
+    </section>
+    <section id="detail" class="detail"><p class="empty">Choose a gap from the list.</p></section>
+</main>
+<script type="module">
+import {
+    $, element, chip, getJson, highlight, faceText, faceTree, openPathTo, setAllOpen, toolbar
+} from '/assets/astView.js';
+
+const AUTO_OPEN_CARDS = 3;
+const LIST_LIMIT = 400;
+const CHECKLIST = [
+    ['Add or extend a fixture in ', 'tasks/ast/fixtures/', ' for a representative card.'],
+    ['Change the parser, then press ', 'Recheck', ' until the cards resolve.'],
+    ['Run ', 'npm run lint', ' and ', 'npm run ast-fixtures', '.'],
+    ['Run ', 'npm run evaluate', ', ', 'npm run verdicts', ' and ', 'npm run pie',
+        '; tag precision and pie flags must not regress.'],
+    ['Run ', 'npm run compare-corpus', ', then ', 'Refresh report', ' to re-rank the gaps.']
+];
+
+const state = { gaps: [], selected: null, recheck: new Map() };
+
+function post(url, body) {
+    const headers = { 'Content-Type': 'application/json' };
+    return getJson(url, { method: 'POST', headers, body: JSON.stringify(body) });
+}
+
+function codeParts(parts) {
+    return parts.map((part, index) => index % 2 ? element('code', { text: part }) : part);
+}
+
+function showStats(list) {
+    const share = (100 * list.modeled / list.cards).toFixed(1);
+    $('#stats').textContent = `${list.modeled}/${list.cards} fully modeled (${share}%)`;
+}
+
+function contextText(gap) {
+    return Object.keys(gap.contexts).join(' ');
+}
+
+function matchesFilter(gap, needle, kind) {
+    if (kind && gap.kind !== kind) return false;
+    if (!needle) return true;
+    return `${gap.shape} ${contextText(gap)}`.toLowerCase().includes(needle);
+}
+
+function visibleGaps() {
+    const needle = $('#filter').value.trim().toLowerCase();
+    const kind = $('#kind').value;
+    const field = $('#sort').value;
+    const gaps = state.gaps.filter(gap => matchesFilter(gap, needle, kind));
+    return gaps.sort((a, b) => b[field] - a[field] || b.cards - a.cards);
+}
+
+function topContext(gap) {
+    const [context] = Object.entries(gap.contexts).sort((a, b) => b[1] - a[1])[0] ?? [''];
+    return context;
+}
+
+function gapRow(gap) {
+    const counts = `${gap.unlocks} unlocks · ${gap.cards} cards · ${topContext(gap)}`;
+    const row = element('li', {}, [
+        element('div', { className: 'shape', text: gap.shape }),
+        element('div', { className: 'counts' }, [chip(gap.kind, gap.kind === 'opaque' ? 'warn' : 'bad'), counts])
+    ]);
+    if (gap.shape === state.selected) row.className = 'selected';
+    row.addEventListener('click', () => selectGap(gap.shape));
+    return row;
+}
+
+function renderList() {
+    const gaps = visibleGaps();
+    $('#gap-count').textContent = `${gaps.length} gap shapes`;
+    $('#gap-list').replaceChildren(...gaps.slice(0, LIST_LIMIT).map(gapRow));
+}
+
+function directionElement(direction) {
+    if (!direction) return element('p', { text: 'No directions for this gap site.' });
+    return element('div', { className: 'direction' }, [
+        element('h4', { text: direction.title }),
+        element('ol', {}, direction.steps.map(step => element('li', { text: step }))),
+        element('div', { className: 'files' }, direction.files.map(file => element('span', { text: file })))
+    ]);
+}
+
+function gapItem(gap, shape) {
+    const className = gap.shape === shape ? 'gap-item' : 'gap-item other';
+    return element('div', { className }, [
+        element('div', {}, [chip(gap.kind, 'bad'), element('span', { className: 'counts', text: gap.context })]),
+        element('div', { className: 'raw-text', text: gap.raw }),
+        gap.shape === shape ? directionElement(gap.direction) : element('small', { text: 'another gap on this card' })
+    ]);
+}
+
+function focusGaps(tree, rootId, ids) {
+    setAllOpen(tree, false);
+    for (const id of [rootId, ...ids]) openPathTo(tree, id);
+}
+
+function faceSection(face, gapIds, gapRaw) {
+    const textElement = faceText(face);
+    const ids = new Set(gapIds);
+    const tree = faceTree(face, textElement, ids);
+    focusGaps(tree, face.tree.id, ids);
+    highlight(textElement, gapRaw);
+    tree.addEventListener('mouseleave', () => highlight(textElement, gapRaw));
+    return element('div', { className: 'face' }, [
+        element('h3', { text: `${face.name} · ${face.typeLine}` }),
+        textElement,
+        toolbar(tree),
+        tree,
+        tryElement(face)
+    ]);
+}
+
+function tryResult(result) {
+    const face = result.faces[0];
+    const textElement = faceText(face);
+    const unread = face.unrecognized.map(span => chip(span, 'bad', 'unrecognized'));
+    const status = face.recognized ? chip('fully recognized', 'good') : chip('partly recognized', 'bad');
+    return element('div', {}, [status, ...unread, faceTree(face, textElement)]);
+}
+
+async function parseVariant(face, input, output) {
+    const fields = { name: face.name, typeLine: face.typeLine, manaCost: face.manaCost, text: input.value };
+    output.replaceChildren(tryResult(await post('/api/ast/parse', fields)));
+}
+
+function tryElement(face) {
+    const input = element('textarea', { text: face.text });
+    const output = element('div', { className: 'try-result' });
+    const button = element('button', { text: 'Parse this wording' });
+    button.addEventListener('click', () => parseVariant(face, input, output).catch(showError(output)));
+    return element('details', { className: 'try' }, [
+        element('summary', { text: 'Try a variant wording' }), input, button, output
+    ]);
+}
+
+function cardPanel(card, shape) {
+    const gapRaw = card.gaps.find(gap => gap.shape === shape)?.raw ?? '';
+    const links = [element('a', { text: 'AST explorer', title: 'Open in AST explorer' })];
+    links[0].href = `/ast?card=${encodeURIComponent(card.name)}`;
+    if (card.scryfallUri) links.push(Object.assign(element('a', { text: 'Scryfall' }), { href: card.scryfallUri, target: '_blank' }));
+    const status = card.modeled ? chip('fully modeled', 'good') : chip(`${card.gaps.length} gaps`, 'bad');
+    return element('div', { className: 'panel card-panel' }, [
+        element('h2', {}, [element('span', { text: card.name }), status, ...links]),
+        ...card.gaps.map(gap => gapItem(gap, shape)),
+        ...card.faces.map((face, index) => faceSection(face, card.gapIds[index], gapRaw))
+    ]);
+}
+
+function showError(target) {
+    return error => target.replaceChildren(element('p', { className: 'empty', text: error.message }));
+}
+
+async function loadCard(shape, name, slot) {
+    slot.replaceChildren(element('p', { className: 'counts', text: `Loading ${name}…` }));
+    const url = `/api/gaps/card?shape=${encodeURIComponent(shape)}&name=${encodeURIComponent(name)}`;
+    slot.replaceChildren(cardPanel(await getJson(url), shape));
+}
+
+function recheckChip(name) {
+    const result = state.recheck.get(name);
+    if (!result) return chip('not rechecked', 'muted');
+    if (result.missing) return chip('not in corpus', 'warn');
+    if (result.modeled) return chip('fully modeled', 'good');
+    return result.resolved ? chip('gap resolved', 'good') : chip('gap remains', 'bad');
+}
+
+function cardRow(shape, name, open) {
+    const slot = element('div');
+    const button = element('button', { text: open ? 'Reload' : 'Show' });
+    button.addEventListener('click', () => {
+        button.textContent = 'Reload';
+        loadCard(shape, name, slot).catch(showError(slot));
+    });
+    if (open) loadCard(shape, name, slot).catch(showError(slot));
+    const row = element('div', { className: 'card-row' }, [
+        element('span', { className: 'name', text: name }), recheckChip(name), button
+    ]);
+    return element('div', {}, [row, slot]);
+}
+
+function contextChips(detail) {
+    const entries = Object.entries(detail.contexts).sort((a, b) => b[1] - a[1]);
+    return entries.map(([context, count]) => chip(`${context} ×${count}`, 'muted'));
+}
+
+function recheckSummary() {
+    const results = [...state.recheck.values()];
+    const resolved = results.filter(result => result.resolved).length;
+    const modeled = results.filter(result => result.modeled).length;
+    return `${resolved}/${results.length} cards no longer have this gap; ${modeled} are now fully modeled.`;
+}
+
+async function recheck(detail) {
+    $('#recheck-result').textContent = 'Rechecking…';
+    const results = await post('/api/gaps/recheck', { shape: detail.shape });
+    state.recheck = new Map(results.map(result => [result.name, result]));
+    renderCards(detail);
+    $('#recheck-result').textContent = recheckSummary();
+}
+
+function renderCards(detail) {
+    const rows = detail.cardNames.map((name, index) => cardRow(detail.shape, name, index < AUTO_OPEN_CARDS));
+    $('#cards').replaceChildren(...rows);
+}
+
+function actionsElement(detail) {
+    const button = element('button', { text: 'Recheck these cards' });
+    button.addEventListener('click', () => recheck(detail).catch(showError($('#recheck-result'))));
+    return element('div', { className: 'actions' }, [button, Object.assign(element('span'), { id: 'recheck-result' })]);
+}
+
+function checklistElement() {
+    const items = CHECKLIST.map(parts => element('li', {}, codeParts(parts)));
+    return element('div', { className: 'panel' }, [
+        element('h3', { text: 'Checklist' }), element('ol', { className: 'checklist' }, items)
+    ]);
+}
+
+function renderDetail(detail) {
+    const summary = element('div', { className: 'panel' }, [
+        element('h2', { className: 'shape', text: detail.shape }),
+        element('p', { className: 'counts', text: `${detail.cards} cards · ${detail.unlocks} would become fully modeled` }),
+        element('div', {}, contextChips(detail)),
+        actionsElement(detail)
+    ]);
+    const cards = element('div', { className: 'panel' }, [element('h3', { text: 'Cards' }), Object.assign(element('div'), { id: 'cards' })]);
+    $('#detail').replaceChildren(summary, checklistElement(), cards);
+    renderCards(detail);
+}
+
+async function selectGap(shape) {
+    state.selected = shape;
+    state.recheck = new Map();
+    history.replaceState(null, '', `?shape=${encodeURIComponent(shape)}`);
+    renderList();
+    try {
+        renderDetail(await getJson(`/api/gaps/detail?shape=${encodeURIComponent(shape)}`));
+    } catch (error) {
+        showError($('#detail'))(error);
+    }
+}
+
+async function loadList(url, options) {
+    try {
+        const list = await getJson(url, options);
+        state.gaps = list.gaps;
+        showStats(list);
+        renderList();
+    } catch (error) {
+        showError($('#detail'))(error);
+    }
+}
+
+async function refreshReport() {
+    $('#refresh').disabled = true;
+    $('#stats').textContent = 'Regenerating gap report…';
+    await loadList('/api/gaps/refresh', { method: 'POST' });
+    $('#refresh').disabled = false;
+    if (state.selected) selectGap(state.selected);
+}
+
+for (const id of ['#filter', '#kind', '#sort']) $(id).addEventListener('input', renderList);
+$('#refresh').addEventListener('click', refreshReport);
+
+await loadList('/api/gaps');
+const initialShape = new URLSearchParams(location.search).get('shape');
+if (initialShape) selectGap(initialShape);
+</script>
+</body>
+</html>
