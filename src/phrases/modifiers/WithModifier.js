@@ -15,6 +15,7 @@ const WITH_ALTERNATIVES = [
     `the greatest (?:power|mana value)[^,.]*?${BEFORE_DESTINATION}`,
     'the same name as [^,.]+',
     'that name',
+    'different names',
     'the chosen name',
     '\\{X\\} in (?:its|their) mana costs?',
     'an? [a-z]+ (?:mana )?ability'

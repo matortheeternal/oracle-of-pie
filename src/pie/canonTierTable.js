@@ -45,7 +45,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'primary', B: 'secondary', R: 'none', G: 'tertiary'
     },
     'tutor-nonland': {
-        W: 'primary', U: 'primary', B: 'primary', R: 'secondary', G: 'secondary'
+        W: 'primary', U: 'primary', B: 'primary', R: 'secondary', G: 'primary'
     },
     'land-ramp': {
         W: 'secondary', U: 'none', B: 'none', R: 'secondary', G: 'primary'

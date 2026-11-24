@@ -6,9 +6,10 @@ import ZonePhrase from './ZonePhrase.js';
 import LibraryTopPhrase from './LibraryTopPhrase.js';
 import BackReference from './BackReference.js';
 import NounPhrase from './NounPhrase.js';
+import AbilitiesPhrase from './AbilitiesPhrase.js';
 
 export const PHRASE_PARSERS = [
     SelfReference, AttachedReference, AnyTarget, ZonePhrase, LibraryTopPhrase,
-    PlayerPhrase, BackReference,
+    PlayerPhrase, BackReference, AbilitiesPhrase,
     NounPhrase
 ];

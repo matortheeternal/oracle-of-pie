@@ -13,7 +13,8 @@ export const TYPE_WORDS = {
     sorcery: 'sorcery', sorceries: 'sorcery',
     ability: 'ability', abilities: 'ability',
     player: 'player', players: 'player',
-    opponent: 'opponent', opponents: 'opponent'
+    opponent: 'opponent', opponents: 'opponent',
+    source: 'source', sources: 'source'
 };
 
 export const QUALIFIER_WORDS = new Set([

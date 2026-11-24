@@ -23,7 +23,8 @@ const STATE_ALTERNATIVES = [
     'named (?:~|[A-Z][^,.]*)',
     'chosen at random',
     'using mana (?:produced by|from) [^,.]+',
-    'that targets? (?:~|it|you|this [a-z]+)'
+    'that targets? (?:~|it|you|this [a-z]+)',
+    'that each have mana value (?:\\d+|X)(?: or (?:less|greater))?'
 ];
 const NAMED = /^named\b/;
 const TARGETING = /^that targets?\b/;

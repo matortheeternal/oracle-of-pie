@@ -8,6 +8,7 @@ const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |,? ?or |, )/i;
 const ALTERNATIVE = /^,? ?or /i;
 const MAY = /^may /i;
 const EACH = /^each /i;
+const ALSO = /^also /i;
 
 function attachSubject(effect, subject, isOptional) {
     effect.subject = subject;
@@ -56,6 +57,7 @@ export default class ClauseReader extends Parser {
         const start = this.remainingStr;
         const subject = this.consume(PHRASE_PARSERS);
         if (!subject) return null;
+        this.consumeText(ALSO);
         const isOptional = Boolean(this.consumeText(MAY));
         this.consumeText(EACH);
         const effect = this.consume(EFFECT_PARSERS);

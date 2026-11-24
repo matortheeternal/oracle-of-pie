@@ -1,0 +1,76 @@
+name: Votes, repeats and ability sources
+typeLine: Sorcery
+text: |-
+  Target creature gets +2/+2 until end of turn. It also gains flying until end of turn.
+  Starting with you, each player votes for strength or numbers.
+  Each player secretly votes for a creature you don't control, then those votes are revealed.
+  If planeswalk gets more votes, planeswalk.
+  Draw a card and repeat this process once.
+  Search your library for up to three creature cards with different names, reveal them, put them into your hand, then shuffle.
+  Activated abilities of sources with the chosen name can't be activated unless they're mana abilities.
+  Activated abilities of creatures you control cost {2} less to activate. This effect can't reduce the mana in that cost to less than one mana.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+            - kind: EffectSentence
+              children:
+                - kind: GrantEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: VoteEffect
+                  options: [strength, numbers]
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: VoteEffect
+                  isSecret: true
+                  votesOnObject: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: PlanarEffect
+                  isPlaneswalk: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DrawEffect
+                - kind: RepeatEffect
+                  count: once
+    - kind: SpellAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CantEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+            - kind: EffectSentence
+              children:
+                - kind: CostReductionLimitEffect
+                  floor: one mana

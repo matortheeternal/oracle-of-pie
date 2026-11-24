@@ -6,7 +6,7 @@ import {
 const COST_CHANGE = /^costs? ((?:\{[^}]+\})+) (less|more) to (cast|activate)\b/i;
 const COST_TAIL_ALTERNATIVES = [
     'this way', 'for each (?:[^,.]|, (?=non))+', 'if [^,.]+', 'as long as [^,.]+',
-    'during [^,.]+',
+    'during [^,.]+', 'unless they\'re mana abilities',
     ',? where X is [^.]+'
 ];
 const COST_TAIL = new RegExp(`^(?:${COST_TAIL_ALTERNATIVES.join('|')})`, 'i');
