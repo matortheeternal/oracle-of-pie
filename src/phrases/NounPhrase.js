@@ -1,11 +1,15 @@
 import Phrase from './Phrase.js';
 import { MODIFIER_PARSERS } from './modifiers/index.js';
+import RelationModifier from './modifiers/RelationModifier.js';
 import { TYPE_WORDS } from './vocabulary.js';
 import { classifyWord, TYPE, SUBTYPE, QUALIFIER, EXCLUSION } from './wordClass.js';
 import NegatedWord from './NegatedWord.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const N = NUMBER_PATTERN;
+const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
+const ORDINAL = `(?:${ORDINALS.join('|')})`;
+const ORDINAL_WORD = new RegExp(`\\b${ORDINAL}$`);
 const DETERMINER_ALTERNATIVES = [
     `${N} or (${N}) (?:other )?target`,
     `up to (${N}) (?:other )?target`,
@@ -15,7 +19,7 @@ const DETERMINER_ALTERNATIVES = [
     'up to that many',
     'another target', 'other target', 'target', 'each other', 'each', 'all other',
     'all', 'another', 'one or more', `(${N}) or more`, 'any number of', 'any', N,
-    'the', 'that', 'those', 'your(?= commanders?\\b)'
+    `the ${ORDINAL}`, 'the', 'that', 'those', 'your(?= commanders?\\b)'
 ];
 const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i');
 const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
@@ -35,6 +39,11 @@ const PLURAL_S = /(?<=[^s])s$/;
 function nextWordClass(scribe, str) {
     const match = str.match(WORD);
     return match ? classifyWord(scribe, match[1]) : null;
+}
+
+function ordinalOf(determiner) {
+    const word = determiner?.match(ORDINAL_WORD)?.[0];
+    return word ? ORDINALS.indexOf(word) + 1 : null;
 }
 
 function isLoneType(group, type) {
@@ -65,6 +74,7 @@ export default class NounPhrase extends Phrase {
         super(scribe, match, str);
         this.determiner = match[1]?.toLowerCase() ?? null;
         this.count = numberValue(match.slice(2).find(Boolean) ?? '1');
+        this.ordinal = ordinalOf(this.determiner);
         this.qualifiers = [];
         this.exclusions = [];
         this.types = [];
@@ -81,6 +91,7 @@ export default class NounPhrase extends Phrase {
     }
 
     consumeWord() {
+        if (RelationModifier.match(this.scribe, this.remainingStr)) return false;
         const match = this.remainingStr.match(WORD);
         const wordClass = match && classifyWord(this.scribe, match[1]);
         if (!wordClass) return false;

@@ -39,17 +39,21 @@ export default class CardText extends Parser {
         return this.splitLeadingKeyword(text) ?? [ability];
     }
 
+    isEffectSentence(text) {
+        const ability = this.parseNext(text, this.scribe.abilityParsers);
+        return Boolean(ability?.isRecognized && !ability.isKeywordOnly);
+    }
+
     isWholeKeyword(ability) {
         if (!ability?.isKeywordOnly) return false;
-        return ability.isRecognized && !ability.costText;
+        return ability.isRecognized && !ability.hasParameterText;
     }
 
     splitLeadingKeyword(text) {
         const leading = text.match(LEADING_SENTENCE);
         if (!leading) return null;
         const sentence = leading[1];
-        if (this.parseNext(`${sentence}.`, this.scribe.abilityParsers)?.isRecognized)
-            return null;
+        if (this.isEffectSentence(`${sentence}.`)) return null;
         const keyword = this.parseNext(sentence, this.scribe.abilityParsers);
         if (!this.isWholeKeyword(keyword)) return null;
         const rest = text.slice(leading[0].length);

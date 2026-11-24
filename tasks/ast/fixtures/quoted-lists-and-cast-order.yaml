@@ -1,0 +1,59 @@
+name: Quoted lists and cast order
+typeLine: Creature — Shapeshifter
+text: |-
+  Equipped creature has flying, "Ward—Pay 3 life," and "At the beginning of your upkeep, sacrifice a creature."
+  {2}: Target creature gains "{T}: Draw a card." Activate only as a sorcery.
+  The second spell you cast each turn costs {1} less to cast.
+  Whenever this creature becomes blocked, it deals 1 damage to each creature blocking it.
+  Each mode must target a different player.
+  This creature becomes a copy of target creature, except it has this ability.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: GrantEffect
+                  children:
+                    - kind: AttachedReference
+                    - kind: KeywordList
+                    - kind: QuotedAbility
+                    - kind: QuotedAbility
+    - kind: ActivatedAbility
+      children:
+        - kind: CostList
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+            - kind: RestrictionSentence
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+                  children:
+                    - kind: NounPhrase
+                      ordinal: 2
+    - kind: TriggeredAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DistinctModeTargetsEffect
+                  targetKind: player
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: BecomesEffect
+                  exception: except it has this ability

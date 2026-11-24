@@ -15,7 +15,7 @@ const STATE_ALTERNATIVES = [
     'of the chosen type',
     'of the chosen color',
     'other than ~',
-    'that\'s? (?:attacking|blocking)',
+    'that\'s? (?:attacking|blocking)(?: (?:it|~|this creature))?',
     'that\'s enchanted or equipped',
     'an opponent cast',
     'of (?:their|your|its controller\'s) choice',

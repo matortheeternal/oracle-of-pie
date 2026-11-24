@@ -15,7 +15,7 @@ export default class GrantEffect extends Effect {
     }
 
     get parts() {
-        return [this.keywords, this.quoted].filter(Boolean);
+        return [this.keywords, ...this.quotedAbilities].filter(Boolean);
     }
 
     get isComplete() {

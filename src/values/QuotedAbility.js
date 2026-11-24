@@ -1,6 +1,6 @@
 import Node from '../core/Node.js';
 
-const QUOTED = /^"([^"]*)"/;
+const QUOTED = /^"([^"]*?),?"/;
 
 function isTemporary(context) {
     return Boolean(context.effectDuration?.isTemporary || context.condition?.isDuration);

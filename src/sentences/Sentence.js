@@ -3,7 +3,11 @@ import { trimLeadingSpace } from '../core/Node.js';
 import { NotImplementedError } from '../core/customErrors.js';
 import ClauseReader from '../clauses/ClauseReader.js';
 
-const SENTENCE = /^((?:"[^"]*"|[^."]|\.(?=\d))+)(?:\.|$)/;
+const INNER_QUOTE = '"[^"]*[^."]"|"[^"]*\\."(?! [A-Z])';
+const CLOSING_QUOTE = '"[^"]*\\."(?= [A-Z])';
+const SENTENCE = new RegExp(
+    `^((?:${INNER_QUOTE}|[^."]|\\.(?=\\d))+(?:${CLOSING_QUOTE})?)(?:\\.|$|(?<=")(?= ))`
+);
 const THEN = /^then,? /i;
 const X_FROM_CREATURE_STATS = /\bwhere X is [^.]*\b(?:power|toughness)\b/i;
 

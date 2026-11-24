@@ -16,9 +16,9 @@ const CONTROLLER_ALTERNATIVES = [
     'that opponent controls',
     'you own but don\'t control',
     'you control but don\'t own',
-    'you cast',
-    'your opponents cast',
-    'opponents cast'
+    'you cast(?: each turn)?',
+    'your opponents cast(?: each turn)?',
+    'opponents cast(?: each turn)?'
 ];
 const CONTROLLER = new RegExp(
     `^(${CONTROLLER_ALTERNATIVES.join('|')})\\b`, 'i'

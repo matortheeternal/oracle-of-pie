@@ -1,5 +1,6 @@
 import Effect from './Effect.js';
 import KeywordList from '../values/KeywordList.js';
+import { COPY_EXCEPTION } from '../values/copyException.js';
 
 const STATE_ALTERNATIVES = [
     'the monarch', 'day\\b', 'night\\b', 'plotted', 'prepared', 'blocked', 'untapped',
@@ -18,6 +19,7 @@ const COLOR_DESCRIPTION = new RegExp(
 );
 const POWER_TOUGHNESS = /\b\d+\/\d+\b/;
 const WITH_KEYWORDS = /\bwith (.+)$/i;
+const LEADING_COMMA = /^,? /;
 
 export default class BecomesEffect extends Effect {
     static get pattern() {
@@ -27,6 +29,16 @@ export default class BecomesEffect extends Effect {
     parseArguments(match) {
         this.description = this.consumeText(DESCRIPTION)?.[0] ?? null;
         this.keywords = this.parseKeywords();
+    }
+
+    consumeDuration() {
+        const duration = super.consumeDuration();
+        this.exception = this.isCopy ? this.consumeException() : null;
+        return duration;
+    }
+
+    consumeException() {
+        return this.consumeText(COPY_EXCEPTION)?.[0].replace(LEADING_COMMA, '') ?? null;
     }
 
     parseKeywords() {

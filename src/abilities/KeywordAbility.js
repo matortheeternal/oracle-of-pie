@@ -53,6 +53,10 @@ export default class KeywordAbility extends Ability {
         return [this.keywords];
     }
 
+    get hasParameterText() {
+        return Boolean(this.costText) && isKeywordParameter(this.keywords, this.costText);
+    }
+
     get expansions() {
         const keywords = this.keywords.keywords;
         this.cachedExpansions ??= keywords.flatMap(keyword => this.expansionFor(keyword));

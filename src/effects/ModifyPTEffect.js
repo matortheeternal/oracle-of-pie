@@ -9,6 +9,8 @@ const GETS = /^gets? (?=[+\-−]?(?:\d+|X|\*)\/)/i;
 const AND_GAINS = /^and (?:gains?|has|have) /i;
 const SCALING = /^(for each [^,.]+|where X is [^,.]+|as long as [^,.]+)/i;
 
+const NO_GRANTS = { keywords: null, quoted: null, quotedAbilities: [] };
+
 export default class ModifyPTEffect extends Effect {
     static get pattern() {
         return GETS;
@@ -21,12 +23,12 @@ export default class ModifyPTEffect extends Effect {
     }
 
     consumeGrants() {
-        if (!this.consumeText(AND_GAINS)) return { keywords: null, quoted: null };
+        if (!this.consumeText(AND_GAINS)) return NO_GRANTS;
         return consumeGrantedAbilities(this);
     }
 
     get parts() {
-        return [this.modifier, this.keywords, this.quoted].filter(Boolean);
+        return [this.modifier, this.keywords, ...this.quotedAbilities].filter(Boolean);
     }
 
     get usesOpposingArtifactCount() {
