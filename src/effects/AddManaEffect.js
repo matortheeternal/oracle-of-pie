@@ -10,6 +10,7 @@ const MANA_KIND_ALTERNATIVES = [
     'of any of the exiled card\'s colors'
 ];
 const MANA_ALTERNATIVES = [
+    '(?:\\{[^}]+\\})+ or one mana of the chosen color',
     '(?:\\{[^}]+\\})+(?:,? (?:or |and )?(?:\\{[^}]+\\})+)*',
     `(?:[a-z]+|\\d+|X) mana (?:${MANA_KIND_ALTERNATIVES.join('|')})`,
     '[^,.]*\\bmana\\b(?! value)[^,.]*',

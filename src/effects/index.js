@@ -89,6 +89,9 @@ import RemoveFromCombatEffect from './RemoveFromCombatEffect.js';
 import XMinimumEffect from './XMinimumEffect.js';
 import ChangeTargetEffect from './ChangeTargetEffect.js';
 import SkipEffect from './SkipEffect.js';
+import UsesToughnessEffect from './UsesToughnessEffect.js';
+import ChooseNotToUntapEffect from './ChooseNotToUntapEffect.js';
+import DoubleLifeEffect from './DoubleLifeEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
@@ -128,7 +131,7 @@ export const EFFECT_PARSERS = [
     StaticControlEffect, CrewBonusEffect, KeywordCostEffect,
     DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
     RemoveFromCombatEffect, XMinimumEffect, ChangeTargetEffect, SkipEffect,
-    OpaqueEffect
+    UsesToughnessEffect, ChooseNotToUntapEffect, DoubleLifeEffect, OpaqueEffect
 ];
 
 export {
@@ -158,5 +161,5 @@ export {
     StaticControlEffect, CrewBonusEffect, KeywordCostEffect,
     DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
     RemoveFromCombatEffect, XMinimumEffect, ChangeTargetEffect, SkipEffect,
-    OpaqueEffect
+    UsesToughnessEffect, ChooseNotToUntapEffect, DoubleLifeEffect, OpaqueEffect
 };

@@ -1,7 +1,8 @@
 import Effect from './Effect.js';
 
 const CHOICE_ALTERNATIVES = [
-    'a creature type(?: other than [^,.]+)?', 'a color', 'two colors', 'a card name',
+    'a creature type(?: other than [^,.]+)?', 'a color(?: other than [^,.]+)?',
+    'two colors', 'a card name',
     'a nonland card name', 'a card type', 'a basic land type', 'a land type',
     'a planeswalker type', 'a number(?: between \\w+ and \\w+)?',
     'odd or even', 'left or right',

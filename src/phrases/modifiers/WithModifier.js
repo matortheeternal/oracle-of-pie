@@ -21,6 +21,7 @@ const WITH_ALTERNATIVES = [
 ];
 const COMPARED = `[^,.]+?${BEFORE_DESTINATION}`;
 const COMPARISON_ALTERNATIVES = [
+    ' (?:greater|less) than (?:its|their) (?:power|toughness)\\b',
     '(?: or toughness)? (?:\\d+|X|N) or (?:less|greater|more)',
     `(?: or toughness)? less than ${COMPARED}`,
     `(?: or toughness)? greater than ${COMPARED}`,

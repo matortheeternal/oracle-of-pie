@@ -1,6 +1,7 @@
 import Effect from './Effect.js';
 
-const ENTERS_TAPPED = /^enters? tapped(?! and attacking)\b/i;
+const ENTERS_TAPPED = /^enters? tapped(?<attacking> and attacking(?: that player)?)?\b/i;
+const WITH_COUNTERS = /^and with ([^,.]+ counters? on it)/i;
 const UNLESS = /^unless ([^,.]+)/i;
 
 export default class EntersTappedEffect extends Effect {
@@ -9,6 +10,8 @@ export default class EntersTappedEffect extends Effect {
     }
 
     parseArguments(match) {
+        this.isAttacking = Boolean(match.groups.attacking);
+        this.counters = this.consumeText(WITH_COUNTERS)?.[1] ?? null;
         this.unless = this.consumeText(UNLESS)?.[1] ?? null;
     }
 

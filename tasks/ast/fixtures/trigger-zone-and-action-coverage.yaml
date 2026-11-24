@@ -131,6 +131,6 @@ expect:
         - kind: EffectSequence
     - kind: TriggeredAbility
       children:
-        - kind: OtherEvent
-          isUnsupported: true
+        - kind: PutIntoZoneEvent
+          destination: graveyard
         - kind: EffectSequence

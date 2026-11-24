@@ -69,6 +69,5 @@ expect:
         - kind: EffectSequence
     - kind: TriggeredAbility
       children:
-        - kind: OtherEvent
-          isUnsupported: true
+        - kind: BecomesUntappedEvent
         - kind: EffectSequence

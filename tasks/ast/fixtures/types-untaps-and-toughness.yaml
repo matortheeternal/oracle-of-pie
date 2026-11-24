@@ -1,0 +1,55 @@
+name: Types, untaps and toughness
+typeLine: Creature — Human
+text: |-
+  Whenever a creature you control connives, draw a card.
+  Whenever one or more nonland cards are milled, draw a card.
+  Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.
+  You may choose not to untap this creature during your untap step.
+  Double your life total.
+  This creature is also a Cleric, Rogue, Warrior, and Wizard.
+  As this creature enters, choose a color other than white.
+  Add {W} or one mana of the chosen color.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: ConnivesEvent
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: MilledEvent
+        - kind: EffectSequence
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: UsesToughnessEffect
+                  assignsDamage: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ChooseNotToUntapEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DoubleLifeEffect
+                  doublesYourLife: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: TypeChangeEffect
+    - kind: SpellAbility
+    - kind: SpellAbility

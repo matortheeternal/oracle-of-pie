@@ -10,8 +10,6 @@ const PUT_INTO = new RegExp(
     `^(?<subject>.+?) (?:is|are) put into ${DESTINATION}\\b`, 'i'
 );
 const ZONE_NAMES = { graveyards: 'graveyard', 'the command zone': 'command zone' };
-const CREATURE_CARDS_FROM_ANYWHERE
-    = /\bcreature cards? (?:is|are) put into [^,.]*? from anywhere(?! other than)/i;
 
 function destinationName({ ownedZone, zone }) {
     const name = (ownedZone ?? zone).toLowerCase();
@@ -25,11 +23,6 @@ export default class PutIntoZoneEvent extends TriggerEvent {
 
     static get qualifierParsers() {
         return [ZoneOrigin, FirstTime, TurnWindow];
-    }
-
-    static match(scribe, str) {
-        if (CREATURE_CARDS_FROM_ANYWHERE.test(str)) return null;
-        return super.match(scribe, str);
     }
 
     static read(scribe, match, str) {
