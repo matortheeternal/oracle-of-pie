@@ -84,9 +84,10 @@ export default class ReferenceScope {
 
     existingAntecedentFor(reference) {
         for (let i = this.candidates.length - 1; i >= 0; i--) {
-            const candidate = this.candidates[i].resolved;
+            const phrase = this.candidates[i];
+            const candidate = phrase.resolved;
             if (candidate.isCreatedToken || candidate === reference) continue;
-            if (!reference.accepts(candidate)) continue;
+            if (!reference.accepts(candidate, phrase)) continue;
             if (candidate.refersToSelf && this.counterpart
                 && reference.reference === 'that creature')
                 return this.counterpart.resolved;

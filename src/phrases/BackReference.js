@@ -39,6 +39,10 @@ const TYPE_IN_REFERENCE = new RegExp(
     `(${TYPE_IN_REFERENCE_ALTERNATIVES.join('|')})`, 'i'
 );
 
+function wasExiled(candidate, phrase) {
+    return Boolean(candidate.owner?.isExile || phrase.owner?.isExile);
+}
+
 export default class BackReference extends Phrase {
     static match(scribe, str) {
         return str.match(BACK_REFERENCE);
@@ -85,8 +89,8 @@ export default class BackReference extends Phrase {
         antecedent?.resolved.references.push(this);
     }
 
-    accepts(candidate) {
-        if (this.refersToExiled && !candidate.owner?.isExile) return false;
+    accepts(candidate, phrase = candidate) {
+        if (this.refersToExiled && !wasExiled(candidate, phrase)) return false;
         return this.acceptsType(candidate);
     }
 

@@ -68,6 +68,9 @@ import CounterModificationEffect from './CounterModificationEffect.js';
 import BeginGameEffect from './BeginGameEffect.js';
 import TuckEffect from './TuckEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
+import StateEffect from './StateEffect.js';
+import RevealEffect from './RevealEffect.js';
+import LoseAbilitiesEffect from './LoseAbilitiesEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
@@ -101,7 +104,8 @@ export const EFFECT_PARSERS = [
     SetLifeTotalEffect, BecomesEffect, DistributeCountersEffect, TypeChangeEffect,
     ManaRetentionEffect,
     AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
-    EndTurnOrCombatEffect, ExtraTurnEffect, OpaqueEffect
+    EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
+    RevealEffect, OpaqueEffect
 ];
 
 export {
@@ -125,5 +129,6 @@ export {
     SetLifeTotalEffect, BecomesEffect, DistributeCountersEffect, TypeChangeEffect,
     ManaRetentionEffect,
     AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
-    EndTurnOrCombatEffect, ExtraTurnEffect, OpaqueEffect
+    EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
+    RevealEffect, OpaqueEffect
 };

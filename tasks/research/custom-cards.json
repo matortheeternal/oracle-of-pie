@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Research Blue Life",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Research Blue Life",
+        "manaCost": "{U}",
+        "type": "Sorcery",
+        "text": "You gain 3 life."
+      }
+    ]
+  },
+  {
+    "name": "Research Red Draw",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Research Red Draw",
+        "manaCost": "{R}",
+        "type": "Sorcery",
+        "text": "Draw two cards."
+      }
+    ]
+  },
+  {
+    "name": "Research White Draw",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Research White Draw",
+        "manaCost": "{W}",
+        "type": "Sorcery",
+        "text": "Draw two cards."
+      }
+    ]
+  },
+  {
+    "name": "Research Blue Scry",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Research Blue Scry",
+        "manaCost": "{U}",
+        "type": "Sorcery",
+        "text": "Scry 2."
+      }
+    ]
+  },
+  {
+    "name": "Research Opponent Draw",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Research Opponent Draw",
+        "manaCost": "{U}",
+        "type": "Sorcery",
+        "text": "Target opponent draws two cards."
+      }
+    ]
+  },
+  {
+    "name": "Research Green Angel",
+    "layout": "single",
+    "cards": [
+      {
+        "name": "Research Green Angel",
+        "manaCost": "{G}",
+        "type": "Creature \u2014 Angel",
+        "text": "Flying",
+        "power": "1",
+        "toughness": "1"
+      }
+    ]
+  }
+]

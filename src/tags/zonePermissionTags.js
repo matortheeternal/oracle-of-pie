@@ -73,7 +73,10 @@ export const ZONE_PERMISSION_TAGS = [
                     phrases: {
                         kind: 'BackReference',
                         refersToSelf: false,
-                        antecedent: { owner: { isExile: true } }
+                        any: [
+                            { antecedent: { owner: { isExile: true } } },
+                            { refersToExiled: true, not: { antecedent: null } }
+                        ]
                     }
                 },
                 { tag: 'impulsive-draw' }

@@ -17,6 +17,11 @@ export default class LookAtTopEffect extends Effect {
     parseArguments(match) {
         this.verb = match[0].split(' ')[0].toLowerCase();
         this.libraryOwner = match.groups.owner.toLowerCase();
+        this.cardCount = match[1]?.toLowerCase() ?? null;
+    }
+
+    get looksAtOneCard() {
+        return !this.cardCount;
     }
 
     get looksInYourLibrary() {

@@ -1,0 +1,58 @@
+name: State and Reveal Effects
+typeLine: Creature — Human
+text: |-
+  This creature enters prepared.
+  Enchanted creature gets +1/+1, loses all abilities, and is goaded for the rest of the game.
+  You may exert this creature as it attacks.
+  Look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: StateEffect
+                  state: prepared
+                  entersInState: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ModifyPTEffect
+                - kind: LoseAbilitiesEffect
+                  keepsSelf: false
+                - kind: StateEffect
+                  state: goaded
+                  entersInState: false
+                  children:
+                    - kind: AttachedReference
+                    - kind: Duration
+                      raw: for the rest of the game
+                      isTemporary: false
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: KeywordActionEffect
+                  action: exert
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: LookAtTopEffect
+                  looksAtOneCard: false
+            - kind: EffectSentence
+              children:
+                - kind: RevealEffect
+                - kind: PutEffect
+                  destination: into your hand

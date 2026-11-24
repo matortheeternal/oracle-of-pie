@@ -2,7 +2,8 @@ import Effect from './Effect.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const OWNER = '(?:your|their|his or her|its owner\'s)';
-const ZONE = `(?:the top of ${OWNER} library|${OWNER} (?:sideboard|graveyard|hand))`;
+const LIBRARY_TOP = `the top of (?:${OWNER} library|it)`;
+const ZONE = `(?:${LIBRARY_TOP}|${OWNER} (?:sideboard|graveyard|hand))`;
 const DIG_UNTIL = new RegExp(
     `^(?:reveals?|exiles?) cards from ${ZONE}(?: at random)? until `,
     'i'

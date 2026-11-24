@@ -64,7 +64,9 @@ export const RESOURCE_TAGS = [
                 ...REPEATABLE_SOURCE,
                 sentence: {
                     previous: {
-                        effects: { ...TOP_OF_YOUR_LIBRARY, verb: 'look' }
+                        effects: {
+                            ...TOP_OF_YOUR_LIBRARY, verb: 'look', looksAtOneCard: false
+                        }
                     }
                 }
             }

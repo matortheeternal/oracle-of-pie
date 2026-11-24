@@ -8,6 +8,7 @@ const DURATION_ALTERNATIVES = [
     'until your next end step',
     'this turn',
     'for as long as [^,.]+',
+    'for the rest of the game',
     'until ~ leaves the battlefield',
     'until [^,.]+ leaves the battlefield'
 ];
@@ -15,7 +16,7 @@ const DURATION = new RegExp(
     `^(${DURATION_ALTERNATIVES.join('|')})`, 'i'
 );
 
-const LASTING = /^for as long as|leaves the battlefield$/;
+const LASTING = /^for as long as|^for the rest of the game$|leaves the battlefield$/;
 
 export default class Duration extends Node {
     static match(scribe, str) {

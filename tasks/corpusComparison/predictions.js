@@ -24,28 +24,34 @@ function describeChanges(changes, label, report) {
     report.list(`${label} (${count}) on cards`, cards);
 }
 
-function compareRecognition(entries, report) {
-    const recognized = { before: 0, after: 0 };
-    const events = { before: emptyCoverage(), after: emptyCoverage() };
+function compareCoverage(entries, field, label, report) {
+    const totals = { before: 0, after: 0 };
     const gained = [];
     const lost = [];
+    for (const { name, previous, current } of entries) {
+        totals.before += Number(Boolean(previous[field]));
+        totals.after += Number(Boolean(current[field]));
+        if (!previous[field] && current[field]) gained.push(name);
+        if (previous[field] && !current[field]) lost.push(name);
+    }
+    report.line(`${label} cards: ${totals.before} -> ${totals.after}`);
+    report.list(`Newly ${label.toLowerCase()} cards`, gained);
+    report.list(`Lost ${label.toLowerCase()} cards`, lost);
+}
+
+function compareRecognition(entries, report) {
+    const events = { before: emptyCoverage(), after: emptyCoverage() };
     const coverage = [];
     const diagnostics = [];
 
     for (const { name, previous, current } of entries) {
-        recognized.before += Number(previous.recognized);
-        recognized.after += Number(current.recognized);
-        if (!previous.recognized && current.recognized) gained.push(name);
-        if (previous.recognized && !current.recognized) lost.push(name);
         tallyEvents(events, coverage, name, previous.events, current.events);
-
         const fields = diagnosticChanges(previous, current);
         if (fields.length) diagnostics.push(`${name} (${fields.join(', ')})`);
     }
 
-    report.line(`Recognized cards: ${recognized.before} -> ${recognized.after}`);
-    report.list('Newly recognized cards', gained);
-    report.list('Lost recognition', lost);
+    compareCoverage(entries, 'recognized', 'Recognized', report);
+    compareCoverage(entries, 'modeled', 'Modeled', report);
     report.line(`Events (read/partial/unsupported): ${eventCounts(events.before)}`
         + ` -> ${eventCounts(events.after)}`);
     report.list('Cards with changed event coverage', coverage);
