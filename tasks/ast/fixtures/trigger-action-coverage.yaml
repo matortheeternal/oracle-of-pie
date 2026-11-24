@@ -1,0 +1,74 @@
+name: Trigger action coverage
+typeLine: Creature — Shapeshifter
+text: |-
+  When this creature enters or is turned face up, draw a card.
+  When this creature exploits a creature, draw a card.
+  When you unlock this door, draw a card.
+  Whenever you fully unlock a Room, draw a card.
+  Whenever you commit a crime during your turn, draw a card.
+  Whenever you expend 6 from an unknown source, draw a card.
+  Whenever this creature becomes untapped, draw a card.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: CompoundEvent
+          children:
+            - kind: EntersEvent
+            - kind: TurnsFaceUpEvent
+              raw: is turned face up
+              sharesSubject: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: ExploitsEvent
+          isRecognized: true
+          objectPhrase:
+            kind: NounPhrase
+            raw: a creature
+            hasLeftBattlefield: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: UnlocksRoomEvent
+          isRecognized: true
+          isFullRoom: false
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: UnlocksRoomEvent
+          isRecognized: true
+          isFullRoom: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CommitsCrimeEvent
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: TurnWindow
+              raw: during your turn
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: ExpendsEvent
+          raw: you expend 6
+          mana: 6
+          isRecognized: false
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: UnrecognizedText
+              raw: from an unknown source
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: OtherEvent
+          isUnsupported: true
+        - kind: EffectSequence

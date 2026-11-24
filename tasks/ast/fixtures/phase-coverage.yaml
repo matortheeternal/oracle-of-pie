@@ -1,0 +1,57 @@
+name: Phase coverage
+typeLine: Enchantment
+text: |-
+  At the beginning of your first main phase, draw a card.
+  At the beginning of each of enchanted player's postcombat main phases, draw a card.
+  At the beginning of each combat, draw a card.
+  At the beginning of the end step on your next turn, draw a card.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: PhaseEvent
+          isRecognized: true
+          children:
+            - kind: MainPhase
+              raw: your first main phase
+              step: main phase
+              timing: first
+              isYourTurn: true
+              allPhases: false
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: PhaseEvent
+          isRecognized: true
+          children:
+            - kind: MainPhase
+              raw: each of enchanted player's postcombat main phases
+              step: main phase
+              timing: postcombat
+              turnOwner: enchanted player's
+              isYourTurn: false
+              allPhases: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: PhaseEvent
+          isRecognized: true
+          children:
+            - kind: OwnedStep
+              raw: each combat
+              isCombat: true
+              isEachTurn: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: PhaseEvent
+          isRecognized: false
+          children:
+            - kind: OwnedStep
+              raw: the end step
+              turnOwner: null
+              isEndStep: true
+            - kind: UnrecognizedText
+              raw: on your next turn
+        - kind: EffectSequence

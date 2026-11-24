@@ -10,6 +10,6 @@ export default class ReturnCost extends ObjectCost {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.consumeText(TO_HAND);
+        this.returnsToHand = Boolean(this.consumeText(TO_HAND));
     }
 }

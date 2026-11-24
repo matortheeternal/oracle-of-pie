@@ -27,6 +27,7 @@
     "tag": "node tasks/tagCorpus.js",
     "score": "node tasks/scoreTags.js",
     "evaluate": "npm run tag && npm run score",
+    "compare-corpus": "node tasks/compareCorpus.js",
     "diagnose": "node tasks/diagnose.js",
     "gaps": "node tasks/gapReport.js",
     "queues": "node tasks/buildCustomQueue.js && node tasks/buildScryfallQueues.js && node tasks/buildPieQueues.js",
@@ -37,6 +38,8 @@
     "pie": "node tasks/buildPieProfiles.js && node tasks/inspectPie.js",
     "pie-gate": "node tasks/pieGate.js",
     "pie-verdicts": "node tasks/checkPieVerdicts.js",
+    "ast-fixtures": "node tasks/checkAstFixtures.js",
+    "ast": "node tasks/inspectAst.js",
     "keyword-canon": "node tasks/buildKeywordCanon.js default-cards-*.jsonl.gz"
   }
 }

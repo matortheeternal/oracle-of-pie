@@ -6,6 +6,7 @@ const REPEAT = '(?: twice| (?:\\w+ )?times)?';
 export const ACTION_AMOUNT = `(?: (?<amount>${NUMBER_PATTERN}))?${REPEAT}`;
 
 const TRANSFORM_SELF = /^transform (?:~|this\b|it\b)/i;
+const SCRY_ADJUSTMENT = new RegExp(`^that many cards plus ${NUMBER_PATTERN}\\b`, 'i');
 
 export default class KeywordActionEffect extends Effect {
     static match(scribe, str) {
@@ -24,6 +25,8 @@ export default class KeywordActionEffect extends Effect {
         this.amountText = match.groups.amount ?? null;
         this.definition = this.scribe.definitions.actions.definitionFor(this.actionText);
         this.action = this.definition.key;
+        if (this.action === 'scry' && this.amountText === null)
+            this.amountText = this.consumeText(SCRY_ADJUSTMENT)?.[0] ?? null;
     }
 
     get isKeywordAction() {

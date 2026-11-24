@@ -1,0 +1,19 @@
+name: Phyrexian Vindicator
+typeLine: Creature — Phyrexian Horror
+text: If damage would be dealt to this creature, prevent that damage. When damage is prevented this way, this creature deals that much damage to any other target.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      body:
+        sentences:
+          - kind: ConditionalSentence
+            effects:
+              - kind: PreventDamageEffect
+          - kind: TriggerSentence
+            event:
+              kind: DamagePreventedEvent
+              linksToPrevention: true
+            effects:
+              - kind: DamageEffect
+                amountText: that much damage

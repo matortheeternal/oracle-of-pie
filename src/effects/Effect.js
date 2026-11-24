@@ -94,8 +94,13 @@ export default class Effect extends Parser {
         return Boolean(this.sharedSubject);
     }
 
+    get actingSubject() {
+        return this.subject ?? this.inheritedSubject ?? null;
+    }
+
     get subjectIsOpponent() {
-        return Boolean(this.subject?.isPlayer && this.subject.canBeOpponent);
+        const subject = this.actingSubject;
+        return Boolean(subject?.isPlayer && subject.canBeOpponent);
     }
 
     get cardsGained() {
@@ -103,7 +108,8 @@ export default class Effect extends Parser {
     }
 
     get affectsYou() {
-        return !this.subject || Boolean(this.subject.includesYou);
+        const subject = this.actingSubject;
+        return !subject || Boolean(subject.includesYou);
     }
 
     get canAffectYou() {
@@ -111,6 +117,7 @@ export default class Effect extends Parser {
     }
 
     get subjectIsYou() {
-        return !this.subject || Boolean(this.subject.isPlayer && this.subject.isYou);
+        const subject = this.actingSubject;
+        return !subject || Boolean(subject.isPlayer && subject.isYou);
     }
 }

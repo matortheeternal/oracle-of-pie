@@ -1,0 +1,27 @@
+name: Grisly Survivor
+set: HOU
+typeLine: Creature — Minotaur Warrior
+text: |-
+  Whenever you cycle or discard a card, this creature gets +2/+0 until end of turn.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: CompoundEvent
+          raw: you cycle or discard a card
+          children:
+            - kind: CyclesEvent
+              raw: you cycle
+              children:
+                - kind: PlayerPhrase
+                  raw: you
+            - kind: DiscardsEvent
+              raw: discard a card
+              sharesSubject: true
+              children:
+                - kind: NounPhrase
+                  raw: a card
+        - kind: EffectSequence

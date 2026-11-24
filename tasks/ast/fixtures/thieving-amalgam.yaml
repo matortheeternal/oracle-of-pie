@@ -1,0 +1,32 @@
+name: Thieving Amalgam
+set: C19
+typeLine: Creature — Ape Snake
+text: |-
+  At the beginning of each opponent's upkeep, you manifest the top card of that player's library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)
+  Whenever a creature you control but don't own dies, its owner loses 2 life and you gain 2 life.
+expect:
+  kind: CardText
+  isRecognized: false
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: PhaseEvent
+          raw: the beginning of each opponent's upkeep
+          isRecognized: true
+          children:
+            - kind: OwnedStep
+              raw: each opponent's upkeep
+              turnOwner: each opponent's
+              isUpkeep: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: DiesEvent
+          raw: a creature you control but don't own dies
+          isRecognized: false
+          children:
+            - kind: NounPhrase
+              raw: a creature you control
+            - kind: UnrecognizedText
+              raw: but don't own
+        - kind: EffectSequence

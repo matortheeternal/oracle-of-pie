@@ -1,0 +1,134 @@
+name: Trigger zone and action coverage
+typeLine: Enchantment
+text: |-
+  Whenever one or more cards are put into exile from your library and/or your graveyard, draw a card.
+  Whenever an artifact is put into a graveyard from the battlefield or is put into exile from the battlefield, draw a card.
+  When enchanted artifact is put into a graveyard, return that card to its owner's hand.
+  Whenever an opponent activates an ability of an artifact, creature, or land that isn't a mana ability, draw a card.
+  Whenever you activate an exhaust ability, draw a card.
+  Whenever you put one or more +1/+1 counters on a creature you control, draw a card.
+  When this land enters untapped, draw a card.
+  Whenever a creature you control with a counter on it dies, draw a card.
+  Whenever you tap a land for mana, add one mana of any type that land produced.
+  Whenever this Equipment becomes unattached from a permanent, destroy that permanent.
+  Whenever one or more creature cards are put into your graveyard from anywhere, draw a card.
+expect:
+  kind: CardText
+  isRecognized: false
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: PutIntoZoneEvent
+          isRecognized: true
+          destination: exile
+          children:
+            - kind: NounPhrase
+              raw: one or more cards
+            - kind: ZoneOrigin
+              raw: from your library and/or your graveyard
+              zones: [library, graveyard]
+              includesBattlefield: false
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CompoundEvent
+          isRecognized: true
+          children:
+            - kind: DiesEvent
+            - kind: PutIntoZoneEvent
+              raw: is put into exile from the battlefield
+              sharesSubject: true
+              destination: exile
+              isFromBattlefield: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: PutIntoZoneEvent
+          isRecognized: true
+          destination: graveyard
+          destinationOwner: a
+          mayLeaveBattlefield: true
+          subjectPhrase:
+            kind: AttachedReference
+            raw: enchanted artifact
+            hasLeftBattlefield: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: ActivatesEvent
+          isRecognized: true
+          isNext: false
+          objectPhrase:
+            kind: ActivatedAbilityPhrase
+            raw: an ability of an artifact, creature, or land that isn't a mana ability
+            abilityKind: null
+            isNonmana: true
+            source:
+              kind: NounPhrase
+              raw: an artifact, creature, or land
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: ActivatesEvent
+          isRecognized: true
+          ability:
+            raw: an exhaust ability
+            abilityKind: exhaust
+            isNonmana: false
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: PlacesCountersEvent
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: PlacedCounters
+              raw: one or more +1/+1 counters
+              counterKind: +1/+1
+            - kind: NounPhrase
+              raw: a creature you control
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: EntersEvent
+          isRecognized: true
+          children:
+            - kind: SelfReference
+            - kind: TapState
+              raw: untapped
+              isUntapped: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: DiesEvent
+          isRecognized: false
+          subjectPhrase:
+            kind: NounPhrase
+            raw: a creature you control
+          children:
+            - kind: NounPhrase
+            - kind: UnrecognizedText
+              raw: with a counter on it
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: TapsEvent
+          isRecognized: true
+          isForMana: true
+          objectPhrase:
+            kind: NounPhrase
+            raw: a land
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: OtherEvent
+          isUnsupported: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: OtherEvent
+          isUnsupported: true
+        - kind: EffectSequence

@@ -1,5 +1,6 @@
 import { CardColors } from '../../src/index.js';
 import { printedCardColors } from './printedColors.js';
+import parsePrintedFace from './parsePrintedFace.js';
 
 export function cardColorsOf(card) {
     const colors = printedCardColors(card.faces);
@@ -12,11 +13,7 @@ function faceColorsOf(card, face) {
 }
 
 function parseFace(scribe, card, face) {
-    const parsed = scribe.parseFace({
-        name: face.name,
-        typeLine: face.type_line ?? card.type_line ?? '',
-        text: face.oracle_text ?? ''
-    });
+    const parsed = parsePrintedFace(scribe, card, face);
     return { parsed, colors: faceColorsOf(card, face) };
 }
 

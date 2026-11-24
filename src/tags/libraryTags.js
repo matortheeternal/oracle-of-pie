@@ -1,8 +1,22 @@
-const CREATURE_CARD = { isCreatureCard: true };
 const GRAVEYARD_LAND = { hasExactType: 'land', zone: 'graveyard' };
 const LAND_SWAP = { ability: { cost: { sacrificesOther: true } } };
 
+const REPLACE_SACRIFICED_LANDS = {
+    phrases: { kind: 'NounPhrase', isBoundedByPreviousCount: true },
+    context: {
+        sentence: {
+            previous: {
+                effects: { kind: 'SacrificeEffect', phrases: { hasExactType: 'land' } }
+            }
+        }
+    }
+};
+
 const SEARCH = { kind: 'SearchLibraryEffect' };
+const SACRIFICES_LAND = {
+    kind: 'SacrificeEffect',
+    phrases: { hasExactType: 'land' }
+};
 
 export const LIBRARY_TAGS = [
     {
@@ -27,7 +41,8 @@ export const LIBRARY_TAGS = [
             kind: 'SearchLibraryEffect',
             card: { isLand: true },
             findsLand: true,
-            toBattlefield: true
+            toBattlefield: true,
+            affectsYou: true
         }
     },
     {
@@ -40,7 +55,8 @@ export const LIBRARY_TAGS = [
                     findsLand: true,
                     toBattlefield: true,
                     affectsYou: true,
-                    context: { not: LAND_SWAP }
+                    context: { not: LAND_SWAP },
+                    not: REPLACE_SACRIFICED_LANDS
                 },
                 {
                     kind: 'PutEffect',
@@ -64,30 +80,18 @@ export const LIBRARY_TAGS = [
         }
     },
     {
-        tag: 'reanimate-creature',
+        tag: 'multi-land-ramp',
         match: {
+            tag: 'land-ramp',
             any: [
                 {
-                    kind: 'ReturnEffect',
-                    destination: 'battlefield',
-                    fromGraveyard: true,
-                    phrases: CREATURE_CARD
+                    ...SEARCH,
+                    splitsBetweenBattlefieldAndHand: false,
+                    phrases: { count: [2, 3, 4, 5] },
+                    context: { not: { ability: { body: { effects: SACRIFICES_LAND } } } }
                 },
-                {
-                    kind: 'PutEffect',
-                    toBattlefield: true,
-                    phrases: { ...CREATURE_CARD, zone: 'graveyard' }
-                }
+                { kind: 'ExtraLandEffect', count: 2 }
             ]
-        }
-    },
-    {
-        tag: 'regrowth-creature',
-        match: {
-            kind: 'ReturnEffect',
-            destination: 'hand',
-            fromGraveyard: true,
-            phrases: CREATURE_CARD
         }
     },
     {

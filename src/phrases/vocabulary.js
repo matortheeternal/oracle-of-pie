@@ -21,7 +21,7 @@ export const QUALIFIER_WORDS = new Set([
     'multicolored', 'tapped', 'untapped', 'attacking', 'blocking', 'blocked',
     'unblocked', 'other', 'legendary', 'basic', 'snow', 'enchanted',
     'equipped', 'face-down', 'activated', 'triggered', 'loyalty', 'chosen', 'exiled',
-    'token', 'commander'
+    'token', 'commander', 'kicked'
 ]);
 
 export const NEGATED_QUALIFIER = /^non-?[a-z]+$/i;

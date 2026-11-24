@@ -1,5 +1,8 @@
 import Effect from './Effect.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
+import {
+    scalesAmountWithManaValue, usesCreatureCount
+} from '../values/quantityDependencies.js';
 
 const LIFE_AMOUNT_ALTERNATIVES = [
     `(?:${NUMBER_PATTERN}|that much) life(?: for each [^,.]+)?`,
@@ -15,5 +18,13 @@ export default class LifeEffect extends Effect {
 
     parseArguments(match) {
         this.amountText = match[1];
+    }
+
+    get usesManaValue() {
+        return scalesAmountWithManaValue(this.amountText);
+    }
+
+    get usesCreatureCount() {
+        return usesCreatureCount(this.amountText);
     }
 }

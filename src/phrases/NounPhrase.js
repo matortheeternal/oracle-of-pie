@@ -13,7 +13,8 @@ const DETERMINER_ALTERNATIVES = [
     `up to (${N})`,
     'up to that many',
     'another target', 'other target', 'target', 'each other', 'each', 'all other',
-    'all', 'another', 'one or more', 'any number of', 'any', N, 'the', 'that', 'those'
+    'all', 'another', 'one or more', `(${N}) or more`, 'any number of', 'any', N,
+    'the', 'that', 'those'
 ];
 const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i');
 const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
@@ -62,7 +63,7 @@ export default class NounPhrase extends Phrase {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.determiner = match[1]?.toLowerCase() ?? null;
-        this.count = numberValue(match[2] ?? match[3] ?? match[4] ?? '1');
+        this.count = numberValue(match[2] ?? match[3] ?? match[4] ?? match[5] ?? '1');
         this.qualifiers = [];
         this.exclusions = [];
         this.types = [];
@@ -136,6 +137,11 @@ export default class NounPhrase extends Phrase {
         return this.typeGroups.some(group => isLoneType(group, type));
     }
 
+    hasTypeConjunction(conjunction) {
+        const types = conjunction.split(' ');
+        return this.typeGroups.some(group => types.every(type => group.includes(type)));
+    }
+
     isAdjectivalType(type) {
         return ADJECTIVAL_TYPES.has(type);
     }
@@ -157,8 +163,16 @@ export default class NounPhrase extends Phrase {
         return TARGET_DETERMINER.test(this.determiner ?? '');
     }
 
+    get declaresMultipleTargets() {
+        return this.isTargeted && this.count > 1;
+    }
+
     get excludesSelf() {
         return OTHER.test(this.determiner ?? '') || this.qualifiers.includes('other');
+    }
+
+    get isBoundedByPreviousCount() {
+        return this.determiner === 'up to that many';
     }
 
     get isMass() {

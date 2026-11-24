@@ -1,9 +1,15 @@
-import { ActivationCost } from 'mana-scribe';
+import { ActivationCost, ManaCost } from 'mana-scribe';
 import CostItem from './CostItem.js';
 
 const SYMBOLS = /^(?:\{[^}]+\})+/;
 const VARIABLE_MANA = 'variableMana';
 const PHYREXIAN_SYMBOL = /\/P\}/i;
+const PHYREXIAN = /phyrexian/i;
+const MANA_SYMBOL_CLASSES = new Set(ManaCost.allowedSymbols);
+
+function requiresMana(symbol) {
+    return MANA_SYMBOL_CLASSES.has(symbol.constructor) && !PHYREXIAN.test(symbol.type);
+}
 
 export default class ManaCostItem extends CostItem {
     static match(scribe, str) {
@@ -30,6 +36,10 @@ export default class ManaCostItem extends CostItem {
 
     get paysLife() {
         return PHYREXIAN_SYMBOL.test(this.raw);
+    }
+
+    get hasOnlyManaSymbols() {
+        return this.cost.symbols.every(requiresMana);
     }
 
     get includesTap() {

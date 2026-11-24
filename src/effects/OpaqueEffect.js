@@ -4,7 +4,6 @@ const MODE_COUNT = '(?:one|two|three|one or more|one or both|any number|up to \\
 const OPAQUE_ALTERNATIVES = [
     'prevent all (?:combat )?damage that would be dealt [^,.]+',
     'prevent the next [^,.]+',
-    'take an extra turn after this one',
     'copy [^,.]+',
     `choose ${MODE_COUNT}(?: [^—,.]*)? ?—`,
     'choose (?:a|an|one|two) [^,.]+',

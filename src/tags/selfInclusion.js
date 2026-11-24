@@ -7,7 +7,7 @@ const CREATURES_INCLUDING_SELF = {
     not: { hasExactType: 'token' }
 };
 const SOURCE_GONE = [
-    { ability: { event: { kind: 'DiesEvent' } } },
+    { ability: { events: { kind: 'DiesEvent' } } },
     { ability: { cost: { removesSource: true } } }
 ];
 const SOURCE_ON_BATTLEFIELD = { expansion: null, not: { any: SOURCE_GONE } };

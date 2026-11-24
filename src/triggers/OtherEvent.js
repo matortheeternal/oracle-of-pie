@@ -7,6 +7,10 @@ export default class OtherEvent extends TriggerEvent {
         return ANY;
     }
 
+    get isUnsupported() {
+        return true;
+    }
+
     get isRepeatable() {
         return false;
     }

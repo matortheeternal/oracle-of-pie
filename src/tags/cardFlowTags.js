@@ -3,18 +3,27 @@ const OWN_DISCARD = {
     any: [{ subjectIsOpponent: false }, { sharesSubject: true }]
 };
 const DRAW_THEN_DISCARD = { effectOrder: [{ kind: 'DrawEffect' }, OWN_DISCARD] };
+import { DEFECTOR } from './discardTags.js';
 
 export const CARD_FLOW_TAGS = [
     {
         tag: 'draw',
-        match: { kind: 'DrawEffect' }
+        match: { kind: 'DrawEffect', drawsCards: true }
     },
     {
         tag: 'discard',
         match: {
             kind: 'DiscardEffect',
-            subjectIsOpponent: true,
-            not: { context: { sentence: DRAW_THEN_DISCARD } }
+            not: {
+                any: [
+                    { hasOpenDiscardCount: true },
+                    { context: { sentence: DRAW_THEN_DISCARD } }
+                ]
+            },
+            any: [
+                { subjectIsOpponent: true },
+                { subjectIsYou: true, context: { ...DEFECTOR, granted: false } }
+            ]
         }
     },
     {
@@ -35,7 +44,11 @@ export const CARD_FLOW_TAGS = [
     },
     {
         tag: 'scry',
-        match: { kind: 'KeywordActionEffect', action: 'scry' }
+        match: {
+            kind: 'KeywordActionEffect',
+            action: 'scry',
+            context: { not: { sentence: { replacesScry: true } } }
+        }
     },
     {
         tag: 'loot',

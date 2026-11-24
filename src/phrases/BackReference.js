@@ -91,7 +91,7 @@ export default class BackReference extends Phrase {
     }
 
     acceptsType(candidate) {
-        if (this.objectType !== 'spell') return true;
+        if (this.objectType !== 'spell') return !candidate.requiresTypedReference;
         return Boolean(candidate.hasType?.('spell'));
     }
 

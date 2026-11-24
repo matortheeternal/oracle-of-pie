@@ -1,0 +1,17 @@
+name: Segovian Angel
+set: MH1
+typeLine: Creature — Angel
+text: Flying, vigilance
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+      pending: >-
+        Plan step 5: KeywordList is an incidental wrapper; the keyword ability should hold its
+        Keyword nodes directly.
+      children:
+        - kind: Keyword
+          name: flying
+        - kind: Keyword
+          name: vigilance

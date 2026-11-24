@@ -1,0 +1,60 @@
+name: Self or another subjects
+typeLine: Creature
+text: |-
+  Whenever this creature or another creature you control enters, that creature gets +2/+0 until end of turn.
+  Whenever this creature or another nontoken creature you control dies, return that card to the battlefield under your control at the beginning of the next end step.
+  Whenever this creature or another Ally you control attacks, it gains first strike until end of turn.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+          isSelf: false
+          isRepeatable: true
+          subjectPhrase:
+            kind: SelfOrAnother
+            raw: this creature or another creature you control
+            refersToSelf: true
+            controlledByYou: true
+            isAntecedentCandidate: true
+            self:
+              kind: SelfReference
+              raw: this creature
+              isAntecedentCandidate: false
+              references: []
+            other:
+              kind: NounPhrase
+              raw: another creature you control
+              excludesSelf: true
+              isAntecedentCandidate: false
+              references: []
+            references:
+              - kind: BackReference
+                raw: that creature
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: DiesEvent
+          isSelf: false
+          isRepeatable: true
+          subjectPhrase:
+            kind: SelfOrAnother
+            other:
+              kind: NounPhrase
+              raw: another nontoken creature you control
+            references:
+              - kind: BackReference
+                raw: that card
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          subjectPhrase:
+            kind: SelfOrAnother
+            raw: this creature or another Ally you control
+            references:
+              - kind: BackReference
+                raw: it
+        - kind: EffectSequence

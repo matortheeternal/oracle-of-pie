@@ -53,8 +53,9 @@ export default class SearchLibraryEffect extends Effect {
         this.wanted = this.consume([PhraseList]);
         this.consumeText(WHERE_X);
         this.revealed = Boolean(this.consumeText(REVEAL));
-        const destination = this.consumeText(SPLIT_DESTINATION)
-            ?? this.consumeText(PUT_DESTINATION);
+        const split = this.consumeText(SPLIT_DESTINATION);
+        this.splitsBetweenBattlefieldAndHand = Boolean(split);
+        const destination = split ?? this.consumeText(PUT_DESTINATION);
         this.destination = destination?.[1].toLowerCase() ?? null;
         this.shuffles = Boolean(this.consumeText(SHUFFLE));
     }

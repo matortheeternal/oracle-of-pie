@@ -1,0 +1,29 @@
+name: Orcish Bowmasters
+set: LTR
+typeLine: Creature — Orc Archer
+text: |-
+  Flash
+  When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw steps, this creature deals 1 damage to any target. Then amass Orcs 1.
+expect:
+  kind: CardText
+  isRecognized: false
+  children:
+    - kind: KeywordAbility
+    - kind: TriggeredAbility
+      children:
+        - kind: CompoundEvent
+          raw: this creature enters and whenever an opponent draws a card
+          children:
+            - kind: EntersEvent
+              raw: this creature enters
+            - kind: DrawsEvent
+              raw: an opponent draws a card
+              isRecognized: false
+              children:
+                - kind: PlayerPhrase
+                  raw: an opponent
+                - kind: NounPhrase
+                  raw: a card
+                - kind: UnrecognizedText
+                  raw: except the first one they draw in each of their draw steps
+        - kind: EffectSequence

@@ -4,6 +4,7 @@ const COUNTERED = '(?=target|up to|that|the\\b|it\\b|all|each|another|\\w+ targe
 const COUNTER = new RegExp(`^counters? ${COUNTERED}`, 'i');
 const ABILITY_SOURCE = /^of an? [^,.]+/i;
 const UNLESS = /^unless ([^.]+)/i;
+const PAYMENT = /\bpays?\b/i;
 
 function isCounterable(phrase) {
     if (phrase.isBackReference) return true;
@@ -23,5 +24,9 @@ export default class CounterEffect extends ObjectEffect {
 
     get countersSpell() {
         return this.phrases.some(isCounterable);
+    }
+
+    get offersPayment() {
+        return PAYMENT.test(this.unless ?? '');
     }
 }

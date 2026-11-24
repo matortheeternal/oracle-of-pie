@@ -1,6 +1,9 @@
 import Effect from './Effect.js';
 import PTModifier from '../values/PTModifier.js';
 import consumeGrantedAbilities from '../values/consumeGrantedAbilities.js';
+import {
+    usesCreatureCount, usesOpposingArtifactCount
+} from '../values/quantityDependencies.js';
 
 const GETS = /^gets? (?=[+\-−]?(?:\d+|X|\*)\/)/i;
 const AND_GAINS = /^and (?:gains?|has|have) /i;
@@ -24,6 +27,14 @@ export default class ModifyPTEffect extends Effect {
 
     get parts() {
         return [this.modifier, this.keywords, this.quoted].filter(Boolean);
+    }
+
+    get usesOpposingArtifactCount() {
+        return usesOpposingArtifactCount(this.scaling);
+    }
+
+    get usesCreatureCount() {
+        return usesCreatureCount(this.scaling);
     }
 
     get phrases() {

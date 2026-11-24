@@ -1,0 +1,16 @@
+name: Cecily, Haunted Mage
+typeLine: Legendary Creature — Human Wizard
+text: Your maximum hand size is eleven.
+expect:
+  kind: CardText
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: HandSizeEffect
+                  maximum: 11
+                  increasesMaximum: true
+                  removesMaximum: false

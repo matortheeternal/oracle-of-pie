@@ -1,4 +1,5 @@
 import TriggerEvent from './TriggerEvent.js';
+import TurnWindow from './qualifiers/TurnWindow.js';
 
 const DEATH_ALTERNATIVES = [
     'dies',
@@ -10,6 +11,10 @@ const DIES = new RegExp(`^(?<subject>.+?) (?:${DEATH_ALTERNATIVES.join('|')})\\b
 export default class DiesEvent extends TriggerEvent {
     static get pattern() {
         return DIES;
+    }
+
+    static get qualifierParsers() {
+        return [TurnWindow];
     }
 
     get isRepeatable() {

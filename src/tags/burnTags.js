@@ -24,7 +24,11 @@ export const BURN_TAGS = [
     },
     {
         tag: 'burn-you',
-        match: { kind: 'DamageEffect', phrases: { isPlayer: true, isYou: true } }
+        match: {
+            kind: 'DamageEffect',
+            phrases: { isPlayer: true, isYou: true },
+            context: { not: { abilityController: 'opponent' } }
+        }
     },
     {
         tag: 'burn-any',

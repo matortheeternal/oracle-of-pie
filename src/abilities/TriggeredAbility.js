@@ -1,7 +1,6 @@
 import BodyAbility from './BodyAbility.js';
-import { parseTriggerEvent } from '../triggers/index.js';
+import { TRIGGER_EVENTS } from '../triggers/index.js';
 import splitTrigger from '../triggers/splitTrigger.js';
-import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const TRIGGER_WORD = /^(when|whenever|at) /i;
 
@@ -16,18 +15,15 @@ export default class TriggeredAbility extends BodyAbility {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.trigger = `${match[1]} ${match[2]}`;
-        this.event = parseTriggerEvent(match[2]);
-        this.triggerSubject = this.parseNext(this.event.subject, PHRASE_PARSERS);
-        this.triggerObject = this.parseTriggerObject();
+        this.event = this.parseNext(match[2], TRIGGER_EVENTS);
     }
 
-    parseTriggerObject() {
-        const phrase = this.event.objectPhrase;
-        return phrase ? this.parseNext(phrase, PHRASE_PARSERS) : null;
+    get parts() {
+        return [this.event, ...super.parts];
     }
 
-    get referenceSeeds() {
-        return [this.triggerSubject, this.triggerObject].filter(Boolean);
+    get events() {
+        return this.event.alternatives;
     }
 
     get isRepeatable() {
@@ -35,11 +31,11 @@ export default class TriggeredAbility extends BodyAbility {
     }
 
     get hasInterveningIf() {
-        return Boolean(this.body.sentences[0]?.statement?.isInterveningIf);
+        return Boolean(this.body.sentences[0]?.isInterveningIf);
     }
 
     get interveningCondition() {
-        return this.hasInterveningIf ? this.body.sentences[0].statement : null;
+        return this.hasInterveningIf ? this.body.sentences[0] : null;
     }
 
     childContext(context) {

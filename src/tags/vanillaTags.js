@@ -4,7 +4,8 @@ export const VANILLA_TAGS = [
         match: {
             kind: 'CardText',
             card: { isCreature: true, isSingleFaced: true },
-            hasOnlyKeywordAbilities: true
+            hasOnlyKeywordAbilities: true,
+            context: { granted: false, expansion: null }
         }
     }
 ];

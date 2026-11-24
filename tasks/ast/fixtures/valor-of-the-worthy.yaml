@@ -1,0 +1,25 @@
+name: Valor of the Worthy
+set: KHM
+typeLine: Enchantment — Aura
+text: |-
+  Enchant creature
+  Enchanted creature gets +1/+1.
+  When enchanted creature leaves the battlefield, create a 1/1 white Spirit creature token with flying.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+    - kind: SpellAbility
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: LeavesEvent
+          raw: enchanted creature leaves the battlefield
+          isFromBattlefield: true
+          isRepeatable: false
+          children:
+            - kind: AttachedReference
+              raw: enchanted creature
+              isEnchanted: true
+        - kind: EffectSequence

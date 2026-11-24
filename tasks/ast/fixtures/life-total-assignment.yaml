@@ -1,0 +1,17 @@
+name: Form of the Dinosaur
+typeLine: Enchantment
+text: When this enchantment enters, your life total becomes 15.
+expect:
+  kind: CardText
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: SetLifeTotalEffect
+                  raw: your life total becomes 15
+                  lifeTotalOwner: your
+                  fixedValue: 15

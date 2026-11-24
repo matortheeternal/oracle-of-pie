@@ -1,0 +1,24 @@
+name: Recurring and temporary untap bans
+typeLine: Enchantment
+text: |
+  Enchanted creature can't become untapped.
+  Target creature can't become untapped until end of turn.
+  Enchanted creature doesn't untap during its controller's untap step and can't attack.
+expect:
+  kind: CardText
+  effects:
+    - kind: CantEffect
+      preventsRecurringUntap: true
+      preventsNextUntap: false
+      duration: null
+    - kind: CantEffect
+      preventsRecurringUntap: false
+      preventsNextUntap: false
+      duration:
+        kind: Duration
+        isTemporary: true
+    - kind: CantEffect
+      preventsRecurringUntap: true
+      restriction: untap during its controller's untap step
+    - kind: CantEffect
+      preventsAttacking: true

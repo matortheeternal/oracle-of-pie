@@ -1,0 +1,30 @@
+name: Enraged Flamecaster
+set: ECL
+typeLine: Creature — Elemental Sorcerer
+text: |-
+  Reach
+  Whenever you cast a spell with mana value 4 or greater, this creature deals 2 damage to each opponent.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: CastEvent
+          raw: you cast a spell with mana value 4 or greater
+          isYou: true
+          castsSelf: false
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: CastSpell
+              raw: a spell with mana value 4 or greater
+              controlledByYou: true
+              children:
+                - kind: WithModifier
+                  raw: with mana value 4 or greater
+                  property: mana value
+                  comparison: 4 or greater
+        - kind: EffectSequence

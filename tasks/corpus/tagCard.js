@@ -1,14 +1,6 @@
 import explainDisagreements from '../tags/policies/explainDisagreements.js';
-
-function parseFace(scribe, card, face) {
-    return scribe.parseFace({
-        name: face.name,
-        typeLine: face.type_line ?? card.type_line ?? '',
-        text: face.oracle_text ?? '',
-        loyalty: face.loyalty ?? null,
-        faceCount: card.faces.length
-    });
-}
+import eventCoverage from './eventCoverage.js';
+import parsePrintedFace from './parsePrintedFace.js';
 
 function mergeTags(faces) {
     const tags = {};
@@ -23,13 +15,14 @@ function explanationsFor(faces, tags, gold) {
 }
 
 export default function tagCard(scribe, card, gold = null) {
-    const faces = card.faces.map(face => parseFace(scribe, card, face));
+    const faces = card.faces.map(face => parsePrintedFace(scribe, card, face));
     const tags = mergeTags(faces);
     return {
         tags,
         explained: explanationsFor(faces, tags, gold),
         recognized: faces.every(face => face.isFullyRecognized),
         unrecognized: faces.flatMap(face => face.unrecognized),
-        opaque: faces.flatMap(face => face.opaque).length
+        opaque: faces.flatMap(face => face.opaque).length,
+        events: eventCoverage(faces)
     };
 }

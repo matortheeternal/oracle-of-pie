@@ -1,0 +1,22 @@
+name: Revoke Privileges
+typeLine: Enchantment — Aura
+text: |-
+  Enchant creature
+  Enchanted creature can't attack, block, or crew Vehicles.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CantEffect
+                  raw: "can't attack, block, or crew Vehicles"
+                  preventsAttackingAndBlocking: true
+                  isDirectBan: true
+                  duration: null
+                  qualifier: null

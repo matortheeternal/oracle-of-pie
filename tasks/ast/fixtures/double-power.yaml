@@ -1,0 +1,14 @@
+name: Reckless Amplimancer
+typeLine: Creature — Elf Druid
+text: "{4}{G}: Double this creature's power and toughness until end of turn."
+expect:
+  kind: CardText
+  effects:
+    - kind: DoublePowerEffect
+      doublesToughness: true
+      repeatsForX: false
+      phrases:
+        - kind: SelfReference
+      duration:
+        kind: Duration
+        isUntilEndOfTurn: true

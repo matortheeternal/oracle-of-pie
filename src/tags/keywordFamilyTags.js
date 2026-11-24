@@ -29,7 +29,7 @@ export const KEYWORD_FAMILY_TAGS = [
     {
         family: 'gains-{keyword}',
         keywords: 'conferredKeywordNames',
-        match: { any: ONTO_SELF }
+        match: { any: ONTO_SELF, context: { granted: false } }
     },
     {
         family: '{keyword}-counter',

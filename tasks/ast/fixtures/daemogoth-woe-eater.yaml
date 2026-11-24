@@ -1,0 +1,24 @@
+name: Daemogoth Woe-Eater
+set: STX
+typeLine: Creature — Demon
+text: |-
+  At the beginning of your upkeep, sacrifice a creature.
+  When you sacrifice this creature, each opponent discards a card, you draw a card, and you gain 2 life.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+    - kind: TriggeredAbility
+      isRepeatable: false
+      children:
+        - kind: SacrificesEvent
+          raw: you sacrifice this creature
+          consumesSelf: true
+          isRepeatable: false
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: SelfReference
+              raw: this creature
+        - kind: EffectSequence

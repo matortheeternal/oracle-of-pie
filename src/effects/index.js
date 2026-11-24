@@ -1,3 +1,4 @@
+import SelfShuffleEffect from './SelfShuffleEffect.js';
 import SearchLibraryEffect from './SearchLibraryEffect.js';
 import GainControlEffect from './GainControlEffect.js';
 import GainLifeEffect from './GainLifeEffect.js';
@@ -23,10 +24,12 @@ import FightEffect from './FightEffect.js';
 import MillEffect from './MillEffect.js';
 import KeywordActionEffect from './KeywordActionEffect.js';
 import AddManaEffect from './AddManaEffect.js';
+import ActivationBanEffect from './ActivationBanEffect.js';
 import CantEffect from './CantEffect.js';
 import ChooseModesEffect from './ChooseModesEffect.js';
 import ChooseValueEffect from './ChooseValueEffect.js';
 import ChooseObjectsEffect from './ChooseObjectsEffect.js';
+import EntersUnderOpponentControlEffect from './EntersUnderOpponentControlEffect.js';
 import EntersTappedEffect from './EntersTappedEffect.js';
 import PayManaEffect from './PayManaEffect.js';
 import PayLifeEffect from './PayLifeEffect.js';
@@ -44,7 +47,9 @@ import HandSizeEffect from './HandSizeEffect.js';
 import AdditionalTriggerEffect from './AdditionalTriggerEffect.js';
 import CombatRequirementEffect from './CombatRequirementEffect.js';
 import DoubleCountersEffect from './DoubleCountersEffect.js';
+import DoublePowerEffect from './DoublePowerEffect.js';
 import PreventDamageEffect from './PreventDamageEffect.js';
+import RedirectDamageEffect from './RedirectDamageEffect.js';
 import CostModificationEffect from './CostModificationEffect.js';
 import DefinePTEffect from './DefinePTEffect.js';
 import EntersAsCopyEffect from './EntersAsCopyEffect.js';
@@ -67,8 +72,12 @@ import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
 import EntersWithCountersEffect from './EntersWithCountersEffect.js';
+import EndTurnOrCombatEffect from './EndTurnOrCombatEffect.js';
+import ExtraTurnEffect from './ExtraTurnEffect.js';
+import SetLifeTotalEffect from './SetLifeTotalEffect.js';
 
 export const EFFECT_PARSERS = [
+    SelfShuffleEffect,
     DigUntilEffect, TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect,
     LoseLifeEffect, CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect,
     ReturnEffect, DrawEffect, DiscardEffect, DamageModificationEffect, DamageFormEffect,
@@ -78,15 +87,21 @@ export const EFFECT_PARSERS = [
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, ShuffleIntoLibraryEffect,
     MoveCountersEffect, RemoveCountersEffect,
-    KeywordActionEffect, AddManaEffect, CantEffect, EntersWithCountersEffect,
+    KeywordActionEffect, AddManaEffect, CantEffect, ActivationBanEffect,
+    EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
+    EntersUnderOpponentControlEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
-    DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
+    DoubleCountersEffect, DoublePowerEffect, PreventDamageEffect, RedirectDamageEffect,
+    CostModificationEffect,
+    DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
-    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect, OpaqueEffect
+    SetLifeTotalEffect, BecomesEffect, DistributeCountersEffect, TypeChangeEffect,
+    ManaRetentionEffect,
+    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
+    EndTurnOrCombatEffect, ExtraTurnEffect, OpaqueEffect
 ];
 
 export {
@@ -96,14 +111,19 @@ export {
     GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
-    CantEffect, EntersWithCountersEffect, ShuffleIntoLibraryEffect,
+    CantEffect, ActivationBanEffect,
+    EntersWithCountersEffect, ShuffleIntoLibraryEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect,
     DigUntilEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
-    DoubleCountersEffect, PreventDamageEffect, CostModificationEffect, DefinePTEffect,
+    DoubleCountersEffect, DoublePowerEffect, PreventDamageEffect, RedirectDamageEffect,
+    CostModificationEffect,
+    DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    BecomesEffect, DistributeCountersEffect, TypeChangeEffect, ManaRetentionEffect,
-    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect, OpaqueEffect
+    SetLifeTotalEffect, BecomesEffect, DistributeCountersEffect, TypeChangeEffect,
+    ManaRetentionEffect,
+    AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
+    EndTurnOrCombatEffect, ExtraTurnEffect, OpaqueEffect
 };

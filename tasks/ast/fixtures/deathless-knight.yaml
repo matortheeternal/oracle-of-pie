@@ -1,0 +1,24 @@
+name: Deathless Knight
+set: ELD
+typeLine: Creature — Skeleton Knight
+text: |-
+  Haste
+  When you gain life for the first time each turn, return this card from your graveyard to your hand.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+    - kind: TriggeredAbility
+      children:
+        - kind: GainsLifeEvent
+          raw: you gain life for the first time each turn
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+              raw: you
+            - kind: FirstTime
+              raw: for the first time
+            - kind: TurnWindow
+              raw: each turn
+        - kind: EffectSequence

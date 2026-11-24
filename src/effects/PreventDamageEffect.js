@@ -1,7 +1,8 @@
 import Effect from './Effect.js';
 
 const PREVENT_AMOUNT = '(all|the next \\w+|that|the)';
-const PREVENTED = `${PREVENT_AMOUNT} (combat )?damage(?: that would be dealt)?`;
+const DAMAGE = '(?:(combat|noncombat) )?damage(?: that would be dealt)?';
+const PREVENTED = `${PREVENT_AMOUNT} ${DAMAGE}`;
 const PREVENT_DAMAGE = new RegExp(`^prevent ${PREVENTED}`, 'i');
 const SCOPE = /^[^,.]+/;
 const UNRESTRICTED_SCOPE = /^(?:this turn)?$/i;
@@ -13,11 +14,15 @@ export default class PreventDamageEffect extends Effect {
 
     parseArguments(match) {
         this.isAll = match[1].toLowerCase() === 'all';
-        this.isCombatOnly = Boolean(match[2]);
+        this.damageKind = match[2]?.toLowerCase() ?? null;
         this.scope = this.consumeText(SCOPE)?.[0].trim() ?? '';
     }
 
     get isUnrestricted() {
         return UNRESTRICTED_SCOPE.test(this.scope);
+    }
+
+    get isCombatOnly() {
+        return this.damageKind === 'combat';
     }
 }

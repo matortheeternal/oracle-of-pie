@@ -1,0 +1,31 @@
+name: Mirkwood Elk
+set: LTC
+typeLine: Creature — Elk
+text: |-
+  Trample
+  Whenever this creature enters or attacks, return target Elf card from your graveyard to your hand. You gain life equal to that card's power.
+expect:
+  kind: CardText
+  children:
+    - kind: KeywordAbility
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: CompoundEvent
+          raw: this creature enters or attacks
+          isRecognized: true
+          children:
+            - kind: EntersEvent
+              raw: this creature enters
+              isSelf: true
+              isRepeatable: false
+              children:
+                - kind: SelfReference
+                  raw: this creature
+            - kind: AttacksEvent
+              raw: attacks
+              sharesSubject: true
+              isSelf: true
+              isRepeatable: true
+              children: []
+        - kind: EffectSequence

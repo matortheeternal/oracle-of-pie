@@ -1,0 +1,21 @@
+name: Bound by Moonsilver
+typeLine: Enchantment — Aura
+text: |-
+  Enchant creature
+  Enchanted creature can't attack, block, or transform.
+  Sacrifice another permanent: Attach this Aura to target creature. Activate only as a sorcery and only once each turn.
+expect:
+  kind: CardText
+  children:
+    - kind: KeywordAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CantEffect
+                  raw: "can't attack, block, or transform"
+                  preventsAttackingAndBlocking: true
+                  isDirectBan: true
+    - kind: ActivatedAbility

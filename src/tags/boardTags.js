@@ -38,6 +38,7 @@ export const BOARD_TAGS = [
         match: {
             any: [
                 { kind: 'DamageEffect', phrases: MASS_PLAYERS },
+                { kind: 'DamageEffect', phrases: { raw: 'each other opponent' } },
                 { kind: 'LoseLifeEffect', subject: MASS_PLAYERS }
             ]
         }

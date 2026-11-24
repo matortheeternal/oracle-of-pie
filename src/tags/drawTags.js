@@ -1,6 +1,6 @@
 import { WHEEL_SENTENCE } from './handReset.js';
 
-const YOUR_DRAW = { kind: 'DrawEffect', canAffectYou: true };
+const YOUR_DRAW = { kind: 'DrawEffect', drawsCards: true, canAffectYou: true };
 const PAID_EFFECT = { kind: ['DiscardEffect', 'SacrificeEffect'], affectsYou: true };
 const DRAW_COSTS = {
     any: [
@@ -11,7 +11,7 @@ const DRAW_COSTS = {
 };
 const SELF_ENTERS = {
     kind: 'TriggeredAbility',
-    event: { kind: 'EntersEvent', isSelf: true }
+    events: { kind: 'EntersEvent', isSelf: true }
 };
 const RESOLVES_OR_ENTERS = {
     delayedTrigger: null,

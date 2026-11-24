@@ -15,8 +15,10 @@ function readProfiles() {
 }
 
 function customCard({ name = 'Custom card', typeLine = '', manaCost = '', text = '' }) {
-    const face = { name, type_line: typeLine, mana_cost: manaCost, oracle_text: text };
     const colors = CardColors.fromManaCost(manaCost).colors;
+    const face = {
+        name, type_line: typeLine, mana_cost: manaCost, oracle_text: text, colors
+    };
     const card = { name, type_line: typeLine, mana_cost: manaCost, colors };
     return { ...card, faces: [face], tags: [] };
 }

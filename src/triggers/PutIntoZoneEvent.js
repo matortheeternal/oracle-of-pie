@@ -1,0 +1,63 @@
+import TriggerEvent from './TriggerEvent.js';
+import ZoneOrigin from './qualifiers/ZoneOrigin.js';
+import FirstTime from './qualifiers/FirstTime.js';
+import TurnWindow from './qualifiers/TurnWindow.js';
+
+const OWNER = '(?<owner>a|your|an opponent\'s)';
+const OWNED_DESTINATION = `${OWNER} (?<ownedZone>graveyard|library)`;
+const DESTINATION = `(?:${OWNED_DESTINATION}|(?<zone>exile|graveyards|the command zone))`;
+const PUT_INTO = new RegExp(
+    `^(?<subject>.+?) (?:is|are) put into ${DESTINATION}\\b`, 'i'
+);
+const ZONE_NAMES = { graveyards: 'graveyard', 'the command zone': 'command zone' };
+const CREATURE_CARDS_FROM_ANYWHERE
+    = /\bcreature cards? (?:is|are) put into [^,.]*? from anywhere(?! other than)/i;
+
+function destinationName({ ownedZone, zone }) {
+    const name = (ownedZone ?? zone).toLowerCase();
+    return ZONE_NAMES[name] ?? name;
+}
+
+export default class PutIntoZoneEvent extends TriggerEvent {
+    static get pattern() {
+        return PUT_INTO;
+    }
+
+    static get qualifierParsers() {
+        return [ZoneOrigin, FirstTime, TurnWindow];
+    }
+
+    static match(scribe, str) {
+        if (CREATURE_CARDS_FROM_ANYWHERE.test(str)) return null;
+        return super.match(scribe, str);
+    }
+
+    static read(scribe, match, str) {
+        const event = super.read(scribe, match, str);
+        if (event.subjectPhrase && event.mayLeaveBattlefield)
+            event.subjectPhrase.hasLeftBattlefield = true;
+        return event;
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.destination = destinationName(match.groups);
+        this.destinationOwner = match.groups.owner?.toLowerCase() ?? null;
+    }
+
+    get origin() {
+        return this.qualifierOfKind(ZoneOrigin);
+    }
+
+    get isFromBattlefield() {
+        return Boolean(this.origin?.isFromBattlefield);
+    }
+
+    get mayLeaveBattlefield() {
+        return this.origin?.includesBattlefield ?? true;
+    }
+
+    get isRepeatable() {
+        return !this.isSelf && !this.subjectPhrase?.isEnchanted;
+    }
+}

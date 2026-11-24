@@ -12,3 +12,237 @@
 {"id":"143d3fcf-2152-4911-b95a-d23b91662f33|combat-trick","verdict":"wrong","note":"this seems very subjective.  it could function like a combat trick some of the time, but whether or not it should be tagged as a combat trick is hard to say.  I'll defer to scryfall's judgement for now.","at":"2026-11-18T19:16:46.281Z"}
 {"id":"10389ff7-2ea4-4413-90cc-0e3ca268c64d|cantrip","verdict":"skip","note":"this is a weird edge case.  the prepared spell is a cantrip, but the card itself isn't.  So I think not tagging this cantrip is probably correct, but I'm not sure if it is worth coding an explicit rule around prepared spells that cantrip.","at":"2026-11-18T19:17:00.803Z"}
 {"id":"7d32c63d-aa9e-4f5d-a3e6-51377a786009|copy-spell","verdict":"wrong","note":"granted ability should not be counted","at":"2026-11-18T19:17:23.511Z"}
+{"id":"9ecd53b0-4551-4505-b5d2-02ae49d4cbdb|attacking-matters","verdict":"correct","note":"","at":"2026-11-20T02:52:32.830Z"}
+{"id":"ca173221-1661-41f6-a353-29a32d6ccce0|attacking-matters-self","verdict":"correct","note":"","at":"2026-11-20T02:52:37.902Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-planeswalker","verdict":"correct","note":"","at":"2026-11-20T02:52:46.062Z"}
+{"id":"10aff3f6-8347-4e1b-b8e7-c204c9e46657|burn-player-each","verdict":"correct","note":"","at":"2026-11-20T02:53:05.668Z"}
+{"id":"68af06fd-a715-47c6-b439-c9fcb1b01a1d|burn-you","verdict":"correct","note":"","at":"2026-11-20T02:53:09.469Z"}
+{"id":"10389ff7-2ea4-4413-90cc-0e3ca268c64d|cantrip","verdict":"correct","note":"this is a weird edge case.  the prepared spell is a cantrip, but the card itself isn't.  So I think not tagging this cantrip is probably correct, but I'm not sure if it is worth coding an explicit rule around prepared spells that cantrip.","at":"2026-11-20T02:53:17.582Z"}
+{"id":"d4d65797-2b92-4265-9169-133120c86c7f|combat-ramp","verdict":"wrong","note":"no, because it ramps the opponent, not you.","at":"2026-11-20T02:53:38.004Z"}
+{"id":"746e494e-fdc4-415e-8a82-d35e11ebeccb|cost-increaser","verdict":"correct","note":"","at":"2026-11-20T02:54:13.968Z"}
+{"id":"8ba36878-0816-44c7-b543-8ebfc28c2ecd|death-trigger","verdict":"correct","note":"","at":"2026-11-20T02:54:34.057Z"}
+{"id":"cd69b2c7-2be7-4915-9d17-4fd400ace6b8|death-trigger-self","verdict":"correct","note":"","at":"2026-11-20T02:54:44.874Z"}
+{"id":"cae6d903-3fd6-422d-b21b-92201b78fa1b|discard","verdict":"wrong","note":"\"the opponent chooses how many and which cards to discard as Fervent Mastery resolves. They may choose to discard no cards.\" - so this probably shouldn't be tagged discard.  this may be an acceptable mistake though.","at":"2026-11-20T02:55:58.181Z"}
+{"id":"fc25ca51-f351-4877-a092-525fb48524a1|discard-outlet","verdict":"wrong","note":"because it etbs under an opponent's control, the discard hits opponents, not the player casting the spell.","at":"2026-11-20T02:56:28.693Z"}
+{"id":"418ecbb7-b809-4639-a531-070b58b5b85e|draw","verdict":"wrong","note":"no, because it doesn't actually draw you cards, it just changes where you draw cards from","at":"2026-11-20T02:56:48.114Z"}
+{"id":"873fa095-5662-407a-bd24-9a1c4712a428|draw-engine","verdict":"skip","note":"scryfall is inconsistent on tagging for this kind of ability.  uncertain.","at":"2026-11-20T02:58:03.922Z"}
+{"id":"cab092f9-b7ff-43b9-935f-310869a4daf8|enters-in-company","verdict":"correct","note":"","at":"2026-11-20T02:58:26.067Z"}
+{"id":"275257ea-3c72-4ca9-b2fc-e50efa071bdb|exile-self","verdict":"correct","note":"","at":"2026-11-20T02:58:34.289Z"}
+{"id":"2c0fc559-857f-4239-97fa-379ced3dfc1f|extra-untap","verdict":"correct","note":"slightly questionable, but I'm going to say yes.","at":"2026-11-20T02:59:09.252Z"}
+{"id":"95c44f28-f7fa-4785-83b9-0d81be0db0c8|fetchland","verdict":"wrong","note":"it fetches for an opponent, so I think it isn't.","at":"2026-11-20T02:59:27.520Z"}
+{"id":"a25bcf65-4417-45e9-a4b1-94e0ea78af63|flicker-creature","verdict":"correct","note":"","at":"2026-11-20T02:59:37.664Z"}
+{"id":"c45e96cb-2539-4e00-9fff-782a182c2f4b|free-discard-outlet","verdict":"correct","note":"","at":"2026-11-20T02:59:44.470Z"}
+{"id":"a9ddb3dc-f289-46a1-af17-3a8523a26b0d|freeze-creature","verdict":"correct","note":"","at":"2026-11-20T03:00:00.988Z"}
+{"id":"343833c1-19fd-4e8f-b82e-0f20903caaff|french-vanilla","verdict":"wrong","note":"this is not a french vanilla, it has two non-keyword abilities.","at":"2026-11-20T03:00:25.704Z"}
+{"id":"214562b1-fdf0-4d5d-93f0-594b31b80bb3|gains-deathtouch","verdict":"correct","note":"","at":"2026-11-20T03:00:30.438Z"}
+{"id":"cdaefc96-4560-43bb-9514-bf87657bd481|gains-double-strike","verdict":"wrong","note":"no, because the \"it\" doesn't refer to this card, it refers to the commander creatures you own that have been given the ability.  this seems like a parser error.","at":"2026-11-20T03:01:04.430Z"}
+{"id":"0da104ae-c46c-4106-919f-d975721d42d9|gains-flying","verdict":"wrong","note":"no, same as previous.","at":"2026-11-20T03:01:24.034Z"}
+{"id":"7644148f-3b26-447d-9f52-28c94c111b69|gains-haste","verdict":"wrong","note":"The it refers to the token, so this should be tagged gives-haste.  similar to previous.","at":"2026-11-20T03:01:45.586Z"}
+{"id":"016a6ec3-f4f6-4b47-9931-e0b14a25bd5e|gains-hexproof","verdict":"wrong","note":"same as previous.","at":"2026-11-20T03:02:00.624Z"}
+{"id":"a6375c5b-ec78-4ee8-b681-8d92797a5b43|gains-indestructible","verdict":"correct","note":"","at":"2026-11-20T03:02:10.789Z"}
+{"id":"61822bbe-0407-4425-b8d7-0263a8c521ec|gains-lifelink","verdict":"wrong","note":"","at":"2026-11-20T03:02:21.771Z"}
+{"id":"f8d7bcbd-9a1d-4fc6-abdd-88a7e01b9411|gains-pp-counters","verdict":"correct","note":"","at":"2026-11-20T03:02:42.800Z"}
+{"id":"932a86e5-9640-4ef5-8264-2ce97bde33e2|gains-protection","verdict":"correct","note":"","at":"2026-11-20T03:02:50.549Z"}
+{"id":"8da29533-f389-4bc2-ab9b-b469f893a362|gains-reach","verdict":"correct","note":"","at":"2026-11-20T03:02:57.903Z"}
+{"id":"8da29533-f389-4bc2-ab9b-b469f893a362|gains-reach","verdict":"correct","note":"","at":"2026-11-20T03:03:02.813Z"}
+{"id":"f8966fd5-2926-4ba0-b7d6-cfea40cd4e05|gains-trample","verdict":"wrong","note":"gives trample, same class of issue I think.","at":"2026-11-20T03:03:23.856Z"}
+{"id":"3d133b18-f1c7-48de-82a6-affb0514b96b|gains-vigilance","verdict":"correct","note":"","at":"2026-11-20T03:03:30.252Z"}
+{"id":"fad0c174-4c4a-4662-bd1f-224886e826e1|gains-ward","verdict":"skip","note":"not sure.  could be tagged gains-ward or just ward.","at":"2026-11-20T03:04:23.404Z"}
+{"id":"b5c03abf-4297-4402-9107-539e92d41f2f|gives-double-strike","verdict":"correct","note":"","at":"2026-11-20T03:04:31.789Z"}
+{"id":"cf113674-f809-4b97-9e8d-e22385446ddb|gives-haste","verdict":"correct","note":"","at":"2026-11-20T03:04:44.720Z"}
+{"id":"baec04a1-3bc9-4618-afab-e42013e36648|gives-hexproof","verdict":"correct","note":"","at":"2026-11-20T03:04:56.938Z"}
+{"id":"20d0df30-013c-47c0-b70b-d628d427d30b|gives-lifelink","verdict":"correct","note":"","at":"2026-11-20T03:05:03.809Z"}
+{"id":"a6c5c5ea-0bd0-4d5a-bd3f-6217f14c9939|gives-menace","verdict":"correct","note":"","at":"2026-11-20T03:05:07.510Z"}
+{"id":"3b64e0a8-7d11-41c5-b439-edec19928b7d|gives-pp-counters","verdict":"wrong","note":"it gains, not gives","at":"2026-11-20T03:05:24.640Z"}
+{"id":"14cefb15-d833-4c70-80c9-f2d34b6c846b|gives-protection","verdict":"correct","note":"","at":"2026-11-20T03:05:29.008Z"}
+{"id":"3eeeb159-aa45-4a9b-9618-8542604b9830|group-slug","verdict":"correct","note":"","at":"2026-11-20T03:05:36.214Z"}
+{"id":"a5dfa7ad-9637-4da8-9ed2-0ac863617d9a|hate-graveyard","verdict":"correct","note":"","at":"2026-11-20T03:06:00.043Z"}
+{"id":"63c4915f-5ad9-468f-95c5-d44f1b71631e|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-20T03:06:23.073Z"}
+{"id":"92eeedc6-a331-445f-af56-c91dac69412b|keyword-anthem","verdict":"correct","note":"","at":"2026-11-20T03:06:27.132Z"}
+{"id":"c235015e-a7a9-4f8d-bf4a-cf68b3847f83|land-ramp","verdict":"wrong","note":"it doesn't net you lands, you only get back as many as you sacrificed, so no.","at":"2026-11-20T03:06:53.071Z"}
+{"id":"Bloomvine Regent // Claim Territory // Bloomvine Regent|lifegain","verdict":"correct","note":"","at":"2026-11-20T03:07:01.234Z"}
+{"id":"6f931c1e-f1d2-4dc7-a653-c29adfc8fb2c|loot","verdict":"wrong","note":"it doesn't loot for you, so I would say no, I think.","at":"2026-11-20T03:07:41.319Z"}
+{"id":"3ed41d2d-211b-4013-8562-8c64d54cc43a|mana-dork","verdict":"correct","note":"","at":"2026-11-20T03:07:55.874Z"}
+{"id":"4117e428-0c78-4dea-9019-dd1836fbb03e|mana-producer","verdict":"correct","note":"","at":"2026-11-20T03:08:03.965Z"}
+{"id":"574230c7-b949-4c90-b107-c26458a6e469|mana-sink","verdict":"wrong","note":"the aura dies after the enchanted creature becomes exiled, so this ability is technically not repeatable.  not sure how detectable that is though.","at":"2026-11-20T03:08:40.923Z"}
+{"id":"0a88d1b1-ac3c-41da-b3f5-b689af0e45d7|mill-self","verdict":"wrong","note":"no, it mills-opponent.","at":"2026-11-20T03:08:54.587Z"}
+{"id":"5958e9e3-9457-48e1-afc1-a5c89e3b0ed0|modal","verdict":"correct","note":"","at":"2026-11-20T03:09:00.594Z"}
+{"id":"f6a7838d-380f-4752-a647-c55c2a0eb6e2|move-counters","verdict":"correct","note":"","at":"2026-11-20T03:09:10.311Z"}
+{"id":"0fb9a8a2-4331-4259-9460-a37397554962|mutual-sacrifice","verdict":"correct","note":"","at":"2026-11-20T03:09:24.602Z"}
+{"id":"1e414a4f-6e76-4cbe-9c69-d52852cd5bc0|one-sided-fight","verdict":"correct","note":"","at":"2026-11-20T03:09:40.404Z"}
+{"id":"6f34d70e-7a3a-43f7-b2c9-f89519804d3c|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-20T03:09:45.015Z"}
+{"id":"c8f802ad-4621-4f71-b52d-fbc55853dc88|pinger","verdict":"wrong","note":"because it sacrifices the artifact, it is not repeatable.","at":"2026-11-20T03:10:05.131Z"}
+{"id":"d772b16b-31db-48aa-8bb6-da32f45eebe4|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-20T03:10:09.630Z"}
+{"id":"888e711a-1251-4704-8ef1-b4b98ec54b5a|pure-draw","verdict":"correct","note":"","at":"2026-11-20T03:10:22.437Z"}
+{"id":"3431ee42-c34a-4972-9488-41b83ba5f943|ramp","verdict":"correct","note":"","at":"2026-11-20T03:10:36.674Z"}
+{"id":"b34080fe-69d1-4cc9-9feb-c37762f26a23|reanimate-creature","verdict":"correct","note":"","at":"2026-11-20T03:10:56.437Z"}
+{"id":"0c0eeb01-62e7-4a7f-923d-a7b830e4c83b|regrowth-creature","verdict":"correct","note":"","at":"2026-11-20T03:11:07.515Z"}
+{"id":"e0445c80-fa53-4c3e-881e-940e9fce7f57|removal-artifact","verdict":"skip","note":"","at":"2026-11-20T03:14:55.531Z"}
+{"id":"b0870f91-c544-446a-8f7b-a8d03fdb0a2a|removal-bounce","verdict":"wrong","note":"this is a counterspell, and therefore does not get removal tag!","at":"2026-11-20T03:15:49.499Z"}
+{"id":"ded78090-c6a1-4c9d-b7b9-b433b1d963b6|removal-creature","verdict":"wrong","note":"it destroys noncreature, nonland permanents, so it does not remove creatures.","at":"2026-11-20T03:16:12.969Z"}
+{"id":"b563ae31-338e-4bcc-a05f-d7ed7c3fe46e|removal-destroy","verdict":"correct","note":"","at":"2026-11-20T03:16:20.456Z"}
+{"id":"0146de73-29bf-415a-b450-11074553f715|removal-enchantment","verdict":"wrong","note":"this is a counterspell, not removal.","at":"2026-11-20T03:16:33.276Z"}
+{"id":"dc440b62-0bf0-4f23-9210-3550ff0a8d4d|removal-exile","verdict":"wrong","note":"saddle is always your own creature, so this is flicker, not removal.","at":"2026-11-20T03:16:49.261Z"}
+{"id":"8a37ac5c-341b-48ab-9b0b-5ef8bf097aab|removal-fight","verdict":"wrong","note":"it doesn't hit opponent's creatures, so it is not removal.","at":"2026-11-20T03:17:22.492Z"}
+{"id":"ded78090-c6a1-4c9d-b7b9-b433b1d963b6|removal-nonland","verdict":"wrong","note":"technically no, because the restriction is both noncreature and nonland.  this is removal for noncreature nonland artifacts, enchantments, battles, and planeswalkers.","at":"2026-11-20T03:18:03.424Z"}
+{"id":"5bb32efd-9e58-4021-bbda-4ffccfa1d601|removal-planeswalker","verdict":"wrong","note":"no, this only hits artifacts and enchantments.","at":"2026-11-20T03:18:25.832Z"}
+{"id":"9c2f25af-0b16-488d-9249-026a84bdb27f|removal-sacrifice","verdict":"wrong","note":"because it's a may effect, I don't think this is removal.","at":"2026-11-20T03:18:52.100Z"}
+{"id":"331b6834-6bb4-40fa-b80b-22d67b34734f|removal-toughness","verdict":"wrong","note":"I don't think flanking should count as removal-toughness because opponents have to choose to block the creature.  (agency on the opponent for whether or not their creature dies)","at":"2026-11-20T03:19:40.387Z"}
+{"id":"5f1fdc23-9af0-41a1-aeba-7288f9642734|remove-counters","verdict":"wrong","note":"probably not worth coding an exception for.  it's just not what we usually care about with the remove-counters tag, because the counters being removed are counters on cards in exile that are unique counters to this card, but knowing that is not reasonable for custom cards.","at":"2026-11-20T03:21:21.163Z"}
+{"id":"4c6a0c30-b547-4eff-8ff4-0ca25803c076|repeatable-creature-tokens","verdict":"correct","note":"I don't know.  This is a weird case because in practice the saga will be sacrificed before you can use it for a token more than once, but deriving that seems fairly impractical and narrow, and this is a very exceptional card.  Let's allow it.","at":"2026-11-20T03:26:22.891Z"}
+{"id":"af698bd5-5f56-4d2a-9f02-8c3e781210cd|repeatable-crime","verdict":"wrong","note":"no, because you have to sacrifice the land to do the crime, so it is not repeatable","at":"2026-11-20T03:26:51.495Z"}
+{"id":"Bloomvine Regent // Claim Territory // Bloomvine Regent|repeatable-lifegain","verdict":"correct","note":"","at":"2026-11-20T03:26:55.472Z"}
+{"id":"b08dc5e4-04fc-48ae-a5f8-7d6cbad00a74|repeatable-loot","verdict":"correct","note":"","at":"2026-11-20T03:27:09.430Z"}
+{"id":"dd9a6f6b-f9b7-4292-bc80-b7da326de032|repeatable-pp-counters","verdict":"correct","note":"","at":"2026-11-20T03:27:14.987Z"}
+{"id":"c5f360dc-fe4e-4796-b5c1-468cbd0f6d24|repeatable-pure-draw","verdict":"wrong","note":"no, because it is a \"when\" ability, which suggests it only happens once","at":"2026-11-20T03:27:46.793Z"}
+{"id":"dc440b62-0bf0-4f23-9210-3550ff0a8d4d|repeatable-removal","verdict":"wrong","note":"","at":"2026-11-20T03:27:51.619Z"}
+{"id":"574230c7-b949-4c90-b107-c26458a6e469|repeatable-rummage","verdict":"wrong","note":"","at":"2026-11-20T03:27:54.358Z"}
+{"id":"91b1db8c-4bce-43d1-94ab-14b1435686c7|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-20T03:29:07.289Z"}
+{"id":"1fd78bf7-43ba-4e09-834b-14bfc1fd9d0d|rummage","verdict":"wrong","note":"","at":"2026-11-20T03:29:17.618Z"}
+{"id":"7c348d24-af26-4171-bfa7-44ce9bd36f06|sacrifice-outlet-artifact","verdict":"wrong","note":"technically it is sacrifice-outlet-artifact-creature, it can't sacrifice any artifact or any creature.","at":"2026-11-20T03:29:53.635Z"}
+{"id":"776ea0c7-fc5b-44b4-9302-5a3514ff843b|sacrifice-outlet-creature","verdict":"correct","note":"","at":"2026-11-20T03:30:13.508Z"}
+{"id":"dcd13eab-7ed7-4e95-bdae-d140c1ff84df|sacrifice-self","verdict":"correct","note":"","at":"2026-11-20T03:30:28.949Z"}
+{"id":"45b3a028-5705-4dc8-bfab-04bb5e01eea6|scry","verdict":"wrong","note":"technically yes, but not due to the text being recognized here.  the recognized sentence is a replacement effect, and because it was replacing a scry event with more scry, it can't be tagged scry.","at":"2026-11-20T03:31:56.435Z"}
+{"id":"6cf50e21-0f60-4e9a-b910-ebe1bad2a29e|spot-removal","verdict":"wrong","note":"13 creatures is not \"for one target specifically\", as required for spot-removal.","at":"2026-11-20T03:33:39.077Z"}
+{"id":"d7cfe3a3-e8e6-446d-a855-46c845f657fa|sweeper","verdict":"correct","note":"","at":"2026-11-20T03:34:04.119Z"}
+{"id":"128f7e5a-17e0-4069-a185-c9f874c7d234|sweeper-one-sided","verdict":"correct","note":"","at":"2026-11-20T03:34:13.565Z"}
+{"id":"42e4d4d8-e4e0-4cf8-a6d0-887a17513280|tapper-creature","verdict":"wrong","note":"may effect, so no","at":"2026-11-20T03:34:29.117Z"}
+{"id":"d772b16b-31db-48aa-8bb6-da32f45eebe4|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-20T03:34:30.864Z"}
+{"id":"Bloomvine Regent // Claim Territory // Bloomvine Regent|triggered-ability","verdict":"correct","note":"","at":"2026-11-20T03:34:33.682Z"}
+{"id":"240410a0-3288-4336-b1ad-34936e64ccf2|tutor-artifact","verdict":"wrong","note":"it's tutor-artifact-creature","at":"2026-11-20T03:34:53.440Z"}
+{"id":"9356aee1-3d2b-4d17-8863-663e1ddf56f3|tutor-land-basic","verdict":"correct","note":"","at":"2026-11-20T03:35:35.336Z"}
+{"id":"61849685-b407-4ed0-aafc-ec3a003200b9|unblockable","verdict":"correct","note":"Corpus review: Wraith Form says it cannot be blocked, the same effect as the labeled comparator. Comparable Scryfall positive: Mist-Cloaked Herald.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"22113051-c971-4108-953b-95356d21323a|wheel-one-sided","verdict":"correct","note":"Corpus review: Its entry discards your hand and draws three, the same effect as the labeled comparator. Comparable Scryfall positive: Bedlam Reveler.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"f718e507-296b-4f22-842b-5fb91322069b|combat-trick","verdict":"correct","note":"Corpus review: The labeled comparator has the same instant-speed death-and-return effect. Comparable Scryfall positive: Undying Malice.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"aa704b26-729a-4d0f-b92d-56aadb1e20b9|move-counters","verdict":"correct","note":"Corpus review: The labeled comparator has the same counter-moving death trigger. Comparable Scryfall positive: Star Pupil.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"ab23cca2-b59e-4d34-80de-98bd08985275|gives-pp-counters","verdict":"correct","note":"Corpus review: The same entry trigger places a counter on another controlled creature. Comparable Scryfall positive: Keen-Eyed Raven.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"5783facf-d26e-4aae-a753-b9dc553361c1|cantrip","verdict":"correct","note":"Corpus review: Both Adventures draw a card and lose 1 life. The comparator has the tag on the full card. Comparable Scryfall positive: Foulmire Knight // Profane Insight.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"583102f8-7232-4fbb-a715-087448536bb2|keyword-anthem","verdict":"correct","note":"Corpus review: The same static ability grants trample to your creatures with +1/+1 counters. Comparable Scryfall positive: Duskshell Crawler.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"e9c756a5-f4d4-4b84-be60-ad4bc0d1acf9|keyword-anthem","verdict":"correct","note":"Corpus review: The same static ability grants trample to your creatures with +1/+1 counters. Comparable Scryfall positive: Gnarlid Colony.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"04260930-ff38-4b35-9ec4-e89196a4f2c7|keyword-anthem","verdict":"correct","note":"Corpus review: The same static ability grants trample to your creatures with +1/+1 counters. Comparable Scryfall positive: Pridemalkin.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"5a651557-ce08-46ba-aecd-0e4fbfdef3c0|removal-toughness","verdict":"correct","note":"Corpus review: The trigger targets a creature with a -1/-1 counter, like the labeled comparator. Comparable Scryfall positive: Spitting Dilophosaurus.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"ffcffad7-6c33-4265-82c9-04045fdf371b|removal-toughness","verdict":"correct","note":"Corpus review: The entry trigger targets a creature with a -1/-1 counter, like the labeled comparator. Comparable Scryfall positive: Grasping Dunes.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"89ae3475-9063-4700-a7bd-47d5dcd43a3b|tapper-creature","verdict":"correct","note":"Corpus review: The Adventure explicitly taps a target creature, matching the labeled Adventure. Comparable Scryfall positive: Queen of Ice // Rage of Winter.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"34916c4b-fc1b-4864-bb3f-968977fd533d|activated-ability","verdict":"correct","note":"Corpus review: A printed tap cost and colon define an activated mana ability, just as on the labeled land. Comparable Scryfall positive: Scoured Barrens.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"66fc3c1e-acea-46eb-8af8-b0740f006add|activated-ability","verdict":"correct","note":"Corpus review: Both printed tap abilities are activated. The first is identical to the labeled comparator. Comparable Scryfall positive: Starting Column.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"c5ee72d5-3a9e-4fe5-8802-3286ee612055|gives-haste","verdict":"correct","note":"Corpus review: The Channel ability creates creature tokens and explicitly gives them haste. The labeled comparator likewise grants haste to other creatures. Comparable Scryfall positive: Call for Aid.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"5b677e88-bcc9-4a55-9c89-8bbd0e2344dc|freeze-creature","verdict":"correct","note":"Corpus review: It can choose a creature and prevent that permanent from untapping on its next untap step. Comparable Scryfall positive: Chillbringer.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"177113f8-1188-4e5e-8ad7-34a7bb8ca7f1|removal-destroy","verdict":"correct","note":"Corpus review: One mode has the same direct artifact-or-enchantment destruction as the labeled comparator. Comparable Scryfall positive: Expose to Daylight.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"155ee70b-898c-472f-a5e7-71f14da94894|removal-artifact","verdict":"correct","note":"Corpus review: Its entry destroys all artifacts and enchantments, the same removal as the labeled comparator. Comparable Scryfall positive: Rampage of the Clans.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"155ee70b-898c-472f-a5e7-71f14da94894|removal-enchantment","verdict":"correct","note":"Corpus review: Its entry destroys all artifacts and enchantments, the same removal as the labeled comparator. Comparable Scryfall positive: Rampage of the Clans.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"155ee70b-898c-472f-a5e7-71f14da94894|removal-destroy","verdict":"correct","note":"Corpus review: Its entry destroys all artifacts and enchantments, the same removal as the labeled comparator. Comparable Scryfall positive: Rampage of the Clans.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"052e8e1c-d006-4c9f-90da-deafbbf7fed3|modal","verdict":"correct","note":"Corpus review: The spell presents separate modes and allows choosing one or more. Comparable Scryfall positive: Farewell.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"943fc88d-c281-46bb-9dc7-1052f789362b|gives-haste","verdict":"correct","note":"Corpus review: The text explicitly gives haste to the created creatures. Comparable Scryfall positive: Call for Aid.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"27e0948b-9916-473b-8d8c-a51bdfbc7457|sacrifice-self","verdict":"correct","note":"Corpus review: The end-step trigger explicitly sacrifices its own enchantment, the same as the labeled comparator. Comparable Scryfall positive: Dress Down.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"34493cf5-7586-48ef-806d-57273b2ab034|tutor-land-to-battlefield","verdict":"correct","note":"Corpus review: Its land-destruction mode gives that land?s controller the same basic-land search to battlefield. Comparable Scryfall positive: White Orchid Phantom.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"5e6faa98-cf55-430d-87ce-8085f68aa20a|tutor-land-to-battlefield","verdict":"correct","note":"Corpus review: The replacement land goes onto the battlefield under the searching player, as in the labeled comparator. Comparable Scryfall positive: White Orchid Phantom.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"ca68f436-2522-4007-87bf-2669c7743db0|repeatable-removal","verdict":"correct","note":"Corpus review: The same repeatable damage trigger destroys the creature it dealt damage to, with Spider replacing Dinosaur. Comparable Scryfall positive: Dinosaur Hunter.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"73fdb375-9c71-421d-8027-8636e3ea8f35|repeatable-crime","verdict":"correct","note":"Corpus review: An attack can repeatedly target an opponent?s creature for exile. The comparator has a repeatable targeted exile trigger. Comparable Scryfall positive: Borg Cube.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"af698bd5-5f56-4d2a-9f02-8c3e781210cd|repeatable-crime","verdict":"correct","note":"Audit correction: the cost is sacrifice a Desert, so another Desert can pay it and leave Ifnir Deadlands able to target another opposing creature later. Scryfall labels the card repeatable-removal and Novice Dissector repeatable-crime for a comparable reusable sacrifice-cost activation.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"10389ff7-2ea4-4413-90cc-0e3ca268c64d|cantrip","verdict":"skip","note":"Audit: the recorded note favors leaving this off but the Correct button approves it. The card casts a prepared copy, unlike an Adventure face. Harmonized Trio and Tam, Observant Sequencer lack cantrip for their prepared spells. Leaving this for a prepared-spell policy decision.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-any","verdict":"skip","note":"Audit: the same Devil death trigger underlies the burn-any, burn-player and burn-planeswalker verdicts. The hierarchy connects all three. Dragonbroods? Relic and Dance with Devils show mixed treatment of token damage. Review together.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-player","verdict":"skip","note":"Audit: same Devil token trigger as burn-any and burn-planeswalker. Scryfall?s hierarchy connects those tags, and comparable token damage is labeled inconsistently. Review together.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-planeswalker","verdict":"skip","note":"Audit: same Devil token trigger as burn-any and burn-player. Scryfall?s hierarchy connects those tags, and comparable token damage is labeled inconsistently. Review together.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"776ea0c7-fc5b-44b4-9302-5a3514ff843b|sacrifice-outlet-creature","verdict":"wrong","note":"Audit correction: on leaving it requires sacrificing the creature fixed at entry. This is a forced drawback rather than an outlet for a creature of your choice. Scryfall labels it drawback.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"1e414a4f-6e76-4cbe-9c69-d52852cd5bc0|one-sided-fight","verdict":"wrong","note":"Audit correction: the source is sacrificed as the cost and damage uses that source?s power. Scryfall labels it fling-self, and the one-sided-fight description directs sacrifice-for-damage to fling.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"331b6834-6bb4-40fa-b80b-22d67b34734f|removal-toughness","verdict":"skip","note":"Audit: Extraction Integrant has removal-toughness for similar blocking-dependent text, while Flanking Licid lacks it. Opponent choice alone does not settle the tag. Retain for review of reminder-text attribution.","at":"2026-11-20T03:57:41.808Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-any","verdict":"correct","note":"Audit: the same Devil death trigger underlies the burn-any, burn-player and burn-planeswalker verdicts. The hierarchy connects all three. Dragonbroods? Relic and Dance with Devils show mixed treatment of token damage. Review together.","at":"2026-11-20T03:59:34.012Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-planeswalker","verdict":"correct","note":"Audit: same Devil token trigger as burn-any and burn-player. Scryfall?s hierarchy connects those tags, and comparable token damage is labeled inconsistently. Review together.","at":"2026-11-20T03:59:34.652Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-player","verdict":"correct","note":"Audit: same Devil token trigger as burn-any and burn-planeswalker. Scryfall?s hierarchy connects those tags, and comparable token damage is labeled inconsistently. Review together.","at":"2026-11-20T03:59:35.129Z"}
+{"id":"873fa095-5662-407a-bd24-9a1c4712a428|draw-engine","verdict":"skip","note":"scryfall is inconsistent on tagging for this kind of ability.  uncertain.","at":"2026-11-20T03:59:37.401Z"}
+{"id":"fad0c174-4c4a-4662-bd1f-224886e826e1|gains-ward","verdict":"skip","note":"not sure.  could be tagged gains-ward or just ward.","at":"2026-11-20T03:59:40.509Z"}
+{"id":"c1198033-47bc-4bee-a3a5-3917dae5cba3|tutor-to-hand","verdict":"correct","note":"","at":"2026-11-20T03:59:45.341Z"}
+{"id":"a7641ee0-9c0d-4201-9827-a775ed03797c|anthem","verdict":"correct","note":"","at":"2026-11-20T03:59:50.023Z"}
+{"id":"5c09d646-afea-4fd0-9752-04820b81cc5b|attack-trigger","verdict":"wrong","note":"the additional condition makes me think this is not an attack trigger per se.  it resolves after the declare blockers step, and opponent has the ability to deny the trigger, which is substantively different.","at":"2026-11-20T04:01:13.797Z"}
+{"id":"085016ee-4429-453f-b7f3-d61065f1214e|attacking-matters","verdict":"correct","note":"","at":"2026-11-20T04:02:50.064Z"}
+{"id":"92cda790-7907-47d1-8e5a-d3364c1e881f|attacking-matters-self","verdict":"correct","note":"","at":"2026-11-20T04:03:11.240Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|burn-creature","verdict":"correct","note":"","at":"2026-11-20T04:03:13.019Z"}
+{"id":"85eafa00-51df-4070-9b2d-247457ba3364|burn-you","verdict":"wrong","note":"the you ends up pointing to the opponent.  we need to update the parser for this.","at":"2026-11-20T04:03:55.159Z"}
+{"id":"ffac1923-99d0-48e6-b1e7-168e5c324a80|burst-draw","verdict":"wrong","note":"brainstorm doesn't get burst draw, so this shouldn't either.  as for why - that I'm not sure.  I'm guessing the \"comes out ahead by at least +1\" is counting the card itself.","at":"2026-11-20T04:07:53.196Z"}
+{"id":"873fa095-5662-407a-bd24-9a1c4712a428|draw-engine","verdict":"correct","note":"i think the \"whenever\" combined with \"draw\" is enough to say correct.  we shouldn't over-analyze too much.","at":"2026-11-20T04:08:51.856Z"}
+{"id":"fad0c174-4c4a-4662-bd1f-224886e826e1|gains-ward","verdict":"correct","note":"not sure.  could be tagged gains-ward or just ward.","at":"2026-11-20T04:09:03.771Z"}
+{"id":"10389ff7-2ea4-4413-90cc-0e3ca268c64d|cantrip","verdict":"skip","note":"Audit: the recorded note favors leaving this off but the Correct button approves it. The card casts a prepared copy, unlike an Adventure face. Harmonized Trio and Tam, Observant Sequencer lack cantrip for their prepared spells. Leaving this for a prepared-spell policy decision.","at":"2026-11-20T04:09:06.306Z"}
+{"id":"561e8ecc-1f2b-4fd4-8f92-a0acea449816|death-trigger","verdict":"wrong","note":"this is definitely a parse error","at":"2026-11-20T04:09:48.348Z"}
+{"id":"63193ad4-bbd2-4cc3-98e2-9f6b985e8ae7|death-trigger-self","verdict":"correct","note":"","at":"2026-11-20T04:11:13.760Z"}
+{"id":"f58a5f8b-254c-4206-bdbe-55a23798ed2d|discard","verdict":"wrong","note":"\"may discard\" effects don't seem to get the discard tag on scryfall.","at":"2026-11-20T04:13:47.265Z"}
+{"id":"aa1a6646-c1e6-4bff-9092-43ee3e137914|discard-outlet","verdict":"wrong","note":"this is an effect list, each of which is aimed at target opponent.  parser gap?","at":"2026-11-20T04:14:15.417Z"}
+{"id":"10389ff7-2ea4-4413-90cc-0e3ca268c64d|cantrip","verdict":"skip","note":"Audit: the recorded note favors leaving this off but the Correct button approves it. The card casts a prepared copy, unlike an Adventure face. Harmonized Trio and Tam, Observant Sequencer lack cantrip for their prepared spells. Leaving this for a prepared-spell policy decision.","at":"2026-11-20T04:16:04.047Z"}
+{"id":"99deac41-584b-43f2-804e-c56ae0fef047|draw","verdict":"wrong","note":"this gets force-draw, because it forces opponents to draw","at":"2026-11-20T05:03:35.506Z"}
+{"id":"cf2c507a-41b4-457b-bbe8-edcdfcc681ac|enters-in-company","verdict":"correct","note":"","at":"2026-11-20T05:03:57.013Z"}
+{"id":"b291d046-7649-4a05-98c4-224ecaece912|exile-self","verdict":"correct","note":"","at":"2026-11-20T05:04:36.591Z"}
+{"id":"08a0c661-5ed5-47a6-aa1d-3114bf5db3fb|extra-untap","verdict":"correct","note":"","at":"2026-11-20T05:04:53.089Z"}
+{"id":"3bbad38b-7d88-4ff2-9fd3-5081536e7c56|free-discard-outlet","verdict":"wrong","note":"it seems scryfall consistently does not give grandeur effects the free-discard-outlet tag.  I think we should match it.","at":"2026-11-20T05:06:44.143Z"}
+{"id":"4ecbaf6a-aa03-45c8-a09e-6c7fc598ab9e|french-vanilla","verdict":"correct","note":"","at":"2026-11-20T05:07:12.141Z"}
+{"id":"1f139012-fa71-4f5f-8c57-6847bff95678|gains-haste","verdict":"wrong","note":"no, gives-haste","at":"2026-11-20T05:07:26.572Z"}
+{"id":"b4e85b7c-3047-46d1-a6e6-2ec5eac0268a|gains-hexproof","verdict":"wrong","note":"no, gives-hexproof","at":"2026-11-20T05:07:35.438Z"}
+{"id":"3765e8bb-e70d-4503-b8dc-1e684e434c18|gains-pp-counters","verdict":"correct","note":"yes, that seems consistent.","at":"2026-11-20T05:08:21.797Z"}
+{"id":"fc4f2cdb-966c-4576-8b37-b3d138f5710e|gains-vigilance","verdict":"wrong","note":"it effects each other creature, so this is gives-vigilance, not gains-vigilance.","at":"2026-11-20T05:08:54.227Z"}
+{"id":"1eb89059-b691-431d-bcda-ab8aa14c67c8|gives-double-strike","verdict":"correct","note":"","at":"2026-11-20T05:09:00.483Z"}
+{"id":"93d1e21b-7326-4aad-9f6e-e0e391845a18|gives-hexproof","verdict":"correct","note":"","at":"2026-11-20T05:09:02.525Z"}
+{"id":"592c91fc-6430-4c76-9460-65f047350f67|gives-lifelink","verdict":"correct","note":"","at":"2026-11-20T05:09:05.585Z"}
+{"id":"fe2fe9f2-908b-49a9-9648-b01e0417a364|gives-menace","verdict":"correct","note":"","at":"2026-11-20T05:09:12.508Z"}
+{"id":"2e342aa3-2590-4b59-852a-9adb31bafe5c|gives-protection","verdict":"correct","note":"","at":"2026-11-20T05:09:23.830Z"}
+{"id":"01becf76-aa53-4fd5-94c1-665c64674219|group-slug","verdict":"correct","note":"","at":"2026-11-20T05:09:26.978Z"}
+{"id":"1857dc32-8ff1-4519-b1ca-480a5c2d3b3c|hate-graveyard","verdict":"correct","note":"","at":"2026-11-20T05:09:42.058Z"}
+{"id":"72d85d61-6bc3-4028-97c0-d5c34204a1df|intervening-if-clause","verdict":"correct","note":"","at":"2026-11-20T05:09:55.058Z"}
+{"id":"341803d9-fd29-4721-81bf-ae9b7f1c01d2|land-ramp","verdict":"correct","note":"","at":"2026-11-20T05:10:03.246Z"}
+{"id":"341803d9-fd29-4721-81bf-ae9b7f1c01d2|land-ramp","verdict":"correct","note":"","at":"2026-11-20T05:10:20.741Z"}
+{"id":"5789520c-e4b2-44b2-b756-3f6b468dc55b|lifegain","verdict":"wrong","note":"no, replacement effect again.","at":"2026-11-20T05:10:33.467Z"}
+{"id":"e31808bb-fb6e-487b-a973-db44961c84ee|mana-dork","verdict":"correct","note":"","at":"2026-11-20T05:12:26.345Z"}
+{"id":"04166d20-88c9-4c89-be9d-3e422f90959a|mana-producer","verdict":"correct","note":"","at":"2026-11-20T05:12:35.669Z"}
+{"id":"97652492-7906-4d79-983c-fa1dc1239eba|mill-self","verdict":"wrong","note":"this is each opponent, so it is not mill-self","at":"2026-11-20T05:13:06.032Z"}
+{"id":"8b834f83-951b-4b5c-b9f1-3d860baa3c0e|mutual-sacrifice","verdict":"correct","note":"","at":"2026-11-20T05:13:22.766Z"}
+{"id":"088acd15-029b-4091-960a-d5060a364ca9|one-sided-fight","verdict":"wrong","note":"this is fling self.","at":"2026-11-20T05:13:40.002Z"}
+{"id":"6662968e-ca9e-454c-be44-24ad10e43d3e|opponent-loses-life","verdict":"correct","note":"","at":"2026-11-20T05:13:49.842Z"}
+{"id":"11ad664e-36d3-4d5b-8a87-59ea715877e0|pinger","verdict":"correct","note":"","at":"2026-11-20T05:14:00.538Z"}
+{"id":"a7641ee0-9c0d-4201-9827-a775ed03797c|power-boost-to-all","verdict":"correct","note":"","at":"2026-11-20T05:14:39.302Z"}
+{"id":"bc163b5a-0b1a-4257-8c07-5c7d5284015f|pure-draw","verdict":"skip","note":"","at":"2026-11-20T05:16:37.802Z"}
+{"id":"13a3e61d-c9ff-447d-9016-09a183b7af1d|ramp","verdict":"skip","note":"","at":"2026-11-20T05:16:58.147Z"}
+{"id":"49975689-85f8-4221-bb11-3d3f68a1a7ac|reanimate-creature","verdict":"wrong","note":"it is reanimate-artifact-creature","at":"2026-11-20T05:17:07.876Z"}
+{"id":"e0445c80-fa53-4c3e-881e-940e9fce7f57|removal-artifact","verdict":"skip","note":"","at":"2026-11-20T05:17:09.354Z"}
+{"id":"169a4a77-12ff-4997-9550-bdcd456aa2f7|removal-bounce","verdict":"wrong","note":"it bounces your own stuff, so it isn't removal.","at":"2026-11-20T05:17:28.306Z"}
+{"id":"dc440b62-0bf0-4f23-9210-3550ff0a8d4d|removal-creature","verdict":"wrong","note":"can only hit your own stuff, so it isn't removal.","at":"2026-11-20T05:17:39.334Z"}
+{"id":"e25062ba-7176-4d59-ac3e-26d19b26f02a|removal-exile","verdict":"wrong","note":"technically it bounces the cards to hand, just through an extra step.  scryfall tags this removal-bounce.","at":"2026-11-20T07:46:06.660Z"}
+{"id":"58afb897-4d57-4b53-a5c3-b532cb3d5180|removal-fight","verdict":"wrong","note":"no, because it fights creatures you control, so it is not removal.","at":"2026-11-20T07:46:19.389Z"}
+{"id":"64132f93-66ac-4794-8c07-a88f9ed0e22b|removal-nonland","verdict":"wrong","note":"the nonland is for card in hand, which is not removal.  this is removal-creature and a thoughtseize effect","at":"2026-11-20T07:46:56.631Z"}
+{"id":"ab9e2045-860a-40ab-bec1-0dffced003ef|removal-planeswalker","verdict":"correct","note":"","at":"2026-11-20T07:47:04.581Z"}
+{"id":"b69d2bd6-3e99-4c51-89af-0acedd48739e|remove-counters","verdict":"wrong","note":"no, because it only works with a special counter type","at":"2026-11-20T07:47:44.279Z"}
+{"id":"1b01dcff-0639-4ed0-bd9e-f28429cb803d|repeatable-creature-tokens","verdict":"wrong","note":"because it is \"When\", it is not repeatable","at":"2026-11-20T07:48:23.532Z"}
+{"id":"c8f802ad-4621-4f71-b52d-fbc55853dc88|repeatable-lifegain","verdict":"wrong","note":"no, because it sacrifices.","at":"2026-11-20T07:48:41.516Z"}
+{"id":"cbf09050-39d0-463b-96db-9e22011ae0d8|repeatable-pp-counters","verdict":"correct","note":"","at":"2026-11-20T07:48:54.102Z"}
+{"id":"17e7212e-69d8-4014-af98-447baed2cae7|repeatable-pure-draw","verdict":"wrong","note":"it's \"When\", so it is not repeatable","at":"2026-11-20T07:49:44.153Z"}
+{"id":"1f74e26f-5cf3-4b0e-bcc6-f858599474fc|repeatable-sacrifice-outlet","verdict":"correct","note":"","at":"2026-11-20T07:49:57.095Z"}
+{"id":"79d577a8-53c0-4220-bc0e-70764d72d5fd|sacrifice-outlet-creature","verdict":"wrong","note":"no, it sacrifices itself, not creatures","at":"2026-11-20T07:50:38.227Z"}
+{"id":"d1ce7fcf-42f8-4b35-9ba1-55033c65c43e|spot-removal","verdict":"correct","note":"I don't really understand why it wouldn't be.","at":"2026-11-20T07:51:25.751Z"}
+{"id":"21591447-c045-4317-8d0e-705627aa157b|sweeper","verdict":"correct","note":"","at":"2026-11-20T07:51:42.331Z"}
+{"id":"0fb9a8a2-4331-4259-9460-a37397554962|sweeper-one-sided","verdict":"wrong","note":"\"each player\" is not one sided, it is symmetrical.","at":"2026-11-20T07:52:30.804Z"}
+{"id":"a7641ee0-9c0d-4201-9827-a775ed03797c|toughness-boost-to-all","verdict":"correct","note":"","at":"2026-11-20T07:52:40.402Z"}
+{"id":"0389b48a-e64c-44fb-8a41-fd571cba237c|triggered-ability","verdict":"correct","note":"","at":"2026-11-20T07:52:56.204Z"}
+{"id":"aa125d1c-ab8f-48ff-a6eb-d8fc2154322c|tutor-land-basic","verdict":"wrong","note":"no, because it doesn't let you tutor, it gives opponents the tutor?","at":"2026-11-20T07:54:27.036Z"}
+{"id":"3084377f-73fb-4b00-9dd9-3844b1ecafc2|unblockable","verdict":"correct","note":"","at":"2026-11-20T07:54:59.170Z"}
+{"id":"eab5eef8-d180-4b08-a770-6b3a1df03745|wheel-one-sided","verdict":"correct","note":"","at":"2026-11-20T07:55:10.248Z"}
+{"id":"a9a17d40-1675-49d9-9cbd-f6fe1b075d0c|combat-trick","verdict":"correct","note":"","at":"2026-11-20T07:55:24.854Z"}
+{"id":"c7ad20a3-51bf-4a22-a09c-fff8cae22765|freeze-creature","verdict":"correct","note":"","at":"2026-11-20T07:55:37.512Z"}
+{"id":"2b8c2882-dbca-466a-a0af-dd1d65edfe7c|gives-pp-counters","verdict":"wrong","note":"no, it gains-pp-counters though.","at":"2026-11-20T07:56:02.500Z"}
+{"id":"cc9088c4-6f6b-4a1a-90f1-794eb1e938c6|modal","verdict":"correct","note":"","at":"2026-11-20T07:56:04.605Z"}
+{"id":"fe7938ce-6289-4bf8-a8f5-85ecccbb7f86|move-counters","verdict":"correct","note":"","at":"2026-11-20T07:56:09.493Z"}
+{"id":"e0445c80-fa53-4c3e-881e-940e9fce7f57|removal-enchantment","verdict":"skip","note":"","at":"2026-11-20T07:56:13.324Z"}
+{"id":"331b6834-6bb4-40fa-b80b-22d67b34734f|removal-toughness","verdict":"wrong","note":"Audit: Extraction Integrant has removal-toughness for similar blocking-dependent text, while Flanking Licid lacks it. Opponent choice alone does not settle the tag. Retain for review of reminder-text attribution.","at":"2026-11-20T07:56:19.487Z"}
+{"id":"a30f30e3-dbbf-4cb2-b3d0-76f57dffb2dd|repeatable-crime","verdict":"correct","note":"","at":"2026-11-20T07:56:35.641Z"}
+{"id":"a30f30e3-dbbf-4cb2-b3d0-76f57dffb2dd|repeatable-removal","verdict":"correct","note":"","at":"2026-11-20T07:56:37.155Z"}
+{"id":"ce8af7dd-49df-4419-9776-4157efc60b0f|sacrifice-self","verdict":"wrong","note":"","at":"2026-11-20T07:57:07.975Z"}
+{"id":"c03ae426-2536-4c20-a73a-a24e816f76b0|tapper-creature","verdict":"wrong","note":"from what I can tell, scryfall is consistent that tapper-creature only gets applied to cards that tap opponent's creatures.","at":"2026-11-20T07:59:45.600Z"}
+{"id":"aa125d1c-ab8f-48ff-a6eb-d8fc2154322c|tutor-land-to-battlefield","verdict":"wrong","note":"","at":"2026-11-20T07:59:52.555Z"}
+{"id":"40616029-e1a8-4e7c-bc7b-e381779c57cc|activated-ability","verdict":"correct","note":"","at":"2026-11-20T07:59:58.670Z"}
+{"id":"31895957-5fa8-46dc-a76e-37bbdc6072ad|gives-haste","verdict":"correct","note":"","at":"2026-11-20T08:00:07.537Z"}
+{"id":"e88b1520-aa9a-41ee-9036-4d4bebd1a0c0|removal-destroy","verdict":"wrong","note":"it destroys the token it creates, so it is not removal.","at":"2026-11-20T08:00:34.908Z"}
+{"id":"39068bf1-cae4-4ac9-82ef-4e81bf59446e|keyword-anthem","verdict":"correct","note":"","at":"2026-11-20T08:00:46.956Z"}
+{"id":"0ec54683-a65c-461d-862e-585b6499d6a5|burn-any","verdict":"correct","note":"","at":"2026-11-20T08:00:54.964Z"}
+{"id":"a7da9ec5-f82f-4a6d-9737-06a1556e2dd6|burn-planeswalker","verdict":"correct","note":"","at":"2026-11-20T08:00:57.004Z"}
+{"id":"0ec54683-a65c-461d-862e-585b6499d6a5|burn-player","verdict":"correct","note":"","at":"2026-11-20T08:00:58.480Z"}
+{"id":"c5f360dc-fe4e-4796-b5c1-468cbd0f6d24|draw-engine","verdict":"wrong","note":"no, because it is \"when\", it is not repeatable, so it should not be tagged draw engine.","at":"2026-11-20T08:01:14.311Z"}
+{"id":"60043b87-6008-4cfa-9d8f-6ee6e3f70766|tutor-to-hand","verdict":"correct","note":"","at":"2026-11-20T08:02:25.118Z"}
+{"id":"e5afa88a-8bde-47fe-a890-3759f807360f|anthem","verdict":"correct","note":"","at":"2026-11-20T08:02:32.488Z"}
+{"id":"ca173221-1661-41f6-a353-29a32d6ccce0|attack-trigger","verdict":"correct","note":"","at":"2026-11-20T08:02:34.663Z"}
+{"id":"afb71560-0fc9-4ea5-9d52-d93c17d72519|attacking-matters","verdict":"correct","note":"","at":"2026-11-20T08:02:41.553Z"}
+{"id":"b31026fe-faad-49b3-93b0-1324e32bb816|attacking-matters-self","verdict":"skip","note":"","at":"2026-11-20T08:03:04.898Z"}

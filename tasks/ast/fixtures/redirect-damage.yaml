@@ -1,0 +1,11 @@
+name: Protector of the Crown
+typeLine: Creature — Giant Soldier
+text: All damage that would be dealt to you is dealt to this creature instead.
+expect:
+  kind: CardText
+  isRecognized: true
+  effects:
+    - kind: RedirectDamageEffect
+      originalRecipient: you
+      newRecipient: this creature
+      isThisTurn: false

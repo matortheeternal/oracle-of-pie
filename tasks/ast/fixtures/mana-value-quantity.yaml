@@ -1,0 +1,9 @@
+name: Keen Duelist
+typeLine: Creature — Human Wizard
+text: You each lose life equal to the mana value of the card revealed by the other player.
+expect:
+  kind: CardText
+  effects:
+    - kind: LoseLifeEffect
+      usesManaValue: true
+      usesCreatureCount: false

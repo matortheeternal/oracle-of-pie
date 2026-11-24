@@ -1,5 +1,9 @@
 export const TURN_TAGS = [
     {
+        tag: 'extra-turn',
+        match: { kind: 'ExtraTurnEffect', context: { expansion: null } }
+    },
+    {
         tag: 'extra-combat-phase',
         match: { kind: 'AdditionalPhaseEffect', addsCombat: true }
     },

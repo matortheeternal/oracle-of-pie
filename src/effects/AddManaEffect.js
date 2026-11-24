@@ -1,4 +1,7 @@
 import Effect from './Effect.js';
+import {
+    usesCreatureCount, usesOpposingArtifactCount
+} from '../values/quantityDependencies.js';
 
 const MANA_KIND_ALTERNATIVES = [
     'of any (?:one )?(?:color|type)',
@@ -23,10 +26,18 @@ export default class AddManaEffect extends Effect {
 
     parseArguments(match) {
         this.mana = this.consumeText(MANA)?.[0] ?? null;
-        this.consumeText(MANA_TAIL);
+        this.scaling = this.consumeText(MANA_TAIL)?.[0] ?? null;
     }
 
     get isComplete() {
         return Boolean(this.mana);
+    }
+
+    get usesOpposingArtifactCount() {
+        return usesOpposingArtifactCount(this.scaling);
+    }
+
+    get usesCreatureCount() {
+        return usesCreatureCount(this.scaling ?? this.mana);
     }
 }

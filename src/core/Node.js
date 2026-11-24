@@ -13,8 +13,12 @@ export default class Node {
 
     static parse(scribe, match, str) {
         const node = new this(scribe, match, str);
-        node.raw = str.slice(0, str.length - node.remainingStr.length).trim();
+        node.claimSpan(str);
         return node;
+    }
+
+    claimSpan(str) {
+        this.raw = str.slice(0, str.length - this.remainingStr.length).trim();
     }
 
     constructor(scribe, match = null, str = '') {
