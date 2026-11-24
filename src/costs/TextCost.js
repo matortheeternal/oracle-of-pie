@@ -4,6 +4,7 @@ const TEXT_COST_ALTERNATIVES = [
     'discard (?:a|an|two|three|N|X|\\d+|your hand|this card)[^,:]*',
     'pay (?:\\d+|X|N|an amount of) [^,:]*life',
     'pay \\{[^,:]+',
+    'pay (?:\\w+ )?\\{E\\}+',
     'remove [^,:]+ counters? from [^,:]+',
     'mill (?:a card|\\w+ cards)',
     'collect evidence \\d+',

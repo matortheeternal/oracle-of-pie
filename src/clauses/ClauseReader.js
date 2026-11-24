@@ -4,7 +4,8 @@ import UnrecognizedText from '../values/UnrecognizedText.js';
 import { EFFECT_PARSERS } from '../effects/index.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
-const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |, )/i;
+const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |,? ?or |, )/i;
+const ALTERNATIVE = /^,? ?or /i;
 const MAY = /^may /i;
 const EACH = /^each /i;
 
@@ -39,6 +40,7 @@ export default class ClauseReader extends Parser {
         if (!ClauseReader.startsClause(this.scribe, rest)) return false;
         this.consumeText(CONNECTOR);
         const effect = this.readClause();
+        effect.isAlternative = ALTERNATIVE.test(connector[0]);
         const subject = this.clauseEffects.at(-1)?.actingSubject;
         if (effect && !effect.subject && subject && effect.acceptsSubject(subject))
             effect.shareSubject(subject);

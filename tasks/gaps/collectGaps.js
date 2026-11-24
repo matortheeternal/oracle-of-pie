@@ -39,13 +39,18 @@ function describeContext(node, children, index, parent) {
     return describePrevious(children[index - 1], parent);
 }
 
+function isIncomplete(node) {
+    return !node.isRecognized && node.children.every(child => child.isRecognized);
+}
+
 function gapKind(node) {
     if (node.isUnrecognizedSpan) return 'unrecognized';
-    return node.isOpaque ? 'opaque' : null;
+    if (node.isOpaque) return 'opaque';
+    return isIncomplete(node) ? 'incomplete' : null;
 }
 
 function labelled(kind, context) {
-    return kind === 'opaque' ? `opaque, ${context}` : context;
+    return kind === 'unrecognized' ? context : `${kind}, ${context}`;
 }
 
 function visit(node, gaps) {
@@ -59,8 +64,13 @@ function visit(node, gaps) {
     });
 }
 
+function isFallback(gap) {
+    return gap.kind === 'incomplete';
+}
+
 export default function collectGaps(cardText) {
     const gaps = [];
     visit(cardText, gaps);
-    return gaps;
+    const spans = gaps.filter(gap => !isFallback(gap));
+    return spans.length ? spans : gaps;
 }

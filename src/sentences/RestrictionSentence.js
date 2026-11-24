@@ -7,7 +7,6 @@ const RESTRICTION_ALTERNATIVES = [
     '(?:~|this spell) can\'t be countered[^.]*',
     'spend this mana only [^.]*',
     'it\'s still a land',
-    'you may choose new targets for the cop(?:y|ies)',
     'you may choose the same mode more than once',
     'any player may [^.]*',
     'a deck can have any number of [^.]*',

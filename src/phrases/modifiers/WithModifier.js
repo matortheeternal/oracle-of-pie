@@ -8,7 +8,7 @@ const WITH_ALTERNATIVES = [
     'total power',
     'total mana value',
     'converted mana cost',
-    'an? [\\w+\\-/]+ counter on it',
+    'an? (?:[\\w+\\-/]+ )?counter on it',
     'one or more (?:[\\w+\\-/]+ )?counters on (?:it|them)',
     '[\\w+\\-/]+ counters on (?:it|them)',
     'counters on (?:it|them)',

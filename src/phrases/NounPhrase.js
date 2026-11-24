@@ -7,6 +7,7 @@ import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const N = NUMBER_PATTERN;
 const DETERMINER_ALTERNATIVES = [
+    `${N} or (${N}) (?:other )?target`,
     `up to (${N}) (?:other )?target`,
     'any number of (?:other )?target',
     `(${N}) (?:other )?target`,
@@ -14,7 +15,7 @@ const DETERMINER_ALTERNATIVES = [
     'up to that many',
     'another target', 'other target', 'target', 'each other', 'each', 'all other',
     'all', 'another', 'one or more', `(${N}) or more`, 'any number of', 'any', N,
-    'the', 'that', 'those'
+    'the', 'that', 'those', 'your(?= commanders?\\b)'
 ];
 const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i');
 const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
@@ -63,7 +64,7 @@ export default class NounPhrase extends Phrase {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.determiner = match[1]?.toLowerCase() ?? null;
-        this.count = numberValue(match[2] ?? match[3] ?? match[4] ?? match[5] ?? '1');
+        this.count = numberValue(match.slice(2).find(Boolean) ?? '1');
         this.qualifiers = [];
         this.exclusions = [];
         this.types = [];
@@ -156,6 +157,7 @@ export default class NounPhrase extends Phrase {
     }
 
     get isRecognized() {
+        if (this.isCommanderGroup) return true;
         return Boolean(this.types.length || this.subtypes.length);
     }
 

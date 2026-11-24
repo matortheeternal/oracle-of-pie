@@ -104,14 +104,16 @@ expect:
     - kind: TriggeredAbility
       children:
         - kind: DiesEvent
-          isRecognized: false
+          isRecognized: true
           subjectPhrase:
             kind: NounPhrase
-            raw: a creature you control
+            raw: a creature you control with a counter on it
           children:
             - kind: NounPhrase
-            - kind: UnrecognizedText
-              raw: with a counter on it
+              children:
+                - kind: ControllerModifier
+                - kind: WithModifier
+                  raw: with a counter on it
         - kind: EffectSequence
     - kind: TriggeredAbility
       children:

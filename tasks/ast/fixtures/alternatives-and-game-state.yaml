@@ -1,0 +1,88 @@
+name: Alternatives and Game State
+typeLine: Creature — Human
+text: |-
+  As an additional cost to cast this spell, tap an untapped artifact you control or pay {1}.
+  If it's neither day nor night, it becomes day as this creature enters.
+  When this creature enters, look at target opponent's hand and exile those cards face down.
+  Whenever your commander attacks, you may tap or untap target nonland permanent.
+  {T}, Pay six {E}: This creature deals 2 damage divided as you choose among one or two targets.
+  Copy target instant spell. You may choose new targets for the copy.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: TapEffect
+                  isAlternative: false
+                - kind: PayManaEffect
+                  isAlternative: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: DayNightEffect
+                  phase: day
+                  timing: this creature enters
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: LookAtHandEffect
+                  handOwner: target opponent
+                - kind: ExileEffect
+                  children:
+                    - kind: PhraseList
+                      children:
+                        - kind: BackReference
+                          refersToSelf: false
+    - kind: TriggeredAbility
+      children:
+        - kind: AttacksEvent
+          children:
+            - kind: NounPhrase
+              raw: your commander
+              isCommanderGroup: true
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: TapEffect
+                  mayUntap: true
+    - kind: ActivatedAbility
+      children:
+        - kind: CostList
+          children:
+            - kind: ManaCostItem
+            - kind: TextCost
+              raw: Pay six {E}
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DamageEffect
+                  children:
+                    - kind: SelfReference
+                    - kind: PhraseList
+                      children:
+                        - kind: AnyTarget
+                          count: 2
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CopyEffect
+            - kind: EffectSentence
+              children:
+                - kind: RetargetCopyEffect

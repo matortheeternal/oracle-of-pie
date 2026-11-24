@@ -17,6 +17,7 @@ const AMOUNT = new RegExp(
 const TO_TARGETS = /^(?:to|among) /i;
 const FOR_EACH = /^for each [^,.]+/i;
 const EACH_OF = /^each of /i;
+const INSTEAD = /^instead\b/i;
 const EQUAL_TO = /^equal to [^,.]+/i;
 const PING_LIMIT = 2;
 const CREATURE_STAT = /\b(?:power|toughness)\b/i;
@@ -32,6 +33,7 @@ export default class DamageEffect extends Effect {
         this.amountText = amount?.[0] ?? null;
         this.powerOwner = amount?.[2]?.toLowerCase() ?? null;
         this.targets = this.consumeText(TO_TARGETS) ? this.consumeTargets() : null;
+        this.replacesAmount = Boolean(!this.targets && this.consumeText(INSTEAD));
         const scaling = this.consumeText(FOR_EACH) ?? this.consumeText(EQUAL_TO);
         this.scalingText = scaling?.[0] ?? null;
     }
@@ -78,7 +80,7 @@ export default class DamageEffect extends Effect {
     }
 
     get isComplete() {
-        return Boolean(this.amountText && this.targets);
+        return Boolean(this.amountText && (this.targets || this.replacesAmount));
     }
 
     get phrases() {
