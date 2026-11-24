@@ -248,3 +248,7 @@
 {"id":"b31026fe-faad-49b3-93b0-1324e32bb816|attacking-matters-self","verdict":"skip","note":"","at":"2026-11-20T08:03:04.898Z"}
 {"id":"c0307f8d-b39a-4180-8a45-ddc019ee39f6|shapechange","verdict":"correct","note":"","at":"2026-11-24T04:13:11.000Z"}
 {"id":"64acb083-a0a3-46ec-9c93-b2ac36878703|repeatable-impulse","verdict":"correct","note":"Same wording as Squad Rallier, which is tagged.","at":"2026-11-24T04:13:11.000Z"}
+{"id":"8025313d-048d-4a43-bc01-22398939a7e7|multiple-targets","verdict":"correct","note":"","at":"2026-11-24T04:46:15.000Z"}
+{"id":"85fa4ed3-14e3-4eb0-b31b-62e2088321d0|keyword-anthem","verdict":"correct","note":"","at":"2026-11-24T04:46:15.000Z"}
+{"id":"3feedc63-173e-4713-8e96-8f1c9576055f|repeatable-crime","verdict":"correct","note":"","at":"2026-11-24T04:46:15.000Z"}
+{"id":"e64efd0d-3de3-42e2-949e-4a152d08def8|keyword-anthem","verdict":"correct","note":"","at":"2026-11-24T04:46:15.000Z"}
