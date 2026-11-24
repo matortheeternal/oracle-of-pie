@@ -246,3 +246,5 @@
 {"id":"ca173221-1661-41f6-a353-29a32d6ccce0|attack-trigger","verdict":"correct","note":"","at":"2026-11-20T08:02:34.663Z"}
 {"id":"afb71560-0fc9-4ea5-9d52-d93c17d72519|attacking-matters","verdict":"correct","note":"","at":"2026-11-20T08:02:41.553Z"}
 {"id":"b31026fe-faad-49b3-93b0-1324e32bb816|attacking-matters-self","verdict":"skip","note":"","at":"2026-11-20T08:03:04.898Z"}
+{"id":"c0307f8d-b39a-4180-8a45-ddc019ee39f6|shapechange","verdict":"correct","note":"","at":"2026-11-24T04:13:11.000Z"}
+{"id":"64acb083-a0a3-46ec-9c93-b2ac36878703|repeatable-impulse","verdict":"correct","note":"Same wording as Squad Rallier, which is tagged.","at":"2026-11-24T04:13:11.000Z"}
