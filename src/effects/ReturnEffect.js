@@ -23,11 +23,11 @@ const OR_FROM_EXILE = /^or (?=from exile\b)/i;
 const RETURN_TAIL_ALTERNATIVES = [
     'tapped',
     'and attacking',
-    'transformed',
+    '(?:and )?transformed',
     'face down',
     'under (?:your|its owner\'s|their owners\'|their owner\'s) control',
     'attached to [^,.]+',
-    'with (?:an? |N |\\w+ )[^,.]*counters? on (?:it|them)',
+    'with (?:an? |N |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them)',
     'at the beginning of [^,.]+',
     'at end of combat'
 ];

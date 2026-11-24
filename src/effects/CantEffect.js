@@ -10,6 +10,7 @@ const CANT_ALTERNATIVES = [
     'block',
     'be blocked',
     'be countered',
+    'be copied',
     'be the targets? of [^,.]+',
     'become untapped',
     CONTROLLER_UNTAP + '(?= and (?:can\'t |its activated abilities ))',

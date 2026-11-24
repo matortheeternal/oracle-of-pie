@@ -1,0 +1,34 @@
+name: Skips and put tails
+typeLine: Creature — Human
+text: |-
+  Skip your next untap step.
+  Put target creature card from a graveyard onto the battlefield under your control with an additional +1/+1 counter on it.
+  Put target card from a graveyard back on top of its owner's library.
+  Return all creatures to their owners' hands.
+  Spells you control can't be copied.
+  This creature enters with two +1/+1 counters on him.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: SkipEffect
+                  skipped: untap step
+                  isNextOnly: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PutEffect
+                  toBattlefield: true
+    - kind: SpellAbility
+    - kind: SpellAbility
+    - kind: SpellAbility
+    - kind: SpellAbility

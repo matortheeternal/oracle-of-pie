@@ -4,7 +4,7 @@ import {
 } from '../values/quantityDependencies.js';
 
 const MANA_KIND_ALTERNATIVES = [
-    'of any (?:one )?(?:color|type)',
+    'of any (?:one )?(?:color|type)(?: in your commander\'s color identity)?',
     'in any combination of [^,.]+',
     'of the chosen color',
     'of any of the exiled card\'s colors'

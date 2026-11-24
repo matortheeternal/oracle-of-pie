@@ -3,10 +3,10 @@ import ObjectEffect from './ObjectEffect.js';
 const PUT = /^puts? /i;
 const DESTINATION_ALTERNATIVES = [
     'onto the battlefield',
-    'into (?:your|its owner\'s|their owner\'s|their) hands?',
+    'into (?:your|its owner\'s|their owner\'s|their owners\'|their) hands?',
     'into (?:your|its owner\'s|their owner\'s|their) graveyards?',
     'on the bottom of [^,.]+',
-    'on top of [^,.]+',
+    '(?:back )?on top of [^,.]+',
     'on top\\b',
     'on the bottom\\b',
     'into (?:your|their|its owner\'s) library [^,.]+'
@@ -17,7 +17,8 @@ const DESTINATION = new RegExp(
 );
 const PUT_TAIL_ALTERNATIVES = [
     'tapped', 'and attacking', 'under your control', 'transformed', 'attacking',
-    'face down', 'in (?:a random|any) order'
+    'face down', 'in (?:a random|any) order',
+    'with (?:an? |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them)'
 ];
 const PUT_TAIL = new RegExp(`^(${PUT_TAIL_ALTERNATIVES.join('|')})`, 'i');
 const REST_ALTERNATIVES = [
