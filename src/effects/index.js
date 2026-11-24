@@ -79,6 +79,8 @@ import PreventionBanEffect from './PreventionBanEffect.js';
 import ExcessDamageEffect from './ExcessDamageEffect.js';
 import StaticControlEffect from './StaticControlEffect.js';
 import LoseAbilitiesEffect from './LoseAbilitiesEffect.js';
+import CrewBonusEffect from './CrewBonusEffect.js';
+import KeywordCostEffect from './KeywordCostEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
@@ -115,7 +117,7 @@ export const EFFECT_PARSERS = [
     EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
     LookAtHandEffect, TypeLossEffect, PreventionBanEffect, ExcessDamageEffect,
-    StaticControlEffect, OpaqueEffect
+    StaticControlEffect, CrewBonusEffect, KeywordCostEffect, OpaqueEffect
 ];
 
 export {
@@ -142,5 +144,5 @@ export {
     EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
     LookAtHandEffect, TypeLossEffect, PreventionBanEffect, ExcessDamageEffect,
-    StaticControlEffect, OpaqueEffect
+    StaticControlEffect, CrewBonusEffect, KeywordCostEffect, OpaqueEffect
 };

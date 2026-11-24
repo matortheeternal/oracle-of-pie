@@ -1,0 +1,61 @@
+name: Crew costs and keyword lines
+typeLine: Artifact — Equipment
+text: |-
+  This creature saddles Mounts and crews Vehicles as though its power were 2 greater.
+  The escape cost is equal to its mana cost plus exile three other cards from your graveyard.
+  Equip {3}. This ability costs {1} less to activate for each other Equipment you control.
+  Target land gains "{T}: Add {B}." until this card is cast from exile.
+  When this creature enters and whenever you spend this mana to cast a spell, draw a card.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CrewBonusEffect
+                  bonus: 2
+                  appliesToSaddle: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: KeywordCostEffect
+                  keyword: escape
+                  children:
+                    - kind: CostList
+                      children:
+                        - kind: ExileCost
+    - kind: KeywordAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: GrantEffect
+                  children:
+                    - kind: NounPhrase
+                    - kind: QuotedAbility
+                    - kind: Duration
+                      isTemporary: false
+    - kind: TriggeredAbility
+      children:
+        - kind: CompoundEvent
+          children:
+            - kind: EntersEvent
+            - kind: CastEvent
+              paidWithThisMana: true
+        - kind: EffectSequence

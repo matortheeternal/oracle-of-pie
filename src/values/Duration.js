@@ -10,13 +10,18 @@ const DURATION_ALTERNATIVES = [
     'for as long as [^,.]+',
     'for the rest of the game',
     'until ~ leaves the battlefield',
-    'until [^,.]+ leaves the battlefield'
+    'until [^,.]+ leaves the battlefield',
+    'until [^,.]+ is cast from exile'
 ];
 const DURATION = new RegExp(
     `^(${DURATION_ALTERNATIVES.join('|')})`, 'i'
 );
 
-const LASTING = /^for as long as|^for the rest of the game$|leaves the battlefield$/;
+const LASTING_ALTERNATIVES = [
+    '^for as long as', '^for the rest of the game$', 'leaves the battlefield$',
+    'is cast from exile$'
+];
+const LASTING = new RegExp(LASTING_ALTERNATIVES.join('|'));
 
 export default class Duration extends Node {
     static match(scribe, str) {
