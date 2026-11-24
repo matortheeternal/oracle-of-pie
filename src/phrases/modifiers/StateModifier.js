@@ -20,7 +20,8 @@ const STATE_ALTERNATIVES = [
     'an opponent cast',
     'of (?:their|your|its controller\'s) choice',
     'that (?:are|is) [a-z]+',
-    'named [A-Z][^,.]*'
+    'named [A-Z][^,.]*',
+    'chosen at random'
 ];
 const STATE = new RegExp(
     `^(${STATE_ALTERNATIVES.join('|')})\\b`, 'i'

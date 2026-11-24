@@ -6,7 +6,9 @@ const PARAMETER_ALTERNATIVES = [
     '\\{[^}]+\\}(?:\\{[^}]+\\})*',
     '\\d+',
     'X',
+    'from the (?:color of your choice|chosen colou?r)',
     'from [a-z]+(?: and from [a-z]+)*',
+    'legendary creature \\{[^}]+\\}(?:\\{[^}]+\\})*',
     '[a-z]+ [A-Z][a-z]+',
     'N'
 ];

@@ -14,6 +14,7 @@ const TEXT_COST_ALTERNATIVES = [
     'put [^,:]+ counters? on [^,:]+',
     '\\{E\\}+',
     'waterbend \\{[^,:]+',
+    'blight \\w+',
     'tap (?:an?|\\w+) untapped [^,:]+'
 ];
 const REMOVE_COUNTERS = /^remove /;

@@ -12,6 +12,7 @@ const ZONE_ALTERNATIVES = [
     '^(?:from|in) graveyards\\b',
     '^from (?:it|among them|among those cards)\\b',
     '^from exile\\b',
+    '^from anywhere other than your hand\\b',
     '^(?:on|from) the battlefield\\b'
 ];
 const ZONE = new RegExp(ZONE_ALTERNATIVES.join('|'), 'i');

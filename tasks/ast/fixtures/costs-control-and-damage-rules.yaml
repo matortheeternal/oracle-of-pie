@@ -1,0 +1,91 @@
+name: Costs, Control and Damage Rules
+typeLine: Enchantment — Aura
+text: |-
+  {1}{W}, Blight 2: Draw a card.
+  As an additional cost to cast this spell, waterbend {X}.
+  Exile target instant or sorcery card from your graveyard chosen at random.
+  You control enchanted creature.
+  Damage can't be prevented this turn.
+  Excess damage is dealt to that creature's controller instead.
+  Spells you cast from anywhere other than your hand cost {1} less to cast.
+  Whenever you cast a historic spell, copy it, except the copy isn't legendary.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: ActivatedAbility
+      children:
+        - kind: CostList
+          children:
+            - kind: ManaCostItem
+            - kind: TextCost
+              raw: Blight 2
+        - kind: EffectSequence
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: KeywordActionEffect
+                  action: waterbend
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ExileEffect
+                  children:
+                    - kind: PhraseList
+                      children:
+                        - kind: NounPhrase
+                          children:
+                            - kind: ZoneModifier
+                            - kind: StateModifier
+                              raw: chosen at random
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: StaticControlEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PreventionBanEffect
+                  combatOnly: false
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ExcessDamageEffect
+                  recipient: that creature's controller
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+                  children:
+                    - kind: NounPhrase
+                      children:
+                        - kind: ControllerModifier
+                        - kind: ZoneModifier
+                          raw: from anywhere other than your hand
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CopyEffect
+                  isNonlegendary: true

@@ -14,6 +14,7 @@ const SUSPECT_WORDING = /suspect [^,.]+/;
 const BEHOLD_WORDING = /behold an? [^,.]+/;
 const EMPOWER_WORDING = /empower [A-Z][a-z]+/;
 const AIRBEND_WORDING = /airbend [^,.]+/;
+const WATERBEND_WORDING = /waterbend \{[^,.]+/;
 
 export const DEFAULT_DEFINITIONS = {
     keywords: [
@@ -108,7 +109,8 @@ export const DEFAULT_DEFINITIONS = {
                 + 'card, create a 1/1 white Human Soldier creature token.'
         },
         { name: 'Empower', pattern: EMPOWER_WORDING },
-        { name: 'Airbend', pattern: AIRBEND_WORDING }
+        { name: 'Airbend', pattern: AIRBEND_WORDING },
+        { name: 'Waterbend', pattern: WATERBEND_WORDING }
     ],
     tokens: [
         {
