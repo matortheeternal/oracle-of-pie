@@ -2,7 +2,9 @@ import TriggerEvent from './TriggerEvent.js';
 import FirstTime from './qualifiers/FirstTime.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
 
-const BECOMES_STATUS = /^(?<subject>.+?) becomes? (?<status>crewed|saddled)\b/i;
+const BECOMES_STATUS = new RegExp(
+    '^(?<subject>.+?) becomes? (?:the )?(?<status>crewed|saddled|monarch)\\b', 'i'
+);
 
 export default class BecomesStatusEvent extends TriggerEvent {
     static get pattern() {

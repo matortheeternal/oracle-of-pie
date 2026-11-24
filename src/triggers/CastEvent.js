@@ -11,7 +11,8 @@ import CastSpell from './objects/CastSpell.js';
 
 const SUBJECT = '(?<subject>(?:(?! (?:and|or) (?:whenever|when|at) ).)+?)';
 const MANA_SPENT = '(?<manaSpent> spends? this mana to)?';
-const CASTER = `^${SUBJECT}(?<next> next)?${MANA_SPENT} casts? `;
+const PLAYS_LAND = '(?<playsLand> plays? a land or)?';
+const CASTER = `^${SUBJECT}(?<next> next)?${MANA_SPENT}${PLAYS_LAND} casts? `;
 const COPY_ALTERNATIVE = '(?:or (?<otherVerb>[a-z]+) )?';
 const SPELL = '(?<spell>this spell\\b|~|.*?\\bspells?\\b)';
 const CAST = new RegExp(CASTER + COPY_ALTERNATIVE + SPELL, 'i');
@@ -34,6 +35,7 @@ export default class CastEvent extends TriggerEvent {
         this.otherVerb = match.groups.otherVerb ?? null;
         this.isNext = Boolean(match.groups.next);
         this.paidWithThisMana = Boolean(match.groups.manaSpent);
+        this.includesLandPlay = Boolean(match.groups.playsLand);
         this.includesCopy = ['copy', 'copies'].includes(this.otherVerb);
         Object.defineProperty(this, 'spellSource', {
             value: str.slice(match[0].length - this.spell.length)

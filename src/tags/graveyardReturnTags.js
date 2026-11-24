@@ -38,7 +38,7 @@ function reanimate(tag, phrases, extra) {
 }
 
 function regrowth(tag, phrases) {
-    return graveyardReturn(tag, 'hand', phrases);
+    return graveyardReturn(tag, 'hand', phrases, { affectsYou: true });
 }
 
 function graveyardOwnedBy(owner) {
@@ -75,7 +75,7 @@ export const GRAVEYARD_RETURN_TAGS = [
     ),
     reanimate(
         'reanimate-from-opponent',
-        graveyardOwnedBy(['an opponent\'s', 'target opponent\'s']),
+        graveyardOwnedBy(['an opponent\'s', 'target opponent\'s', 'defending player\'s']),
         UNDER_YOUR_CONTROL
     )
 ];

@@ -24,6 +24,7 @@ const CANT_ALTERNATIVES = [
 ];
 const CANT_QUALIFIERS = [
     'this turn',
+    'this combat',
     'alone',
     'except by [^,.]+',
     'by [^,.]+',

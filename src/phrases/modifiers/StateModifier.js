@@ -2,6 +2,7 @@ import Modifier from './Modifier.js';
 
 const STATE_ALTERNATIVES = [
     'that (?:was|were) dealt damage this turn',
+    'that (?:was|were) put there from (?:the battlefield|anywhere) this turn',
     'that entered (?:the battlefield )?this turn',
     'that attacked this turn',
     'blocking or blocked by ~',
@@ -10,7 +11,6 @@ const STATE_ALTERNATIVES = [
     'attacking you',
     'tapped this way',
     'cast this way',
-    'exiled with ~',
     'that (?:share|shares) a [a-z ]+',
     'of the chosen type',
     'of the chosen color',

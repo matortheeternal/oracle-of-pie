@@ -16,7 +16,7 @@ const AMOUNT = new RegExp(
     'i'
 );
 const TO_TARGETS = /^(?:to|among) /i;
-const FOR_EACH = /^for each [^,.]+/i;
+const FOR_EACH = /^for each (?:[^,.]|, (?=non))+/i;
 const EACH_OF = /^each of /i;
 const INSTEAD = /^instead\b/i;
 const EQUAL_TO = /^equal to [^,.]+/i;

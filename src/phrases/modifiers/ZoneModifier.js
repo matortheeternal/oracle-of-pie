@@ -3,7 +3,7 @@ import Modifier from './Modifier.js';
 const ZONE_OWNERS = [
     'your', 'a', 'a single', 'an opponent\'s', 'their', 'its owner\'s',
     'target player\'s', 'target opponent\'s', 'that player\'s', 'each player\'s',
-    'each opponent\'s', 'any', 'all'
+    'each opponent\'s', 'defending player\'s', 'any', 'all'
 ];
 const ZONE_NAMES = ['graveyard', 'graveyards', 'hand', 'library', 'exile'];
 const OWNED_ZONE = `^(?:from|in) (${ZONE_OWNERS.join('|')}) (${ZONE_NAMES.join('|')})\\b`;

@@ -4,7 +4,7 @@ const TURN_OWNERS = [
     'your', 'an opponent\'s', 'each opponent\'s', 'their', 'each of your'
 ];
 const TURN_WINDOW = new RegExp(
-    `^(?:(each|this) turn|during (${TURN_OWNERS.join('|')}) turns?)\\b`, 'i'
+    `^(?:(each|this) turn|during (${TURN_OWNERS.join('|')}) turns?|this (combat))\\b`, 'i'
 );
 const OPPONENT = /opponent/i;
 const YOURS = /your/i;
@@ -16,7 +16,7 @@ export default class TurnWindow extends Parser {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.span = match[1]?.toLowerCase() ?? null;
+        this.span = match[1]?.toLowerCase() ?? match[3]?.toLowerCase() ?? null;
         this.turnOwner = match[2]?.toLowerCase() ?? null;
     }
 

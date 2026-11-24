@@ -3,7 +3,7 @@ import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const ENERGY = '\\{E\\}';
 const COUNTER_AMOUNT = `${NUMBER_PATTERN}|that many|an amount of`;
-const COUNTED = `(?:${ENERGY}|(\\w+) counters?)\\b`;
+const COUNTED = `(?:(?:${ENERGY})+|(\\w+) counters?\\b)`;
 const PLAYER_COUNTERS = new RegExp(
     `^gets? (?:((?:${ENERGY})+)|(${COUNTER_AMOUNT}) ${COUNTED})`, 'i'
 );

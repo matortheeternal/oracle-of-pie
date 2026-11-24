@@ -1,7 +1,7 @@
 import ObjectEffect from './ObjectEffect.js';
 
 const COPY = /^copy /i;
-const FOR_EACH = /^for each [^,.]+/i;
+const FOR_EACH = /^for each (?:[^,.]|, (?=non))+/i;
 const REPETITIONS = /^(?:twice|\w+ times)(?: instead)?/i;
 const COPY_NAMES = '(?:the copy|the copies|it|they|the token)';
 const NONLEGENDARY = new RegExp(

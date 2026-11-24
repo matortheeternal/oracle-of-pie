@@ -2,7 +2,7 @@ import Effect from './Effect.js';
 import consumeGrantedAbilities from '../values/consumeGrantedAbilities.js';
 
 const GAINS = /^(?:gains?|has|have) (?=["a-z])/i;
-const CONDITION = /^(as long as [^,.]+|during your turn|for each [^,.]+)/i;
+const CONDITION = /^(as long as [^,.]+|during your turn|for each (?:[^,.]|, (?=non))+)/i;
 
 export default class GrantEffect extends Effect {
     static get pattern() {

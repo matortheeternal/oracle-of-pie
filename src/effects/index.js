@@ -85,6 +85,9 @@ import DistinctModeTargetsEffect from './DistinctModeTargetsEffect.js';
 import LoseKeywordsEffect from './LoseKeywordsEffect.js';
 import LureEffect from './LureEffect.js';
 import TokenMultiplierEffect from './TokenMultiplierEffect.js';
+import RemoveFromCombatEffect from './RemoveFromCombatEffect.js';
+import XMinimumEffect from './XMinimumEffect.js';
+import ChangeTargetEffect from './ChangeTargetEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
@@ -123,7 +126,7 @@ export const EFFECT_PARSERS = [
     LookAtHandEffect, TypeLossEffect, PreventionBanEffect, ExcessDamageEffect,
     StaticControlEffect, CrewBonusEffect, KeywordCostEffect,
     DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
-    OpaqueEffect
+    RemoveFromCombatEffect, XMinimumEffect, ChangeTargetEffect, OpaqueEffect
 ];
 
 export {
@@ -152,5 +155,5 @@ export {
     LookAtHandEffect, TypeLossEffect, PreventionBanEffect, ExcessDamageEffect,
     StaticControlEffect, CrewBonusEffect, KeywordCostEffect,
     DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
-    OpaqueEffect
+    RemoveFromCombatEffect, XMinimumEffect, ChangeTargetEffect, OpaqueEffect
 };

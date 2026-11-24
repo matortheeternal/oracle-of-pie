@@ -1,0 +1,79 @@
+name: Monarch, tokens and retargeting
+typeLine: Creature — Human
+text: |-
+  When this creature enters, target opponent becomes the monarch.
+  Whenever you become the monarch, draw a card.
+  Enchanted opponent creates a Clue token, a Food token, and a Junk token.
+  Change the target of target spell or ability with a single target.
+  X can't be 0.
+  Exile all opponents' graveyards.
+  Put one into your hand and the other into your graveyard.
+  If they do, untap this creature and remove it from combat.
+  Choose a creature card exiled with this creature.
+  You get that many {E}.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: StateEffect
+                  state: monarch
+    - kind: TriggeredAbility
+      children:
+        - kind: BecomesStatusEvent
+          status: monarch
+        - kind: EffectSequence
+    - kind: SpellAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ChangeTargetEffect
+                  requiresSingleTarget: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: XMinimumEffect
+                  minimumX: 1
+    - kind: SpellAbility
+    - kind: SpellAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: UntapEffect
+                - kind: RemoveFromCombatEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ChooseObjectsEffect
+                  children:
+                    - kind: PhraseList
+                      children:
+                        - kind: NounPhrase
+                          children:
+                            - kind: RelationModifier
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PlayerCountersEffect
+                  amountText: that many

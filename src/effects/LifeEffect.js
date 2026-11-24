@@ -5,7 +5,7 @@ import {
 } from '../values/quantityDependencies.js';
 
 const LIFE_AMOUNT_ALTERNATIVES = [
-    `(?:${NUMBER_PATTERN}|that much) life(?: for each [^,.]+)?`,
+    `(?:${NUMBER_PATTERN}|(?:twice )?that much) life(?: for each (?:[^,.]|, (?=non))+)?`,
     'life equal to [^,.]+',
     'half their life, rounded (?:up|down)'
 ];

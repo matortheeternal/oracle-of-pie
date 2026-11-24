@@ -7,7 +7,7 @@ import {
 
 const GETS = /^gets? (?=[+\-−]?(?:\d+|X|\*)\/)/i;
 const AND_GAINS = /^and (?:gains?|has|have) /i;
-const SCALING = /^(for each [^,.]+|where X is [^,.]+|as long as [^,.]+)/i;
+const SCALING = /^(for each (?:[^,.]|, (?=non))+|where X is [^,.]+|as long as [^,.]+)/i;
 
 const NO_GRANTS = { keywords: null, quoted: null, quotedAbilities: [] };
 

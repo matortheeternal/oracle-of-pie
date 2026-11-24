@@ -17,7 +17,7 @@ const MANA_ALTERNATIVES = [
 ];
 const MANA = new RegExp(`^(?:${MANA_ALTERNATIVES.join('|')})`, 'i');
 const ADD = new RegExp(`^adds? (?=${MANA.source.slice(1)})`, 'i');
-const MANA_TAIL = /^(for each [^,.]+|instead)/i;
+const MANA_TAIL = /^(for each (?:[^,.]|, (?=non))+|instead)/i;
 const PRODUCED_BY = /^that ([^,.]+?) (?:could produce|produced)\b/i;
 
 export default class AddManaEffect extends Effect {

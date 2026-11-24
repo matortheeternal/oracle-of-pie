@@ -14,6 +14,7 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'the (?:creature|token|tokens|card|permanent)',
     'each of them',
     'one of them',
+    'one(?= into )',
     '(?:two|three|four|five|\\d+|x) of them',
     '(?:one|two|three|\\d+|x) of those (?:cards|creatures|permanents)',
     'each of those creatures',

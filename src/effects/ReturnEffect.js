@@ -11,7 +11,7 @@ function isBattlefieldSource(phrase) {
 
 const RETURN = /^returns? /i;
 const DESTINATION_ALTERNATIVES = [
-    '(its owner\'s|their owners\'|their owner\'s|your|its) hands?',
+    '(its owner\'s|their owners\'|their owner\'s|their|your|its) hands?',
     '(the battlefield)',
     '(?:the )?(?:top|bottom) of (?:its owner\'s|their owners\'|your) librar(?:y|ies)'
 ];

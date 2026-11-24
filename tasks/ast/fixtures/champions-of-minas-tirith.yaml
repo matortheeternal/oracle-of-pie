@@ -6,7 +6,7 @@ text: |-
   At the beginning of combat on each opponent's turn, if you're the monarch, that opponent may pay {X}, where X is the number of cards in their hand. If they don't, they can't attack you this combat.
 expect:
   kind: CardText
-  isRecognized: false
+  isRecognized: true
   children:
     - kind: TriggeredAbility
     - kind: TriggeredAbility
