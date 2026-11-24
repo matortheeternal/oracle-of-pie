@@ -17,11 +17,7 @@ export default class AbilitiesPhrase extends Phrase {
         this.source = this.consume(SOURCE_PARSERS);
     }
 
-    get parts() {
+    get children() {
         return this.source ? [this.source] : [];
-    }
-
-    get isComplete() {
-        return Boolean(this.source);
     }
 }

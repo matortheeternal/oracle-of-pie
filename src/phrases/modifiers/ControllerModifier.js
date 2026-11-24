@@ -16,7 +16,7 @@ const CONTROLLER_ALTERNATIVES = [
     'that opponent controls',
     'you own but don\'t control',
     'you control but don\'t own',
-    'you cast(?: each turn)?',
+    'you cast(?: (?:each|this) turn)?',
     'your opponents cast(?: each turn)?',
     'opponents cast(?: each turn)?'
 ];

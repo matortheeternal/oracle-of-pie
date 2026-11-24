@@ -1,0 +1,40 @@
+name: Next spell and shared subjects
+typeLine: Sorcery
+text: |-
+  The next spell you cast this turn has convoke.
+  You and permanents you control gain hexproof until end of turn.
+  This creature has all activated abilities of all creature cards exiled with it.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: GrantEffect
+                  subject:
+                    kind: NounPhrase
+                    determiner: the next
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: GrantEffect
+                  subject:
+                    kind: YouAndYourObjects
+                    includesYou: true
+                    controlledByYou: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: GrantEffect
+                  borrowedAbilityKind: activated
+                  borrowedAbilitySource: all creature cards exiled with it

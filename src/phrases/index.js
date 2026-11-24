@@ -7,9 +7,10 @@ import LibraryTopPhrase from './LibraryTopPhrase.js';
 import BackReference from './BackReference.js';
 import NounPhrase from './NounPhrase.js';
 import AbilitiesPhrase from './AbilitiesPhrase.js';
+import YouAndYourObjects from './YouAndYourObjects.js';
 
 export const PHRASE_PARSERS = [
     SelfReference, AttachedReference, AnyTarget, ZonePhrase, LibraryTopPhrase,
-    PlayerPhrase, BackReference, AbilitiesPhrase,
+    YouAndYourObjects, PlayerPhrase, BackReference, AbilitiesPhrase,
     NounPhrase
 ];

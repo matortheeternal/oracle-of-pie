@@ -20,7 +20,7 @@ const DETERMINER_ALTERNATIVES = [
     'up to that many',
     'another target', 'other target', 'target', 'each other', 'each', 'all other',
     'all', 'another', 'one or more', `(${N}) or more`, 'any number of', 'any', N,
-    `the ${ORDINAL}`, 'the', 'that', 'those', 'your(?= commanders?\\b)'
+    `the ${ORDINAL}`, 'the next', 'the', 'that', 'those', 'your(?= commanders?\\b)'
 ];
 const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i');
 const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
