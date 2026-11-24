@@ -1,6 +1,7 @@
 import Phrase from './Phrase.js';
 
 const REMAINDER = 'the rest';
+const REMAINDER_OF = /^the rest of /;
 const BACK_REFERENCE_ALTERNATIVES = [
     'it',
     'them',
@@ -16,6 +17,7 @@ const BACK_REFERENCE_ALTERNATIVES = [
     '(?:two|three|four|five|\\d+|x) of them',
     '(?:one|two|three|\\d+|x) of those (?:cards|creatures|permanents)',
     'each of those creatures',
+    'the rest of (?:the|those)(?: revealed| exiled)? cards',
     REMAINDER,
     'the cop(?:y|ies)',
     'the chosen spell',
@@ -60,11 +62,18 @@ export default class BackReference extends Phrase {
     }
 
     get isRemainder() {
-        return this.reference === REMAINDER;
+        return this.reference === REMAINDER || REMAINDER_OF.test(this.reference);
     }
 
     get refersToExiled() {
         return this.reference.startsWith('the exiled');
+    }
+
+    get refersToExiledCard() {
+        const root = this.resolved;
+        if (root.owner?.isExile) return true;
+        const earlier = root.references.slice(0, root.references.indexOf(this));
+        return earlier.some(reference => reference.owner?.isExile);
     }
 
     get resolved() {

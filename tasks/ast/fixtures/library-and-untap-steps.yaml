@@ -1,0 +1,73 @@
+name: Library and Untap Steps
+typeLine: Creature — Human
+text: |-
+  Each player searches their library for a basic land card, puts it onto the battlefield, then shuffles.
+  Discard any number of cards, then draw that many cards plus one.
+  As long as your devotion to white is less than five, ~ isn't a creature.
+  Untap this creature during each other player's untap step.
+  When this creature enters, exile three cards at random from your graveyard.
+  As it enters, choose a color.
+  Look at the top four cards of your library. Put the rest of those cards on the bottom in a random order.
+  Planeswalkers you control have "[−2]: Draw a card."
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: SearchLibraryEffect
+                - kind: PutEffect
+                - kind: KeywordActionEffect
+                  action: shuffle
+    - kind: SpellAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: TypeLossEffect
+                  lostType: creature
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: UntapEffect
+                  untapStep: each other player's untap step
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ExileEffect
+                  manners: [at random, from your graveyard]
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              children:
+                - kind: ChooseValueEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+            - kind: EffectSentence
+              children:
+                - kind: PutEffect
+                  destination: on the bottom
+                  children:
+                    - kind: PhraseList
+                      children:
+                        - kind: BackReference
+                          isRemainder: true
+    - kind: SpellAbility

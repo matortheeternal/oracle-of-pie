@@ -6,6 +6,7 @@ const CANT_ALTERNATIVES = [
     'attack, block, or (?:crew Vehicles|transform)\\b',
     'attack or block',
     'attack',
+    'block or be blocked',
     'block',
     'be blocked',
     'be countered',

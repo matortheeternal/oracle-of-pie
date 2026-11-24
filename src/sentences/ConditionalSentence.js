@@ -20,6 +20,7 @@ const CONDITION_ALTERNATIVES = [
     'at the beginning of [^,]+',
     'as ~ enters',
     'as this [a-z]+ enters',
+    'as it enters',
     'once each turn',
     'once during each of your turns',
     'for as long as [^,]+',

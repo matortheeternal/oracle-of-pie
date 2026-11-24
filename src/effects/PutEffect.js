@@ -8,6 +8,7 @@ const DESTINATION_ALTERNATIVES = [
     'on the bottom of [^,.]+',
     'on top of [^,.]+',
     'on top\\b',
+    'on the bottom\\b',
     'into (?:your|their|its owner\'s) library [^,.]+'
 ];
 const DESTINATION = new RegExp(
@@ -16,7 +17,7 @@ const DESTINATION = new RegExp(
 );
 const PUT_TAIL_ALTERNATIVES = [
     'tapped', 'and attacking', 'under your control', 'transformed', 'attacking',
-    'face down'
+    'face down', 'in (?:a random|any) order'
 ];
 const PUT_TAIL = new RegExp(`^(${PUT_TAIL_ALTERNATIVES.join('|')})`, 'i');
 const REST_ALTERNATIVES = [

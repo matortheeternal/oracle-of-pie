@@ -74,6 +74,7 @@ import ObjectActivationBanEffect from './ObjectActivationBanEffect.js';
 import RetargetCopyEffect from './RetargetCopyEffect.js';
 import DayNightEffect from './DayNightEffect.js';
 import LookAtHandEffect from './LookAtHandEffect.js';
+import TypeLossEffect from './TypeLossEffect.js';
 import LoseAbilitiesEffect from './LoseAbilitiesEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
@@ -110,7 +111,7 @@ export const EFFECT_PARSERS = [
     AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
     EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
-    LookAtHandEffect, OpaqueEffect
+    LookAtHandEffect, TypeLossEffect, OpaqueEffect
 ];
 
 export {
@@ -136,5 +137,5 @@ export {
     AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
     EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
-    LookAtHandEffect, OpaqueEffect
+    LookAtHandEffect, TypeLossEffect, OpaqueEffect
 };

@@ -11,8 +11,6 @@ const RESTRICTION_ALTERNATIVES = [
     'any player may [^.]*',
     'a deck can have any number of [^.]*',
     'you may look at the top card of your library any time',
-    'put the rest [^.]*',
-    'you choose [^.]+ from (?:it|among them|their hand)',
     'level \\d+[^.]*',
     '\\d+\\+ ?\\|[^.]*',
     '\\d+\\/\\d+'

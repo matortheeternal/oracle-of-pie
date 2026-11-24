@@ -28,7 +28,18 @@ export default class ExileEffect extends ObjectEffect {
 
     parseArguments(match) {
         super.parseArguments(match);
-        this.manner = this.consumeText(EXILE_TAIL)?.[1].toLowerCase() ?? null;
+        this.manners = this.consumeManners();
+        this.manner = this.manners[0] ?? null;
+    }
+
+    consumeManners() {
+        const manners = [];
+        let tail = this.consumeText(EXILE_TAIL);
+        while (tail) {
+            manners.push(tail[1].toLowerCase());
+            tail = this.consumeText(EXILE_TAIL);
+        }
+        return manners;
     }
 
     get isExile() {

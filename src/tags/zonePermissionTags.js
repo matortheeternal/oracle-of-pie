@@ -75,7 +75,8 @@ export const ZONE_PERMISSION_TAGS = [
                         refersToSelf: false,
                         any: [
                             { antecedent: { owner: { isExile: true } } },
-                            { refersToExiled: true, not: { antecedent: null } }
+                            { refersToExiled: true, not: { antecedent: null } },
+                            { refersToExiledCard: true }
                         ]
                     }
                 },

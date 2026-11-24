@@ -1,6 +1,6 @@
 import CostItem from './CostItem.js';
 
-const LOYALTY = /^([+\-−]?)(\d+|X)$/;
+const LOYALTY = /^\[?([+\-−]?)(\d+|X)\]?$/;
 
 export default class LoyaltyCost extends CostItem {
     static match(scribe, str) {
