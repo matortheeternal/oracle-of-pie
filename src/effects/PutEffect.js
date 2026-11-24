@@ -4,7 +4,7 @@ const PUT = /^puts? /i;
 const DESTINATION_ALTERNATIVES = [
     'onto the battlefield',
     'into (?:your|its owner\'s|their owner\'s|their owners\'|their) hands?',
-    'into (?:your|its owner\'s|their owner\'s|their) graveyards?',
+    'into (?:your|its owner\'s|their owner\'s|their owners\'|their) graveyards?',
     'on the bottom of [^,.]+',
     '(?:back )?on top of [^,.]+',
     'on top\\b',

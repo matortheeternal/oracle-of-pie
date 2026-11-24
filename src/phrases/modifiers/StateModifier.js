@@ -1,5 +1,7 @@
 import Modifier from './Modifier.js';
 
+const UNPLACED_REVEALED
+    = 'that (?:weren\'t|were not) put (?:onto the battlefield|into your hand)';
 const STATE_ALTERNATIVES = [
     'that (?:was|were) dealt damage this turn',
     'that (?:was|were) put there from (?:the battlefield|anywhere) this turn',
@@ -10,6 +12,7 @@ const STATE_ALTERNATIVES = [
     'blocked by ~',
     'attacking you',
     'tapped this way',
+    `revealed this way(?: ${UNPLACED_REVEALED})?`,
     'cast this way',
     'that (?:share|shares) a [a-z ]+',
     'of the chosen type',
@@ -22,6 +25,7 @@ const STATE_ALTERNATIVES = [
     'that (?:are|is) [a-z]+',
     'named (?:~|[A-Z][^,.]*)',
     'chosen at random',
+    'in (?:their|the|your) chosen pile',
     'using mana (?:produced by|from) [^,.]+',
     'that targets? (?:~|it|you|this [a-z]+)',
     'that each have mana value (?:\\d+|X)(?: or (?:less|greater))?'

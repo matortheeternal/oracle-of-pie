@@ -15,14 +15,17 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'each of them',
     'one of them',
     'one(?= into )',
-    '(?:two|three|four|five|\\d+|x) of them',
+    '(?:up to |any number of )?(?:one|two|three|four|five|\\d+|x) of them',
     '(?:one|two|three|\\d+|x) of those (?:cards|creatures|permanents)',
     'each of those creatures',
     'the rest of (?:the|those)(?: revealed| exiled)? cards',
     REMAINDER,
     'the cop(?:y|ies)',
     'the chosen spell',
-    'that one'
+    'that one',
+    '(?:one|each) of (?:those|the|their) piles',
+    '(?:one|that|the other) pile',
+    'the other(?= into )'
 ];
 const BACK_REFERENCE = new RegExp(
     `^(${BACK_REFERENCE_ALTERNATIVES.join('|')})\\b`, 'i'

@@ -96,6 +96,9 @@ import VoteEffect from './VoteEffect.js';
 import PlanarEffect from './PlanarEffect.js';
 import RepeatEffect from './RepeatEffect.js';
 import CostReductionLimitEffect from './CostReductionLimitEffect.js';
+import ManaSpendingRuleEffect from './ManaSpendingRuleEffect.js';
+import LegendRuleExemptionEffect from './LegendRuleExemptionEffect.js';
+import SeparatePilesEffect from './SeparatePilesEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
@@ -136,7 +139,9 @@ export const EFFECT_PARSERS = [
     DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
     RemoveFromCombatEffect, XMinimumEffect, ChangeTargetEffect, SkipEffect,
     UsesToughnessEffect, ChooseNotToUntapEffect, DoubleLifeEffect,
-    VoteEffect, PlanarEffect, RepeatEffect, CostReductionLimitEffect, OpaqueEffect
+    VoteEffect, PlanarEffect, RepeatEffect, CostReductionLimitEffect,
+    ManaSpendingRuleEffect, LegendRuleExemptionEffect,
+    SeparatePilesEffect, OpaqueEffect
 ];
 
 export {
@@ -167,5 +172,7 @@ export {
     DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
     RemoveFromCombatEffect, XMinimumEffect, ChangeTargetEffect, SkipEffect,
     UsesToughnessEffect, ChooseNotToUntapEffect, DoubleLifeEffect,
-    VoteEffect, PlanarEffect, RepeatEffect, CostReductionLimitEffect, OpaqueEffect
+    VoteEffect, PlanarEffect, RepeatEffect, CostReductionLimitEffect,
+    ManaSpendingRuleEffect, LegendRuleExemptionEffect,
+    SeparatePilesEffect, OpaqueEffect
 };

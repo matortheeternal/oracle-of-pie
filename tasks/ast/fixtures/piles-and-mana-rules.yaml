@@ -1,0 +1,60 @@
+name: Piles and mana rules
+typeLine: Sorcery
+text: |-
+  Look at the top five cards of your library and separate them into a face-down pile and a face-up pile. Put one pile into your hand and the other into your graveyard.
+  Put up to two of them into your hand and the rest on the bottom of your library in a random order.
+  Put all other cards revealed this way on the bottom of your library in a random order.
+  Until your next end step, you may play those cards.
+  This mana can't be spent to cast nonartifact spells.
+  Equip abilities you activate that target this creature cost {2} less to activate.
+  The "legend rule" doesn't apply to tokens you control.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: LookAtTopEffect
+                - kind: SeparatePilesEffect
+                  hasFaceDownPile: true
+            - kind: EffectSentence
+              children:
+                - kind: PutEffect
+                  restDestination: into your graveyard
+    - kind: SpellAbility
+    - kind: SpellAbility
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ManaSpendingRuleEffect
+                  isRestriction: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+                  subject:
+                    kind: AbilitiesPhrase
+                    abilityKind: equip
+                    isActivatedByYou: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: LegendRuleExemptionEffect

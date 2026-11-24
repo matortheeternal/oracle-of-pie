@@ -15,6 +15,8 @@ const CONDITION_ALTERNATIVES = [
     'for each [^,]+',
     'until end of turn',
     'until your next turn',
+    'until your next end step',
+    'until end of combat',
     'until the end of your next turn',
     'this turn',
     'at the beginning of [^,]+',
