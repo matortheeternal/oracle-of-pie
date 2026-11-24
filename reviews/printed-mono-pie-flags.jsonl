@@ -87,3 +87,4 @@
 {"id":"ad43ccce-3052-4817-8c46-f5c23cb49300|rummage","verdict":"wrong","note":"[re-marked: rummaging is allowed wherever looting is]","at":"2026-11-19T02:46:17.399Z"}
 {"id":"b967870d-9773-4ad5-bf06-c3be5465dab9|counterspell","verdict":"wrong","note":"[re-marked: counters abilities, not spells; now judged as counter-ability]","at":"2026-11-19T02:46:17.399Z"}
 {"id":"0a8511b9-ed7d-4e33-9c2f-96b9a4c535e2|keyword-haste","verdict":"wrong","note":"[re-marked: MCP lists haste as secondary in black]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"6bd38092-7788-4bb6-9447-16c56e11e603|keyword-cascade","verdict":"correct","note":"cascade is rare in black: a bend, not a break","at":"2026-11-24T23:16:35.000Z"}

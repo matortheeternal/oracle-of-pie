@@ -255,3 +255,4 @@
 {"id":"10d8f29a-d483-4f06-bc13-d41d62847ffe|pure-draw","verdict":"correct","note":"","at":"2026-11-24T22:30:10.000Z"}
 {"id":"a242c9bf-dab6-4996-bb3a-b4356f9ed0c9|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-24T22:30:10.000Z"}
 {"id":"4f69d2f9-c16a-4752-9026-794a29d73af8|draw-engine","verdict":"correct","note":"","at":"2026-11-24T22:30:10.000Z"}
+{"id":"1e1a787a-2294-472d-908d-d4d72821a7cc|cost-reducer-creature","verdict":"correct","note":"","at":"2026-11-24T23:16:35.000Z"}
