@@ -8,13 +8,12 @@ export default class ActionEvent extends TriggerEvent {
         return PHRASE_PARSERS;
     }
 
-    static match(scribe, str) {
-        if (THIS_WAY.test(str)) return null;
-        return super.match(scribe, str);
-    }
-
     parseObjectPhrase() {
         return this.consume(this.constructor.objectParsers);
+    }
+
+    get isReflexive() {
+        return THIS_WAY.test(this.raw);
     }
 
     get objectSource() {

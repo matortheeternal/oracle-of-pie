@@ -11,6 +11,7 @@ const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
 const ORDINAL = `(?:${ORDINALS.join('|')})`;
 const ORDINAL_WORD = new RegExp(`\\b${ORDINAL}$`);
 const DETERMINER_ALTERNATIVES = [
+    `${N}, ${N},? or (${N}) (?:other )?target`,
     `${N} or (${N}) (?:other )?target`,
     `up to (${N}) (?:other )?target`,
     'any number of (?:other )?target',
@@ -186,6 +187,14 @@ export default class NounPhrase extends Phrase {
 
     get isBoundedByPreviousCount() {
         return this.determiner === 'up to that many';
+    }
+
+    get hasTargetingRestriction() {
+        return this.modifiers.some(modifier => modifier.restrictsTargeting);
+    }
+
+    get hasNameRestriction() {
+        return this.modifiers.some(modifier => modifier.restrictsName);
     }
 
     get isMass() {

@@ -25,7 +25,7 @@ const COMPARISON_ALTERNATIVES = [
     `(?: or toughness)? less than ${COMPARED}`,
     `(?: or toughness)? greater than ${COMPARED}`,
     ` equal to ${COMPARED}`,
-    ' (?:\\d+|X|N)(?=[,.]|$)'
+    ' (?:\\d+|X|N)\\b'
 ];
 const WITH = new RegExp(
     `^(with|without) (${WITH_ALTERNATIVES.join('|')})\\b`

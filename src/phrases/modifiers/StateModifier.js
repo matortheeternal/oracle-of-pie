@@ -20,11 +20,15 @@ const STATE_ALTERNATIVES = [
     'an opponent cast',
     'of (?:their|your|its controller\'s) choice',
     'that (?:are|is) [a-z]+',
-    'named [A-Z][^,.]*',
-    'chosen at random'
+    'named (?:~|[A-Z][^,.]*)',
+    'chosen at random',
+    'using mana (?:produced by|from) [^,.]+',
+    'that targets? (?:~|it|you|this [a-z]+)'
 ];
+const NAMED = /^named\b/;
+const TARGETING = /^that targets?\b/;
 const STATE = new RegExp(
-    `^(${STATE_ALTERNATIVES.join('|')})\\b`, 'i'
+    `^(${STATE_ALTERNATIVES.join('|')})(?!\\w)`, 'i'
 );
 
 export default class StateModifier extends Modifier {
@@ -35,5 +39,13 @@ export default class StateModifier extends Modifier {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.state = match[1].toLowerCase();
+    }
+
+    get restrictsTargeting() {
+        return TARGETING.test(this.state);
+    }
+
+    get restrictsName() {
+        return NAMED.test(this.state);
     }
 }

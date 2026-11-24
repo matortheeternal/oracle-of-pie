@@ -31,6 +31,8 @@ const CANT_QUALIFIERS = [
     'during [^,.]+',
     'more than [^,.]+'
 ];
+const OBJECT_RESTRICTIONS = new Set(['attack', 'block']);
+const OBJECT_QUALIFIER = new RegExp(`^(?:${CANT_QUALIFIERS.join('|')})`, 'i');
 const UNBLOCKABLE = /^can't be blocked(?! by)(?![^.]*\bexcept\b)/i;
 const NEXT_UNTAP = /^untap during [^,.]*\bnext\b/;
 const RECURRING_UNTAP = new RegExp(
@@ -66,6 +68,17 @@ export default class CantEffect extends Effect {
         this.qualifier = match[2].trim().toLowerCase() || null;
         this.exceptionText = match[0].match(EXCEPT_BY)?.[1] ?? null;
         this.excepted = this.parseExcepted();
+        this.objects = this.consumeRestrictedObjects();
+        this.objectQualifier = this.objects ? this.consumeObjectQualifier() : null;
+    }
+
+    consumeRestrictedObjects() {
+        if (!OBJECT_RESTRICTIONS.has(this.restriction) || this.qualifier) return null;
+        return this.consume([PhraseList]);
+    }
+
+    consumeObjectQualifier() {
+        return this.consumeText(OBJECT_QUALIFIER)?.[0].toLowerCase() ?? null;
     }
 
     parseExcepted() {
@@ -76,7 +89,7 @@ export default class CantEffect extends Effect {
     }
 
     get parts() {
-        return [this.excepted].filter(Boolean);
+        return [this.excepted, this.objects].filter(Boolean);
     }
 
     get exceptedBy() {
@@ -100,7 +113,8 @@ export default class CantEffect extends Effect {
     }
 
     get isDirectBan() {
-        return (this.qualifier === null || this.qualifier === 'this turn')
+        return !this.objects
+            && (this.qualifier === null || this.qualifier === 'this turn')
             && RESTRICTION_END.test(this.remainingStr);
     }
 
@@ -115,8 +129,9 @@ export default class CantEffect extends Effect {
     }
 
     get taxesAttacksOnController() {
+        const restricted = `${this.objects?.raw ?? ''} ${this.objectQualifier ?? ''}`;
         return this.restriction === 'attack'
-            && PROTECTED_ATTACK_TAX.test(this.remainingStr);
+            && PROTECTED_ATTACK_TAX.test(restricted.trim());
     }
 
     get preventsSpellcasting() {

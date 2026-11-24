@@ -11,7 +11,9 @@ const OTHER_OBJECT_REFERENCES = [
 ];
 const MASS_PLAYERS = { isPlayer: true, isMass: true, canBeOpponent: true };
 const TEAM_PUMP = 'ModifyPTEffect';
-const YOUR_TEAM = { isMass: true, controlledByYou: true, hasType: 'creature' };
+const YOUR_TEAM = {
+    isMass: true, controlledByYou: true, hasType: 'creature', hasNameRestriction: false
+};
 
 export const BOARD_TAGS = [
     {

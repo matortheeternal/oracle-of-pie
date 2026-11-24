@@ -1,0 +1,86 @@
+name: Combat bans and damage recipients
+typeLine: Creature — Elemental
+text: |-
+  Enchanted creature can't attack you or planeswalkers you control.
+  This creature deals 3 damage to that creature and 3 damage to that creature's controller.
+  Enchanted creature has defender and loses flying.
+  All creatures able to block this creature do so.
+  If one or more tokens would be created under your control, twice that many of those tokens are created instead.
+  Whenever a creature you control explores, you gain 1 life.
+  Target player mills half their library, rounded down.
+  Add one mana of any type that a land you control could produce.
+  Spells your opponents cast that target this creature cost {2} more to cast.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CantEffect
+                  restriction: attack
+                  isDirectBan: false
+                  children:
+                    - kind: AttachedReference
+                    - kind: PhraseList
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DamageEffect
+                  children:
+                    - kind: SelfReference
+                    - kind: PhraseList
+                    - kind: AdditionalDamage
+                      amountText: '3'
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: GrantEffect
+                - kind: LoseKeywordsEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: LureEffect
+    - kind: SpellAbility
+    - kind: TriggeredAbility
+      children:
+        - kind: ExploresEvent
+        - kind: EffectSequence
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: MillEffect
+                  rounding: down
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: AddManaEffect
+                  producedBy: a land you control
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: CostModificationEffect
+                  children:
+                    - kind: NounPhrase
+                      hasTargetingRestriction: true

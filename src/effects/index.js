@@ -82,6 +82,9 @@ import LoseAbilitiesEffect from './LoseAbilitiesEffect.js';
 import CrewBonusEffect from './CrewBonusEffect.js';
 import KeywordCostEffect from './KeywordCostEffect.js';
 import DistinctModeTargetsEffect from './DistinctModeTargetsEffect.js';
+import LoseKeywordsEffect from './LoseKeywordsEffect.js';
+import LureEffect from './LureEffect.js';
+import TokenMultiplierEffect from './TokenMultiplierEffect.js';
 import ShuffleIntoLibraryEffect from './ShuffleIntoLibraryEffect.js';
 import MoveCountersEffect from './MoveCountersEffect.js';
 import RemoveCountersEffect from './RemoveCountersEffect.js';
@@ -119,7 +122,8 @@ export const EFFECT_PARSERS = [
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
     LookAtHandEffect, TypeLossEffect, PreventionBanEffect, ExcessDamageEffect,
     StaticControlEffect, CrewBonusEffect, KeywordCostEffect,
-    DistinctModeTargetsEffect, OpaqueEffect
+    DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
+    OpaqueEffect
 ];
 
 export {
@@ -147,5 +151,6 @@ export {
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
     LookAtHandEffect, TypeLossEffect, PreventionBanEffect, ExcessDamageEffect,
     StaticControlEffect, CrewBonusEffect, KeywordCostEffect,
-    DistinctModeTargetsEffect, OpaqueEffect
+    DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,
+    OpaqueEffect
 };

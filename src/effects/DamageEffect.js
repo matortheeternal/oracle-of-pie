@@ -1,4 +1,5 @@
 import Effect from './Effect.js';
+import AdditionalDamage from '../values/AdditionalDamage.js';
 import PhraseList from '../phrases/PhraseList.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 import {
@@ -33,6 +34,7 @@ export default class DamageEffect extends Effect {
         this.amountText = amount?.[0] ?? null;
         this.powerOwner = amount?.[2]?.toLowerCase() ?? null;
         this.targets = this.consumeText(TO_TARGETS) ? this.consumeTargets() : null;
+        this.additionalDamage = this.targets ? this.consume([AdditionalDamage]) : null;
         this.replacesAmount = Boolean(!this.targets && this.consumeText(INSTEAD));
         const scaling = this.consumeText(FOR_EACH) ?? this.consumeText(EQUAL_TO);
         this.scalingText = scaling?.[0] ?? null;
@@ -76,7 +78,7 @@ export default class DamageEffect extends Effect {
     }
 
     get parts() {
-        return [this.targets].filter(Boolean);
+        return [this.targets, this.additionalDamage].filter(Boolean);
     }
 
     get isComplete() {
@@ -84,6 +86,7 @@ export default class DamageEffect extends Effect {
     }
 
     get phrases() {
-        return this.targets?.phrases ?? [];
+        const additional = this.additionalDamage?.phrases ?? [];
+        return [...this.targets?.phrases ?? [], ...additional];
     }
 }

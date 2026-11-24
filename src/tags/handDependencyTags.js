@@ -87,7 +87,12 @@ export const HAND_DEPENDENCY_TAGS = [
                     name: ['madness', 'mayhem'],
                     context: { ability: { kind: 'KeywordAbility' } }
                 },
-                { kind: 'DiscardsEvent', isYou: true, consumesSelf: false },
+                {
+                    kind: 'DiscardsEvent',
+                    isYou: true,
+                    consumesSelf: false,
+                    isReflexive: false
+                },
                 sentence(DISCARDED_CARD_PAYOFF)
             ]
         }

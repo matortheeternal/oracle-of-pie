@@ -37,6 +37,7 @@ import RollsDiceEvent from './RollsDiceEvent.js';
 import ProliferatesEvent from './ProliferatesEvent.js';
 import RingTemptsEvent from './RingTemptsEvent.js';
 import ExertsEvent from './ExertsEvent.js';
+import ExploresEvent from './ExploresEvent.js';
 import GetsEnergyEvent from './GetsEnergyEvent.js';
 import TapsEvent from './TapsEvent.js';
 import TappedForManaEvent from './TappedForManaEvent.js';
@@ -59,7 +60,7 @@ export const SIMPLE_EVENTS = [
     FacesDilemmaEvent, RollsDiceEvent, ProliferatesEvent, RingTemptsEvent, ExertsEvent,
     GetsEnergyEvent, TapsEvent, TappedForManaEvent,
     BecomesStatusEvent, BecomesMonstrousEvent, BecomesAttachedEvent, BecomesPlottedEvent,
-    CrewsEvent
+    CrewsEvent, ExploresEvent
 ];
 
 export function readSimpleEvent(scribe, str) {

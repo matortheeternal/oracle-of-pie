@@ -10,7 +10,7 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'her',
     'that (?:creature|card|permanent|spell|token|land|artifact|enchantment|planeswalker)',
     'those (?:creatures|cards|permanents|tokens|spells)',
-    'the exiled cards?',
+    'the (?:exiled|revealed|chosen|discarded|milled) cards?',
     'the (?:creature|token|tokens|card|permanent)',
     'each of them',
     'one of them',

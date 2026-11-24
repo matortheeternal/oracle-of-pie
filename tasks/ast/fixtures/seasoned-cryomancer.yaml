@@ -16,11 +16,8 @@ expect:
             - kind: EffectSentence
             - kind: TriggerSentence
               children:
-                - kind: OtherEvent
-                  isUnsupported: true
-                  children:
-                    - kind: UnrecognizedText
-                      raw: you discard one or more nonland cards this way
+                - kind: DiscardsEvent
+                  isReflexive: true
                 - kind: TapEffect
                 - kind: UnrecognizedText
     - kind: ActivatedAbility

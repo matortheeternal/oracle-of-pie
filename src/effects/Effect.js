@@ -4,6 +4,7 @@ import PhraseList from '../phrases/PhraseList.js';
 import { NotImplementedError } from '../core/customErrors.js';
 
 const LEADING_SPACE = /^\s+/;
+const ROUNDING = /^,? rounded (up|down)\b/i;
 
 export default class Effect extends Parser {
     static get pattern() {
@@ -20,6 +21,7 @@ export default class Effect extends Parser {
         this.isOptional = false;
         this.isAlternative = false;
         this.parseArguments(match);
+        this.rounding = this.consumeText(ROUNDING)?.[1].toLowerCase() ?? null;
         this.duration = this.consumeDuration();
     }
 

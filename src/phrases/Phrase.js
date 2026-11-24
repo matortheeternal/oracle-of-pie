@@ -93,6 +93,14 @@ export default class Phrase extends Parser {
         return false;
     }
 
+    get hasTargetingRestriction() {
+        return false;
+    }
+
+    get hasNameRestriction() {
+        return false;
+    }
+
     get isPermanentObject() {
         if (this.refersToSelf || this.isBackReference) return true;
         return this.hasType('creature') || this.hasType('permanent');

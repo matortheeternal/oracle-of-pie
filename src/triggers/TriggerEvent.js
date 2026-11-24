@@ -128,6 +128,10 @@ export default class TriggerEvent extends Parser {
         return YOU.test(this.subject);
     }
 
+    get isReflexive() {
+        return false;
+    }
+
     get isRepeatable() {
         return true;
     }

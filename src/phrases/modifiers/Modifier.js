@@ -17,6 +17,14 @@ export default class Modifier extends Node {
         return [];
     }
 
+    get restrictsTargeting() {
+        return false;
+    }
+
+    get restrictsName() {
+        return false;
+    }
+
     get relatesToObject() {
         return false;
     }

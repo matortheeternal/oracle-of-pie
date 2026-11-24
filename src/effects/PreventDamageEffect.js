@@ -1,6 +1,6 @@
 import Effect from './Effect.js';
 
-const PREVENT_AMOUNT = '(all|the next \\w+|that|the)';
+const PREVENT_AMOUNT = '(all|the next \\w+|\\w+ of that|that|the)';
 const DAMAGE = '(?:(combat|noncombat) )?damage(?: that would be dealt)?';
 const PREVENTED = `${PREVENT_AMOUNT} ${DAMAGE}`;
 const PREVENT_DAMAGE = new RegExp(`^prevent ${PREVENTED}`, 'i');

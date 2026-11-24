@@ -2,7 +2,9 @@ import Phrase from './Phrase.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const N = NUMBER_PATTERN;
-const COUNTED = `(?:up to (${N})|${N} or (${N})|any number of|(${N}))`;
+const COUNTED = '(?:'
+    + `up to (${N})|${N}, ${N},? or (${N})|${N} or (${N})|any number of|(${N})`
+    + ')';
 const ANY_TARGET = new RegExp(
     `^(?:any (?:other |one )?target\\b|${COUNTED} (?:other )?targets\\b)`, 'i'
 );
