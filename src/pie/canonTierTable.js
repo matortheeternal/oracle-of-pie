@@ -21,7 +21,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'
     },
     'destroy-artifact': {
-        W: 'primary', U: 'none', B: 'none', R: 'primary', G: 'primary'
+        W: 'primary', U: 'tertiary', B: 'none', R: 'primary', G: 'primary'
     },
     'destroy-enchantment': {
         W: 'primary', U: 'none', B: 'tertiary', R: 'none', G: 'primary'

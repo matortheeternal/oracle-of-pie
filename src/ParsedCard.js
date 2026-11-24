@@ -58,4 +58,8 @@ export default class ParsedCard {
     get isFullyRecognized() {
         return this.text.isRecognized;
     }
+
+    get isFullyModeled() {
+        return this.isFullyRecognized && !this.opaque.length;
+    }
 }

@@ -16,7 +16,7 @@ const report = new GapReport();
 for (const card of corpus) {
     const faces = parseCardFaces(scribe, card);
     const gaps = faces.flatMap(face => collectGaps(face.parsed.text));
-    report.addCard(card.name, gaps, faces.every(face => face.parsed.isFullyRecognized));
+    report.addCard(card.name, gaps, faces.every(face => face.parsed.isFullyModeled));
 }
 writeJson(PATHS.gapReport, report);
 
@@ -50,9 +50,9 @@ function printSection(title, rows, describe) {
 
 const share = percent(report.recognized / report.cards);
 const withGaps = report.cards - report.recognized;
-const recognized = `${report.recognized}/${report.cards} fully recognized (${share})`;
+const recognized = `${report.recognized}/${report.cards} fully modeled (${share})`;
 console.log(`${recognized}; ${withGaps} with gaps`);
-const UNLOCKS_TITLE = 'Unrecognized shapes by cards unlocked (only gap on the card)';
+const UNLOCKS_TITLE = 'Gap shapes by cards unlocked (only gap on the card)';
 const FAMILIES_TITLE = 'Gap families (context | first words) by cards';
 const OPAQUE_TITLE = 'Opaque effects (recognized, not modeled) by cards';
 printSection(UNLOCKS_TITLE, report.byUnlocks, unlockLine);

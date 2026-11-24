@@ -44,13 +44,17 @@ function gapKind(node) {
     return node.isOpaque ? 'opaque' : null;
 }
 
+function labelled(kind, context) {
+    return kind === 'opaque' ? `opaque, ${context}` : context;
+}
+
 function visit(node, gaps) {
     const children = node.children;
     children.forEach((child, index) => {
         const kind = gapKind(child);
         if (!kind) return visit(child, gaps);
         const context = describeContext(child, children, index, node);
-        gaps.push({ kind, raw: child.raw, context });
+        gaps.push({ kind, raw: child.raw, context: labelled(kind, context) });
         visit(child, gaps);
     });
 }

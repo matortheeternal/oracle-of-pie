@@ -30,9 +30,9 @@ export default class GapReport {
 
     addGap(name, gap, shapes) {
         const shape = spanShape(gap.raw);
-        if (gap.kind === 'opaque') return statsFor(this.opaque, shape).add(name, gap);
         shapes.add(shape);
         statsFor(this.unrecognized, shape).add(name, gap);
+        if (gap.kind === 'opaque') return statsFor(this.opaque, shape).add(name, gap);
         statsFor(this.families, `${gap.context} | ${shapeFamily(shape)}`).add(name, gap);
     }
 

@@ -9,7 +9,7 @@ import { DATA } from './shared/paths.js';
 const [cardsPath, tagsPath, outDir = DATA, since = '2016-01-01'] = process.argv.slice(2);
 const EXCLUDED_TYPES = [
     'token', 'basic', 'emblem', 'conspiracy', 'scheme', 'plane', 'phenomenon',
-    'vanguard', 'dungeon', '/\\bcard\\b/'
+    'vanguard', 'dungeon', 'stickers', '/\\bcard\\b/'
 ];
 const QUERY = [
     'game:paper', '-is:promo', '-st:funny', '-st:memorabilia', '-st:token',
@@ -17,9 +17,19 @@ const QUERY = [
     ...EXCLUDED_TYPES.map(type => `-t:${type}`)
 ].join(' ');
 const STANDARD_SET_TYPES = new Set(['expansion', 'core']);
+const NOVELTY_BORDERS = new Set(['silver']);
+const NOVELTY_STAMPS = new Set(['acorn']);
+const NOVELTY_PROMOS = new Set(['playtest']);
+
+function isNoveltyPrint(card) {
+    if (NOVELTY_BORDERS.has(card.border_color)) return true;
+    if (NOVELTY_STAMPS.has(card.security_stamp)) return true;
+    return (card.promo_types ?? []).some(type => NOVELTY_PROMOS.has(type));
+}
 
 function isModernPrint(card) {
     if (card.released_at < since) return false;
+    if (isNoveltyPrint(card)) return false;
     return !card.reprint || STANDARD_SET_TYPES.has(card.set_type);
 }
 

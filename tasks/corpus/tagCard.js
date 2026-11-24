@@ -21,6 +21,7 @@ export default function tagCard(scribe, card, gold = null) {
         tags,
         explained: explanationsFor(faces, tags, gold),
         recognized: faces.every(face => face.isFullyRecognized),
+        modeled: faces.every(face => face.isFullyModeled),
         unrecognized: faces.flatMap(face => face.unrecognized),
         opaque: faces.flatMap(face => face.opaque).length,
         events: eventCoverage(faces)

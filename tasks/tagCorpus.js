@@ -36,6 +36,7 @@ const values = Object.values(results);
 console.log(JSON.stringify({
     cards: corpus.length,
     recognized: values.filter(result => result.recognized).length,
+    modeled: values.filter(result => result.modeled).length,
     failures: failures.length,
     triggerEvents: totalEvents(values),
     ms: Date.now() - started
