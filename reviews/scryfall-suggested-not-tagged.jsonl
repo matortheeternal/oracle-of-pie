@@ -252,3 +252,6 @@
 {"id":"85fa4ed3-14e3-4eb0-b31b-62e2088321d0|keyword-anthem","verdict":"correct","note":"","at":"2026-11-24T04:46:15.000Z"}
 {"id":"3feedc63-173e-4713-8e96-8f1c9576055f|repeatable-crime","verdict":"correct","note":"","at":"2026-11-24T04:46:15.000Z"}
 {"id":"e64efd0d-3de3-42e2-949e-4a152d08def8|keyword-anthem","verdict":"correct","note":"","at":"2026-11-24T04:46:15.000Z"}
+{"id":"10d8f29a-d483-4f06-bc13-d41d62847ffe|pure-draw","verdict":"correct","note":"","at":"2026-11-24T22:30:10.000Z"}
+{"id":"a242c9bf-dab6-4996-bb3a-b4356f9ed0c9|repeatable-pure-draw","verdict":"correct","note":"","at":"2026-11-24T22:30:10.000Z"}
+{"id":"4f69d2f9-c16a-4752-9026-794a29d73af8|draw-engine","verdict":"correct","note":"","at":"2026-11-24T22:30:10.000Z"}
