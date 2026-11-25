@@ -5,6 +5,7 @@ const COUNTER = new RegExp(`^counters? ${COUNTERED}`, 'i');
 const ABILITY_SOURCE = /^of an? [^,.]+/i;
 const UNLESS = /^unless ([^.]+)/i;
 const PAYMENT = /\bpays?\b/i;
+const NONMANA = /^that isn't a mana ability\b/i;
 
 function isCounterable(phrase) {
     if (phrase.isBackReference) return true;
@@ -19,6 +20,7 @@ export default class CounterEffect extends ObjectEffect {
     parseArguments(match) {
         super.parseArguments(match);
         this.consumeText(ABILITY_SOURCE);
+        this.excludesManaAbilities = Boolean(this.consumeText(NONMANA));
         this.unless = this.consumeText(UNLESS)?.[1] ?? null;
     }
 

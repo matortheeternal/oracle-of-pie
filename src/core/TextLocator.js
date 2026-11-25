@@ -1,4 +1,4 @@
-import { nameVariants } from './normalizeCardText.js';
+import { firstNameAlias, nameVariants } from './normalizeCardText.js';
 
 const REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
 const WHITESPACE = /\s+/;
@@ -15,7 +15,9 @@ function escapeRegExp(str) {
 }
 
 function namePattern(name) {
-    const names = [...nameVariants(name ?? ''), ...NAME_MACROS];
+    const source = name ?? '';
+    const names = [...nameVariants(source), firstNameAlias(source), ...NAME_MACROS]
+        .filter(Boolean);
     return `(?:${names.map(escapeRegExp).join('|')})`;
 }
 

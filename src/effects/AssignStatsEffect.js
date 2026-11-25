@@ -13,7 +13,7 @@ const VALUE = [
     '(?:equal to |twice |1 plus )[^,.]+?(?= until\\b| and (?:it|they|its)\\b|[,.]|$)'
 ].join('|');
 const ASSIGN_STATS = new RegExp(
-    '^(?:' + OWNER_FIRST + '|' + PROPERTY_FIRST + ') (?:becomes?|is equal to) '
+    '^(?:' + OWNER_FIRST + '|' + PROPERTY_FIRST + ') (?:becomes?|is) '
         + '(?<value>' + VALUE + ')\\b', 'i'
 );
 

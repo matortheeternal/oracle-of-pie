@@ -4,6 +4,7 @@ import ThresholdEvent from './ThresholdEvent.js';
 import SpentManaEvent from './SpentManaEvent.js';
 import PhaseEvent from './PhaseEvent.js';
 import CastEvent from './CastEvent.js';
+import CopiesSpellEvent from './CopiesSpellEvent.js';
 import DiesEvent from './DiesEvent.js';
 import EntersEvent from './EntersEvent.js';
 import AttacksEvent from './AttacksEvent.js';
@@ -57,7 +58,7 @@ import CompletesDungeonEvent from './CompletesDungeonEvent.js';
 import RecordedActionEvent from './RecordedActionEvent.js';
 
 export const SIMPLE_EVENTS = [
-    PhaseEvent, SpentManaEvent, AbilityEvent, CastEvent, EntersEvent,
+    PhaseEvent, SpentManaEvent, AbilityEvent, CastEvent, CopiesSpellEvent, EntersEvent,
     AttacksEvent, DiesEvent, DealsDamageEvent,
     TargetedEvent, DamagePreventedEvent,
     DrawsEvent, GainsLifeEvent, LosesLifeEvent,
@@ -75,9 +76,13 @@ export const SIMPLE_EVENTS = [
 ];
 
 export function readSimpleEvent(scribe, str) {
+    let partial = null;
     for (const event of SIMPLE_EVENTS) {
         const match = event.match(scribe, str);
-        if (match) return event.read(scribe, match, str);
+        if (!match) continue;
+        const parsed = event.read(scribe, match, str);
+        if (parsed.isRecognized) return parsed;
+        partial ??= parsed;
     }
-    return null;
+    return partial;
 }

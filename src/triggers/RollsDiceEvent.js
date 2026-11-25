@@ -1,8 +1,9 @@
 import TriggerEvent from './TriggerEvent.js';
 
 const ROLL = new RegExp(
-    '^(?<subject>.+?) rolls? (?<result>one or more dice|a die|a'
-        + ' natural \\d+|a \\d+ or higher)\\b', 'i'
+    '^(?<subject>.+?) rolls? (?<result>one or more dice'
+        + '|a die\'s highest natural result|a die|a natural \\d+|a \\d+ or higher)\\b',
+    'i'
 );
 
 export default class RollsDiceEvent extends TriggerEvent {

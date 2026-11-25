@@ -3,6 +3,10 @@ import PhraseList from '../phrases/PhraseList.js';
 
 const CONTROLLER_UNTAP = 'untap during its controller\'s untap step';
 const CANT_ALTERNATIVES = [
+    'venture into the dungeon more than once each turn',
+    'play land cards from graveyards',
+    'choose an untapped creature as this spell\'s target as you cast it',
+    'cast spells or activate abilities of artifacts, creatures, or enchantments',
     'be (?:turned face up|removed from [^,.]+|beamed up(?: to cast a spell this way)?)',
     'be reduced(?: below \\d+)?',
     'become the monarch',
@@ -20,6 +24,8 @@ const CANT_ALTERNATIVES = [
     'enter the battlefield',
     'pay life or sacrifice nonland permanents to cast spells or activate abilities',
     'draw cards(?: or gain life)?',
+    'draw more than one card each turn',
+    'get counters',
     'play lands or cast spells from your hand',
     'have (?:[+−-][0-9]+/[+−-][0-9]+ )?counters put on (?:them|it)',
     'spend mana to cast (?:it|this spell)',
@@ -53,6 +59,7 @@ const CANT_QUALIFIERS = [
     'alone',
     'except by [^,.]+',
     'if it has already attacked this turn',
+    'it has already attacked this turn',
     'by [^,.]+',
     'unless [^,.]+',
     'during [^,.]+',

@@ -2,7 +2,7 @@ import Effect from './Effect.js';
 import SelfReference from '../phrases/SelfReference.js';
 import Expansion from '../definitions/Expansion.js';
 import CreatedToken from '../phrases/CreatedToken.js';
-import QuotedAbility from '../values/QuotedAbility.js';
+import QuotedAbility, { QUOTED_SPAN } from '../values/QuotedAbility.js';
 import DealsDamageEvent from '../triggers/DealsDamageEvent.js';
 import KeywordList from '../values/KeywordList.js';
 import consumeGrantedAbilities from '../values/consumeGrantedAbilities.js';
@@ -15,7 +15,7 @@ const CREATURE_TOKEN = /\bcreature tokens?\b/i;
 const ARTIFACT_TOKEN = /^[^"]*?\bartifact(?: creature)? tokens?\b/i;
 const ARTIFACT_TYPE = /\bArtifact\b/;
 const LAND_TOKEN = /\bland tokens?\b/i;
-const QUOTED_TEXT = /"[^"]*"/g;
+const QUOTED_TEXT = new RegExp(`(?<![\\w’])${QUOTED_SPAN}`, 'g');
 const TOKEN_DESCRIPTION_ALTERNATIVES = [
     ' (?:or|and) (?:an?|X|\\d+) [^,."]*?\\btoken(?:s)?\\b',
     ', or an? [^,."]*?\\btoken\\b',
@@ -24,7 +24,7 @@ const TOKEN_DESCRIPTION_ALTERNATIVES = [
     ' or a planeswalker they control',
     '(?:, (?:and )?| and )an? [^,."]*?\\btoken\\b',
     ' that\'s? tapped and attacking (?:that player|that opponent)',
-    ' with (?:"[^"]*"|[^,."])+(?:, and [^.,]+)?',
+    ` with (?:${QUOTED_SPAN}|[^,."']|(?<=\\w)')+(?:, and [^.,]+)?`,
     ' named (?:"[^"]*"|[^,."])+',
     ' that\'s a copy of [^,.]+',
     ' attached to [^,.]+',

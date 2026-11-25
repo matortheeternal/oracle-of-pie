@@ -46,12 +46,11 @@ expect:
     - kind: TriggeredAbility
       children:
         - kind: PhaseEvent
-          isRecognized: false
+          isRecognized: true
+          timing: on your next turn
           children:
             - kind: OwnedStep
               raw: the end step
               turnOwner: null
               isEndStep: true
-            - kind: UnrecognizedText
-              raw: on your next turn
         - kind: EffectSequence

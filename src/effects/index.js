@@ -1,3 +1,8 @@
+import CleaveEffect from './CleaveEffect.js';
+import LifeTotalLockEffect from './LifeTotalLockEffect.js';
+import HealDamageEffect from './HealDamageEffect.js';
+import MeldEffect from './MeldEffect.js';
+import CastQuotaEffect from './CastQuotaEffect.js';
 import PayNamedCostEffect from './PayNamedCostEffect.js';
 import SpliceEffect from './SpliceEffect.js';
 import CountObjectsEffect from './CountObjectsEffect.js';
@@ -137,8 +142,12 @@ import EntersWithCountersEffect from './EntersWithCountersEffect.js';
 import EndTurnOrCombatEffect from './EndTurnOrCombatEffect.js';
 import ExtraTurnEffect from './ExtraTurnEffect.js';
 import SetLifeTotalEffect from './SetLifeTotalEffect.js';
+import CounterRestrictionEffect from './CounterRestrictionEffect.js';
+import TargetingPermissionEffect from './TargetingPermissionEffect.js';
+import CityBlessingEffect from './CityBlessingEffect.js';
+import ChooseKeywordsEffect from './ChooseKeywordsEffect.js';
 
-export const EFFECT_PARSERS = [
+export const MODELED_EFFECT_PARSERS = [
     SelfShuffleEffect, ManaProductionReplacementEffect,
     DigUntilEffect, TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect,
     LoseLifeEffect, CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect,
@@ -152,16 +161,18 @@ export const EFFECT_PARSERS = [
     KeywordActionEffect, AddManaEffect, CantEffect, ActivationBanEffect,
     EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseCounterEffect, GiveMatchingCounterEffect,
-    ChooseObjectsEffect, EntersTappedEffect,
+    ChooseKeywordsEffect,
+    ChooseObjectsEffect, EntersAsCopyEffect, EntersTappedEffect,
     EntersUntappedEffect, TurnFaceEffect,
     EntersUnderOpponentControlEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
+    CounterRestrictionEffect, TargetingPermissionEffect, CityBlessingEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, DoublePowerEffect, PreventDamageEffect, RedirectDamageEffect,
     CostModificationEffect,
     DefinePTEffect,
-    EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
+    SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     SetLifeTotalEffect, SetStatusEffect, BecomesEffect, DistributeCountersEffect,
     TypeChangeEffect,
     ManaRetentionEffect,
@@ -183,8 +194,11 @@ export const EFFECT_PARSERS = [
     TokenReplacementEffect, ChangeAttackRecipientEffect,
     AssignStatsEffect, SpellCastingRuleEffect, UnattachEffect,
     RoundingEffect, DefineVariableEffect,
-    SpliceEffect, CountObjectsEffect, AttackLimitEffect, PayNamedCostEffect, OpaqueEffect
+    SpliceEffect, CountObjectsEffect, AttackLimitEffect, PayNamedCostEffect,
+    HealDamageEffect, MeldEffect, CastQuotaEffect, LifeTotalLockEffect, CleaveEffect
 ];
+
+export const EFFECT_PARSERS = [...MODELED_EFFECT_PARSERS, OpaqueEffect];
 
 export {
     TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect, LoseLifeEffect,

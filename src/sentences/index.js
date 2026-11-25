@@ -1,3 +1,5 @@
+import CleaveSentence from './CleaveSentence.js';
+import NextOccurrenceSentence from './NextOccurrenceSentence.js';
 import ReplacementSentence from './ReplacementSentence.js';
 import RestrictionSentence from './RestrictionSentence.js';
 import ReflexiveTriggerSentence from './ReflexiveTriggerSentence.js';
@@ -8,6 +10,7 @@ import TriggerSentence from './TriggerSentence.js';
 import CaseConditionSentence from './CaseConditionSentence.js';
 
 export const SENTENCE_PARSERS = [
-    ReplacementSentence, RestrictionSentence, TriggerSentence, ReflexiveTriggerSentence,
+    CleaveSentence, ReplacementSentence, NextOccurrenceSentence, RestrictionSentence,
+    TriggerSentence, ReflexiveTriggerSentence,
     ConditionalSentence, VillainousChoiceSentence, CaseConditionSentence, EffectSentence
 ];

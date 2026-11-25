@@ -1,4 +1,6 @@
-const GRAVEYARD_LAND = { hasExactType: 'land', zone: 'graveyard' };
+const GRAVEYARD_LAND = {
+    hasExactType: 'land', zone: 'graveyard', not: { limitsToPastEvent: true }
+};
 const LAND_SWAP = { ability: { cost: { sacrificesOther: true } } };
 
 const REPLACE_SACRIFICED_LANDS = {

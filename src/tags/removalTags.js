@@ -73,7 +73,12 @@ export const REMOVAL_TAGS = [
                     phrases: { hasExactType: 'spell', controlledByYou: false }
                 },
                 {
-                    kind: ['ReturnEffect', 'TuckEffect'], isComplete: true,
+                    kind: 'ReturnEffect', isComplete: true,
+                    destination: ['hand', 'library'],
+                    phrases: OPPOSING_SPELL
+                },
+                {
+                    kind: 'TuckEffect', isComplete: true,
                     phrases: OPPOSING_SPELL
                 }
             ]

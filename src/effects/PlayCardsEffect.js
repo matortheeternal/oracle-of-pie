@@ -12,18 +12,25 @@ const ANY_TYPE = 'mana of any type (?:can be spent )?to cast [^,.]+';
 const ANY_TYPE_MANA = new RegExp(`^,? and (?:you may spend )?${ANY_TYPE}`, 'i');
 const SOURCE = /^from [^,.]+?(?= without paying\b| as though\b|[,.]|$)/i;
 const BY_PAYING = /^by [a-z]+ing [^,.]+? rather than paying (?:its|their) mana costs?/i;
-const USES_ALTERNATIVE_COST = /^using (?:its|their) [a-z-]+ (?:cost|ability)\b/i;
+const USING_COST = 'using (?:its|their) [a-z-]+';
+const USES_ALTERNATIVE_COST = new RegExp(
+    `^${USING_COST} (?:costs?|abilities|ability)\\b`, 'i'
+);
 const ALTERNATIVE_CAST_COST = /^for (?:its|their) [a-z-]+ cost\b/i;
+const CONVERTED_COST = /^converted for (?:\{[^}]+\})+/i;
 const PAYS_EXTRA_COST = /^by [a-z]+ing [^,.]+? in addition to (?:paying )?[^,.]+/i;
 const ADVENTURE = /^as an adventure\b/i;
 const TOP_REVEALED = /^with the top card of your library revealed\b/i;
+const ANY_COST_SUBSTITUTION = /^by foraging in addition to paying their other costs\b/i;
 const REVEALED_TOP = /^play with the top card of your library revealed\b/i;
 const PAYMENT_OPTION = /^,? and you may spend mana from snow sources as though [^,.]+/i;
 const ALTERNATE_SOURCE = /^or from (?:your graveyard|exile|your hand)\b/i;
+const LATER_TURN = /^on a later turn\b/i;
 const PLAY_TAILS = [
     WITHOUT_PAYING, AS_THOUGH_FLASH, ANY_TYPE_MANA, SOURCE, BY_PAYING,
-    USES_ALTERNATIVE_COST, ALTERNATIVE_CAST_COST, PAYS_EXTRA_COST, ADVENTURE,
-    TOP_REVEALED, PAYMENT_OPTION, ALTERNATE_SOURCE
+    USES_ALTERNATIVE_COST, ALTERNATIVE_CAST_COST, CONVERTED_COST, PAYS_EXTRA_COST,
+    ADVENTURE,
+    TOP_REVEALED, PAYMENT_OPTION, ALTERNATE_SOURCE, ANY_COST_SUBSTITUTION, LATER_TURN
 ];
 
 export default class PlayCardsEffect extends ObjectEffect {

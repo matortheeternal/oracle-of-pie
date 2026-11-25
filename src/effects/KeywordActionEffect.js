@@ -6,7 +6,8 @@ import PhraseList from '../phrases/PhraseList.js';
 const REPEATED = '(?:that many|(?:up to )?\\w+) times';
 const REPEAT = '(?: (?<repetitions>twice|again|once for each [^,.]+|'
     + REPEATED + '|times))?';
-export const ACTION_AMOUNT = `(?: (?<amount>${NUMBER_PATTERN})\\b)?${REPEAT}`;
+const AMOUNT = `(?: (?<amount>${NUMBER_PATTERN})\\b(?! (?:of|number of) ))?`;
+export const ACTION_AMOUNT = AMOUNT + REPEAT;
 
 const TRANSFORM_SELF = /^transform (?:~|this\b|it\b)/i;
 const LIBRARY_OWNER = `your|their|that player's|target opponent's`;
@@ -20,6 +21,10 @@ const TAKES_OBJECT = new Set([
 const SCALING = new RegExp(
     '^(?:a number of times equal to [^,.]+|additional time|for'
         + ' the same value)\\b', 'i'
+);
+const OBJECT_QUANTITY = /^equal to [^,.]+/i;
+const WITHOUT_COUNTERS = new RegExp(
+    '^as though (?:it|they) had no \\+1/\\+1 counters? on (?:it|them)\\b', 'i'
 );
 
 export default class KeywordActionEffect extends Effect {
@@ -42,7 +47,10 @@ export default class KeywordActionEffect extends Effect {
         this.action = this.definition.key;
         this.objectText = this.consumeText(LIBRARY_TOP)?.[0] ?? null;
         this.objects = TAKES_OBJECT.has(this.action) ? this.consume([PhraseList]) : null;
-        this.scaling = this.consumeText(SCALING)?.[0] ?? null;
+        this.scaling = this.consumeText(SCALING)?.[0]
+            ?? this.consumeText(OBJECT_QUANTITY)?.[0] ?? null;
+        this.ignoresExistingCounters = this.action === 'adapt'
+            && Boolean(this.consumeText(WITHOUT_COUNTERS));
         this.readScryAmount();
     }
 

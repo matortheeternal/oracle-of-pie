@@ -2,6 +2,7 @@ import { ActivationCost } from 'mana-scribe';
 import Node from '../core/Node.js';
 
 const PARAMETER_ALTERNATIVES = [
+    '(?:artifact|creature|enchantment) \\d+',
     '(?:Food|land) \\d+',
     'with [^.]+',
     '\\{[^}]+\\}(?:\\{[^}]+\\})*',
@@ -30,6 +31,8 @@ const FROM_QUALIFIERS = [
     'multicolored', 'monocolored',
     'the colors? of (?:your choice|that creature)',
     'the chosen (?:color|player|card type|card name)',
+    'the last chosen color',
+    'last chosen color',
     'the player of your choice',
     'the card type of your choice',
     'the colors? among [^,.]+',
@@ -38,6 +41,10 @@ const FROM_QUALIFIERS = [
     'each of your opponents',
     'mana value (?:of the chosen quality|among artifacts you control'
         + '|other than the chosen number)',
+    'each mana value (?:of the chosen quality|among artifacts you control'
+        + '|other than the chosen number)',
+    'that player',
+    'Ring-bearers',
     'mana value \\d+ or (?:less|greater)',
     '(?:activated and triggered abilities|spells and from permanents)'
         + ' that were cast this turn',
@@ -69,10 +76,17 @@ const DEFINED_PARAMETER = {
     equip: EQUIP,
     enchant: ENCHANT
 };
+const TYPE_SPECIFIC = /^(?<type>artifact|creature|enchantment) (offering|landwalk)\b/i;
 
 export default class Keyword extends Node {
     static match(scribe, str) {
-        return str.match(scribe.keywordPattern);
+        return str.match(scribe.keywordPattern) ?? this.matchTypeSpecific(scribe, str);
+    }
+
+    static matchTypeSpecific(scribe, str) {
+        const match = str.match(TYPE_SPECIFIC);
+        if (!match || !scribe.isKeyword(match[2])) return null;
+        return [match[0], match[2], match.groups.type];
     }
 
     constructor(scribe, match, str) {
@@ -81,7 +95,7 @@ export default class Keyword extends Node {
         const pattern = DEFINED_PARAMETER[this.name];
         const defined = pattern && this.remainingStr.match(pattern);
         const parameter = defined ?? this.remainingStr.match(PARAMETER);
-        this.parameter = parameter?.[1] ?? null;
+        this.parameter = parameter?.[1] ?? match[2] ?? null;
         if (parameter?.[0])
             this.remainingStr = this.remainingStr.slice(parameter[0].length);
     }

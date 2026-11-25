@@ -1,8 +1,12 @@
 import Ability from './Ability.js';
 
-const WORD_LABEL = '[A-Z~∞][\\w~.,?\'’!-]*(?: [\\w~.,?\'’!-]+){0,7}';
+const LABEL_WORD = '[\\p{L}\\p{N}~.,?\'’!-]+';
+const LABEL_START = `(?:[\\p{Lu}~](?:${LABEL_WORD})?|∞|\\.\\.\\.)`;
+const WORD_LABEL = `${LABEL_START}(?: ${LABEL_WORD}){0,7}`;
 const NUMBERED_LABEL = '[0-9][0-9,]*(?:-| )[A-Z][A-Za-z-]*';
-const ABILITY_WORD = new RegExp(`^(${WORD_LABEL}|${NUMBERED_LABEL}) (?:—|-) (?=\\S)`);
+const ABILITY_WORD = new RegExp(
+    `^(${WORD_LABEL}|${NUMBERED_LABEL}) (?:—|-) (?=\\S)`, 'u'
+);
 const CHOICE_LABEL = /\bfaces? a villainous choice$/i;
 const NOT_ABILITY_WORD = /^(?:choose|exhaust|to solve)\b/i;
 

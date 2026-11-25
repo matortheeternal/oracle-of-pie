@@ -11,28 +11,34 @@ function isBattlefieldSource(phrase) {
 
 const RETURN = /^returns? /i;
 const PASSIVE_RETURN = /^(?:is|are) returned (?:from the battlefield )?(?=to )/i;
+const OWNER = '(?:its|his|her|their) owner\'s|their owners\'';
 const DESTINATION_ALTERNATIVES = [
-    '(its owner\'s|their owners\'|their owner\'s|their|your|its) hands?',
-    '(the battlefield)',
+    `(?<hand>(?:${OWNER}|their|your|its) hands?)`,
+    'the (?<publicZone>battlefield|command zone)',
+    `(?<graveyard>(?:${OWNER}|your|their) graveyards?)`,
     '(?:the )?(?:top|bottom) of (?:its owner\'s|their owners\'|your) librar(?:y|ies)'
 ];
 const DESTINATION = new RegExp(
-    `^to (?:${DESTINATION_ALTERNATIVES.join('|')})`, 'i'
+    `^to (?:${DESTINATION_ALTERNATIVES.join('|')})\\b`, 'i'
 );
-const FROM_GRAVEYARD = /^from (?:your|a|their|each|its owner's) graveyards? /i;
+const FROM_GRAVEYARD = /^from (?:your|a|their|each|its owner's) graveyards?\b/i;
+const RANDOM = /^at random\b/i;
+const TAPPED = /^tapped\b/i;
 const RESULT_FILTER = new RegExp(
     '^each with (?:mana value [^,.]+?|different mana values)(?= from )', 'i'
 );
 const OR_FROM_EXILE = /^or (?=from exile\b)/i;
 const RETURN_TAIL_ALTERNATIVES = [
     'tapped',
+    'and tapped',
     'and attacking',
-    '(?:and )?transformed',
+    '(?:and )?(?:transformed|converted)',
     'face down',
-    'under (?:your|its owner\'s|their owners\'|their owner\'s) control',
+    `under (?:your|${OWNER}) control`,
     'attached to [^,.]+',
     'under (?:their|that player\'s|an opponent\'s) control',
-    'with (?:an? |N |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them)',
+    'with (?:an? |N |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them|him|her)'
+        + '(?: equal to (?:that|the (?:chosen|other)) result)?',
     'at the beginning of [^,.]+',
     'at end of combat',
     'except for (?:Giants, Wizards, and lands|Merfolk, Krakens,'
@@ -53,14 +59,18 @@ export default class ReturnEffect extends ObjectEffect {
 
     parseArguments(match) {
         this.isPassive = PASSIVE_RETURN.test(match[0]);
+        const leadingSource = this.consumeText(FROM_GRAVEYARD);
         const leadingDestination = this.consumeText(DESTINATION);
+        const leadingManner = leadingDestination && this.consumeText(TAPPED);
         super.parseArguments(match);
+        this.atRandom = Boolean(this.consumeText(RANDOM));
         this.resultFilter = this.consumeText(RESULT_FILTER)?.[0] ?? null;
-        this.source = this.consumeText(FROM_GRAVEYARD) ? 'graveyard' : null;
+        const source = leadingSource ?? this.consumeText(FROM_GRAVEYARD);
+        this.source = source ? 'graveyard' : null;
         this.alternativeSource = this.consumeAlternativeSource();
         const destination = leadingDestination ?? this.consumeText(DESTINATION);
         this.destination = this.destinationOf(destination);
-        this.manner = [];
+        this.manner = leadingManner ? [leadingManner[0].toLowerCase()] : [];
         while (this.consumeTail()) continue;
     }
 
@@ -75,8 +85,10 @@ export default class ReturnEffect extends ObjectEffect {
 
     destinationOf(match) {
         if (!match) return null;
-        if (match[2]) return 'battlefield';
-        if (match[1]) return 'hand';
+        const { publicZone, hand, graveyard } = match.groups;
+        if (publicZone) return publicZone.toLowerCase();
+        if (hand) return 'hand';
+        if (graveyard) return 'graveyard';
         return 'library';
     }
 

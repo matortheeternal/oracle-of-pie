@@ -3,6 +3,14 @@ import Sentence from './Sentence.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const CONDITION_ALTERNATIVES = [
+    'for every \\w+ [^,]+ you control',
+    'any time you could activate a mana ability',
+    'while you\'re activating a craft ability',
+    'as you cascade',
+    'before you shuffle your deck to start the game',
+    'during the draft',
+    'rather than pay the mana cost of the next spell you cast this turn',
+    'once during each of your turns',
     'as this [a-z]+ is turned face up',
     'as (?:an?|each) [^,]+ enters',
     'as you (?:draft [^,]+|create your deck|cast [^,]+)',
@@ -65,7 +73,10 @@ const ADDITIONAL_COST = /^as an additional cost to cast this spell/i;
 const CONDITION = new RegExp(
     `^(${CONDITION_ALTERNATIVES.join('|')})\\b([^,]*), `, 'i'
 );
-const POSSIBLE_CONTINUATION = /^(?:and |or |[A-Z][\w-]+(?:,| or ))/;
+const POSSIBLE_CONTINUATION = new RegExp(
+    '^(?:and |or |[A-Z][\\w-]+(?:,| or )|'
+        + '(?:non)?(?:artifact|creature|enchantment|land|planeswalker|battle)\\b)'
+);
 const COMMA = ', ';
 
 function extendCondition(scribe, text, initial) {
@@ -76,7 +87,7 @@ function extendCondition(scribe, text, initial) {
         const next = text.indexOf(COMMA, stop);
         if (next < 0) break;
         stop = next + COMMA.length;
-        if (scribe.startsClause(text.slice(stop)))
+        if (scribe.startsModeledClause(text.slice(stop)))
             return [text.slice(0, stop), initial[1], text.slice(initial[1].length, next)];
     }
     return initial;

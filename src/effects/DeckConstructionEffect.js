@@ -1,7 +1,8 @@
 import Effect from './Effect.js';
 
 const FORMAT = 'a deck(?: with this commander)?|your starting deck';
-const RULE = '(?<rule>can have|contains only|contains at least|shares a card type)';
+const RULE = '(?<rule>can have|has no|contains only|contains at least'
+    + '|shares a card type)';
 const DECK_RULE = new RegExp(`^(?<deck>${FORMAT}) ${RULE} (?<requirement>[^.]+)`, 'i');
 const COMPANION_RULES = [
     'shares a card type', 'has a different name', 'has an activated ability',

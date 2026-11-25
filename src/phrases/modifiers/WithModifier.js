@@ -6,7 +6,7 @@ const BEFORE_DESTINATION = '(?=,|\\.|$| (?:into|onto|from|until)\\b'
 const WITH_ALTERNATIVES = [
     '(?:base )?(?:power and toughness|power|toughness) [0-9]+/[0-9]+',
     'mana cost (?:\\{[^}]+\\})+(?: or (?:\\{[^}]+\\})+)?',
-    '(?:even|odd) mana value',
+    '(?:an? )?(?:even|odd) mana value',
     '(?:lesser|greater|equal) (?:power|toughness)',
     'power',
     'toughness',
@@ -28,7 +28,9 @@ const WITH_ALTERNATIVES = [
     '(?:one|two|three|four|five|six|seven|eight|nine|ten) [a-z]+'
         + ' counters? on (?:it|them)',
     `the greatest (?:power|mana value)[^,.]*?${BEFORE_DESTINATION}`,
+    'the same name as (?:that|the chosen|the exiled) (?:card|permanent|creature)',
     'the same name as [^,.]+',
+    'the same mana value as (?:that|the chosen) (?:card|permanent|creature)',
     'that name',
     'different names',
     'the chosen name',
@@ -38,8 +40,12 @@ const WITH_ALTERNATIVES = [
 const COMPARED = `[^,.]+?${BEFORE_DESTINATION}`;
 const COMPARISON_ALTERNATIVES = [
     ' (?:greater|less) than (?:its|their) (?:power|toughness)\\b',
-    '(?: or toughness)? (?:\\d+|X|N) or (?:less|greater|more)',
+    ' (?:greater|less) than (?:its|their) base (?:power|toughness)\\b',
+    ' (?:\\d+|X|N)(?:, (?:\\d+|X|N))*,? or (?:\\d+|X|N)\\b',
+    ' (?:\\d+|X|N) plus \\d+\\b',
+    '(?: (?:and|or) toughness)? (?:\\d+|X|N) or (?:less|greater|more)',
     `(?: or toughness)? less than (?:or equal to )?${COMPARED}`,
+    ' less than (?:the|that) (?:creature|permanent) that died',
     `(?: or toughness)? greater than ${COMPARED}`,
     ` equal to ${COMPARED}`,
     ' (?:\\d+|X|N)\\b',
@@ -48,12 +54,12 @@ const COMPARISON_ALTERNATIVES = [
     ' of the chosen (?:quality|number|value)'
 ];
 const WITH = new RegExp(
-    `^(with|without) (${WITH_ALTERNATIVES.join('|')})\\b`
+    `^(?:each )?(with|without|and has) (${WITH_ALTERNATIVES.join('|')})(?![\\w-])`
         + `(${COMPARISON_ALTERNATIVES.join('|')})?`,
     'i'
 );
 
-const SAME_NAME = /^the same name as /;
+const SAME_PROPERTY = /^the same (?:name|mana value) as /;
 const FIXED_PT = /^(?:base )?(?:power and toughness|power|toughness) \d+\/\d+$/;
 
 export default class WithModifier extends Modifier {
@@ -69,7 +75,7 @@ export default class WithModifier extends Modifier {
     }
 
     get relatesToObject() {
-        return SAME_NAME.test(this.property);
+        return SAME_PROPERTY.test(this.property);
     }
 
     get requiresFixedStats() {

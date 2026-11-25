@@ -88,11 +88,15 @@ expect:
     - kind: TriggeredAbility
       children:
         - kind: TargetedEvent
-          raw: this Spacecraft becomes the target of an ability
-          isRecognized: false
-          unreadText:
-            kind: UnrecognizedText
-            raw: of a land you control
+          raw: this Spacecraft becomes the target of an ability of a land you control
+          isRecognized: true
+          objectPhrase:
+            kind: TargetingSource
+            includesAbility: true
+            controlledByYou: true
+            source:
+              kind: NounPhrase
+              raw: a land you control
         - kind: EffectSequence
     - kind: TriggeredAbility
       children:
@@ -110,11 +114,13 @@ expect:
     - kind: TriggeredAbility
       children:
         - kind: CastEvent
-          raw: you cast a spell that targets a creature
-          isRecognized: false
-          unreadText:
-            kind: UnrecognizedText
-            raw: other than this creature
+          raw: you cast a spell that targets a creature other than this creature
+          isRecognized: true
+          children:
+            - kind: PlayerPhrase
+            - kind: CastSpell
+            - kind: SpellTarget
+              excludedTarget: this creature
         - kind: EffectSequence
 
     - kind: TriggeredAbility

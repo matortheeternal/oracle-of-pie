@@ -12,6 +12,7 @@ export const TURN_TAGS = [
         match: {
             kind: 'CostModificationEffect',
             reducesCost: false,
+            changesLoyaltyCost: false,
             subject: {
                 refersToSelf: false,
                 isBackReference: false,

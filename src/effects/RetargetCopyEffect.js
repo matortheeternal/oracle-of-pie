@@ -1,7 +1,7 @@
 import Effect from './Effect.js';
 
 const RETARGET_ALTERNATIVES = [
-    '(?:the|that|each|those|the additional) cop(?:y|ies)',
+    '(?:the|that|each|those|their|the additional) cop(?:y|ies)',
     '(?:target|that) spells?(?: or (?:ability|abilities))?',
     'any number of other spells and/or abilities',
     'it'

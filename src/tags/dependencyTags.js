@@ -13,7 +13,7 @@ const COLOR_SPEND = new RegExp(
 export const DEPENDENCY_TAGS = [
     {
         tag: 'power-doubler',
-        match: { kind: 'DoublePowerEffect', context: SOURCE_TEXT }
+        match: { kind: 'DoublePowerEffect', doublesPower: true, context: SOURCE_TEXT }
     },
     {
         tag: 'scales-with-mana-value',

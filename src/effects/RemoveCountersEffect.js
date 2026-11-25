@@ -3,7 +3,7 @@ import PhraseList from '../phrases/PhraseList.js';
 import { normalizeCounterKind, lowersToughness } from './counterKinds.js';
 
 const REMOVE_OBJECTS = /^(?:them(?: all)?|those counters)\b/i;
-const REMOVE = /^removes? (?=[^.]*?\bcounters? from )/i;
+const REMOVE = /^removes? (?=[^.]*?\bcounters? (?:from|among) )/i;
 const REMOVE_REFERENCED = /^removes? (?=(?:them|those counters)\b)/i;
 const LOSE_COUNTERS = /^loses? (?=all counters\b)/i;
 const LOST_COUNTERS = /^all counters\b/i;
@@ -14,8 +14,9 @@ const REMAINING_COUNTERS = new RegExp(
 );
 const IMPLIED_COUNT = /^(?:one|two|three|\d+)(?= from )/i;
 const FROM = /^from /i;
-const COUNTERS_FROM = /^(?<kind>[^.]*?)\s*\bcounters? from /i;
+const COUNTERS_FROM = /^(?<kind>[^.]*?)\s*\bcounters? (?<origin>from(?: among)?|among) /i;
 const PT_COUNTER = /[+\-−]\d+\/[+\-−]\d+/;
+const KEEP = /^(all but (?:one|two|three|\d+) of those counters) are removed\b/i;
 
 export default class RemoveCountersEffect extends Effect {
     static get pattern() {
@@ -24,20 +25,31 @@ export default class RemoveCountersEffect extends Effect {
 
     static match(scribe, str) {
         return super.match(scribe, str) ?? str.match(REMOVE_REFERENCED)
-            ?? str.match(REMOVE_NUMBER) ?? str.match(LOSE_COUNTERS);
+            ?? str.match(REMOVE_NUMBER) ?? str.match(LOSE_COUNTERS) ?? str.match(KEEP);
     }
 
     parseArguments(match) {
-        const reference = this.consumeText(REMOVE_OBJECTS)
-            ?? this.consumeText(REMAINING_COUNTERS)
-            ?? this.consumeText(IMPLIED_COUNT)
-            ?? this.consumeText(LOST_COUNTERS);
-        this.reference = reference?.[0] ?? null;
-        if (reference) {
+        this.reference = match[1] ?? this.consumeReference()?.[0] ?? null;
+        this.keepsSomeCounters = Boolean(match[1]);
+        if (this.reference) {
             this.objects = this.consumeText(FROM) ? this.consume([PhraseList]) : null;
             return;
         }
-        const kindText = this.consumeText(COUNTERS_FROM)?.groups.kind ?? '';
+        this.readCounters();
+    }
+
+    consumeReference() {
+        return this.consumeText(REMOVE_OBJECTS)
+            ?? this.consumeText(REMAINING_COUNTERS)
+            ?? this.consumeText(IMPLIED_COUNT)
+            ?? this.consumeText(LOST_COUNTERS);
+    }
+
+    readCounters() {
+        const counters = this.consumeText(COUNTERS_FROM)?.groups;
+        const kindText = counters?.kind ?? '';
+        const origin = counters?.origin.toLowerCase() ?? '';
+        this.distributedRemoval = origin.includes('among');
         this.kind = normalizeCounterKind(kindText.match(PT_COUNTER)?.[0]);
         this.objects = this.consume([PhraseList]);
     }

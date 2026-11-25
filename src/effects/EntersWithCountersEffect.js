@@ -1,5 +1,6 @@
 import Effect from './Effect.js';
 import { normalizeCounterKind, isPlusOneKind, lowersToughness } from './counterKinds.js';
+import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const COUNTERS_ON_IT = 'counters?(?: of that kind)? on (?:it|them|him|her)\\b';
 const ENTERS_WITH = new RegExp(
@@ -8,14 +9,30 @@ const ENTERS_WITH = new RegExp(
 );
 const DESCRIPTION = new RegExp(`^(.*?\\b${COUNTERS_ON_IT}(?: equal to [^,.]+)?)`, 'i');
 const KIND = /([+\-−]\d+\/[+\-−]\d+|first strike|double strike|[a-z]+) counters?\b/gi;
+const TIME_COUNTERS = `${NUMBER_PATTERN} time counters?\\b(?! on )`;
+const COUNTER_CHOICE = 'your choice of an? (?:additional )?\\+1/\\+1 counter '
+    + 'or (?<alternative>haste)\\b';
+const IMPLICIT_RECIPIENT = new RegExp(`^(?:${TIME_COUNTERS}|${COUNTER_CHOICE})`, 'i');
+const ENTERS = /^enters? with /i;
 
 export default class EntersWithCountersEffect extends Effect {
     static get pattern() {
         return ENTERS_WITH;
     }
 
+    static match(scribe, str) {
+        const explicit = super.match(scribe, str);
+        if (explicit) return explicit;
+        const enters = str.match(ENTERS);
+        if (!enters) return null;
+        return IMPLICIT_RECIPIENT.test(str.slice(enters[0].length)) ? enters : null;
+    }
+
     parseArguments(match) {
-        this.description = this.consumeText(DESCRIPTION)?.[1] ?? null;
+        const counters = this.consumeText(DESCRIPTION)
+            ?? this.consumeText(IMPLICIT_RECIPIENT);
+        this.description = counters?.[0] ?? null;
+        this.alternativeKeyword = counters?.groups?.alternative?.toLowerCase() ?? null;
     }
 
     get kinds() {

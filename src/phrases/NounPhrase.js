@@ -2,37 +2,16 @@ import Phrase from './Phrase.js';
 import AdventureModifier from '../triggers/objects/AdventureModifier.js';
 import { MODIFIER_PARSERS } from './modifiers/index.js';
 import RelationModifier from './modifiers/RelationModifier.js';
+import StateModifier from './modifiers/StateModifier.js';
 import { TYPE_WORDS } from './vocabulary.js';
 import { classifyWord, TYPE, SUBTYPE, QUALIFIER, EXCLUSION } from './wordClass.js';
 import NegatedWord from './NegatedWord.js';
 import PTModifier from '../values/PTModifier.js';
-import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
+import { numberValue } from '../values/numberWords.js';
+import { DETERMINER, ordinalOf } from './nounDeterminers.js';
 
-const N = NUMBER_PATTERN;
-const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
-const ORDINAL = `(?:${ORDINALS.join('|')})`;
-const ORDINAL_WORD = new RegExp(`\\b${ORDINAL}$`);
-const DETERMINER_ALTERNATIVES = [
-    `${N}, ${N},? or (${N}) (?:other )?target`,
-    `${N} or (${N}) (?:other )?target`,
-    `up to (${N}) (?:other )?target`,
-    'any number of (?:other )?target',
-    `(${N}) (?:other )?target`,
-    `up to (${N})`,
-    'up to that many target', 'up to that many',
-    `exactly (${N})`,
-    `each of (${N}) target`,
-    'that many target',
-    'that many', 'a number of', 'all the', 'a random', 'a different', 'half the',
-    `(?:a|the) ${ORDINAL} target`,
-    'up to twice X target',
-    'another target', 'other target', 'target', 'each other', 'each', 'all other',
-    'all', 'another', 'one or more', `(${N}) or more`,
-    'any number of those', 'any number of', 'any', N,
-    `the ${ORDINAL}`, 'the next', 'the', 'that', 'those', 'your(?= commanders?\\b)'
-];
-const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i');
-const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
+const WORD = /^(\p{L}[\p{L}'-]*)(?=[\s,.;:"]|$)/u;
+const BRACKETED_WORDS = /^\[([^\]]+)\] (?=\p{L})/u;
 const STAT_QUALIFIER = /^\d+\/\d+ /;
 const TYPE_JOINER = /^(?:,? ?(?:and\/or|or|and) |, )/;
 const COMMANDER = 'commander';
@@ -55,11 +34,6 @@ function nextWordClass(scribe, str) {
     return match ? classifyWord(scribe, match[1]) : null;
 }
 
-function ordinalOf(determiner) {
-    const word = determiner?.match(ORDINAL_WORD)?.[0];
-    return word ? ORDINALS.indexOf(word) + 1 : null;
-}
-
 function isLoneType(group, type) {
     if (!group.includes(type)) return false;
     return !group.some(other => other !== type && PERMANENT_TYPES.includes(other));
@@ -80,7 +54,7 @@ export default class NounPhrase extends Phrase {
     static match(scribe, str) {
         const determiner = str.match(DETERMINER);
         const rest = determiner ? str.slice(determiner[0].length).trimStart() : str;
-        const words = rest.replace(STAT_QUALIFIER, '');
+        const words = rest.replace(STAT_QUALIFIER, '').replace(BRACKETED_WORDS, '');
         if (!nextWordClass(scribe, words)) return null;
         return determiner ?? [''];
     }
@@ -99,6 +73,7 @@ export default class NounPhrase extends Phrase {
         this.followsType = false;
         this.stats = STAT_QUALIFIER.test(this.remainingStr)
             ? this.consume([PTModifier]) : null;
+        this.cleaveRestriction = this.readCleaveRestriction();
         this.consumeWords();
         this.modifiers = this.consumeAll(MODIFIER_PARSERS, []);
     }
@@ -107,10 +82,22 @@ export default class NounPhrase extends Phrase {
         while (this.consumeWord() || this.consumeJoiner()) continue;
     }
 
+    readCleaveRestriction() {
+        const match = this.remainingStr.match(BRACKETED_WORDS);
+        if (!match) return null;
+        const restriction = this.parseNext(match[1], [NounPhrase]);
+        if (!restriction?.isRecognized || restriction.remainingStr) return null;
+        this.consumeText(BRACKETED_WORDS);
+        restriction.markConditionOnly();
+        return restriction;
+    }
+
     consumeWord() {
-        if (EXCLUDES_OBJECT.test(this.remainingStr)) return false;
-        if (CONTROLLER_CLAUSE.test(this.remainingStr)) return false;
+        if (EXCLUDES_OBJECT.test(this.remainingStr)
+            || CONTROLLER_CLAUSE.test(this.remainingStr)) return false;
         if (RelationModifier.match(this.scribe, this.remainingStr)) return false;
+        if (this.hasWords && StateModifier.match(this.scribe, this.remainingStr))
+            return false;
         const match = this.remainingStr.match(WORD);
         const wordClass = match && classifyWord(this.scribe, match[1]);
         if (!wordClass) return false;
@@ -135,8 +122,10 @@ export default class NounPhrase extends Phrase {
     }
 
     addQualifier(word) {
+        const lower = word.toLowerCase();
         if (OUTLAW.test(word) && !this.types.length) this.addType('creatures');
-        this.qualifiers.push(word.toLowerCase());
+        if (lower === 'commanders') this.pluralTypes = true;
+        this.qualifiers.push(lower === 'commanders' ? COMMANDER : lower);
     }
 
     addExclusion(word) {
@@ -184,7 +173,7 @@ export default class NounPhrase extends Phrase {
     }
 
     get children() {
-        return [this.stats, ...this.modifiers].filter(Boolean);
+        return [this.stats, this.cleaveRestriction, ...this.modifiers].filter(Boolean);
     }
 
     get isRecognized() {

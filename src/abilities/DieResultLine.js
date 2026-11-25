@@ -1,6 +1,8 @@
 import BodyAbility from './BodyAbility.js';
 
-const DIE_RESULT = /^(\d+)(?:[—–-](\d+))? (?:\||—) ([\s\S]+)$/;
+const RANGE = /^(?<low>\d+)(?:[—–-](?<high>\d+)|(?<below> or less))?/;
+const RESULT = / (?:\||—) ([\s\S]+)$/;
+const DIE_RESULT = new RegExp(RANGE.source + RESULT.source);
 
 export default class DieResultLine extends BodyAbility {
     static match(scribe, str) {
@@ -9,7 +11,8 @@ export default class DieResultLine extends BodyAbility {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.low = Number(match[1]);
-        this.high = Number(match[2] ?? match[1]);
+        const { low, high, below } = match.groups;
+        this.low = below ? null : Number(low);
+        this.high = Number(high ?? low);
     }
 }

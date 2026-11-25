@@ -2,7 +2,7 @@ import Effect from './Effect.js';
 import CostList from '../costs/CostList.js';
 
 const KEYWORD_COST = new RegExp(
-    '^(?:the|its) (?<keyword>[a-z][a-z ]*?) cost is equal to '
+    '^(?:the|its) (?<keyword>[a-z][a-z ]*?) cost is (?:equal to )?'
     + '(?:its|that card\'s|the card\'s|that spell\'s) mana cost'
     + '(?: reduced by (?<reduction>(?:\\{[^}]+\\})+))?', 'i'
 );

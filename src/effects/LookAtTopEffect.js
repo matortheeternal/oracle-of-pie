@@ -2,11 +2,11 @@ import Effect from './Effect.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const LOOK_VERB = '(?:looks? at|reveal|reveals|exile|exiles)';
-const COUNT = `(?:twice |half )?${NUMBER_PATTERN}|that many`;
+const COUNT = `(?:twice |half )?${NUMBER_PATTERN}(?: plus ${NUMBER_PATTERN})?|that many`;
 const TOP_CARDS = `(?:the top (?:(?<count>${COUNT}) cards|card) of`
     + `|(?<fromCount>${COUNT}) cards from the top of)`;
 const OWNERS = `your|their|target player's|that player's|each player's`;
-const OPPONENT_OWNERS = `target opponent's|an opponent's|each opponent's`;
+const OPPONENT_OWNERS = `target opponent's|an opponent's|each opponent's|that opponent's`;
 const LOOK = new RegExp(
     `^(?<verb>${LOOK_VERB}) ${TOP_CARDS} (?<owner>${OWNERS}|${OPPONENT_OWNERS})`
         + ' (?<zone>library|planar deck)(?: face down)?',

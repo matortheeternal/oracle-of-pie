@@ -16,7 +16,8 @@ const DURATION_ALTERNATIVES = [
     'for the rest of the game',
     'until ~ leaves the battlefield',
     'until [^,.]+ leaves the battlefield',
-    'until [^,.]+ is cast from exile'
+    'until [^,.]+ is cast from exile',
+    'until the last is removed'
 ];
 const DURATION = new RegExp(
     `^(${DURATION_ALTERNATIVES.join('|')})`, 'i'

@@ -10,6 +10,7 @@ const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+|— \d+\/\d+)
 const CARD_NAME = /^[A-Z][^.]*$/;
 const PARAMETER = /^(?:[a-z][A-Za-z ,'-]*|with [^.]+)$/;
 const VARIABLE_PARAMETER = /^, where X is [^,.]+\.?$/i;
+const PERIOD = '.';
 
 function isSingle(list) {
     return list.keywords.length === 1;
@@ -29,7 +30,7 @@ function isManaCostContinuation(list, rest) {
 }
 
 function isKeywordRest(list, rest) {
-    if (!rest || KEYWORD_WITH_COST.test(rest)) return true;
+    if (!rest || rest === PERIOD || KEYWORD_WITH_COST.test(rest)) return true;
     return isKeywordParameter(list, rest) || isManaCostContinuation(list, rest);
 }
 
@@ -42,13 +43,15 @@ export default class KeywordAbility extends Ability {
         if (!KeywordList.match(scribe, str)) return null;
         const list = KeywordList.parse(scribe, [''], str);
         const rest = list.remainingStr.trim();
+        if (rest === PERIOD && scribe.actionPattern.test(str)) return null;
         return isKeywordRest(list, rest) ? [''] : null;
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.keywords = this.consume([KeywordList]);
-        this.costText = this.remainingStr.trim() || null;
+        const rest = this.remainingStr.trim();
+        this.costText = rest && rest !== PERIOD ? rest : null;
         this.remainingStr = '';
     }
 

@@ -4,6 +4,7 @@ import { STEP_PARSERS } from './steps/index.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const PHASE = /^(?:the )?(?<boundary>beginning|end) of (?<subject>.+)$/i;
+const TIMING = /^(?:this turn|on your next turn|this combat)$/i;
 
 export default class PhaseEvent extends TriggerEvent {
     static get pattern() {
@@ -21,5 +22,12 @@ export default class PhaseEvent extends TriggerEvent {
 
     get step() {
         return this.subjectPhrase instanceof TurnStep ? this.subjectPhrase : null;
+    }
+
+    unreadSubjectText() {
+        const rest = this.subjectPhrase?.remainingStr ?? this.subject;
+        if (!this.step || !TIMING.test(rest)) return super.unreadSubjectText();
+        this.timing = rest.toLowerCase();
+        return null;
     }
 }

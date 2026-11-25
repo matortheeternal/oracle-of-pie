@@ -1,11 +1,12 @@
 import Node from '../core/Node.js';
 import { NUMBER_PATTERN, numberValue } from './numberWords.js';
 
-const COUNT = `(a number of|that many|${NUMBER_PATTERN}|half|twice)`;
+const COUNT = `(a number of|that many|that number of|${NUMBER_PATTERN}|half|twice)`;
 const AMOUNT = new RegExp(`^(up to |at least )?(twice |half )?${COUNT}\\b`, 'i');
 const PREVIOUS = 'previous';
 const SPECIAL = {
-    'that many': PREVIOUS, 'a number of': 'variable', half: 'half', twice: 'double'
+    'that many': PREVIOUS, 'that number of': PREVIOUS, 'a number of': 'variable',
+    half: 'half', twice: 'double'
 };
 const MULTIPLIERS = { twice: 2, half: 0.5 };
 

@@ -3,6 +3,9 @@ import Node from '../core/Node.js';
 const QUOTED = /^"([^"]*?),?"/;
 const NESTED_QUOTED = /^'((?:[^']|'(?=\w))*?),?'(?!\w)/;
 
+export const QUOTED_SPAN
+    = `(?:${QUOTED.source.slice(1)}|${NESTED_QUOTED.source.slice(1)})`;
+
 function isTemporary(context) {
     return Boolean(context.effectDuration?.isTemporary || context.condition?.isDuration);
 }

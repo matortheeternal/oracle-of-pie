@@ -4,6 +4,8 @@ import Effect from './effects/Effect.js';
 const REMINDER = /\s*\([^()]*\)/g;
 const LINE_BREAK = /\n+/;
 const PARENTHESES = /^\(|\)$/g;
+const MULTILINE_REMINDER = /\([^()]*\n[^()]*\)/g;
+const INNER_LINE_BREAK = /\s*\n\s*/g;
 const LEADING_SENTENCE = /^([^.]+)\. (?=[A-Z])/;
 
 function stripParentheses(reminder) {
@@ -19,7 +21,9 @@ export default class CardText extends Parser {
         super(scribe, match, str);
         this.abilities = [];
         this.reminders = [];
-        for (const line of str.split(LINE_BREAK)) this.parseLine(line);
+        const text = str.replace(MULTILINE_REMINDER, reminder =>
+            reminder.replace(INNER_LINE_BREAK, ' '));
+        for (const line of text.split(LINE_BREAK)) this.parseLine(line);
         this.remainingStr = '';
     }
 

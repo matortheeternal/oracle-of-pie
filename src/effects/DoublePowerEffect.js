@@ -1,10 +1,14 @@
 import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 
-const STATS = 'power( and toughness)?';
+const STATS = 'power(?: and toughness)?|toughness';
+const FACTORS = { double: 2, triple: 3 };
+const PROPERTY_FIRST = `(?<stat>${STATS}) of (?<object>[^,.]+?)`;
+const OWNER = '(?:(?<it>it)s|(?<owner>[^,.]+?)[\'’]s)';
+const OWNER_FIRST = `${OWNER} (?<owned>${STATS})`;
 const DOUBLE_POWER = new RegExp(
-    `^double (?:the ${STATS} of ([^,.]+?)|(?:(it)s|([^,.]+?)['’]s) ${STATS})`
-        + '( X times)?(?= until\\b| and\\b|[,.]|$)',
+    `^(?<action>double|triple) (?:the )?(?:${PROPERTY_FIRST}|${OWNER_FIRST})`
+        + '(?<repeat> X times)?(?= until\\b| and\\b|[,.]|$)',
     'i'
 );
 
@@ -12,23 +16,29 @@ export default class DoublePowerEffect extends Effect {
     static match(scribe, str) {
         const match = str.match(DOUBLE_POWER);
         if (!match) return null;
-        const object = match[2] ?? match[3] ?? match[4];
-        const phraseMatch = PhraseList.match(scribe, object);
+        const { object, it, owner } = match.groups;
+        const text = object ?? it ?? owner;
+        const phraseMatch = PhraseList.match(scribe, text);
         if (!phraseMatch) return null;
-        const objects = PhraseList.parse(scribe, phraseMatch, object);
+        const objects = PhraseList.parse(scribe, phraseMatch, text);
         if (objects.remainingStr || !objects.isRecognized) return null;
+        const stat = (match.groups.stat ?? match.groups.owned).toLowerCase();
         return {
             0: match[0],
             objects,
-            doublesToughness: Boolean(match[1] ?? match[5]),
-            repeatsForX: Boolean(match[6])
+            doublesPower: stat.includes('power'),
+            doublesToughness: stat.includes('toughness'),
+            repeatsForX: Boolean(match.groups.repeat),
+            multiplier: FACTORS[match.groups.action.toLowerCase()]
         };
     }
 
     parseArguments(match) {
         this.objects = match.objects;
+        this.doublesPower = match.doublesPower;
         this.doublesToughness = match.doublesToughness;
         this.repeatsForX = match.repeatsForX;
+        this.multiplier = match.multiplier;
     }
 
     get parts() {

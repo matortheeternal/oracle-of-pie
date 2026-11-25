@@ -15,6 +15,7 @@ const SEARCH = new RegExp(
 );
 const WHERE_X = /^, where X is [^,.]+/i;
 const REVEAL = /^,? reveal (?:it|them|that card|those cards)/i;
+const OPTIONAL_REVEAL = /^,? \[reveal (?:it|them|that card|those cards),?\]/i;
 const PUT_DESTINATION_ALTERNATIVES = [
     'into your hand',
     'onto the battlefield(?: tapped)?(?: under your control)?',
@@ -34,6 +35,7 @@ const PUT_DESTINATION = new RegExp(
     'i'
 );
 const SHUFFLE = /^,? ?(?:then |and )?shuffle\b/i;
+const HAND_OR_GRAVEYARD = /^or (?:into your )?graveyard\b/i;
 const COUNTERS_ON_CARD = /^with (?<counters>[^,.]+ counters? on (?:it|them))\b/i;
 
 function isLandPhrase(phrase) {
@@ -53,14 +55,22 @@ export default class SearchLibraryEffect extends Effect {
     parseArguments(match) {
         this.wanted = this.consume([PhraseList]);
         this.consumeText(WHERE_X);
-        this.revealed = Boolean(this.consumeText(REVEAL));
+        this.revealOmittedWhenCleaved = Boolean(this.consumeText(OPTIONAL_REVEAL));
+        this.revealed = this.revealOmittedWhenCleaved
+            || Boolean(this.consumeText(REVEAL));
         const split = this.consumeText(SPLIT_DESTINATION);
         this.splitsBetweenBattlefieldAndHand = Boolean(split);
         const destination = split ?? this.consumeText(PUT_DESTINATION);
         this.destination = destination?.[1].toLowerCase() ?? null;
         this.destinationCounters = destination
             ? this.consumeText(COUNTERS_ON_CARD)?.groups.counters ?? null : null;
+        this.destinationAlternative = this.readDestinationAlternative();
         this.shuffles = Boolean(this.consumeText(SHUFFLE));
+    }
+
+    readDestinationAlternative() {
+        if (this.destination !== 'into your hand') return null;
+        return this.consumeText(HAND_OR_GRAVEYARD) ? 'into your graveyard' : null;
     }
 
     get parts() {

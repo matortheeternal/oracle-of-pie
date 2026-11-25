@@ -1,6 +1,6 @@
 import Modifier from './Modifier.js';
 
-const WITH_OR_WITHOUT = /^(with|without|that has) /i;
+const WITH_OR_WITHOUT = /^(with|without|that (?:has|have)) /i;
 const KEYWORD_JOINER = /^(?:,? ?(?:and\/or|or|and) |, )/i;
 const KEYWORD_SEPARATOR = /,? ?(?:and\/or|or|and) |, /i;
 

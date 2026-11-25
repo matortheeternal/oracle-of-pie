@@ -17,6 +17,7 @@ const COST_TAIL_ALTERNATIVES = [
 const COST_TAIL = new RegExp(`^(?:${COST_TAIL_ALTERNATIVES.join('|')})`, 'i');
 const LESS = 'less';
 const CAST = 'cast';
+const LOYALTY = /^\[[+−-]?\d+\]$/;
 
 export default class CostModificationEffect extends Effect {
     static get pattern() {
@@ -40,6 +41,10 @@ export default class CostModificationEffect extends Effect {
 
     get reducesCost() {
         return this.direction === LESS;
+    }
+
+    get changesLoyaltyCost() {
+        return LOYALTY.test(this.amount ?? '');
     }
 
     get modifiesSpellCost() {

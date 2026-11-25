@@ -3,7 +3,7 @@ import CreateTokenEffect from './CreateTokenEffect.js';
 
 const REPLACEMENT = new RegExp(
     '^(?<tokens>those tokens plus (?:an additional )?[^.]+?|that'
-        + ' many [^.]+? tokens?) (?:are|is) created instead\\b', 'i'
+        + ' many [^.]+? tokens?\\b[^.]*?) (?:are|is) created instead\\b', 'i'
 );
 const ADDITION = /^those tokens plus (?:an additional )?/i;
 

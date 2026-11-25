@@ -25,8 +25,9 @@ export const QUALIFIER_WORDS = new Set([
     'equipped', 'face-down', 'face-up', 'activated', 'triggered', 'loyalty',
     'chosen', 'exiled', 'prepared', 'goaded', 'suspected', 'saddled',
     'monstrous', 'double-faced', 'transformed', 'historic',
-    'token', 'commander', 'kicked', 'outlaws', 'suspended', 'modal', 'renowned'
+    'token', 'commander', 'commanders', 'kicked', 'outlaws', 'suspended', 'modal',
+    'renowned'
 ]);
 
 export const NEGATED_QUALIFIER = /^non-?[a-z]+$/i;
-export const SUBTYPE_WORD = /^[A-Z][a-z]+(?:-[a-z]+)?$/;
+export const SUBTYPE_WORD = /^\p{Lu}\p{Ll}+(?:-\p{Lu}?\p{Ll}+)?$/u;

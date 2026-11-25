@@ -2,7 +2,6 @@ import Node from '../../core/Node.js';
 
 const CONDITIONS = [
     'with exactly two creatures',
-    'with at least two creatures that have first strike',
     'and another legendary creature',
     'and/or your commander',
     'or a commander you control',

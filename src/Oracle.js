@@ -57,6 +57,10 @@ export default class Oracle {
         return this.startsStatement(str) || ClauseReader.startsClause(this, str);
     }
 
+    startsModeledClause(str) {
+        return this.startsStatement(str) || ClauseReader.startsModeledClause(this, str);
+    }
+
     startsStatement(str) {
         return this.statementParsers.some(parser => parser.matchStatement(this, str));
     }

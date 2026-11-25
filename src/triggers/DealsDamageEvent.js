@@ -1,8 +1,11 @@
 import TriggerEvent from './TriggerEvent.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
+import FirstTime from './qualifiers/FirstTime.js';
+import ThisWay from './qualifiers/ThisWay.js';
 import DamageSource from './subjects/DamageSource.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 import PhraseList from '../phrases/PhraseList.js';
+import DamageComparison from './qualifiers/DamageComparison.js';
 
 const AMOUNT = '(?:(?:exactly )?' + NUMBER_PATTERN + '(?: or more)?|excess)';
 const DEALS = new RegExp('^(?<subject>.+?) deals? (?:(?<amount>' + AMOUNT
@@ -21,7 +24,7 @@ export default class DealsDamageEvent extends TriggerEvent {
     }
 
     static get qualifierParsers() {
-        return [TurnWindow];
+        return [FirstTime, TurnWindow, ThisWay, DamageComparison];
     }
 
     constructor(scribe, match, str) {

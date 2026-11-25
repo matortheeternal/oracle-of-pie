@@ -3,15 +3,18 @@ import {
     usesCreatureCount, usesOpposingArtifactCount
 } from '../values/quantityDependencies.js';
 
+const SYMBOLS = '(?:\\{[^}]+\\})+';
+const LIST = `${SYMBOLS}(?:,? (?:or |and |and/or )?${SYMBOLS})*`;
 const MANA_KIND_ALTERNATIVES = [
     'of any (?:one )?(?:color|type)(?: in your commander\'s color identity)?',
+    `in any combination of ${LIST}`,
     'in any combination of [^,.]+',
     'of the chosen color',
     'of any of the exiled card\'s colors'
 ];
 const MANA_ALTERNATIVES = [
     '(?:\\{[^}]+\\})+ or one mana of the chosen color',
-    '(?:\\{[^}]+\\})+(?:,? (?:or |and |and/or )?(?:\\{[^}]+\\})+)*',
+    LIST,
     `(?:[a-z]+|\\d+|X) mana (?:${MANA_KIND_ALTERNATIVES.join('|')})`,
     '[^,.]*\\bmana\\b(?! value)[^,.]*',
     '[^,.]*?\\{[^}]+\\}[^,.]*'

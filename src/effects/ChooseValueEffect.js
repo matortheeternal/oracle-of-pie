@@ -3,6 +3,9 @@ import Effect from './Effect.js';
 const CARD_NAME_FILTER = 'nonbasic land|land|artifact|nonartifact, nonland|nonland';
 const CARD_NAME = `(?:a|an|any) (?:(?:${CARD_NAME_FILTER}) )?card name`;
 const CHOICE_ALTERNATIVES = [
+    'a color shared among two exiled cards used to craft it',
+    'a creature type that hasn\'t been noted for (?:this [a-z]+|~)',
+    'any number of creature cards',
     'a(?: nonland)? card name(?: and a creature type| other than [^,.]+)?',
     'a creature type and a card name',
     'a card type other than (?:creature or land|creature|land)',
@@ -21,7 +24,7 @@ const CHOICE_ALTERNATIVES = [
     'two colors', CARD_NAME, 'a card type', 'a basic land type', 'a land type',
     'a planeswalker type', 'a number(?: between \\w+ and \\w+)?',
     'odd or even', 'left or right', 'friend or foe',
-    'an opponent', 'a player'
+    'an opponent(?! or )', 'a player(?! or )'
 ];
 const CHOOSE_VALUE = new RegExp(
     `^(?<secret>secretly )?chooses? (${CHOICE_ALTERNATIVES.join('|')})`, 'i'

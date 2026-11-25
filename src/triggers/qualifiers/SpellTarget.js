@@ -7,15 +7,19 @@ const TARGET = [
     'one or more (?:creatures(?: or Vehicles)?|permanents)',
     'an opponent or a creature an opponent controls',
     'a single permanent or player',
-    'this creature', '~', `a single (?:${SINGLE_TARGET})`, 'a modified permanent',
+    'this creature', '~', 'it', `a single (?:${SINGLE_TARGET})`, 'a modified permanent',
     'a creature', 'an artifact or land'
 ].join('|');
 const CONTROL = 'you (?:control|don\'t control)|an opponent controls|they control';
 const CONTROLLER = `(?: (?<controller>${CONTROL}))?`;
+const EXCLUSION = '(?: other than (?<excluded>this creature|~))?';
 const TARGETS = new RegExp(
-    `^that targets (?<exclusive>only )?(?<target>${TARGET})${CONTROLLER}(?=\\s|$|,)`, 'i'
+    `^that targets (?<exclusive>only )?(?<target>${TARGET})`
+        + `${CONTROLLER}${EXCLUSION}(?=\\s|$|,)`,
+    'i'
 );
 const SELF = /^(?:this creature|~)$/i;
+const REFERENT = /^(?:it|this creature|~)$/i;
 const SINGLE = /^a single /i;
 
 export default class SpellTarget extends Parser {
@@ -25,10 +29,11 @@ export default class SpellTarget extends Parser {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        const { exclusive, target, controller } = match.groups;
+        const { exclusive, target, controller, excluded } = match.groups;
         this.target = target.toLowerCase();
         this.controller = controller?.toLowerCase() ?? null;
         this.isExclusive = Boolean(exclusive);
+        this.excludedTarget = excluded?.toLowerCase() ?? null;
     }
 
     get refersToSelf() {
@@ -36,6 +41,7 @@ export default class SpellTarget extends Parser {
     }
 
     get requiresSingleTarget() {
-        return this.isExclusive && (this.refersToSelf || SINGLE.test(this.target));
+        const single = REFERENT.test(this.target) || SINGLE.test(this.target);
+        return this.isExclusive && single;
     }
 }

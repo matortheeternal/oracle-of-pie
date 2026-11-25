@@ -76,9 +76,21 @@ function isFallback(gap) {
     return gap.kind === 'incomplete';
 }
 
+function visitExpansions(cardText, gaps) {
+    for (const [node, { expansion }] of cardText.walk()) {
+        if (!expansion || !node.isOpaque) continue;
+        const owner = expansion.definition.name;
+        const context = `opaque in ${owner} rules expansion`;
+        const expansionSite = site('expansion', owner, context);
+        gaps.push({ kind: 'opaque', raw: node.raw, context, site: expansionSite, node });
+    }
+}
+
 export default function collectGaps(cardText) {
     const gaps = [];
     visit(cardText, gaps);
     const spans = gaps.filter(gap => !isFallback(gap));
-    return spans.length ? spans : gaps;
+    const reported = spans.length ? spans : gaps;
+    visitExpansions(cardText, reported);
+    return reported;
 }

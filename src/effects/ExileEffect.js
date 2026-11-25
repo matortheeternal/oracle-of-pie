@@ -2,6 +2,11 @@ import ObjectEffect from './ObjectEffect.js';
 
 const EXILE = /^exiles? /i;
 const EXILE_TAIL_ALTERNATIVES = [
+    'until an opponent becomes the monarch',
+    'from each opponent\'s graveyard',
+    'in a face-(?:down|up) pile',
+    'from their hands',
+    'when ~ leaves the battlefield',
     'from the bottom of (?:your|their|that player\'s) library',
     'from the top(?: of (?:your|their|its owner\'s|that player\'s) library)?'
         + '(?: face down)?(?: equal to [^,.]+)?',

@@ -8,7 +8,8 @@ const SELF_NOUNS = [
 ];
 const SELF_NOUN = `this (?:${SELF_NOUNS.join('|')})(?![a-z])`;
 const POSSESSIVE = '(?!\\x27s (?:controller|owner))';
-const SELF = new RegExp(`^(?:~|(?:he|she)(?= )|${SELF_NOUN})${POSSESSIVE}`, 'i');
+const THIS = 'this(?= (?:to|into|onto) )';
+const SELF = new RegExp(`^(?:~|(?:he|she)\\b|${SELF_NOUN}|${THIS})${POSSESSIVE}`, 'i');
 
 export default class SelfReference extends Phrase {
     static match(scribe, str) {

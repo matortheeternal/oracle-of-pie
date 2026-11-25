@@ -1,7 +1,7 @@
 import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 
-const CHOOSE_COUNTER = /^chooses? (?:a|one) counter on /i;
+const CHOOSE_COUNTER = /^chooses? (?:a|one) (?:kind of )?counter on /i;
 const GIVE_COUNTER = /^gives? /i;
 const SAME_KIND = /^another counter of that kind\b/i;
 

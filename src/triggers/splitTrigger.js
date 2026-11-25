@@ -22,7 +22,7 @@ function selectBoundary(parser, options) {
         const event = parser.parseNext(eventText, TRIGGER_EVENTS);
         const split = [eventText, event, body];
         const recognized = event.isRecognized;
-        const hasBody = parser.scribe.startsClause(body);
+        const hasBody = parser.scribe.startsModeledClause(body);
         if (recognized && hasBody) return split;
         if (recognized) complete.push(split);
         if (hasBody) readable.push(split);

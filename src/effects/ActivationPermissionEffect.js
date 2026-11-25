@@ -17,14 +17,19 @@ const ACTIVATION_PERMISSION = new RegExp(
         + '(?<permission>' + LIMITS.join('|') + ')',
     'i'
 );
+const EXTRA_ACTIVATION = /^can be activated (?<permission>an additional time)\b/i;
 
 export default class ActivationPermissionEffect extends Effect {
     static get pattern() {
         return ACTIVATION_PERMISSION;
     }
 
+    static match(scribe, str) {
+        return super.match(scribe, str) ?? str.match(EXTRA_ACTIVATION);
+    }
+
     parseArguments(match) {
-        this.abilities = match.groups.abilities.toLowerCase();
+        this.abilities = match.groups.abilities?.toLowerCase() ?? null;
         this.permission = match.groups.permission.toLowerCase();
     }
 }

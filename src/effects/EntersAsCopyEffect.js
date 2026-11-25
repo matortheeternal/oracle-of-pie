@@ -1,7 +1,7 @@
 import ObjectEffect from './ObjectEffect.js';
 import { COPY_EXCEPTION } from '../values/copyException.js';
 
-const ENTERS_AS_COPY = /^enters? (?:tapped )?as a copy of /i;
+const ENTERS_AS_COPY = /^enters? (?:tapped )?as (?:a copy|copies) of /i;
 
 export default class EntersAsCopyEffect extends ObjectEffect {
     static get pattern() {

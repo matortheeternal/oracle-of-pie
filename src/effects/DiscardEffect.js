@@ -10,12 +10,13 @@ const DISCARDED_ALTERNATIVES = [
     'that card',
     'it',
     'cards equal to [^,.]+',
-    'any number of cards',
+    'any number of (?:creature |land |nonland |artifact )?cards',
     'a card at random'
 ];
 const DISCARDED = new RegExp(
     `^(?:${DISCARDED_ALTERNATIVES.join('|')})`, 'i'
 );
+const OPEN_COUNT = /^any number of /i;
 
 export default class DiscardEffect extends Effect {
     get isPlayerAction() {
@@ -45,7 +46,7 @@ export default class DiscardEffect extends Effect {
     }
 
     get hasOpenDiscardCount() {
-        return this.discarded?.toLowerCase() === 'any number of cards';
+        return OPEN_COUNT.test(this.discarded ?? '');
     }
 
     get discardsHand() {

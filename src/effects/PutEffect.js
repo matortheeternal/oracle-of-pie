@@ -37,6 +37,7 @@ const ALTERNATE_ZONE = /^or (?:graveyard|hand|exile)\b/i;
 const ALTERNATE_DESTINATION = /^or (?=(?:into|onto|on)\b)/i;
 const LEADING_MANNER = /^(?:tapped )?under (?:your|their|its owner's) control\b/i;
 const SECOND_SOURCE = /^and from (?:your graveyard|the command zone)\b/i;
+const TRAILING_SOURCE = /^from the command zone\b/i;
 const MILLED_SOURCE = /^from among (?:the milled cards|the cards milled this way)$/i;
 
 export default class PutEffect extends ObjectEffect {
@@ -50,13 +51,18 @@ export default class PutEffect extends ObjectEffect {
         super.parseArguments(match);
         this.alternativeZone = this.consumeText(ALTERNATE_ZONE)?.[0].slice(3) ?? null;
         this.additionalSource = this.consumeText(SECOND_SOURCE)?.[0] ?? null;
-        const destination = initialDestination ?? this.consumeText(DESTINATION)?.groups;
-        this.source = destination?.source?.toLowerCase() ?? null;
-        this.destination = destination?.destination.toLowerCase() ?? null;
+        this.readDestination(initialDestination);
         this.manners = this.consumeManners();
         if (initialManner) this.manners.unshift(initialManner[0].toLowerCase());
         this.alternativeDestination = this.consumeAlternativeDestination();
         this.restDestination = this.consumeRest();
+    }
+
+    readDestination(initialDestination) {
+        const destination = initialDestination ?? this.consumeText(DESTINATION)?.groups;
+        const trailingSource = destination && this.consumeText(TRAILING_SOURCE);
+        this.source = (destination?.source ?? trailingSource?.[0])?.toLowerCase() ?? null;
+        this.destination = destination?.destination.toLowerCase() ?? null;
     }
 
     consumeManners() {

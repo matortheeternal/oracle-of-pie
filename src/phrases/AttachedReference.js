@@ -8,7 +8,8 @@ const ATTACHED_ALTERNATIVES = [
     'planeswalker'
 ];
 const ATTACHED = new RegExp(
-    `^(enchanted|equipped|fortified) (${ATTACHED_ALTERNATIVES.join('|')})\\b`, 'i'
+    `^(enchanted|equipped|fortified) (${ATTACHED_ALTERNATIVES.join('|')})\\b`
+        + '(?!\\x27s (?:controller|owner)\\b)', 'i'
 );
 
 const ENCHANTED = 'enchanted';

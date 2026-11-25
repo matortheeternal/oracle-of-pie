@@ -1,9 +1,10 @@
 import Parser from '../../core/Parser.js';
 
 const TURN_OWNERS = [
-    'your', 'an opponent\'s', 'each opponent\'s', 'their', 'each of your'
+    'your', 'an opponent\'s', 'each opponent\'s', 'their', 'each of your', 'each of their'
 ];
-const PHASES = 'combat|(?:your )?(?:main phase|declare attackers step|draw step)';
+const PHASES = 'combat|(?:your )?(?:main phase|declare attackers step|draw step)'
+    + '|each of your draw steps|your untap step';
 const TURN_WINDOW = new RegExp(
     `^(?:(each|this) turn|during (${TURN_OWNERS.join('|')}) turns?|this (combat)`
         + `|(?<oneTurn>in a turn)|during (?:the )?(?<phase>${PHASES}))\\b`, 'i'

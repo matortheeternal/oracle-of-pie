@@ -11,6 +11,7 @@ const CARD_QUANTITY = ' for each (?:[^,.]|, (?=non))+| (?:plus|minus) \\w+';
 const CARDS = new RegExp(`^(?:additional )?cards?\\b(?:${CARD_QUANTITY})?`, 'i');
 const DRAW_SOURCE_REPLACEMENT = /^from (?:the [^,.]+?) rather than (?:the [^,.]+)\b/i;
 const CARDS_EQUAL = /^cards equal to [^,.]+/i;
+const ADDITIONAL_CARD = /^(?:another|an additional) card\b/i;
 
 export default class DrawEffect extends Effect {
     get isPlayerAction() {
@@ -23,7 +24,9 @@ export default class DrawEffect extends Effect {
 
     parseArguments(match) {
         this.amount = this.consume([Amount]);
-        this.cards = this.consumeText(CARDS_EQUAL) ?? this.consumeText(CARDS);
+        this.cards = this.consumeText(CARDS_EQUAL)
+            ?? this.consumeText(CARDS) ?? this.consumeText(ADDITIONAL_CARD);
+        this.isAdditionalCard = ADDITIONAL_CARD.test(this.cards?.[0] ?? '');
         this.changesDrawSource = Boolean(
             this.cards && this.consumeText(DRAW_SOURCE_REPLACEMENT)
         );
@@ -46,6 +49,7 @@ export default class DrawEffect extends Effect {
     }
 
     get count() {
+        if (this.isAdditionalCard) return 1;
         if (FOR_EACH.test(this.cards ?? '')) return null;
         return typeof this.amount?.value === 'number' ? this.amount.value : null;
     }

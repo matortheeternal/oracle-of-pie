@@ -2,7 +2,7 @@ import KeywordList from './KeywordList.js';
 import QuotedAbility from './QuotedAbility.js';
 
 const QUOTE_SEPARATOR = /^\s*,? ?(?:and )?(?=["'])/i;
-const KEYWORD_SEPARATOR = /^(?:,? and |, )/i;
+const KEYWORD_SEPARATOR = /^(?:,? ?and |, )/i;
 
 function consumeNextQuoted(parser) {
     const start = parser.remainingStr;

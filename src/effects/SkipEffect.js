@@ -5,10 +5,15 @@ const SKIP = new RegExp(
     + '(?<part>untap step|upkeep step|upkeep|draw step|combat phase|'
     + 'main phase|end step|turn)\\b', 'i'
 );
+const REFERENCED = /^skips? that (?<part>draw|turn|upkeep|combat)(?: instead)?\b/i;
 
 export default class SkipEffect extends Effect {
     static get pattern() {
         return SKIP;
+    }
+
+    static match(scribe, str) {
+        return super.match(scribe, str) ?? str.match(REFERENCED);
     }
 
     parseArguments(match) {

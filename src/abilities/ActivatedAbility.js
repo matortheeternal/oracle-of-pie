@@ -2,8 +2,10 @@ import BodyAbility from './BodyAbility.js';
 import CostList from '../costs/CostList.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
 
-const QUOTED_COST = '"[^"]*"|\'[^\']*\'(?!\\w)';
-const COST_PART = '(?!\\btarget\\b)(?:' + QUOTED_COST + '|[^:"])';
+const NESTED_QUOTE = '(?<!\\w)\'(?:[^\']|\'(?=\\w))*\'(?!\\w)';
+const QUOTED_COST = '"[^"]*"|' + NESTED_QUOTE;
+const UNQUOTED = '(?!(?<!\\w)\')[^:"]';
+const COST_PART = '(?!\\btarget\\b)(?:' + QUOTED_COST + '|' + UNQUOTED + ')';
 const ACTIVATED = new RegExp(`^(exhaust — )?((?:${COST_PART})+?): ([\\s\\S]+)$`, 'i');
 
 export default class ActivatedAbility extends BodyAbility {

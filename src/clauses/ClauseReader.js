@@ -2,8 +2,9 @@ import Parser from '../core/Parser.js';
 import EffectSubjectGroup from '../phrases/EffectSubjectGroup.js';
 import TrailingCondition from './TrailingCondition.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
-import { EFFECT_PARSERS } from '../effects/index.js';
+import { EFFECT_PARSERS, MODELED_EFFECT_PARSERS } from '../effects/index.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
+import OpaqueEffect from '../effects/OpaqueEffect.js';
 
 const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |,? ?or |, )/i;
 const ALTERNATIVE = /^,? ?or /i;
@@ -32,6 +33,11 @@ export default class ClauseReader extends Parser {
         return Boolean(new ClauseReader(scribe, null, str).readClause());
     }
 
+    static startsModeledClause(scribe, str) {
+        const effect = new ClauseReader(scribe, null, str).readClause();
+        return Boolean(effect?.isRecognized && !effect.isOpaque);
+    }
+
     readAll() {
         this.clauseEffects = [this.readClause()];
         while (this.readNextClause()) continue;
@@ -58,11 +64,16 @@ export default class ClauseReader extends Parser {
         this.consumeText(ALSO);
         const replaces = Boolean(this.consumeText(INSTEAD));
         const isOptional = Boolean(this.consumeText(MAY));
-        const effect = this.consume(EFFECT_PARSERS) ?? this.readSubjectEffect();
+        const effect = this.readEffect();
         if (!effect) return null;
         if (replaces) effect.replacesPriorAction = true;
         if (isOptional) effect.isOptional = true;
         return effect;
+    }
+
+    readEffect() {
+        return this.consume(MODELED_EFFECT_PARSERS)
+            ?? this.readSubjectEffect() ?? this.consume([OpaqueEffect]);
     }
 
     readSubjectEffect() {
@@ -87,6 +98,7 @@ export default class ClauseReader extends Parser {
         if (!subject) return null;
         this.consumeText(ALSO);
         const isOptional = Boolean(this.consumeText(MAY));
+        this.consumeText(ALSO);
         this.consumeText(GROUP_ADVERB);
         const replaces = Boolean(this.consumeText(INSTEAD));
         this.remainingStr = this.remainingStr.replace(SINGULAR_BE, 'is ')

@@ -2,7 +2,7 @@ import Parser from '../../core/Parser.js';
 
 const CONTROL = `under (?<controller>your|an opponent's|its owner's) control`;
 const BASE_PT = '(?:power and toughness|power) (?<basePT>[0-9]+(?:/[0-9]+)?)';
-const ARRIVAL_STATE = '(?<state>transformed|attacking)';
+const ARRIVAL_STATE = '(?<state>transformed|attacking|without being played)';
 const ARRIVAL = new RegExp(
     `^(?:the battlefield )?(?:${CONTROL}|with base ${BASE_PT}|${ARRIVAL_STATE})`
         + '\\b',

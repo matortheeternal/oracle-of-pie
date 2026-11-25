@@ -6,7 +6,8 @@ const ZONE_OWNERS = [
     'each opponent\'s', 'defending player\'s', 'any', 'all', 'your opponents\''
 ];
 const ZONE_NAMES = [
-    'graveyard', 'graveyards', 'hand', 'library', 'libraries', 'exile', 'command zone'
+    'graveyard', 'graveyards', 'hand', 'hands', 'library', 'libraries', 'exile',
+    'command zone'
 ];
 const ZONE_NAME = `(?:${ZONE_NAMES.join('|')})`;
 const EXILE_ACTION = '(?!exile (?:it|them|target|that|this|all|each|any|up to)\\b)';
@@ -19,15 +20,19 @@ const ZONE_ALTERNATIVES = [
     `^(?:from|in) ()(graveyards|libraries)\\b((?:${ZONE_JOINER}${ZONE_NAME}\\b)*)`,
     '^from the top of (?:your|their|its owner\'s|target player\'s) library\\b',
     '^from (?:it|among (?:them|those cards|the revealed cards))\\b',
-    '^from the command zone\\b',
+    '^from ()(the command zone)\\b',
     '^(?:in|from) exile\\b',
     '^from anywhere other than your hand\\b',
     '^(?:on|from) the battlefield\\b'
 ];
 const ZONE = new RegExp(ZONE_ALTERNATIVES.join('|'), 'i');
+const CANONICAL_ZONES = {
+    graveyards: 'graveyard', libraries: 'library', hands: 'hand',
+    'the command zone': 'command zone'
+};
 
 function singularZoneName(zone) {
-    return zone.replace('graveyards', 'graveyard').replace('libraries', 'library');
+    return CANONICAL_ZONES[zone] ?? zone;
 }
 
 export default class ZoneModifier extends Modifier {
@@ -39,8 +44,8 @@ export default class ZoneModifier extends Modifier {
         super(scribe, match, str);
         const first = (match[2] ?? match[0].split(' ').pop()).toLowerCase();
         const alternatives = (match[3] ?? '').toLowerCase().split(JOINER).filter(Boolean);
-        this.zones = [first, ...alternatives].filter(zone => ZONE_NAMES.includes(zone))
-            .map(singularZoneName);
+        this.zones = [first, ...alternatives].map(singularZoneName)
+            .filter(zone => ZONE_NAMES.includes(zone));
         this.zoneName = this.zones[0] ?? null;
         this.owner = match[1]?.toLowerCase() ?? null;
     }

@@ -9,6 +9,7 @@ const DESTINATION = `(?:${OWNED_DESTINATION}|(?<zone>exile|graveyards|the comman
 const PUT_INTO = new RegExp(
     `^(?<subject>.+?) (?:is|are) put into ${DESTINATION}\\b`, 'i'
 );
+const PUT_ONTO = /^(?<subject>.+?) (?:is|are) put onto the (?<zone>battlefield)\b/i;
 const ZONE_NAMES = { graveyards: 'graveyard', 'the command zone': 'command zone' };
 
 function destinationName({ ownedZone, zone }) {
@@ -19,6 +20,10 @@ function destinationName({ ownedZone, zone }) {
 export default class PutIntoZoneEvent extends TriggerEvent {
     static get pattern() {
         return PUT_INTO;
+    }
+
+    static match(scribe, str) {
+        return super.match(scribe, str) ?? str.match(PUT_ONTO);
     }
 
     static get qualifierParsers() {
@@ -47,6 +52,7 @@ export default class PutIntoZoneEvent extends TriggerEvent {
     }
 
     get mayLeaveBattlefield() {
+        if (this.destination === 'battlefield') return false;
         return this.origin?.includesBattlefield ?? true;
     }
 

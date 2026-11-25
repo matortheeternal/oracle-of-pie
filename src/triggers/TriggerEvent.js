@@ -6,6 +6,7 @@ import SelfOrAnother from './subjects/SelfOrAnother.js';
 import SelfOrAttached from './subjects/SelfOrAttached.js';
 import StateCondition from './conditions/StateCondition.js';
 import { STATE_CONDITIONS } from './conditions/index.js';
+import EffectSubjectGroup from '../phrases/EffectSubjectGroup.js';
 
 const SELF = /^(?:~|this (?:[a-z]+|~))$/i;
 const YOU = /^you$/i;
@@ -56,11 +57,17 @@ export default class TriggerEvent extends Parser {
     }
 
     parseParticipants() {
-        const parsers = this.constructor.subjectParsers;
-        this.subjectPhrase = this.parseNext(this.subject, parsers);
+        this.subjectPhrase = this.parseSubject();
         this.unreadSubject = this.unreadSubjectText();
         this.objectPhrase = this.parseObjectPhrase();
         this.unreadObject = this.unreadParticipant(this.objectPhrase, this.objectSource);
+    }
+
+    parseSubject() {
+        const phrase = this.parseNext(this.subject, this.constructor.subjectParsers);
+        if (!phrase?.remainingStr) return phrase;
+        const group = this.parseNext(this.subject, [EffectSubjectGroup]);
+        return group?.isGroup && !group.remainingStr ? group : phrase;
     }
 
     unreadSubjectText() {

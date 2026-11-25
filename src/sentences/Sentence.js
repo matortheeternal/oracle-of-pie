@@ -5,10 +5,15 @@ import ClauseReader from '../clauses/ClauseReader.js';
 
 const INNER_QUOTE = '"[^"]*[^."]"|"[^"]*\\."(?! [A-Z])';
 const CLOSING_QUOTE = '"[^"]*\\."(?= [A-Z])';
+const NESTED_QUOTE = '(?<!\\w)\'(?:[^\']|\'(?=\\w))*\'(?!\\w)';
 const SENTENCE = new RegExp(
-    `^((?:${INNER_QUOTE}|[^."]|\\.(?=\\d))+(?:${CLOSING_QUOTE})?)(?:\\.|$|(?<=")(?= ))`
+    `^((?:${INNER_QUOTE}|${NESTED_QUOTE}|[^."]|\\.(?=\\d))+`
+        + `(?:${CLOSING_QUOTE})?)(?:\\.|$|(?<=")(?= ))`
 );
 const THEN = /^then,? /i;
+const CONDITIONAL_CONTINUATION = new RegExp(
+    '^,? ?(?:and |then |or )(?=(?:if|when|whenever|until|as long as)\\b)', 'i'
+);
 const X_FROM_CREATURE_STATS = /\bwhere X is [^.]*\b(?:power|toughness)\b/i;
 
 function sentenceMatch(sentence, text, statement) {
@@ -38,6 +43,7 @@ export default class Sentence extends Parser {
         this.followsPrevious = match.followsPrevious;
         this.clauseEffects = [];
         this.nested = null;
+        this.continuation = null;
         this.trailingCondition = null;
         this.unrecognized = null;
     }
@@ -48,7 +54,16 @@ export default class Sentence extends Parser {
         const reader = ClauseReader.read(this.scribe, text);
         this.clauseEffects = reader.clauseEffects;
         this.trailingCondition = reader.condition;
-        this.unrecognized = reader.unrecognized;
+        this.continuation = this.readContinuation(reader.unrecognized);
+        this.unrecognized = this.continuation ? null : reader.unrecognized;
+    }
+
+    readContinuation(unrecognized) {
+        const raw = unrecognized?.raw ?? '';
+        if (!CONDITIONAL_CONTINUATION.test(raw)) return null;
+        const body = raw.replace(CONDITIONAL_CONTINUATION, '');
+        const statement = this.parseNext(body, this.scribe.statementParsers);
+        return statement?.remainingStr ? null : statement;
     }
 
     readNestedStatement(text) {
@@ -69,12 +84,17 @@ export default class Sentence extends Parser {
 
     get children() {
         if (this.nested) return [this.nested];
-        const children = [...this.effects, this.trailingCondition, this.unrecognized];
+        const children = [
+            ...this.clauseEffects, this.trailingCondition, this.continuation,
+            this.unrecognized
+        ];
         return children.filter(Boolean);
     }
 
     get effects() {
-        return this.nested?.effects ?? this.clauseEffects.filter(Boolean);
+        if (this.nested) return this.nested.effects;
+        const current = this.clauseEffects.filter(Boolean);
+        return current.concat(this.continuation?.effects ?? []);
     }
 
     get hasEffectlessClause() {

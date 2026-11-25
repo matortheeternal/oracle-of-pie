@@ -3,6 +3,45 @@ import Modifier from './Modifier.js';
 const UNPLACED_REVEALED
     = 'that (?:weren\'t|were not) put (?:onto the battlefield|into your hand)';
 const STATE_ALTERNATIVES = [
+    'that (?:was|were) discarded or put there from a library this turn',
+    'that entered the battlefield under your control this turn',
+    'that(?:\'s| is| are) (?:a|an) (?:Cleric|artifact), (?:Rogue|creature), '
+        + '(?:Warrior, and/or Wizard|or enchantment)',
+    'that (?:isn\'t|is not) exactly two colors',
+    'that (?:isn\'t|is not) (?:a Dragon|a Dinosaur|a commander)',
+    'that doesn\'t have (?:a \\+1/\\+1 counter on it'
+        + '|the same name as another permanent you control)',
+    'that wasn\'t cast(?: from its owner\'s hand)?',
+    'that was attached to (?:~|this [a-z]+)',
+    'that was exiled this way',
+    'that was put onto the battlefield with ~',
+    'played this way',
+    'tapped to pay this spell\'s additional cost',
+    'created this way',
+    'crewed by ~ this turn',
+    'with (?:a finality|a collection|a takeover) counter on (?:it|him|her)',
+    'with four or more card types among them',
+    'with a different name than that spell',
+    'with the least power among creatures they control',
+    'whose controller was dealt combat damage by (?:this [a-z]+|~) this turn',
+    'controlled by the player to their right',
+    'other than that (?:creature|permanent)(?: or this Equipment)?',
+    'from among permanents your opponents control',
+    'that(?:\'s| is) exactly that many colors plus one',
+    'that had (?:an?|one or more) counters? put on (?:it|them) this way',
+    'that was turned face up this turn',
+    'that was put there from (?:their|your|its owner\'s) library this turn',
+    'that(?:\'s| is) not in your commander\'s color identity',
+    'with the cycled card',
+    'the opponent to your left controls',
+    'that player milled this way',
+    'whose coin comes up tails',
+    'assimilated with (?:this [a-z]+|~)',
+    'attached to you',
+    '(?:that was |were )?destroyed this way',
+    'with (?:two|three) or more card types',
+    'except for creatures you control with flying',
+    'or could produce \\{[WUBRGC]\\}',
     'while (?:it\'s|this [a-z]+ is) exiled',
     'from (?:each player\'s|each opponent\'s) graveyard',
     'of that player\'s choice(?: that one of your opponents controls)?',
@@ -93,7 +132,7 @@ const STATE_ALTERNATIVES = [
         + '|have the same name as a Room you control|have suspend)',
     'that (?:is|are|was|were) (?:enchanted|equipped) by an? [a-z]+ you control',
     'that (?:isn\'t|aren\'t) (?:legendary|an? (?!mana'
-        + ' ability)[A-Z][a-z]+(?:, [A-Z][a-z]+)*'
+        + ' ability)[A-Z][a-z]+(?:, (?!or |and )[A-Z][a-z]+)*'
         + '(?:,? or [A-Z][a-z]+)?)',
     'except (?:for )?(?:artifacts, lands, and Phyrexians|commanders'
         + '|creatures chosen this way)',
@@ -156,6 +195,8 @@ const STATE_ALTERNATIVES = [
     'enchanted by Auras you control',
     'attacking (?:your opponents|the last chosen player)'
         + '(?: and/or planeswalkers they control)?',
+    'attacking (?:the same player or planeswalker|that player|a player)',
+    'that opponent is attacking',
     'other than (?:this [a-z]+|enchanted [a-z]+)',
     'that would be tapped for mana',
     'used to craft this [a-z]+',
@@ -198,6 +239,7 @@ const EVENT_SCOPE = new RegExp(
         + ' (?:turn|way)|therefrom)$'
 );
 const ANTI_HISTORIC = /^that(?:'s| is) not historic$/;
+const CHOSEN_THIS_WAY = /^chosen this way$/;
 const STATE = new RegExp(
     `^(${STATE_ALTERNATIVES.join('|')})(?!\\w)`, 'i'
 );
@@ -226,6 +268,10 @@ export default class StateModifier extends Modifier {
 
     get restrictsName() {
         return NAMED.test(this.state);
+    }
+
+    get relatesToObject() {
+        return CHOSEN_THIS_WAY.test(this.state);
     }
 
     get limitsToPastEvent() {

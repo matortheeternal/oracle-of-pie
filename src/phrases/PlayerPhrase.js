@@ -6,6 +6,13 @@ const DESCRIBED_OBJECT = '(?:that|this|enchanted|equipped'
     + '|the (?:exiled|chosen|sacrificed)) '
     + '(?:creature|land|card|spell|artifact|Vehicle|permanent)';
 const PLAYER_ALTERNATIVES = [
+    '(?:a|the) player of (?:your|their) choice',
+    'up to (?:one|two|three) target opponents?',
+    'the player (?:to their|to your) (?:left|right)',
+    'each of your opponents',
+    'each player on your team',
+    'the player who exiled it',
+    'another one of your opponents',
     '(?:an?|one|two|three|four) (?:target )?(?:other )?players?(?! or permanent\\b)',
     '(?:the|a) (?:second|third) player',
     'one of the chosen players',
@@ -22,7 +29,6 @@ const PLAYER_ALTERNATIVES = [
     '(?:the )?(?:first|second|third|active|voting|starting) player',
     '(?:exactly |up to )?(?:one|two|three|four|any number of) target players',
     '(?:one or more|any number) of your opponents',
-    '(?:a|the) player of (?:your|their) choice',
     '(?:each|another|a different|the same) opponent',
     'your team',
     '(?:~|the spell)\'s (?:controller|owner)',
@@ -51,7 +57,8 @@ const PLAYER_ALTERNATIVES = [
     'enchanted (?:player|opponent)',
     'the monarch',
     'that (?:creature|card|land|token|permanent)\'s owner',
-    'target (?:creature|permanent)\'s owner',
+    'target (?:creature|permanent|spell)\'s (?:owner|controller)',
+    'those permanents\' owners',
     '(?:that|this|enchanted) (?:creature|land|card|artifact|Vehicle)\'s controller',
     'the owners? of (?:those|the|each) cards?(?: exiled with (?:~|this [a-z]+))?',
     'you and (?:target opponent|target player|that player|each opponent)(?: each)?',
@@ -83,6 +90,9 @@ const PLAYER = new RegExp(
 const YOU = /^you\b/i;
 const COMPOUND = / and /i;
 const RELATIVES = [
+    'who (?:drew a card|controlled one of those permanents) this way',
+    'who attacked you or a planeswalker you control this turn',
+    'who cast (?:~|this spell)',
     'who was dealt damage by (?:~|this [a-z]+) this turn',
     'other than (?:that player|you|its controller)',
     'with no cards in (?:their )?hand',

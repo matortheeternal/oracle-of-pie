@@ -2,7 +2,8 @@ import Effect from './Effect.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const ENERGY = '\\{E\\}';
-const SCALED_AMOUNT = '(?:twice )?that many|a number of|an amount of|an additional';
+const SCALED_AMOUNT = '(?:twice |half )?that many(?: plus one)?|a number of|an amount of'
+    + '|an additional|half X|half that many';
 const COUNTER_AMOUNT = NUMBER_PATTERN + '|' + SCALED_AMOUNT;
 const COUNTED = `(?:(?:${ENERGY})+|(\\w+) counters?\\b)(?<scaling> equal to [^,.]+)?`;
 const PLAYER_COUNTERS = new RegExp(

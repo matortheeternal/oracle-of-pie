@@ -10,7 +10,7 @@ import AbilitiesPhrase from './AbilitiesPhrase.js';
 import YouAndYourObjects from './YouAndYourObjects.js';
 
 export const PHRASE_PARSERS = [
-    SelfReference, AttachedReference, AnyTarget, ZonePhrase, LibraryTopPhrase,
-    YouAndYourObjects, PlayerPhrase, BackReference, AbilitiesPhrase,
+    AbilitiesPhrase, SelfReference, AttachedReference, AnyTarget, ZonePhrase,
+    LibraryTopPhrase, YouAndYourObjects, PlayerPhrase, BackReference,
     NounPhrase
 ];

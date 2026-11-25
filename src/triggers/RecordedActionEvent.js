@@ -24,6 +24,11 @@ const ACTIONS = {
     'puts?(?= .+ onto the battlefield this way)': 'put-onto-battlefield',
     'loses? (?:a coin flip|the flip)': 'lose-coin-flip',
     'gains? control of': 'gain-control',
+    'adapts?': 'adapt',
+    'drafts?': 'draft',
+    'earthbends?': 'earthbend',
+    'firebends?': 'firebend',
+    'airbends?': 'airbend',
     '(?:is|are) attacked': 'is-attacked',
     '(?:is|are) sacrificed or destroyed': 'is-sacrificed-or-destroyed',
     '(?:is|are) drawn': 'is-drawn',
@@ -61,6 +66,7 @@ const SEARCH_LIBRARY = /^(?:their|your|that player's) library\b/i;
 const FACE_UP = /^face up\b/i;
 const BATTLEFIELD = /^onto the battlefield\b/i;
 const PREVIOUS_CONTROLLER = /^from you\b/i;
+const BOOSTER = /^from this booster pack\b/i;
 
 function actionOf(groups) {
     const index = ACTION_CHOICES.findIndex((_, i) => groups[`action${i}`]);
@@ -103,7 +109,7 @@ export default class RecordedActionEvent extends ActionEvent {
     readObjectTail() {
         const tails = {
             'turn-face-up': FACE_UP, 'put-onto-battlefield': BATTLEFIELD,
-            'gain-control': PREVIOUS_CONTROLLER
+            'gain-control': PREVIOUS_CONTROLLER, draft: BOOSTER
         };
         const tail = tails[this.action];
         if (tail) this.consumeText(tail);

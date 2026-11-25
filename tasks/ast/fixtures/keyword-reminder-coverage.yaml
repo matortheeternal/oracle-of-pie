@@ -1,0 +1,63 @@
+name: Keyword reminder coverage
+typeLine: Creature
+text: |-
+  Kicker {B} and/or {R} (You may pay an additional {B} and/or {R} as you cast this spell.)
+  Riot (This creature enters with your choice of a +1/+1 counter or haste.)
+  Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: KeywordAbility
+      children:
+        - kind: KeywordList
+      expansions:
+        - kind: Expansion
+          children:
+            - kind: CardText
+              children:
+                - kind: SpellAbility
+                  children:
+                    - kind: EffectSequence
+                      children:
+                        - kind: EffectSentence
+                          children:
+                            - kind: PayManaEffect
+                              isOpaque: false
+                              isAdditional: true
+                              paidAsYouCast: true
+                              raw: pay an additional {B} and/or {R} as you cast this spell
+    - kind: KeywordAbility
+      children:
+        - kind: KeywordList
+      expansions:
+        - kind: Expansion
+          children:
+            - kind: CardText
+              children:
+                - kind: SpellAbility
+                  children:
+                    - kind: EffectSequence
+                      children:
+                        - kind: EffectSentence
+                          children:
+                            - kind: EntersWithCountersEffect
+                              isOpaque: false
+                              isPlusCounters: true
+                              alternativeKeyword: haste
+    - kind: KeywordAbility
+      children:
+        - kind: KeywordList
+      expansions:
+        - kind: Expansion
+          children:
+            - kind: CardText
+              children:
+                - kind: SpellAbility
+                  children:
+                    - kind: EffectSequence
+                      children:
+                        - kind: ConditionalSentence
+                          children:
+                            - kind: CityBlessingEffect
+                              isOpaque: false
