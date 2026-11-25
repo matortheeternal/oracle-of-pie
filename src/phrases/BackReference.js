@@ -1,9 +1,18 @@
 import Phrase from './Phrase.js';
-import StateModifier from './modifiers/StateModifier.js';
+import { MODIFIER_PARSERS } from './modifiers/index.js';
 
 const REMAINDER = 'the rest';
 const REMAINDER_OF = /^the rest of /;
 const BACK_REFERENCE_ALTERNATIVES = [
+    'the sacrificed (?:creature|artifact|card|permanent)',
+    'the (?:creature|artifact|permanent|land|enchantment|spell|card) that '
+        + '(?:attacked|blocked|was sacrificed|entered|died)(?: this way)?',
+    'the (?:token|creature) created this way',
+    '(?:one|two|three) of the (?:exiled|revealed|milled) cards',
+    'all of (?:those|them)(?: counters)?',
+    'each of those (?:cards|tokens|permanents)',
+    '(?:any|either) of those (?:cards|tokens|permanents)',
+    'that many of (?:those|the) (?:cards|creatures|tokens)',
     'all (?:the )?revealed cards',
     'cards revealed this way',
     'those (?:revealed|exiled) cards',
@@ -30,7 +39,8 @@ const BACK_REFERENCE_ALTERNATIVES = [
     'the (?:creature|token|tokens|card|permanent)',
     'each of them',
     'one of them',
-    'one(?= into )',
+    'one(?= (?:into|onto|on the|on top) )',
+    '(?:any number|one|two|three) of (?:the|those) (?:chosen |permanent )?cards',
     '(?:up to |any number of )?(?:one|two|three|four|five|\\d+|x) of them',
     '(?:one|two|three|\\d+|x) of those (?:cards|creatures|permanents)',
     'each of those creatures',
@@ -75,11 +85,12 @@ export default class BackReference extends Phrase {
         this.reference = match[1].toLowerCase();
         const objectType = this.reference.match(TYPE_IN_REFERENCE)?.[1];
         this.objectType = objectType?.toLowerCase() ?? null;
-        this.state = this.consume([StateModifier]);
+        this.modifiers = this.consumeAll(MODIFIER_PARSERS, []);
+        this.state = this.modifiers.find(modifier => modifier.state) ?? null;
     }
 
     get children() {
-        return [this.state].filter(Boolean);
+        return this.modifiers;
     }
 
     get isBackReference() {
@@ -110,11 +121,15 @@ export default class BackReference extends Phrase {
     }
 
     get controlledByYou() {
-        return Boolean(this.antecedent?.controlledByYou);
+        return this.modifiers.some(modifier => modifier.controlledByYou)
+            || Boolean(this.antecedent?.controlledByYou);
     }
 
     get isCardInZone() {
-        return Boolean(this.antecedent?.isCardInZone);
+        const inOffBoardZone = this.modifiers.some(
+            modifier => modifier.zone && modifier.zone !== 'battlefield'
+        );
+        return inOffBoardZone || Boolean(this.antecedent?.isCardInZone);
     }
 
     resolveTo(antecedent) {

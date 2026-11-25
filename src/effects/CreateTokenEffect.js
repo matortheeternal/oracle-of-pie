@@ -4,6 +4,8 @@ import Expansion from '../definitions/Expansion.js';
 import CreatedToken from '../phrases/CreatedToken.js';
 import QuotedAbility from '../values/QuotedAbility.js';
 import DealsDamageEvent from '../triggers/DealsDamageEvent.js';
+import KeywordList from '../values/KeywordList.js';
+import consumeGrantedAbilities from '../values/consumeGrantedAbilities.js';
 
 const TOKEN_COPY = /^(?: that's a copy of | cop(?:y|ies) of )/i;
 const COPY_IT = /^it$/i;
@@ -15,6 +17,11 @@ const ARTIFACT_TYPE = /\bArtifact\b/;
 const LAND_TOKEN = /\bland tokens?\b/i;
 const QUOTED_TEXT = /"[^"]*"/g;
 const TOKEN_DESCRIPTION_ALTERNATIVES = [
+    ' (?:or|and) (?:an?|X|\\d+) [^,."]*?\\btoken(?:s)?\\b',
+    ', or an? [^,."]*?\\btoken\\b',
+    ' plus an additional [^,."]*?\\btoken\\b',
+    ' that\'s all colors',
+    ' or a planeswalker they control',
     '(?:, (?:and )?| and )an? [^,."]*?\\btoken\\b',
     ' that\'s? tapped and attacking (?:that player|that opponent)',
     ' with (?:"[^"]*"|[^,."])+(?:, and [^.,]+)?',
@@ -31,6 +38,8 @@ const TOKEN_DESCRIPTION_ALTERNATIVES = [
 const TOKEN_NOUN = '((?:[^."]|"[^"]*")*?\\btokens?\\b)';
 const TOKEN_DETAILS = `((?:${TOKEN_DESCRIPTION_ALTERNATIVES.join('|')})*)`;
 const TOKEN_DESCRIPTION = new RegExp(`^${TOKEN_NOUN}${TOKEN_DETAILS}`, 'i');
+const ABILITIES = / with (?=[a-z"])/i;
+const CARD_COPY = /^a copy of (?:this card|the card with the chosen name)\b/i;
 
 function damagesDefendingPlayer(event) {
     return event instanceof DealsDamageEvent && event.isCombat && event.isSelf
@@ -43,12 +52,29 @@ export default class CreateTokenEffect extends Effect {
     }
 
     parseArguments(match) {
-        const description = this.consumeText(TOKEN_DESCRIPTION);
+        const description = this.consumeText(CARD_COPY)
+            ?? this.consumeText(TOKEN_DESCRIPTION);
         this.description = description?.[0] ?? null;
+        this.completeKeywordList();
         const details = description?.[2] ?? '';
         this.copySource = TOKEN_COPY.test(details)
             ? details.replace(TOKEN_COPY, '').split(',')[0]
             : null;
+    }
+
+    completeKeywordList() {
+        const ability = this.description?.match(ABILITIES);
+        if (!ability || !this.remainingStr.startsWith(',')) return;
+        const tail = this.description.slice(ability.index + ability[0].length);
+        if (!KeywordList.match(this.scribe, tail)) return;
+        const start = this.remainingStr;
+        this.remainingStr = tail + start;
+        consumeGrantedAbilities(this);
+        if (this.remainingStr.length >= start.length) {
+            this.remainingStr = start;
+            return;
+        }
+        this.description += start.slice(0, start.length - this.remainingStr.length);
     }
 
     get isComplete() {

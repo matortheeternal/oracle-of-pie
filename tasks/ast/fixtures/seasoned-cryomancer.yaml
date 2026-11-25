@@ -6,7 +6,7 @@ text: |-
   {3}{U}{U}, Exile this card from your graveyard: Draw two cards.
 expect:
   kind: CardText
-  isRecognized: false
+  isRecognized: true
   children:
     - kind: TriggeredAbility
       children:
@@ -19,5 +19,6 @@ expect:
                 - kind: DiscardsEvent
                   isReflexive: true
                 - kind: TapEffect
-                - kind: UnrecognizedText
+                - kind: PutCountersEffect
+                  isStunCounter: true
     - kind: ActivatedAbility

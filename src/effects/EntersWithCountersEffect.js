@@ -1,13 +1,13 @@
 import Effect from './Effect.js';
 import { normalizeCounterKind, isPlusOneKind, lowersToughness } from './counterKinds.js';
 
-const COUNTERS_ON_IT = '.*counters? on (?:it|them|him|her)\\b';
+const COUNTERS_ON_IT = 'counters?(?: of that kind)? on (?:it|them|him|her)\\b';
 const ENTERS_WITH = new RegExp(
-    `^(?:enters?|escapes?) (?:the battlefield )?(?:tapped )?with (?=${COUNTERS_ON_IT})`,
+    `^(?:enters?|escapes?) (?:the battlefield )?(?:tapped )?with (?=.*${COUNTERS_ON_IT})`,
     'i'
 );
-const DESCRIPTION = /^(.*?\bcounters? on (?:it|them|him|her)\b(?: equal to [^,.]+)?)/i;
-const KIND = /([+\-−]\d+\/[+\-−]\d+|[a-z]+) counters?\b/gi;
+const DESCRIPTION = new RegExp(`^(.*?\\b${COUNTERS_ON_IT}(?: equal to [^,.]+)?)`, 'i');
+const KIND = /([+\-−]\d+\/[+\-−]\d+|first strike|double strike|[a-z]+) counters?\b/gi;
 
 export default class EntersWithCountersEffect extends Effect {
     static get pattern() {

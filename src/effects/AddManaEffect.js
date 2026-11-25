@@ -11,7 +11,7 @@ const MANA_KIND_ALTERNATIVES = [
 ];
 const MANA_ALTERNATIVES = [
     '(?:\\{[^}]+\\})+ or one mana of the chosen color',
-    '(?:\\{[^}]+\\})+(?:,? (?:or |and )?(?:\\{[^}]+\\})+)*',
+    '(?:\\{[^}]+\\})+(?:,? (?:or |and |and/or )?(?:\\{[^}]+\\})+)*',
     `(?:[a-z]+|\\d+|X) mana (?:${MANA_KIND_ALTERNATIVES.join('|')})`,
     '[^,.]*\\bmana\\b(?! value)[^,.]*',
     '[^,.]*?\\{[^}]+\\}[^,.]*'
@@ -20,6 +20,7 @@ const MANA = new RegExp(`^(?:${MANA_ALTERNATIVES.join('|')})`, 'i');
 const ADD = new RegExp(`^adds? (?=${MANA.source.slice(1)})`, 'i');
 const MANA_TAIL = /^(for each (?:[^,.]|, (?=non))+|instead)/i;
 const PRODUCED_BY = /^that ([^,.]+?) (?:could produce|produced)\b/i;
+const CHOSEN_COLORS = /^among (?<sources>legendary [^,.]+)\b/i;
 
 export default class AddManaEffect extends Effect {
     static get pattern() {
@@ -29,6 +30,7 @@ export default class AddManaEffect extends Effect {
     parseArguments(match) {
         this.mana = this.consumeText(MANA)?.[0] ?? null;
         this.producedBy = this.consumeText(PRODUCED_BY)?.[1] ?? null;
+        this.chosenColorsFrom = this.consumeText(CHOSEN_COLORS)?.groups.sources ?? null;
         this.scaling = this.consumeText(MANA_TAIL)?.[0] ?? null;
     }
 

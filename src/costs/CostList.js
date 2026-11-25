@@ -5,11 +5,12 @@ import TextCost from './TextCost.js';
 import SacrificeCost from './SacrificeCost.js';
 import ExileCost from './ExileCost.js';
 import ReturnCost from './ReturnCost.js';
+import ActionCost from './ActionCost.js';
 import UnrecognizedCost from './UnrecognizedCost.js';
 
 const COST_PARSERS = [
     ManaCostItem, LoyaltyCost, TextCost, SacrificeCost, ExileCost, ReturnCost,
-    UnrecognizedCost
+    ActionCost, UnrecognizedCost
 ];
 const SEPARATOR = /^,? (?:and )?/;
 

@@ -1,10 +1,20 @@
 import ActionEvent from './ActionEvent.js';
 
-const BECOMES_ATTACHED
-    = /^(?<subject>.+?) becomes? attached to(?= (?:an?|one or more)\b)/i;
+const ATTACHED = /^(?<subject>.+?) becomes? (?<unattached>un)?attached (?:to|from)\b/i;
 
 export default class BecomesAttachedEvent extends ActionEvent {
     static get pattern() {
-        return BECOMES_ATTACHED;
+        return ATTACHED;
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.isUnattached = Boolean(match.groups.unattached);
+    }
+
+    parseObjectPhrase() {
+        const phrase = super.parseObjectPhrase();
+        if (phrase && this.isUnattached && this.isSelf) phrase.wasAttachmentHost = true;
+        return phrase;
     }
 }

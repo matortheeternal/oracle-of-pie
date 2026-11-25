@@ -3,7 +3,12 @@ import {
     usesCreatureCount, usesOpposingArtifactCount
 } from '../values/quantityDependencies.js';
 
-const COST_CHANGE = /^costs? ((?:\{[^}]+\})+) (less|more) to (cast|activate)\b/i;
+const COST = '(?:\\{[^}]+\\})+';
+const ADDITIONAL_COST = '(?<extra>(?:\\[[^\\]]+\\]|\\d+ life|(?:\\{[^}]+\\})+))';
+const COST_CHANGE = new RegExp(
+    '^costs? (?:(?<amount>' + COST + ') (?<direction>less|more) to '
+        + '|an additional ' + ADDITIONAL_COST + ' to )(?<action>cast|activate)\\b', 'i'
+);
 const COST_TAIL_ALTERNATIVES = [
     'this way', 'for each (?:[^,.]|, (?=non))+', 'if [^,.]+', 'as long as [^,.]+',
     'during [^,.]+', 'unless they\'re mana abilities',
@@ -19,9 +24,10 @@ export default class CostModificationEffect extends Effect {
     }
 
     parseArguments(match) {
-        this.amount = match[1];
-        this.direction = match[2].toLowerCase();
-        this.action = match[3].toLowerCase();
+        const { amount, direction, extra, action } = match.groups;
+        this.amount = amount ?? extra;
+        this.direction = direction?.toLowerCase() ?? 'more';
+        this.action = action.toLowerCase();
         this.conditions = [];
         while (this.consumeCondition()) continue;
     }

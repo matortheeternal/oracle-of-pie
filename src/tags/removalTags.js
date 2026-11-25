@@ -164,6 +164,7 @@ export const REMOVAL_TAGS = [
             not: {
                 any: [
                     { isOptional: true, subject: { player: 'any opponent' } },
+                    { context: { granted: true }, subject: { isObjectController: true } },
                     { sharesSubject: true, affectsYou: true }
                 ]
             }

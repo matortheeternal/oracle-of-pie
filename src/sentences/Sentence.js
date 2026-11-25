@@ -52,10 +52,14 @@ export default class Sentence extends Parser {
     }
 
     readNestedStatement(text) {
-        if (!this.isConditional && !this.isDuration) return null;
+        if (!this.acceptsNestedStatement) return null;
         if (this.scribe.startsEffect(text)) return null;
         const nested = this.parseNext(text, this.scribe.statementParsers);
         return nested?.remainingStr ? null : nested;
+    }
+
+    get acceptsNestedStatement() {
+        return this.isConditional || this.isDuration;
     }
 
     link(previous, next) {

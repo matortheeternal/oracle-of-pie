@@ -1,6 +1,20 @@
 import Modifier from './Modifier.js';
 
 const CONTROLLER_ALTERNATIVES = [
+    'you cast that target(?:s)? (?:an? (?:creature|artifact|permanent)'
+        + '|enchanted (?:creature|player))',
+    'your opponents cast (?:from graveyards or from exile|during your turn)',
+    'your opponents cast that target '
+        + '(?:this creature|one or more commanders you control)',
+    'you activate during (?:your turn|each of your turns)',
+    'you cast during each of your turns',
+    'you cast from exile(?: each turn)?',
+    'enchanted player casts',
+    'they cast this turn',
+    'you control that\'s (?:a|an) [A-Z][a-z]+(?: or [A-Z][a-z]+)?',
+    'enchanted player controls',
+    'your opponents control that are able to block',
+    'their opponents control',
     'you control but don\'t own',
     'you own but don\'t control',
     'you control',
@@ -22,9 +36,8 @@ const CONTROLLER_ALTERNATIVES = [
     'its controller controls',
     'that opponent controls',
     'your team controls',
-    'enchanted player controls',
     'you cast but don\'t own',
-    'you cast(?: (?:each|this) turn)?',
+    'you cast(?: (?:(?:each|this) turn|during your turn))?',
     'your opponents cast(?: each turn)?',
     'opponents cast(?: each turn)?'
 ];
@@ -33,6 +46,7 @@ const CONTROLLER = new RegExp(
 );
 const EXCLUDED_OWNERSHIP = /\byou (?:control|cast) but don't own$/i;
 const YOURS = /^you (?:control|own|both|cast)/i;
+const TARGETING = /\bcast that targets?\b/i;
 
 export default class ControllerModifier extends Modifier {
     static match(scribe, str) {
@@ -46,6 +60,10 @@ export default class ControllerModifier extends Modifier {
 
     get excludesOwnedByYou() {
         return EXCLUDED_OWNERSHIP.test(this.controller);
+    }
+
+    get restrictsTargeting() {
+        return TARGETING.test(this.controller);
     }
 
     get controlledByYou() {

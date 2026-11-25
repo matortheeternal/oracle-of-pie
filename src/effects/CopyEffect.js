@@ -1,6 +1,8 @@
 import ObjectEffect from './ObjectEffect.js';
+import { COPY_EXCEPTION } from '../values/copyException.js';
 
-const COPY = /^copy /i;
+const COPY = /^(?:copy|copies) /i;
+const ARTIFACT_SOURCE = /^from an artifact source\b/i;
 const FOR_EACH = /^for each (?:[^,.]|, (?=non))+/i;
 const WHEN_CAST = /^when you cast it\b/i;
 const REPETITIONS = /^(?:twice|\w+ times)(?: instead)?/i;
@@ -35,7 +37,9 @@ export default class CopyEffect extends ObjectEffect {
         const multiplier = this.consumeText(FOR_EACH) ?? this.consumeText(REPETITIONS);
         this.isMultiplied = Boolean(multiplier);
         this.isNonlegendary = Boolean(this.consumeText(NONLEGENDARY));
+        this.exception = this.consumeText(COPY_EXCEPTION)?.[0] ?? null;
         this.onCast = Boolean(this.consumeText(WHEN_CAST));
+        this.fromArtifact = Boolean(this.consumeText(ARTIFACT_SOURCE));
     }
 
     get copiesInstantOrSorcery() {

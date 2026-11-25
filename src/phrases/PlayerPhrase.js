@@ -1,7 +1,34 @@
 import Phrase from './Phrase.js';
+import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const CONTROLLERS = 'the controller of (?:those creatures|that creature)';
+const DESCRIBED_OBJECT = '(?:that|this|enchanted|equipped'
+    + '|the (?:exiled|chosen|sacrificed)) '
+    + '(?:creature|land|card|spell|artifact|Vehicle|permanent)';
 const PLAYER_ALTERNATIVES = [
+    '(?:an?|one|two|three|four) (?:target )?(?:other )?players?(?! or permanent\\b)',
+    '(?:the|a) (?:second|third) player',
+    'one of the chosen players',
+    'the voter',
+    'each of them(?= searches| draws| discards)',
+    'their owners',
+    'a random opponent',
+    'each opponent attacking that player',
+    'you and each opponent who voted for a choice you voted for',
+    'each creature\'s controller',
+    'that player and (?:their|its) opponents',
+    'the player to your left',
+    'any number of target players',
+    '(?:the )?(?:first|second|third|active|voting|starting) player',
+    '(?:exactly |up to )?(?:one|two|three|four|any number of) target players',
+    '(?:one or more|any number) of your opponents',
+    '(?:a|the) player of (?:your|their) choice',
+    '(?:each|another|a different|the same) opponent',
+    'your team',
+    '(?:~|the spell)\'s (?:controller|owner)',
+    DESCRIBED_OBJECT + '\'s (?:controller|owner)',
+    'the (?:owners?|controllers?) of (?:up to one )?(?:other )?target '
+        + '(?:nonland )?(?:creatures?|permanents?|artifacts?|spells?)',
     'target opponent whose turn it is',
     'the player with the most life(?: or tied for most life)?',
     'each of its controller\'s opponents',
@@ -55,12 +82,37 @@ const PLAYER = new RegExp(
 );
 const YOU = /^you\b/i;
 const COMPOUND = / and /i;
-const RELATIVE = /^who (?:does(?:n't| not)?|can't|did(?:n't)?|lost life this turn)\b/i;
+const RELATIVES = [
+    'who was dealt damage by (?:~|this [a-z]+) this turn',
+    'other than (?:that player|you|its controller)',
+    'with no cards in (?:their )?hand',
+    'with fewer cards in hand than the player with the most cards in hand',
+    'who (?:has|have) ' + NUMBER_PATTERN + ' or more poison counters',
+    'who (?:lost|has lost) ' + NUMBER_PATTERN + ' or more life this turn',
+    'who (?:voted for a choice you voted for|received no votes)',
+    'who (?:sacrificed a permanent|discarded a card) this way',
+    'who (?:lost life|was dealt combat damage by (?:~|this [a-z]+)) this turn',
+    'who (?:owns|controls) (?:a|an|no) (?:multicolored |nonland )?'
+        + '(?:creature|artifact|enchantment|land|permanent)(?: or (?:an? )?[a-z]+)?'
+        + '(?: with (?:power|toughness) \\d+ or (?:greater|less))?'
+        + '(?: named (?:~|[A-Z][a-z]+))?',
+    'who shuffled a (?:nontoken )?creature into their library this way',
+    'who discarded a card that shares a card type with the card you discarded',
+    'who discarded (?:their|his|her) hand this way',
+    'who controls more lands than you',
+    'chosen at random',
+    'who has more life than you',
+    'dealt combat damage this game by a creature named ~',
+    'this creature attacked this turn',
+    'who (?:does(?:n\'t| not)?|can\'t|did(?:n\'t)?)'
+];
+const RELATIVE = new RegExp('^(?:' + RELATIVES.join('|') + ')(?![\\w\'-])', 'i');
 const OPPOSING = /opponent|defending|controller|owner|foe/i;
 const OPPONENT = /opponent|defending player/i;
 const EVERY_PLAYER = /^(?:each|players|your opponents)\b/i;
 const EACH_PLAYER = /^(?:each player|players)$/i;
 const CHOSEN_PLAYER = /^(?:target|that|the chosen) player$/i;
+const DISCARD_PREREQUISITE = /^who discarded .+ this way$/i;
 
 export default class PlayerPhrase extends Phrase {
     static match(scribe, str) {
@@ -92,6 +144,10 @@ export default class PlayerPhrase extends Phrase {
 
     get canBeYou() {
         return this.includesYou || CHOSEN_PLAYER.test(this.player);
+    }
+
+    get discardedToQualify() {
+        return DISCARD_PREREQUISITE.test(this.relative ?? '');
     }
 
     get isMass() {

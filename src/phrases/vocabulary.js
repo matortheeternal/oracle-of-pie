@@ -25,7 +25,7 @@ export const QUALIFIER_WORDS = new Set([
     'equipped', 'face-down', 'face-up', 'activated', 'triggered', 'loyalty',
     'chosen', 'exiled', 'prepared', 'goaded', 'suspected', 'saddled',
     'monstrous', 'double-faced', 'transformed', 'historic',
-    'token', 'commander', 'kicked'
+    'token', 'commander', 'kicked', 'outlaws', 'suspended', 'modal', 'renowned'
 ]);
 
 export const NEGATED_QUALIFIER = /^non-?[a-z]+$/i;

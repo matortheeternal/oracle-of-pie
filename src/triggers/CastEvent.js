@@ -17,7 +17,8 @@ const PLAYS_LAND = '(?<playsLand> plays? a (?:legendary )?land(?: from exile)? o
 const CASTER = `^${SUBJECT}(?<next> next)?${MANA_SPENT}${PLAYS_LAND} casts? `;
 const COPY_ALTERNATIVE = '(?:or (?<otherVerb>[a-z]+) )?';
 const SPELL_TYPES = '(?:an? )?(?:instant|sorcery)\\b';
-const SPELL = '(?<spell>this spell\\b|~|.*?\\bspells?\\b|' + SPELL_TYPES + ')';
+const SPELL = '(?<spell>this spell\\b|your commander\\b|~|.*?\\bspells?\\b|'
+    + SPELL_TYPES + ')';
 const CAST = new RegExp(CASTER + COPY_ALTERNATIVE + SPELL, 'i');
 const THIS_SPELL = /^(?:this spell|~)$/i;
 

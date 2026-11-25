@@ -7,6 +7,7 @@ import TurnWindow from './qualifiers/TurnWindow.js';
 import FirstTime from './qualifiers/FirstTime.js';
 import Unblocked from './qualifiers/Unblocked.js';
 import CoordinatedSubject from './subjects/CoordinatedSubject.js';
+import AttackCondition from './qualifiers/AttackCondition.js';
 
 const ATTACKS = /^(?<subject>.+?) attacks?\b/i;
 
@@ -20,7 +21,10 @@ export default class AttacksEvent extends TriggerEvent {
     }
 
     static get qualifierParsers() {
-        return [Alone, WhileSaddled, AttackingWith, Unblocked, FirstTime, TurnWindow];
+        return [
+            Alone, WhileSaddled, AttackCondition, AttackingWith, Unblocked,
+            FirstTime, TurnWindow
+        ];
     }
 
     parseObjectPhrase() {

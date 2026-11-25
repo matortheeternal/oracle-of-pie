@@ -1,18 +1,21 @@
 import Phrase from '../../phrases/Phrase.js';
 
 const PLAYER = [
+    'one or more players', 'another one of your opponents',
+    'enchanted (?:player|opponent)', 'the monarch',
     'one or more of your opponents', 'one of your opponents', 'a player',
     'the player with the most life(?: or tied for most life)?',
     'the player who has the initiative', 'different players',
     'an opponent', 'you'
 ].join('|');
-const WALKER = '(?:a )?(?<alternative>planeswalker)';
+const WALKER = '(?:a |one or more )?(?<alternative>planeswalkers?)';
 const WALKER_CONTROLLER = '(?: (?<theirController>you control|they control))?';
-const PLAYER_OR_WALKER = `(?<player>${PLAYER})(?: or ${WALKER}${WALKER_CONTROLLER})?`;
+const PLAYER_OR_WALKER = `(?<player>${PLAYER})`
+    + `(?: (?:and/or|or) ${WALKER}${WALKER_CONTROLLER})?`;
 const OBJECT = '(?<object>a battle|a planeswalker(?: (?<objectController>you control))?)';
 const RECIPIENT = new RegExp(`^(?:${PLAYER_OR_WALKER}|${OBJECT})\\b`, 'i');
 const OPPONENT = /opponents?\b/i;
-const PLANESWALKER = /planeswalker\b/i;
+const PLANESWALKER = /planeswalkers?\b/i;
 
 export default class AttackRecipient extends Phrase {
     static match(scribe, str) {

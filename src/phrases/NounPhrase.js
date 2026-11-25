@@ -5,6 +5,7 @@ import RelationModifier from './modifiers/RelationModifier.js';
 import { TYPE_WORDS } from './vocabulary.js';
 import { classifyWord, TYPE, SUBTYPE, QUALIFIER, EXCLUSION } from './wordClass.js';
 import NegatedWord from './NegatedWord.js';
+import PTModifier from '../values/PTModifier.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const N = NUMBER_PATTERN;
@@ -18,13 +19,21 @@ const DETERMINER_ALTERNATIVES = [
     'any number of (?:other )?target',
     `(${N}) (?:other )?target`,
     `up to (${N})`,
-    'up to that many',
+    'up to that many target', 'up to that many',
+    `exactly (${N})`,
+    `each of (${N}) target`,
+    'that many target',
+    'that many', 'a number of', 'all the', 'a random', 'a different', 'half the',
+    `(?:a|the) ${ORDINAL} target`,
+    'up to twice X target',
     'another target', 'other target', 'target', 'each other', 'each', 'all other',
-    'all', 'another', 'one or more', `(${N}) or more`, 'any number of', 'any', N,
+    'all', 'another', 'one or more', `(${N}) or more`,
+    'any number of those', 'any number of', 'any', N,
     `the ${ORDINAL}`, 'the next', 'the', 'that', 'those', 'your(?= commanders?\\b)'
 ];
 const DETERMINER = new RegExp(`^(${DETERMINER_ALTERNATIVES.join('|')})\\b`, 'i');
 const WORD = /^([A-Za-z][A-Za-z'-]*)(?=[\s,.;:"]|$)/;
+const STAT_QUALIFIER = /^\d+\/\d+ /;
 const TYPE_JOINER = /^(?:,? ?(?:and\/or|or|and) |, )/;
 const COMMANDER = 'commander';
 const CHOSEN = 'chosen';
@@ -35,6 +44,9 @@ const PLURAL = /s$/;
 const PERMANENT_TYPES = [
     'creature', 'artifact', 'enchantment', 'land', 'planeswalker', 'battle', 'permanent'
 ];
+const OUTLAW = /^outlaws?$/i;
+const EXCLUDES_OBJECT = /^other than\b/i;
+const CONTROLLER_CLAUSE = /^(?:enchanted|defending) player controls\b/i;
 const ADJECTIVAL_TYPES = new Set(['card', 'spell', 'token', 'permanent']);
 
 const PLURAL_S = /(?<=[^s])s$/;
@@ -68,7 +80,8 @@ export default class NounPhrase extends Phrase {
     static match(scribe, str) {
         const determiner = str.match(DETERMINER);
         const rest = determiner ? str.slice(determiner[0].length).trimStart() : str;
-        if (!nextWordClass(scribe, rest)) return null;
+        const words = rest.replace(STAT_QUALIFIER, '');
+        if (!nextWordClass(scribe, words)) return null;
         return determiner ?? [''];
     }
 
@@ -84,6 +97,8 @@ export default class NounPhrase extends Phrase {
         this.pluralTypes = false;
         this.typeGroups = [];
         this.followsType = false;
+        this.stats = STAT_QUALIFIER.test(this.remainingStr)
+            ? this.consume([PTModifier]) : null;
         this.consumeWords();
         this.modifiers = this.consumeAll(MODIFIER_PARSERS, []);
     }
@@ -93,6 +108,8 @@ export default class NounPhrase extends Phrase {
     }
 
     consumeWord() {
+        if (EXCLUDES_OBJECT.test(this.remainingStr)) return false;
+        if (CONTROLLER_CLAUSE.test(this.remainingStr)) return false;
         if (RelationModifier.match(this.scribe, this.remainingStr)) return false;
         const match = this.remainingStr.match(WORD);
         const wordClass = match && classifyWord(this.scribe, match[1]);
@@ -118,6 +135,7 @@ export default class NounPhrase extends Phrase {
     }
 
     addQualifier(word) {
+        if (OUTLAW.test(word) && !this.types.length) this.addType('creatures');
         this.qualifiers.push(word.toLowerCase());
     }
 
@@ -166,7 +184,7 @@ export default class NounPhrase extends Phrase {
     }
 
     get children() {
-        return this.modifiers;
+        return [this.stats, ...this.modifiers].filter(Boolean);
     }
 
     get isRecognized() {
@@ -196,6 +214,15 @@ export default class NounPhrase extends Phrase {
 
     get hasNameRestriction() {
         return this.modifiers.some(modifier => modifier.restrictsName);
+    }
+
+    get limitsToPastEvent() {
+        return this.modifiers.some(modifier => modifier.limitsToPastEvent);
+    }
+
+    get hasCombatTraitRestriction() {
+        return this.modifiers.some(modifier => modifier.keywords.length
+            || modifier.requiresFixedStats || modifier.limitsToPastEvent);
     }
 
     get isMass() {
@@ -263,7 +290,12 @@ export default class NounPhrase extends Phrase {
     }
 
     excludesType(type) {
-        return this.excludes(TYPE, type);
+        return this.excludes(TYPE, type) || this.excludesArtifactByRule(type);
+    }
+
+    excludesArtifactByRule(type) {
+        return type === 'artifact'
+            && this.modifiers.some(modifier => modifier.excludesArtifacts);
     }
 
     excludesSubtype(subtype) {

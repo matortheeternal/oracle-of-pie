@@ -1,3 +1,18 @@
+import PayNamedCostEffect from './PayNamedCostEffect.js';
+import SpliceEffect from './SpliceEffect.js';
+import CountObjectsEffect from './CountObjectsEffect.js';
+import AttackLimitEffect from './AttackLimitEffect.js';
+import ManaProductionReplacementEffect from './ManaProductionReplacementEffect.js';
+import AssignStatsEffect from './AssignStatsEffect.js';
+import SpellCastingRuleEffect from './SpellCastingRuleEffect.js';
+import UnattachEffect from './UnattachEffect.js';
+import RoundingEffect from './RoundingEffect.js';
+import DefineVariableEffect from './DefineVariableEffect.js';
+import DamageMultiplierEffect from './DamageMultiplierEffect.js';
+import TriggerSuppressionEffect from './TriggerSuppressionEffect.js';
+import EmblemEffect from './EmblemEffect.js';
+import TokenReplacementEffect from './TokenReplacementEffect.js';
+import ChangeAttackRecipientEffect from './ChangeAttackRecipientEffect.js';
 import SelfShuffleEffect from './SelfShuffleEffect.js';
 import SearchLibraryEffect from './SearchLibraryEffect.js';
 import GainControlEffect from './GainControlEffect.js';
@@ -124,7 +139,7 @@ import ExtraTurnEffect from './ExtraTurnEffect.js';
 import SetLifeTotalEffect from './SetLifeTotalEffect.js';
 
 export const EFFECT_PARSERS = [
-    SelfShuffleEffect,
+    SelfShuffleEffect, ManaProductionReplacementEffect,
     DigUntilEffect, TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect,
     LoseLifeEffect, CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect,
     ReturnEffect, DrawEffect, DiscardEffect, DamageModificationEffect, DamageFormEffect,
@@ -163,7 +178,12 @@ export const EFFECT_PARSERS = [
     SeparatePilesEffect, RepeatPropertyEffect, SwitchStatsEffect, ExchangeEffect,
     LookAtCardsEffect, CopyTargetEffect, SearchZonesEffect, DeckConstructionEffect,
     DraftEffect, ActivationPermissionEffect, PlayerControlEffect, RoomDoorEffect,
-    SetCombatDamageEffect, OpaqueEffect
+    SetCombatDamageEffect,
+    DamageMultiplierEffect, TriggerSuppressionEffect, EmblemEffect,
+    TokenReplacementEffect, ChangeAttackRecipientEffect,
+    AssignStatsEffect, SpellCastingRuleEffect, UnattachEffect,
+    RoundingEffect, DefineVariableEffect,
+    SpliceEffect, CountObjectsEffect, AttackLimitEffect, PayNamedCostEffect, OpaqueEffect
 ];
 
 export {

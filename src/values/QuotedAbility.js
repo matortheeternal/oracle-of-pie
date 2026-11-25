@@ -1,6 +1,7 @@
 import Node from '../core/Node.js';
 
 const QUOTED = /^"([^"]*?),?"/;
+const NESTED_QUOTED = /^'((?:[^']|'(?=\w))*?),?'(?!\w)/;
 
 function isTemporary(context) {
     return Boolean(context.effectDuration?.isTemporary || context.condition?.isDuration);
@@ -14,7 +15,7 @@ function recipientController(recipient, controller) {
 
 export default class QuotedAbility extends Node {
     static match(scribe, str) {
-        return str.match(QUOTED);
+        return str.match(QUOTED) ?? str.match(NESTED_QUOTED);
     }
 
     constructor(scribe, match, str) {

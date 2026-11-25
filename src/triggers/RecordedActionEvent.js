@@ -12,6 +12,22 @@ const ACTIONS = {
     'reveals?': 'reveal',
     'plays?': 'play',
     'foretells?': 'foretell',
+    'copies?': 'copy',
+    'investigates?': 'investigate',
+    'forages?': 'forage',
+    'manifests? dread': 'manifest-dread',
+    'discovers?': 'discover',
+    'waterbends?': 'waterbend',
+    'untaps?': 'untap',
+    'phases? (?<phaseDirection>in|out)': 'phase',
+    'finish(?:es)? voting': 'finish-voting',
+    'puts?(?= .+ onto the battlefield this way)': 'put-onto-battlefield',
+    'loses? (?:a coin flip|the flip)': 'lose-coin-flip',
+    'gains? control of': 'gain-control',
+    '(?:is|are) attacked': 'is-attacked',
+    '(?:is|are) sacrificed or destroyed': 'is-sacrificed-or-destroyed',
+    '(?:is|are) drawn': 'is-drawn',
+    'chooses? a creature as your Ring-bearer': 'choose-ring-bearer',
     'mills?': 'mill',
     'enlists?': 'enlist',
     'mentors?': 'mentor',
@@ -30,7 +46,7 @@ const ACTIONS = {
     'pays? life': 'pay-life',
     'pays? this cost': 'pay-cost',
     'turns?(?= .+ face up)': 'turn-face-up',
-    '(?:is|are) returned to hand': 'return-to-hand',
+    '(?:is|are) returned to (?:hand|its owner\'s hand)': 'return-to-hand',
     '(?:is|are) cast': 'cast'
 };
 const ACTION_CHOICES = Object.keys(ACTIONS).map(
@@ -43,6 +59,8 @@ const END_OF_OBJECT = /^(?:face up|this way)\b/i;
 const COUNT = new RegExp(`^${NUMBER_PATTERN} or more times\\b`, 'i');
 const SEARCH_LIBRARY = /^(?:their|your|that player's) library\b/i;
 const FACE_UP = /^face up\b/i;
+const BATTLEFIELD = /^onto the battlefield\b/i;
+const PREVIOUS_CONTROLLER = /^from you\b/i;
 
 function actionOf(groups) {
     const index = ACTION_CHOICES.findIndex((_, i) => groups[`action${i}`]);
@@ -61,6 +79,7 @@ export default class RecordedActionEvent extends ActionEvent {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.action = actionOf(match.groups);
+        this.phaseDirection = match.groups.phaseDirection?.toLowerCase() ?? null;
         this.threshold = this.action === 'pay-cost' ? this.consumeText(COUNT)?.[0] : null;
     }
 
@@ -77,8 +96,17 @@ export default class RecordedActionEvent extends ActionEvent {
         if (!this.objectText) return null;
         const phrase = super.parseObjectPhrase();
         if (!phrase) return null;
-        if (this.action === 'turn-face-up') this.consumeText(FACE_UP);
+        this.readObjectTail();
         return phrase;
+    }
+
+    readObjectTail() {
+        const tails = {
+            'turn-face-up': FACE_UP, 'put-onto-battlefield': BATTLEFIELD,
+            'gain-control': PREVIOUS_CONTROLLER
+        };
+        const tail = tails[this.action];
+        if (tail) this.consumeText(tail);
     }
 
     get isRepeatable() {

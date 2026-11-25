@@ -1,7 +1,12 @@
 import Effect from './Effect.js';
 import consumeGrantedAbilities from '../values/consumeGrantedAbilities.js';
 
-const GAINS = /^(?:gains?|has|have) (?=["a-z])/i;
+const GAINS = /^(?:gains?|has|have) (?=["'a-z])/i;
+const ALL_CHARACTERISTICS = new RegExp(
+    '^all (?<property>creature types|names of nonlegendary'
+        + ' creature cards)(?<additional> in addition to its(?:'
+        + ' other)? (?:types|name))?', 'i'
+);
 const BORROWED_ABILITIES = new RegExp(
     '^all (?<kind>activated(?: and triggered)?) abilities of '
     + '(?<source>[^,.]+?)(?= and (?:gets|can)\\b| until\\b|$|[,.])', 'i'
@@ -23,6 +28,7 @@ export default class GrantEffect extends Effect {
         this.borrowedAbilitySource = borrowed?.source ?? null;
         this.condition = this.consumeText(CONDITION)?.[1] ?? null;
         this.restrictedTo = this.consumeText(FOR_OBJECTS)?.[0] ?? null;
+        this.characteristics = this.consumeText(ALL_CHARACTERISTICS)?.groups ?? null;
     }
 
     get parts() {
@@ -30,7 +36,8 @@ export default class GrantEffect extends Effect {
     }
 
     get isComplete() {
-        return Boolean(this.keywords || this.quoted || this.borrowedAbilitySource);
+        return Boolean(this.keywords || this.quoted || this.borrowedAbilitySource
+            || this.characteristics);
     }
 
     get grantsKeywords() {

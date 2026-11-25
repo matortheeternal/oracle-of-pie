@@ -1,6 +1,7 @@
 import Effect from './Effect.js';
 
 const MODIFIED_AMOUNT_ALTERNATIVES = [
+    'that much damage plus an amount of damage equal to [^,.]+?(?= instead\\b)',
     'that much damage (?:plus|minus) \\w+',
     'double that damage',
     'twice that much damage',

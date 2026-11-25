@@ -8,11 +8,15 @@ import {
 } from '../values/quantityDependencies.js';
 
 const DEALS = /^deals? /i;
-const COUNT = `(${NUMBER_PATTERN}|that much|twice (?:that much|X)|N)`;
+const FIXED_COUNT = `${NUMBER_PATTERN}(?: plus ${NUMBER_PATTERN})?`;
+const COUNT = `(${FIXED_COUNT}|that much|twice (?:that much|X)`
+    + '|that amount of|five times X|N)';
 const POWER_OWNER = `(its|their|~'s|that creature's|this creature's)`;
+const DIVIDED = ' divided as you choose';
+const DAMAGE_END = '(?= to | instead\\b|$)|' + DIVIDED + '(?= among )';
 const AMOUNT = new RegExp(
-    `^(?:${COUNT} damage(?: divided as you choose)?`
-        + `|damage equal to (?:${POWER_OWNER} power|[^,.]+?)(?= to )`
+    `^(?:${COUNT} damage(?:${DIVIDED})?`
+        + `|damage equal to (?:${POWER_OWNER} power|[^.]+?)(?:${DAMAGE_END})`
         + '|damage(?= to ))',
     'i'
 );
@@ -47,8 +51,9 @@ export default class DamageEffect extends Effect {
     }
 
     get fixedAmount() {
-        const count = this.amountText?.split(' ')[0] ?? '';
-        return numberValue(count) ?? null;
+        const count = this.amountText?.split(' damage')[0] ?? '';
+        const value = numberValue(count);
+        return Number.isFinite(value) ? value : null;
     }
 
     get scalesWithCreatureStats() {

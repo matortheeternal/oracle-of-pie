@@ -2,6 +2,12 @@ import ObjectEffect from './ObjectEffect.js';
 
 const EXILE = /^exiles? /i;
 const EXILE_TAIL_ALTERNATIVES = [
+    'from the bottom of (?:your|their|that player\'s) library',
+    'from the top(?: of (?:your|their|its owner\'s|that player\'s) library)?'
+        + '(?: face down)?(?: equal to [^,.]+)?',
+    'equal to [^,.]+?(?= from the top of )',
+    'equal to [^,.]+',
+    'from outside the game',
     'face down',
     'again',
     'from (?:each|all) graveyards?',
@@ -9,7 +15,7 @@ const EXILE_TAIL_ALTERNATIVES = [
     'instead of putting [^,.]+',
     'instead',
     'at random',
-    'until ~ leaves the battlefield',
+    'until ~ leaves? the battlefield',
     'until [^,.]+ leaves the battlefield',
     'from the top of (?:your|their|its owner\'s|that player\'s) library until [^,.]+',
     'with [^,.]*counters? on (?:it|them)',

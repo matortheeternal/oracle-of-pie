@@ -1,8 +1,8 @@
 import Modifier from './Modifier.js';
 
 const WITH_OR_WITHOUT = /^(with|without|that has) /i;
-const KEYWORD_JOINER = /^,? ?(?:and\/or|or|and) /i;
-const KEYWORD_SEPARATOR = /,? ?(?:and\/or|or|and) /i;
+const KEYWORD_JOINER = /^(?:,? ?(?:and\/or|or|and) |, )/i;
+const KEYWORD_SEPARATOR = /,? ?(?:and\/or|or|and) |, /i;
 
 function joinedKeyword(scribe, str) {
     const joiner = str.match(KEYWORD_JOINER);

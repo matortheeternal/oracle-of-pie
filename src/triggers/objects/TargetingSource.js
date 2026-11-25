@@ -1,10 +1,11 @@
 import Phrase from '../../phrases/Phrase.js';
 
 const SOURCE_KINDS = [
+    'a spell or an? ability', 'an? ability or a spell', 'a black spell',
     'a spell(?: or ability)?', 'an (?:activated |triggered )?ability',
     'an aura spell', 'an instant or sorcery spell'
 ].join('|');
-const CONTROLLER = '(?: (?<controller>you control|an opponent controls))?';
+const CONTROLLER = '(?: (?<controller>you control|an opponent controls|they control))?';
 const SOURCE = new RegExp(`^(?<kind>${SOURCE_KINDS})${CONTROLLER}\\b`, 'i');
 const SPELL = /\bspell\b/i;
 const ABILITY = /\bability\b/i;

@@ -8,7 +8,10 @@ import { PHRASE_PARSERS } from '../phrases/index.js';
 const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |,? ?or |, )/i;
 const ALTERNATIVE = /^,? ?or /i;
 const MAY = /^may /i;
-const EACH = /^each /i;
+const GROUP_ADVERB = /^(?:each|both) /i;
+const ONLY = /^only (?=you\b|[\w]+s\b)/i;
+const SINGULAR_BE = /^'s /i;
+const PLURAL_BE = /^'re /i;
 const ALSO = /^also /i;
 const INSTEAD = /^instead /i;
 
@@ -54,13 +57,17 @@ export default class ClauseReader extends Parser {
     readClause() {
         this.consumeText(ALSO);
         const replaces = Boolean(this.consumeText(INSTEAD));
+        const isOptional = Boolean(this.consumeText(MAY));
         const effect = this.consume(EFFECT_PARSERS) ?? this.readSubjectEffect();
-        if (effect && replaces) effect.replacesPriorAction = true;
+        if (!effect) return null;
+        if (replaces) effect.replacesPriorAction = true;
+        if (isOptional) effect.isOptional = true;
         return effect;
     }
 
     readSubjectEffect() {
         const start = this.remainingStr;
+        this.consumeText(ONLY);
         const single = this.consume(PHRASE_PARSERS);
         const effect = single && this.readEffectFor(single);
         if (effect) return effect;
@@ -80,8 +87,10 @@ export default class ClauseReader extends Parser {
         if (!subject) return null;
         this.consumeText(ALSO);
         const isOptional = Boolean(this.consumeText(MAY));
-        this.consumeText(EACH);
+        this.consumeText(GROUP_ADVERB);
         const replaces = Boolean(this.consumeText(INSTEAD));
+        this.remainingStr = this.remainingStr.replace(SINGULAR_BE, 'is ')
+            .replace(PLURAL_BE, 'are ');
         const effect = this.consume(EFFECT_PARSERS);
         if (!effect) return null;
         if (replaces) effect.replacesPriorAction = true;

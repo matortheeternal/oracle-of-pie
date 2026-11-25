@@ -1,9 +1,17 @@
 import TriggerEvent from './TriggerEvent.js';
 
-const ROLLS_DICE = /^(?<subject>.+?) rolls? (?:one or more dice|a die)\b/i;
+const ROLL = new RegExp(
+    '^(?<subject>.+?) rolls? (?<result>one or more dice|a die|a'
+        + ' natural \\d+|a \\d+ or higher)\\b', 'i'
+);
 
 export default class RollsDiceEvent extends TriggerEvent {
     static get pattern() {
-        return ROLLS_DICE;
+        return ROLL;
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.result = match.groups.result.toLowerCase();
     }
 }

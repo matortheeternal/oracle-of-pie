@@ -1,9 +1,12 @@
 import TriggerEvent from './TriggerEvent.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
-import { PHRASE_PARSERS } from '../phrases/index.js';
 import DamageSource from './subjects/DamageSource.js';
+import { NUMBER_PATTERN } from '../values/numberWords.js';
+import PhraseList from '../phrases/PhraseList.js';
 
-const DEALS = /^(?<subject>.+?) deals? (?:(?:non)?combat )?damage\b/i;
+const AMOUNT = '(?:(?:exactly )?' + NUMBER_PATTERN + '(?: or more)?|excess)';
+const DEALS = new RegExp('^(?<subject>.+?) deals? (?:(?<amount>' + AMOUNT
+    + ') )?(?:(?:non)?combat )?damage\\b', 'i');
 const COMBAT = /\bcombat damage\b/i;
 const NONCOMBAT = /\bnoncombat damage\b/i;
 const TO = /^to /i;
@@ -21,13 +24,24 @@ export default class DealsDamageEvent extends TriggerEvent {
         return [TurnWindow];
     }
 
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.amount = match.groups.amount?.toLowerCase() ?? null;
+        this.additionalRecipients = [];
+    }
+
     parseObjectPhrase() {
         const recipient = this.remainingStr.match(TO);
         if (!recipient) return null;
         const text = this.remainingStr.slice(recipient[0].length);
-        const phrase = this.parseNext(text, PHRASE_PARSERS);
-        if (phrase) this.remainingStr = phrase.remainingStr;
-        return phrase;
+        const recipients = this.parseNext(text, [PhraseList]);
+        if (recipients) this.remainingStr = recipients.remainingStr;
+        this.additionalRecipients = recipients?.children.slice(1) ?? [];
+        return recipients?.children[0] ?? null;
+    }
+
+    get objectParticipants() {
+        return [...super.objectParticipants, ...this.additionalRecipients];
     }
 
     get recipient() {

@@ -10,6 +10,7 @@ function isBattlefieldSource(phrase) {
 }
 
 const RETURN = /^returns? /i;
+const PASSIVE_RETURN = /^(?:is|are) returned (?:from the battlefield )?(?=to )/i;
 const DESTINATION_ALTERNATIVES = [
     '(its owner\'s|their owners\'|their owner\'s|their|your|its) hands?',
     '(the battlefield)',
@@ -33,7 +34,9 @@ const RETURN_TAIL_ALTERNATIVES = [
     'under (?:their|that player\'s|an opponent\'s) control',
     'with (?:an? |N |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them)',
     'at the beginning of [^,.]+',
-    'at end of combat'
+    'at end of combat',
+    'except for (?:Giants, Wizards, and lands|Merfolk, Krakens,'
+        + ' Leviathans, Octopuses, and Serpents)'
 ];
 const RETURN_TAIL = new RegExp(
     `^(${RETURN_TAIL_ALTERNATIVES.join('|')})`, 'i'
@@ -44,12 +47,18 @@ export default class ReturnEffect extends ObjectEffect {
         return RETURN;
     }
 
+    static match(scribe, str) {
+        return super.match(scribe, str) ?? str.match(PASSIVE_RETURN);
+    }
+
     parseArguments(match) {
+        this.isPassive = PASSIVE_RETURN.test(match[0]);
+        const leadingDestination = this.consumeText(DESTINATION);
         super.parseArguments(match);
         this.resultFilter = this.consumeText(RESULT_FILTER)?.[0] ?? null;
         this.source = this.consumeText(FROM_GRAVEYARD) ? 'graveyard' : null;
         this.alternativeSource = this.consumeAlternativeSource();
-        const destination = this.consumeText(DESTINATION);
+        const destination = leadingDestination ?? this.consumeText(DESTINATION);
         this.destination = this.destinationOf(destination);
         this.manner = [];
         while (this.consumeTail()) continue;
@@ -78,7 +87,11 @@ export default class ReturnEffect extends ObjectEffect {
     }
 
     get isComplete() {
-        return super.isComplete && Boolean(this.destination);
+        return Boolean(this.destination && (this.isPassive || super.isComplete));
+    }
+
+    get phrases() {
+        return this.isPassive ? [this.subject].filter(Boolean) : super.phrases;
     }
 
     get isBounce() {

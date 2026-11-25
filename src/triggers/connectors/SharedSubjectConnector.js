@@ -1,7 +1,7 @@
 import EventConnector from './EventConnector.js';
 import { readSimpleEvent } from '../simpleEvents.js';
 
-const OR = /^,?\s*or /i;
+const OR = /^(?:,? ?or |, (?!and ))/i;
 
 export default class SharedSubjectConnector extends EventConnector {
     static get pattern() {

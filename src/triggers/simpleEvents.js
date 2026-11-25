@@ -1,3 +1,7 @@
+import AbilityEvent from './AbilityEvent.js';
+import CounterRemovalEvent from './CounterRemovalEvent.js';
+import ThresholdEvent from './ThresholdEvent.js';
+import SpentManaEvent from './SpentManaEvent.js';
 import PhaseEvent from './PhaseEvent.js';
 import CastEvent from './CastEvent.js';
 import DiesEvent from './DiesEvent.js';
@@ -53,7 +57,8 @@ import CompletesDungeonEvent from './CompletesDungeonEvent.js';
 import RecordedActionEvent from './RecordedActionEvent.js';
 
 export const SIMPLE_EVENTS = [
-    PhaseEvent, CastEvent, EntersEvent, AttacksEvent, DiesEvent, DealsDamageEvent,
+    PhaseEvent, SpentManaEvent, AbilityEvent, CastEvent, EntersEvent,
+    AttacksEvent, DiesEvent, DealsDamageEvent,
     TargetedEvent, DamagePreventedEvent,
     DrawsEvent, GainsLifeEvent, LosesLifeEvent,
     CyclesEvent, SacrificesEvent, DiscardsEvent, ScryEvent, SurveilEvent,
@@ -66,7 +71,7 @@ export const SIMPLE_EVENTS = [
     GetsEnergyEvent, TapsEvent, TappedForManaEvent,
     BecomesStatusEvent, BecomesMonstrousEvent, BecomesAttachedEvent, BecomesPlottedEvent,
     CrewsEvent, ExploresEvent, ConnivesEvent, BecomesUntappedEvent, MilledEvent,
-    CompletesDungeonEvent, RecordedActionEvent
+    CompletesDungeonEvent, CounterRemovalEvent, ThresholdEvent, RecordedActionEvent
 ];
 
 export function readSimpleEvent(scribe, str) {

@@ -43,7 +43,14 @@ export default class BecomesEffect extends Effect {
 
     parseKeywords() {
         const tail = this.description?.match(WITH_KEYWORDS)?.[1];
-        return tail ? this.parseNext(tail, [KeywordList]) : null;
+        if (!tail) return null;
+        const rest = this.remainingStr;
+        const keywords = this.parseNext(tail + ' ' + rest, [KeywordList]);
+        if (keywords?.remainingStr.length < rest.length) {
+            this.remainingStr = keywords.remainingStr;
+            this.description += rest.slice(0, rest.length - this.remainingStr.length);
+        }
+        return keywords;
     }
 
     get parts() {

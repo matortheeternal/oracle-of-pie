@@ -10,7 +10,7 @@ const SEARCH_ALTERNATIVES = [
 ];
 const SEARCH = new RegExp(
     `^search(?:es)? (?:${SEARCH_ALTERNATIVES.join('|')}) library`
-        + '(?: and(?:\\/or)? (?:your )?graveyard)? for ',
+        + '(?:(?: and(?:\\/or)?| or) (?:your )?graveyard)? for ',
     'i'
 );
 const WHERE_X = /^, where X is [^,.]+/i;
@@ -24,16 +24,17 @@ const PUT_DESTINATION_ALTERNATIVES = [
 ];
 const PUT_OBJECT = '(?:it|them|that card|those cards|one of them|the rest)';
 const SPLIT_DESTINATION = new RegExp(
-    '^,? (?:and |then )?put one (onto the battlefield tapped) '
+    '^,? ?(?:and |then )?put one (onto the battlefield tapped) '
         + 'and the other into your hand',
     'i'
 );
 const PUT_DESTINATION = new RegExp(
-    `^,? (?:and |then )?put ${PUT_OBJECT}(?: (?:onto|into) [^,.]+?)? `
+    `^,? ?(?:and |then )?put ${PUT_OBJECT}(?: (?:onto|into) [^,.]+?)? `
         + `(${PUT_DESTINATION_ALTERNATIVES.join('|')})`,
     'i'
 );
-const SHUFFLE = /^,? (?:then |and )?shuffle/i;
+const SHUFFLE = /^,? ?(?:then |and )?shuffle\b/i;
+const COUNTERS_ON_CARD = /^with (?<counters>[^,.]+ counters? on (?:it|them))\b/i;
 
 function isLandPhrase(phrase) {
     if (phrase.hasExactType?.('land')) return true;
@@ -57,6 +58,8 @@ export default class SearchLibraryEffect extends Effect {
         this.splitsBetweenBattlefieldAndHand = Boolean(split);
         const destination = split ?? this.consumeText(PUT_DESTINATION);
         this.destination = destination?.[1].toLowerCase() ?? null;
+        this.destinationCounters = destination
+            ? this.consumeText(COUNTERS_ON_CARD)?.groups.counters ?? null : null;
         this.shuffles = Boolean(this.consumeText(SHUFFLE));
     }
 

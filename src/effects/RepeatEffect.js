@@ -1,8 +1,9 @@
 import Effect from './Effect.js';
 
 const REPEAT = new RegExp(
-    '^repeat this process(?: (?<count>once|twice|\\w+ (?:more )?times))?'
-    + '(?: for (?<variation>[^.]+))?', 'i'
+    '^(?:repeat (?:this|the following) process'
+        + '(?: (?<count>once|twice|\\w+ (?:more )?times))?'
+        + '(?: for (?<variation>[^.]+))?|does? the same|do all of the above)', 'i'
 );
 
 export default class RepeatEffect extends Effect {

@@ -1,7 +1,8 @@
 import KeywordList from './KeywordList.js';
 import QuotedAbility from './QuotedAbility.js';
 
-const QUOTE_SEPARATOR = /^\s*,? ?(?:and )?(?=")/i;
+const QUOTE_SEPARATOR = /^\s*,? ?(?:and )?(?=["'])/i;
+const KEYWORD_SEPARATOR = /^(?:,? and |, )/i;
 
 function consumeNextQuoted(parser) {
     const start = parser.remainingStr;
@@ -20,8 +21,19 @@ function consumeQuotedList(parser, keywords) {
     return quoted;
 }
 
-export default function consumeGrantedAbilities(parser) {
+function consumeKeywordsAfterQuotes(parser, quotedAbilities) {
+    if (!quotedAbilities.length) return null;
+    const start = parser.remainingStr;
+    if (!parser.consumeText(KEYWORD_SEPARATOR)) return null;
     const keywords = parser.consume([KeywordList]);
-    const quotedAbilities = consumeQuotedList(parser, keywords);
+    if (!keywords) parser.remainingStr = start;
+    return keywords;
+}
+
+export default function consumeGrantedAbilities(parser) {
+    const initialKeywords = parser.consume([KeywordList]);
+    const quotedAbilities = consumeQuotedList(parser, initialKeywords);
+    const keywords = initialKeywords
+        ?? consumeKeywordsAfterQuotes(parser, quotedAbilities);
     return { keywords, quoted: quotedAbilities[0] ?? null, quotedAbilities };
 }

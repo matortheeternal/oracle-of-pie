@@ -1,10 +1,10 @@
 import Ability from './Ability.js';
 
-const WORD_LABEL = `[A-Z][A-Za-z'’!-]*(?: [A-Za-z0-9'’!-]+){0,7}`;
-const NUMBERED_LABEL = '\\d+-[A-Z][A-Za-z-]* [A-Z][A-Za-z-]*';
+const WORD_LABEL = '[A-Z~∞][\\w~.,?\'’!-]*(?: [\\w~.,?\'’!-]+){0,7}';
+const NUMBERED_LABEL = '[0-9][0-9,]*(?:-| )[A-Z][A-Za-z-]*';
 const ABILITY_WORD = new RegExp(`^(${WORD_LABEL}|${NUMBERED_LABEL}) (?:—|-) (?=\\S)`);
 const CHOICE_LABEL = /\bfaces? a villainous choice$/i;
-const NOT_ABILITY_WORD = /^(?:choose|exhaust)\b/i;
+const NOT_ABILITY_WORD = /^(?:choose|exhaust|to solve)\b/i;
 
 export default class AbilityWordAbility extends Ability {
     static match(scribe, str) {

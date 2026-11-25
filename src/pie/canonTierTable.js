@@ -105,7 +105,7 @@ export const CANON_TIERS = {
         W: 'none', U: 'tertiary', B: 'none', R: 'none', G: 'primary'
     },
     'freeze-creature': {
-        W: 'secondary', U: 'primary', B: 'none', R: 'none', G: 'none'
+        W: 'tertiary', U: 'primary', B: 'none', R: 'none', G: 'none'
     },
     'drain-life': {
         W: 'none', U: 'none', B: 'primary', R: 'none', G: 'none'

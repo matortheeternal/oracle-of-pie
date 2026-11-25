@@ -4,10 +4,13 @@ const SINGLE_TARGET = [
     'artifact or creature', 'nonland permanent', 'creature', 'opponent', 'permanent'
 ].join('|');
 const TARGET = [
+    'one or more (?:creatures(?: or Vehicles)?|permanents)',
+    'an opponent or a creature an opponent controls',
+    'a single permanent or player',
     'this creature', '~', `a single (?:${SINGLE_TARGET})`, 'a modified permanent',
     'a creature', 'an artifact or land'
 ].join('|');
-const CONTROL = 'you (?:control|don\'t control)|an opponent controls';
+const CONTROL = 'you (?:control|don\'t control)|an opponent controls|they control';
 const CONTROLLER = `(?: (?<controller>${CONTROL}))?`;
 const TARGETS = new RegExp(
     `^that targets (?<exclusive>only )?(?<target>${TARGET})${CONTROLLER}(?=\\s|$|,)`, 'i'

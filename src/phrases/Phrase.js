@@ -109,6 +109,8 @@ export default class Phrase extends Parser {
     get isOpposingObject() {
         if (this.refersToSelf || this.controlledByYou) return false;
         if (this.isCardInZone || this.resolved.hasLeftBattlefield) return false;
+        if (this.resolved.wasAttachmentHost && !this.resolved.controlledByOpponent)
+            return false;
         return !this.isPlayer;
     }
 

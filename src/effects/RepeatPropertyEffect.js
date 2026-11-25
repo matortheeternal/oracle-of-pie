@@ -1,7 +1,7 @@
 import ObjectEffect from './ObjectEffect.js';
 import KeywordList from '../values/KeywordList.js';
 
-const SAME_AS_PREVIOUS = /^the same is true for /i;
+const SAME_AS_PREVIOUS = /^(?:the same is true for|do the same for) /i;
 
 export default class RepeatPropertyEffect extends ObjectEffect {
     static get pattern() {

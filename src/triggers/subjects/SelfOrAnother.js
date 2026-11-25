@@ -2,8 +2,11 @@ import Phrase from '../../phrases/Phrase.js';
 import SelfReference from '../../phrases/SelfReference.js';
 import NounPhrase from '../../phrases/NounPhrase.js';
 
-const OR_ANOTHER = /^ or (?=(?:another|a legendary|an enchanted)\b)/i;
-const OR = /^or /i;
+const OR_ANOTHER = new RegExp(
+    '^(?: or | and/or )(?=(?:another|a legendary|an enchanted'
+        + '|an? [A-Z][a-z]+ you control|one or more other)\\b)'
+);
+const OR = /^(?:or|and\/or) /i;
 
 export default class SelfOrAnother extends Phrase {
     static get connector() {
@@ -24,7 +27,7 @@ export default class SelfOrAnother extends Phrase {
         super(scribe, match, str);
         this.self = this.readBranch(SelfReference.parse(scribe, match, str));
         this.remainingStr = this.self.remainingStr;
-        this.consumeText(OR);
+        this.connector = this.consumeText(OR)?.[0].trim() ?? null;
         this.other = this.readBranch(this.consume(this.constructor.otherParsers));
     }
 

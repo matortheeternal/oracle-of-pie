@@ -4,6 +4,10 @@ const BEFORE_DESTINATION = '(?=,|\\.|$| (?:into|onto|from|until)\\b'
     + '| to (?:its|their) owners?'
     + '| (?:and put|can|can\'t|gets?|gains?|has|have|are|is|deals?) )';
 const WITH_ALTERNATIVES = [
+    '(?:base )?(?:power and toughness|power|toughness) [0-9]+/[0-9]+',
+    'mana cost (?:\\{[^}]+\\})+(?: or (?:\\{[^}]+\\})+)?',
+    '(?:even|odd) mana value',
+    '(?:lesser|greater|equal) (?:power|toughness)',
     'power',
     'toughness',
     'mana value',
@@ -21,6 +25,8 @@ const WITH_ALTERNATIVES = [
     'one or more (?:[\\w+\\-/]+ )?counters on (?:it|them)',
     '[\\w+\\-/]+ counters on (?:it|them)',
     'counters on (?:it|them)',
+    '(?:one|two|three|four|five|six|seven|eight|nine|ten) [a-z]+'
+        + ' counters? on (?:it|them)',
     `the greatest (?:power|mana value)[^,.]*?${BEFORE_DESTINATION}`,
     'the same name as [^,.]+',
     'that name',
@@ -48,6 +54,7 @@ const WITH = new RegExp(
 );
 
 const SAME_NAME = /^the same name as /;
+const FIXED_PT = /^(?:base )?(?:power and toughness|power|toughness) \d+\/\d+$/;
 
 export default class WithModifier extends Modifier {
     static match(scribe, str) {
@@ -63,5 +70,9 @@ export default class WithModifier extends Modifier {
 
     get relatesToObject() {
         return SAME_NAME.test(this.property);
+    }
+
+    get requiresFixedStats() {
+        return FIXED_PT.test(this.property);
     }
 }

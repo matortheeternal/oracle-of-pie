@@ -1,6 +1,6 @@
 import Effect from './Effect.js';
 
-const FLIP_COIN = /^flips? (?:a|two|\w+) coins?/i;
+const FLIP_COIN = /^flips? (?:that many|one or more|\w+) coins?\b/i;
 
 const UNTIL_LOSS = /^until you lose a flip\b/i;
 

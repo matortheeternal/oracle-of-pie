@@ -3,6 +3,20 @@ import Sentence from './Sentence.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const CONDITION_ALTERNATIVES = [
+    'as this [a-z]+ is turned face up',
+    'as (?:an?|each) [^,]+ enters',
+    'as you (?:draft [^,]+|create your deck|cast [^,]+)',
+    'as an additional cost to cast [^,]+',
+    'after that turn',
+    'during combat',
+    'during that turn',
+    'as many times as you choose',
+    'while (?:an opponent|you|they) (?:is |are )?searching [^,]+',
+    'as this (?:permanent|creature) transforms',
+    'during (?:each|any|that) player\'s [^,]+',
+    'until (?:that player\'s|their) next end step',
+    'until the end of defending player\'s next turn',
+    'for any number of opponents',
     'as this [a-z]+ transforms into ~',
     'as this [a-z]+ becomes attached to [^,]+',
     'during (?:turns other than yours|any turn [^,]+|each opponent\'s [^,]+)',
@@ -51,10 +65,27 @@ const ADDITIONAL_COST = /^as an additional cost to cast this spell/i;
 const CONDITION = new RegExp(
     `^(${CONDITION_ALTERNATIVES.join('|')})\\b([^,]*), `, 'i'
 );
+const POSSIBLE_CONTINUATION = /^(?:and |or |[A-Z][\w-]+(?:,| or ))/;
+const COMMA = ', ';
+
+function extendCondition(scribe, text, initial) {
+    let stop = initial[0].length;
+    const rest = text.slice(stop);
+    if (!POSSIBLE_CONTINUATION.test(rest)) return initial;
+    while (POSSIBLE_CONTINUATION.test(text.slice(stop))) {
+        const next = text.indexOf(COMMA, stop);
+        if (next < 0) break;
+        stop = next + COMMA.length;
+        if (scribe.startsClause(text.slice(stop)))
+            return [text.slice(0, stop), initial[1], text.slice(initial[1].length, next)];
+    }
+    return initial;
+}
 
 export default class ConditionalSentence extends Sentence {
     static matchStatement(scribe, text) {
-        return text.match(CONDITION);
+        const match = text.match(CONDITION);
+        return match ? extendCondition(scribe, text, match) : null;
     }
 
     constructor(scribe, match, str) {

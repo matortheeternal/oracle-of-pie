@@ -9,7 +9,7 @@ const GOAD_WORDING = /goad [^,.]+/;
 const TRANSFORM_WORDING = /transform [^,.]+/;
 const CONVERT_WORDING = /convert (?:~|it\b|them\b|this [a-z]+)/;
 const REGENERATE_WORDING = /regenerate [^,.]+/;
-const SHUFFLE_WORDING = /shuffles?(?: [^,.]*)?/;
+const SHUFFLE_WORDING = /shuffles?(?: (?!and |then )[^,.]*)?/;
 const EXERT_WORDING = /exert [^,.]+/;
 const SUSPECT_WORDING = /suspect [^,.]+/;
 const BEHOLD_WORDING = /behold an? [^,.]+/;
@@ -26,6 +26,11 @@ const MANIFEST_WORDING = /manifests?/;
 const CLOAK_WORDING = /cloaks?/;
 
 const BLIGHT_WORDING = /blights?/;
+const ASSIMILATE_WORDING = /assimilates?/;
+const DETAIN_WORDING = /detains?/;
+const PLOT_WORDING = /plots?/;
+const SCRY_WORDING = /(?:scry|scries)/;
+const AMASS_WORDING_PLURAL = /amasses (?<type>[A-Z][a-z]+)/;
 
 export const DEFAULT_DEFINITIONS = {
     keywords: [
@@ -61,7 +66,7 @@ export const DEFAULT_DEFINITIONS = {
         }
     ],
     actions: [
-        { name: 'Scry' },
+        { name: 'Scry', pattern: SCRY_WORDING },
         { name: 'Surveil' },
         {
             name: 'Investigate',
@@ -78,9 +83,13 @@ export const DEFAULT_DEFINITIONS = {
         },
         { name: 'Populate' },
         { name: 'Learn' },
+        { name: 'Assimilate', pattern: ASSIMILATE_WORDING },
+        { name: 'Detain', pattern: DETAIN_WORDING },
+        { name: 'Plot', pattern: PLOT_WORDING },
+        { name: 'Harness' },
         {
             name: 'Amass',
-            pattern: AMASS_WORDING,
+            pattern: new RegExp(AMASS_WORDING.source + '|' + AMASS_WORDING_PLURAL.source),
             reminder: 'Put {parameter} +1/+1 counters on an Army you control. '
                 + 'If you don\'t control one, create a 0/0 Army creature token first.'
         },

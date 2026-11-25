@@ -5,9 +5,12 @@ import {
     usesCreatureCount, usesOpposingArtifactCount
 } from '../values/quantityDependencies.js';
 
-const GETS = /^gets? (?:an additional )?(?=[+\-−]?(?:\d+|X|\*)\/)/i;
+const GETS = /^gets? (?<amount>an additional |twice )?(?=[+\-−]?(?:\d+|X|\*)\/)/i;
 const AND_GAINS = /^and (?:gains?|has|have) /i;
+const AND_ALL_TYPES = /^and (?:gains?|has|have) all creature types\b/i;
 const SCALING = /^(for each (?:[^,.]|, (?=non))+|where X is [^,.]+|as long as [^,.]+)/i;
+const OR = /^or (?=[+\-−]?(?:\d+|X|\*)\/)/i;
+const CAP = /^, to a maximum of (\d+)\b/i;
 
 const NO_GRANTS = { keywords: null, quoted: null, quotedAbilities: [] };
 
@@ -18,17 +21,25 @@ export default class ModifyPTEffect extends Effect {
 
     parseArguments(match) {
         this.modifier = this.consume([PTModifier]);
+        this.multiplier = match.groups.amount?.toLowerCase() === 'twice ' ? 2 : 1;
+        this.alternative = this.consumeText(OR) ? this.consume([PTModifier]) : null;
+        this.gainsAllTypes = Boolean(this.consumeText(AND_ALL_TYPES));
         Object.assign(this, this.consumeGrants());
         this.scaling = this.consumeText(SCALING)?.[1] ?? null;
+        this.cap = Number(this.consumeText(CAP)?.[1]) || null;
     }
 
     consumeGrants() {
+        const start = this.remainingStr;
         if (!this.consumeText(AND_GAINS)) return NO_GRANTS;
-        return consumeGrantedAbilities(this);
+        const abilities = consumeGrantedAbilities(this);
+        if (!abilities.keywords && !abilities.quoted) this.remainingStr = start;
+        return abilities;
     }
 
     get parts() {
-        return [this.modifier, this.keywords, ...this.quotedAbilities].filter(Boolean);
+        return [this.modifier, this.alternative, this.keywords, ...this.quotedAbilities]
+            .filter(Boolean);
     }
 
     get usesOpposingArtifactCount() {

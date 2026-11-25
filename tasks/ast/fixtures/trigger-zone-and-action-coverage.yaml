@@ -14,7 +14,7 @@ text: |-
   Whenever one or more creature cards are put into your graveyard from anywhere, draw a card.
 expect:
   kind: CardText
-  isRecognized: false
+  isRecognized: true
   children:
     - kind: TriggeredAbility
       children:
@@ -126,8 +126,8 @@ expect:
         - kind: EffectSequence
     - kind: TriggeredAbility
       children:
-        - kind: OtherEvent
-          isUnsupported: true
+        - kind: BecomesAttachedEvent
+          isUnattached: true
         - kind: EffectSequence
     - kind: TriggeredAbility
       children:

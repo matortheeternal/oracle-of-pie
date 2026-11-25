@@ -1,6 +1,6 @@
 import ConditionalSentence from './ConditionalSentence.js';
 
-const REFLEXIVE = /^(when you do)((?:, for each [^,]+)?), /i;
+const REFLEXIVE = /^(when (?:you|they) do)((?:, for each [^,]+)?), /i;
 
 export default class ReflexiveTriggerSentence extends ConditionalSentence {
     static matchStatement(scribe, text) {

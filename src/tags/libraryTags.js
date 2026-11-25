@@ -69,7 +69,10 @@ export const LIBRARY_TAGS = [
                     toBattlefield: true,
                     phrases: { hasExactType: 'land', zone: 'hand' }
                 },
-                { kind: 'ExtraLandEffect' },
+                {
+                    kind: 'ExtraLandEffect',
+                    context: { not: { ability: { body: { effects: SACRIFICES_LAND } } } }
+                },
                 {
                     kind: 'ReturnEffect',
                     returnsToBattlefield: true,

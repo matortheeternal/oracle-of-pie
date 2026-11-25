@@ -3,6 +3,16 @@ import PhraseList from '../phrases/PhraseList.js';
 
 const CONTROLLER_UNTAP = 'untap during its controller\'s untap step';
 const CANT_ALTERNATIVES = [
+    'be (?:turned face up|removed from [^,.]+|beamed up(?: to cast a spell this way)?)',
+    'be reduced(?: below \\d+)?',
+    'become the monarch',
+    'activate abilities of artifacts, creatures, or enchantments',
+    'play cards from (?:your|their) hand',
+    'pay life to cast spells or to activate abilities that aren\'t mana abilities',
+    'sacrifice (?:Treasure tokens|those creatures|creature tokens you control)',
+    'change',
+    'attack during (?:its|their) controller\'s next combat phase',
+    'untap(?=$|[,.])',
     'be cast',
     'be regenerated',
     'phase in',
@@ -42,6 +52,7 @@ const CANT_QUALIFIERS = [
     'this combat',
     'alone',
     'except by [^,.]+',
+    'if it has already attacked this turn',
     'by [^,.]+',
     'unless [^,.]+',
     'during [^,.]+',

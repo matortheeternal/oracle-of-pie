@@ -1,6 +1,9 @@
 import Effect from './Effect.js';
+import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
-const EXTRA_LAND = /^play (an|two) additional lands?(?: on each of your turns)?/i;
+const EXTRA_LAND = new RegExp(
+    `^plays? (${NUMBER_PATTERN}) additional lands?(?: on each of your turns)?`, 'i'
+);
 
 export default class ExtraLandEffect extends Effect {
     static get pattern() {
@@ -8,6 +11,6 @@ export default class ExtraLandEffect extends Effect {
     }
 
     parseArguments(match) {
-        this.count = match[1].toLowerCase() === 'two' ? 2 : 1;
+        this.count = numberValue(match[1]);
     }
 }

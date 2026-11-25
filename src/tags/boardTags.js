@@ -19,6 +19,7 @@ const YOUR_TEAM = {
     not: {
         any: [
             { kind: 'NounPhrase', excludesOwnedByYou: true },
+            { kind: 'NounPhrase', hasCombatTraitRestriction: true },
             { kind: 'NounPhrase', modifiers: {
                 kind: 'StateModifier', restrictsSubtype: true
             } }
@@ -47,11 +48,17 @@ export const BOARD_TAGS = [
         tag: 'opponent-loses-life',
         match: {
             kind: 'LoseLifeEffect', subjectIsOpponent: true,
-            not: { subject: { kind: 'PlayerPhrase', player: 'that player' }, context: {
-                delayedTrigger: {
-                    event: { kind: 'DealsDamageEvent', recipient: { player: 'a player' } }
-                }
-            } }
+            not: {
+                any: [
+                    { context: { replacement: { replacesLifeLoss: true } } },
+                    {
+                        subject: { kind: 'PlayerPhrase', player: 'that player' },
+                        context: { delayedTrigger: { event: {
+                            kind: 'DealsDamageEvent', recipient: { player: 'a player' }
+                        } } }
+                    }
+                ]
+            }
         }
     },
     {

@@ -1,10 +1,20 @@
 import { WHEEL_SENTENCE } from './handReset.js';
 
 const YOUR_DRAW = { kind: 'DrawEffect', drawsCards: true, canAffectYou: true };
-const PAID_EFFECT = { kind: ['DiscardEffect', 'SacrificeEffect'], affectsYou: true };
+const CONTROLLED_OBJECT_CONDITION = /\bwho (?:controls|owns)\b/i;
+const PAID_EFFECT = {
+    affectsYou: true,
+    any: [
+        { kind: ['DiscardEffect', 'SacrificeEffect'] },
+        { kind: 'ExileEffect', phrases: { zone: 'hand', zoneOwnedByYou: true } }
+    ]
+};
 const DRAW_COSTS = {
     any: [
         { sentence: { linkedEffects: PAID_EFFECT } },
+        { delayedTrigger: {
+            event: { kind: 'SacrificesEvent', isReflexive: true, isYou: true }
+        } },
         { ability: { events: { kind: 'RecordedActionEvent', action: 'exploit' } } },
         { cardText: { hasAdditionalCost: true } },
         { ability: { cost: { any: [{ discards: true }, { sacrificesOther: true }] } } }
@@ -34,7 +44,11 @@ const SINGLE_DRAW = { ...RESOLVES_OR_ENTERS, not: VARIABLE_DRAW };
 export const DRAW_TAGS = [
     {
         tag: 'pure-draw',
-        match: { ...YOUR_DRAW, context: { not: { any: [DRAW_COSTS, WHEEL_SENTENCE] } } }
+        match: {
+            ...YOUR_DRAW,
+            not: { subject: { kind: 'PlayerPhrase', discardedToQualify: true } },
+            context: { not: { any: [DRAW_COSTS, WHEEL_SENTENCE] } }
+        }
     },
     {
         tag: 'burst-draw',
@@ -47,6 +61,10 @@ export const DRAW_TAGS = [
     },
     {
         tag: 'cantrip',
-        match: { tag: 'pure-draw', isSingleCard: true, context: SINGLE_DRAW }
+        match: {
+            tag: 'pure-draw', isSingleCard: true,
+            not: { subject: { relative: CONTROLLED_OBJECT_CONDITION } },
+            context: SINGLE_DRAW
+        }
     }
 ];

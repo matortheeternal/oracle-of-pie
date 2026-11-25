@@ -1,6 +1,18 @@
 import Node from '../core/Node.js';
 
 const TRAILING_ALTERNATIVES = [
+    'by (?:it|them|~)',
+    'in (?:its|their|your) (?:next combat|next main phase)',
+    'until the end of your next turn',
+    'until you exile another card with [^.]+',
+    'with X counters on it',
+    'from your graveyard instead',
+    'if it has already attacked this turn',
+    'if you could cast a sorcery',
+    'each combat if able',
+    'for the rest of this game',
+    'in turn order',
+    'by the result',
     'at the end of combat',
     'at the beginning of the (?:next )?(?:upkeep|end step)',
     'after this step',

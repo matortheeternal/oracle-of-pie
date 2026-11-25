@@ -2,7 +2,8 @@ import BodyAbility from './BodyAbility.js';
 import CostList from '../costs/CostList.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
 
-const COST_PART = '(?!\\btarget\\b)(?:"[^"]*"|[^:"])';
+const QUOTED_COST = '"[^"]*"|\'[^\']*\'(?!\\w)';
+const COST_PART = '(?!\\btarget\\b)(?:' + QUOTED_COST + '|[^:"])';
 const ACTIVATED = new RegExp(`^(exhaust — )?((?:${COST_PART})+?): ([\\s\\S]+)$`, 'i');
 
 export default class ActivatedAbility extends BodyAbility {

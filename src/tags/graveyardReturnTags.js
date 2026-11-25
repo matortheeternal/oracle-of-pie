@@ -11,7 +11,9 @@ const PERMANENT_CARD = {
     not: { any: [NONLAND_PERMANENT, { hasQualifier: 'historic' }] }
 };
 const SELF = { kind: 'SelfReference', zone: GRAVEYARD };
-const MASS = { kind: 'NounPhrase', isMass: true, zone: GRAVEYARD };
+const MASS = {
+    kind: 'NounPhrase', isMass: true, zone: GRAVEYARD, limitsToPastEvent: false
+};
 const YOUR_CONTROL_TEXT = /\bunder your control\b/i;
 const UNDER_YOUR_CONTROL = { raw: YOUR_CONTROL_TEXT };
 

@@ -2,10 +2,13 @@ import Effect from './Effect.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const LIFE_TOTAL_ASSIGNMENT = new RegExp(
-    `^(your|each player's|(?:up to one )?target player's) life total becomes? (`
+    `^(your|each player's|(?:up to one )?target player's|its controller's)`
+        + ' life total becomes? ('
         + `${NUMBER_PATTERN}\\b|equal to your starting life total`
         + '|half (?:your|their) starting life total(?:, rounded (?:up|down))?'
-        + '|the lowest life total among all players)(?=$|[,.]| and )',
+        + '|the (?:total toughness of creatures you control'
+        + '|lowest life total among all players))'
+        + '(?=$|[,.]| and )',
     'i'
 );
 

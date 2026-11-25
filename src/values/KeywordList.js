@@ -1,7 +1,7 @@
 import Parser from '../core/Parser.js';
 import Keyword from './Keyword.js';
 
-const SEPARATOR = /^(?:,? ?(?:and|or) |, )/;
+const SEPARATOR = /^(?:,? ?(?:and|or) |[,;] )/i;
 const CHOICE = /^your choice of /i;
 
 export default class KeywordList extends Parser {

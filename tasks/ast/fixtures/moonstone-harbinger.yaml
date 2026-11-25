@@ -6,19 +6,18 @@ text: |-
   Whenever you gain or lose life during your turn, Bats you control get +1/+0 and gain deathtouch until end of turn. This ability triggers only once each turn.
 expect:
   kind: CardText
-  isRecognized: false
+  isRecognized: true
   children:
     - kind: KeywordAbility
     - kind: TriggeredAbility
       children:
         - kind: LosesLifeEvent
           raw: you gain or lose life during your turn
-          isRecognized: false
+          isRecognized: true
+          includesLifeGain: true
           children:
             - kind: PlayerPhrase
               raw: you
-            - kind: UnrecognizedText
-              raw: gain or
             - kind: TurnWindow
               raw: during your turn
         - kind: EffectSequence

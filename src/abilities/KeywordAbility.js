@@ -9,6 +9,7 @@ const KEYWORD_WITH_COST = /^—(?! )[^.]+\.?$/;
 const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+|— \d+\/\d+)\.?$/;
 const CARD_NAME = /^[A-Z][^.]*$/;
 const PARAMETER = /^(?:[a-z][A-Za-z ,'-]*|with [^.]+)$/;
+const VARIABLE_PARAMETER = /^, where X is [^,.]+\.?$/i;
 
 function isSingle(list) {
     return list.keywords.length === 1;
@@ -16,7 +17,9 @@ function isSingle(list) {
 
 function isKeywordParameter(list, rest) {
     if (!isSingle(list)) return false;
-    return PARAMETER.test(rest) || (list.keywords[0].takesName && CARD_NAME.test(rest));
+    const [keyword] = list.keywords;
+    if (keyword.parameter === 'X' && VARIABLE_PARAMETER.test(rest)) return true;
+    return PARAMETER.test(rest) || (keyword.takesName && CARD_NAME.test(rest));
 }
 
 function isManaCostContinuation(list, rest) {

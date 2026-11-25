@@ -5,11 +5,15 @@ const OTHERS
     = '(?:each of those abilities|abilities of (?:other )?creatures you control)';
 const LIMITS = [
     'only once each turn', 'twice this turn rather than only once',
+    'twice each turn rather than only once',
+    'any time you could cast an instant',
+    'as though they haven\'t been activated',
     'as though those creatures had haste',
     'on any player\'s turn any time you could cast an instant'
 ];
 const ACTIVATION_PERMISSION = new RegExp(
-    '^activate (?<abilities>(?:the )?' + LOYALTY + '|' + OTHERS + ') '
+    '^activate (?<abilities>(?:the )?' + LOYALTY + '|' + OTHERS
+        + '|equip abilities|exhaust abilities|power-up abilities) '
         + '(?<permission>' + LIMITS.join('|') + ')',
     'i'
 );

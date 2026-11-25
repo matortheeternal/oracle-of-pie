@@ -1,62 +1,96 @@
 import Effect from './Effect.js';
-import { normalizeCounterKind, isPlusOneKind, lowersToughness } from './counterKinds.js';
-import Amount from '../values/Amount.js';
+import { isPlusOneKind, lowersToughness } from './counterKinds.js';
+import CounterQuantity from '../values/CounterQuantity.js';
 import PhraseList from '../phrases/PhraseList.js';
 
-const PUT_COUNTERS_ALTERNATIVES = [
-    '(?:\\w+ )?(?:[+\\-−]\\d+\\/[+\\-−]\\d+|[a-z]+) counters? on ',
-    '(?:a|an|\\w+) [^,.]*counters? on each',
-    '(?:that many|a number of) [^,.]*?counters? (?:on|equal to) '
-];
-const PUT_COUNTERS = new RegExp(
-    `^puts? (?=${PUT_COUNTERS_ALTERNATIVES.join('|')})`, 'i'
-);
-const KIND_NAME = '([+\\-−]\\d+/[+\\-−]\\d+|[a-z]+(?: [a-z]+)?)';
-const COUNTER_KIND = new RegExp(`^${KIND_NAME} counters? (?:equal to [^,.]+? )?on `, 'i');
+const PUT = /^puts? /i;
+const ON = /^(?:equal to [^,.]+? )?on (?:each of )?/i;
+const JOINER = /^(?:,? ?(?:and|or) |, )/i;
 const EQUAL_TO = /^equal to [^,.]+/i;
-const EXISTING_COUNTERS = /^(?:its|their|those)$/i;
 const STUN = 'stun';
-const EACH_OF = /^each of /i;
 
 export default class PutCountersEffect extends Effect {
     static get pattern() {
-        return PUT_COUNTERS;
+        return PUT;
     }
 
-    parseArguments(match) {
-        this.amount = this.consume([Amount]);
-        this.kind = normalizeCounterKind(this.consumeText(this.kindPattern)?.[1]);
-        this.consumeText(EACH_OF);
-        this.objects = this.consume([PhraseList]);
+    static get recipientPattern() {
+        return ON;
+    }
+
+    static match(scribe, str) {
+        const lead = str.match(this.pattern);
+        if (!lead) return null;
+        const first = CounterQuantity.match(scribe, str.slice(lead[0].length));
+        if (!first) return null;
+        return lead;
+    }
+
+    parseArguments() {
+        this.quantities = [this.consume([CounterQuantity])];
+        this.connectors = [];
+        while (this.consumeNextQuantity()) continue;
+        const recipient = this.consumeText(this.constructor.recipientPattern);
+        this.objects = recipient ? this.consume([PhraseList]) : null;
+        this.amount = this.quantities[0].amount;
+        this.kind = this.quantities[0].kinds[0] ?? null;
         this.consumeText(EQUAL_TO);
+        this.additionalPlacement = this.consumeAdditionalPlacement();
+    }
+
+    consumeAdditionalPlacement() {
+        if (!this.objects) return null;
+        const joiner = this.remainingStr.match(JOINER);
+        if (!joiner) return null;
+        const text = this.remainingStr.slice(joiner[0].length);
+        if (!CounterQuantity.match(this.scribe, text)) return null;
+        const placement = this.parseNext('put ' + text, [PutCountersEffect]);
+        if (!placement?.isRecognized) return null;
+        this.remainingStr = placement.remainingStr;
+        return placement;
+    }
+
+    consumeNextQuantity() {
+        const start = this.remainingStr;
+        const connector = this.consumeText(JOINER);
+        if (!connector) return false;
+        const quantity = this.consume([CounterQuantity]);
+        if (!quantity) {
+            this.remainingStr = start;
+            return false;
+        }
+        this.quantities.push(quantity);
+        this.connectors.push(connector[0].trim());
+        return true;
+    }
+
+    get kinds() {
+        return this.quantities.flatMap(quantity => quantity.kinds);
     }
 
     get isStunCounter() {
-        return this.kind === STUN;
+        return this.kinds.includes(STUN);
     }
 
     get movesCounters() {
-        return EXISTING_COUNTERS.test(this.kind ?? '');
+        return this.quantities.some(quantity => quantity.movesExistingCounters);
     }
 
     get keywordCounterNames() {
-        return this.kind && this.scribe.isKeyword(this.kind) ? [this.kind] : [];
+        return this.kinds.filter(kind => this.scribe.isKeyword(kind));
     }
 
     get conferredKeywordNames() {
         return this.keywordCounterNames;
     }
 
-    get kindPattern() {
-        return COUNTER_KIND;
-    }
-
     get parts() {
-        return [this.amount, this.objects].filter(Boolean);
+        return [...this.quantities, this.objects, this.additionalPlacement]
+            .filter(Boolean);
     }
 
     get isComplete() {
-        return Boolean(this.kind && this.objects);
+        return Boolean(this.objects);
     }
 
     get phrases() {
@@ -64,10 +98,10 @@ export default class PutCountersEffect extends Effect {
     }
 
     get isPlusCounters() {
-        return isPlusOneKind(this.kind);
+        return this.kinds.some(isPlusOneKind);
     }
 
     get isMinusCounters() {
-        return lowersToughness(this.kind);
+        return this.kinds.some(lowersToughness);
     }
 }

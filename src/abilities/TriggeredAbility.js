@@ -1,5 +1,4 @@
 import BodyAbility from './BodyAbility.js';
-import { TRIGGER_EVENTS } from '../triggers/index.js';
 import splitTrigger from '../triggers/splitTrigger.js';
 
 const TRIGGER_WORD = /^(when|whenever|at) /i;
@@ -15,7 +14,7 @@ export default class TriggeredAbility extends BodyAbility {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.trigger = `${match[1]} ${match[2]}`;
-        this.event = this.parseNext(match[2], TRIGGER_EVENTS);
+        this.event = match[3];
     }
 
     get parts() {
