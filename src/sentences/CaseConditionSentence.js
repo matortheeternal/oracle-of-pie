@@ -4,7 +4,8 @@ const REQUIREMENTS = [
     'you control [^,.]+', 'you\'ve cast [^,.]+',
     'you\'ve gained [^,.]+ life this turn', '[^,.]+ attacked this turn',
     '[^,.]+(?:were put into graveyards(?: from anywhere)?|dealt damage) this turn',
-    'there (?:are|is) [^,.]+'
+    'there (?:are|is) [^,.]+', 'you have no cards in hand',
+    'creatures you control have total power \\d+ or greater'
 ];
 const SOLVE = new RegExp(
     `^to solve — (?<condition>${REQUIREMENTS.join('|')})$`, 'i'

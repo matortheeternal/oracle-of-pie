@@ -52,7 +52,7 @@ const WORD_ADDERS = {
 
 export default class NounPhrase extends Phrase {
     static match(scribe, str) {
-        const determiner = str.match(DETERMINER);
+        const determiner = STAT_QUALIFIER.test(str) ? null : str.match(DETERMINER);
         const rest = determiner ? str.slice(determiner[0].length).trimStart() : str;
         const words = rest.replace(STAT_QUALIFIER, '').replace(BRACKETED_WORDS, '');
         if (!nextWordClass(scribe, words)) return null;
@@ -207,6 +207,10 @@ export default class NounPhrase extends Phrase {
 
     get limitsToPastEvent() {
         return this.modifiers.some(modifier => modifier.limitsToPastEvent);
+    }
+
+    get leftBattlefieldThisTurn() {
+        return this.modifiers.some(modifier => modifier.leftBattlefieldThisTurn);
     }
 
     get hasCombatTraitRestriction() {

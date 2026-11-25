@@ -10,7 +10,7 @@ const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |,? ?or |, )/i;
 const ALTERNATIVE = /^,? ?or /i;
 const MAY = /^may /i;
 const GROUP_ADVERB = /^(?:each|both) /i;
-const ONLY = /^only (?=you\b|[\w]+s\b)/i;
+const ONLY = /^only /i;
 const SINGULAR_BE = /^'s /i;
 const PLURAL_BE = /^'re /i;
 const ALSO = /^also /i;
@@ -78,10 +78,13 @@ export default class ClauseReader extends Parser {
 
     readSubjectEffect() {
         const start = this.remainingStr;
-        this.consumeText(ONLY);
+        const restricted = Boolean(this.consumeText(ONLY));
         const single = this.consume(PHRASE_PARSERS);
         const effect = single && this.readEffectFor(single);
-        if (effect) return effect;
+        if (effect) {
+            effect.limitedToSubject = restricted;
+            return effect;
+        }
         this.remainingStr = start;
         return this.readGroupEffect(start);
     }

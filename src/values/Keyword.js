@@ -60,21 +60,28 @@ const FROM_QUALIFIERS = [
 const FROM_DETAIL = FROM_QUALIFIERS.join('|');
 const FROM = new RegExp(`^(from (?:${FROM_DETAIL}))\\b`, 'i');
 const FROM_AFTER_KEYWORD = new RegExp(`^(${FROM_DETAIL})\\b`, 'i');
-const EQUIP = new RegExp(`^((?:legendary creature |creature token |[\\w-]+ )?${COST})`);
+const EQUIP_TYPE = '[\\w-]+(?:, [\\w-]+)*(?:,? or [\\w-]+)?';
+const EQUIP = new RegExp(
+    `^((?:legendary creature |creature token |${EQUIP_TYPE} )?${COST})`
+);
+const EQUIP_ALTERNATIVE = new RegExp(`^ or (${COST})`);
+const EMERGE = new RegExp(`^(from (?:artifact|creature|enchantment) ${COST})`);
 const ENCHANT_TARGETS = [
     'artifact creature', 'artifact or creature',
     'creature or Vehicle', 'creature or land',
     'creature or planeswalker', 'player or planeswalker', 'creature you control',
     'land you control', 'permanent you control', 'opponent', 'creature', 'land', 'player',
-    'artifact', 'enchantment', 'permanent', 'planeswalker', 'Vehicle', 'Room'
+    'artifact', 'enchantment', 'permanent', 'planeswalker', 'Vehicle', 'Room',
+    '[A-Z][a-z]+ you control'
 ];
-const ENCHANT = new RegExp(`^(${ENCHANT_TARGETS.join('|')})(?= and ")\\b`, 'i');
+const ENCHANT = new RegExp(`^(${ENCHANT_TARGETS.join('|')})\\b(?= and "|[.]?$)`);
 const DEFINED_PARAMETER = {
     protection: FROM,
     hexproof: FROM,
     'hexproof from': FROM_AFTER_KEYWORD,
     equip: EQUIP,
-    enchant: ENCHANT
+    enchant: ENCHANT,
+    emerge: EMERGE
 };
 const TYPE_SPECIFIC = /^(?<type>artifact|creature|enchantment) (offering|landwalk)\b/i;
 
@@ -98,6 +105,15 @@ export default class Keyword extends Node {
         this.parameter = parameter?.[1] ?? match[2] ?? null;
         if (parameter?.[0])
             this.remainingStr = this.remainingStr.slice(parameter[0].length);
+        this.alternativeEquipCost = this.readAlternativeEquipCost();
+    }
+
+    readAlternativeEquipCost() {
+        if (this.name !== 'equip' || !this.hasManaParameter) return null;
+        const alternative = this.remainingStr.match(EQUIP_ALTERNATIVE);
+        if (!alternative) return null;
+        this.remainingStr = this.remainingStr.slice(alternative[0].length);
+        return alternative[1];
     }
 
     get takesName() {

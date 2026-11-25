@@ -6,6 +6,11 @@ const COMPARATIVE_EXCHANGE = new RegExp(
         + ' life total with [^,.]+? (?:power|toughness))|exchange life'
         + ' totals)\\b', 'i'
 );
+const TEXT_BOXES = new RegExp(
+    '^exchanges? (?<first>his|her|its) text box and '
+        + '(?<second>another creature)\'s(?=$|[,.])',
+    'i'
+);
 
 export default class ExchangeEffect extends ObjectEffect {
     static get pattern() {
@@ -13,11 +18,16 @@ export default class ExchangeEffect extends ObjectEffect {
     }
 
     static match(scribe, str) {
-        return super.match(scribe, str) ?? str.match(COMPARATIVE_EXCHANGE);
+        return super.match(scribe, str) ?? str.match(COMPARATIVE_EXCHANGE)
+            ?? str.match(TEXT_BOXES);
     }
 
     parseArguments(match) {
-        this.property = match.groups?.property?.toLowerCase() ?? 'life totals';
+        const owners = match.groups?.first
+            ? [match.groups.first, match.groups.second] : [];
+        this.textBoxOwners = owners.map(owner => owner.toLowerCase());
+        const defaultProperty = owners.length ? 'text box' : 'life totals';
+        this.property = match.groups?.property?.toLowerCase() ?? defaultProperty;
         this.hasStatedObjects = match[0].endsWith(' of ');
         if (this.hasStatedObjects) super.parseArguments(match);
     }

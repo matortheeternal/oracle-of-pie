@@ -40,6 +40,7 @@ const TOKEN_DETAILS = `((?:${TOKEN_DESCRIPTION_ALTERNATIVES.join('|')})*)`;
 const TOKEN_DESCRIPTION = new RegExp(`^${TOKEN_NOUN}${TOKEN_DETAILS}`, 'i');
 const ABILITIES = / with (?=[a-z"])/i;
 const CARD_COPY = /^a copy of (?:this card|the card with the chosen name)\b/i;
+const ONE_OF_EACH = /^one of each\b/i;
 
 function damagesDefendingPlayer(event) {
     return event instanceof DealsDamageEvent && event.isCombat && event.isSelf
@@ -53,7 +54,9 @@ export default class CreateTokenEffect extends Effect {
 
     parseArguments(match) {
         const description = this.consumeText(CARD_COPY)
+            ?? this.consumeText(ONE_OF_EACH)
             ?? this.consumeText(TOKEN_DESCRIPTION);
+        this.oneOfEachReferencedKind = ONE_OF_EACH.test(description?.[0] ?? '');
         this.description = description?.[0] ?? null;
         this.completeKeywordList();
         const details = description?.[2] ?? '';

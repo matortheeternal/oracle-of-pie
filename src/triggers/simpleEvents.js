@@ -5,6 +5,9 @@ import SpentManaEvent from './SpentManaEvent.js';
 import PhaseEvent from './PhaseEvent.js';
 import CastEvent from './CastEvent.js';
 import CopiesSpellEvent from './CopiesSpellEvent.js';
+import FightsEvent from './FightsEvent.js';
+import ScryPlacementEvent from './ScryPlacementEvent.js';
+import SaddlesEvent from './SaddlesEvent.js';
 import DiesEvent from './DiesEvent.js';
 import EntersEvent from './EntersEvent.js';
 import AttacksEvent from './AttacksEvent.js';
@@ -62,8 +65,9 @@ export const SIMPLE_EVENTS = [
     AttacksEvent, DiesEvent, DealsDamageEvent,
     TargetedEvent, DamagePreventedEvent,
     DrawsEvent, GainsLifeEvent, LosesLifeEvent,
-    CyclesEvent, SacrificesEvent, DiscardsEvent, ScryEvent, SurveilEvent,
-    BecomesTappedEvent, BlocksEvent, BecomesBlockedEvent,
+    CyclesEvent, SacrificesEvent, DiscardsEvent, ScryPlacementEvent, ScryEvent,
+    SurveilEvent,
+    BecomesTappedEvent, FightsEvent, BlocksEvent, BecomesBlockedEvent,
     IsDealtDamageEvent, LeavesEvent, MutatesEvent,
     CommitsCrimeEvent, TurnsFaceUpEvent, ExploitsEvent, UnlocksRoomEvent, ExpendsEvent,
     CountersPutEvent, TransformsEvent,
@@ -71,7 +75,8 @@ export const SIMPLE_EVENTS = [
     FacesDilemmaEvent, RollsDiceEvent, ProliferatesEvent, RingTemptsEvent, ExertsEvent,
     GetsEnergyEvent, TapsEvent, TappedForManaEvent,
     BecomesStatusEvent, BecomesMonstrousEvent, BecomesAttachedEvent, BecomesPlottedEvent,
-    CrewsEvent, ExploresEvent, ConnivesEvent, BecomesUntappedEvent, MilledEvent,
+    CrewsEvent, SaddlesEvent, ExploresEvent, ConnivesEvent, BecomesUntappedEvent,
+    MilledEvent,
     CompletesDungeonEvent, CounterRemovalEvent, ThresholdEvent, RecordedActionEvent
 ];
 

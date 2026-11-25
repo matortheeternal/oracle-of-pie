@@ -3,6 +3,7 @@ import Modifier from './Modifier.js';
 const CONTROLLER_ALTERNATIVES = [
     'you cast from exile this turn',
     'you cast from anywhere other than your hand each turn',
+    'you cast from your graveyard or from exile',
     'you cast with \\{X\\} in its mana cost each turn',
     'you cast each turn that mana from a Treasure was spent to cast',
     'you foretell each turn',
@@ -12,7 +13,7 @@ const CONTROLLER_ALTERNATIVES = [
         + '|enchanted (?:creature|player))',
     'your opponents cast (?:from graveyards or from exile|during your turn)',
     'your opponents cast that target '
-        + '(?:this creature|one or more commanders you control)',
+        + '(?:this creature|one or more commanders you control|an? [a-z-]+ you control)',
     'you activate during (?:your turn|each of your turns)',
     'you cast during each of your turns',
     'you cast from exile(?: each turn)?',

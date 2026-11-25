@@ -1,6 +1,7 @@
 import Parser from '../core/Parser.js';
 import { normalizeCounterKind } from '../effects/counterKinds.js';
 import Amount from './Amount.js';
+import SelfReference from '../phrases/SelfReference.js';
 import { NUMBER_PATTERN } from './numberWords.js';
 
 const COUNT = '(?<count>(?:up to |at least )?(?:twice |half )?'
@@ -19,6 +20,9 @@ const QUANTITY = new RegExp(
 );
 const REFERENCED_KIND = /^(?:another|an? additional|an?) counter of that kind\b/i;
 const EXISTING = /^(?:its|their|those) counters\b/i;
+const SOURCE_COUNTERS = new RegExp(
+    '^(?<source>~|this (?:creature|permanent|artifact))\'s counters\\b', 'i'
+);
 const UNSPECIFIED = new RegExp(
     `^(?<kind>${KIND})${SUFFIX}(?= on | equal to )`, 'i'
 );
@@ -41,7 +45,7 @@ const EXISTING_KIND_CHOICE = new RegExp(
 );
 const COUNTER_FORMS = [
     CHOSEN_KIND, EXISTING_KIND_CHOICE, MULTIPLE_KINDS, QUANTITY, REFERENCED_KIND,
-    EXISTING, COPIED_KIND, COPY_COUNT_AND_KIND, POSSESSIVE, UNSPECIFIED
+    EXISTING, SOURCE_COUNTERS, COPIED_KIND, COPY_COUNT_AND_KIND, POSSESSIVE, UNSPECIFIED
 ];
 
 export default class CounterQuantity extends Parser {
@@ -55,15 +59,16 @@ export default class CounterQuantity extends Parser {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        const { count, kind, choices, existing } = match.groups ?? {};
+        const { count, kind, choices, existing, source } = match.groups ?? {};
         this.amount = count ? this.parseNext(count, [Amount]) : null;
         const kinds = choices?.split(CHOICE_BOUNDARY) ?? [kind].filter(Boolean);
         this.kinds = kinds.map(name => normalizeCounterKind(name.toLowerCase()));
-        this.movesExistingCounters = EXISTING.test(match[0]);
+        this.source = source ? this.parseNext(source, [SelfReference]) : null;
+        this.movesExistingCounters = Boolean(this.source) || EXISTING.test(match[0]);
         this.mayMatchExistingKind = Boolean(existing);
     }
 
     get children() {
-        return [this.amount].filter(Boolean);
+        return [this.amount, this.source].filter(Boolean);
     }
 }

@@ -2,7 +2,7 @@ import Phrase from './Phrase.js';
 import PhraseList from './PhraseList.js';
 
 const CONJUNCTION = /,? (?:and|or|and\/or) /i;
-const GROUP_JOINER = /^,? ?(and|or|and\/or) /i;
+const GROUP_JOINER = /^(?:,? ?(?:and|or|and\/or) |, )/i;
 
 class GroupMembers extends PhraseList {
     get joiner() {
@@ -30,7 +30,7 @@ export default class EffectSubjectGroup extends Phrase {
     }
 
     get isGroup() {
-        return this.children.length > 1;
+        return this.children.length > 1 && this.connectors.at(-1) !== '';
     }
 
     get isAntecedentCandidate() {

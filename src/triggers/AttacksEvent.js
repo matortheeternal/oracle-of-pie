@@ -9,7 +9,7 @@ import Unblocked from './qualifiers/Unblocked.js';
 import CoordinatedSubject from './subjects/CoordinatedSubject.js';
 import AttackCondition from './qualifiers/AttackCondition.js';
 
-const ATTACKS = /^(?<subject>.+?) attacks?\b/i;
+const ATTACKS = /^(?<subject>.+?)(?<next> next)? attacks?\b/i;
 
 export default class AttacksEvent extends TriggerEvent {
     static get pattern() {
@@ -18,6 +18,11 @@ export default class AttacksEvent extends TriggerEvent {
 
     static get subjectParsers() {
         return [CoordinatedSubject, ...super.subjectParsers];
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.isNext = Boolean(match.groups.next);
     }
 
     static get qualifierParsers() {

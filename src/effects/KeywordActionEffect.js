@@ -16,7 +16,7 @@ const LIBRARY_TOP = new RegExp(
 );
 const SCRY_ADJUSTMENT = new RegExp(`^that many cards plus ${NUMBER_PATTERN}\\b`, 'i');
 const TAKES_OBJECT = new Set([
-    'assimilate', 'detain', 'plot', 'manifest', 'cloak', 'harness'
+    'assimilate', 'detain', 'plot', 'manifest', 'cloak', 'harness', 'regenerate'
 ]);
 const SCALING = new RegExp(
     '^(?:a number of times equal to [^,.]+|additional time|for'
@@ -61,6 +61,10 @@ export default class KeywordActionEffect extends Effect {
 
     get isKeywordAction() {
         return true;
+    }
+
+    get isComplete() {
+        return this.action !== 'regenerate' || Boolean(this.objects);
     }
 
     get parts() {

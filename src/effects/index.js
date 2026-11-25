@@ -146,6 +146,17 @@ import CounterRestrictionEffect from './CounterRestrictionEffect.js';
 import TargetingPermissionEffect from './TargetingPermissionEffect.js';
 import CityBlessingEffect from './CityBlessingEffect.js';
 import ChooseKeywordsEffect from './ChooseKeywordsEffect.js';
+import FixedActionCostEffect from './FixedActionCostEffect.js';
+import GuessEffect from './GuessEffect.js';
+import RepeatChoiceEffect from './RepeatChoiceEffect.js';
+import StateBasedActionExceptionEffect from './StateBasedActionExceptionEffect.js';
+import ColorIdentityExceptionEffect from './ColorIdentityExceptionEffect.js';
+import DamageLifeExceptionEffect from './DamageLifeExceptionEffect.js';
+import PreserveAttachmentsEffect from './PreserveAttachmentsEffect.js';
+import ReverseTurnOrderEffect from './ReverseTurnOrderEffect.js';
+import ReplaceCreatureTypeEffect from './ReplaceCreatureTypeEffect.js';
+import DevotionEffect from './DevotionEffect.js';
+import SpeedReductionEffect from './SpeedReductionEffect.js';
 
 export const MODELED_EFFECT_PARSERS = [
     SelfShuffleEffect, ManaProductionReplacementEffect,
@@ -161,7 +172,7 @@ export const MODELED_EFFECT_PARSERS = [
     KeywordActionEffect, AddManaEffect, CantEffect, ActivationBanEffect,
     EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseCounterEffect, GiveMatchingCounterEffect,
-    ChooseKeywordsEffect,
+    ChooseKeywordsEffect, GuessEffect, RepeatChoiceEffect,
     ChooseObjectsEffect, EntersAsCopyEffect, EntersTappedEffect,
     EntersUntappedEffect, TurnFaceEffect,
     EntersUnderOpponentControlEffect,
@@ -170,15 +181,18 @@ export const MODELED_EFFECT_PARSERS = [
     CounterRestrictionEffect, TargetingPermissionEffect, CityBlessingEffect,
     GameResultEffect, AdditionalTriggerEffect, CombatRequirementEffect,
     DoubleCountersEffect, DoublePowerEffect, PreventDamageEffect, RedirectDamageEffect,
-    CostModificationEffect,
+    CostModificationEffect, FixedActionCostEffect,
     DefinePTEffect,
     SpendManaEffect, CombatPermissionEffect, PhaseEffect,
     SetLifeTotalEffect, SetStatusEffect, BecomesEffect, DistributeCountersEffect,
     TypeChangeEffect,
     ManaRetentionEffect,
     AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
-    EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
+    EndTurnOrCombatEffect, ExtraTurnEffect, ReverseTurnOrderEffect, StateEffect,
+    LoseAbilitiesEffect, ReplaceCreatureTypeEffect, DevotionEffect, SpeedReductionEffect,
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
+    StateBasedActionExceptionEffect, ColorIdentityExceptionEffect,
+    DamageLifeExceptionEffect, PreserveAttachmentsEffect,
     LookAtHandEffect, TypeLossEffect, PreventionBanEffect, ExcessDamageEffect,
     StaticControlEffect, CrewBonusEffect, KeywordCostEffect,
     DistinctModeTargetsEffect, LoseKeywordsEffect, LureEffect, TokenMultiplierEffect,

@@ -4,6 +4,7 @@ const BEFORE_DESTINATION = '(?=,|\\.|$| (?:into|onto|from|until)\\b'
     + '| to (?:its|their) owners?'
     + '| (?:and put|can|can\'t|gets?|gains?|has|have|are|is|deals?) )';
 const WITH_ALTERNATIVES = [
+    'power, toughness, or mana value',
     '(?:base )?(?:power and toughness|power|toughness) [0-9]+/[0-9]+',
     'mana cost (?:\\{[^}]+\\})+(?: or (?:\\{[^}]+\\})+)?',
     '(?:an? )?(?:even|odd) mana value',
@@ -25,6 +26,8 @@ const WITH_ALTERNATIVES = [
     'one or more (?:[\\w+\\-/]+ )?counters on (?:it|them)',
     '[\\w+\\-/]+ counters on (?:it|them)',
     'counters on (?:it|them)',
+    '(?:one|two|three|four|five|six|seven|eight|nine|ten) or more '
+        + '[+−-]\\d+/[+−-]\\d+ counters on (?:it|them)',
     '(?:one|two|three|four|five|six|seven|eight|nine|ten) [a-z]+'
         + ' counters? on (?:it|them)',
     `the greatest (?:power|mana value)[^,.]*?${BEFORE_DESTINATION}`,

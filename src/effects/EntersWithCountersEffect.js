@@ -1,6 +1,7 @@
 import Effect from './Effect.js';
 import { normalizeCounterKind, isPlusOneKind, lowersToughness } from './counterKinds.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
+import KeywordList from '../values/KeywordList.js';
 
 const COUNTERS_ON_IT = 'counters?(?: of that kind)? on (?:it|them|him|her)\\b';
 const ENTERS_WITH = new RegExp(
@@ -14,6 +15,7 @@ const COUNTER_CHOICE = 'your choice of an? (?:additional )?\\+1/\\+1 counter '
     + 'or (?<alternative>haste)\\b';
 const IMPLICIT_RECIPIENT = new RegExp(`^(?:${TIME_COUNTERS}|${COUNTER_CHOICE})`, 'i');
 const ENTERS = /^enters? with /i;
+const AND_WITH = /^and with /i;
 
 export default class EntersWithCountersEffect extends Effect {
     static get pattern() {
@@ -33,6 +35,19 @@ export default class EntersWithCountersEffect extends Effect {
             ?? this.consumeText(IMPLICIT_RECIPIENT);
         this.description = counters?.[0] ?? null;
         this.alternativeKeyword = counters?.groups?.alternative?.toLowerCase() ?? null;
+        this.keywords = this.readKeywords();
+    }
+
+    readKeywords() {
+        const start = this.remainingStr;
+        if (!this.consumeText(AND_WITH)) return null;
+        const keywords = this.consume([KeywordList]);
+        if (!keywords) this.remainingStr = start;
+        return keywords;
+    }
+
+    get parts() {
+        return [this.keywords].filter(Boolean);
     }
 
     get kinds() {
@@ -61,6 +76,6 @@ export default class EntersWithCountersEffect extends Effect {
     }
 
     get conferredKeywordNames() {
-        return this.keywordCounterNames;
+        return [...this.keywordCounterNames, ...(this.keywords?.names ?? [])];
     }
 }

@@ -1,5 +1,6 @@
 import TriggerEvent from './TriggerEvent.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
+import Arrival from './qualifiers/Arrival.js';
 
 const DEATH_ALTERNATIVES = [
     'dies',
@@ -14,7 +15,7 @@ export default class DiesEvent extends TriggerEvent {
     }
 
     static get qualifierParsers() {
-        return [TurnWindow];
+        return [TurnWindow, Arrival];
     }
 
     get isRepeatable() {

@@ -18,6 +18,14 @@ const ACTIVATION_PERMISSION = new RegExp(
     'i'
 );
 const EXTRA_ACTIVATION = /^can be activated (?<permission>an additional time)\b/i;
+const ONLY_WINDOW = new RegExp(
+    '^activate (?<abilities>this ability) and only during '
+        + '(?<permission>the (?:declare attackers|declare blockers) step)\\b', 'i'
+);
+const REPEAT_BOAST = new RegExp(
+    '^can (?<abilities>boast) (?<permission>twice during each of your turns '
+        + 'rather than once)\\b', 'i'
+);
 
 export default class ActivationPermissionEffect extends Effect {
     static get pattern() {
@@ -25,7 +33,8 @@ export default class ActivationPermissionEffect extends Effect {
     }
 
     static match(scribe, str) {
-        return super.match(scribe, str) ?? str.match(EXTRA_ACTIVATION);
+        return super.match(scribe, str) ?? str.match(EXTRA_ACTIVATION)
+            ?? str.match(ONLY_WINDOW) ?? str.match(REPEAT_BOAST);
     }
 
     parseArguments(match) {

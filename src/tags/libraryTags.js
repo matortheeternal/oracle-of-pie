@@ -1,5 +1,5 @@
 const GRAVEYARD_LAND = {
-    hasExactType: 'land', zone: 'graveyard', not: { limitsToPastEvent: true }
+    hasExactType: 'land', zone: 'graveyard', not: { leftBattlefieldThisTurn: true }
 };
 const LAND_SWAP = { ability: { cost: { sacrificesOther: true } } };
 

@@ -9,10 +9,23 @@ const COST_CHANGE = new RegExp(
     '^costs? (?:(?<amount>' + COST + ') (?<direction>less|more) to '
         + '|an additional ' + ADDITIONAL_COST + ' to )(?<action>cast|activate)\\b', 'i'
 );
+const KEYWORD_PAYMENT = new RegExp(
+    '^(?<keyword>blitz|unlock|exhaust|equip) costs you pay cost '
+        + `(?<amount>${COST}) (?<direction>less)\\b`,
+    'i'
+);
+const ACTION_PAYMENT = new RegExp(
+    '^(?<keyword>plotting|foretelling) cards from (?<source>your hand) costs? '
+        + `(?<amount>${COST}) (?<direction>less)\\b`,
+    'i'
+);
+const PASSIVE_REDUCTION = new RegExp(
+    `^this cost is (?<reduction>reduced) by (?<amount>${COST})`, 'i'
+);
 const COST_TAIL_ALTERNATIVES = [
     'this way', 'for each (?:[^,.]|, (?=non))+', 'if [^,.]+', 'as long as [^,.]+',
     'during [^,.]+', 'unless they\'re mana abilities',
-    ',? where X is [^.]+'
+    ',? where X is [^.]+', 'and can be done on any player\'s turn'
 ];
 const COST_TAIL = new RegExp(`^(?:${COST_TAIL_ALTERNATIVES.join('|')})`, 'i');
 const LESS = 'less';
@@ -24,11 +37,19 @@ export default class CostModificationEffect extends Effect {
         return COST_CHANGE;
     }
 
+    static match(scribe, str) {
+        return super.match(scribe, str) ?? str.match(KEYWORD_PAYMENT)
+            ?? str.match(ACTION_PAYMENT) ?? str.match(PASSIVE_REDUCTION);
+    }
+
     parseArguments(match) {
         const { amount, direction, extra, action } = match.groups;
+        const { keyword, source, reduction } = match.groups;
         this.amount = amount ?? extra;
-        this.direction = direction?.toLowerCase() ?? 'more';
-        this.action = action.toLowerCase();
+        this.direction = direction?.toLowerCase() ?? (reduction ? LESS : 'more');
+        this.action = action?.toLowerCase() ?? null;
+        this.keyword = keyword?.toLowerCase() ?? null;
+        this.source = source?.toLowerCase() ?? null;
         this.conditions = [];
         while (this.consumeCondition()) continue;
     }

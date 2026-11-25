@@ -3,6 +3,7 @@ import ThisWay from './qualifiers/ThisWay.js';
 import FirstTime from './qualifiers/FirstTime.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
 import ZoneOrigin from './qualifiers/ZoneOrigin.js';
+import SpellCastCondition from './qualifiers/SpellCastCondition.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const ACTIONS = {
@@ -46,7 +47,7 @@ const ACTIONS = {
     'wins? a clash': 'win-clash',
     'loses? the game': 'lose-game',
     'loses? control of': 'lose-control',
-    'searches?': 'search',
+    'search(?:es)?': 'search',
     'counters?(?= (?:a|an|target|another) )': 'counter',
     'pays? life': 'pay-life',
     'pays? this cost': 'pay-cost',
@@ -79,7 +80,7 @@ export default class RecordedActionEvent extends ActionEvent {
     }
 
     static get qualifierParsers() {
-        return [ThisWay, FirstTime, TurnWindow, ZoneOrigin];
+        return [ThisWay, FirstTime, TurnWindow, ZoneOrigin, SpellCastCondition];
     }
 
     constructor(scribe, match, str) {

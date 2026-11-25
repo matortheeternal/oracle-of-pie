@@ -1,6 +1,7 @@
 import Effect from './Effect.js';
 import KeywordList from '../values/KeywordList.js';
 import { COPY_EXCEPTION } from '../values/copyException.js';
+import NamedModifier from '../phrases/modifiers/NamedModifier.js';
 
 const STATE_ALTERNATIVES = [
     'the monarch', 'day\\b', 'night\\b', 'plotted', 'prepared', 'blocked', 'untapped',
@@ -20,6 +21,7 @@ const COLOR_DESCRIPTION = new RegExp(
 const POWER_TOUGHNESS = /\b\d+\/\d+\b/;
 const WITH_KEYWORDS = /\bwith (.+)$/i;
 const LEADING_COMMA = /^,? /;
+const NAMED = /\bnamed /i;
 
 export default class BecomesEffect extends Effect {
     static get pattern() {
@@ -28,7 +30,22 @@ export default class BecomesEffect extends Effect {
 
     parseArguments(match) {
         this.description = this.consumeText(DESCRIPTION)?.[0] ?? null;
+        this.name = this.readName();
         this.keywords = this.parseKeywords();
+    }
+
+    readName() {
+        const offset = this.description?.search(NAMED) ?? -1;
+        if (offset < 0) return null;
+        const start = this.description.slice(0, offset);
+        const read = this.description.slice(offset);
+        const suffix = this.remainingStr.startsWith(',') ? this.remainingStr : '';
+        const named = this.parseNext(read + suffix, [NamedModifier]);
+        if (named?.raw.length > read.length) {
+            this.description = start + named.raw;
+            this.remainingStr = named.remainingStr;
+        }
+        return named;
     }
 
     consumeDuration() {
@@ -54,7 +71,7 @@ export default class BecomesEffect extends Effect {
     }
 
     get parts() {
-        return [this.keywords].filter(Boolean);
+        return [this.name, this.keywords].filter(Boolean);
     }
 
     get grantedKeywordNames() {

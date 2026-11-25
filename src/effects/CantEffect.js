@@ -2,7 +2,9 @@ import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 
 const CONTROLLER_UNTAP = 'untap during its controller\'s untap step';
+const CAUSE_SACRIFICE = 'cause you to sacrifice or exile';
 const CANT_ALTERNATIVES = [
+    CAUSE_SACRIFICE,
     'venture into the dungeon more than once each turn',
     'play land cards from graveyards',
     'choose an untapped creature as this spell\'s target as you cast it',
@@ -65,7 +67,7 @@ const CANT_QUALIFIERS = [
     'during [^,.]+',
     'more than [^,.]+'
 ];
-const OBJECT_RESTRICTIONS = new Set(['attack', 'block']);
+const OBJECT_RESTRICTIONS = new Set(['attack', 'block', CAUSE_SACRIFICE]);
 const OBJECT_QUALIFIER = new RegExp(`^(?:${CANT_QUALIFIERS.join('|')})`, 'i');
 const UNBLOCKABLE = /^can't be blocked(?! by)(?![^.]*\bexcept\b)/i;
 const NEXT_UNTAP = /^untap during [^,.]*\bnext\b/;

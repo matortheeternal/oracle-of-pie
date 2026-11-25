@@ -75,7 +75,7 @@ const PLAYER_ALTERNATIVES = [
     'an opponent',
     'a player(?! or\\b)',
     'any opponent',
-    'defending player',
+    'defending player(?: or a planeswalker they control)?',
     'they',
     'that opponent',
     'the chosen player',
@@ -90,12 +90,15 @@ const PLAYER = new RegExp(
 const YOU = /^you\b/i;
 const COMPOUND = / and /i;
 const RELATIVES = [
-    'who (?:drew a card|controlled one of those permanents) this way',
+    'who drew a card this way',
+    'who controlled one of those permanents(?: this way)?',
+    'who searched (?:their|your) library this way',
     'who attacked you or a planeswalker you control this turn',
     'who cast (?:~|this spell)',
     'who was dealt damage by (?:~|this [a-z]+) this turn',
     'other than (?:that player|you|its controller)',
     'with no cards in (?:their )?hand',
+    'with exactly \\d+ life',
     'with fewer cards in hand than the player with the most cards in hand',
     'who (?:has|have) ' + NUMBER_PATTERN + ' or more poison counters',
     'who (?:lost|has lost) ' + NUMBER_PATTERN + ' or more life this turn',
@@ -112,8 +115,10 @@ const RELATIVES = [
     'who controls more lands than you',
     'chosen at random',
     'who has more life than you',
+    'who (?:doesn\'t|does not) have an? [a-z-]+ counter',
     'dealt combat damage this game by a creature named ~',
     'this creature attacked this turn',
+    'this creature is attacking',
     'who (?:does(?:n\'t| not)?|can\'t|did(?:n\'t)?)'
 ];
 const RELATIVE = new RegExp('^(?:' + RELATIVES.join('|') + ')(?![\\w\'-])', 'i');

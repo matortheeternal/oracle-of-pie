@@ -2,6 +2,7 @@ import TriggerEvent from './TriggerEvent.js';
 import ZoneOrigin from './qualifiers/ZoneOrigin.js';
 import FirstTime from './qualifiers/FirstTime.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
+import ThisWay from './qualifiers/ThisWay.js';
 
 const OWNER = '(?<owner>a|your|an opponent\'s)';
 const OWNED_DESTINATION = `${OWNER} (?<ownedZone>graveyard|library)`;
@@ -27,7 +28,7 @@ export default class PutIntoZoneEvent extends TriggerEvent {
     }
 
     static get qualifierParsers() {
-        return [ZoneOrigin, FirstTime, TurnWindow];
+        return [ZoneOrigin, FirstTime, TurnWindow, ThisWay];
     }
 
     static read(scribe, match, str) {

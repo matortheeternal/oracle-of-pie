@@ -21,7 +21,9 @@ const CONDITIONS = [
     'other than (?:your|their) first spell (?:that|each) turn',
     'from an artifact source',
     'that mana is spent to (?:cast|activate) (?:it|~|this spell)',
-    'while ~ is attacking'
+    'while ~ is attacking',
+    'while casting a spell with emerge',
+    'while you\'re activating a craft ability'
 ];
 const CAST_CONDITION = new RegExp('^(?:' + CONDITIONS.join('|') + ')(?!\\w)', 'i');
 

@@ -5,6 +5,7 @@ const DASH_BULLET = /^- /gm;
 const REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
 const ROMAN_SUFFIX = / [IVXLC]+$/;
 const FIRST_NAME = /^(\p{Lu}[\p{L}'’-]+) \p{Lu}/u;
+const TITLE_SURNAME = /^(Dr\.|Mr\.|Mrs\.|Ms\.) .+ (\p{Lu}[\p{L}'’-]+)$/u;
 const KEYWORDS = new Set(DEFAULT_KEYWORDS.map(keyword => keyword.toLowerCase()));
 const SELF_ACTION = 'attacks?|blocks?|enters?|dies?|leaves?|deals?|fights?|connives?';
 const ALIAS_CONTEXT = `(?='s (?:power|toughness|controller|owner|counters?)\\b`
@@ -16,12 +17,14 @@ function escapeRegExp(str) {
 }
 
 export function nameVariants(name) {
+    const titled = name.match(TITLE_SURNAME);
     const variants = [
         name,
         name.split(',')[0],
         name.split(' of ')[0],
         name.split(' the ')[0],
-        name.replace(ROMAN_SUFFIX, '')
+        name.replace(ROMAN_SUFFIX, ''),
+        titled ? `${titled[1]} ${titled[2]}` : null
     ];
     return [...new Set(variants.filter(Boolean))].sort((a, b) => b.length - a.length);
 }

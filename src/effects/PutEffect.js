@@ -1,4 +1,6 @@
 import ObjectEffect from './ObjectEffect.js';
+import PlayerPhrase from '../phrases/PlayerPhrase.js';
+import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 
 const PUT = /^puts? /i;
 const DESTINATION_ALTERNATIVES = [
@@ -39,6 +41,10 @@ const LEADING_MANNER = /^(?:tapped )?under (?:your|their|its owner's) control\b/
 const SECOND_SOURCE = /^and from (?:your graveyard|the command zone)\b/i;
 const TRAILING_SOURCE = /^from the command zone\b/i;
 const MILLED_SOURCE = /^from among (?:the milled cards|the cards milled this way)$/i;
+const DISTRIBUTION = new RegExp(
+    `^(?:, (?:and )?|and )(?<count>${NUMBER_PATTERN}) (?=(?:into|onto|on) )`, 'i'
+);
+const ATTACKING = /^(?:and )?attacking$/;
 
 export default class PutEffect extends ObjectEffect {
     static get pattern() {
@@ -54,8 +60,39 @@ export default class PutEffect extends ObjectEffect {
         this.readDestination(initialDestination);
         this.manners = this.consumeManners();
         if (initialManner) this.manners.unshift(initialManner[0].toLowerCase());
+        this.attackRecipient = this.readAttackRecipient();
         this.alternativeDestination = this.consumeAlternativeDestination();
         this.restDestination = this.consumeRest();
+        this.distribution = this.readDistribution();
+    }
+
+    readAttackRecipient() {
+        if (!this.manners.some(manner => ATTACKING.test(manner))) return null;
+        return this.consume([PlayerPhrase]);
+    }
+
+    readDistribution() {
+        const placements = [];
+        let next = this.consumePlacement();
+        while (next) {
+            placements.push(next);
+            next = this.consumePlacement();
+        }
+        return placements;
+    }
+
+    consumePlacement() {
+        const start = this.remainingStr;
+        const prefix = this.consumeText(DISTRIBUTION);
+        if (!prefix) return null;
+        const destination = this.consumeText(DESTINATION)?.groups.destination;
+        if (destination) return { count: numberValue(prefix.groups.count), destination };
+        this.remainingStr = start;
+        return null;
+    }
+
+    get parts() {
+        return [...super.parts, this.attackRecipient].filter(Boolean);
     }
 
     readDestination(initialDestination) {

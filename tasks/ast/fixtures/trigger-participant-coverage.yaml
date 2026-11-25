@@ -11,6 +11,7 @@ text: |-
   Whenever you cast a spell that targets only a single creature you control, draw a card.
   Whenever you cast a spell that targets a creature other than this creature, draw a card.
   Whenever you cast a spell that targets only Trigger participant coverage, draw a card.
+  Whenever you cast an instant, sorcery, or Wizard spell, this creature gains flying until end of turn.
 expect:
   kind: CardText
   children:
@@ -135,3 +136,14 @@ expect:
               refersToSelf: true
               requiresSingleTarget: true
         - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: CastEvent
+          raw: you cast an instant, sorcery, or Wizard spell
+          isRecognized: true
+        - kind: EffectSequence
+          effects:
+            - kind: GrantEffect
+              actingSubject:
+                kind: SelfReference
+                refersToSelf: true

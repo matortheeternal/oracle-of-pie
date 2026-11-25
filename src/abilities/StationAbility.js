@@ -1,4 +1,5 @@
 import Ability from './Ability.js';
+import AbilityWordAbility from './AbilityWordAbility.js';
 
 const STATION = /^(\d+)\+ ?\| ?/;
 
@@ -10,7 +11,8 @@ export default class StationAbility extends Ability {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.threshold = Number(match[1]);
-        this.inner = this.consume(scribe.innerAbilityParsers);
+        const parsers = [AbilityWordAbility, ...scribe.innerAbilityParsers];
+        this.inner = this.consume(parsers);
     }
 
     get parts() {

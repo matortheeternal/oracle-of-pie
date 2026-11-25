@@ -4,7 +4,7 @@ import { normalizeCounterKind, lowersToughness } from './counterKinds.js';
 
 const REMOVE_OBJECTS = /^(?:them(?: all)?|those counters)\b/i;
 const REMOVE = /^removes? (?=[^.]*?\bcounters? (?:from|among) )/i;
-const REMOVE_REFERENCED = /^removes? (?=(?:them|those counters)\b)/i;
+const REMOVE_REFERENCED = /^removes? (?=(?:them|all of them|those counters)\b)/i;
 const LOSE_COUNTERS = /^loses? (?=all counters\b)/i;
 const LOST_COUNTERS = /^all counters\b/i;
 const REMOVE_NUMBER = /^removes? (?=(?:one|two|three|all of them|\d+) (?:from|of|$))/i;

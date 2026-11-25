@@ -1,14 +1,10 @@
-import TriggerEvent from './TriggerEvent.js';
+import ActionEvent from './ActionEvent.js';
 
 const EXPLORES = /^(?<subject>.+?) explores?\b/i;
 
-export default class ExploresEvent extends TriggerEvent {
+export default class ExploresEvent extends ActionEvent {
     static get pattern() {
         return EXPLORES;
-    }
-
-    parseObjectPhrase() {
-        return null;
     }
 
     get isRepeatable() {

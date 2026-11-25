@@ -1,7 +1,8 @@
 import Sentence from './Sentence.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
-const TOKEN_EVENT = /^create (?:a|an|one or more) (?<token>[\w ]+) tokens?$/i;
+const TOKEN_EVENT = /^create (?:a|an|one or more) (?<token>[\w ,/-]+) tokens?$/i;
+const TOKEN_JOINER = /,? (?:and|or) |, /i;
 const MILL_ACTION = /^mill\b/i;
 const WOULD_DIE = /^die\b/i;
 const DAMAGED_SUBJECT = /\bdealt (?:combat )?damage\b/i;
@@ -12,16 +13,23 @@ const REPLACEMENT = new RegExp(
     '^(?:if|the next time) ([^,"]+?) would ([^,"]+),'
         + ' (?=[^.]*\\binstead\\b)', 'i'
 );
-const EVENT_CONTINUATION = /^(?:and |or |[A-Z][\w-]+(?:,| or ))/;
+const EVENT_CONTINUATION = new RegExp(
+    '^(?:and |or |[A-Z][\\w-]+(?:,| or )|(?:battle|spell|creature|player),|card not on )'
+);
 const COMMA = ', ';
 
 function extendReplacement(scribe, text, initial) {
-    const stop = initial[0].length;
-    if (!EVENT_CONTINUATION.test(text.slice(stop))) return initial;
-    const next = text.indexOf(COMMA, stop);
-    if (next < 0 || !scribe.startsClause(text.slice(next + COMMA.length))) return initial;
-    const end = next + COMMA.length;
-    return [text.slice(0, end), initial[1], initial[2] + text.slice(stop - 2, next)];
+    const start = initial[0].length;
+    let stop = start;
+    while (EVENT_CONTINUATION.test(text.slice(stop))) {
+        const next = text.indexOf(COMMA, stop);
+        if (next < 0) break;
+        stop = next + COMMA.length;
+        if (!scribe.startsModeledClause(text.slice(stop))) continue;
+        const action = initial[2] + text.slice(start - COMMA.length, next);
+        return [text.slice(0, stop), initial[1], action];
+    }
+    return initial;
 }
 
 export default class ReplacementSentence extends Sentence {
@@ -40,7 +48,10 @@ export default class ReplacementSentence extends Sentence {
         this.replacesLifeLoss = LOSE_LIFE_ACTION.test(action);
         this.event = subject + ' would ' + action;
         this.affectedObject = this.parseNext(subject, PHRASE_PARSERS);
-        this.replacedToken = action.match(TOKEN_EVENT)?.groups.token ?? null;
+        const tokens = action.match(TOKEN_EVENT)?.groups.token;
+        this.replacedTokens = tokens?.split(TOKEN_JOINER) ?? [];
+        this.replacedToken = this.replacedTokens.length === 1
+            ? this.replacedTokens[0] : null;
         this.readClauses(match.rest);
     }
 

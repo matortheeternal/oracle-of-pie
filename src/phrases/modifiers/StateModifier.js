@@ -239,6 +239,7 @@ const EVENT_SCOPE = new RegExp(
         + ' (?:turn|way)|therefrom)$'
 );
 const ANTI_HISTORIC = /^that(?:'s| is) not historic$/;
+const LEFT_BATTLEFIELD = /^that (?:was|were) put there from the battlefield this turn$/;
 const CHOSEN_THIS_WAY = /^chosen this way$/;
 const STATE = new RegExp(
     `^(${STATE_ALTERNATIVES.join('|')})(?!\\w)`, 'i'
@@ -276,6 +277,10 @@ export default class StateModifier extends Modifier {
 
     get limitsToPastEvent() {
         return EVENT_SCOPE.test(this.state);
+    }
+
+    get leftBattlefieldThisTurn() {
+        return LEFT_BATTLEFIELD.test(this.state);
     }
 
     get excludesArtifacts() {

@@ -73,9 +73,11 @@ const ADDITIONAL_COST = /^as an additional cost to cast this spell/i;
 const CONDITION = new RegExp(
     `^(${CONDITION_ALTERNATIVES.join('|')})\\b([^,]*), `, 'i'
 );
+const UNPUNCTUATED_DURATION = /^(for as long as )(you control ~) (?=you may )/i;
 const POSSIBLE_CONTINUATION = new RegExp(
-    '^(?:and |or |[A-Z][\\w-]+(?:,| or )|'
-        + '(?:non)?(?:artifact|creature|enchantment|land|planeswalker|battle)\\b)'
+    '^(?:and |or |(?:an? )?[A-Z][\\w-]+(?:,| or )|(?:equipped|enchanted),|'
+        + '(?:non)?(?:artifact|creature|enchantment|land|planeswalker|battle|token)\\b'
+        + '|there (?:are|is) )'
 );
 const COMMA = ', ';
 
@@ -83,6 +85,7 @@ function extendCondition(scribe, text, initial) {
     let stop = initial[0].length;
     const rest = text.slice(stop);
     if (!POSSIBLE_CONTINUATION.test(rest)) return initial;
+    if (scribe.startsModeledClause(rest)) return initial;
     while (POSSIBLE_CONTINUATION.test(text.slice(stop))) {
         const next = text.indexOf(COMMA, stop);
         if (next < 0) break;
@@ -96,7 +99,8 @@ function extendCondition(scribe, text, initial) {
 export default class ConditionalSentence extends Sentence {
     static matchStatement(scribe, text) {
         const match = text.match(CONDITION);
-        return match ? extendCondition(scribe, text, match) : null;
+        if (match) return extendCondition(scribe, text, match);
+        return text.match(UNPUNCTUATED_DURATION);
     }
 
     constructor(scribe, match, str) {

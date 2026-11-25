@@ -10,6 +10,7 @@ const DIG_UNTIL = new RegExp(
 );
 const FINDER = /^(?:you|they|he or she|that player) (?:reveals?|exiles?) /i;
 const PASSIVE_FIND = /^(?:is|are) (?:revealed|exiled)\b/i;
+const QUANTITY = /^equal to the number of (?<source>[a-z-]+) sacrificed this way\b/i;
 
 export default class DigUntilEffect extends Effect {
     static get pattern() {
@@ -20,6 +21,7 @@ export default class DigUntilEffect extends Effect {
         this.consumeText(FINDER);
         this.foundCard = this.consume(PHRASE_PARSERS);
         this.consumeText(PASSIVE_FIND);
+        this.countsSacrificed = this.consumeText(QUANTITY)?.groups.source ?? null;
     }
 
     get parts() {
