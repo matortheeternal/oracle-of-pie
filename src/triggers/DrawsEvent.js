@@ -1,4 +1,5 @@
 import ActionEvent from './ActionEvent.js';
+import DrawStepException from './qualifiers/DrawStepException.js';
 import OrdinalCard from './objects/OrdinalCard.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
@@ -15,7 +16,7 @@ export default class DrawsEvent extends ActionEvent {
     }
 
     static get qualifierParsers() {
-        return [TurnWindow];
+        return [TurnWindow, DrawStepException];
     }
 
     get ordinalCard() {

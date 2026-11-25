@@ -1,4 +1,5 @@
 import Parser from '../core/Parser.js';
+import EffectSubjectGroup from '../phrases/EffectSubjectGroup.js';
 import TrailingCondition from './TrailingCondition.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
 import { EFFECT_PARSERS } from '../effects/index.js';
@@ -9,6 +10,7 @@ const ALTERNATIVE = /^,? ?or /i;
 const MAY = /^may /i;
 const EACH = /^each /i;
 const ALSO = /^also /i;
+const INSTEAD = /^instead /i;
 
 function attachSubject(effect, subject, isOptional) {
     effect.subject = subject;
@@ -50,19 +52,39 @@ export default class ClauseReader extends Parser {
     }
 
     readClause() {
-        return this.consume(EFFECT_PARSERS) ?? this.readSubjectEffect();
+        this.consumeText(ALSO);
+        const replaces = Boolean(this.consumeText(INSTEAD));
+        const effect = this.consume(EFFECT_PARSERS) ?? this.readSubjectEffect();
+        if (effect && replaces) effect.replacesPriorAction = true;
+        return effect;
     }
 
     readSubjectEffect() {
         const start = this.remainingStr;
-        const subject = this.consume(PHRASE_PARSERS);
+        const single = this.consume(PHRASE_PARSERS);
+        const effect = single && this.readEffectFor(single);
+        if (effect) return effect;
+        this.remainingStr = start;
+        return this.readGroupEffect(start);
+    }
+
+    readGroupEffect(start) {
+        const group = this.consume([EffectSubjectGroup]);
+        const effect = group?.isGroup && this.readEffectFor(group);
+        if (effect) return effect;
+        this.remainingStr = start;
+        return null;
+    }
+
+    readEffectFor(subject) {
         if (!subject) return null;
         this.consumeText(ALSO);
         const isOptional = Boolean(this.consumeText(MAY));
         this.consumeText(EACH);
+        const replaces = Boolean(this.consumeText(INSTEAD));
         const effect = this.consume(EFFECT_PARSERS);
-        if (effect) return attachSubject(effect, subject, isOptional);
-        this.remainingStr = start;
-        return null;
+        if (!effect) return null;
+        if (replaces) effect.replacesPriorAction = true;
+        return attachSubject(effect, subject, isOptional);
     }
 }

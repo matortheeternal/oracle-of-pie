@@ -6,6 +6,9 @@ const BORROWED_ABILITIES = new RegExp(
     '^all (?<kind>activated(?: and triggered)?) abilities of '
     + '(?<source>[^,.]+?)(?= and (?:gets|can)\\b| until\\b|$|[,.])', 'i'
 );
+const FOR_OBJECTS = new RegExp(
+    '^for (?:artifacts|creatures|enchantments|instant and sorcery spells)\\b', 'i'
+);
 const CONDITION = /^(as long as [^,.]+|during your turn|for each (?:[^,.]|, (?=non))+)/i;
 
 export default class GrantEffect extends Effect {
@@ -19,6 +22,7 @@ export default class GrantEffect extends Effect {
         this.borrowedAbilityKind = borrowed?.kind.toLowerCase() ?? null;
         this.borrowedAbilitySource = borrowed?.source ?? null;
         this.condition = this.consumeText(CONDITION)?.[1] ?? null;
+        this.restrictedTo = this.consumeText(FOR_OBJECTS)?.[0] ?? null;
     }
 
     get parts() {

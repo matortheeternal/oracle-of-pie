@@ -42,6 +42,7 @@ export default class Oracle {
         this.abilityParsers = ABILITY_PARSERS;
         this.innerAbilityParsers = INNER_ABILITY_PARSERS;
         this.effectParsers = EFFECT_PARSERS;
+        this.statementParsers = SENTENCE_PARSERS.slice(0, -1);
     }
 
     isKeyword(name) {
@@ -57,8 +58,7 @@ export default class Oracle {
     }
 
     startsStatement(str) {
-        const openers = SENTENCE_PARSERS.slice(0, -1);
-        return openers.some(parser => parser.matchStatement(this, str));
+        return this.statementParsers.some(parser => parser.matchStatement(this, str));
     }
 
     parseText(text) {

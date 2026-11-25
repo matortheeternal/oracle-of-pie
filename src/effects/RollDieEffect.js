@@ -1,6 +1,12 @@
 import Effect from './Effect.js';
 
-const ROLL_DIE = /^rolls? (a|two|three) d(\d+)/i;
+import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
+
+const DIE = '(?:a|an|two|three) (?:d(?<d>[0-9]+)|(?<sides>[0-9]+)-sided die)';
+const DICE = '(?<count>' + NUMBER_PATTERN + '|that many) (?<planar>planar )?dice';
+const ROLL_DIE = new RegExp('^rolls? (?:' + DIE + '|' + DICE + ')\\b', 'i');
+const EXTRA_DICE = new RegExp('^plus (' + NUMBER_PATTERN + ')\\b', 'i');
+const IGNORE = /^and ignore (?:the lowest|the highest) rolls?\b/i;
 const ROLL_MODIFIER = /^\s*and add ([^.]+)/i;
 
 export default class RollDieEffect extends Effect {
@@ -9,7 +15,13 @@ export default class RollDieEffect extends Effect {
     }
 
     parseArguments(match) {
-        this.sides = Number(match[2]);
+        const { d, sides, count, planar } = match.groups;
+        this.sides = Number(d ?? sides) || null;
+        this.countText = count ?? null;
+        this.isPlanar = Boolean(planar);
+        const extra = this.consumeText(EXTRA_DICE)?.[1];
+        this.additionalDice = extra ? numberValue(extra) : 0;
+        this.ignoredRoll = this.consumeText(IGNORE)?.[0] ?? null;
         this.modifier = this.consumeText(ROLL_MODIFIER)?.[1] ?? null;
     }
 }

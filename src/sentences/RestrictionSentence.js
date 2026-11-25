@@ -9,8 +9,10 @@ const RESTRICTION_ALTERNATIVES = [
     'it\'s still a land',
     'you may choose the same mode more than once',
     'any player may [^.]*',
-    'a deck can have any number of [^.]*',
+    'a deck can have (?:any number of|up to \\w+) cards named [^.]*',
+    'only your opponents may activate this ability and only as a sorcery',
     'you may look at the top card of your library any time',
+    'you can have two commanders if both have this ability',
     'level \\d+[^.]*',
     '\\d+\\+ ?\\|[^.]*',
     '\\d+\\/\\d+'

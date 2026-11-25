@@ -7,8 +7,12 @@ const PARAMETER_ALTERNATIVES = [
     '\\d+',
     'X',
     'from the (?:color of your choice|chosen colou?r)',
+    'from everything',
+    'from (?:spells|[a-z]+) and from (?:permanents|[a-z]+)',
     'from [a-z]+(?: and from [a-z]+)*',
     'legendary creature \\{[^}]+\\}(?:\\{[^}]+\\})*',
+    '(?:commander|citizen|hero|planeswalker|wizard) \\{[^}]+\\}(?:\\{[^}]+\\})*',
+    'onto (?:instant or sorcery|arcane) \\{[^}]+\\}(?:\\{[^}]+\\})*',
     '[a-z]+ [A-Z][a-z]+',
     'N'
 ];

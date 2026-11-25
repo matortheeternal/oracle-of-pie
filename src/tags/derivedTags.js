@@ -42,6 +42,10 @@ const TOKEN_FROM_EXILING_ENCHANTED_OBJECT = {
 
 const OWN_ABILITY = { granted: false, expansion: null };
 const COUNTERS_DEPLETED = /^if there are no \w+ counters? on /i;
+const FINITE_COUNTERS = {
+    ability: { cost: { removesCounters: true } },
+    condition: { condition: COUNTERS_DEPLETED }
+};
 const MODE_NOT_USED_BEFORE = /\bhasn't been chosen\b(?! this turn)/i;
 const ATTACHED_DEATH = { kind: 'DiesEvent', subjectPhrase: { isAttached: true } };
 const UNKNOWN_ENTRANT = { kind: 'EntersEvent', subjectPhrase: null };
@@ -62,10 +66,7 @@ export const REPEATABLE_SOURCE = {
             { sentence: { effects: { consumesSource: true, isOptional: false } } },
             { ability: { event: { any: [ATTACHED_DEATH, UNKNOWN_ENTRANT] } } },
             { abilities: { body: { effects: SINGLE_USE_MODES } } },
-            {
-                ability: { cost: { removesCounters: true } },
-                condition: { condition: COUNTERS_DEPLETED }
-            }
+            FINITE_COUNTERS
         ]
     }
 };
@@ -217,7 +218,7 @@ export const DERIVED_TAGS = [
             kind: 'CreateTokenEffect',
             createsCreature: true,
             affectsYou: true,
-            context: REPEATABLE
+            context: { ...REPEATABLE, not: FINITE_COUNTERS }
         }
     },
     {

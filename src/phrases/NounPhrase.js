@@ -1,4 +1,5 @@
 import Phrase from './Phrase.js';
+import AdventureModifier from '../triggers/objects/AdventureModifier.js';
 import { MODIFIER_PARSERS } from './modifiers/index.js';
 import RelationModifier from './modifiers/RelationModifier.js';
 import { TYPE_WORDS } from './vocabulary.js';
@@ -211,6 +212,14 @@ export default class NounPhrase extends Phrase {
         return this.qualifiers.includes(COMMANDER);
     }
 
+    get excludesOwnedByYou() {
+        return this.modifiers.some(modifier => modifier.excludesOwnedByYou);
+    }
+
+    get hasAdventureRequirement() {
+        return this.modifiers.some(modifier => modifier instanceof AdventureModifier);
+    }
+
     get controlledByYou() {
         return this.modifiers.some(modifier => modifier.controlledByYou);
     }
@@ -284,7 +293,7 @@ export default class NounPhrase extends Phrase {
     }
 
     get hasSubtypes() {
-        return this.subtypes.length > 0;
+        return this.subtypes.length > 0 || this.modifiers.some(m => m.restrictsSubtype);
     }
 
     hasExactType(type) {

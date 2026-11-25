@@ -5,6 +5,7 @@ const PAID_EFFECT = { kind: ['DiscardEffect', 'SacrificeEffect'], affectsYou: tr
 const DRAW_COSTS = {
     any: [
         { sentence: { linkedEffects: PAID_EFFECT } },
+        { ability: { events: { kind: 'RecordedActionEvent', action: 'exploit' } } },
         { cardText: { hasAdditionalCost: true } },
         { ability: { cost: { any: [{ discards: true }, { sacrificesOther: true }] } } }
     ]

@@ -2,7 +2,7 @@ import BodyAbility from './BodyAbility.js';
 
 const MODE_START = '(?:• |(?=\\+ ?\\{))';
 const MODE_COST = '(?:\\+ ?)?\\{[^}]+\\}(?:\\{[^}]+\\})* — ';
-const MODE_NAME = '(?:([A-Z][\\w \']+?) — )?';
+const MODE_NAME = `(?:([A-Z][\\w !'’-]+?) — )?`;
 const MODE = new RegExp(`^${MODE_START}${MODE_NAME}(?:${MODE_COST})?([\\s\\S]+)$`);
 
 export default class ModeLine extends BodyAbility {

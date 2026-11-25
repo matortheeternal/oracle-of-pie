@@ -2,6 +2,8 @@ import Phrase from '../../phrases/Phrase.js';
 
 const PLAYER = [
     'one or more of your opponents', 'one of your opponents', 'a player',
+    'the player with the most life(?: or tied for most life)?',
+    'the player who has the initiative', 'different players',
     'an opponent', 'you'
 ].join('|');
 const WALKER = '(?:a )?(?<alternative>planeswalker)';

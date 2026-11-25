@@ -18,7 +18,10 @@ const DESTINATION_ALTERNATIVES = [
 const DESTINATION = new RegExp(
     `^to (?:${DESTINATION_ALTERNATIVES.join('|')})`, 'i'
 );
-const FROM_GRAVEYARD = /^from (?:your|a|their|its owner's) graveyards? /i;
+const FROM_GRAVEYARD = /^from (?:your|a|their|each|its owner's) graveyards? /i;
+const RESULT_FILTER = new RegExp(
+    '^each with (?:mana value [^,.]+?|different mana values)(?= from )', 'i'
+);
 const OR_FROM_EXILE = /^or (?=from exile\b)/i;
 const RETURN_TAIL_ALTERNATIVES = [
     'tapped',
@@ -27,6 +30,7 @@ const RETURN_TAIL_ALTERNATIVES = [
     'face down',
     'under (?:your|its owner\'s|their owners\'|their owner\'s) control',
     'attached to [^,.]+',
+    'under (?:their|that player\'s|an opponent\'s) control',
     'with (?:an? |N |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them)',
     'at the beginning of [^,.]+',
     'at end of combat'
@@ -42,6 +46,7 @@ export default class ReturnEffect extends ObjectEffect {
 
     parseArguments(match) {
         super.parseArguments(match);
+        this.resultFilter = this.consumeText(RESULT_FILTER)?.[0] ?? null;
         this.source = this.consumeText(FROM_GRAVEYARD) ? 'graveyard' : null;
         this.alternativeSource = this.consumeAlternativeSource();
         const destination = this.consumeText(DESTINATION);

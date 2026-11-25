@@ -26,7 +26,7 @@ export const CRIME_TAGS = [
             context: REPEATABLE_ABILITY,
             any: [
                 { kind: 'AnyTarget' },
-                { ...TARGETED_OBJECT, controlledByOpponent: true },
+                { ...TARGETED_OBJECT, controlledByOpponent: true, isCardInZone: false },
                 { ...TARGETED_OBJECT, zone: 'graveyard', zoneOwnedByYou: false },
                 {
                     ...TARGETED_OBJECT,

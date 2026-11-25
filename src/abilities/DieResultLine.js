@@ -1,6 +1,6 @@
 import BodyAbility from './BodyAbility.js';
 
-const DIE_RESULT = /^(\d+)(?:[—–-](\d+))? \| ([\s\S]+)$/;
+const DIE_RESULT = /^(\d+)(?:[—–-](\d+))? (?:\||—) ([\s\S]+)$/;
 
 export default class DieResultLine extends BodyAbility {
     static match(scribe, str) {

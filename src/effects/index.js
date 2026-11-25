@@ -69,6 +69,20 @@ import AdditionalPhaseEffect from './AdditionalPhaseEffect.js';
 import CounterModificationEffect from './CounterModificationEffect.js';
 import BeginGameEffect from './BeginGameEffect.js';
 import TuckEffect from './TuckEffect.js';
+import RepeatPropertyEffect from './RepeatPropertyEffect.js';
+import SwitchStatsEffect from './SwitchStatsEffect.js';
+import ExchangeEffect from './ExchangeEffect.js';
+import LookAtCardsEffect from './LookAtCardsEffect.js';
+import SetStatusEffect from './SetStatusEffect.js';
+import CopyTargetEffect from './CopyTargetEffect.js';
+import SearchZonesEffect from './SearchZonesEffect.js';
+import DeckConstructionEffect from './DeckConstructionEffect.js';
+import DraftEffect from './DraftEffect.js';
+import ActivationPermissionEffect from './ActivationPermissionEffect.js';
+import PlayerControlEffect from './PlayerControlEffect.js';
+import RoomDoorEffect from './RoomDoorEffect.js';
+import SetCombatDamageEffect from './SetCombatDamageEffect.js';
+import { ChooseCounterEffect, GiveMatchingCounterEffect } from './SelectCounterEffect.js';
 import OpaqueEffect from './OpaqueEffect.js';
 import StateEffect from './StateEffect.js';
 import RevealEffect from './RevealEffect.js';
@@ -122,7 +136,8 @@ export const EFFECT_PARSERS = [
     MoveCountersEffect, RemoveCountersEffect,
     KeywordActionEffect, AddManaEffect, CantEffect, ActivationBanEffect,
     EntersWithCountersEffect,
-    ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
+    ChooseModesEffect, ChooseValueEffect, ChooseCounterEffect, GiveMatchingCounterEffect,
+    ChooseObjectsEffect, EntersTappedEffect,
     EntersUntappedEffect, TurnFaceEffect,
     EntersUnderOpponentControlEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
@@ -132,7 +147,8 @@ export const EFFECT_PARSERS = [
     CostModificationEffect,
     DefinePTEffect,
     EntersAsCopyEffect, SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    SetLifeTotalEffect, BecomesEffect, DistributeCountersEffect, TypeChangeEffect,
+    SetLifeTotalEffect, SetStatusEffect, BecomesEffect, DistributeCountersEffect,
+    TypeChangeEffect,
     ManaRetentionEffect,
     AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
     EndTurnOrCombatEffect, ExtraTurnEffect, StateEffect, LoseAbilitiesEffect,
@@ -144,7 +160,10 @@ export const EFFECT_PARSERS = [
     UsesToughnessEffect, ChooseNotToUntapEffect, DoubleLifeEffect,
     VoteEffect, PlanarEffect, RepeatEffect, CostReductionLimitEffect,
     ManaSpendingRuleEffect, LegendRuleExemptionEffect,
-    SeparatePilesEffect, OpaqueEffect
+    SeparatePilesEffect, RepeatPropertyEffect, SwitchStatsEffect, ExchangeEffect,
+    LookAtCardsEffect, CopyTargetEffect, SearchZonesEffect, DeckConstructionEffect,
+    DraftEffect, ActivationPermissionEffect, PlayerControlEffect, RoomDoorEffect,
+    SetCombatDamageEffect, OpaqueEffect
 ];
 
 export {
@@ -156,7 +175,8 @@ export {
     SacrificeEffect, FightEffect, MillEffect, KeywordActionEffect, AddManaEffect,
     CantEffect, ActivationBanEffect,
     EntersWithCountersEffect, ShuffleIntoLibraryEffect,
-    ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
+    ChooseModesEffect, ChooseValueEffect, ChooseCounterEffect, GiveMatchingCounterEffect,
+    ChooseObjectsEffect, EntersTappedEffect,
     EntersUntappedEffect, TurnFaceEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect,
     DigUntilEffect, AttachEffect,
@@ -178,5 +198,8 @@ export {
     UsesToughnessEffect, ChooseNotToUntapEffect, DoubleLifeEffect,
     VoteEffect, PlanarEffect, RepeatEffect, CostReductionLimitEffect,
     ManaSpendingRuleEffect, LegendRuleExemptionEffect,
-    SeparatePilesEffect, OpaqueEffect
+    SeparatePilesEffect, RepeatPropertyEffect, SwitchStatsEffect, ExchangeEffect,
+    LookAtCardsEffect, SetStatusEffect, CopyTargetEffect, SearchZonesEffect,
+    DeckConstructionEffect, DraftEffect, ActivationPermissionEffect, PlayerControlEffect,
+    RoomDoorEffect, SetCombatDamageEffect, OpaqueEffect
 };

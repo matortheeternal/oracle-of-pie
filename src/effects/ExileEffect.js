@@ -3,6 +3,9 @@ import ObjectEffect from './ObjectEffect.js';
 const EXILE = /^exiles? /i;
 const EXILE_TAIL_ALTERNATIVES = [
     'face down',
+    'again',
+    'from (?:each|all) graveyards?',
+    'from (?:their|its owner\'s) (?:hand or graveyard|graveyard or hand)',
     'instead of putting [^,.]+',
     'instead',
     'at random',

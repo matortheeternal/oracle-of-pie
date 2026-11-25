@@ -2,6 +2,16 @@ const GRANTING_EFFECTS = ['GrantEffect', 'ModifyPTEffect'];
 const SELF_GRANTING_EFFECTS = [...GRANTING_EFFECTS, 'BecomesEffect'];
 const GRANT_RECIPIENT = {
     refersToSelf: false,
+    not: {
+        any: [
+            { antecedent: {
+                owner: { kind: 'PutEffect', placesUnderAnotherPlayersControl: true }
+            } },
+            { kind: 'PlayerPhrase', player: 'they', context: {
+                condition: { isThirdPersonNextTurn: true }
+            } }
+        ]
+    },
     any: [{ isBackReference: false }, { antecedent: { isTargeted: true } }]
 };
 const GRANTED = 'grantedKeywordNames';

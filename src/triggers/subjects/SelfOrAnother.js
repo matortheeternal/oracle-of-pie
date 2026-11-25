@@ -2,7 +2,7 @@ import Phrase from '../../phrases/Phrase.js';
 import SelfReference from '../../phrases/SelfReference.js';
 import NounPhrase from '../../phrases/NounPhrase.js';
 
-const OR_ANOTHER = /^ or (?=another\b)/i;
+const OR_ANOTHER = /^ or (?=(?:another|a legendary|an enchanted)\b)/i;
 const OR = /^or /i;
 
 export default class SelfOrAnother extends Phrase {

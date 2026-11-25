@@ -9,7 +9,7 @@ text: |-
   When you cast this spell from anywhere other than exile, draw a card.
 expect:
   kind: CardText
-  isRecognized: false
+  isRecognized: true
   children:
     - kind: TriggeredAbility
       children:
@@ -64,13 +64,13 @@ expect:
     - kind: TriggeredAbility
       children:
         - kind: CastEvent
-          isRecognized: false
+          isRecognized: true
           objectPhrase:
             kind: CastSpell
             raw: a spell
-          unreadText:
-            kind: UnrecognizedText
-            raw: other than your first spell each turn
+          qualifiers:
+            - kind: SpellCastCondition
+              condition: other than your first spell each turn
         - kind: EffectSequence
     - kind: TriggeredAbility
       isRepeatable: false

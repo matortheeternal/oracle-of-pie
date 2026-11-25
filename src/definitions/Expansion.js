@@ -19,13 +19,22 @@ export default class Expansion extends Node {
         return [this.text];
     }
 
+    repeatsReplacementToken(context) {
+        const replaced = context.replacement?.replacedToken;
+        return Boolean(this.isToken && replaced?.toLowerCase() === this.definition.key);
+    }
+
     childContext(context) {
         const forOpponent = Boolean(context.forOpponent || this.isOpponents);
+        const alreadyCreated = this.repeatsReplacementToken(context);
         const origin = context.origin ?? context.sentence ?? context.ability;
         const granted = this.isToken;
         const definitionOnly = context.definitionOnly || !this.isPerformedAction;
         const expansion = this;
-        return { ...context, origin, expansion, forOpponent, granted, definitionOnly };
+        return {
+            ...context, origin, expansion, forOpponent, granted, definitionOnly,
+            alreadyCreated
+        };
     }
 
     toJSON() {

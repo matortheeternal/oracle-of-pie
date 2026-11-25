@@ -1,10 +1,19 @@
 import Modifier from './Modifier.js';
 
-const BEFORE_DESTINATION = '(?=,|\\.|$| to (?:its|their) owners?\'?s? hands?| until\\b)';
+const BEFORE_DESTINATION = '(?=,|\\.|$| (?:into|onto|from|until)\\b'
+    + '| to (?:its|their) owners?'
+    + '| (?:and put|can|can\'t|gets?|gains?|has|have|are|is|deals?) )';
 const WITH_ALTERNATIVES = [
     'power',
     'toughness',
     'mana value',
+    'base power and toughness', 'base power',
+    'equal or lesser toughness',
+    'the greatest toughness',
+    'different powers', 'different toughnesses',
+    'equal or lesser mana value',
+    'lesser mana value',
+    'greater mana value',
     'total power',
     'total mana value',
     'converted mana cost',
@@ -24,11 +33,13 @@ const COMPARED = `[^,.]+?${BEFORE_DESTINATION}`;
 const COMPARISON_ALTERNATIVES = [
     ' (?:greater|less) than (?:its|their) (?:power|toughness)\\b',
     '(?: or toughness)? (?:\\d+|X|N) or (?:less|greater|more)',
-    `(?: or toughness)? less than ${COMPARED}`,
+    `(?: or toughness)? less than (?:or equal to )?${COMPARED}`,
     `(?: or toughness)? greater than ${COMPARED}`,
     ` equal to ${COMPARED}`,
     ' (?:\\d+|X|N)\\b',
-    ' of the chosen quality'
+    ' (?:[0-9]+|X)/(?:[0-9]+|X)\\b',
+    ' (?:than|as) (?:that|the chosen) (?:spell|card|permanent)\\b',
+    ' of the chosen (?:quality|number|value)'
 ];
 const WITH = new RegExp(
     `^(with|without) (${WITH_ALTERNATIVES.join('|')})\\b`

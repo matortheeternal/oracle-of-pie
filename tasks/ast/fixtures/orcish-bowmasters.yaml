@@ -6,24 +6,25 @@ text: |-
   When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw steps, this creature deals 1 damage to any target. Then amass Orcs 1.
 expect:
   kind: CardText
-  isRecognized: false
+  isRecognized: true
   children:
     - kind: KeywordAbility
     - kind: TriggeredAbility
       children:
         - kind: CompoundEvent
-          raw: this creature enters and whenever an opponent draws a card
+          raw: this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw steps
           children:
             - kind: EntersEvent
               raw: this creature enters
             - kind: DrawsEvent
-              raw: an opponent draws a card
-              isRecognized: false
+              raw: an opponent draws a card except the first one they draw in each of their draw steps
+              isRecognized: true
               children:
                 - kind: PlayerPhrase
                   raw: an opponent
                 - kind: NounPhrase
                   raw: a card
-                - kind: UnrecognizedText
+                - kind: DrawStepException
+                  firstDrawsExcluded: 1
                   raw: except the first one they draw in each of their draw steps
         - kind: EffectSequence

@@ -15,14 +15,15 @@ const ARTIFACT_TYPE = /\bArtifact\b/;
 const LAND_TOKEN = /\bland tokens?\b/i;
 const QUOTED_TEXT = /"[^"]*"/g;
 const TOKEN_DESCRIPTION_ALTERNATIVES = [
-    ',(?: and)? an? [^,."]*?\\btoken\\b',
+    '(?:, (?:and )?| and )an? [^,."]*?\\btoken\\b',
+    ' that\'s? tapped and attacking (?:that player|that opponent)',
     ' with (?:"[^"]*"|[^,."])+(?:, and [^.,]+)?',
     ' named (?:"[^"]*"|[^,."])+',
     ' that\'s a copy of [^,.]+',
     ' attached to [^,.]+',
     ' for each (?:[^,.]|, (?=non))+',
     ' equal to [^,.]+',
-    ' tapped and attacking',
+    ' tapped and attacking(?: (?:that player|that opponent))?',
     ' that\'s tapped and attacking',
     ',? except (?:[^."]|"[^"]*")+',
     ' that (?:are|is) [^,.]+'

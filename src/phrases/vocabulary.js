@@ -5,6 +5,7 @@ export const TYPE_WORDS = {
     land: 'land', lands: 'land',
     planeswalker: 'planeswalker', planeswalkers: 'planeswalker',
     battle: 'battle', battles: 'battle',
+    kindred: 'kindred', scheme: 'scheme', schemes: 'scheme',
     permanent: 'permanent', permanents: 'permanent',
     spell: 'spell', spells: 'spell',
     card: 'card', cards: 'card',
@@ -21,7 +22,9 @@ export const QUALIFIER_WORDS = new Set([
     'white', 'blue', 'black', 'red', 'green', 'colorless', 'monocolored',
     'multicolored', 'tapped', 'untapped', 'attacking', 'blocking', 'blocked',
     'unblocked', 'other', 'legendary', 'basic', 'snow', 'enchanted',
-    'equipped', 'face-down', 'activated', 'triggered', 'loyalty', 'chosen', 'exiled',
+    'equipped', 'face-down', 'face-up', 'activated', 'triggered', 'loyalty',
+    'chosen', 'exiled', 'prepared', 'goaded', 'suspected', 'saddled',
+    'monstrous', 'double-faced', 'transformed', 'historic',
     'token', 'commander', 'kicked'
 ]);
 

@@ -5,12 +5,15 @@ const ZONE_OWNERS = [
     'target player\'s', 'target opponent\'s', 'that player\'s', 'each player\'s',
     'each opponent\'s', 'defending player\'s', 'any', 'all'
 ];
-const ZONE_NAMES = ['graveyard', 'graveyards', 'hand', 'library', 'exile'];
+const ZONE_NAMES = [
+    'graveyard', 'graveyards', 'hand', 'library', 'exile', 'command zone'
+];
 const OWNED_ZONE = `^(?:from|in) (${ZONE_OWNERS.join('|')}) (${ZONE_NAMES.join('|')})\\b`;
 const ZONE_ALTERNATIVES = [
     OWNED_ZONE,
     '^(?:from|in) graveyards\\b',
-    '^from (?:it|among them|among those cards)\\b',
+    '^from (?:it|among (?:them|those cards|the revealed cards))\\b',
+    '^from the command zone\\b',
     '^from exile\\b',
     '^from anywhere other than your hand\\b',
     '^(?:on|from) the battlefield\\b'

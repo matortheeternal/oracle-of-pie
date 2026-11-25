@@ -29,7 +29,13 @@ export const LIBRARY_TAGS = [
     },
     {
         tag: 'tutor-land-to-battlefield',
-        match: { ...SEARCH, findsLand: true, toBattlefield: true }
+        match: {
+            ...SEARCH, findsLand: true, toBattlefield: true,
+            not: {
+                isOptional: true,
+                subject: { kind: 'PlayerPhrase', player: 'that player' }
+            }
+        }
     },
     {
         tag: 'tutor-to-hand',
@@ -98,6 +104,7 @@ export const LIBRARY_TAGS = [
         tag: 'hate-graveyard',
         match: {
             kind: 'ExileEffect',
+            context: { sentence: { not: { effects: { kind: 'CopyEffect' } } } },
             phrases: {
                 any: [
                     { kind: 'ZonePhrase', ownedByYou: false },

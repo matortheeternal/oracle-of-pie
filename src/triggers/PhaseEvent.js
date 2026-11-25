@@ -3,7 +3,7 @@ import TurnStep from './steps/TurnStep.js';
 import { STEP_PARSERS } from './steps/index.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
-const PHASE = /^the beginning of (?<subject>.+)$/i;
+const PHASE = /^(?:the )?(?<boundary>beginning|end) of (?<subject>.+)$/i;
 
 export default class PhaseEvent extends TriggerEvent {
     static get pattern() {
@@ -12,6 +12,11 @@ export default class PhaseEvent extends TriggerEvent {
 
     static get subjectParsers() {
         return [...STEP_PARSERS, ...PHRASE_PARSERS];
+    }
+
+    constructor(scribe, match, str) {
+        super(scribe, match, str);
+        this.boundary = match.groups.boundary.toLowerCase();
     }
 
     get step() {

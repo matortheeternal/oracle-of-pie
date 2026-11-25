@@ -1,0 +1,66 @@
+name: Nested trigger and zone search
+typeLine: Creature — Dragon
+text: |-
+  When this creature enters, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.
+  If you would draw a card, instead look at the top three cards of your library, then put one into your hand and the rest into your graveyard.
+  Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them.
+  This creature and up to one target creature you control phase out.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+        - kind: EffectSequence
+          children:
+            - kind: ConditionalSentence
+              isDuration: true
+              children:
+                - kind: TriggerSentence
+                  event:
+                    kind: IsDealtDamageEvent
+                    subjectPhrase:
+                      controlledByOpponent: true
+                  effects:
+                    - kind: DestroyEffect
+                      primaryObject:
+                        kind: BackReference
+                        antecedent:
+                          kind: NounPhrase
+                          raw: a creature an opponent controls
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: ReplacementSentence
+              event: you would draw a card
+              children:
+                - kind: LookAtTopEffect
+                  replacesPriorAction: true
+                - kind: PutEffect
+                  sendsRestToGraveyard: true
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: SearchZonesEffect
+                  zones: [graveyard, hand, library]
+                - kind: ExileEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: PhaseEffect
+                  phasesOut: true
+                  subject:
+                    kind: EffectSubjectGroup
+                    connectors: [and]
+                    children:
+                      - kind: SelfReference
+                      - kind: NounPhrase
+                        isTargeted: true

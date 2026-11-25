@@ -76,6 +76,7 @@ export const CREATURE_TAGS = [
             subject: {
                 isMass: true,
                 isCommanderGroup: false,
+                not: { kind: 'NounPhrase', excludesOwnedByYou: true },
                 controlledByYou: true,
                 hasType: 'creature'
             },
@@ -114,11 +115,17 @@ export const CREATURE_TAGS = [
     },
     {
         tag: 'cda-power',
-        match: { kind: 'DefinePTEffect', definesPower: true }
+        match: {
+            kind: 'DefinePTEffect', definesPower: true,
+            context: { expansion: null, granted: false }
+        }
     },
     {
         tag: 'cda-toughness',
-        match: { kind: 'DefinePTEffect', definesToughness: true }
+        match: {
+            kind: 'DefinePTEffect', definesToughness: true,
+            context: { expansion: null, granted: false }
+        }
     },
     {
         tag: 'clone',

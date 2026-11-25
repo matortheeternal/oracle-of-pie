@@ -2,6 +2,7 @@ import Parser from '../core/Parser.js';
 import { PHRASE_PARSERS } from './index.js';
 
 const MAY = /^may /i;
+const COMMA_PREFIX = /^,/;
 const JOINER = /^(?:,? ?(?:and\/or|and|or) |, )/;
 
 export default class PhraseList extends Parser {
@@ -16,17 +17,23 @@ export default class PhraseList extends Parser {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.phrases = [this.consume(this.constructor.parsers)];
+        this.connectors = [];
         while (this.consumeNextPhrase()) continue;
     }
 
+    get joiner() {
+        return JOINER;
+    }
+
     consumeNextPhrase() {
-        const joiner = this.remainingStr.match(JOINER);
+        const joiner = this.remainingStr.match(this.joiner);
         if (!joiner) return false;
         const rest = this.remainingStr.slice(joiner[0].length);
         const phrase = this.parseNext(rest, this.constructor.parsers);
         if (!phrase || this.startsClause(phrase)) return false;
         this.remainingStr = phrase.remainingStr;
         this.phrases.push(phrase);
+        this.connectors.push(joiner[0].trim().replace(COMMA_PREFIX, '').trim());
         return true;
     }
 

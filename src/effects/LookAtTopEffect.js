@@ -1,7 +1,7 @@
 import Effect from './Effect.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
-const LOOK_VERB = '(?:look at|reveal|reveals|exile|exiles)';
+const LOOK_VERB = '(?:looks? at|reveal|reveals|exile|exiles)';
 const COUNT = `${NUMBER_PATTERN}|that many`;
 const TOP_CARDS = `(?:the top (?:(?<count>${COUNT}) cards|card) of`
     + `|(?<fromCount>${COUNT}) cards from the top of)`;
@@ -23,12 +23,13 @@ export default class LookAtTopEffect extends Effect {
         if (!match) return null;
         const { owner, verb } = match.groups;
         const isOpponent = owner.toLowerCase().includes('opponent');
-        if (isOpponent && verb.toLowerCase() !== 'look at') return null;
+        if (isOpponent && !verb.toLowerCase().endsWith(' at')) return null;
         return match;
     }
 
     parseArguments(match) {
-        this.verb = match.groups.verb.split(' ')[0].toLowerCase();
+        const verb = match.groups.verb.toLowerCase();
+        this.verb = verb.endsWith(' at') ? 'look' : verb;
         this.libraryOwner = match.groups.owner.toLowerCase();
         const count = match.groups.count ?? match.groups.fromCount;
         this.cardCount = count?.toLowerCase() ?? null;

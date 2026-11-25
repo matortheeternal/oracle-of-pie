@@ -1,12 +1,16 @@
 import Ability from './Ability.js';
 
-const ABILITY_WORD = /^([A-Z][A-Za-z'’-]*(?: [A-Za-z'’-]+){0,4}) (?:—|-) (?=\S)/;
+const WORD_LABEL = `[A-Z][A-Za-z'’!-]*(?: [A-Za-z0-9'’!-]+){0,7}`;
+const NUMBERED_LABEL = '\\d+-[A-Z][A-Za-z-]* [A-Z][A-Za-z-]*';
+const ABILITY_WORD = new RegExp(`^(${WORD_LABEL}|${NUMBERED_LABEL}) (?:—|-) (?=\\S)`);
+const CHOICE_LABEL = /\bfaces? a villainous choice$/i;
 const NOT_ABILITY_WORD = /^(?:choose|exhaust)\b/i;
 
 export default class AbilityWordAbility extends Ability {
     static match(scribe, str) {
         const match = str.match(ABILITY_WORD);
-        return match && !NOT_ABILITY_WORD.test(match[1]) ? match : null;
+        if (!match || CHOICE_LABEL.test(match[1])) return null;
+        return NOT_ABILITY_WORD.test(match[1]) ? null : match;
     }
 
     constructor(scribe, match, str) {

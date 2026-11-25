@@ -3,6 +3,15 @@ import Sentence from './Sentence.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const CONDITION_ALTERNATIVES = [
+    'as this [a-z]+ transforms into ~',
+    'as this [a-z]+ becomes attached to [^,]+',
+    'during (?:turns other than yours|any turn [^,]+|each opponent\'s [^,]+)',
+    'during [^,]+(?: upkeep| end step| main phase)',
+    'while voting',
+    'starting with (?![^,]+, each player votes\\b)[^,]+',
+    'until the end of (?:your|their|that player\'s) next turn',
+    'until (?:their|that player\'s) next turn',
+    'the first time [^,]+',
     'if',
     'as long as',
     'unless',
@@ -33,7 +42,8 @@ const CAST_FOR_ALTERNATIVE_COST = /\bcast (this spell|~) for its [a-z]+ cost\b/i
 const SPENT_COLOR = /\{([WUBRG])\}(?:\{\1\})* was spent to cast/;
 const KICKED = /\bwas kicked\b/i;
 const NAMED_KICKER = /\bkicked with its ((?:\{[^}]+\})+) kicker\b/i;
-const DURATION = /^(?:until |during your next turn$)/i;
+const THIRD_PERSON_NEXT = /^until (?:the end of )?(?:that player's|their) next turn$/i;
+const DURATION = /^(?:until |during (?:your|their) next turn$)/i;
 const FOR_EACH = /^for each /i;
 const IF_YOU_DO = /^if you do$|^if you [a-z]+ [^,]* this way$/i;
 const INTERVENING_IF = /^if (?!you do\b|you don't\b)/i;
@@ -75,6 +85,10 @@ export default class ConditionalSentence extends Sentence {
 
     get isConditional() {
         return !this.isDuration;
+    }
+
+    get isThirdPersonNextTurn() {
+        return THIRD_PERSON_NEXT.test(this.condition);
     }
 
     get isDuration() {

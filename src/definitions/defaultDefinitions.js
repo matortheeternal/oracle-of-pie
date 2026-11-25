@@ -7,6 +7,7 @@ const DISCOVER_WORDING = /discovers?/;
 const ENDURE_WORDING = /endures?/;
 const GOAD_WORDING = /goad [^,.]+/;
 const TRANSFORM_WORDING = /transform [^,.]+/;
+const CONVERT_WORDING = /convert (?:~|it\b|them\b|this [a-z]+)/;
 const REGENERATE_WORDING = /regenerate [^,.]+/;
 const SHUFFLE_WORDING = /shuffles?(?: [^,.]*)?/;
 const EXERT_WORDING = /exert [^,.]+/;
@@ -15,6 +16,16 @@ const BEHOLD_WORDING = /behold an? [^,.]+/;
 const EMPOWER_WORDING = /empower [A-Z][a-z]+/;
 const AIRBEND_WORDING = /airbend [^,.]+/;
 const WATERBEND_WORDING = /waterbend \{[^,.]+/;
+
+const INVESTIGATE_WORDING = /investigates?/;
+
+const MANIFEST_DREAD_WORDING = /manifests? dread/;
+
+const MANIFEST_WORDING = /manifests?/;
+
+const CLOAK_WORDING = /cloaks?/;
+
+const BLIGHT_WORDING = /blights?/;
 
 export const DEFAULT_DEFINITIONS = {
     keywords: [
@@ -52,7 +63,11 @@ export const DEFAULT_DEFINITIONS = {
     actions: [
         { name: 'Scry' },
         { name: 'Surveil' },
-        { name: 'Investigate', reminder: 'Create a Clue token.' },
+        {
+            name: 'Investigate',
+            pattern: INVESTIGATE_WORDING,
+            reminder: 'Create a Clue token.'
+        },
         { name: 'Proliferate' },
         { name: 'Explore', pattern: EXPLORE_WORDING },
         {
@@ -84,14 +99,16 @@ export const DEFAULT_DEFINITIONS = {
         },
         { name: 'Seek' },
         { name: 'Endure', pattern: ENDURE_WORDING },
-        { name: 'Manifest dread' },
-        { name: 'Manifest' },
+        { name: 'Manifest dread', pattern: MANIFEST_DREAD_WORDING },
+        { name: 'Manifest', pattern: MANIFEST_WORDING },
+        { name: 'Cloak', pattern: CLOAK_WORDING },
         { name: 'Venture into the dungeon' },
         { name: 'The Ring tempts you' },
         { name: 'Become the monarch' },
         { name: 'Take the initiative' },
         { name: 'Goad', pattern: GOAD_WORDING },
         { name: 'Transform', pattern: TRANSFORM_WORDING },
+        { name: 'Convert', pattern: CONVERT_WORDING },
         { name: 'Regenerate', pattern: REGENERATE_WORDING },
         { name: 'Shuffle', pattern: SHUFFLE_WORDING },
         { name: 'Time travel' },
@@ -101,7 +118,7 @@ export const DEFAULT_DEFINITIONS = {
         { name: 'Suspect', pattern: SUSPECT_WORDING },
         { name: 'Earthbend' },
         { name: 'Monstrosity' },
-        { name: 'Blight' },
+        { name: 'Blight', pattern: BLIGHT_WORDING },
         { name: 'Behold', pattern: BEHOLD_WORDING },
         {
             name: 'Recruit',

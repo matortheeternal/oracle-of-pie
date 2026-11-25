@@ -4,6 +4,7 @@ import TurnWindow from './qualifiers/TurnWindow.js';
 import FirstTime from './qualifiers/FirstTime.js';
 import SpellTarget from './qualifiers/SpellTarget.js';
 import ZoneOrigin from './qualifiers/ZoneOrigin.js';
+import SpellCastCondition from './qualifiers/SpellCastCondition.js';
 import ZoneModifier from '../phrases/modifiers/ZoneModifier.js';
 import WithModifier from '../phrases/modifiers/WithModifier.js';
 import BackReference from '../phrases/BackReference.js';
@@ -12,10 +13,11 @@ import CastSpell from './objects/CastSpell.js';
 
 const SUBJECT = '(?<subject>(?:(?! (?:and|or) (?:whenever|when|at) ).)+?)';
 const MANA_SPENT = '(?<manaSpent> spends? this mana to)?';
-const PLAYS_LAND = '(?<playsLand> plays? a land or)?';
+const PLAYS_LAND = '(?<playsLand> plays? a (?:legendary )?land(?: from exile)? or)?';
 const CASTER = `^${SUBJECT}(?<next> next)?${MANA_SPENT}${PLAYS_LAND} casts? `;
 const COPY_ALTERNATIVE = '(?:or (?<otherVerb>[a-z]+) )?';
-const SPELL = '(?<spell>this spell\\b|~|.*?\\bspells?\\b)';
+const SPELL_TYPES = '(?:an? )?(?:instant|sorcery)\\b';
+const SPELL = '(?<spell>this spell\\b|~|.*?\\bspells?\\b|' + SPELL_TYPES + ')';
 const CAST = new RegExp(CASTER + COPY_ALTERNATIVE + SPELL, 'i');
 const THIS_SPELL = /^(?:this spell|~)$/i;
 
@@ -27,7 +29,7 @@ export default class CastEvent extends TriggerEvent {
     static get qualifierParsers() {
         return [
             ZoneModifier, ZoneOrigin, WithModifier, SpellTarget,
-            FirstTime, TurnWindow, ThisWay
+            FirstTime, TurnWindow, ThisWay, SpellCastCondition
         ];
     }
 

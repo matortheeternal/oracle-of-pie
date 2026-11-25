@@ -6,7 +6,7 @@ text: |-
   Whenever a creature you control but don't own dies, its owner loses 2 life and you gain 2 life.
 expect:
   kind: CardText
-  isRecognized: false
+  isRecognized: true
   children:
     - kind: TriggeredAbility
       children:
@@ -23,10 +23,9 @@ expect:
       children:
         - kind: DiesEvent
           raw: a creature you control but don't own dies
-          isRecognized: false
+          isRecognized: true
           children:
             - kind: NounPhrase
-              raw: a creature you control
-            - kind: UnrecognizedText
-              raw: but don't own
+              raw: a creature you control but don't own
+              controlledByYou: true
         - kind: EffectSequence

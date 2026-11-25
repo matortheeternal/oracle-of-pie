@@ -4,7 +4,7 @@ function record(found, tags, node, context) {
 }
 
 function evaluateNode(found, evaluators, node, context) {
-    if (context.forOpponent) return;
+    if (context.forOpponent || context.alreadyCreated) return;
     for (const evaluator of evaluators) {
         if (found.has(evaluator.tag)) continue;
         record(found, evaluator.tagsFor(node, context), node, context);

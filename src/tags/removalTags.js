@@ -15,6 +15,10 @@ const OPPOSING_COUNTER = {
     countersSpell: true,
     phrases: { controlledByYou: false }
 };
+const DAMAGE_CLEANUP = {
+    delayedTrigger: { event: { kind: 'IsDealtDamageEvent' } },
+    condition: { isDuration: true }
+};
 const NON_WARD_COUNTER = { not: { ability: { events: { kind: 'TargetedEvent' } } } };
 const COUNTERED_THIS_WAY = /^if that spell is countered this way$/i;
 const SPELL_ONLY = {
@@ -32,7 +36,14 @@ function removesType(type) {
         any: [
             {
                 removesPermanently: true,
-                not: { context: { sentence: { condition: COUNTERED_THIS_WAY } } },
+                not: {
+                    context: {
+                        any: [
+                            { sentence: { condition: COUNTERED_THIS_WAY } },
+                            { replacement: { isDamageCleanup: true } }
+                        ]
+                    }
+                },
                 phrases: {
                     isOpposingObject: true,
                     allowsTypeAlone: type,
@@ -61,7 +72,10 @@ export const REMOVAL_TAGS = [
                     kind: 'ExileEffect',
                     phrases: { hasExactType: 'spell', controlledByYou: false }
                 },
-                { kind: ['ReturnEffect', 'TuckEffect'], phrases: OPPOSING_SPELL }
+                {
+                    kind: ['ReturnEffect', 'TuckEffect'], isComplete: true,
+                    phrases: OPPOSING_SPELL
+                }
             ]
         }
     },
@@ -75,7 +89,10 @@ export const REMOVAL_TAGS = [
     },
     {
         tag: 'removal-destroy',
-        match: { kind: 'DestroyEffect', phrases: { isOpposingObject: true } }
+        match: {
+            kind: 'DestroyEffect', phrases: { isOpposingObject: true },
+            context: { not: DAMAGE_CLEANUP }
+        }
     },
     {
         tag: 'removal-exile',
@@ -97,7 +114,13 @@ export const REMOVAL_TAGS = [
             phrases: {
                 isOpposingObject: true,
                 isBackReference: false,
-                not: SPELL_ONLY
+                not: {
+                    any: [SPELL_ONLY, {
+                        kind: 'NounPhrase', modifiers: {
+                            kind: 'StateModifier', relatesToSourceCombatRole: true
+                        }
+                    }]
+                }
             }
         }
     },
@@ -138,7 +161,12 @@ export const REMOVAL_TAGS = [
         match: {
             kind: 'SacrificeEffect',
             subjectIsOpponent: true,
-            not: { isOptional: true, subject: { player: 'any opponent' } }
+            not: {
+                any: [
+                    { isOptional: true, subject: { player: 'any opponent' } },
+                    { sharesSubject: true, affectsYou: true }
+                ]
+            }
         }
     },
     {

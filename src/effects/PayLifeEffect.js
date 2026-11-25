@@ -3,8 +3,10 @@ import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const LIFE_EQUAL_TO = 'life equal to [^,.]+?(?= rather than|$|[,.])';
 const PAY_LIFE = new RegExp(
-    `^pays? (?:(${NUMBER_PATTERN}) life|${LIFE_EQUAL_TO})`, 'i'
+    '^pays? (?:(' + NUMBER_PATTERN + '|twice X|that much|twice that much|half your) life'
+        + '|' + LIFE_EQUAL_TO + ')', 'i'
 );
+const AGAIN = /^again\b/i;
 const ALTERNATIVE = /^rather than pay(?:ing)? [^,.]+/i;
 
 export default class PayLifeEffect extends Effect {
@@ -18,6 +20,7 @@ export default class PayLifeEffect extends Effect {
 
     parseArguments(match) {
         this.amountText = match[1] ?? null;
+        this.repeatsPriorPayment = Boolean(this.consumeText(AGAIN));
         this.isAlternativeCost = Boolean(this.consumeText(ALTERNATIVE));
     }
 }

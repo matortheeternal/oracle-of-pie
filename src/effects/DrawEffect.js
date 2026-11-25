@@ -7,7 +7,8 @@ import {
 const DRAW = /^draws? /i;
 const BURST_COUNT = 3;
 const FOR_EACH = /\bfor each\b/i;
-const CARDS = /^(?:additional )?cards?\b(?: for each (?:[^,.]|, (?=non))+| plus \w+)?/i;
+const CARD_QUANTITY = ' for each (?:[^,.]|, (?=non))+| (?:plus|minus) \\w+';
+const CARDS = new RegExp(`^(?:additional )?cards?\\b(?:${CARD_QUANTITY})?`, 'i');
 const DRAW_SOURCE_REPLACEMENT = /^from (?:the [^,.]+?) rather than (?:the [^,.]+)\b/i;
 const CARDS_EQUAL = /^cards equal to [^,.]+/i;
 

@@ -54,13 +54,13 @@ expect:
     - kind: TriggeredAbility
       children:
         - kind: AttacksEvent
-          isRecognized: false
+          isRecognized: true
           children:
             - kind: CoordinatedSubject
               raw: this creature and another creature
               isMinimum: false
-            - kind: UnrecognizedText
-              raw: different players
+            - kind: AttackRecipient
+              player: different players
         - kind: EffectSequence
     - kind: TriggeredAbility
       children:
@@ -184,4 +184,16 @@ expect:
               raw: this turn
         - kind: EffectSequence
     - kind: SpellAbility
-      isRecognized: false
+      isRecognized: true
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: EntersWithCountersEffect
+                  isPlusCounters: true
+                  subject:
+                    kind: NounPhrase
+                    modifiers:
+                      - kind: ControllerModifier
+                      - kind: AdventureModifier

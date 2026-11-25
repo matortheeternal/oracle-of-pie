@@ -13,7 +13,16 @@ export const KEYWORD_GRANT_TAGS = [
                 isCommanderGroup: false,
                 controlledByYou: true,
                 hasType: 'creature',
-                not: { any: [{ hasExactType: 'permanent' }, { hasExactType: 'spell' }] }
+                isCardInZone: false,
+                not: {
+                    any: [
+                        { kind: 'NounPhrase', excludesOwnedByYou: true },
+                        { kind: 'NounPhrase', modifiers: {
+                            kind: 'StateModifier', restrictsSubtype: true
+                        } },
+                        { hasExactType: 'permanent' }, { hasExactType: 'spell' }
+                    ]
+                }
             },
             context: STATIC_GRANT
         }

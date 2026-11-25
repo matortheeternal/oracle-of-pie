@@ -2,6 +2,7 @@ import ObjectEffect from './ObjectEffect.js';
 
 const COPY = /^copy /i;
 const FOR_EACH = /^for each (?:[^,.]|, (?=non))+/i;
+const WHEN_CAST = /^when you cast it\b/i;
 const REPETITIONS = /^(?:twice|\w+ times)(?: instead)?/i;
 const COPY_NAMES = '(?:the copy|the copies|it|they|the token)';
 const NONLEGENDARY = new RegExp(
@@ -34,6 +35,7 @@ export default class CopyEffect extends ObjectEffect {
         const multiplier = this.consumeText(FOR_EACH) ?? this.consumeText(REPETITIONS);
         this.isMultiplied = Boolean(multiplier);
         this.isNonlegendary = Boolean(this.consumeText(NONLEGENDARY));
+        this.onCast = Boolean(this.consumeText(WHEN_CAST));
     }
 
     get copiesInstantOrSorcery() {

@@ -2,11 +2,15 @@ import Effect from './Effect.js';
 import Expansion from '../definitions/Expansion.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
-const REPEAT = '(?: twice| again| (?:\\w+ )?times)?';
+const REPEATED = '(?:that many|(?:up to )?\\w+) times';
+const REPEAT = '(?: (?<repetitions>twice|again|' + REPEATED + '|times))?';
 export const ACTION_AMOUNT = `(?: (?<amount>${NUMBER_PATTERN})\\b)?${REPEAT}`;
 
 const TRANSFORM_SELF = /^transform (?:~|this\b|it\b)/i;
-const LIBRARY_TOP = /^the top (?:\w+ )?cards? of (?:your|their|that player's) library\b/i;
+const LIBRARY_OWNER = `your|their|that player's|target opponent's`;
+const LIBRARY_TOP = new RegExp(
+    `^the top (?:\\w+ )?cards? of (?:${LIBRARY_OWNER}) library\\b`, 'i'
+);
 const SCRY_ADJUSTMENT = new RegExp(`^that many cards plus ${NUMBER_PATTERN}\\b`, 'i');
 
 export default class KeywordActionEffect extends Effect {
@@ -24,6 +28,7 @@ export default class KeywordActionEffect extends Effect {
     parseArguments(match) {
         this.actionText = match[1];
         this.amountText = match.groups.amount ?? null;
+        this.repetitions = match.groups.repetitions ?? null;
         this.definition = this.scribe.definitions.actions.definitionFor(this.actionText);
         this.action = this.definition.key;
         this.objectText = this.consumeText(LIBRARY_TOP)?.[0] ?? null;

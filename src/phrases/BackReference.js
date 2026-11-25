@@ -1,8 +1,24 @@
 import Phrase from './Phrase.js';
+import StateModifier from './modifiers/StateModifier.js';
 
 const REMAINDER = 'the rest';
 const REMAINDER_OF = /^the rest of /;
 const BACK_REFERENCE_ALTERNATIVES = [
+    'all (?:the )?revealed cards',
+    'cards revealed this way',
+    'those (?:revealed|exiled) cards',
+    'both (?:of those |the )?cards',
+    'all (?:of )?them',
+    'the other(?= (?:into|on|onto|to) )',
+    'any number of (?:the|those) (?:copies|cards|tokens)',
+    'either of them',
+    'both of them',
+    'the revealed cards',
+    'any number of them',
+    'the rest of them',
+    'those counters',
+    'the other cards',
+    'those tokens',
     'it',
     'them',
     'itself',
@@ -59,6 +75,11 @@ export default class BackReference extends Phrase {
         this.reference = match[1].toLowerCase();
         const objectType = this.reference.match(TYPE_IN_REFERENCE)?.[1];
         this.objectType = objectType?.toLowerCase() ?? null;
+        this.state = this.consume([StateModifier]);
+    }
+
+    get children() {
+        return [this.state].filter(Boolean);
     }
 
     get isBackReference() {

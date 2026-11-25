@@ -7,7 +7,12 @@ const TOKEN_PLAYER_COUNT = new RegExp(
 const SOURCE_TEXT = { granted: false, expansion: null };
 const ALL_PLAYERS = /^players$/i;
 const OPPOSED_CHOICE = {
-    kind: ['EffectSentence', 'ConditionalSentence', 'TriggerSentence'],
+    kind: [
+        'VillainousChoiceSentence',
+        'EffectSentence',
+        'ConditionalSentence',
+        'TriggerSentence'
+    ],
     context: SOURCE_TEXT,
     raw: VILLAINOUS_CHOICE
 };

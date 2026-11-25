@@ -11,7 +11,12 @@ const ANY_TYPE = 'mana of any type (?:can be spent )?to cast [^,.]+';
 const ANY_TYPE_MANA = new RegExp(`^,? and (?:you may spend )?${ANY_TYPE}`, 'i');
 const SOURCE = /^from [^,.]+?(?= without paying\b| as though\b|[,.]|$)/i;
 const BY_PAYING = /^by [a-z]+ing [^,.]+? rather than paying (?:its|their) mana costs?/i;
-const PLAY_TAILS = [WITHOUT_PAYING, AS_THOUGH_FLASH, ANY_TYPE_MANA, SOURCE, BY_PAYING];
+const USES_ALTERNATIVE_COST = /^using (?:its|their) [a-z-]+ (?:cost|ability)\b/i;
+const PAYS_EXTRA_COST = /^by [a-z]+ing [^,.]+? in addition to (?:paying )?[^,.]+/i;
+const PLAY_TAILS = [
+    WITHOUT_PAYING, AS_THOUGH_FLASH, ANY_TYPE_MANA, SOURCE, BY_PAYING,
+    USES_ALTERNATIVE_COST, PAYS_EXTRA_COST
+];
 
 export default class PlayCardsEffect extends ObjectEffect {
     static get pattern() {

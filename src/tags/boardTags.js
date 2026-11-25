@@ -9,10 +9,21 @@ const OTHER_OBJECT_REFERENCES = [
     { isBackReference: false },
     { antecedent: { refersToSelf: false, isPlayer: false } }
 ];
-const MASS_PLAYERS = { isPlayer: true, isMass: true, canBeOpponent: true };
+const MASS_PLAYERS = {
+    isPlayer: true, isMass: true, canBeOpponent: true,
+    not: { kind: 'EffectSubjectGroup' }
+};
 const TEAM_PUMP = 'ModifyPTEffect';
 const YOUR_TEAM = {
-    isMass: true, controlledByYou: true, hasType: 'creature', hasNameRestriction: false
+    isMass: true, controlledByYou: true, hasType: 'creature', hasNameRestriction: false,
+    not: {
+        any: [
+            { kind: 'NounPhrase', excludesOwnedByYou: true },
+            { kind: 'NounPhrase', modifiers: {
+                kind: 'StateModifier', restrictsSubtype: true
+            } }
+        ]
+    }
 };
 
 export const BOARD_TAGS = [
@@ -28,18 +39,32 @@ export const BOARD_TAGS = [
         match: {
             ...PLUS_COUNTERS,
             any: selfOrIncludingSelf('phrases'),
+            not: { phrases: { kind: 'NounPhrase', hasAdventureRequirement: true } },
             context: { granted: false }
         }
     },
     {
         tag: 'opponent-loses-life',
-        match: { kind: 'LoseLifeEffect', subjectIsOpponent: true }
+        match: {
+            kind: 'LoseLifeEffect', subjectIsOpponent: true,
+            not: { subject: { kind: 'PlayerPhrase', player: 'that player' }, context: {
+                delayedTrigger: {
+                    event: { kind: 'DealsDamageEvent', recipient: { player: 'a player' } }
+                }
+            } }
+        }
     },
     {
         tag: 'group-slug',
         match: {
             any: [
-                { kind: 'DamageEffect', phrases: MASS_PLAYERS },
+                {
+                    kind: 'DamageEffect',
+                    phrases: {
+                        ...MASS_PLAYERS,
+                        not: { kind: 'PlayerPhrase', player: 'players' }
+                    }
+                },
                 { kind: 'DamageEffect', phrases: { raw: 'each other opponent' } },
                 { kind: 'LoseLifeEffect', subject: MASS_PLAYERS }
             ]

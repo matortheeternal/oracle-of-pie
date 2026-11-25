@@ -75,7 +75,7 @@ export const CANON_TIERS = {
         W: 'secondary', U: 'primary', B: 'secondary', R: 'secondary', G: 'secondary'
     },
     'loot': {
-        W: 'tertiary', U: 'primary', B: 'secondary', R: 'none', G: 'none'
+        W: 'tertiary', U: 'primary', B: 'secondary', R: 'tertiary', G: 'none'
     },
     'rummage': {
         W: 'none', U: 'tertiary', B: 'none', R: 'primary', G: 'none'
@@ -132,7 +132,7 @@ export const CANON_TIERS = {
         W: 'primary', U: 'primary', B: 'tertiary', R: 'none', G: 'primary'
     },
     'keyword-indestructible': {
-        W: 'primary', U: 'tertiary', B: 'primary', R: 'tertiary', G: 'secondary'
+        W: 'primary', U: 'tertiary', B: 'secondary', R: 'tertiary', G: 'secondary'
     },
     'keyword-lifelink': {
         W: 'primary', U: 'none', B: 'primary', R: 'none', G: 'none'

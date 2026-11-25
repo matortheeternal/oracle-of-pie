@@ -5,7 +5,7 @@ import {
     usesCreatureCount, usesOpposingArtifactCount
 } from '../values/quantityDependencies.js';
 
-const GETS = /^gets? (?=[+\-−]?(?:\d+|X|\*)\/)/i;
+const GETS = /^gets? (?:an additional )?(?=[+\-−]?(?:\d+|X|\*)\/)/i;
 const AND_GAINS = /^and (?:gains?|has|have) /i;
 const SCALING = /^(for each (?:[^,.]|, (?=non))+|where X is [^,.]+|as long as [^,.]+)/i;
 

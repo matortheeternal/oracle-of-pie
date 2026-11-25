@@ -58,7 +58,8 @@ export const LIFE_TAGS = [
         match: {
             any: [
                 { kind: 'ActivatedAbility', cost: { paysLife: true } },
-                { kind: ['PayLifeEffect', 'LoseLifeEffect'], subjectIsYou: true }
+                { kind: 'PayLifeEffect', subjectIsYou: true, repeatsPriorPayment: false },
+                { kind: 'LoseLifeEffect', subjectIsYou: true }
             ]
         }
     }

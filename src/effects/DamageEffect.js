@@ -8,7 +8,7 @@ import {
 } from '../values/quantityDependencies.js';
 
 const DEALS = /^deals? /i;
-const COUNT = `(${NUMBER_PATTERN}|that much|twice that much|N)`;
+const COUNT = `(${NUMBER_PATTERN}|that much|twice (?:that much|X)|N)`;
 const POWER_OWNER = `(its|their|~'s|that creature's|this creature's)`;
 const AMOUNT = new RegExp(
     `^(?:${COUNT} damage(?: divided as you choose)?`

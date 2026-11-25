@@ -8,7 +8,9 @@ import { DEFECTOR } from './discardTags.js';
 export const CARD_FLOW_TAGS = [
     {
         tag: 'draw',
-        match: { kind: 'DrawEffect', drawsCards: true }
+        match: { kind: 'DrawEffect', drawsCards: true,
+            not: { context: { delayedTrigger: { event: { isYou: true } } },
+                subject: { kind: 'PlayerPhrase', isObjectOwner: true } } }
     },
     {
         tag: 'discard',
@@ -28,7 +30,11 @@ export const CARD_FLOW_TAGS = [
     },
     {
         tag: 'mill-opponent',
-        match: { kind: 'MillEffect', subjectIsOpponent: true }
+        match: {
+            kind: 'MillEffect',
+            subjectIsOpponent: true,
+            context: { not: { replacement: { replacesMill: true } } }
+        }
     },
     {
         tag: 'mill-self',
@@ -64,7 +70,7 @@ export const CARD_FLOW_TAGS = [
                 {
                     kind: 'ActivatedAbility',
                     cost: { discardsOtherCards: true },
-                    body: { effects: { kind: 'DrawEffect' } }
+                    body: { sentences: { nested: null, effects: { kind: 'DrawEffect' } } }
                 },
                 {
                     kind: 'Sentence',

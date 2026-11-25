@@ -37,15 +37,25 @@ export default class Sentence extends Parser {
         super(scribe, match, str);
         this.followsPrevious = match.followsPrevious;
         this.clauseEffects = [];
+        this.nested = null;
         this.trailingCondition = null;
         this.unrecognized = null;
     }
 
     readClauses(text) {
+        this.nested = this.readNestedStatement(text);
+        if (this.nested) return;
         const reader = ClauseReader.read(this.scribe, text);
         this.clauseEffects = reader.clauseEffects;
         this.trailingCondition = reader.condition;
         this.unrecognized = reader.unrecognized;
+    }
+
+    readNestedStatement(text) {
+        if (!this.isConditional && !this.isDuration) return null;
+        if (this.scribe.startsEffect(text)) return null;
+        const nested = this.parseNext(text, this.scribe.statementParsers);
+        return nested?.remainingStr ? null : nested;
     }
 
     link(previous, next) {
@@ -54,12 +64,13 @@ export default class Sentence extends Parser {
     }
 
     get children() {
+        if (this.nested) return [this.nested];
         const children = [...this.effects, this.trailingCondition, this.unrecognized];
         return children.filter(Boolean);
     }
 
     get effects() {
-        return this.clauseEffects.filter(Boolean);
+        return this.nested?.effects ?? this.clauseEffects.filter(Boolean);
     }
 
     get hasEffectlessClause() {

@@ -3,6 +3,7 @@ import CreateTokenEffect from '../effects/CreateTokenEffect.js';
 import Effect from '../effects/Effect.js';
 import EntersWithCountersEffect from '../effects/EntersWithCountersEffect.js';
 import Phrase from '../phrases/Phrase.js';
+import ReplacementSentence from '../sentences/ReplacementSentence.js';
 import QuotedAbility from '../values/QuotedAbility.js';
 import BlocksEvent from '../triggers/BlocksEvent.js';
 import BecomesBlockedEvent from '../triggers/BecomesBlockedEvent.js';
@@ -47,6 +48,7 @@ export default class ReferenceScope {
     constructor() {
         this.candidates = [];
         this.counterpart = null;
+        this.replacementRecipient = null;
     }
 
     visit(node, effect) {
@@ -55,9 +57,18 @@ export default class ReferenceScope {
         const owner = node instanceof Effect ? node : effect;
         for (const seed of node.referenceSeeds ?? []) this.register(seed, null);
         if (node instanceof Phrase) this.register(node, owner);
-        this.visitChildren(node, owner);
+        this.visitScopedChildren(node, owner);
         if (node instanceof CreateTokenEffect && node.createdToken)
             this.register(node.createdToken, node);
+    }
+
+    visitScopedChildren(node, owner) {
+        if (!(node instanceof ReplacementSentence))
+            return this.visitChildren(node, owner);
+        const previous = this.replacementRecipient;
+        this.replacementRecipient = node.affectedObject;
+        this.visitChildren(node, owner);
+        this.replacementRecipient = previous;
     }
 
     visitChildren(node, owner) {
@@ -77,6 +88,9 @@ export default class ReferenceScope {
     }
 
     antecedentFor(reference) {
+        const recipient = this.replacementRecipient;
+        if (reference.objectType && recipient?.hasType(reference.objectType))
+            return recipient;
         const antecedent = this.existingAntecedentFor(reference);
         const latest = this.candidates.at(-1);
         if (!latest?.isCreatedToken) return antecedent;

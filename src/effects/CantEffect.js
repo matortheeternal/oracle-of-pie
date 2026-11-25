@@ -3,6 +3,17 @@ import PhraseList from '../phrases/PhraseList.js';
 
 const CONTROLLER_UNTAP = 'untap during its controller\'s untap step';
 const CANT_ALTERNATIVES = [
+    'be cast',
+    'be regenerated',
+    'phase in',
+    'lose life',
+    'enter the battlefield',
+    'pay life or sacrifice nonland permanents to cast spells or activate abilities',
+    'draw cards(?: or gain life)?',
+    'play lands or cast spells from your hand',
+    'have (?:[+−-][0-9]+/[+−-][0-9]+ )?counters put on (?:them|it)',
+    'spend mana to cast (?:it|this spell)',
+    'untap more than [^,.]+',
     'attack, block, or (?:crew Vehicles|transform)\\b',
     'attack or block',
     'attack',
@@ -25,6 +36,8 @@ const CANT_ALTERNATIVES = [
     'activate [^,.]+'
 ];
 const CANT_QUALIFIERS = [
+    'for having [^,.]+ life',
+    'for the rest of (?:this|that) turn',
     'this turn',
     'this combat',
     'alone',
