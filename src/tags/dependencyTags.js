@@ -81,8 +81,18 @@ export const DEPENDENCY_TAGS = [
         tag: 'power-matters-self',
         match: {
             kind: 'DamageEffect',
-            usesSourcePower: true,
-            context: SOURCE_TEXT
+            context: SOURCE_TEXT,
+            any: [
+                { usesSourcePower: true },
+                {
+                    usesActingCreaturePower: true,
+                    context: {
+                        cardText: {
+                            effects: { kind: 'DefinePTEffect', definesPower: true }
+                        }
+                    }
+                }
+            ]
         }
     }
 ];

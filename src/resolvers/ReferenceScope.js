@@ -1,6 +1,7 @@
 import GrantEffect from '../effects/GrantEffect.js';
 import CreateTokenEffect from '../effects/CreateTokenEffect.js';
 import Effect from '../effects/Effect.js';
+import EntersWithCountersEffect from '../effects/EntersWithCountersEffect.js';
 import Phrase from '../phrases/Phrase.js';
 import QuotedAbility from '../values/QuotedAbility.js';
 import BlocksEvent from '../triggers/BlocksEvent.js';
@@ -24,6 +25,11 @@ function combatCounterpart(events = []) {
         if (counterpart) return counterpart;
     }
     return null;
+}
+
+function namesNewTokenEntering(reference, token) {
+    return reference.owner instanceof EntersWithCountersEffect
+        && reference.objectType === 'token' && !token.owner.copySource;
 }
 
 export default class ReferenceScope {
@@ -72,14 +78,17 @@ export default class ReferenceScope {
 
     antecedentFor(reference) {
         const antecedent = this.existingAntecedentFor(reference);
-        const owner = reference.owner;
-        if (!(owner instanceof GrantEffect) || owner.subject !== reference)
-            return antecedent;
-        if (antecedent && !antecedent.refersToSelf) return antecedent;
         const latest = this.candidates.at(-1);
-        if (latest?.isCreatedToken && latest.acceptsReference(reference.reference))
-            return latest;
-        return antecedent;
+        if (!latest?.isCreatedToken) return antecedent;
+        if (namesNewTokenEntering(reference, latest)) return latest;
+        return this.grantedToken(reference, latest, antecedent) ?? antecedent;
+    }
+
+    grantedToken(reference, token, antecedent) {
+        const owner = reference.owner;
+        if (!(owner instanceof GrantEffect) || owner.subject !== reference) return null;
+        if (antecedent && !antecedent.refersToSelf) return null;
+        return token.acceptsReference(reference.reference) ? token : null;
     }
 
     existingAntecedentFor(reference) {

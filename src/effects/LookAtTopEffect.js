@@ -6,8 +6,10 @@ const COUNT = `${NUMBER_PATTERN}|that many`;
 const TOP_CARDS = `(?:the top (?:(?<count>${COUNT}) cards|card) of`
     + `|(?<fromCount>${COUNT}) cards from the top of)`;
 const OWNERS = `your|their|target player's|that player's|each player's`;
+const OPPONENT_OWNERS = `target opponent's|an opponent's|each opponent's`;
 const LOOK = new RegExp(
-    `^${LOOK_VERB} ${TOP_CARDS} (?<owner>${OWNERS}) library(?: face down)?`,
+    `^(?<verb>${LOOK_VERB}) ${TOP_CARDS} (?<owner>${OWNERS}|${OPPONENT_OWNERS})`
+        + ' library(?: face down)?',
     'i'
 );
 
@@ -16,8 +18,17 @@ export default class LookAtTopEffect extends Effect {
         return LOOK;
     }
 
+    static match(scribe, str) {
+        const match = super.match(scribe, str);
+        if (!match) return null;
+        const { owner, verb } = match.groups;
+        const isOpponent = owner.toLowerCase().includes('opponent');
+        if (isOpponent && verb.toLowerCase() !== 'look at') return null;
+        return match;
+    }
+
     parseArguments(match) {
-        this.verb = match[0].split(' ')[0].toLowerCase();
+        this.verb = match.groups.verb.split(' ')[0].toLowerCase();
         this.libraryOwner = match.groups.owner.toLowerCase();
         const count = match.groups.count ?? match.groups.fromCount;
         this.cardCount = count?.toLowerCase() ?? null;

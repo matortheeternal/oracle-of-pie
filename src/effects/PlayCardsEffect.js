@@ -1,6 +1,10 @@
 import ObjectEffect from './ObjectEffect.js';
 
-const PLAY_CARDS = /^(play|cast) (?!an additional land|two additional lands)/i;
+const PLAY_VERB = '(?<verb>play|cast)';
+const EXTRA_LANDS = 'an additional land|two additional lands';
+const PLAY_CARDS = new RegExp(
+    `^(?<look>look at and )?${PLAY_VERB} (?!${EXTRA_LANDS})`, 'i'
+);
 const WITHOUT_PAYING = /^without paying (?:its|their) mana costs?/i;
 const AS_THOUGH_FLASH = /^as though (?:it|they) had flash/i;
 const ANY_TYPE = 'mana of any type (?:can be spent )?to cast [^,.]+';
@@ -8,7 +12,6 @@ const ANY_TYPE_MANA = new RegExp(`^,? and (?:you may spend )?${ANY_TYPE}`, 'i');
 const SOURCE = /^from [^,.]+?(?= without paying\b| as though\b|[,.]|$)/i;
 const BY_PAYING = /^by [a-z]+ing [^,.]+? rather than paying (?:its|their) mana costs?/i;
 const PLAY_TAILS = [WITHOUT_PAYING, AS_THOUGH_FLASH, ANY_TYPE_MANA, SOURCE, BY_PAYING];
-const PLAY = 'play';
 
 export default class PlayCardsEffect extends ObjectEffect {
     static get pattern() {
@@ -17,7 +20,8 @@ export default class PlayCardsEffect extends ObjectEffect {
 
     parseArguments(match) {
         super.parseArguments(match);
-        this.verb = match[1].toLowerCase();
+        this.verb = match.groups.verb.toLowerCase();
+        this.allowsLooking = Boolean(match.groups.look);
         this.tails = [];
         while (this.consumeTail()) continue;
     }
@@ -47,6 +51,6 @@ export default class PlayCardsEffect extends ObjectEffect {
     }
 
     get allowsLands() {
-        return this.verb === PLAY;
+        return this.verb === 'play';
     }
 }

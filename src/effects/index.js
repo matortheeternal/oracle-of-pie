@@ -31,6 +31,8 @@ import ChooseValueEffect from './ChooseValueEffect.js';
 import ChooseObjectsEffect from './ChooseObjectsEffect.js';
 import EntersUnderOpponentControlEffect from './EntersUnderOpponentControlEffect.js';
 import EntersTappedEffect from './EntersTappedEffect.js';
+import EntersUntappedEffect from './EntersUntappedEffect.js';
+import TurnFaceEffect from './TurnFaceEffect.js';
 import PayManaEffect from './PayManaEffect.js';
 import PayLifeEffect from './PayLifeEffect.js';
 import PlayerCountersEffect from './PlayerCountersEffect.js';
@@ -121,6 +123,7 @@ export const EFFECT_PARSERS = [
     KeywordActionEffect, AddManaEffect, CantEffect, ActivationBanEffect,
     EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
+    EntersUntappedEffect, TurnFaceEffect,
     EntersUnderOpponentControlEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,
@@ -154,6 +157,7 @@ export {
     CantEffect, ActivationBanEffect,
     EntersWithCountersEffect, ShuffleIntoLibraryEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseObjectsEffect, EntersTappedEffect,
+    EntersUntappedEffect, TurnFaceEffect,
     PayManaEffect, PayLifeEffect, PlayerCountersEffect, RevealHandEffect,
     DigUntilEffect, AttachEffect,
     ExtraLandEffect, PlayCardsEffect, CopyEffect, RollDieEffect, CoinFlipEffect,

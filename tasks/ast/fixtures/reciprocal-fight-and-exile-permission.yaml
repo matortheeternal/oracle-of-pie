@@ -1,0 +1,51 @@
+name: Reciprocal fight and exile permission
+typeLine: Sorcery
+text: |-
+  Choose any card name.
+  Choose target creature you control and target creature you don't control. Those creatures fight each other.
+  Look at the top three cards of target opponent's library. Exile one of them face down. You may look at and play that card for as long as it remains exiled.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: ChooseValueEffect
+                  choice: card name
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+            - kind: EffectSentence
+              children:
+                - kind: FightEffect
+                  isReciprocal: true
+                  subject:
+                    kind: BackReference
+                    raw: Those creatures
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: LookAtTopEffect
+                  libraryOwner: target opponent's
+                  cardCount: three
+            - kind: EffectSentence
+            - kind: EffectSentence
+              children:
+                - kind: PlayCardsEffect
+                  allowsLooking: true
+                  allowsLands: true
+                  isOptional: true
+                  duration:
+                    text: for as long as it remains exiled
+                  primaryObject:
+                    kind: BackReference
+                    refersToExiledCard: true

@@ -1,6 +1,7 @@
 import Effect from './Effect.js';
 import AdditionalDamage from '../values/AdditionalDamage.js';
 import PhraseList from '../phrases/PhraseList.js';
+import SelfOrAnother from '../triggers/subjects/SelfOrAnother.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 import {
     scalesAmountWithManaValue, usesCreatureCount
@@ -58,7 +59,13 @@ export default class DamageEffect extends Effect {
         return Boolean(this.powerOwner);
     }
 
+    get usesActingCreaturePower() {
+        return this.powerOwner === 'its'
+            && this.actingSubject?.resolved instanceof SelfOrAnother;
+    }
+
     get usesSourcePower() {
+        if (this.usesActingCreaturePower) return false;
         return SOURCE_POWER_OWNERS.includes(this.powerOwner)
             && Boolean(this.actingSubject?.refersToSelf);
     }

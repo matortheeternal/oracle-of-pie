@@ -1,4 +1,5 @@
 import TriggerEvent from './TriggerEvent.js';
+import ThisWay from './qualifiers/ThisWay.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
 import FirstTime from './qualifiers/FirstTime.js';
 import SpellTarget from './qualifiers/SpellTarget.js';
@@ -25,7 +26,8 @@ export default class CastEvent extends TriggerEvent {
 
     static get qualifierParsers() {
         return [
-            ZoneModifier, ZoneOrigin, WithModifier, SpellTarget, FirstTime, TurnWindow
+            ZoneModifier, ZoneOrigin, WithModifier, SpellTarget,
+            FirstTime, TurnWindow, ThisWay
         ];
     }
 

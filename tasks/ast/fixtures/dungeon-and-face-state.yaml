@@ -1,0 +1,75 @@
+name: Dungeon and face state
+typeLine: Creature — Human
+text: |-
+  Whenever you complete a dungeon, draw a card.
+  Whenever this creature or another creature you control is turned face up, that creature deals damage equal to its power to each opponent. Create a 1/1 green Ooze creature token. The token enters with a +1/+1 counter on it.
+  When this creature enters, it connives. When it connives this way, draw a card.
+  Turn target creature face down.
+  Lands you control enter untapped.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: CompletesDungeonEvent
+          isYou: true
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      isRepeatable: true
+      children:
+        - kind: TurnsFaceUpEvent
+          subjectPhrase:
+            kind: SelfOrAnother
+            other:
+              kind: NounPhrase
+              controlledByYou: true
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: DamageEffect
+                  isPowerBased: true
+                  usesSourcePower: false
+            - kind: EffectSentence
+            - kind: EffectSentence
+              children:
+                - kind: EntersWithCountersEffect
+                  subject:
+                    kind: BackReference
+                    refersToSelf: false
+                    antecedent:
+                      kind: CreatedToken
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+            - kind: TriggerSentence
+              event:
+                kind: ConnivesEvent
+                qualifiers:
+                  - kind: ThisWay
+                    raw: this way
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: TurnFaceEffect
+                  faceState: down
+                  primaryObject:
+                    kind: NounPhrase
+                    raw: target creature
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: EntersUntappedEffect
+                  subject:
+                    kind: NounPhrase
+                    controlledByYou: true

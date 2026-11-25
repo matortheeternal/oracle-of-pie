@@ -1,4 +1,5 @@
 import TriggerEvent from './TriggerEvent.js';
+import ThisWay from './qualifiers/ThisWay.js';
 import TurnWindow from './qualifiers/TurnWindow.js';
 import TapState from './qualifiers/TapState.js';
 import ZoneOrigin from './qualifiers/ZoneOrigin.js';
@@ -11,7 +12,7 @@ export default class EntersEvent extends TriggerEvent {
     }
 
     static get qualifierParsers() {
-        return [TapState, TurnWindow, ZoneOrigin];
+        return [TapState, TurnWindow, ZoneOrigin, ThisWay];
     }
 
     get isRepeatable() {

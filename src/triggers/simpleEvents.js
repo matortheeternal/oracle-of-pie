@@ -49,6 +49,7 @@ import BecomesPlottedEvent from './BecomesPlottedEvent.js';
 import ConnivesEvent from './ConnivesEvent.js';
 import BecomesUntappedEvent from './BecomesUntappedEvent.js';
 import MilledEvent from './MilledEvent.js';
+import CompletesDungeonEvent from './CompletesDungeonEvent.js';
 
 export const SIMPLE_EVENTS = [
     PhaseEvent, CastEvent, EntersEvent, AttacksEvent, DiesEvent, DealsDamageEvent,
@@ -63,7 +64,8 @@ export const SIMPLE_EVENTS = [
     FacesDilemmaEvent, RollsDiceEvent, ProliferatesEvent, RingTemptsEvent, ExertsEvent,
     GetsEnergyEvent, TapsEvent, TappedForManaEvent,
     BecomesStatusEvent, BecomesMonstrousEvent, BecomesAttachedEvent, BecomesPlottedEvent,
-    CrewsEvent, ExploresEvent, ConnivesEvent, BecomesUntappedEvent, MilledEvent
+    CrewsEvent, ExploresEvent, ConnivesEvent, BecomesUntappedEvent, MilledEvent,
+    CompletesDungeonEvent
 ];
 
 export function readSimpleEvent(scribe, str) {
