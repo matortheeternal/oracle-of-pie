@@ -11,7 +11,10 @@ function keyOf(definition) {
 export default class ProjectKeywords {
     constructor(scribe, projectDir) {
         this.harvest = new KeywordHarvest(scribe);
-        this.configured = projectSettings(projectDir).customKeywords ?? [];
+        const settings = projectSettings(projectDir);
+        this.configured = settings.customKeywords ?? [];
+        this.configuredActions = settings.customKeywordActions ?? [];
+        this.configuredTokens = settings.customTokens ?? [];
     }
 
     addCard(card) {

@@ -27,8 +27,11 @@ export default class ProjectScribes {
     }
 
     build(card) {
-        const keywords = this.keywords.get(card.project).definitions;
-        return createCorpusScribe(this.corpus, { keywords });
+        const project = this.keywords.get(card.project);
+        const actions = project.configuredActions.filter(action => !action.disabled);
+        const keywords = project.definitions;
+        const tokens = project.configuredTokens.filter(token => !token.disabled);
+        return createCorpusScribe(this.corpus, { keywords, actions, tokens });
     }
 
     get definitionsByProject() {
