@@ -99,7 +99,9 @@ export const DERIVED_TAGS = [
         tag: 'removal-nonland',
         match: {
             tag: REMOVAL,
-            phrases: { excludesType: 'land', not: { excludesType: 'creature' } }
+            phrases: {
+                resolved: { excludesType: 'land', not: { excludesType: 'creature' } }
+            }
         }
     },
     {
@@ -177,6 +179,17 @@ export const DERIVED_TAGS = [
             tag: REMOVAL,
             context: REPEATABLE,
             not: ATTACHED_TARGET
+        }
+    },
+    {
+        tag: 'repeatable-recursion',
+        match: {
+            any: [
+                { tag: 'regrowth' },
+                { kind: 'ReturnEffect', destination: 'battlefield', fromGraveyard: true },
+                { kind: 'PutEffect', toBattlefield: true, phrases: { zone: 'graveyard' } }
+            ],
+            context: REPEATABLE_SOURCE
         }
     },
     {

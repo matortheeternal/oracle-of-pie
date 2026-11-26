@@ -51,6 +51,9 @@ function graveyardOwnedBy(owner) {
 }
 
 export const GRAVEYARD_RETURN_TAGS = [
+    { tag: 'regrowth', match: {
+        kind: 'ReturnEffect', destination: 'hand', fromGraveyard: true, affectsYou: true
+    } },
     reanimate('reanimate-creature', CREATURE_CARD),
     regrowth('regrowth-creature', CREATURE_CARD),
     ...['artifact', 'enchantment', 'land', 'planeswalker'].map(type =>
