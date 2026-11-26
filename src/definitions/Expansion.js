@@ -1,5 +1,7 @@
 import Node from '../core/Node.js';
 
+const EXPANDED_DEFINITIONS = Symbol('expandedDefinitions');
+
 export default class Expansion extends Node {
     static of(scribe, definition, node) {
         const expansion = new Expansion(scribe);
@@ -9,6 +11,13 @@ export default class Expansion extends Node {
         expansion.isOpponents = Boolean(node.subjectIsOpponent);
         expansion.isPerformedAction = Boolean(node.isKeywordAction);
         return expansion;
+    }
+
+    *walk(context = {}) {
+        const expanded = context[EXPANDED_DEFINITIONS] ?? new Set();
+        if (expanded.has(this.definition)) return;
+        const definitions = new Set([...expanded, this.definition]);
+        yield* super.walk({ ...context, [EXPANDED_DEFINITIONS]: definitions });
     }
 
     get isToken() {
