@@ -26,3 +26,24 @@ test('keywords prefer printed wording and fall back to the first reminder', () =
     assert(printed.tagMatches.has('ramp'));
     assert(!printed.tagMatches.has('draw'));
 });
+
+test('discovery types reminders by where they were printed', () => {
+    const rulesText = `Mistsong (${FIRST})\n`
+        + `Target creature gains Mistsong until end of turn. (${SECOND})\n`
+        + 'Creatures you control have Mistsong. (Their wings sing.)\n'
+        + '*Mistsong*: Reference wording.';
+    const cards = [{ name: 'Mist Singer', faces: [{ rulesText }] }];
+    const [keyword] = inferMechanics(cards).keywords;
+    assert.deepEqual(keyword.reminderTypes, {
+        [FIRST]: 'static', [SECOND]: 'granted', 'Their wings sing.': 'anthem'
+    });
+});
+
+test('the most frequent printing decides a shared reminder type', () => {
+    const cards = ['A', 'B', 'C'].map((name, index) => ({ name, faces: [{
+        rulesText: index ? `Mistsong (${FIRST})`
+            : `Target creature gains Mistsong. (${FIRST})`
+    }] }));
+    const [keyword] = inferMechanics(cards).keywords;
+    assert.deepEqual(keyword.reminderTypes, { [FIRST]: 'static' });
+});

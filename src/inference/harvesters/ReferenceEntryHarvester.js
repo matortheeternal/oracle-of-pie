@@ -10,6 +10,10 @@ export default class ReferenceEntryHarvester {
         [, this.name, this.text] = match;
     }
 
+    get reminderType() {
+        return null;
+    }
+
     get reminder() {
         return this.text.replace(BRACKETED_PARAMETER, '{parameter}');
     }

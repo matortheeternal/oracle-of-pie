@@ -12,6 +12,10 @@ export default class ReminderLineHarvester {
         [, this.name, this.parameter, this.text] = match;
     }
 
+    get reminderType() {
+        return 'static';
+    }
+
     get reminder() {
         if (!this.parameter) return this.text;
         return this.text.split(this.parameter).join(PARAMETER_PLACEHOLDER);

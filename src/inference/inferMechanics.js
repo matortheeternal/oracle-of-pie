@@ -3,8 +3,12 @@ import KeywordHarvest from './KeywordHarvest.js';
 import InlineActionHarvest from './InlineActionHarvest.js';
 import inferTokens from './inferTokens.js';
 
-function withoutEvidence({ name, reminder, reminders }) {
-    return { name, reminder, ...(reminders?.length > 1 && { reminders }) };
+function withoutEvidence({ name, reminder, reminders, reminderTypes }) {
+    return {
+        name, reminder,
+        ...(reminders?.length > 1 && { reminders }),
+        ...(reminderTypes && { reminderTypes })
+    };
 }
 
 export default function inferMechanics(cards, options = {}) {

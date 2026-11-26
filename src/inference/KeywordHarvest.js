@@ -2,10 +2,13 @@ import { harvestLine } from './harvesters/index.js';
 import HarvestedKeyword from './HarvestedKeyword.js';
 
 const LINE_BREAK = /\n+/;
-const GRANT_PREFIX = /\b(?:gains?|has|have) (?<name>[a-z]+(?:[ -][a-z]+)?)/;
+const GRANT_PREFIX = /\b(?<verb>gains?|has|have) (?<name>[a-z]+(?:[ -][a-z]+)?)/;
 const GRANT_WITH_REMINDER = new RegExp(
     GRANT_PREFIX.source + '(?: until end of turn)?\\.? \\((?<reminder>[^()]+)\\)$', 'i'
 );
+const GRANT_REMINDER_TYPES = {
+    gain: 'anthem', have: 'anthem', gains: 'granted', has: 'granted'
+};
 
 export default class KeywordHarvest {
     constructor(scribe) {
@@ -32,7 +35,7 @@ export default class KeywordHarvest {
         const key = harvested.name.toLowerCase();
         if (!this.keywords.has(key))
             this.keywords.set(key, new HarvestedKeyword(harvested.name));
-        this.keywords.get(key).add(harvested.reminder, cardName);
+        this.keywords.get(key).add(harvested.reminder, cardName, harvested.reminderType);
     }
 
     addGrant(line, cardName) {
@@ -40,7 +43,8 @@ export default class KeywordHarvest {
         if (!grant || this.isKnown(grant.name)) return;
         const key = grant.name.toLowerCase();
         const entries = this.grants.get(key) ?? [];
-        entries.push({ reminder: grant.reminder, cardName });
+        const type = GRANT_REMINDER_TYPES[grant.verb.toLowerCase()];
+        entries.push({ reminder: grant.reminder, cardName, type });
         this.grants.set(key, entries);
     }
 

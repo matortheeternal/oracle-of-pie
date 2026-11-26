@@ -305,7 +305,11 @@ Run `inferMechanics(cards)` from `oracle-of-pie` on one project's cards. Supply
 and `actions` with their suggested reminders, plus a `tokens` dictionary inferred
 from token cards in the same project. Include their `typeLine` and any known
 `aliases` on each token face. The dictionary lets the parser link a short token
-name to its card without having to infer the token's rules. For debugging,
+name to its card without having to infer the token's rules. Keywords also get
+`reminderTypes`, mapping each reminder to where it was printed: `static` beside
+the keyword itself, `granted` after a singular grant such as "target creature
+gains", or `anthem` after a plural grant such as "creatures you control have".
+Reminders seen only in reference entries have no type. For debugging,
 `inferMechanics(cards, { includeEvidence: true })` includes supporting card counts,
 examples, and keyword reminder variant counts.
 
