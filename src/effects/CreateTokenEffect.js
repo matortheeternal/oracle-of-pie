@@ -167,6 +167,7 @@ export default class CreateTokenEffect extends Effect {
 
     get expansions() {
         this.cachedExpansions ??= this.tokenDefinitions
+            .filter(definition => definition.hasReminder)
             .map(definition => Expansion.of(this.scribe, definition, this));
         return this.cachedExpansions;
     }
