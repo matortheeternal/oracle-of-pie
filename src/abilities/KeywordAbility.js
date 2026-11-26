@@ -85,8 +85,12 @@ export default class KeywordAbility extends Ability {
 
     expansionFor(keyword) {
         const registered = this.scribe.definitions.keywords.definitionFor(keyword.name);
-        const definition = registered ?? this.printedDefinition(keyword);
-        return definition ? [Expansion.of(this.scribe, definition, keyword)] : [];
+        const printed = this.printedDefinition(keyword);
+        const definition = registered?.reminders.length > 1
+            ? printed ?? registered
+            : registered ?? printed;
+        if (!definition?.hasReminder) return [];
+        return [Expansion.of(this.scribe, definition, keyword)];
     }
 
     hasKeyword(name) {

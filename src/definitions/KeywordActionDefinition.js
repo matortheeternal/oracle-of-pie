@@ -1,8 +1,8 @@
 import KeywordDefinition from './KeywordDefinition.js';
 
 export default class KeywordActionDefinition extends KeywordDefinition {
-    constructor({ name, reminder = null, findsRandomCard = false }) {
-        super({ name, reminder });
+    constructor({ findsRandomCard = false, ...spec }) {
+        super(spec);
         this.findsRandomCard = findsRandomCard;
     }
 

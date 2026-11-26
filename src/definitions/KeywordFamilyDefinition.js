@@ -1,8 +1,8 @@
 import KeywordDefinition from './KeywordDefinition.js';
 
 export default class KeywordFamilyDefinition extends KeywordDefinition {
-    constructor({ name, pattern, reminder }) {
-        super({ name, reminder });
+    constructor({ pattern, ...spec }) {
+        super(spec);
         this.pattern = new RegExp(`^(?:${pattern.source})$`, 'i');
         this.source = pattern.source;
     }
