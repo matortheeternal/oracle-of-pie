@@ -7,8 +7,11 @@ import { EFFECT_PARSERS, MODELED_EFFECT_PARSERS } from '../effects/index.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 import OpaqueEffect from '../effects/OpaqueEffect.js';
 
-const CONNECTOR = /^(?:,? ?and then |,? ?then |, (?:and|but) |; |and |,? ?or |, )/i;
-const ALTERNATIVE = /^,? ?or /i;
+const CONNECTOR = new RegExp(
+    '^(?:,? ?and then |,? ?then |, (?:and|but) |; |and |,? ?otherwise |,? ?or |, )',
+    'i'
+);
+const ALTERNATIVE = /^,? ?(?:or|otherwise) /i;
 const MAY = /^may /i;
 const GROUP_ADVERB = /^(?:each|both) /i;
 const ONLY = /^only /i;

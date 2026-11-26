@@ -26,7 +26,9 @@ export default class GrantEffect extends Effect {
     }
 
     static match(scribe, str) {
-        return super.match(scribe, str) ?? str.match(ESCAPES_WITH);
+        const grant = super.match(scribe, str);
+        if (grant && scribe.actionPattern.test(str)) return null;
+        return grant ?? str.match(ESCAPES_WITH);
     }
 
     parseArguments(match) {

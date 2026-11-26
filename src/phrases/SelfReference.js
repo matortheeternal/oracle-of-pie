@@ -4,11 +4,11 @@ import ZoneModifier from './modifiers/ZoneModifier.js';
 const SELF_NOUNS = [
     'creature', 'artifact', 'enchantment', 'land', 'permanent', 'card', 'spell',
     'Equipment', 'Aura', 'Vehicle', 'token', 'Saga', 'planeswalker', 'battle',
-    'Class', 'Case', 'Room', 'Siege', 'Spacecraft', '~'
+    'Class', 'Case', 'Room', 'Siege', 'Spacecraft', 'conspiracy', '~'
 ];
 const SELF_NOUN = `this (?:${SELF_NOUNS.join('|')})(?![a-z])`;
 const POSSESSIVE = '(?!\\x27s (?:controller|owner))';
-const THIS = 'this(?= (?:to|into|onto) )';
+const THIS = 'this(?= (?:to|into|onto|or another) )';
 const SELF = new RegExp(`^(?:~|(?:he|she)\\b|${SELF_NOUN}|${THIS})${POSSESSIVE}`, 'i');
 
 export default class SelfReference extends Phrase {

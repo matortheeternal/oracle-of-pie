@@ -10,6 +10,7 @@ export const TYPE_WORDS = {
     spell: 'spell', spells: 'spell',
     card: 'card', cards: 'card',
     token: 'token', tokens: 'token',
+    conspiracy: 'conspiracy', conspiracies: 'conspiracy',
     instant: 'instant', instants: 'instant',
     sorcery: 'sorcery', sorceries: 'sorcery',
     ability: 'ability', abilities: 'ability',

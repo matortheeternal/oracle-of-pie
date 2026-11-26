@@ -1,6 +1,7 @@
 import ObjectEffect from './ObjectEffect.js';
 import { COPY_EXCEPTION } from '../values/copyException.js';
 
+const CURRENT_ABILITY = /^this ability\b/i;
 const COPY = /^(?:copy|copies) /i;
 const ARTIFACT_SOURCE = /^from an artifact source\b/i;
 const NONARTIFACT_SOURCE = /^from an? (?<source>creature|enchantment) source\b/i;
@@ -39,7 +40,8 @@ export default class CopyEffect extends ObjectEffect {
     }
 
     parseArguments(match) {
-        super.parseArguments(match);
+        this.copiesCurrentAbility = Boolean(this.consumeText(CURRENT_ABILITY));
+        if (!this.copiesCurrentAbility) super.parseArguments(match);
         const multiplier = this.consumeText(TEMPTING_COPIES)
             ?? this.consumeText(FOR_EACH) ?? this.consumeText(REPETITIONS);
         this.multiplier = multiplier?.[0] ?? null;
@@ -51,6 +53,10 @@ export default class CopyEffect extends ObjectEffect {
         const source = this.consumeText(NONARTIFACT_SOURCE)?.groups.source;
         this.otherSourceType = source ?? null;
         this.fromOtherLegendaryNoncommander = Boolean(this.consumeText(LEGENDARY_SOURCE));
+    }
+
+    get isComplete() {
+        return this.copiesCurrentAbility || super.isComplete;
     }
 
     get copiesInstantOrSorcery() {

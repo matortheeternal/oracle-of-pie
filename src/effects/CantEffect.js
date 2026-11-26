@@ -41,6 +41,7 @@ const CANT_ALTERNATIVES = [
     'block or be blocked',
     'block',
     'be blocked',
+    'be goaded',
     'be you or a permanent you control',
     'be countered',
     'be copied',

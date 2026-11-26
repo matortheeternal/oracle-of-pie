@@ -65,7 +65,9 @@ const EQUIP = new RegExp(
     `^((?:legendary creature |creature token |${EQUIP_TYPE} )?${COST})`
 );
 const EQUIP_ALTERNATIVE = new RegExp(`^ or (${COST})`);
-const EMERGE = new RegExp(`^(from (?:artifact|creature|enchantment) ${COST})`);
+const EMERGE = new RegExp(
+    `^(from [A-Za-z]+(?: or [A-Za-z]+| creature)? ${COST})`
+);
 const ENCHANT_TARGETS = [
     'artifact creature', 'artifact or creature',
     'creature or Vehicle', 'creature or land',
