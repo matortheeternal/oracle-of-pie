@@ -1,6 +1,7 @@
 import CardText from './CardText.js';
 import CardContext from './core/CardContext.js';
 import normalizeCardText from './core/normalizeCardText.js';
+import repairWrappedRules from './core/repairWrappedRules.js';
 import TextLocator from './core/TextLocator.js';
 import ParsedCard from './ParsedCard.js';
 import { ABILITY_PARSERS, INNER_ABILITY_PARSERS } from './abilities/index.js';
@@ -30,7 +31,9 @@ function escapeNames(names) {
 }
 
 export default class Oracle {
-    constructor({ keywords = DEFAULT_KEYWORDS, definitions = {}, tags = [] } = {}) {
+    constructor(options = {}) {
+        const { keywords = DEFAULT_KEYWORDS, definitions = {}, tags = [] } = options;
+        this.repairLineWraps = options.repairLineWraps ?? false;
         this.tagLibrary = TagLibrary.withDefaults(tags);
         this.definitions = RulesDefinitions.withDefaults(definitions);
         const keywordSources = escapeNames(keywords)
@@ -65,7 +68,21 @@ export default class Oracle {
         return this.statementParsers.some(parser => parser.matchStatement(this, str));
     }
 
+    prepareText(text) {
+        if (!this.repairLineWraps) return text;
+        return repairWrappedRules(text, fragment => this.#canReadFragment(fragment));
+    }
+
+    #canReadFragment(fragment) {
+        const parsed = this.#parsePreparedText(fragment);
+        return parsed.abilities.length > 0 && parsed.isRecognized;
+    }
+
     parseText(text) {
+        return this.#parsePreparedText(this.prepareText(text));
+    }
+
+    #parsePreparedText(text) {
         const cardText = CardText.fromText(this, text);
         for (const resolver of RESOLVERS) resolver.resolve(cardText);
         return cardText;
@@ -74,7 +91,8 @@ export default class Oracle {
     parseFace({ text = '', ...metadata }) {
         const card = new CardContext(metadata);
         const { name } = card;
-        const parsed = this.parseText(normalizeCardText(text, name));
+        const prepared = normalizeCardText(this.prepareText(text), name);
+        const parsed = this.#parsePreparedText(prepared);
         const locator = new TextLocator(text, name);
         return new ParsedCard(card, parsed, this.tagLibrary, locator);
     }

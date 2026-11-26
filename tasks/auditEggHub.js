@@ -14,9 +14,12 @@ const files = fs.readdirSync(root, { recursive: true })
     .filter(file => file.endsWith('.json')).sort();
 const projects = new Map();
 const failedSets = [];
+const inputOracle = new Oracle({ repairLineWraps: true });
 
 function addSet(file) {
-    const set = new EggHubSet(root, path.join(root, file));
+    const set = new EggHubSet(root, path.join(root, file), {
+        prepareText: text => inputOracle.prepareText(text)
+    });
     if (!projects.has(set.project)) projects.set(set.project, []);
     projects.get(set.project).push(set);
 }

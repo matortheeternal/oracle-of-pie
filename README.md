@@ -28,6 +28,11 @@ const flags = new PieInspector().inspect([{ parsed, colors }]);
 Configure custom keywords and token definitions, supply tag queries, or customize
 inspections in the [project reference](docs/reference.md).
 
+For sources that wrap rules text mid-sentence, create an instance with
+`new Oracle({ repairLineWraps: true })`. Repair is off by default and applies to
+`parseText` and `parseFace` when enabled. Importers can also call
+`prepareText(text)` to apply the option while retaining the original text.
+
 ## Corpus results
 
 On the November 2026 corpus of 17,836 modern cards, **80.3%** were fully recognized

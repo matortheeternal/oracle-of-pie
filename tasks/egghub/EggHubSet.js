@@ -14,18 +14,20 @@ function normalizeText(text) {
         .replace(DOUBLE_QUOTES, '"').replace(APOSTROPHES, '\'').trim();
 }
 
-function rulesOf(row, suffix) {
+function rulesOf(row, suffix, prepareText) {
     const rules = normalizeText(row[`rules_text${suffix}`]);
     const special = normalizeText(row[`special_text${suffix}`]);
-    if (!rules && special) return { oracle_text: special, rules_source: 'special_text' };
+    const original = rules || special;
+    const repaired = prepareText(original);
     return {
-        oracle_text: rules,
-        rules_source: 'rules_text',
-        alternate_rules: special && special !== rules ? special : null
+        oracle_text: repaired,
+        rules_source: rules || !special ? 'rules_text' : 'special_text',
+        alternate_rules: rules && special && special !== rules ? special : null,
+        ...(repaired !== original && { original_rules_text: original })
     };
 }
 
-function exportFace(row, suffix, name) {
+function exportFace(row, suffix, name, prepareText) {
     const color = String(row[`color${suffix}`] ?? '').toUpperCase();
     return {
         name,
@@ -33,7 +35,7 @@ function exportFace(row, suffix, name) {
         mana_cost: row[`cost${suffix}`] ?? '',
         colors: color.match(BASIC_COLORS) ?? [],
         loyalty: row[`loyalty${suffix}`] || null,
-        ...rulesOf(row, suffix)
+        ...rulesOf(row, suffix, prepareText)
     };
 }
 
@@ -48,15 +50,16 @@ function uniqueNames(row) {
     return [left, secondary.split(COMBINED_NAME).at(-1) || right || left];
 }
 
-function facesOf(row) {
+function facesOf(row, prepareText) {
     const [front, back] = uniqueNames(row);
-    const faces = [exportFace(row, '', front)];
-    if (hasBack(row)) faces.push(exportFace(row, '2', back));
+    const faces = [exportFace(row, '', front, prepareText)];
+    if (hasBack(row)) faces.push(exportFace(row, '2', back, prepareText));
     return faces;
 }
 
 export default class EggHubSet {
-    constructor(root, file) {
+    constructor(root, file, { prepareText = text => text } = {}) {
+        this.prepareText = prepareText;
         const set = readJson(file);
         if (!Array.isArray(set.cards)) throw new Error('Missing EggHub cards array');
         this.file = path.relative(root, file);
@@ -72,8 +75,9 @@ export default class EggHubSet {
     }
 
     card(row, index) {
-        const sideText = normalizeText(row.rules_text3);
-        const faces = facesOf(row);
+        const originalSideText = normalizeText(row.rules_text3);
+        const sideText = this.prepareText(originalSideText);
+        const faces = facesOf(row, this.prepareText);
         return {
             id: `${this.file}#${index + 1}`,
             name: faces.map(face => face.name).join(' // '),
@@ -82,7 +86,10 @@ export default class EggHubSet {
             collector_number: row.number ?? null,
             layout: row.shape,
             faces,
-            shared_rules_text: sideText || null
+            shared_rules_text: sideText || null,
+            ...(sideText !== originalSideText && {
+                original_shared_rules_text: originalSideText
+            })
         };
     }
 }
