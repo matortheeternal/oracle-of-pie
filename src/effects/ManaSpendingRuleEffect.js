@@ -8,6 +8,11 @@ const ACTIVE_SPENDING = new RegExp(
     '^(?:spend|can spend) (?<only>only )?(?<mana>mana of (?:any type|the chosen color)'
         + '|mana produced by [^,.]+?) to (?<use>[^,.]+)', 'i'
 );
+const COLOR_SUBSTITUTION = new RegExp(
+    '^(?:spend|can spend) (?<mana>(?:white|blue|black|red|green|colorless) mana) '
+        + 'as though it were mana of any color to (?<use>[^,.]+)',
+    'i'
+);
 
 export default class ManaSpendingRuleEffect extends Effect {
     static get pattern() {
@@ -15,7 +20,8 @@ export default class ManaSpendingRuleEffect extends Effect {
     }
 
     static match(scribe, str) {
-        return super.match(scribe, str) ?? str.match(ACTIVE_SPENDING);
+        return super.match(scribe, str) ?? str.match(COLOR_SUBSTITUTION)
+            ?? str.match(ACTIVE_SPENDING);
     }
 
     parseArguments(match) {
@@ -23,6 +29,7 @@ export default class ManaSpendingRuleEffect extends Effect {
         this.isRestriction = Boolean(match.groups.only)
             || match.groups.permission?.toLowerCase() === 'can\'t';
         this.use = match.groups.use;
+        this.treatsAsAnyColor = COLOR_SUBSTITUTION.test(match[0]);
     }
 
     get allowsAnyType() {

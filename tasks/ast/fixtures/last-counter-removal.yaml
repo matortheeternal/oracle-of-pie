@@ -1,0 +1,37 @@
+name: Last counter removal
+typeLine: Creature
+text: |-
+  At the beginning of your upkeep, remove a time counter from this creature. When the last is removed, sacrifice it.
+  At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: PhaseEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: RemoveCountersEffect
+            - kind: TriggerSentence
+              children:
+                - kind: CounterRemovalEvent
+                  removesLastCounter: true
+                  counterKind: time
+                - kind: SacrificeEffect
+    - kind: TriggeredAbility
+      children:
+        - kind: PhaseEvent
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: RemoveCountersEffect
+            - kind: TriggerSentence
+              children:
+                - kind: CounterRemovalEvent
+                  removesLastCounter: true
+                  counterKind: time
+                - kind: PlayCardsEffect

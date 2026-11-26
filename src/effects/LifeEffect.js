@@ -5,12 +5,14 @@ import {
 } from '../values/quantityDependencies.js';
 
 const LIFE_AMOUNT_ALTERNATIVES = [
+    '\\d{1,3}(?:,\\d{3})+ life\\b',
     `(?:twice |half )?(?:${NUMBER_PATTERN}|that much) life`
         + '(?: for each (?:[^,.]|, (?=non))+)?',
     'life equal to [^,.]+',
-    'half their life, rounded (?:up|down)'
+    '(?:half|a third) (?:of )?(?:their|your) life(?:, rounded (?:up|down))?'
 ];
 export const LIFE_AMOUNT = `(?:${LIFE_AMOUNT_ALTERNATIVES.join('|')})`;
+const FRACTIONAL = /^(?:half|a third) (?:of )?(?:their|your) life\b/i;
 
 export default class LifeEffect extends Effect {
     get isPlayerAction() {
@@ -27,5 +29,9 @@ export default class LifeEffect extends Effect {
 
     get usesCreatureCount() {
         return usesCreatureCount(this.amountText);
+    }
+
+    get changesFractionOfLifeTotal() {
+        return FRACTIONAL.test(this.amountText);
     }
 }

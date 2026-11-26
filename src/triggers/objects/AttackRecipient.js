@@ -3,10 +3,11 @@ import Phrase from '../../phrases/Phrase.js';
 const PLAYER = [
     'one or more players', 'another one of your opponents',
     'enchanted (?:player|opponent)', 'the monarch',
-    'one or more of your opponents', 'one of your opponents', 'a player',
+    'one or more of your opponents', 'one of your opponents',
     'the player with the most life(?: or tied for most life)?',
+    'a player who has more life than you',
     'the player who has the initiative', 'different players',
-    'an opponent', 'you'
+    'a player', 'an opponent', 'you'
 ].join('|');
 const WALKER = '(?:a |one or more )?(?<alternative>planeswalkers?)';
 const WALKER_CONTROLLER = '(?: (?<theirController>you control|they control))?';

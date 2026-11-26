@@ -1,5 +1,6 @@
 import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
+import PlayerPhrase from '../phrases/PlayerPhrase.js';
 
 const OWNER_OF = /^the owner of (?=target )/i;
 const TARGET_OWNER = /^(target [^,.]+?)'s owner (?=puts?|shuffles?)/i;
@@ -29,13 +30,16 @@ export default class TuckEffect extends Effect {
 
     consumeTarget() {
         const owned = this.consumeText(TARGET_OWNER);
-        if (owned) return this.parseNext(owned[1], [PhraseList]);
+        if (owned) {
+            this.ownerPhrase = this.parseNext(owned[0].trimEnd(), [PlayerPhrase]);
+            return this.parseNext(owned[1], [PhraseList]);
+        }
         this.consumeText(OWNER_OF);
         return this.consume([PhraseList]);
     }
 
     get parts() {
-        return [this.objects].filter(Boolean);
+        return [this.objects, this.ownerPhrase].filter(Boolean);
     }
 
     get isComplete() {

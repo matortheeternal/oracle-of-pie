@@ -2,6 +2,7 @@ import Effect from './Effect.js';
 import Expansion from '../definitions/Expansion.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 import PhraseList from '../phrases/PhraseList.js';
+import PlayerPhrase from '../phrases/PlayerPhrase.js';
 
 const REPEATED = '(?:that many|(?:up to )?\\w+) times';
 const REPEAT = '(?: (?<repetitions>twice|again|once for each [^,.]+|'
@@ -14,9 +15,10 @@ const LIBRARY_OWNER = `your|their|that player's|target opponent's`;
 const LIBRARY_TOP = new RegExp(
     `^the top (?:\\w+ )?cards? of (?:${LIBRARY_OWNER}) library\\b`, 'i'
 );
+const WITH_PLAYER = /^with /i;
 const SCRY_ADJUSTMENT = new RegExp(`^that many cards plus ${NUMBER_PATTERN}\\b`, 'i');
 const TAKES_OBJECT = new Set([
-    'assimilate', 'detain', 'plot', 'manifest', 'cloak', 'harness', 'regenerate'
+    'assimilate', 'behold', 'detain', 'plot', 'manifest', 'cloak', 'harness', 'regenerate'
 ]);
 const SCALING = new RegExp(
     '^(?:a number of times equal to [^,.]+|additional time|for'
@@ -47,11 +49,17 @@ export default class KeywordActionEffect extends Effect {
         this.action = this.definition.key;
         this.objectText = this.consumeText(LIBRARY_TOP)?.[0] ?? null;
         this.objects = TAKES_OBJECT.has(this.action) ? this.consume([PhraseList]) : null;
+        this.clashOpponent = this.readClashOpponent();
         this.scaling = this.consumeText(SCALING)?.[0]
             ?? this.consumeText(OBJECT_QUANTITY)?.[0] ?? null;
         this.ignoresExistingCounters = this.action === 'adapt'
             && Boolean(this.consumeText(WITHOUT_COUNTERS));
         this.readScryAmount();
+    }
+
+    readClashOpponent() {
+        if (this.action !== 'clash' || !this.consumeText(WITH_PLAYER)) return null;
+        return this.consume([PlayerPhrase]);
     }
 
     readScryAmount() {
@@ -68,7 +76,7 @@ export default class KeywordActionEffect extends Effect {
     }
 
     get parts() {
-        return [this.objects].filter(Boolean);
+        return [this.objects, this.clashOpponent].filter(Boolean);
     }
 
     get findsRandomCard() {

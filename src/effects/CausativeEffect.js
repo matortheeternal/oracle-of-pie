@@ -2,8 +2,9 @@ import Effect from './Effect.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 import AssignStatsEffect from './AssignStatsEffect.js';
 import SetLifeTotalEffect from './SetLifeTotalEffect.js';
+import DefineVariableEffect from './DefineVariableEffect.js';
 
-const DIRECT_CAUSATIVES = [AssignStatsEffect, SetLifeTotalEffect];
+const DIRECT_CAUSATIVES = [AssignStatsEffect, SetLifeTotalEffect, DefineVariableEffect];
 
 const HAVE = /^have (?=\S)/i;
 

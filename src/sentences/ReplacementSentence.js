@@ -9,6 +9,11 @@ const DAMAGED_SUBJECT = /\bdealt (?:combat )?damage\b/i;
 const SCRY_ACTION = /^scry\b/i;
 const GAIN_LIFE_ACTION = /^gain life\b/i;
 const LOSE_LIFE_ACTION = /^lose life\b/i;
+const WOULD_ENTER_GRAVEYARD = new RegExp(
+    '^if (a (?:black|red) or (?:black|red) permanent, spell, '
+        + 'or card not on the battlefield)'
+        + ' would (be put into a graveyard), (?=exile it instead)', 'i'
+);
 const REPLACEMENT = new RegExp(
     '^(?:if|the next time) ([^,"]+?) would ([^,"]+),'
         + ' (?=[^.]*\\binstead\\b)', 'i'
@@ -34,6 +39,8 @@ function extendReplacement(scribe, text, initial) {
 
 export default class ReplacementSentence extends Sentence {
     static matchStatement(scribe, text) {
+        const zoneReplacement = text.match(WOULD_ENTER_GRAVEYARD);
+        if (zoneReplacement) return zoneReplacement;
         const match = text.match(REPLACEMENT);
         return match ? extendReplacement(scribe, text, match) : null;
     }

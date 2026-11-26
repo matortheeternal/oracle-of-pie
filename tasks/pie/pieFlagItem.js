@@ -40,22 +40,32 @@ function tierEvidence(flag) {
     return [{ label: 'Tiers', text: reasons.join(' · ') }];
 }
 
-export default function pieFlagItem({ id, card, flag, profile }) {
+function occurrenceEvidence(flag) {
+    return [
+        { label: 'Matched text', text: flag.evidence, code: true },
+        { label: 'Judged as', text: judgementOf(flag) },
+        ...tierEvidence(flag),
+        ...exceptionEvidence(flag),
+        ...citationEvidence(flag)
+    ];
+}
+
+export default function pieFlagItem({ id, card, flags, profile }) {
+    const [flag] = flags;
     const word = severityWord(flag);
-    const colors = flag.offending.join('');
+    const offending = [...new Set(flags.flatMap(occurrence => occurrence.offending))];
+    const colors = offending.join('');
     return {
         id: `${id}|${flag.inspection}`,
-        question: `Is “${flag.title}” a color pie ${word} in ${colors}?`,
+        question: flags.length === 1
+            ? `Is “${flag.title}” a color pie ${word} in ${colors}?`
+            : `Are these color pie flags for “${flag.title}” correct?`,
         tag: flag.inspection,
         card,
         evidence: [
-            { label: 'Matched text', text: flag.evidence, code: true },
-            { label: 'Judged as', text: judgementOf(flag) },
-            ...tierEvidence(flag),
-            ...exceptionEvidence(flag),
-            ...citationEvidence(flag),
+            ...flags.flatMap(occurrenceEvidence),
             { label: 'Printed mono cards with this effect', text: canonCounts(profile) },
-            { label: 'Printed examples', text: printedExamples(profile, flag.offending) },
+            { label: 'Printed examples', text: printedExamples(profile, offending) },
             { label: 'Verdict', text: VERDICT_HINT }
         ]
     };

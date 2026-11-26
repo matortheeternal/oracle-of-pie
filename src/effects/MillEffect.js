@@ -7,10 +7,12 @@ const MILL_COUNT_ALTERNATIVES = [
 ];
 const MILL_COUNT = `(${MILL_COUNT_ALTERNATIVES.join('|')})`;
 const MILL = new RegExp(`^mills? (?:${MILL_COUNT} ?(?:cards?)?|a card)\\b`, 'i');
+const ADDITIONAL_CARDS = new RegExp(`^plus (?<count>${NUMBER_PATTERN}) instead\\b`, 'i');
 
 export default class MillEffect extends Effect {
     parseArguments(match) {
         this.amountText = match[1].toLowerCase();
+        this.additionalCards = this.consumeText(ADDITIONAL_CARDS)?.groups.count ?? null;
     }
 
     get isPlayerAction() {

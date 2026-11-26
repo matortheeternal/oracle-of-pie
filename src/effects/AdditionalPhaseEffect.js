@@ -7,7 +7,7 @@ const AFTER_STEP = new RegExp(
 );
 const AFTER_PHASE = '(?:after this (?:(?<after>main|combat) )?phase, )?';
 const PHASE_KIND = '(?<phase>combat|main|beginning|end)';
-const FOLLOWING = '(?<following> followed by an additional main phase)?';
+const FOLLOWING = '(?<following>,? followed by an additional main phase)?';
 const LATER = '(?<later> after this (?:phase|combat|step))?';
 const ADDITIONAL_PHASE = new RegExp(
     `^${AFTER_PHASE}there(?: is|'s| are) (?<count>${NUMBER_PATTERN}) additional `

@@ -1,4 +1,5 @@
 import Effect from './Effect.js';
+import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
 import {
     usesCreatureCount, usesOpposingArtifactCount
 } from '../values/quantityDependencies.js';
@@ -24,6 +25,10 @@ const ADD = new RegExp(`^adds? (?=${MANA.source.slice(1)})`, 'i');
 const MANA_TAIL = /^(for each (?:[^,.]|, (?=non))+|instead)/i;
 const PRODUCED_BY = /^that ([^,.]+?) (?:could produce|produced)\b/i;
 const CHOSEN_COLORS = /^among (?<sources>legendary [^,.]+)\b/i;
+const PLAYER_CHOICE = /^they choose\b/i;
+const OTHER_COLOR = new RegExp(
+    `^and (?<amount>${NUMBER_PATTERN}) mana of any other color\\b`, 'i'
+);
 
 export default class AddManaEffect extends Effect {
     static get pattern() {
@@ -34,6 +39,9 @@ export default class AddManaEffect extends Effect {
         this.mana = this.consumeText(MANA)?.[0] ?? null;
         this.producedBy = this.consumeText(PRODUCED_BY)?.[1] ?? null;
         this.chosenColorsFrom = this.consumeText(CHOSEN_COLORS)?.groups.sources ?? null;
+        this.recipientChoosesColor = Boolean(this.consumeText(PLAYER_CHOICE));
+        const extra = this.consumeText(OTHER_COLOR)?.groups.amount;
+        this.additionalManaOfAnotherColor = extra ? numberValue(extra) : null;
         this.scaling = this.consumeText(MANA_TAIL)?.[0] ?? null;
     }
 

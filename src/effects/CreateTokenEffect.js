@@ -1,4 +1,6 @@
 import Effect from './Effect.js';
+import PhraseList from '../phrases/PhraseList.js';
+import { TYPAL_SCALING } from '../values/typalScaling.js';
 import SelfReference from '../phrases/SelfReference.js';
 import Expansion from '../definitions/Expansion.js';
 import CreatedToken from '../phrases/CreatedToken.js';
@@ -28,6 +30,7 @@ const TOKEN_DESCRIPTION_ALTERNATIVES = [
     ' named (?:"[^"]*"|[^,."])+',
     ' that\'s a copy of [^,.]+',
     ' attached to [^,.]+',
+    ` ${TYPAL_SCALING}`,
     ' for each (?:[^,.]|, (?=non))+',
     ' equal to [^,.]+',
     ' tapped and attacking(?: (?:that player|that opponent))?',
@@ -40,6 +43,7 @@ const TOKEN_DETAILS = `((?:${TOKEN_DESCRIPTION_ALTERNATIVES.join('|')})*)`;
 const TOKEN_DESCRIPTION = new RegExp(`^${TOKEN_NOUN}${TOKEN_DETAILS}`, 'i');
 const ABILITIES = / with (?=[a-z"])/i;
 const CARD_COPY = /^a copy of (?:this card|the card with the chosen name)\b/i;
+const ALL_COLORS = /^that's all colors\b/i;
 const ONE_OF_EACH = /^one of each\b/i;
 
 function damagesDefendingPlayer(event) {
@@ -59,10 +63,24 @@ export default class CreateTokenEffect extends Effect {
         this.oneOfEachReferencedKind = ONE_OF_EACH.test(description?.[0] ?? '');
         this.description = description?.[0] ?? null;
         this.completeKeywordList();
+        const allColors = this.consumeText(ALL_COLORS);
+        if (allColors) this.description += ` ${allColors[0]}`;
         const details = description?.[2] ?? '';
         this.copySource = TOKEN_COPY.test(details)
             ? details.replace(TOKEN_COPY, '').split(',')[0]
             : null;
+        this.completeCopySource();
+    }
+
+    completeCopySource() {
+        if (!this.copySource || !this.remainingStr.startsWith(',')) return;
+        const suffix = this.remainingStr;
+        const source = this.parseNext(this.copySource + suffix, [PhraseList]);
+        if (!source?.isRecognized || source.remainingStr.length >= suffix.length) return;
+        const extra = suffix.slice(0, suffix.length - source.remainingStr.length);
+        this.copySource += extra.trimEnd();
+        this.description += extra.trimEnd();
+        this.remainingStr = source.remainingStr;
     }
 
     completeKeywordList() {

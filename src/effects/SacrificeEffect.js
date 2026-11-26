@@ -3,6 +3,7 @@ import ObjectEffect from './ObjectEffect.js';
 const SACRIFICE = /^sacrifices? /i;
 const PASSIVE_SACRIFICE = /^(?:is|are) sacrificed(?=$|\b when )/i;
 const ALTERNATIVE = /^or (?:pays? [^,.]+|discards? [^,.]+)/i;
+const SAME_WAY = /^the same way\b/i;
 const TIMING = new RegExp(
     '^(?:when (?:it enters|they enter)|at (?:end of combat|the'
         + ' beginning of [^,.]+))', 'i'
@@ -21,6 +22,7 @@ export default class SacrificeEffect extends ObjectEffect {
         this.isPassive = PASSIVE_SACRIFICE.test(match[0]);
         super.parseArguments(match);
         this.alternative = this.consumeText(ALTERNATIVE)?.[0] ?? null;
+        this.repeatsPriorSelection = Boolean(this.consumeText(SAME_WAY));
         this.timing = this.consumeText(TIMING)?.[0] ?? null;
     }
 

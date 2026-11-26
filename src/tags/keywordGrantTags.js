@@ -18,9 +18,7 @@ export const KEYWORD_GRANT_TAGS = [
                     any: [
                         { kind: 'NounPhrase', excludesOwnedByYou: true },
                         { kind: 'NounPhrase', hasCombatTraitRestriction: true },
-                        { kind: 'NounPhrase', modifiers: {
-                            kind: 'StateModifier', restrictsSubtype: true
-                        } },
+                        { kind: 'NounPhrase', modifiers: { restrictsSubtype: true } },
                         { hasExactType: 'permanent' }, { hasExactType: 'spell' }
                     ]
                 }

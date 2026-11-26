@@ -8,6 +8,7 @@ import CopiesSpellEvent from './CopiesSpellEvent.js';
 import FightsEvent from './FightsEvent.js';
 import ScryPlacementEvent from './ScryPlacementEvent.js';
 import SaddlesEvent from './SaddlesEvent.js';
+import ForcedExileEvent from './ForcedExileEvent.js';
 import DiesEvent from './DiesEvent.js';
 import EntersEvent from './EntersEvent.js';
 import AttacksEvent from './AttacksEvent.js';
@@ -77,7 +78,8 @@ export const SIMPLE_EVENTS = [
     BecomesStatusEvent, BecomesMonstrousEvent, BecomesAttachedEvent, BecomesPlottedEvent,
     CrewsEvent, SaddlesEvent, ExploresEvent, ConnivesEvent, BecomesUntappedEvent,
     MilledEvent,
-    CompletesDungeonEvent, CounterRemovalEvent, ThresholdEvent, RecordedActionEvent
+    CompletesDungeonEvent, CounterRemovalEvent, ThresholdEvent, ForcedExileEvent,
+    RecordedActionEvent
 ];
 
 export function readSimpleEvent(scribe, str) {

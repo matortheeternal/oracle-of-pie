@@ -1,6 +1,6 @@
 import Effect from './Effect.js';
 
-const DEFINITION = /^(?:the value of )?X (?:is|becomes?) (?<value>[^,.]+)$/;
+const DEFINITION = /^(?:the value of )?X (?:is|becomes?) (?<value>[^,.]+)$/i;
 const LIMIT = /^X can't be greater than (?<maximum>[^,.]+)$/;
 const DOUBLE = /^double the value of (?<variable>[NX])\b/i;
 

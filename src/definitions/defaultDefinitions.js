@@ -1,6 +1,7 @@
 const TYPECYCLING = /(?<type>[a-z]+(?: land)?)cycling/;
 
 const EXPLORE_WORDING = /explores?/;
+const INCUBATE_WORDING = /incubates?/;
 const CONNIVE_WORDING = /connives?/;
 const AMASS_WORDING = /amass (?<type>[A-Z][a-z]+)/;
 const DISCOVER_WORDING = /discovers?/;
@@ -12,7 +13,9 @@ const REGENERATE_WORDING = /regenerates?/;
 const SHUFFLE_WORDING = /shuffles?(?: (?!and |then )[^,.]*)?/;
 const EXERT_WORDING = /exert [^,.]+/;
 const SUSPECT_WORDING = /suspect [^,.]+/;
-const BEHOLD_WORDING = /behold an? [^,.]+/;
+const BEHOLD_WORDING = /beholds?/;
+const ADAPT_WORDING = /adapts?/;
+const CLASH_WORDING = /clash(?:es)?/;
 const EMPOWER_WORDING = /empower [A-Z][a-z]+/;
 const AIRBEND_WORDING = /airbend [^,.]+/;
 const WATERBEND_WORDING = /waterbend \{[^,.]+/;
@@ -93,10 +96,11 @@ export const DEFAULT_DEFINITIONS = {
             reminder: 'Put {parameter} +1/+1 counters on an Army you control. '
                 + 'If you don\'t control one, create a 0/0 Army creature token first.'
         },
-        { name: 'Adapt' },
+        { name: 'Adapt', pattern: ADAPT_WORDING },
+        { name: 'Clash', pattern: CLASH_WORDING },
         { name: 'Bolster' },
         { name: 'Support' },
-        { name: 'Incubate' },
+        { name: 'Incubate', pattern: INCUBATE_WORDING },
         {
             name: 'Discover',
             pattern: DISCOVER_WORDING,

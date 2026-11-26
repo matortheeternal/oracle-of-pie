@@ -8,6 +8,10 @@ const DIE = '(?<dieCount>' + NUMBER_PATTERN + ') (?:d(?<d>[0-9]+)|(?<sides>'
 const DICE = '(?<count>' + NUMBER_PATTERN + '|that many) (?<planar>planar )?dice';
 const ROLL_DIE = new RegExp(`^rolls? (?:${DIE}|${DICE}|(?<again>again))\\b`, 'i');
 const EXTRA_DICE = new RegExp('^plus (' + NUMBER_PATTERN + ')\\b', 'i');
+const SCALED_DICE = new RegExp(
+    `^plus an additional (?<sides>${NUMBER_PATTERN})-sided die `
+        + 'for each mana from (?<source>Treasures) spent to activate this ability', 'i'
+);
 const IGNORE = /^and ignore (?:(?:the lowest|the highest|the lower) rolls?|one)\b/i;
 const ROLL_MODIFIER = /^and (?<operation>add|subtract) (?<value>[^.]+)/i;
 
@@ -26,6 +30,9 @@ export default class RollDieEffect extends Effect {
     }
 
     readModifiers() {
+        const scaling = this.consumeText(SCALED_DICE)?.groups;
+        this.scaledDieSides = scaling ? numberValue(scaling.sides) : null;
+        this.scaledDieManaSource = scaling?.source.toLowerCase() ?? null;
         this.additionalDice = numberValue(this.consumeText(EXTRA_DICE)?.[1] ?? '0');
         this.ignoredRoll = this.consumeText(IGNORE)?.[0] ?? null;
         const modifier = this.consumeText(ROLL_MODIFIER)?.groups;

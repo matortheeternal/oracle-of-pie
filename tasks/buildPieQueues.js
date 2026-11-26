@@ -21,14 +21,25 @@ function printedView(card) {
     return { name, rarity, faces, image, scryfall_uri };
 }
 
+function groupedFlags(flags, keyOf) {
+    const groups = new Map();
+    for (const flag of flags) {
+        const key = keyOf(flag);
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(flag);
+    }
+    return [...groups.values()];
+}
+
 function customItems() {
     const cards = loadProjects().filter(card => card.isPlayable);
     const pieFlags = new ProjectPieFlags(new ProjectScribes(corpus, cards), profiles);
     const items = [];
     for (const card of cards) {
-        for (const flag of pieFlags.flagsFor(card)) {
-            const profile = profiles[flag.inspection];
-            items.push(pieFlagItem({ id: card.id, card: card.view, flag, profile }));
+        const groups = groupedFlags(pieFlags.flagsFor(card), flag => flag.inspection);
+        for (const flags of groups) {
+            const profile = profiles[flags[0].inspection];
+            items.push(pieFlagItem({ id: card.id, card: card.view, flags, profile }));
         }
     }
     return items;
@@ -40,11 +51,14 @@ const printedFlags = readJson(PATHS.pieFlags);
 function printedItems(policy) {
     const flags = printedFlags.filter(flag => flag.policy === policy);
     const sampled = sampleFlaggedCards(flags, SAMPLE_SIZES[policy]);
-    return sampled.map(flag => {
-        const card = byName.get(flag.name);
-        const profile = profiles[flag.inspection];
+    const keyOf = flag => JSON.stringify([flag.name, flag.inspection]);
+    const groups = groupedFlags(sampled, keyOf);
+    return groups.map(flags => {
+        const { name, inspection } = flags[0];
+        const card = byName.get(name);
+        const profile = profiles[inspection];
         const view = printedView(card);
-        return pieFlagItem({ id: card.oracle_id, card: view, flag, profile });
+        return pieFlagItem({ id: card.oracle_id, card: view, flags, profile });
     });
 }
 

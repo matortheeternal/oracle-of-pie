@@ -1,10 +1,11 @@
 import Modifier from './Modifier.js';
 
-const NAME_WORD = '(?:[A-Z][\\w\'’.-]*|of|the|and(?= [A-Z])|to|in|on|for|with)';
+const NAME_WORD = '(?:[A-Z][\\w\'’.-]*|[a-z]\'[A-Z][a-z]+|of|the'
+    + '|and(?= [A-Z])|to|in|on|for|with)';
 const NAME_PART = '[A-Z][\\w\'’.-]*(?: ' + NAME_WORD + ')*';
 const ALTERNATE_NAME = '(?: or ' + NAME_PART + ')?';
 const NAMED = new RegExp('^(?:not )?named (?<name>~|' + NAME_PART
-    + '(?:, (?:the )?' + NAME_PART + ')?' + ALTERNATE_NAME + ')\\b');
+    + '(?:, (?:the )?' + NAME_PART + ')?' + ALTERNATE_NAME + ')(?=$|[\\s,.])');
 
 export default class NamedModifier extends Modifier {
     static match(scribe, str) {

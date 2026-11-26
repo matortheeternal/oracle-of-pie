@@ -1,4 +1,5 @@
 import Effect from './Effect.js';
+import { TYPAL_SCALING } from '../values/typalScaling.js';
 import PTModifier from '../values/PTModifier.js';
 import consumeGrantedAbilities from '../values/consumeGrantedAbilities.js';
 import {
@@ -9,6 +10,7 @@ const GETS = /^gets? (?<amount>an additional |twice )?(?=[+\-−]?(?:\d+|X|\*)\/
 const AND_GAINS = /^and (?:gains?|has|have) /i;
 const AND_ALL_TYPES = /^and (?:gains?|has|have) all creature types\b/i;
 const SCALING = /^(for each (?:[^,.]|, (?=non))+|where X is [^,.]+|as long as [^,.]+)/i;
+const TYPAL_COUNTS = new RegExp(`^(${TYPAL_SCALING})`);
 const OR = /^or (?=[+\-−]?(?:\d+|X|\*)\/)/i;
 const CAP = /^, to a maximum of (\d+)\b/i;
 
@@ -25,7 +27,8 @@ export default class ModifyPTEffect extends Effect {
         this.alternative = this.consumeText(OR) ? this.consume([PTModifier]) : null;
         this.gainsAllTypes = Boolean(this.consumeText(AND_ALL_TYPES));
         Object.assign(this, this.consumeGrants());
-        this.scaling = this.consumeText(SCALING)?.[1] ?? null;
+        const scaling = this.consumeText(TYPAL_COUNTS) ?? this.consumeText(SCALING);
+        this.scaling = scaling?.[1] ?? null;
         this.cap = Number(this.consumeText(CAP)?.[1]) || null;
     }
 

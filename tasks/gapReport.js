@@ -4,6 +4,7 @@ import { createCorpusScribe } from './corpus/corpusScribe.js';
 import { parseCardFaces } from './corpus/pieCorpus.js';
 import collectGaps from './gaps/collectGaps.js';
 import GapReport from './gaps/GapReport.js';
+import ExpansionGaps from './gaps/ExpansionGaps.js';
 import { percent } from './shared/table.js';
 
 const DEFAULT_LIMIT = 25;
@@ -12,13 +13,16 @@ const limit = Number(process.argv[2] ?? DEFAULT_LIMIT);
 const corpus = readJson(PATHS.corpus);
 const scribe = createCorpusScribe(corpus);
 const report = new GapReport();
+const expansionGaps = new ExpansionGaps();
 
 for (const card of corpus) {
     const faces = parseCardFaces(scribe, card);
+    for (const { parsed } of faces) expansionGaps.addCard(card.name, parsed);
     const gaps = faces.flatMap(face => collectGaps(face.parsed.text));
     report.addCard(card.name, gaps, faces.every(face => face.parsed.isFullyModeled));
 }
-writeJson(PATHS.gapReport, report);
+const expansions = expansionGaps.toJSON();
+writeJson(PATHS.gapReport, { ...report.toJSON(), expansions });
 
 function count(value) {
     return String(value).padStart(4);
@@ -58,3 +62,6 @@ const OPAQUE_TITLE = 'Opaque effects (recognized, not modeled) by cards';
 printSection(UNLOCKS_TITLE, report.byUnlocks, unlockLine);
 printSection(FAMILIES_TITLE, report.byFamily, familyLine);
 printSection(OPAQUE_TITLE, report.byOpaque, opaqueLine);
+printSection('Unread reminder and definition expansions', expansions, stats =>
+    `${count(stats.cards)} cards  ${stats.keyword} | ${stats.shape}`
+        + `  e.g. ${stats.examples[0]}`);

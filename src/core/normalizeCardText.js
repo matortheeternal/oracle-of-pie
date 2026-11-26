@@ -3,6 +3,7 @@ import { DEFAULT_KEYWORDS } from '../defaultKeywords.js';
 const NAME_MACRO = /\bCARDNAME\b|\bLEGENDNAME\b|@/g;
 const DASH_BULLET = /^- /gm;
 const REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
+const TRAILING_COMMA = /,$/;
 const ROMAN_SUFFIX = / [IVXLC]+$/;
 const FIRST_NAME = /^(\p{Lu}[\p{L}'’-]+) \p{Lu}/u;
 const TITLE_SURNAME = /^(Dr\.|Mr\.|Mrs\.|Ms\.) .+ (\p{Lu}[\p{L}'’-]+)$/u;
@@ -11,6 +12,8 @@ const SELF_ACTION = 'attacks?|blocks?|enters?|dies?|leaves?|deals?|fights?|conni
 const ALIAS_CONTEXT = `(?='s (?:power|toughness|controller|owner|counters?)\\b`
     + `| (?:${SELF_ACTION})\\b)`;
 const TYPAL_CONTEXT = /^(?: (?:artifact )?creature| tokens?)\b/i;
+const AFTER_ANOTHER = /\banother $/i;
+const TYPAL_CONTROL = /^ you control\b/i;
 
 function escapeRegExp(str) {
     return str.replace(REGEX_SPECIAL, '\\$&');
@@ -22,7 +25,7 @@ export function nameVariants(name) {
         name,
         name.split(',')[0],
         name.split(' of ')[0],
-        name.split(' the ')[0],
+        name.split(' the ')[0].replace(TRAILING_COMMA, ''),
         name.replace(ROMAN_SUFFIX, ''),
         titled ? `${titled[1]} ${titled[2]}` : null
     ];
@@ -56,7 +59,10 @@ function replaceVariant(text, variant, name) {
     if (variant === name) return text.replace(pattern, '~');
     const keyword = KEYWORDS.has(variant.toLowerCase());
     return text.replace(pattern, (match, index) => {
-        if (TYPAL_CONTEXT.test(text.slice(index + match.length))) return match;
+        const following = text.slice(index + match.length);
+        if (TYPAL_CONTROL.test(following) && AFTER_ANOTHER.test(text.slice(0, index)))
+            return match;
+        if (TYPAL_CONTEXT.test(following)) return match;
         if (keyword && (index === 0 || text[index - 1] === '\n')) return match;
         return '~';
     });

@@ -2,11 +2,14 @@ import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 import { normalizeCounterKind, lowersToughness } from './counterKinds.js';
 
+const IMPLICIT_TIME_COUNTER = /^removes? (?<timeCounter>a time counter)(?! from)\b/i;
+const NAMED_COUNTER = / (?<kind>[a-z-]+)$/i;
 const REMOVE_OBJECTS = /^(?:them(?: all)?|those counters)\b/i;
 const REMOVE = /^removes? (?=[^.]*?\bcounters? (?:from|among) )/i;
 const REMOVE_REFERENCED = /^removes? (?=(?:them|all of them|those counters)\b)/i;
-const LOSE_COUNTERS = /^loses? (?=all counters\b)/i;
-const LOST_COUNTERS = /^all counters\b/i;
+const ALL_COUNTERS = 'all (?:[a-z-]+ )?counters\\b';
+const LOSE_COUNTERS = new RegExp(`^loses? (?=${ALL_COUNTERS})`, 'i');
+const LOST_COUNTERS = new RegExp(`^${ALL_COUNTERS}`, 'i');
 const REMOVE_NUMBER = /^removes? (?=(?:one|two|three|all of them|\d+) (?:from|of|$))/i;
 const REMAINING_COUNTERS = new RegExp(
     '^(?:all of them|(?:one|two|three|\\d+) of (?:them|those'
@@ -25,10 +28,16 @@ export default class RemoveCountersEffect extends Effect {
 
     static match(scribe, str) {
         return super.match(scribe, str) ?? str.match(REMOVE_REFERENCED)
-            ?? str.match(REMOVE_NUMBER) ?? str.match(LOSE_COUNTERS) ?? str.match(KEEP);
+            ?? str.match(IMPLICIT_TIME_COUNTER) ?? str.match(REMOVE_NUMBER)
+            ?? str.match(LOSE_COUNTERS) ?? str.match(KEEP);
     }
 
     parseArguments(match) {
+        if (match.groups?.timeCounter) {
+            this.kind = 'time';
+            this.reference = match.groups.timeCounter;
+            return;
+        }
         this.reference = match[1] ?? this.consumeReference()?.[0] ?? null;
         this.keepsSomeCounters = Boolean(match[1]);
         if (this.reference) {
@@ -47,10 +56,11 @@ export default class RemoveCountersEffect extends Effect {
 
     readCounters() {
         const counters = this.consumeText(COUNTERS_FROM)?.groups;
-        const kindText = counters?.kind ?? '';
+        const kindText = counters?.kind.trim() ?? '';
         const origin = counters?.origin.toLowerCase() ?? '';
         this.distributedRemoval = origin.includes('among');
-        this.kind = normalizeCounterKind(kindText.match(PT_COUNTER)?.[0]);
+        this.kind = normalizeCounterKind(kindText.match(PT_COUNTER)?.[0])
+            ?? kindText.match(NAMED_COUNTER)?.groups.kind.toLowerCase() ?? null;
         this.objects = this.consume([PhraseList]);
     }
 

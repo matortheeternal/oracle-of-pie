@@ -7,8 +7,9 @@ const TARGET = [
     'one or more (?:creatures(?: or Vehicles)?|permanents)',
     'an opponent or a creature an opponent controls',
     'a single permanent or player',
+    'a single opponent or a single permanent an opponent controls',
     'this creature', '~', 'it', `a single (?:${SINGLE_TARGET})`, 'a modified permanent',
-    'a creature', 'an artifact or land'
+    'a creature', 'an artifact or land', 'an artifact or creature'
 ].join('|');
 const CONTROL = 'you (?:control|don\'t control)|an opponent controls|they control';
 const CONTROLLER = `(?: (?<controller>${CONTROL}))?`;

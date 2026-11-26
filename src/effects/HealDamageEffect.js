@@ -1,7 +1,7 @@
 import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 
-const HEAL = /^(?<amount>all|the remaining) damage (?:already )?dealt to /i;
+const HEAL = /^(?<amount>all other|all|the remaining) damage (?:already )?dealt to /i;
 const HEALED = /^is healed\b/i;
 
 export default class HealDamageEffect extends Effect {

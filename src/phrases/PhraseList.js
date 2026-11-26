@@ -29,8 +29,9 @@ export default class PhraseList extends Parser {
         const joiner = this.remainingStr.match(this.joiner);
         if (!joiner) return false;
         const rest = this.remainingStr.slice(joiner[0].length);
+        if (this.scribe.startsEffect(rest)) return false;
         const phrase = this.parseNext(rest, this.constructor.parsers);
-        if (!phrase || this.startsClause(phrase)) return false;
+        if (!phrase?.isRecognized || this.startsClause(phrase)) return false;
         this.remainingStr = phrase.remainingStr;
         this.phrases.push(phrase);
         this.connectors.push(joiner[0].trim().replace(COMMA_PREFIX, '').trim());

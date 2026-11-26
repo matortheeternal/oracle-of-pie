@@ -6,10 +6,11 @@ const OWNER_ALTERNATIVES = [
     'target opponent\'s', 'each player\'s', 'each opponent\'s',
     'each of those opponents\'', 'an opponent\'s'
 ];
-const TOP_COUNT = `(?:(${NUMBER_PATTERN}|that many|a number of) cards|card)`;
+const TOP_COUNT = `(?:(${NUMBER_PATTERN}|that many|a number of) cards|card|(half))`;
 const OWNERS = OWNER_ALTERNATIVES.join('|');
 const LIBRARY_TOP = new RegExp(
-    `^the (top|bottom) ${TOP_COUNT}\\b(?: of (${OWNERS}) librar(?:y|ies))?`,
+    `^(?<complement>all but )?the (top|bottom) ${TOP_COUNT}\\b`
+        + `(?: of (${OWNERS}) librar(?:y|ies))?`,
     'i'
 );
 const YOUR = 'your';
@@ -21,9 +22,10 @@ export default class LibraryTopPhrase extends Phrase {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
-        this.position = match[1].toLowerCase();
-        this.count = match[2] ?? '1';
-        this.owner = match[3]?.toLowerCase() ?? null;
+        this.excludesCountedCards = Boolean(match.groups.complement);
+        this.position = match[2].toLowerCase();
+        this.count = match[3] ?? match[4] ?? '1';
+        this.owner = match[5]?.toLowerCase() ?? null;
     }
 
     get zone() {

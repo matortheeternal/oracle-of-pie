@@ -41,6 +41,8 @@
     "pie-verdicts": "node tasks/checkPieVerdicts.js",
     "ast-fixtures": "node tasks/checkAstFixtures.js",
     "ast": "node tasks/inspectAst.js",
-    "keyword-canon": "node tasks/buildKeywordCanon.js default-cards-*.jsonl.gz"
+    "keyword-canon": "node tasks/buildKeywordCanon.js default-cards-*.jsonl.gz",
+    "egghub:audit": "node tasks/auditEggHub.js",
+    "egghub:gaps-page": "node tasks/buildEggHubGapPage.js"
   }
 }

@@ -1,4 +1,6 @@
 import Sentence from './Sentence.js';
+import CounterRemovalEvent from '../triggers/CounterRemovalEvent.js';
+import RemoveCountersEffect from '../effects/RemoveCountersEffect.js';
 import splitTrigger from '../triggers/splitTrigger.js';
 
 const TRIGGER_WORD = /^(when|whenever|at) (?!(?:you|they) do\b)/i;
@@ -19,6 +21,14 @@ export default class TriggerSentence extends Sentence {
         this.trigger = `${word} ${eventText}`;
         this.event = event;
         this.readClauses(body);
+    }
+
+    link(previous, next) {
+        super.link(previous, next);
+        if (!(this.event instanceof CounterRemovalEvent)) return;
+        const removal = previous?.effects.at(-1);
+        if (removal instanceof RemoveCountersEffect)
+            this.event.bindPreviousRemoval(removal);
     }
 
     get children() {

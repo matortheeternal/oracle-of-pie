@@ -50,7 +50,7 @@ const FROM_QUALIFIERS = [
         + ' that were cast this turn',
     'activated and triggered abilities',
     'artifacts, creatures, and enchantments',
-    'each color',
+    'each color(?: that\'s not in your commander\'s color identity)?',
     'the chosen quality',
     'that color',
     `${COLORS}(?: or from the color of your choice)?`,

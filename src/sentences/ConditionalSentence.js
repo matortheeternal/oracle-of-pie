@@ -1,8 +1,12 @@
 import { ActivationCost } from 'mana-scribe';
 import Sentence from './Sentence.js';
+import NamedModifier from '../phrases/modifiers/NamedModifier.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 
 const CONDITION_ALTERNATIVES = [
+    'rather than pay (?:\\{[^}]+\\})+ for each previous time you\'ve cast this spell'
+        + ' from the command zone this game',
+    'after you draft \\w+ cards this way',
     'for every \\w+ [^,]+ you control',
     'any time you could activate a mana ability',
     'while you\'re activating a craft ability',
@@ -60,6 +64,7 @@ const CONDITION_ALTERNATIVES = [
     'as an additional cost to cast this spell',
     'as long as [^,]+'
 ];
+const TARGET_OF_CHOSEN_TYPE = /^if (?<target>target [^,]+?) is the chosen type$/i;
 const CAST_FOR_ALTERNATIVE_COST = /\bcast (this spell|~) for its [a-z]+ cost\b/i;
 const SPENT_COLOR = /\{([WUBRG])\}(?:\{\1\})* was spent to cast/;
 const KICKED = /\bwas kicked\b/i;
@@ -75,11 +80,24 @@ const CONDITION = new RegExp(
 );
 const UNPUNCTUATED_DURATION = /^(for as long as )(you control ~) (?=you may )/i;
 const POSSIBLE_CONTINUATION = new RegExp(
-    '^(?:and |or |(?:an? )?[A-Z][\\w-]+(?:,| or )|(?:equipped|enchanted),|'
+    '^(?:and |or |the first |(?:an? )?[A-Z][\\w-]+(?:,| or )|(?:equipped|enchanted),|'
         + '(?:non)?(?:artifact|creature|enchantment|land|planeswalker|battle|token)\\b'
         + '|there (?:are|is) )'
 );
 const COMMA = ', ';
+const NAMED = /\bnamed /i;
+
+function extendNamedCondition(scribe, text, initial) {
+    const nameStart = initial[0].search(NAMED);
+    if (nameStart < 0) return null;
+    const name = NamedModifier.match(scribe, text.slice(nameStart));
+    if (!name) return null;
+    const boundary = nameStart + name[0].length;
+    if (boundary < initial[0].length || !text.startsWith(COMMA, boundary)) return null;
+    const next = boundary + COMMA.length;
+    if (!scribe.startsModeledClause(text.slice(next))) return null;
+    return [text.slice(0, next), initial[1], text.slice(initial[1].length, boundary)];
+}
 
 function extendCondition(scribe, text, initial) {
     let stop = initial[0].length;
@@ -98,9 +116,14 @@ function extendCondition(scribe, text, initial) {
 
 export default class ConditionalSentence extends Sentence {
     static matchStatement(scribe, text) {
+        const duration = text.match(UNPUNCTUATED_DURATION);
+        if (duration) return duration;
         const match = text.match(CONDITION);
-        if (match) return extendCondition(scribe, text, match);
-        return text.match(UNPUNCTUATED_DURATION);
+        if (match) {
+            const named = extendNamedCondition(scribe, text, match);
+            return named ?? extendCondition(scribe, text, match);
+        }
+        return null;
     }
 
     constructor(scribe, match, str) {
@@ -108,6 +131,7 @@ export default class ConditionalSentence extends Sentence {
         const [, opening, qualifier] = match.statement;
         this.condition = `${opening}${qualifier}`.trim();
         this.castObject = this.parseCastObject();
+        this.targetOfChosenType = this.parseTargetOfChosenType();
         this.readClauses(match.rest);
     }
 
@@ -116,8 +140,14 @@ export default class ConditionalSentence extends Sentence {
         return phrase ? this.parseNext(phrase, PHRASE_PARSERS) : null;
     }
 
+    parseTargetOfChosenType() {
+        const target = this.condition.match(TARGET_OF_CHOSEN_TYPE)?.groups.target;
+        const phrase = target && this.parseNext(target, PHRASE_PARSERS);
+        return phrase?.isRecognized && !phrase.remainingStr ? phrase : null;
+    }
+
     get referenceSeeds() {
-        return [this.castObject].filter(Boolean);
+        return [this.castObject, this.targetOfChosenType].filter(Boolean);
     }
 
     get spentColors() {

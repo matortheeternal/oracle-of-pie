@@ -3,7 +3,7 @@ import AdventureModifier from '../triggers/objects/AdventureModifier.js';
 import { MODIFIER_PARSERS } from './modifiers/index.js';
 import RelationModifier from './modifiers/RelationModifier.js';
 import StateModifier from './modifiers/StateModifier.js';
-import { TYPE_WORDS } from './vocabulary.js';
+import { TYPE_WORDS, SEA_MONSTER_TYPES } from './vocabulary.js';
 import { classifyWord, TYPE, SUBTYPE, QUALIFIER, EXCLUSION } from './wordClass.js';
 import NegatedWord from './NegatedWord.js';
 import PTModifier from '../values/PTModifier.js';
@@ -12,6 +12,7 @@ import { DETERMINER, ordinalOf } from './nounDeterminers.js';
 
 const WORD = /^(\p{L}[\p{L}'-]*)(?=[\s,.;:"]|$)/u;
 const BRACKETED_WORDS = /^\[([^\]]+)\] (?=\p{L})/u;
+const SEA_MONSTER = /^sea monsters?\b/i;
 const STAT_QUALIFIER = /^\d+\/\d+ /;
 const TYPE_JOINER = /^(?:,? ?(?:and\/or|or|and) |, )/;
 const COMMANDER = 'commander';
@@ -55,7 +56,7 @@ export default class NounPhrase extends Phrase {
         const determiner = STAT_QUALIFIER.test(str) ? null : str.match(DETERMINER);
         const rest = determiner ? str.slice(determiner[0].length).trimStart() : str;
         const words = rest.replace(STAT_QUALIFIER, '').replace(BRACKETED_WORDS, '');
-        if (!nextWordClass(scribe, words)) return null;
+        if (!SEA_MONSTER.test(words) && !nextWordClass(scribe, words)) return null;
         return determiner ?? [''];
     }
 
@@ -74,6 +75,7 @@ export default class NounPhrase extends Phrase {
         this.stats = STAT_QUALIFIER.test(this.remainingStr)
             ? this.consume([PTModifier]) : null;
         this.cleaveRestriction = this.readCleaveRestriction();
+        this.seaMonsters = this.consumeText(SEA_MONSTER)?.[0] ?? null;
         this.consumeWords();
         this.modifiers = this.consumeAll(MODIFIER_PARSERS, []);
     }
@@ -86,7 +88,8 @@ export default class NounPhrase extends Phrase {
         const match = this.remainingStr.match(BRACKETED_WORDS);
         if (!match) return null;
         const restriction = this.parseNext(match[1], [NounPhrase]);
-        if (!restriction?.isRecognized || restriction.remainingStr) return null;
+        if (!restriction?.hasWords || restriction.remainingStr) return null;
+        restriction.isCleaveRestriction = true;
         this.consumeText(BRACKETED_WORDS);
         restriction.markConditionOnly();
         return restriction;
@@ -110,6 +113,7 @@ export default class NounPhrase extends Phrase {
         const joiner = this.remainingStr.match(TYPE_JOINER);
         if (!joiner || !this.hasWords) return false;
         const next = this.remainingStr.slice(joiner[0].length);
+        if (this.scribe.startsEffect(next)) return false;
         if (!nextWordClass(this.scribe, next)) return false;
         this.consumeText(TYPE_JOINER);
         this.followsType = false;
@@ -177,7 +181,7 @@ export default class NounPhrase extends Phrase {
     }
 
     get isRecognized() {
-        if (this.isCommanderGroup) return true;
+        if (this.isCommanderGroup || this.isCleaveRestriction) return true;
         return Boolean(this.types.length || this.subtypes.length);
     }
 
@@ -266,6 +270,7 @@ export default class NounPhrase extends Phrase {
     }
 
     hasSubtype(subtype) {
+        if (this.seaMonsters) return SEA_MONSTER_TYPES.has(subtype);
         return this.subtypes.some(word => word === subtype || singular(word) === subtype);
     }
 
@@ -318,7 +323,8 @@ export default class NounPhrase extends Phrase {
     }
 
     get hasSubtypes() {
-        return this.subtypes.length > 0 || this.modifiers.some(m => m.restrictsSubtype);
+        return Boolean(this.seaMonsters || this.subtypes.length
+            || this.modifiers.some(modifier => modifier.restrictsSubtype));
     }
 
     hasExactType(type) {

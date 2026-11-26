@@ -13,7 +13,7 @@ const COUNT = `(${FIXED_COUNT}|that much|twice (?:that much|X)`
     + '|that amount of|five times X|N)';
 const POWER_OWNER = `(its|their|~'s|that creature's|this creature's)`;
 const DIVIDED = ' divided as you choose';
-const DAMAGE_END = '(?= to | instead\\b|$)|' + DIVIDED + '(?= among )';
+const DAMAGE_END = '(?=(?<!attached) to | instead\\b|$)|' + DIVIDED + '(?= among )';
 const AMOUNT = new RegExp(
     `^(?:${COUNT} damage(?:${DIVIDED})?`
         + `|damage equal to (?:${POWER_OWNER} power|[^.]+?)(?:${DAMAGE_END})`

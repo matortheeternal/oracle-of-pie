@@ -4,7 +4,7 @@ import {
 } from '../values/quantityDependencies.js';
 
 const DEFINED = '(power and toughness are each|power is|toughness is)';
-const OWNER = '(?:(?:~|this (?:creature|token|Vehicle|permanent))\'s|its)';
+const OWNER = '(?:(?:~|this (?:creature|token|Vehicle|permanent)|[A-Z][\\w-]*)\'s|its)';
 const DEFINE_PT = new RegExp(`^${OWNER} ${DEFINED} equal to `, 'i');
 const AMOUNT = /^[^.]+/;
 const TOUGHNESS = /\btoughness\b/i;

@@ -8,6 +8,7 @@ const DURATION_ALTERNATIVES = [
     'until (?:their|that player\'s|target player\'s) next turn',
     'during (?:your|their|that player\'s) next turn',
     'until your next end step',
+    'until the next end step',
     'until (?:their|that player\'s) next end step',
     'until the end of (?:the )?defending player\'s next turn',
     'for the rest of (?:this|that) turn',

@@ -7,7 +7,7 @@ const MODE_COUNT_ALTERNATIVES = [
 ];
 const MODE_COUNT = MODE_COUNT_ALTERNATIVES.join('|');
 const NOT_CHOSEN = '(?: that hasn\'t been chosen(?: this turn)?)?';
-const MODE_END = `${NOT_CHOSEN}(?:(?: [^—,.]*)? ?—| instead\\b|(?=\\.|$))`;
+const MODE_END = `${NOT_CHOSEN}(?:(?: [^—,.]*)? ?—| instead\\b|(?= and |\\.|$))`;
 const MODE_BUDGET = 'up to \\w+ (?:\\{[^}]+\\})+ worth of modes';
 const VARIABLE_MODE_COUNT = 'up to X, where X is [^—,.]+ ?—';
 const CHOOSE_MODES = new RegExp(

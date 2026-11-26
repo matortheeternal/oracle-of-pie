@@ -1,7 +1,8 @@
 import ObjectEffect from './ObjectEffect.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
-const PLAY_VERB = '(?<verb>play|cast)';
+const PLAY_VERB = '(?<verb>plays?|casts?)';
+const PLURAL_VERB = /s$/;
 const EXTRA_LANDS = NUMBER_PATTERN + ' additional lands?';
 const PLAY_CARDS = new RegExp(
     `^(?<look>look at and )?${PLAY_VERB} (?!${EXTRA_LANDS})`, 'i'
@@ -20,16 +21,23 @@ const ALTERNATIVE_CAST_COST = /^for (?:its|their) [a-z-]+ cost\b/i;
 const CONVERTED_COST = /^converted for (?:\{[^}]+\})+/i;
 const PAYS_EXTRA_COST = /^by [a-z]+ing [^,.]+? in addition to (?:paying )?[^,.]+/i;
 const ADVENTURE = /^as an adventure\b/i;
+const DURING_TURN = /^during your turn(?= by )/i;
+const VARIABLE_COST = /^,? where X is (?:its|that spell's) mana value\b/i;
 const TOP_REVEALED = /^with the top card of your library revealed\b/i;
 const ANY_COST_SUBSTITUTION = /^by foraging in addition to paying their other costs\b/i;
 const REVEALED_TOP = /^play with the top card of your library revealed\b/i;
 const PAYMENT_OPTION = /^,? and you may spend mana from snow sources as though [^,.]+/i;
 const ALTERNATE_SOURCE = /^or from (?:your graveyard|exile|your hand)\b/i;
 const LATER_TURN = /^on a later turn\b/i;
+const COMBAT_ONLY = new RegExp(
+    '^only (?:during combat(?: on an opponent\'s turn)?'
+        + '|before combat or during combat before blockers are declared)\\b', 'i'
+);
+const LIBRARY_SOURCE_ALTERNATIVE = /^or the top of your library\b/i;
 const PLAY_TAILS = [
     WITHOUT_PAYING, AS_THOUGH_FLASH, ANY_TYPE_MANA, SOURCE, BY_PAYING,
     USES_ALTERNATIVE_COST, ALTERNATIVE_CAST_COST, CONVERTED_COST, PAYS_EXTRA_COST,
-    ADVENTURE,
+    ADVENTURE, COMBAT_ONLY, LIBRARY_SOURCE_ALTERNATIVE, DURING_TURN, VARIABLE_COST,
     TOP_REVEALED, PAYMENT_OPTION, ALTERNATE_SOURCE, ANY_COST_SUBSTITUTION, LATER_TURN
 ];
 
@@ -45,7 +53,7 @@ export default class PlayCardsEffect extends ObjectEffect {
     parseArguments(match) {
         super.parseArguments(match);
         this.revealsTopCard = Boolean(!match.groups);
-        this.verb = match.groups?.verb.toLowerCase() ?? 'play';
+        this.verb = match.groups?.verb.toLowerCase().replace(PLURAL_VERB, '') ?? 'play';
         this.allowsLooking = Boolean(match.groups?.look);
         this.tails = [];
         while (this.consumeTail()) continue;
@@ -81,5 +89,9 @@ export default class PlayCardsEffect extends ObjectEffect {
 
     get allowsLands() {
         return this.verb === 'play';
+    }
+
+    get isRestrictedToCombat() {
+        return this.tails.includes(COMBAT_ONLY);
     }
 }

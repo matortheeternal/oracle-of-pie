@@ -15,14 +15,22 @@ const FOR_OBJECTS = new RegExp(
     '^for (?:artifacts|creatures|enchantments|instant and sorcery spells)\\b', 'i'
 );
 const CONDITION = /^(as long as [^,.]+|during your turn|for each (?:[^,.]|, (?=non))+)/i;
-const CHOSEN_ABILITY = /^(?:that ability|each of the chosen abilities)\b/i;
+const ESCAPES_WITH = /^(?<onEscape>escapes? with) (?=["'])/i;
+const CHOSEN_ABILITY = new RegExp(
+    '^(?:that ability|each of the chosen abilities|this card\'s other abilities)\\b', 'i'
+);
 
 export default class GrantEffect extends Effect {
     static get pattern() {
         return GAINS;
     }
 
+    static match(scribe, str) {
+        return super.match(scribe, str) ?? str.match(ESCAPES_WITH);
+    }
+
     parseArguments(match) {
+        this.onEscape = Boolean(match.groups?.onEscape);
         Object.assign(this, consumeGrantedAbilities(this));
         const borrowed = this.consumeText(BORROWED_ABILITIES)?.groups;
         this.borrowedAbilityKind = borrowed?.kind.toLowerCase() ?? null;

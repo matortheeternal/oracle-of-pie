@@ -16,7 +16,7 @@ const MULTIPLE_KINDS = new RegExp(
         + SUFFIX, 'i'
 );
 const QUANTITY = new RegExp(
-    '^' + COUNT + ' (?:additional )?(?<kind>' + KIND + ')' + SUFFIX, 'i'
+    '^' + CHOICE + COUNT + ' (?:additional )?(?<kind>' + KIND + ')' + SUFFIX, 'i'
 );
 const REFERENCED_KIND = /^(?:another|an? additional|an?) counter of that kind\b/i;
 const EXISTING = /^(?:its|their|those) counters\b/i;
@@ -36,7 +36,7 @@ const CHOICE_BOUNDARY = /,? (?:and|or) |, /i;
 const KIND_LIST = `${KIND}(?:, ${KIND})*(?:,? (?:and|or) ${KIND})`;
 const CHOSEN_KIND = new RegExp(
     `^your choice of (?<count>${NUMBER_PATTERN}) counter from among `
-        + `(?<choices>${KIND_LIST})`,
+        + `(?<choices>${KIND_LIST})(?= on )`,
     'i'
 );
 const EXISTING_KIND_CHOICE = new RegExp(

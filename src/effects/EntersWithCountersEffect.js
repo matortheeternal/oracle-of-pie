@@ -15,6 +15,11 @@ const COUNTER_CHOICE = 'your choice of an? (?:additional )?\\+1/\\+1 counter '
     + 'or (?<alternative>haste)\\b';
 const IMPLICIT_RECIPIENT = new RegExp(`^(?:${TIME_COUNTERS}|${COUNTER_CHOICE})`, 'i');
 const ENTERS = /^enters? with /i;
+const ADDITIONAL_COUNTER = new RegExp(
+    '^plus an additional (?<kind>[+-]\\d+/[+-]\\d+|[a-z-]+) counter on it '
+        + 'for each other creature you control\\b', 'i'
+);
+const COUNTER_OPTIONS = /^from among /i;
 const AND_WITH = /^and with /i;
 
 export default class EntersWithCountersEffect extends Effect {
@@ -36,6 +41,16 @@ export default class EntersWithCountersEffect extends Effect {
         this.description = counters?.[0] ?? null;
         this.alternativeKeyword = counters?.groups?.alternative?.toLowerCase() ?? null;
         this.keywords = this.readKeywords();
+        this.extraCounterKind = this.consumeText(ADDITIONAL_COUNTER)?.groups.kind ?? null;
+        this.counterOptions = this.readCounterOptions();
+    }
+
+    readCounterOptions() {
+        const start = this.remainingStr;
+        if (!this.consumeText(COUNTER_OPTIONS)) return null;
+        const options = this.consume([KeywordList]);
+        if (!options) this.remainingStr = start;
+        return options;
     }
 
     readKeywords() {
@@ -47,7 +62,7 @@ export default class EntersWithCountersEffect extends Effect {
     }
 
     get parts() {
-        return [this.keywords].filter(Boolean);
+        return [this.keywords, this.counterOptions].filter(Boolean);
     }
 
     get kinds() {

@@ -25,10 +25,15 @@ export default class CompoundEvent extends Parser {
         const first = readSimpleEvent(scribe, str);
         if (!first) return null;
         const events = readAlternatives(scribe, first);
-        return events.length > 1 ? Object.assign([''], { events }) : null;
+        return Object.assign([''], { events });
     }
 
     static parse(scribe, match, str) {
+        if (match.events.length === 1) {
+            const [event] = match.events;
+            event.consumeUnreadText();
+            return event;
+        }
         const compound = super.parse(scribe, match, str);
         compound.lastEvent.consumeUnreadText();
         compound.remainingStr = compound.lastEvent.remainingStr;

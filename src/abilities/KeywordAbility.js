@@ -2,10 +2,12 @@ import Ability from './Ability.js';
 import KeywordList from '../values/KeywordList.js';
 import Expansion from '../definitions/Expansion.js';
 import Definition from '../definitions/Definition.js';
+import RestrictionSentence from '../sentences/RestrictionSentence.js';
 
 const LIFE_COST = /\bpay \d+ life\b/i;
 
 const KEYWORD_WITH_COST = /^—(?! )[^.]+\.?$/;
+const RESTRICTED_COST = /^(?<cost>—[^.]+)\. (?=Activate only )/i;
 const MANA_COST_CONTINUATION = /^(?:, [^.]+|and\/or (?:\{[^}]+\})+|— \d+\/\d+)\.?$/;
 const CARD_NAME = /^[A-Z][^.]*$/;
 const PARAMETER = /^(?:[a-z][A-Za-z ,'-]*|with [^.]+)$/;
@@ -44,19 +46,25 @@ export default class KeywordAbility extends Ability {
         const list = KeywordList.parse(scribe, [''], str);
         const rest = list.remainingStr.trim();
         if (rest === PERIOD && scribe.actionPattern.test(str)) return null;
-        return isKeywordRest(list, rest) ? [''] : null;
+        if (isKeywordRest(list, rest)) return [''];
+        const cost = rest.match(RESTRICTED_COST);
+        if (!cost) return null;
+        const restriction = RestrictionSentence.match(scribe, rest.slice(cost[0].length));
+        return restriction ? [''] : null;
     }
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.keywords = this.consume([KeywordList]);
         const rest = this.remainingStr.trim();
-        this.costText = rest && rest !== PERIOD ? rest : null;
+        const cost = this.consumeText(RESTRICTED_COST);
+        this.restriction = cost ? this.consume([RestrictionSentence]) : null;
+        this.costText = cost?.groups.cost ?? (rest && rest !== PERIOD ? rest : null);
         this.remainingStr = '';
     }
 
     get parts() {
-        return [this.keywords];
+        return [this.keywords, this.restriction].filter(Boolean);
     }
 
     get hasParameterText() {

@@ -11,6 +11,7 @@ const SENTENCE = new RegExp(
         + `(?:${CLOSING_QUOTE})?)(?:\\.|$|(?<=")(?= ))`
 );
 const THEN = /^then,? /i;
+const INSTEAD = /^instead /i;
 const CONDITIONAL_CONTINUATION = new RegExp(
     '^,? ?(?:and |then |or )(?=(?:if|when|whenever|until|as long as)\\b)', 'i'
 );
@@ -49,8 +50,11 @@ export default class Sentence extends Parser {
     }
 
     readClauses(text) {
-        this.nested = this.readNestedStatement(text);
-        if (this.nested) return;
+        this.nested = this.readNestedStatement(text.replace(INSTEAD, ''));
+        if (this.nested) {
+            this.nested.replacesPriorAction = INSTEAD.test(text);
+            return;
+        }
         const reader = ClauseReader.read(this.scribe, text);
         this.clauseEffects = reader.clauseEffects;
         this.trailingCondition = reader.condition;

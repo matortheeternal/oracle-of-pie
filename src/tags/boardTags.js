@@ -20,9 +20,7 @@ const YOUR_TEAM = {
         any: [
             { kind: 'NounPhrase', excludesOwnedByYou: true },
             { kind: 'NounPhrase', hasCombatTraitRestriction: true },
-            { kind: 'NounPhrase', modifiers: {
-                kind: 'StateModifier', restrictsSubtype: true
-            } }
+            { kind: 'NounPhrase', modifiers: { restrictsSubtype: true } }
         ]
     }
 };
@@ -51,6 +49,10 @@ export const BOARD_TAGS = [
             not: {
                 any: [
                     { context: { replacement: { replacesLifeLoss: true } } },
+                    {
+                        changesFractionOfLifeTotal: true,
+                        subject: { player: 'each player' }
+                    },
                     {
                         subject: { kind: 'PlayerPhrase', player: 'that player' },
                         context: { delayedTrigger: { event: {

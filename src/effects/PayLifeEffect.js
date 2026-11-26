@@ -7,6 +7,7 @@ const PAY_LIFE = new RegExp(
         + '|(any amount of) life|' + LIFE_EQUAL_TO + ')', 'i'
 );
 const AGAIN = /^again\b/i;
+const REPEATED_BY_COUNT = /^that many times\b/i;
 const ALTERNATIVE = /^rather than pay(?:ing)? [^,.]+/i;
 
 export default class PayLifeEffect extends Effect {
@@ -21,6 +22,7 @@ export default class PayLifeEffect extends Effect {
     parseArguments(match) {
         this.amountText = match[1] ?? match[2] ?? null;
         this.repeatsPriorPayment = Boolean(this.consumeText(AGAIN));
+        this.repeatsByPreviousCount = Boolean(this.consumeText(REPEATED_BY_COUNT));
         this.isAlternativeCost = Boolean(this.consumeText(ALTERNATIVE));
     }
 }

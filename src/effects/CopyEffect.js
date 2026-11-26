@@ -3,8 +3,14 @@ import { COPY_EXCEPTION } from '../values/copyException.js';
 
 const COPY = /^(?:copy|copies) /i;
 const ARTIFACT_SOURCE = /^from an artifact source\b/i;
+const NONARTIFACT_SOURCE = /^from an? (?<source>creature|enchantment) source\b/i;
+const LEGENDARY_SOURCE = /^from another legendary source that's not a commander\b/i;
 const FOR_EACH = /^for each (?:[^,.]|, (?=non))+/i;
 const WHEN_CAST = /^when you cast it\b/i;
+const TEMPTING_COPIES = new RegExp(
+    '^once plus an additional time for each opponent who copied the spell this way\\b',
+    'i'
+);
 const REPETITIONS = /^(?:twice|\w+ times)(?: instead)?/i;
 const COPY_NAMES = '(?:the copy|the copies|it|they|the token)';
 const NONLEGENDARY = new RegExp(
@@ -34,12 +40,17 @@ export default class CopyEffect extends ObjectEffect {
 
     parseArguments(match) {
         super.parseArguments(match);
-        const multiplier = this.consumeText(FOR_EACH) ?? this.consumeText(REPETITIONS);
+        const multiplier = this.consumeText(TEMPTING_COPIES)
+            ?? this.consumeText(FOR_EACH) ?? this.consumeText(REPETITIONS);
+        this.multiplier = multiplier?.[0] ?? null;
         this.isMultiplied = Boolean(multiplier);
         this.isNonlegendary = Boolean(this.consumeText(NONLEGENDARY));
         this.exception = this.consumeText(COPY_EXCEPTION)?.[0] ?? null;
         this.onCast = Boolean(this.consumeText(WHEN_CAST));
         this.fromArtifact = Boolean(this.consumeText(ARTIFACT_SOURCE));
+        const source = this.consumeText(NONARTIFACT_SOURCE)?.groups.source;
+        this.otherSourceType = source ?? null;
+        this.fromOtherLegendaryNoncommander = Boolean(this.consumeText(LEGENDARY_SOURCE));
     }
 
     get copiesInstantOrSorcery() {

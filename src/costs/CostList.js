@@ -6,13 +6,15 @@ import SacrificeCost from './SacrificeCost.js';
 import ExileCost from './ExileCost.js';
 import ReturnCost from './ReturnCost.js';
 import ActionCost from './ActionCost.js';
+import RemoveCountersCost from './RemoveCountersCost.js';
+import TapObjectsCost from './TapObjectsCost.js';
 import UnrecognizedCost from './UnrecognizedCost.js';
 
 const COST_PARSERS = [
-    ManaCostItem, LoyaltyCost, TextCost, SacrificeCost, ExileCost, ReturnCost,
-    ActionCost, UnrecognizedCost
+    ManaCostItem, LoyaltyCost, RemoveCountersCost, TapObjectsCost, TextCost,
+    SacrificeCost, ExileCost, ReturnCost, ActionCost, UnrecognizedCost
 ];
-const SEPARATOR = /^,? (?:and )?/;
+const SEPARATOR = /^(?:, ?(?:and )?|(?<alternative> *or )| *and | )/;
 
 export default class CostList extends Parser {
     static match(scribe, str) {
@@ -22,8 +24,17 @@ export default class CostList extends Parser {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.items = [this.consume(COST_PARSERS)].filter(Boolean);
-        while (this.consumeText(SEPARATOR) && this.remainingStr)
-            this.items.push(this.consume(COST_PARSERS));
+        while (this.readNextItem()) continue;
+    }
+
+    readNextItem() {
+        const separator = this.consumeText(SEPARATOR);
+        if (!separator || !this.remainingStr) return false;
+        const item = this.consume(COST_PARSERS);
+        if (!item) return false;
+        item.isAlternative = Boolean(separator.groups.alternative);
+        this.items.push(item);
+        return true;
     }
 
     get children() {

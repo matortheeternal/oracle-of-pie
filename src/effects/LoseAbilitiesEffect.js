@@ -1,6 +1,9 @@
 import Effect from './Effect.js';
 
-const LOSE_ABILITIES = /^loses? all (?<other>other )?abilities\b/i;
+const LOSE_ABILITIES = new RegExp(
+    '^(?:loses? all (?<other>other )?abilities(?<mana> except mana abilities)?'
+        + '|(?:has|have) no abilities)\\b', 'i'
+);
 
 export default class LoseAbilitiesEffect extends Effect {
     static get pattern() {
@@ -9,5 +12,6 @@ export default class LoseAbilitiesEffect extends Effect {
 
     parseArguments(match) {
         this.keepsSelf = Boolean(match.groups.other);
+        this.keepsManaAbilities = Boolean(match.groups.mana);
     }
 }

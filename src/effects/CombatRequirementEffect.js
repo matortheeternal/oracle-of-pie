@@ -14,6 +14,7 @@ const COMBAT_REQUIREMENT = new RegExp(
 );
 const ATTACK = 'attack';
 const TARGETED_REQUIREMENT = /^(?<withDefenders>must attack) (?=[^,.]+ with at least )/i;
+const OTHER_PLAYER = /^and attacks? a player other than (?<excluded>you) if able\b/i;
 const MINIMUM_ATTACKERS = new RegExp(
     `^with at least (?<count>${NUMBER_PATTERN}) creatures? ${COMBAT_WINDOW}`, 'i'
 );
@@ -31,6 +32,7 @@ export default class CombatRequirementEffect extends Effect {
         const wording = match[1] ?? match[2] ?? ATTACK;
         const requirement = match.groups?.attack ? ATTACK : wording;
         this.requirement = requirement.toLowerCase();
+        this.excludedPlayer = this.consumeText(OTHER_PLAYER)?.groups.excluded ?? null;
         this.requiresDefenders = Boolean(match.groups?.withDefenders);
         if (!this.requiresDefenders) return;
         this.defenders = this.consume([PhraseList]);

@@ -1,4 +1,5 @@
 import Effect from './Effect.js';
+import CastEvent from '../triggers/CastEvent.js';
 import { NUMBER_PATTERN } from '../values/numberWords.js';
 
 const ENERGY = '\\{E\\}';
@@ -9,6 +10,7 @@ const COUNTED = `(?:(?:${ENERGY})+|(\\w+) counters?\\b)(?<scaling> equal to [^,.
 const PLAYER_COUNTERS = new RegExp(
     `^gets? (?:((?:${ENERGY})+)|(${COUNTER_AMOUNT}) ${COUNTED})`, 'i'
 );
+const PER_CAST = /^whenever (?=they cast a spell\b)/i;
 const ENERGY_KIND = 'energy';
 const ENERGY_SYMBOL = /\{E\}/g;
 
@@ -18,9 +20,14 @@ export default class PlayerCountersEffect extends Effect {
     }
 
     parseArguments(match) {
+        this.castEvent = this.consumeText(PER_CAST) ? this.consume([CastEvent]) : null;
         this.counterKind = match[3]?.toLowerCase() ?? ENERGY_KIND;
         this.scaling = match.groups.scaling?.trim() ?? null;
         this.amountText = match[2] ?? String(match[1].match(ENERGY_SYMBOL).length);
+    }
+
+    get parts() {
+        return [this.castEvent].filter(Boolean);
     }
 
     get givesEnergy() {

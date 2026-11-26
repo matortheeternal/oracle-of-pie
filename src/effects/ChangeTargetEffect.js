@@ -4,6 +4,7 @@ import PhraseList from '../phrases/PhraseList.js';
 const CHANGE_TARGET = /^change the targets? of (?=[^,.]+)/i;
 const SINGLE_TARGET = /^with a single target\b/i;
 const RETARGET_TO = /^change the targets? to /i;
+const TO = /^to /i;
 
 export default class ChangeTargetEffect extends Effect {
     static get pattern() {
@@ -18,10 +19,12 @@ export default class ChangeTargetEffect extends Effect {
         this.objects = this.consume([PhraseList]);
         this.specifiesNewTarget = RETARGET_TO.test(match[0]);
         this.requiresSingleTarget = Boolean(this.consumeText(SINGLE_TARGET));
+        this.newTargets = !this.specifiesNewTarget && this.consumeText(TO)
+            ? this.consume([PhraseList]) : null;
     }
 
     get parts() {
-        return [this.objects].filter(Boolean);
+        return [this.objects, this.newTargets].filter(Boolean);
     }
 
     get isComplete() {

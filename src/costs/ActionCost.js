@@ -12,8 +12,12 @@ const COST_ACTIONS = [
 ];
 
 export default class ActionCost extends CostItem {
+    static get actionParsers() {
+        return COST_ACTIONS;
+    }
+
     static match(scribe, str) {
-        const action = new Parser(scribe).parseNext(str, COST_ACTIONS);
+        const action = new Parser(scribe).parseNext(str, this.actionParsers);
         if (!action?.isRecognized) return null;
         return Object.assign([action.raw], { action });
     }

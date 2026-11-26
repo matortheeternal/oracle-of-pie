@@ -1,5 +1,11 @@
 import CleaveEffect from './CleaveEffect.js';
 import LifeTotalLockEffect from './LifeTotalLockEffect.js';
+import ReferencedDamageEffect from './ReferencedDamageEffect.js';
+import RetainCountersEffect from './RetainCountersEffect.js';
+import RetainDamageEffect from './RetainDamageEffect.js';
+import LibrarySearchLimitEffect from './LibrarySearchLimitEffect.js';
+import ManaLossAsLifeLossEffect from './ManaLossAsLifeLossEffect.js';
+import ChooseFormEffect from './ChooseFormEffect.js';
 import HealDamageEffect from './HealDamageEffect.js';
 import MeldEffect from './MeldEffect.js';
 import CastQuotaEffect from './CastQuotaEffect.js';
@@ -9,6 +15,8 @@ import CountObjectsEffect from './CountObjectsEffect.js';
 import AttackLimitEffect from './AttackLimitEffect.js';
 import ManaProductionReplacementEffect from './ManaProductionReplacementEffect.js';
 import AssignStatsEffect from './AssignStatsEffect.js';
+import LeaveInZoneEffect from './LeaveInZoneEffect.js';
+import AssignChosenCharacteristicsEffect from './AssignChosenCharacteristicsEffect.js';
 import SpellCastingRuleEffect from './SpellCastingRuleEffect.js';
 import UnattachEffect from './UnattachEffect.js';
 import RoundingEffect from './RoundingEffect.js';
@@ -160,15 +168,16 @@ import SpeedReductionEffect from './SpeedReductionEffect.js';
 
 export const MODELED_EFFECT_PARSERS = [
     SelfShuffleEffect, ManaProductionReplacementEffect,
-    DigUntilEffect, TuckEffect, SearchLibraryEffect, GainControlEffect, GainLifeEffect,
+    DigUntilEffect, TuckEffect, SearchLibraryEffect, LibrarySearchLimitEffect,
+    GainControlEffect, GainLifeEffect,
     LoseLifeEffect, CounterEffect, LookAtTopEffect, DestroyEffect, ExileEffect,
     ReturnEffect, DrawEffect, DiscardEffect, DamageModificationEffect, DamageFormEffect,
-    DamageEffect,
+    DamageEffect, ReferencedDamageEffect, RetainDamageEffect,
     ModifyPTEffect, HandSizeEffect, SetBasePTEffect,
-    CausativeEffect, GrantEffect,
+    CausativeEffect, LoseAbilitiesEffect, GrantEffect,
     CreateTokenEffect, PutCountersEffect, PutEffect, TapEffect, UntapEffect,
     SacrificeEffect, FightEffect, MillEffect, ShuffleIntoLibraryEffect,
-    MoveCountersEffect, RemoveCountersEffect,
+    MoveCountersEffect, RemoveCountersEffect, RetainCountersEffect,
     KeywordActionEffect, AddManaEffect, CantEffect, ActivationBanEffect,
     EntersWithCountersEffect,
     ChooseModesEffect, ChooseValueEffect, ChooseCounterEffect, GiveMatchingCounterEffect,
@@ -184,12 +193,13 @@ export const MODELED_EFFECT_PARSERS = [
     CostModificationEffect, FixedActionCostEffect,
     DefinePTEffect,
     SpendManaEffect, CombatPermissionEffect, PhaseEffect,
-    SetLifeTotalEffect, SetStatusEffect, BecomesEffect, DistributeCountersEffect,
+    SetLifeTotalEffect, SetStatusEffect, ChooseFormEffect, BecomesEffect,
+    DistributeCountersEffect,
     TypeChangeEffect,
-    ManaRetentionEffect,
+    ManaRetentionEffect, ManaLossAsLifeLossEffect,
     AdditionalPhaseEffect, CounterModificationEffect, BeginGameEffect,
     EndTurnOrCombatEffect, ExtraTurnEffect, ReverseTurnOrderEffect, StateEffect,
-    LoseAbilitiesEffect, ReplaceCreatureTypeEffect, DevotionEffect, SpeedReductionEffect,
+    ReplaceCreatureTypeEffect, DevotionEffect, SpeedReductionEffect,
     RevealEffect, ObjectActivationBanEffect, RetargetCopyEffect, DayNightEffect,
     StateBasedActionExceptionEffect, ColorIdentityExceptionEffect,
     DamageLifeExceptionEffect, PreserveAttachmentsEffect,
@@ -206,7 +216,8 @@ export const MODELED_EFFECT_PARSERS = [
     SetCombatDamageEffect,
     DamageMultiplierEffect, TriggerSuppressionEffect, EmblemEffect,
     TokenReplacementEffect, ChangeAttackRecipientEffect,
-    AssignStatsEffect, SpellCastingRuleEffect, UnattachEffect,
+    AssignStatsEffect, AssignChosenCharacteristicsEffect, SpellCastingRuleEffect,
+    UnattachEffect, LeaveInZoneEffect,
     RoundingEffect, DefineVariableEffect,
     SpliceEffect, CountObjectsEffect, AttackLimitEffect, PayNamedCostEffect,
     HealDamageEffect, MeldEffect, CastQuotaEffect, LifeTotalLockEffect, CleaveEffect

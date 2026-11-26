@@ -8,7 +8,7 @@ const OWNER = '(?<owner>a|your|an opponent\'s)';
 const OWNED_DESTINATION = `${OWNER} (?<ownedZone>graveyard|library)`;
 const DESTINATION = `(?:${OWNED_DESTINATION}|(?<zone>exile|graveyards|the command zone))`;
 const PUT_INTO = new RegExp(
-    `^(?<subject>.+?) (?:is|are) put into ${DESTINATION}\\b`, 'i'
+    `^(?:(?<subject>.+?) (?:is|are)|(?<it>it)'s) put into ${DESTINATION}\\b`, 'i'
 );
 const PUT_ONTO = /^(?<subject>.+?) (?:is|are) put onto the (?<zone>battlefield)\b/i;
 const ZONE_NAMES = { graveyards: 'graveyard', 'the command zone': 'command zone' };
@@ -40,6 +40,7 @@ export default class PutIntoZoneEvent extends TriggerEvent {
 
     constructor(scribe, match, str) {
         super(scribe, match, str);
+        this.subject ||= match.groups.it ?? '';
         this.destination = destinationName(match.groups);
         this.destinationOwner = match.groups.owner?.toLowerCase() ?? null;
     }

@@ -1,8 +1,15 @@
 import Effect from './Effect.js';
 import PhraseList from '../phrases/PhraseList.js';
 
-const MOVE = /^moves? (?=[^.]*?\bcounters? from )/i;
-const COUNTERS_FROM = /^[^.]*?\bcounters? from /i;
+const MOVE = new RegExp(
+    '^moves? (?=[^.]*?\\bcounters? (?:of each kind )?(?:not on ~ )?(?:from|among) )',
+    'i'
+);
+const COUNTERS_FROM = new RegExp(
+    '^(?<selection>[^.]*?\\bcounters?(?: of each kind)?)(?<excluded> not on ~)? '
+        + '(?<origin>from among|from|among) ',
+    'i'
+);
 const ONTO = /^\s*(?:onto|to) /i;
 
 export default class MoveCountersEffect extends Effect {
@@ -11,7 +18,11 @@ export default class MoveCountersEffect extends Effect {
     }
 
     parseArguments(match) {
-        if (!this.consumeText(COUNTERS_FROM)) return;
+        const counters = this.consumeText(COUNTERS_FROM)?.groups;
+        if (!counters) return;
+        this.counterSelection = counters.selection;
+        this.excludesKindsOnSource = Boolean(counters.excluded);
+        this.mayUseSeveralSources = counters.origin.toLowerCase().includes('among');
         this.source = this.consume([PhraseList]);
         if (!this.consumeText(ONTO)) return;
         this.destination = this.consume([PhraseList]);

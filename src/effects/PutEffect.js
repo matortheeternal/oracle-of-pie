@@ -1,16 +1,18 @@
 import ObjectEffect from './ObjectEffect.js';
 import PlayerPhrase from '../phrases/PlayerPhrase.js';
 import { NUMBER_PATTERN, numberValue } from '../values/numberWords.js';
+import readPlacementContinuation from './readPlacementContinuation.js';
 
 const PUT = /^puts? /i;
 const DESTINATION_ALTERNATIVES = [
     'onto the battlefield',
     'into (?:your|its owner\'s|their owner\'s|their owners\'|their) hands?',
-    'into (?:your|its owner\'s|their owner\'s|their owners\'|their) graveyards?',
+    'into (?:your|its owner\'s|their owner\'s|their owners\'|their|that player\'s)'
+        + ' graveyards?',
     'into (?:her|his) owner\'s library third from the top',
     'back in any order',
     'into the command zone',
-    'on (?:their|its owner\'s) choice of the top or bottom of [^,.]+',
+    'on (?:your|their|its owner\'s) choice of the top or bottom of [^,.]+',
     'on the bottom of [^,.]+',
     '(?:back )?on top of [^,.]+',
     'on top\\b',
@@ -25,6 +27,7 @@ const PUT_TAIL_ALTERNATIVES = [
     'tapped', 'and attacking', 'under (?:your|their|its owner\'s) control',
     'transformed', 'attacking', 'attached to [^,.]+',
     'under (?:an opponent\'s|that player\'s) control',
+    'under the control of that card\'s owner',
     'face down', 'in (?:a random|any) order', 'under their owners\' control',
     'with (?:an? |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them)'
 ];
@@ -38,8 +41,8 @@ const ORDER = /^in (?:a random|any) order/i;
 const ALTERNATE_ZONE = /^or (?:graveyard|hand|exile)\b/i;
 const ALTERNATE_DESTINATION = /^or (?=(?:into|onto|on)\b)/i;
 const LEADING_MANNER = /^(?:tapped )?under (?:your|their|its owner's) control\b/i;
-const SECOND_SOURCE = /^and from (?:your graveyard|the command zone)\b/i;
-const TRAILING_SOURCE = /^from the command zone\b/i;
+const SECOND_SOURCE = /^(?:and|or) from (?:your graveyard|the command zone)\b/i;
+const TRAILING_SOURCE = /^(?:or )?from the command zone\b/i;
 const MILLED_SOURCE = /^from among (?:the milled cards|the cards milled this way)$/i;
 const DISTRIBUTION = new RegExp(
     `^(?:, (?:and )?|and )(?<count>${NUMBER_PATTERN}) (?=(?:into|onto|on) )`, 'i'
@@ -64,6 +67,12 @@ export default class PutEffect extends ObjectEffect {
         this.alternativeDestination = this.consumeAlternativeDestination();
         this.restDestination = this.consumeRest();
         this.distribution = this.readDistribution();
+        this.additionalPlacement = this.readAdditionalPlacement();
+    }
+
+    readAdditionalPlacement() {
+        if (!this.destination || !this.objects) return null;
+        return readPlacementContinuation(this, PutEffect, 'put');
     }
 
     readAttackRecipient() {
@@ -92,7 +101,8 @@ export default class PutEffect extends ObjectEffect {
     }
 
     get parts() {
-        return [...super.parts, this.attackRecipient].filter(Boolean);
+        return [...super.parts, this.attackRecipient, this.additionalPlacement]
+            .filter(Boolean);
     }
 
     readDestination(initialDestination) {
@@ -129,6 +139,7 @@ export default class PutEffect extends ObjectEffect {
         if (!this.consumeText(REST)) return null;
         const destination = this.consumeText(DESTINATION);
         if (!destination) this.remainingStr = start;
+        this.restManners = destination ? this.consumeManners() : [];
         this.consumeText(ORDER);
         return destination?.groups.destination.toLowerCase() ?? null;
     }

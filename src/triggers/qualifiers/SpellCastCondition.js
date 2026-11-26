@@ -23,7 +23,8 @@ const CONDITIONS = [
     'that mana is spent to (?:cast|activate) (?:it|~|this spell)',
     'while ~ is attacking',
     'while casting a spell with emerge',
-    'while you\'re activating a craft ability'
+    'while you\'re activating a craft ability',
+    'to pay a teamwork cost'
 ];
 const CAST_CONDITION = new RegExp('^(?:' + CONDITIONS.join('|') + ')(?!\\w)', 'i');
 

@@ -1,6 +1,6 @@
 import ObjectEffect from './ObjectEffect.js';
 
-const EXCHANGE = /^exchanges? (?<property>control|life totals) of /i;
+const EXCHANGE = /^exchanges? (?<property>control|life totals) (?<relation>of|with) /i;
 const COMPARATIVE_EXCHANGE = new RegExp(
     '^(?:exchanges? (?<property>your hand and graveyard|[^,.]+?'
         + ' life total with [^,.]+? (?:power|toughness))|exchange life'
@@ -28,7 +28,7 @@ export default class ExchangeEffect extends ObjectEffect {
         this.textBoxOwners = owners.map(owner => owner.toLowerCase());
         const defaultProperty = owners.length ? 'text box' : 'life totals';
         this.property = match.groups?.property?.toLowerCase() ?? defaultProperty;
-        this.hasStatedObjects = match[0].endsWith(' of ');
+        this.hasStatedObjects = Boolean(match.groups?.relation);
         if (this.hasStatedObjects) super.parseArguments(match);
     }
 

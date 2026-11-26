@@ -1,0 +1,26 @@
+name: Trailing formula
+typeLine: Sorcery
+text: |-
+  Sacrifice a creature. Put a creature card with mana value X or less from among those cards onto the battlefield, where X is 1 plus the sacrificed creature's mana value.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+            - kind: EffectSentence
+              children:
+                - kind: PutEffect
+                - kind: TrailingCondition
+                  constraintKind: variable
+                  variable: X
+                  children:
+                    - kind: QuantityFormula
+                      offset: 1
+                      multiplier: 1
+                      operation: property
+                      property: mana value
+                      objectText: the sacrificed creature

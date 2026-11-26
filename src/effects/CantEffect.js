@@ -6,12 +6,15 @@ const CAUSE_SACRIFICE = 'cause you to sacrifice or exile';
 const CANT_ALTERNATIVES = [
     CAUSE_SACRIFICE,
     'venture into the dungeon more than once each turn',
+    'look at booster packs',
     'play land cards from graveyards',
     'choose an untapped creature as this spell\'s target as you cast it',
     'cast spells or activate abilities of artifacts, creatures, or enchantments',
     'be (?:turned face up|removed from [^,.]+|beamed up(?: to cast a spell this way)?)',
     'be reduced(?: below \\d+)?',
     'become the monarch',
+    'become suspected',
+    'get additional poison counters',
     'activate abilities of artifacts, creatures, or enchantments',
     'play cards from (?:your|their) hand',
     'pay life to cast spells or to activate abilities that aren\'t mana abilities',
@@ -38,6 +41,7 @@ const CANT_ALTERNATIVES = [
     'block or be blocked',
     'block',
     'be blocked',
+    'be you or a permanent you control',
     'be countered',
     'be copied',
     'be activated',
@@ -47,6 +51,7 @@ const CANT_ALTERNATIVES = [
     'untap during [^,.]+',
     'transform',
     'be sacrificed',
+    'cast (?:~|this spell) during your first, second, or third turns? of the game',
     'cast [^,.]+',
     'gain life',
     'lose the game',
@@ -54,11 +59,14 @@ const CANT_ALTERNATIVES = [
     'activate [^,.]+'
 ];
 const CANT_QUALIFIERS = [
+    'with more than (?:one|two|three|\\d+) creatures? this combat',
+    'during your first, second, or third turns? of the game',
     'for having [^,.]+ life',
     'for the rest of (?:this|that) turn',
     'this turn',
-    'this combat',
+    '(?:this|that) combat',
     'alone',
+    'except by Krakens, Leviathans, Octopuses, and Serpents',
     'except by [^,.]+',
     'if it has already attacked this turn',
     'it has already attacked this turn',
@@ -67,7 +75,9 @@ const CANT_QUALIFIERS = [
     'during [^,.]+',
     'more than [^,.]+'
 ];
-const OBJECT_RESTRICTIONS = new Set(['attack', 'block', CAUSE_SACRIFICE]);
+const OBJECT_RESTRICTIONS = new Set([
+    'attack', 'block', 'attack or block', CAUSE_SACRIFICE
+]);
 const OBJECT_QUALIFIER = new RegExp(`^(?:${CANT_QUALIFIERS.join('|')})`, 'i');
 const UNBLOCKABLE = /^can't be blocked(?! by)(?![^.]*\bexcept\b)/i;
 const NEXT_UNTAP = /^untap during [^,.]*\bnext\b/;
@@ -78,7 +88,7 @@ const PROTECTED_ATTACK_TAX = new RegExp(
     '^(?:you(?: or planeswalkers you control)?|planeswalkers you control)'
         + ' unless (?:their|its) controller pays ', 'i'
 );
-const EXCEPT_BY = /\bexcept by ([^,.]+)/i;
+const EXCEPT_BY = /\bexcept by (Krakens, Leviathans, Octopuses, and Serpents|[^,.]+)/i;
 const COMBINED_COMBAT_BAN = /^attack(?: or block|, block, or )/;
 const RESTRICTION_END = /^(?:$|and\b|,)/i;
 const SPELL_CAST_BAN = new RegExp(
@@ -93,6 +103,7 @@ const CANT = new RegExp(
         + `((?: (?:${CANT_QUALIFIERS.join('|')}))*)`,
     'i'
 );
+const OR_BLOCK = /^or block /i;
 
 export default class CantEffect extends Effect {
     static get pattern() {
@@ -106,6 +117,16 @@ export default class CantEffect extends Effect {
         this.excepted = this.parseExcepted();
         this.objects = this.consumeRestrictedObjects();
         this.objectQualifier = this.objects ? this.consumeObjectQualifier() : null;
+        this.blockingTargets = this.consumeBlockingTargets();
+    }
+
+    consumeBlockingTargets() {
+        if (this.restriction !== 'attack' || !this.objects) return null;
+        const start = this.remainingStr;
+        if (!this.consumeText(OR_BLOCK)) return null;
+        const targets = this.consume([PhraseList]);
+        if (!targets?.isRecognized) this.remainingStr = start;
+        return targets?.isRecognized ? targets : null;
     }
 
     consumeRestrictedObjects() {
@@ -125,7 +146,7 @@ export default class CantEffect extends Effect {
     }
 
     get parts() {
-        return [this.excepted, this.objects].filter(Boolean);
+        return [this.excepted, this.objects, this.blockingTargets].filter(Boolean);
     }
 
     get exceptedBy() {
@@ -145,6 +166,7 @@ export default class CantEffect extends Effect {
     }
 
     get preventsAttackingAndBlocking() {
+        if (this.blockingTargets) return true;
         return COMBINED_COMBAT_BAN.test(this.restriction);
     }
 

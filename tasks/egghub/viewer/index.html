@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Egghub gap explorer</title>
+<style>/* VIEWER_STYLE */</style>
+</head>
+<body>
+<header class="masthead">
+    <h1>Egghub gap explorer</h1>
+    <p id="catalog-count"></p>
+</header>
+<div class="layout">
+    <aside aria-label="Authors">
+        <label for="author-search">Find an author</label>
+        <input id="author-search" type="search" placeholder="Repository owner">
+        <nav id="authors" aria-label="Repository owners"></nav>
+    </aside>
+    <main>
+        <div class="heading">
+            <h2 id="scope-title">Select an author</h2>
+            <div id="scope-count"></div>
+        </div>
+        <form id="filters">
+            <label>Set <select id="sets" aria-label="Set"></select></label>
+            <label>Type <select id="type" aria-label="Gap type"><option value="">All types</option></select></label>
+            <label>Sort <select id="sort" aria-label="Sort order">
+                <option value="frequency">Most cards</option>
+                <option value="type">Type, then most cards</option>
+                <option value="text">Gap text A–Z</option>
+            </select></label>
+            <label class="search">Search <input type="search" id="search" placeholder="Gap text or context"></label>
+        </form>
+        <div id="table" class="table" aria-label="Gap results">
+            <div class="table-head"><span>Cards</span><span>Type</span><span>Exact gap text</span></div>
+            <div id="rows"></div>
+        </div>
+        <footer>
+            <span id="status" role="status" aria-live="polite"></span>
+            <button id="previous" type="button">Previous</button>
+            <button id="next" type="button">Next</button>
+        </footer>
+    </main>
+</div>
+<script id="catalog" type="application/json">/* VIEWER_CATALOG */</script>
+<!-- VIEWER_DATA -->
+<script>/* VIEWER_SCRIPT */</script>
+</body>
+</html>

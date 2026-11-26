@@ -1,4 +1,5 @@
 import Parser from '../core/Parser.js';
+import { trimLeadingSpace } from '../core/Node.js';
 import EffectSubjectGroup from '../phrases/EffectSubjectGroup.js';
 import TrailingCondition from './TrailingCondition.js';
 import UnrecognizedText from '../values/UnrecognizedText.js';
@@ -6,7 +7,7 @@ import { EFFECT_PARSERS, MODELED_EFFECT_PARSERS } from '../effects/index.js';
 import { PHRASE_PARSERS } from '../phrases/index.js';
 import OpaqueEffect from '../effects/OpaqueEffect.js';
 
-const CONNECTOR = /^(?:,? ?and then |,? ?then |, and |; |and |,? ?or |, )/i;
+const CONNECTOR = /^(?:,? ?and then |,? ?then |, (?:and|but) |; |and |,? ?or |, )/i;
 const ALTERNATIVE = /^,? ?or /i;
 const MAY = /^may /i;
 const GROUP_ADVERB = /^(?:each|both) /i;
@@ -46,6 +47,7 @@ export default class ClauseReader extends Parser {
     }
 
     readNextClause() {
+        this.remainingStr = trimLeadingSpace(this.remainingStr);
         const connector = this.remainingStr.match(CONNECTOR);
         if (!connector) return false;
         const rest = this.remainingStr.slice(connector[0].length);

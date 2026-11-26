@@ -4,6 +4,10 @@ import { TRIGGER_EVENTS } from './index.js';
 const BOUNDARY = /"[^"]*"|, |\.(?!\d)/g;
 const COMMA = ', ';
 const PERIOD = '.';
+const SHARED_PREDICATE = new RegExp(
+    '^(?:casts?|activates?|(?:air|earth|fire|water)bends?'
+        + '|(?:flips? one or more coins|rolls? one or more dice)(?=,))\\b', 'i'
+);
 
 function candidates(rest) {
     const candidates = [];
@@ -23,7 +27,7 @@ function selectBoundary(parser, options) {
         const split = [eventText, event, body];
         const recognized = event.isRecognized;
         const hasBody = parser.scribe.startsModeledClause(body);
-        if (recognized && hasBody) return split;
+        if (recognized && hasBody && !SHARED_PREDICATE.test(body)) return split;
         if (recognized) complete.push(split);
         if (hasBody) readable.push(split);
     }

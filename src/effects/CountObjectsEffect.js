@@ -5,6 +5,8 @@ const COUNT = new RegExp(
     '^(?:counts?|notes?) (?<property>the (?:number of|colors?'
         + ' of|mana value of)|your life total)\\b', 'i'
 );
+const COUNTERS_ON = /^(?<kind>[+-]\d+\/[+-]\d+|[a-z-]+) counters on /i;
+const EXILE_TIMING = /^as it's put into exile\b/i;
 const LIFE_TOTAL = 'your life total';
 
 export default class CountObjectsEffect extends Effect {
@@ -14,7 +16,9 @@ export default class CountObjectsEffect extends Effect {
 
     parseArguments(match) {
         this.property = match.groups.property.toLowerCase();
+        this.counterKind = this.consumeText(COUNTERS_ON)?.groups.kind ?? null;
         this.objects = this.property === LIFE_TOTAL ? null : this.consume([PhraseList]);
+        this.asExiled = Boolean(this.consumeText(EXILE_TIMING));
     }
 
     get parts() {

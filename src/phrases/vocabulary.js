@@ -18,6 +18,10 @@ export const TYPE_WORDS = {
     source: 'source', sources: 'source'
 };
 
+export const SEA_MONSTER_TYPES = new Set([
+    'Kraken', 'Leviathan', 'Octopus', 'Serpent', 'Whale'
+]);
+
 export const QUALIFIER_WORDS = new Set([
     'white', 'blue', 'black', 'red', 'green', 'colorless', 'monocolored',
     'multicolored', 'tapped', 'untapped', 'attacking', 'blocking', 'blocked',
@@ -26,7 +30,7 @@ export const QUALIFIER_WORDS = new Set([
     'chosen', 'exiled', 'prepared', 'goaded', 'suspected', 'saddled',
     'monstrous', 'double-faced', 'transformed', 'historic',
     'token', 'commander', 'commanders', 'kicked', 'outlaws', 'suspended', 'modal',
-    'renowned'
+    'renowned', 'warped'
 ]);
 
 export const NEGATED_QUALIFIER = /^non-?[a-z]+$/i;

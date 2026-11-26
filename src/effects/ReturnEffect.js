@@ -1,5 +1,6 @@
 import ObjectEffect from './ObjectEffect.js';
 import ZoneModifier from '../phrases/modifiers/ZoneModifier.js';
+import readPlacementContinuation from './readPlacementContinuation.js';
 
 const SPELL_OR_CARD_REFERENCE = /^this (?:spell|card)$/i;
 
@@ -37,6 +38,7 @@ const RETURN_TAIL_ALTERNATIVES = [
     `under (?:your|${OWNER}) control`,
     'attached to [^,.]+',
     'under (?:their|that player\'s|an opponent\'s) control',
+    'under the control of that card\'s owner',
     'with (?:an? |N |\\w+ )(?:additional )?[^,.]*counters? on (?:it|them|him|her)'
         + '(?: equal to (?:that|the (?:chosen|other)) result)?',
     'at the beginning of [^,.]+',
@@ -47,6 +49,7 @@ const RETURN_TAIL_ALTERNATIVES = [
 const RETURN_TAIL = new RegExp(
     `^(${RETURN_TAIL_ALTERNATIVES.join('|')})`, 'i'
 );
+const BATTLEFIELD_CONTROL = /^under /i;
 
 export default class ReturnEffect extends ObjectEffect {
     static get pattern() {
@@ -70,8 +73,21 @@ export default class ReturnEffect extends ObjectEffect {
         this.alternativeSource = this.consumeAlternativeSource();
         const destination = leadingDestination ?? this.consumeText(DESTINATION);
         this.destination = this.destinationOf(destination);
+        this.readManner(leadingManner);
+        this.additionalReturn = this.readAdditionalReturn();
+    }
+
+    readAdditionalReturn() {
+        if (!this.destination || !this.objects) return null;
+        return readPlacementContinuation(this, ReturnEffect, 'return');
+    }
+
+    readManner(leadingManner) {
         this.manner = leadingManner ? [leadingManner[0].toLowerCase()] : [];
         while (this.consumeTail()) continue;
+        if (this.destination) return;
+        const underControl = this.manner.some(manner => BATTLEFIELD_CONTROL.test(manner));
+        if (underControl) this.destination = 'battlefield';
     }
 
     consumeAlternativeSource() {
@@ -80,7 +96,8 @@ export default class ReturnEffect extends ObjectEffect {
     }
 
     get parts() {
-        return [...super.parts, this.alternativeSource].filter(Boolean);
+        return [...super.parts, this.alternativeSource, this.additionalReturn]
+            .filter(Boolean);
     }
 
     destinationOf(match) {

@@ -9,8 +9,8 @@ const STAT_VALUE = '(?:\\d+|X)/(?:\\d+|X)';
 const VALUE = [
     STAT_VALUE + ' or ' + STAT_VALUE,
     STAT_VALUE,
-    '\\d+',
-    '(?:equal to |twice |1 plus )[^,.]+?(?= until\\b| and (?:it|they|its)\\b|[,.]|$)'
+    '(?:equal to |twice |1 plus )[^,.]+?(?= until\\b| and (?:it|they|its)\\b|[,.]|$)',
+    '\\d+'
 ].join('|');
 const ASSIGN_STATS = new RegExp(
     '^(?:' + OWNER_FIRST + '|' + PROPERTY_FIRST + ') (?:becomes?|is) '

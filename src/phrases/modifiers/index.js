@@ -7,9 +7,11 @@ import StateModifier from './StateModifier.js';
 import RelationModifier from './RelationModifier.js';
 import NamedModifier from './NamedModifier.js';
 import SpellTargetModifier from './SpellTargetModifier.js';
+import SubtypeSetModifier from './SubtypeSetModifier.js';
 import AdventureModifier from '../../triggers/objects/AdventureModifier.js';
 
 export const MODIFIER_PARSERS = [
-    ControllerModifier, ZoneModifier, RelationModifier, KeywordModifier, WithModifier,
-    AdventureModifier, NamedModifier, SpellTargetModifier, StateModifier, CleaveModifier
+    ControllerModifier, ZoneModifier, RelationModifier, WithModifier, KeywordModifier,
+    AdventureModifier, NamedModifier, SpellTargetModifier, SubtypeSetModifier,
+    StateModifier, CleaveModifier
 ];

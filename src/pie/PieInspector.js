@@ -2,7 +2,7 @@ import PieInspection from './PieInspection.js';
 import ColorProfile from './ColorProfile.js';
 import Attribution from './Attribution.js';
 import PieFlag from './PieFlag.js';
-import findAttributableMatch from './findAttributableMatch.js';
+import attributableMatches from './attributableMatches.js';
 import { COLOR_POLICIES } from './policies/index.js';
 import { DEFAULT_PIE_INSPECTIONS } from './inspections/index.js';
 
@@ -10,10 +10,12 @@ function toInspection(spec) {
     return spec instanceof PieInspection ? spec : new PieInspection(spec);
 }
 
-function attributeFace(face, faceIndex, inspection) {
-    if (!inspection.appliesTo(face)) return null;
-    const match = findAttributableMatch(face, inspection);
-    return match ? new Attribution(inspection, face, match, faceIndex) : null;
+function* attributeOccurrences(faces, inspection) {
+    for (const [faceIndex, face] of faces.entries()) {
+        if (!inspection.appliesTo(face)) continue;
+        for (const match of attributableMatches(face, inspection))
+            yield new Attribution(inspection, face, match, faceIndex);
+    }
 }
 
 export default class PieInspector {
@@ -30,11 +32,7 @@ export default class PieInspector {
     }
 
     attribute(faces, inspection) {
-        for (const [faceIndex, face] of faces.entries()) {
-            const attribution = attributeFace(face, faceIndex, inspection);
-            if (attribution) return attribution;
-        }
-        return null;
+        return attributeOccurrences(faces, inspection).next().value ?? null;
     }
 
     attributions(faces) {
@@ -57,9 +55,19 @@ export default class PieInspector {
         return new PieFlag(attribution, policy, verdict, profile);
     }
 
+    *judgedOccurrences(faces) {
+        for (const inspection of this.inspections) {
+            for (const attribution of attributeOccurrences(faces, inspection))
+                yield this.judge(attribution);
+        }
+    }
+
     inspect(faces) {
-        return this.attributions(faces)
-            .map(attribution => this.judge(attribution))
-            .filter(Boolean);
+        const flags = new Map();
+        for (const flag of this.judgedOccurrences(faces)) {
+            if (!flag || flags.has(flag.decisionKey)) continue;
+            flags.set(flag.decisionKey, flag);
+        }
+        return [...flags.values()];
     }
 }

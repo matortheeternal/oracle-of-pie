@@ -5,7 +5,7 @@ const PAY_MANA = /^pays? (any amount of |\w+ or more |\w+ (?=\{))?((?:\{[^}]+\})
 const PAY_EQUAL = /^pays? (an amount of )((?:\{[^}]+\})+)(?= equal to )/i;
 const ADDITIONAL = /^pays? (an additional )((?:\{[^}]+\})+)/i;
 const NEXT_COST = /^(,? ?(?:and\/or|or|and) |, )((?:\{[^}]+\})+)(?![\w{])/i;
-const AS_CAST = /^as you cast (?:this spell|it|them)\b/i;
+const AS_CAST = /^(?:as you cast (?:this spell|it|them)|to cast this spell)\b/i;
 const REPEATED = /^(?:any number of times|up to \w+ times)\b/i;
 const EQUAL = /^equal to ([^,.]+)/i;
 const ALTERNATIVE = /^rather than pay(?:ing)? [^,.]+/i;

@@ -1,6 +1,10 @@
 import Modifier from './Modifier.js';
 
 const CONTROLLER_ALTERNATIVES = [
+    'each player casts during each of their turns',
+    'you activate this turn when you activate it',
+    'you own exiled this way',
+    'you own and control',
     'you cast from exile this turn',
     'you cast from anywhere other than your hand each turn',
     'you cast from your graveyard or from exile',
@@ -18,8 +22,10 @@ const CONTROLLER_ALTERNATIVES = [
     'you cast during each of your turns',
     'you cast from exile(?: each turn)?',
     'enchanted player casts',
+    'a player casts',
+    'controlled by a player who was dealt combat damage by (?:three|3) or more '
+        + 'Pirates this turn',
     'they cast this turn',
-    'you control that\'s (?:a|an) [A-Z][a-z]+(?: or [A-Z][a-z]+)?',
     'enchanted player controls',
     'your opponents control that are able to block',
     'their opponents control',
@@ -36,6 +42,7 @@ const CONTROLLER_ALTERNATIVES = [
     '(?:the )?defending player controls',
     'each player controls',
     'they control',
+    'they don\'t control',
     'an opponent owns',
     'they own',
     'you don\'t own',
@@ -53,7 +60,7 @@ const CONTROLLER = new RegExp(
     `^(${CONTROLLER_ALTERNATIVES.join('|')})\\b`, 'i'
 );
 const EXCLUDED_OWNERSHIP = /\byou (?:control|cast) but don't own$/i;
-const YOURS = /^you (?:control|own|both|cast)/i;
+const YOURS = /^you (?:control|own|both|cast|activate)/i;
 const TARGETING = /\bcast that targets?\b/i;
 
 export default class ControllerModifier extends Modifier {

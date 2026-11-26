@@ -1,4 +1,6 @@
+import LinkedExileReferences from './LinkedExileReferences.js';
 import GrantEffect from '../effects/GrantEffect.js';
+import PutCountersEffect from '../effects/PutCountersEffect.js';
 import CreateTokenEffect from '../effects/CreateTokenEffect.js';
 import Effect from '../effects/Effect.js';
 import EntersWithCountersEffect from '../effects/EntersWithCountersEffect.js';
@@ -28,6 +30,11 @@ function combatCounterpart(events = []) {
     return null;
 }
 
+function putsCountersOnNewToken(reference, token) {
+    return reference.owner instanceof PutCountersEffect
+        && token.acceptsReference(reference.reference);
+}
+
 function namesNewTokenEntering(reference, token) {
     return reference.owner instanceof EntersWithCountersEffect
         && reference.objectType === 'token' && !token.owner.copySource;
@@ -35,17 +42,20 @@ function namesNewTokenEntering(reference, token) {
 
 export default class ReferenceScope {
     static resolveAbilities(cardText) {
+        const linkedExile = new LinkedExileReferences();
         let scope = null;
         let previous = null;
         for (const ability of cardText.abilities) {
             if (!scope || !ability.continuesReferenceScope(previous))
-                scope = new ReferenceScope();
+                scope = new ReferenceScope(linkedExile);
             scope.visit(ability, null);
+            linkedExile.record(ability);
             previous = ability;
         }
     }
 
-    constructor() {
+    constructor(linkedExile) {
+        this.linkedExile = linkedExile;
         this.candidates = [];
         this.counterpart = null;
         this.replacementRecipient = null;
@@ -91,10 +101,12 @@ export default class ReferenceScope {
         const recipient = this.replacementRecipient;
         if (reference.objectType && recipient?.hasType(reference.objectType))
             return recipient;
-        const antecedent = this.existingAntecedentFor(reference);
+        const antecedent = this.existingAntecedentFor(reference)
+            ?? this.linkedExile.resolve(reference);
         const latest = this.candidates.at(-1);
         if (!latest?.isCreatedToken) return antecedent;
         if (namesNewTokenEntering(reference, latest)) return latest;
+        if (putsCountersOnNewToken(reference, latest)) return latest;
         return this.grantedToken(reference, latest, antecedent) ?? antecedent;
     }
 

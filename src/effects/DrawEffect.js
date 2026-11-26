@@ -7,11 +7,16 @@ import {
 const DRAW = /^draws? /i;
 const BURST_COUNT = 3;
 const FOR_EACH = /\bfor each\b/i;
-const CARD_QUANTITY = ' for each (?:[^,.]|, (?=non))+| (?:plus|minus) \\w+';
+const CARD_QUANTITY = ' for each (?:[^,.]|, (?=non))+'
+    + '| (?:plus|minus) (?!an additional)\\w+';
 const CARDS = new RegExp(`^(?:additional )?cards?\\b(?:${CARD_QUANTITY})?`, 'i');
 const DRAW_SOURCE_REPLACEMENT = /^from (?:the [^,.]+?) rather than (?:the [^,.]+)\b/i;
 const CARDS_EQUAL = /^cards equal to [^,.]+/i;
 const ADDITIONAL_CARD = /^(?:another|an additional) card\b/i;
+const EXTRA_PER_CAST = new RegExp(
+    '^(?:,? ?plus an additional card )?for each time they\'ve cast a commander'
+        + ' from the command zone this game\\b', 'i'
+);
 
 export default class DrawEffect extends Effect {
     get isPlayerAction() {
@@ -27,6 +32,7 @@ export default class DrawEffect extends Effect {
         this.cards = this.consumeText(CARDS_EQUAL)
             ?? this.consumeText(CARDS) ?? this.consumeText(ADDITIONAL_CARD);
         this.isAdditionalCard = ADDITIONAL_CARD.test(this.cards?.[0] ?? '');
+        this.scalesWithCommanderCasts = Boolean(this.consumeText(EXTRA_PER_CAST));
         this.changesDrawSource = Boolean(
             this.cards && this.consumeText(DRAW_SOURCE_REPLACEMENT)
         );
@@ -49,6 +55,7 @@ export default class DrawEffect extends Effect {
     }
 
     get count() {
+        if (this.scalesWithCommanderCasts) return null;
         if (this.isAdditionalCard) return 1;
         if (FOR_EACH.test(this.cards ?? '')) return null;
         return typeof this.amount?.value === 'number' ? this.amount.value : null;

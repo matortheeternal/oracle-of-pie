@@ -20,7 +20,7 @@ export default class TurnStep extends Parser {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.step = match.groups.step.toLowerCase();
-        const owner = match.groups.owner ?? match.groups.scopedOwner ?? UNSPECIFIED_OWNER;
+        const owner = match.groups.scopedOwner ?? match.groups.owner ?? UNSPECIFIED_OWNER;
         const turnOwner = owner.toLowerCase();
         this.turnOwner = turnOwner === UNSPECIFIED_OWNER ? null : turnOwner;
         this.timing = match.groups.timing?.toLowerCase() ?? null;

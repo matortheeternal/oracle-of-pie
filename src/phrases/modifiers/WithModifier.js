@@ -4,14 +4,16 @@ const BEFORE_DESTINATION = '(?=,|\\.|$| (?:into|onto|from|until)\\b'
     + '| to (?:its|their) owners?'
     + '| (?:and put|can|can\'t|gets?|gains?|has|have|are|is|deals?) )';
 const WITH_ALTERNATIVES = [
+    'one or more targets',
     'power, toughness, or mana value',
+    'mana value, power, or toughness',
     '(?:base )?(?:power and toughness|power|toughness) [0-9]+/[0-9]+',
     'mana cost (?:\\{[^}]+\\})+(?: or (?:\\{[^}]+\\})+)?',
     '(?:an? )?(?:even|odd) mana value',
     '(?:lesser|greater|equal) (?:power|toughness)',
     'power',
     'toughness',
-    'mana value',
+    'mana values?',
     'base power and toughness', 'base power',
     'equal or lesser toughness',
     'the greatest toughness',
@@ -38,6 +40,7 @@ const WITH_ALTERNATIVES = [
     'different names',
     'the chosen name',
     '\\{X\\} in (?:its|their) mana costs?',
+    'cycling abilities',
     'an? [a-z]+ (?:mana )?ability'
 ];
 const COMPARED = `[^,.]+?${BEFORE_DESTINATION}`;
@@ -49,10 +52,13 @@ const COMPARISON_ALTERNATIVES = [
     '(?: (?:and|or) toughness)? (?:\\d+|X|N) or (?:less|greater|more)',
     `(?: or toughness)? less than (?:or equal to )?${COMPARED}`,
     ' less than (?:the|that) (?:creature|permanent) that died',
+    ' than (?:the|that) (?:creature|permanent) that died',
     `(?: or toughness)? greater than ${COMPARED}`,
     ` equal to ${COMPARED}`,
+    ' (?:\\d+|X|N)(?: and (?:\\d+|X|N))+\\b',
     ' (?:\\d+|X|N)\\b',
     ' (?:[0-9]+|X)/(?:[0-9]+|X)\\b',
+    ' than it(?= without paying)',
     ' (?:than|as) (?:that|the chosen) (?:spell|card|permanent)\\b',
     ' of the chosen (?:quality|number|value)'
 ];
@@ -73,7 +79,8 @@ export default class WithModifier extends Modifier {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.negated = match[1].toLowerCase() === 'without';
-        this.property = match[2].toLowerCase();
+        this.property = match[2].toLowerCase() === 'mana values'
+            ? 'mana value' : match[2].toLowerCase();
         this.comparison = match[3]?.trim() ?? null;
     }
 

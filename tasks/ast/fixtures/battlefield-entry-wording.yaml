@@ -1,0 +1,38 @@
+name: Battlefield entry wording
+typeLine: Creature
+text: |-
+  When this creature enters the battlefield, draw a card.
+  Whenever a creature enters the battlefield under your control, you gain 1 life.
+  This creature enters the battlefield tapped.
+  This creature enters the battlefield untapped.
+expect:
+  kind: CardText
+  isRecognized: true
+  children:
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+          raw: this creature enters the battlefield
+        - kind: EffectSequence
+    - kind: TriggeredAbility
+      children:
+        - kind: EntersEvent
+          children:
+            - kind: NounPhrase
+            - kind: Arrival
+              controller: your
+        - kind: EffectSequence
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: EntersTappedEffect
+    - kind: SpellAbility
+      children:
+        - kind: EffectSequence
+          children:
+            - kind: EffectSentence
+              children:
+                - kind: EntersUntappedEffect

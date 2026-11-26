@@ -15,6 +15,13 @@ export default class PieFlag {
         return this.tier.severity;
     }
 
+    get decisionKey() {
+        return JSON.stringify([
+            this.inspection.id, String(this.attribution.colors), this.policy.id,
+            this.severity, this.offending
+        ]);
+    }
+
     toJSON() {
         const { inspection, evidence, colors } = this.attribution;
         return {

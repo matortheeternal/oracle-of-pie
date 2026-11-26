@@ -3,8 +3,7 @@ import Effect from './Effect.js';
 const MODES = [
     'can be cast as though (?:it|they) had flash',
     'can cast spells only during your turn',
-    'may be cast without paying (?:its|their) mana costs?',
-    'can be cast without paying (?:its|their) mana costs?'
+    '(?:(?:may|can) )?be cast without paying (?:its|their) mana costs?'
 ];
 const CAST_PRIVILEGE = new RegExp('^(?<permission>' + MODES.join('|') + ')\\b', 'i');
 const COST_EXEMPTION = /\bwithout paying\b/i;

@@ -1,14 +1,18 @@
 import ObjectEffect from './ObjectEffect.js';
 
 const EXILE = /^exiles? /i;
+const HAND = /^(?:your|their) hand\b/i;
 const EXILE_TAIL_ALTERNATIVES = [
+    'and the rest in a face-up pile',
+    'face up',
     'until an opponent becomes the monarch',
     'from each opponent\'s graveyard',
     'in a face-(?:down|up) pile',
-    'from their hands',
+    'from (?:your hand|their hands)',
     'when ~ leaves the battlefield',
     'from the bottom of (?:your|their|that player\'s) library',
-    'from the top(?: of (?:your|their|its owner\'s|that player\'s) library)?'
+    'and graveyards',
+    'from the top(?: of (?:your|their|its owner\'s|(?:that|target) player\'s) library)?'
         + '(?: face down)?(?: equal to [^,.]+)?',
     'equal to [^,.]+?(?= from the top of )',
     'equal to [^,.]+',
@@ -41,7 +45,8 @@ export default class ExileEffect extends ObjectEffect {
     }
 
     parseArguments(match) {
-        super.parseArguments(match);
+        this.exilesHand = Boolean(this.consumeText(HAND));
+        if (!this.exilesHand) super.parseArguments(match);
         this.manners = this.consumeManners();
         this.manner = this.manners[0] ?? null;
     }
@@ -54,6 +59,10 @@ export default class ExileEffect extends ObjectEffect {
             tail = this.consumeText(EXILE_TAIL);
         }
         return manners;
+    }
+
+    get isComplete() {
+        return this.exilesHand || super.isComplete;
     }
 
     get isExile() {

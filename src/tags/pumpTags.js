@@ -1,6 +1,6 @@
 const SELF_PUMP_ABILITY = {
     kind: 'ActivatedAbility',
-    cost: { includesTap: false, removesSource: false }
+    cost: { includesTap: false, removesSource: false, removesCounters: false }
 };
 
 function activatedPump(modifier) {

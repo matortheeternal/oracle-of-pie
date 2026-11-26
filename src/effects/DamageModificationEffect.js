@@ -10,8 +10,10 @@ const MODIFIED_AMOUNT_ALTERNATIVES = [
 ];
 const MODIFIED_AMOUNT = MODIFIED_AMOUNT_ALTERNATIVES.join('|');
 const DAMAGE_MODIFICATION = new RegExp(
-    `^deals? (${MODIFIED_AMOUNT})(?: to [^,.]+?)? instead`, 'i'
+    `^deals? (${MODIFIED_AMOUNT})(?: to [^,.]+?)?(?: instead|(?=, where X is ))`,
+    'i'
 );
+const FORMULA = /^, where X is (?<value>[^,.]+)\b/i;
 const REDUCTION = /\bminus\b/i;
 
 export default class DamageModificationEffect extends Effect {
@@ -21,6 +23,7 @@ export default class DamageModificationEffect extends Effect {
 
     parseArguments(match) {
         this.modification = match[1].toLowerCase();
+        this.variableValue = this.consumeText(FORMULA)?.groups.value ?? null;
     }
 
     get increasesDamage() {

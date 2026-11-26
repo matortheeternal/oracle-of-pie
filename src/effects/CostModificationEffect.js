@@ -23,6 +23,8 @@ const PASSIVE_REDUCTION = new RegExp(
     `^this cost is (?<reduction>reduced) by (?<amount>${COST})`, 'i'
 );
 const COST_TAIL_ALTERNATIVES = [
+    'for each card you own in exile and in your graveyard that\'s an instant card, '
+        + 'a sorcery card, or a card that has an Adventure',
     'this way', 'for each (?:[^,.]|, (?=non))+', 'if [^,.]+', 'as long as [^,.]+',
     'during [^,.]+', 'unless they\'re mana abilities',
     ',? where X is [^.]+', 'and can be done on any player\'s turn'
