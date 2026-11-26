@@ -99,13 +99,31 @@ export default class Keyword extends Node {
     constructor(scribe, match, str) {
         super(scribe, match, str);
         this.name = match[1].toLowerCase();
+        this.readParameter(match[2]);
+        this.alternativeEquipCost = this.readAlternativeEquipCost();
+    }
+
+    readParameter(defaultParameter) {
+        const definition = this.scribe.definitions.keywords.definitionFor(this.name);
+        const configured = definition?.parameterPattern;
+        if (configured) return this.readConfiguredParameter(configured);
         const pattern = DEFINED_PARAMETER[this.name];
         const defined = pattern && this.remainingStr.match(pattern);
         const parameter = defined ?? this.remainingStr.match(PARAMETER);
-        this.parameter = parameter?.[1] ?? match[2] ?? null;
+        this.parameter = parameter?.[1] ?? defaultParameter ?? null;
+        this.consumeParameter(parameter);
+    }
+
+    readConfiguredParameter(pattern) {
+        const parameter = this.remainingStr.match(pattern);
+        this.parameters = parameter?.groups ?? null;
+        this.parameter = this.parameters?.cost ?? parameter?.[1] ?? null;
+        this.consumeParameter(parameter);
+    }
+
+    consumeParameter(parameter) {
         if (parameter?.[0])
             this.remainingStr = this.remainingStr.slice(parameter[0].length);
-        this.alternativeEquipCost = this.readAlternativeEquipCost();
     }
 
     readAlternativeEquipCost() {

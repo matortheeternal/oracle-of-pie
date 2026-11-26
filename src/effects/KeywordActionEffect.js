@@ -67,6 +67,10 @@ export default class KeywordActionEffect extends Effect {
         this.amountText = this.consumeText(SCRY_ADJUSTMENT)?.[0] ?? null;
     }
 
+    get parameters() {
+        return this.definition.valuesFor(this);
+    }
+
     get isKeywordAction() {
         return true;
     }

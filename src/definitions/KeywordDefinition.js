@@ -7,6 +7,7 @@ export default class KeywordDefinition extends Definition {
         const reminders = spec.reminders?.length ? spec.reminders : [spec.reminder];
         super({ ...spec, reminder: reminders[0] });
         this.reminders = reminders.filter(Boolean);
+        this.parameterPattern = spec.parameterPattern ?? null;
     }
 
     get patternSource() {
