@@ -1,6 +1,5 @@
 import { Oracle } from '../../src/index.js';
-import InlineActionHarvest from './InlineActionHarvest.js';
-import KeywordHarvest from '../keywords/KeywordHarvest.js';
+import inferMechanics from '../../src/inference/inferMechanics.js';
 import parsePrintedFace from '../corpus/parsePrintedFace.js';
 import collectGaps from '../gaps/collectGaps.js';
 import GapReport from '../gaps/GapReport.js';
@@ -30,21 +29,8 @@ export default class EggHubAudit {
     }
 
     harvest(sets) {
-        const harvest = new KeywordHarvest(this.base);
-        const actions = new InlineActionHarvest(this.base);
-        for (const set of sets) {
-            for (const card of set.cards()) {
-                const entry = harvestCard(card);
-                harvest.addCard(entry);
-                actions.addCard(entry);
-            }
-        }
-        const isKeyword = ({ name }) => !this.base.actionPattern.test(name);
-        const actionDefinitions = actions.definitions;
-        const actionNames = new Set(actionDefinitions.map(definition => definition.name));
-        const keywords = harvest.definitions.filter(isKeyword)
-            .filter(({ name }) => !actionNames.has(name.toLowerCase()));
-        return { keywords, actions: actionDefinitions };
+        const cards = sets.flatMap(set => [...set.cards()].map(harvestCard));
+        return inferMechanics(cards, { oracle: this.base, includeEvidence: true });
     }
 
     measure(card, scribe) {

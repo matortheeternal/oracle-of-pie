@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { Oracle } from '../../src/index.js';
-import InlineActionHarvest from './InlineActionHarvest.js';
+import InlineActionHarvest from '../../src/inference/InlineActionHarvest.js';
 
 const CRYSTALLIZE = 'Put a +1/+1 counter on a creature you control or create a Treasure';
 

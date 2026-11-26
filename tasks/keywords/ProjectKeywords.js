@@ -1,4 +1,4 @@
-import KeywordHarvest from './KeywordHarvest.js';
+import KeywordHarvest from '../../src/inference/KeywordHarvest.js';
 import projectSettings from './projectSettings.js';
 import { ColorTiers } from '../../src/index.js';
 

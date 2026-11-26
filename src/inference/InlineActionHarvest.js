@@ -1,5 +1,5 @@
-import SpellAbility from '../../src/abilities/SpellAbility.js';
-import { TYPE_WORDS } from '../../src/phrases/vocabulary.js';
+import SpellAbility from '../abilities/SpellAbility.js';
+import { TYPE_WORDS } from '../phrases/vocabulary.js';
 
 const ACTION_WITH_REMINDER = new RegExp(
     '(?:^|[,:;.]+ | (?:and|or|then|may) )(?<name>[a-z][a-z-]+)\\. '
@@ -21,7 +21,7 @@ export default class InlineActionHarvest {
 
     addCard(card) {
         for (const face of card.faces) {
-            for (const line of face.oracle_text.split(NEWLINE))
+            for (const line of (face.oracle_text ?? face.rulesText ?? '').split(NEWLINE))
                 this.addLine(line.trim(), card.name);
         }
     }
@@ -43,7 +43,7 @@ export default class InlineActionHarvest {
         if (cards.size < MINIMUM_CARDS || this.isReserved(name)) return null;
         if (this.scribe.parseText(`${name}.`).isRecognized) return null;
         if (!this.isModeledReminder(reminder)) return null;
-        return { name, reminder, cards: cards.size };
+        return { name, reminder, cards: cards.size, examples: [...cards].slice(0, 5) };
     }
 
     isModeledReminder(reminder) {

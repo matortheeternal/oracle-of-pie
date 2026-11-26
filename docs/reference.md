@@ -298,6 +298,35 @@ customKeywords:
 A keyword with `tiers` gets a keyword inspection judged like the built-in ones; an omitted color
 counts as `none`. `npm run queues` writes each project's keywords to `data/custom-keywords.json`.
 
+### Suggested mechanics for Card Magician
+
+Run `inferMechanics(cards)` from `oracle-of-pie` on one project's cards. Supply
+`{ name, faces: [{ rulesText }] }` for each card. The result contains `keywords`
+and `actions` with their suggested reminders, plus a `tokens` dictionary inferred
+from token cards in the same project. Include their `typeLine` and any known
+`aliases` on each token face. The dictionary lets the parser link a short token
+name to its card without having to infer the token's rules. For debugging,
+`inferMechanics(cards, { includeEvidence: true })` includes supporting card counts,
+examples, and keyword reminder variant counts.
+
+A Card Magician integration can offer a **Scan set** button in project settings,
+show the suggestions and let the designer accept, edit,
+or dismiss each one. Run a preview with the accepted definitions before saving
+them in the project. The review tasks read `customKeywords`,
+`customKeywordActions`, and `customTokens` from the `.cmproj`.
+For example:
+
+```yaml
+customKeywordActions:
+  - name: crystallize
+    reminder: Put a +1/+1 counter on a creature you control or create a Treasure token.
+```
+
+The inference API recognizes reminder-backed patterns. Parameterized mechanics
+such as Fusion, custom events, or mechanics with several linked rules may need
+a set-specific definition in code. Card Magician's Custom Mechanics settings run
+this inference from their Autodetect button.
+
 Verdicts are appended to `reviews/<queue>.jsonl`; the latest verdict per item wins. Pending
 suggestions alternate across tags, starting with tags that have the fewest verdicts; tags with 20
 or more verdicts and none wrong come last. Custom card suggestions skip tags already on the card,
