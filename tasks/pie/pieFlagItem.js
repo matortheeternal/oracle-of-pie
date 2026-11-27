@@ -1,5 +1,6 @@
 import { COLORS } from '../../src/index.js';
 import { percent } from '../shared/table.js';
+import inspectionWording from './inspectionWording.js';
 import { severityWord, judgementOf } from './pieJudgement.js';
 
 const VERDICT_HINT = 'Correct = the card really bends or breaks the color pie this way. '
@@ -52,12 +53,15 @@ function frequencyLine(profile, color, name) {
 }
 
 function citationLines(flag, profile, color) {
-    const observed = flag.tiers[color].tier;
+    const severity = severityWord(flag);
     const effective = flag.effectiveTiers[color].tier;
     const name = COLOR_NAMES[color];
+    const mechanic = inspectionWording(flag).name;
+    const subject = mechanic[0].toUpperCase() + mechanic.slice(1);
+    const result = `${subject} is a pie ${severity} in ${name}`;
     const text = [
-        `${flag.title} is ${observed} in ${name} based on its frequency in canon cards.`,
-        `Maro’s Mechanical Color Pie (2021) lists ${flag.citation.line} as ${effective}`
+        `${result} based on its frequency in canon cards.`,
+        `Maro’s Mechanical Color Pie (2021) lists ${mechanic} as ${effective}`
             + ` in ${name}.`
     ].join('\n');
     const frequency = frequencyLine(profile, color, name);
@@ -78,15 +82,17 @@ function citationQuestion(flags) {
         const names = [...colors].map(color => COLOR_NAMES[color]).join(' or ');
         judgements.push(`${severity} in ${names}`);
     }
-    return `Is “${flags[0].title}” a color pie ${judgements.join(' or ')}?`;
+    const { name } = inspectionWording(flags[0]);
+    return `Is ${name} a color pie ${judgements.join(' or ')}?`;
 }
 
 function questionFor(flags, offending) {
     const [flag] = flags;
     if (flag.effectiveTiers) return citationQuestion(flags);
-    if (flags.length > 1) return `Are these color pie flags for “${flag.title}” correct?`;
+    const { name } = inspectionWording(flag);
+    if (flags.length > 1) return `Are these color pie flags for ${name} correct?`;
     const colors = offending.join('');
-    return `Is “${flag.title}” a color pie ${severityWord(flag)} in ${colors}?`;
+    return `Is ${name} a color pie ${severityWord(flag)} in ${colors}?`;
 }
 
 function occurrenceEvidence(flag, profile) {
@@ -120,6 +126,7 @@ export default function pieFlagItem({ id, card, flags, profile }) {
         card,
         evidence: [
             ...flags.flatMap(flag => occurrenceEvidence(flag, profile)),
+            { label: 'What this covers', text: inspectionWording(flag).definition },
             ...profileEvidence(flag, profile, offending),
             { label: 'Verdict', text: VERDICT_HINT }
         ]
