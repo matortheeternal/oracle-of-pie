@@ -1,7 +1,7 @@
 const MANA_VALUE = /\b(?:mana value|converted mana cost)\b/i;
 const CREATURE_COUNT = new RegExp(
     String.raw`\b(?:for each creature|number of creatures) `
-    + '(?:you control|on the battlefield)$',
+    + '(?:you control|on the battlefield)(?:$| plus )',
     'i'
 );
 const OPPOSING_ARTIFACT_COUNT = new RegExp(

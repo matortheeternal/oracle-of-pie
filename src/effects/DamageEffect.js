@@ -81,7 +81,7 @@ export default class DamageEffect extends Effect {
     }
 
     get usesCreatureCount() {
-        return usesCreatureCount(this.scalingText);
+        return usesCreatureCount(this.amountText) || usesCreatureCount(this.scalingText);
     }
 
     get isPing() {
