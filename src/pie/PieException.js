@@ -1,14 +1,23 @@
-import Query from '../evaluators/Query.js';
 import Citation from './Citation.js';
 import { PRIMARY } from './ColorTier.js';
+import { conditionFor } from './conditions/index.js';
 
 export default class PieException {
-    constructor({ id, title, colors, cites, match }) {
-        this.id = id;
-        this.title = title;
-        this.colors = colors;
-        this.citation = Citation.of(cites);
-        this.query = Query.compile(match);
+    static from(spec) {
+        const condition = conditionFor(spec);
+        if (condition) return new PieException(condition, spec);
+        console.warn(`Unknown pie exception condition ${spec.condition}`);
+        return null;
+    }
+
+    constructor(condition, spec) {
+        this.condition = condition;
+        this.id = condition.exceptionIdFor(spec);
+        this.title = condition.titleFor(spec);
+        this.colors = spec.colors;
+        this.arguments = condition.argumentsOf(spec);
+        this.citation = Citation.of(spec.cites);
+        this.query = condition.queryFor(spec);
     }
 
     matches(node, context) {

@@ -1,4 +1,5 @@
-import { WHEEL } from './exceptions.js';
+import { allow } from '../conditions/index.js';
+import { WHEEL } from '../conditions/cardFlowConditions.js';
 
 const CREATURE_CARD = { isCreatureCard: true };
 const FORCED_OPPONENT = { isOptional: false, subject: { canBeOpponent: true } };
@@ -10,7 +11,7 @@ export const RESOURCE_INSPECTIONS = [
         id: 'discard-opponent',
         title: 'Makes opponents discard',
         group: 'Card flow',
-        exceptions: [WHEEL],
+        exceptions: [allow(WHEEL, ['R'], '"Wheeling"')],
         match: { kind: 'DiscardEffect', ...FORCED_OPPONENT, not: REPLACED_BY_DRAW }
     },
     {

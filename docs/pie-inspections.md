@@ -111,7 +111,7 @@ tier overrides, and project configuration affect a flag.
 | Lifelink | `keyword-lifelink` | — |
 | Menace | `keyword-menace` | — |
 | Reach | `keyword-reach` | — |
-| Trample | `keyword-trample` | Demons (B) |
+| Trample | `keyword-trample` | Demon creatures (B) |
 | Vigilance | `keyword-vigilance` | — |
 | Defender | `keyword-defender` | — |
 | Flash | `keyword-flash` | — |

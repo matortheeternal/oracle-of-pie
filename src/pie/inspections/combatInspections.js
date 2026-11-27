@@ -1,5 +1,6 @@
 import tagInspection from './tagInspection.js';
-import { EVASIVE_POWER_PUMP } from './exceptions.js';
+import { allow } from '../conditions/index.js';
+import { WITH_UNBLOCKABLE } from '../conditions/combatConditions.js';
 
 export const COMBAT_INSPECTIONS = [
     tagInspection({
@@ -12,7 +13,7 @@ export const COMBAT_INSPECTIONS = [
         id: 'firebreathing',
         title: 'Pumps its own power',
         group: 'Creatures & combat',
-        exceptions: [EVASIVE_POWER_PUMP],
+        exceptions: [allow(WITH_UNBLOCKABLE, ['U'])],
         cites: '+N/+0 (on creatures)'
     }),
     tagInspection({

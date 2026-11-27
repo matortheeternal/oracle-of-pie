@@ -136,10 +136,19 @@ An inspection is one kind of color pie break:
   cited Mechanical Color Pie line (`cites`), a hand-written floor (`atLeast`), and another
   inspection's canon tiers (`allowedWherever`). `citationOmits` lists colors the cited line
   doesn't raise, for lines that overstate a color. `tiers` replaces all of them.
-- `exceptions`: `{ id, title, match, colors, cites }`. An exception's query is tested against the
-  node the inspection matched; every matching exception makes each color in its `colors`
-  primary, so those colors are allowed in that case. Exception order doesn't matter. The optional `cites` names the Mechanical Color Pie line the
-  exception comes from and is reported with the flag; it does not change the colors.
+- `exceptions`: `{ condition, colors, cites }`, where `condition` names a pie condition
+  (pie/conditions). A condition has an ID, a title, a query, and the inspection groups or IDs it
+  makes sense for; the `creature-type` condition also takes a `subtype`. An exception's query is
+  tested against the node the inspection matched; every matching exception makes each color in
+  its `colors` primary, so those colors are allowed in that case. Exception order doesn't matter.
+  The optional `cites` names the Mechanical Color Pie line the exception comes from and is
+  reported with the flag; it does not change the colors. An exception written inline as
+  `{ id, title, match, colors }` uses its own query instead of a condition.
+
+`new PieInspector({ overrides })` applies project settings keyed by inspection ID:
+`{ disabled: true }` skips the inspection, `tiers: { W: 'primary' }` replaces individual
+effective tiers, and `exceptions` replaces the default exception list. Exceptions naming an
+unknown condition are skipped with a warning.
 
 The match is attributed to colors: the face's mana cost, colored mana in the ability's cost and
 enclosing abilities, and kicker or "if {U}{U} was spent" conditions. A color policy judges

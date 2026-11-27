@@ -6,8 +6,18 @@ import attributableMatches from './attributableMatches.js';
 import { COLOR_POLICIES } from './policies/index.js';
 import { DEFAULT_PIE_INSPECTIONS } from './inspections/index.js';
 
-function toInspection(spec) {
-    return spec instanceof PieInspection ? spec : new PieInspection(spec);
+function configured(spec, override = {}) {
+    const { tiers, exceptions = spec.exceptions } = override;
+    return { ...spec, tierOverrides: tiers, exceptions };
+}
+
+function toInspection(spec, overrides) {
+    if (spec instanceof PieInspection) return spec;
+    return new PieInspection(configured(spec, overrides[spec.id]));
+}
+
+function isDisabled(spec, overrides) {
+    return Boolean(overrides[spec.id]?.disabled);
 }
 
 function* attributeOccurrences(faces, inspection) {
@@ -19,9 +29,12 @@ function* attributeOccurrences(faces, inspection) {
 }
 
 export default class PieInspector {
-    static createInspections({ inspections = DEFAULT_PIE_INSPECTIONS, disabled = [] }) {
+    static createInspections(options) {
+        const { inspections = DEFAULT_PIE_INSPECTIONS, overrides = {} } = options;
+        const { disabled = [] } = options;
         const skipped = new Set(disabled);
-        const all = inspections.map(toInspection);
+        const enabled = inspections.filter(spec => !isDisabled(spec, overrides));
+        const all = enabled.map(spec => toInspection(spec, overrides));
         return all.filter(inspection => !skipped.has(inspection.id));
     }
 

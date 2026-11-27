@@ -1,7 +1,10 @@
+import { allow } from '../conditions/index.js';
 import {
-    FLYER_REMOVAL, FLYER_EXILE, COMBATANT_REMOVAL, POLYMORPH, TOKEN_EXCHANGE,
-    WALL_REMOVAL
-} from './exceptions.js';
+    FLYING_CREATURES, COMBATANT_CREATURES, DEFENDER_CREATURES
+} from '../conditions/targetConditions.js';
+import {
+    RANDOM_REPLACEMENT, TOKEN_REPLACEMENT
+} from '../conditions/replacementConditions.js';
 
 const OPPOSING_CREATURE = {
     isOpposingObject: true,
@@ -13,6 +16,14 @@ const ABILITY_ONLY = { hasExactType: 'ability', not: { hasExactType: 'spell' } }
 const OPPOSING_ABILITY = { ...ABILITY_ONLY, controlledByYou: false };
 const COUNTERS_ABILITY = { kind: 'CounterEffect', phrases: ABILITY_ONLY };
 const DESTROY_OR_EXILE = ['DestroyEffect', 'ExileEffect'];
+const POLYMORPH = allow(RANDOM_REPLACEMENT, ['R'], '"Polymorph"');
+const TOKEN_EXCHANGE = allow(TOKEN_REPLACEMENT, ['U']);
+const FLYER_REMOVAL = allow(
+    FLYING_CREATURES, ['G'], 'Destroy target creature with flying'
+);
+const COMBATANT_REMOVAL = allow(
+    COMBATANT_CREATURES, ['W'], 'Destroy target attacking or blocking creature.'
+);
 
 export const REMOVAL_INSPECTIONS = [
     {
@@ -33,7 +44,8 @@ export const REMOVAL_INSPECTIONS = [
         title: 'Destroys creatures',
         group: 'Removal',
         exceptions: [
-            POLYMORPH, TOKEN_EXCHANGE, WALL_REMOVAL, FLYER_REMOVAL, COMBATANT_REMOVAL
+            POLYMORPH, TOKEN_EXCHANGE, allow(DEFENDER_CREATURES, ['R']), FLYER_REMOVAL,
+            COMBATANT_REMOVAL
         ],
         match: {
             kind: 'DestroyEffect',
@@ -44,7 +56,7 @@ export const REMOVAL_INSPECTIONS = [
         id: 'exile-creature',
         title: 'Exiles creatures',
         group: 'Removal',
-        exceptions: [POLYMORPH, TOKEN_EXCHANGE, FLYER_EXILE],
+        exceptions: [POLYMORPH, TOKEN_EXCHANGE, allow(FLYING_CREATURES, ['G'])],
         match: {
             kind: 'ExileEffect',
             isTemporary: false,

@@ -1,5 +1,7 @@
 import tagInspection from './tagInspection.js';
-import { EXTRA_ATTACK, UNTAPPED_CREATURES, SACRIFICIAL_MANA } from './exceptions.js';
+import { allow } from '../conditions/index.js';
+import { EXTRA_ATTACK, UNTAPPED_CREATURES } from '../conditions/combatConditions.js';
+import { SACRIFICE_COST } from '../conditions/costConditions.js';
 
 const OPPONENT_LOSES_LIFE = { kind: 'LoseLifeEffect', subjectIsOpponent: true };
 const YOUR_OWN_PERMANENTS = {
@@ -14,13 +16,16 @@ export const SUPPORT_INSPECTIONS = [
         description: 'Creatures with a repeatable mana ability that costs no mana, '
             + 'including abilities that create Treasure, Gold or Powerstone tokens.',
         group: 'Mana & lands',
-        exceptions: [SACRIFICIAL_MANA]
+        exceptions: [allow(SACRIFICE_COST, ['B'], 'Mana production, temporary')]
     }),
     tagInspection({
         id: 'extra-untap',
         title: 'Untaps your permanents en masse',
         group: 'Mana & lands',
-        exceptions: [EXTRA_ATTACK, UNTAPPED_CREATURES]
+        exceptions: [
+            allow(EXTRA_ATTACK, ['R'], 'Extra attack'),
+            allow(UNTAPPED_CREATURES, ['W', 'U', 'G'], 'Untapping creatures')
+        ]
     }),
     {
         id: 'freeze-creature',

@@ -1,10 +1,14 @@
+import { allow } from '../conditions/index.js';
 import {
-    REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, CREATURE_COUNT_DAMAGE,
-    COMBATANT_DAMAGE, TAPPED_CREATURE_DAMAGE
-} from './exceptions.js';
+    FLYING_CREATURES, COMBATANT_CREATURES, TAPPED_CREATURES
+} from '../conditions/targetConditions.js';
+import {
+    STAT_SCALED, CREATURE_COUNT_SCALED, REDIRECTED
+} from '../conditions/damageConditions.js';
 
 const ANY_TARGET_DAMAGE = 'Deal N damage to creature, planeswalker, and/or player.';
 const DIRECT_DAMAGE = { kind: 'DamageEffect', isPowerBased: false };
+const REDIRECTED_DAMAGE = allow(REDIRECTED, ['W'], 'Damage redirection');
 
 export const DAMAGE_INSPECTIONS = [
     {
@@ -14,8 +18,15 @@ export const DAMAGE_INSPECTIONS = [
         cites: ANY_TARGET_DAMAGE,
         citationOmits: ['W'],
         exceptions: [
-            REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, CREATURE_COUNT_DAMAGE,
-            COMBATANT_DAMAGE, TAPPED_CREATURE_DAMAGE
+            REDIRECTED_DAMAGE,
+            allow(FLYING_CREATURES, ['G']),
+            allow(STAT_SCALED, ['G']),
+            allow(CREATURE_COUNT_SCALED, ['W']),
+            allow(
+                COMBATANT_CREATURES, ['W'],
+                'Deal N damage to target attacking or blocking creature.'
+            ),
+            allow(TAPPED_CREATURES, ['W'])
         ],
         match: { ...DIRECT_DAMAGE, phrases: { hitsCreature: true } }
     },

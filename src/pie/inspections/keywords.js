@@ -1,4 +1,5 @@
-import { LIFE_WARD, NON_MANA_WARD, DEMON_TRAMPLE } from './exceptions.js';
+import { allow, CREATURE_TYPE } from '../conditions/index.js';
+import { LIFE_COST, NON_MANA_COST } from '../conditions/costConditions.js';
 
 export const CANON_KEYWORDS = [
     'flying', 'first strike', 'double strike', 'deathtouch', 'haste', 'hexproof',
@@ -11,6 +12,6 @@ export const KEYWORD_CITATIONS = {
 };
 
 export const KEYWORD_EXCEPTIONS = {
-    'ward': [LIFE_WARD, NON_MANA_WARD],
-    'trample': [DEMON_TRAMPLE]
+    'ward': [allow(LIFE_COST, ['R'], 'Ward (for life)'), allow(NON_MANA_COST, ['B'])],
+    'trample': [{ condition: CREATURE_TYPE.id, subtype: 'Demon', colors: ['B'] }]
 };
