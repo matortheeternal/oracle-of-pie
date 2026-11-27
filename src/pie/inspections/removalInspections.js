@@ -29,6 +29,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'counterspell',
         title: 'Counters spells',
+        cards: 'cards that counter spells',
         group: 'Removal',
         scryfall: 'otag:counterspell',
         example: { typeLine: 'Instant', text: 'Counter target spell.' },
@@ -37,6 +38,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'counter-ability',
         title: 'Counters abilities',
+        cards: 'cards that counter abilities',
         group: 'Removal',
         scryfall: 'otag:counterspell-ability',
         example: {
@@ -49,6 +51,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'destroy-creature',
         title: 'Destroys creatures',
+        cards: 'cards that destroy creatures',
         group: 'Removal',
         scryfall: 'otag:removal-creature otag:removal-destroy',
         example: { typeLine: 'Instant', text: 'Destroy target creature.' },
@@ -64,6 +67,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'exile-creature',
         title: 'Exiles creatures',
+        cards: 'cards that exile creatures',
         group: 'Removal',
         scryfall: 'otag:removal-creature otag:removal-exile',
         example: { typeLine: 'Instant', text: 'Exile target creature.' },
@@ -78,6 +82,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'bounce-creature',
         title: 'Returns creatures to hand',
+        cards: 'cards that return creatures to hand',
         group: 'Removal',
         scryfall: 'otag:removal-creature otag:removal-bounce',
         example: {
@@ -89,6 +94,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'edict',
         title: 'Makes opponents sacrifice',
+        cards: 'cards that make opponents sacrifice creatures',
         group: 'Removal',
         scryfall: 'otag:removal-sacrifice',
         example: {
@@ -106,6 +112,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'shrink-creature',
         title: 'Lowers toughness',
+        cards: 'cards that lower creatures\' toughness',
         group: 'Removal',
         scryfall: 'otag:removal-toughness',
         example: {
@@ -131,6 +138,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'destroy-artifact',
         title: 'Removes artifacts',
+        cards: 'cards that remove artifacts',
         group: 'Removal',
         scryfall: 'otag:removal-artifact',
         example: { typeLine: 'Instant', text: 'Destroy target artifact.' },
@@ -144,6 +152,7 @@ export const REMOVAL_INSPECTIONS = [
     {
         id: 'destroy-enchantment',
         title: 'Removes enchantments',
+        cards: 'cards that remove enchantments',
         group: 'Removal',
         scryfall: 'otag:removal-enchantment',
         example: { typeLine: 'Instant', text: 'Destroy target enchantment.' },

@@ -6,6 +6,7 @@ export const COMBAT_INSPECTIONS = [
     tagInspection({
         id: 'unblockable',
         title: 'Can’t be blocked',
+        cards: 'cards that make creatures unblockable',
         group: 'Creatures & combat',
         example: { typeLine: 'Creature', text: 'This creature can\'t be blocked.' },
         cites: 'Can\'t be blocked'
@@ -13,6 +14,7 @@ export const COMBAT_INSPECTIONS = [
     tagInspection({
         id: 'firebreathing',
         title: 'Pumps its own power',
+        cards: 'creatures that pump their own power',
         group: 'Creatures & combat',
         example: {
             typeLine: 'Creature',
@@ -24,6 +26,7 @@ export const COMBAT_INSPECTIONS = [
     tagInspection({
         id: 'shade-pump',
         title: 'Pumps itself +N/+N',
+        cards: 'creatures that pump themselves +N/+N',
         group: 'Creatures & combat',
         example: {
             typeLine: 'Creature',
@@ -33,6 +36,7 @@ export const COMBAT_INSPECTIONS = [
     tagInspection({
         id: 'extra-combat-phase',
         title: 'Adds combat phases',
+        cards: 'cards that add combat phases',
         group: 'Creatures & combat',
         example: {
             typeLine: 'Sorcery',

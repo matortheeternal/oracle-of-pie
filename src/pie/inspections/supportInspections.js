@@ -13,6 +13,7 @@ export const SUPPORT_INSPECTIONS = [
     tagInspection({
         id: 'mana-dork',
         title: 'Creatures that produce mana',
+        cards: 'creatures that produce mana',
         description: 'Creatures with a repeatable mana ability that costs no mana, '
             + 'including abilities that create Treasure, Gold or Powerstone tokens.',
         group: 'Mana & lands',
@@ -22,6 +23,7 @@ export const SUPPORT_INSPECTIONS = [
     tagInspection({
         id: 'extra-untap',
         title: 'Untaps your permanents en masse',
+        cards: 'cards that untap your permanents en masse',
         group: 'Mana & lands',
         example: { typeLine: 'Instant', text: 'Untap all creatures you control.' },
         exceptions: [
@@ -32,6 +34,7 @@ export const SUPPORT_INSPECTIONS = [
     {
         id: 'freeze-creature',
         title: 'Keeps creatures tapped',
+        cards: 'cards that keep creatures tapped',
         group: 'Control',
         scryfall: 'otag:freeze-creature',
         example: {
@@ -44,6 +47,7 @@ export const SUPPORT_INSPECTIONS = [
     {
         id: 'drain-life',
         title: 'Drains life',
+        cards: 'cards that drain life',
         group: 'Life',
         scryfall: 'otag:drain-life',
         example: {
@@ -55,6 +59,7 @@ export const SUPPORT_INSPECTIONS = [
     tagInspection({
         id: 'cost-increaser',
         title: 'Taxes spells',
+        cards: 'cards that tax spells',
         group: 'Costs',
         example: {
             typeLine: 'Creature',

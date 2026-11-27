@@ -180,7 +180,8 @@ field its exceptions carry (`subtype` for `creature-type`, otherwise `null`).
 
 Each inspection includes its ID, title, group, optional subgroup (represented by `null`),
 description, five default color tiers, the IDs of the `conditions` that make sense for it,
-ordered `exceptions`, a `scryfall` search query, and an `example` template. Tier values are
+ordered `exceptions`, a `cards` phrase naming the cards it matches (such as
+`cards that counter spells`), a `scryfall` search query, and an `example` template. Tier values are
 `primary`, `secondary`, `tertiary`, and `none`. Each exception is
 `{ condition, subtype?, title, colors }` with `colors` in WUBRG order, the same shape
 `PieInspector` accepts in `overrides`. The example template is `{ typeLine, text }`: a main

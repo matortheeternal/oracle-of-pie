@@ -14,6 +14,7 @@ export const DAMAGE_INSPECTIONS = [
     {
         id: 'damage-creature',
         title: 'Deals direct damage to creatures',
+        cards: 'cards that deal damage to creatures',
         group: 'Damage',
         scryfall: 'otag:burn-creature',
         example: {
@@ -38,6 +39,7 @@ export const DAMAGE_INSPECTIONS = [
     {
         id: 'damage-player',
         title: 'Deals direct damage to players',
+        cards: 'cards that deal damage to players',
         group: 'Damage',
         scryfall: 'otag:burn-player',
         example: {
@@ -51,6 +53,7 @@ export const DAMAGE_INSPECTIONS = [
     {
         id: 'bite',
         title: 'Creature deals damage equal to its power',
+        cards: 'cards that make a creature deal damage equal to its power',
         group: 'Damage',
         scryfall: 'otag:one-sided-fight',
         example: {
@@ -68,6 +71,7 @@ export const DAMAGE_INSPECTIONS = [
     {
         id: 'fight',
         title: 'Fights',
+        cards: 'cards that make creatures fight',
         group: 'Damage',
         scryfall: 'otag:removal-fight',
         example: {

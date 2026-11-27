@@ -10,6 +10,7 @@ export const RESOURCE_INSPECTIONS = [
     {
         id: 'discard-opponent',
         title: 'Makes opponents discard',
+        cards: 'cards that make opponents discard',
         group: 'Card flow',
         scryfall: 'otag:discard',
         example: { typeLine: 'Sorcery', text: 'Target opponent discards two cards.' },
@@ -19,6 +20,7 @@ export const RESOURCE_INSPECTIONS = [
     {
         id: 'mill-opponent',
         title: 'Mills opponents',
+        cards: 'cards that mill opponents',
         group: 'Graveyard',
         scryfall: 'otag:mill-opponent',
         example: { typeLine: 'Sorcery', text: 'Target opponent mills five cards.' },
@@ -27,6 +29,7 @@ export const RESOURCE_INSPECTIONS = [
     {
         id: 'tutor-nonland',
         title: 'Searches the library for a nonland card',
+        cards: 'cards that search for nonland cards',
         group: 'Card flow',
         scryfall: 'otag:tutor-to-hand',
         example: {
@@ -39,6 +42,7 @@ export const RESOURCE_INSPECTIONS = [
     {
         id: 'land-ramp',
         title: 'Puts lands from the library onto the battlefield',
+        cards: 'cards that put lands from the library onto the battlefield',
         group: 'Mana & lands',
         scryfall: 'otag:tutor-land-to-battlefield',
         example: {
@@ -56,6 +60,7 @@ export const RESOURCE_INSPECTIONS = [
     {
         id: 'reanimate',
         title: 'Returns creature cards from graveyard to battlefield',
+        cards: 'cards that return creatures from the graveyard to the battlefield',
         group: 'Graveyard',
         scryfall: 'otag:reanimate-creature',
         example: {
@@ -82,6 +87,7 @@ export const RESOURCE_INSPECTIONS = [
     {
         id: 'regrowth',
         title: 'Returns creature cards from graveyard to hand',
+        cards: 'cards that return creature cards from the graveyard to hand',
         group: 'Graveyard',
         scryfall: 'otag:regrowth-creature',
         example: {

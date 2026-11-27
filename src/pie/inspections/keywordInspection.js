@@ -27,6 +27,7 @@ export default function keywordInspection(keyword, options = {}) {
         cites,
         exceptions,
         description: `Has, gains or gives ${keyword}, or puts ${keyword} counters.`,
+        cards: `cards with ${keyword}`,
         scryfall: `keyword:"${keyword}"`,
         example: KEYWORD_CANON[keyword]?.example ?? null,
         match: {

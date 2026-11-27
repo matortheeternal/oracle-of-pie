@@ -22,6 +22,7 @@ function describeInspection(inspection) {
         tiers: tiers.toJSON(),
         conditions: conditionsFor(inspection),
         exceptions: exceptions.map(describeException),
+        cards: inspection.cards,
         scryfall: inspection.scryfall,
         example: structuredClone(inspection.example)
     };

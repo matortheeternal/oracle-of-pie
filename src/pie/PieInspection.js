@@ -39,7 +39,8 @@ function tiersOf(spec, citation) {
 }
 
 const PRESENTATION_DEFAULTS = {
-    subgroup: null, keyword: null, canonCount: null, scryfall: null, example: null
+    subgroup: null, keyword: null, canonCount: null, cards: null, scryfall: null,
+    example: null
 };
 
 function pickPresentation(spec) {

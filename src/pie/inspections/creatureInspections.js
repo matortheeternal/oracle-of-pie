@@ -4,6 +4,7 @@ export const CREATURE_INSPECTIONS = [
     {
         id: 'tap-creature',
         title: 'Taps opposing creatures',
+        cards: 'cards that tap opposing creatures',
         group: 'Control',
         scryfall: 'otag:tapper-creature',
         example: { typeLine: 'Instant', text: 'Tap target creature.' },
@@ -20,6 +21,7 @@ export const CREATURE_INSPECTIONS = [
     {
         id: 'steal-permanently',
         title: 'Gains control permanently',
+        cards: 'cards that gain control permanently',
         group: 'Control',
         scryfall: 'otag:control-changing-effects -otag:threaten',
         example: { typeLine: 'Sorcery', text: 'Gain control of target creature.' },
@@ -28,6 +30,7 @@ export const CREATURE_INSPECTIONS = [
     {
         id: 'threaten',
         title: 'Gains control until end of turn',
+        cards: 'cards that gain control until end of turn',
         group: 'Control',
         scryfall: 'otag:threaten',
         example: {
@@ -44,6 +47,7 @@ export const CREATURE_INSPECTIONS = [
     {
         id: 'flicker',
         title: 'Exiles and returns creatures',
+        cards: 'cards that exile and return creatures',
         group: 'Protection',
         scryfall: 'otag:flicker-creature',
         example: {
@@ -60,6 +64,7 @@ export const CREATURE_INSPECTIONS = [
     {
         id: 'gain-life',
         title: 'Gains life',
+        cards: 'cards that gain life',
         group: 'Life',
         scryfall: 'otag:lifegain',
         example: { typeLine: 'Instant', text: 'You gain 4 life.' },
