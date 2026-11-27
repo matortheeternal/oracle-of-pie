@@ -1,4 +1,5 @@
 import KeywordFamilyEvaluator from '../../evaluators/KeywordFamilyEvaluator.js';
+import KEYWORD_CANON from '../keywordCanon.json' with { type: 'json' };
 
 const KEYWORDS_GROUP = 'Keywords';
 
@@ -26,6 +27,8 @@ export default function keywordInspection(keyword, options = {}) {
         cites,
         exceptions,
         description: `Has, gains or gives ${keyword}, or puts ${keyword} counters.`,
+        scryfall: `keyword:"${keyword}"`,
+        example: KEYWORD_CANON[keyword]?.example ?? null,
         match: {
             any: [
                 { kind: 'KeywordAbility', hasKeyword: keyword },

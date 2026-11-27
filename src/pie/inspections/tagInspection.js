@@ -1,3 +1,4 @@
 export default function tagInspection({ tag, ...spec }) {
-    return { ...spec, match: { tag: tag ?? spec.id } };
+    const name = tag ?? spec.id;
+    return { scryfall: `otag:${name}`, ...spec, match: { tag: name } };
 }

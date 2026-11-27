@@ -11,6 +11,8 @@ export const RESOURCE_INSPECTIONS = [
         id: 'discard-opponent',
         title: 'Makes opponents discard',
         group: 'Card flow',
+        scryfall: 'otag:discard',
+        example: { typeLine: 'Sorcery', text: 'Target opponent discards two cards.' },
         exceptions: [allow(WHEEL, ['R'], '"Wheeling"')],
         match: { kind: 'DiscardEffect', ...FORCED_OPPONENT, not: REPLACED_BY_DRAW }
     },
@@ -18,18 +20,32 @@ export const RESOURCE_INSPECTIONS = [
         id: 'mill-opponent',
         title: 'Mills opponents',
         group: 'Graveyard',
+        scryfall: 'otag:mill-opponent',
+        example: { typeLine: 'Sorcery', text: 'Target opponent mills five cards.' },
         match: { kind: 'MillEffect', ...FORCED_OPPONENT }
     },
     {
         id: 'tutor-nonland',
         title: 'Searches the library for a nonland card',
         group: 'Card flow',
+        scryfall: 'otag:tutor-to-hand',
+        example: {
+            typeLine: 'Sorcery',
+            text: 'Search your library for a card, put that card '
+                + 'into your hand, then shuffle.'
+        },
         match: { kind: 'SearchLibraryEffect', toHand: true, findsLand: false }
     },
     {
         id: 'land-ramp',
         title: 'Puts lands from the library onto the battlefield',
         group: 'Mana & lands',
+        scryfall: 'otag:tutor-land-to-battlefield',
+        example: {
+            typeLine: 'Sorcery',
+            text: 'Search your library for a basic land card, put it onto '
+                + 'the battlefield tapped, then shuffle.'
+        },
         match: {
             kind: 'SearchLibraryEffect',
             card: { isLand: false },
@@ -41,6 +57,11 @@ export const RESOURCE_INSPECTIONS = [
         id: 'reanimate',
         title: 'Returns creature cards from graveyard to battlefield',
         group: 'Graveyard',
+        scryfall: 'otag:reanimate-creature',
+        example: {
+            typeLine: 'Sorcery',
+            text: 'Return target creature card from your graveyard to the battlefield.'
+        },
         cites: '"Reanimation"',
         match: {
             any: [
@@ -62,6 +83,11 @@ export const RESOURCE_INSPECTIONS = [
         id: 'regrowth',
         title: 'Returns creature cards from graveyard to hand',
         group: 'Graveyard',
+        scryfall: 'otag:regrowth-creature',
+        example: {
+            typeLine: 'Sorcery',
+            text: 'Return target creature card from your graveyard to your hand.'
+        },
         cites: 'Return target creature from graveyard to hand.',
         match: {
             kind: 'ReturnEffect',
