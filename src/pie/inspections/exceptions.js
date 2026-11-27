@@ -159,14 +159,6 @@ export const TOKEN_EXCHANGE = {
     colors: ['U']
 };
 
-export const LAND_DESTRUCTION = {
-    id: 'lands',
-    title: 'Land creatures',
-    match: { phrases: { hasType: 'land' } },
-    colors: ['B', 'R', 'G'],
-    cites: 'Land destruction'
-};
-
 export const WALL_REMOVAL = {
     id: 'defender',
     title: 'Creatures with defender',

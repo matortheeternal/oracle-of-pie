@@ -1,13 +1,13 @@
 import {
     FLYER_REMOVAL, FLYER_EXILE, COMBATANT_REMOVAL, POLYMORPH, TOKEN_EXCHANGE,
-    LAND_DESTRUCTION, WALL_REMOVAL
+    WALL_REMOVAL
 } from './exceptions.js';
 
 const OPPOSING_CREATURE = {
     isOpposingObject: true,
     isBackReference: false,
     hasExactType: 'creature',
-    not: { kind: 'AttachedReference' }
+    not: { any: [{ kind: 'AttachedReference' }, { hasTypeConjunction: 'land creature' }] }
 };
 const ABILITY_ONLY = { hasExactType: 'ability', not: { hasExactType: 'spell' } };
 const OPPOSING_ABILITY = { ...ABILITY_ONLY, controlledByYou: false };
@@ -33,8 +33,7 @@ export const REMOVAL_INSPECTIONS = [
         title: 'Destroys creatures',
         group: 'Removal',
         exceptions: [
-            POLYMORPH, TOKEN_EXCHANGE, LAND_DESTRUCTION, WALL_REMOVAL, FLYER_REMOVAL,
-            COMBATANT_REMOVAL
+            POLYMORPH, TOKEN_EXCHANGE, WALL_REMOVAL, FLYER_REMOVAL, COMBATANT_REMOVAL
         ],
         match: {
             kind: 'DestroyEffect',
