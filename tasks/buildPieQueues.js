@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { readJson, writeJsonl } from './shared/files.js';
 import { PATHS, queuePath } from './shared/paths.js';
 import ProjectScribes from './keywords/ProjectScribes.js';
@@ -49,11 +50,31 @@ function customItems() {
 
 const byName = new Map(corpus.map(card => [card.name, card]));
 const printedFlags = readJson(PATHS.pieFlags);
+const citationCandidates = existsSync(PATHS.pieCitationCandidates)
+    ? readJson(PATHS.pieCitationCandidates) : [];
+const printedGroupKey = flag => JSON.stringify([flag.name, flag.inspection]);
+
+function printedItem(flags) {
+    const [{ name, inspection }] = flags;
+    const card = byName.get(name);
+    return pieFlagItem({
+        id: card.oracle_id,
+        card: printedView(card),
+        flags,
+        profile: profiles[inspection]
+    });
+}
+
+function citationItems(policy) {
+    const candidates = citationCandidates.filter(flag => flag.policy === policy);
+    const sampled = sampleFlaggedCards(candidates, SAMPLE_SIZES[policy]);
+    return groupedFlags(sampled, printedGroupKey).map(printedItem);
+}
 
 function printedItems(policy, reviews) {
     const flags = printedFlags.filter(flag => flag.policy === policy);
     const sampled = sampleFlaggedCards(flags, SAMPLE_SIZES[policy]);
-    const keyOf = flag => JSON.stringify([flag.name, flag.inspection]);
+    const keyOf = printedGroupKey;
     const selected = new Set(sampled.map(keyOf));
     const items = [];
     for (const group of groupedFlags(flags, keyOf)) {
@@ -63,15 +84,11 @@ function printedItems(policy, reviews) {
         const id = `${card.oracle_id}|${inspection}`;
         if (!selected.has(keyOf(flag)) && !matchesReviewedFlag(reviews, id, group))
             continue;
-        const profile = profiles[inspection];
-        items.push(pieFlagItem({
-            id: card.oracle_id,
-            card: printedView(card),
-            flags: group,
-            profile
-        }));
+        items.push(printedItem(group));
     }
-    return items;
+    const included = new Set(items.map(item => item.id));
+    const extra = citationItems(policy).filter(item => !included.has(item.id));
+    return [...items, ...extra];
 }
 
 function matchesReviewedFlag(reviews, id, flags) {

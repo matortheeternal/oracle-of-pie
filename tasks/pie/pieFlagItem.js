@@ -40,11 +40,41 @@ function tierEvidence(flag) {
     return [{ label: 'Tiers', text: reasons.join(' · ') }];
 }
 
+const COLOR_NAMES = { W: 'White', U: 'Blue', B: 'Black', R: 'Red', G: 'Green' };
+
+function citationComparison(flag) {
+    const withoutCitation = Object.entries(flag.tiers).map(tierReason).join(' · ');
+    const withCitation = Object.entries(flag.effectiveTiers).map(tierReason).join(' · ');
+    return [
+        { label: 'Without the citation allowance', text: withoutCitation },
+        { label: 'Current policy', text: withCitation },
+        {
+            label: 'Why this is here',
+            text: 'The citation allowance suppresses this flag.'
+        }
+    ];
+}
+
+function judgementEvidence(flag) {
+    if (flag.effectiveTiers) return citationComparison(flag);
+    return [{ label: 'Judged as', text: judgementOf(flag) }, ...tierEvidence(flag)];
+}
+
+function questionFor(flags, offending) {
+    const [flag] = flags;
+    if (flag.effectiveTiers) {
+        const colors = offending.map(color => COLOR_NAMES[color]).join(' or ');
+        return `Does “${flag.title}” bend or break the color pie in ${colors}?`;
+    }
+    if (flags.length > 1) return `Are these color pie flags for “${flag.title}” correct?`;
+    const colors = offending.join('');
+    return `Is “${flag.title}” a color pie ${severityWord(flag)} in ${colors}?`;
+}
+
 function occurrenceEvidence(flag) {
     return [
         { label: 'Matched text', text: flag.evidence, code: true },
-        { label: 'Judged as', text: judgementOf(flag) },
-        ...tierEvidence(flag),
+        ...judgementEvidence(flag),
         ...exceptionEvidence(flag),
         ...citationEvidence(flag)
     ];
@@ -52,14 +82,10 @@ function occurrenceEvidence(flag) {
 
 export default function pieFlagItem({ id, card, flags, profile }) {
     const [flag] = flags;
-    const word = severityWord(flag);
     const offending = [...new Set(flags.flatMap(occurrence => occurrence.offending))];
-    const colors = offending.join('');
     return {
         id: `${id}|${flag.inspection}`,
-        question: flags.length === 1
-            ? `Is “${flag.title}” a color pie ${word} in ${colors}?`
-            : `Are these color pie flags for “${flag.title}” correct?`,
+        question: questionFor(flags, offending),
         tag: flag.inspection,
         card,
         evidence: [
