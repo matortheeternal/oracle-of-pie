@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22, 24]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: node --test
+      - run: npm run ast-fixtures
+      - name: Test packed package
+        shell: bash
+        run: |
+          consumer=$(mktemp -d)
+          trap 'rm -rf "$consumer"' EXIT
+          tarball=$(npm pack --pack-destination "$consumer" --quiet)
+          cd "$consumer"
+          npm install --no-audit --no-fund "./$tarball"
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import { CardColors, Oracle, PieInspector } from 'oracle-of-pie';
+          import { getInspectionCatalog } from 'oracle-of-pie/inspection-catalog';
+
+          const parsed = new Oracle().parseFace({
+              name: 'Sudden Downpour',
+              typeLine: 'Instant',
+              text: 'Destroy target creature with flying. You gain 2 life.'
+          });
+          assert.ok(parsed.isFullyRecognized);
+          const colors = CardColors.fromManaCost('{1}{U}');
+          assert.ok(new PieInspector().inspect([{ parsed, colors }]).length > 0);
+          assert.ok(getInspectionCatalog().inspections.length > 0);
+          JS

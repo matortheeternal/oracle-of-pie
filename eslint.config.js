@@ -7,7 +7,10 @@ const FILES = ['**/*.{js,mjs}'];
 export default [
     { ignores: ['**/node_modules/**', '.venv/**'] },
     { linterOptions: { reportUnusedDisableDirectives: 'error' } },
-    { files: ['tasks/review/*View.js'], languageOptions: { globals: globals.browser } },
+    {
+        files: ['tasks/workbench/*View.js'],
+        languageOptions: { globals: globals.browser }
+    },
     {
         files: FILES,
         languageOptions: {

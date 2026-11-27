@@ -7,8 +7,9 @@ Color-pie flags cite the applicable policy and include printed examples when ava
 
 ## Quick start
 
-From this checkout, run `npm install`. The library can read printed and custom cards.
-Use `isFullyRecognized` to check whether the parser understood the whole face.
+Install with `npm install oracle-of-pie`. The library uses ES modules and requires
+Node.js 22 or later. It can read printed and custom cards. Use `isFullyRecognized`
+to check whether the parser understood the whole face.
 
 ```js
 import { Oracle, PieInspector, CardColors } from 'oracle-of-pie';
@@ -35,11 +36,19 @@ For sources that wrap rules text mid-sentence, create an instance with
 
 ## Corpus results
 
-On the November 2026 corpus of 17,836 modern cards, **80.3%** were fully recognized
-(14,327 cards).
+The parser fully recognized **100% of the 17,677 modern cards** in the November
+2026 evaluation corpus.
 
 - [Scryfall tag coverage](docs/tag-coverage.md)
-- [Color-pie inspections and exceptions](docs/pie-inspections.md)
+
+## Keywords and color-pie inspections
+
+- [Default keyword list](src/defaultKeywords.js) combines built-in keywords with
+  the [printed keyword catalog](src/pie/keywordCanon.json).
+- [Color-pie inspections and exceptions](docs/pie-inspections.md) lists the
+  inspections by category, including keyword inspections.
+- [Inspection catalog API](docs/reference.md#inspection-catalog) provides the
+  current list and its inspection metadata to applications.
 
 ## Development
 
@@ -48,5 +57,7 @@ On the November 2026 corpus of 17,836 modern cards, **80.3%** were fully recogni
 - `npm run pie` builds canon profiles and runs color-pie inspections.
 - `npm run lint` and `npm run ast-fixtures` check code and parser behavior.
 
-See the [project reference](docs/reference.md#development) for corpus setup, review
-workflows, and the full command list.
+GitHub Actions runs lint, unit tests, AST fixtures, and a package smoke test on
+Node.js 22 and 24. These checks use the repository's fixtures and need no
+Scryfall downloads. See the [project reference](docs/reference.md#development)
+for the separate corpus setup, review workflows, and full command list.

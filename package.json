@@ -1,9 +1,20 @@
 {
   "name": "oracle-of-pie",
   "version": "0.1.0",
-  "private": true,
   "description": "Reads Magic: The Gathering Oracle text into a semantic tree, suggests Scryfall oracle tags, and inspects cards for color pie breaks.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matortheeternal/oracle-of-pie.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "type": "module",
+  "files": [
+    "src/",
+    "docs/"
+  ],
   "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js",
@@ -32,8 +43,7 @@
     "diagnose": "node tasks/diagnose.js",
     "gaps": "node tasks/gapReport.js",
     "queues": "node tasks/buildCustomQueue.js && node tasks/buildScryfallQueues.js && node tasks/buildPieQueues.js",
-    "review": "node tasks/review.js",
-    "gap-workbench": "node --watch tasks/review.js",
+    "gap-workbench": "node --watch tasks/workbench.js",
     "report": "node tasks/reviewReport.js",
     "verdicts": "node tasks/checkVerdicts.js",
     "policies": "node tasks/checkPolicies.js",

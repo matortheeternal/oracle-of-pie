@@ -3,7 +3,7 @@ const TYPECYCLING = /(?<type>[a-z]+(?: land)?)cycling/;
 const EXPLORE_WORDING = /explores?/;
 const INCUBATE_WORDING = /incubates?/;
 const CONNIVE_WORDING = /connives?/;
-const AMASS_WORDING = /amass (?<type>[A-Z][a-z]+)/;
+const AMASS_WORDING = /amass(?:es)? (?<type>[A-Z][a-z]+)/;
 const DISCOVER_WORDING = /discovers?/;
 const ENDURE_WORDING = /endures?/;
 const GOAD_WORDING = /goad [^,.]+/;
@@ -33,7 +33,6 @@ const ASSIMILATE_WORDING = /assimilates?/;
 const DETAIN_WORDING = /detains?/;
 const PLOT_WORDING = /plots?/;
 const SCRY_WORDING = /(?:scry|scries)/;
-const AMASS_WORDING_PLURAL = /amasses (?<type>[A-Z][a-z]+)/;
 
 export const DEFAULT_DEFINITIONS = {
     keywords: [
@@ -92,7 +91,7 @@ export const DEFAULT_DEFINITIONS = {
         { name: 'Harness' },
         {
             name: 'Amass',
-            pattern: new RegExp(AMASS_WORDING.source + '|' + AMASS_WORDING_PLURAL.source),
+            pattern: AMASS_WORDING,
             reminder: 'Put {parameter} +1/+1 counters on an Army you control. '
                 + 'If you don\'t control one, create a 0/0 Army creature token first.'
         },

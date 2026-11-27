@@ -24,3 +24,4 @@
 {"id":"mtg-the-pale-age:Giant Slaying Sword|keyword-reach","verdict":"correct","note":"bend, per previous [re-marked: now judged a bend]","at":"2026-11-19T02:46:17.399Z"}
 {"id":"mtg-underground:Depthdiver Troll|regrowth","verdict":"wrong","note":"yeah, I think this is probably a break. [re-marked: the card no longer has a regrowth ability]","at":"2026-11-19T02:46:17.399Z"}
 {"id":"mtg-underground:Reviver of the Depths|regrowth","verdict":"wrong","note":"uncertain, per other response. [re-marked: MCP lists creature regrowth as secondary in white]","at":"2026-11-19T02:46:17.399Z"}
+{"id":"mtg-underground:Smite the Wicked|damage-creature","verdict":"correct","note":"White dealing direct damage to creatures without a qualifying restriction is a break.","at":"2026-11-27T22:26:29.014Z"}

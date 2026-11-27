@@ -102,6 +102,7 @@ function describeFace(face) {
         type_line: face.type_line,
         mana_cost: face.mana_cost,
         colors: face.colors,
+        image: face.image_uris?.normal,
         oracle_text: face.oracle_text ?? ''
     };
 }

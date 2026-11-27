@@ -249,13 +249,13 @@ Generated data goes to data/ and queues/; review verdicts and baselines are kept
 | `npm run diagnose -- fps\|fns <tag> [n]` | Sample of false positives or false negatives for a tag. |
 | `npm run gaps [n]` | Unrecognized text grouped into shapes, ranked by how many cards each alone keeps from full recognition, plus gap families by parser context and the most common opaque effects. Text a trigger event could not read is labeled `unread <Event> text`, or `unsupported trigger event` when no event pattern matched. Full data in `data/gap-report.json`. |
 | `npm run queues` | Builds the custom-card queue from the projects in `reviews/projects.json` and the Scryfall disagreement queues. Run `evaluate` first. |
-| `npm run review` | Serves the review UI at http://127.0.0.1:5178 (keys: 1 correct, 2 wrong, S skip, Z back, N note). `/ast` explores a card's parse tree, node properties, back-reference links, and the tags and pie inspections matching each node. |
+| `npm run gap-workbench` | Serves the local gap workbench and AST explorer at http://127.0.0.1:5178/gaps and /ast. |
 | `npm run verdicts` | Re-tags every reviewed card and fails if a verdict no longer holds. Disagreements listed in `reviews/known-disagreements.json` are reported as `known`; `-- --accept-known` records the current set. |
 | `npm run report` | Per-tag precision from automatic agreement plus review verdicts. |
 | `npm run pie` | Builds per-inspection color profiles and the canon tier table from the modern corpus, then reports how many printed cards each inspection flags. |
 | `npm run pie-gate` | Estimates the wrong-flag rate per color policy from the reviewed `printed-*-pie-flags` queues and checks it against the targets in [SUCCESS.md](../SUCCESS.md). |
 | `npm run pie-verdicts` | Re-inspects every reviewed pie flag and fails if a verdict changed or regressed; `-- --accept` records the baseline. |
-| `npm run ast -- "Card Name"` | Prints one corpus card's parse tree as JSON, with its tags, Scryfall tags and pie flags (the data behind the review UI's `/ast` page). The name is exact and case-insensitive; on a miss it lists cards whose names contain it. Needs `data/corpus.json`. |
+| `npm run ast -- "Card Name"` | Prints one corpus card's parse tree as JSON, with its tags, Scryfall tags and pie flags (the data behind the workbench's `/ast` page). The name is exact and case-insensitive; on a miss it lists cards whose names contain it. Needs `data/corpus.json`. |
 | `npm run ast-fixtures` | Parses the cards in `tasks/ast/fixtures/` and compares each tree with its expected structure. Fails on regressions and on `pending` markers that now pass. |
 | `npm run keyword-canon` | Rebuilds `src/pie/keywordCanon.json` from the `default-cards` dump. |
 | `npm run lint` | Lints src/ and tasks/. |
@@ -386,7 +386,9 @@ such as Fusion, custom events, or mechanics with several linked rules may need
 a set-specific definition in code. Card Magician's Custom Mechanics settings run
 this inference from their Autodetect button.
 
-Verdicts are appended to `reviews/<queue>.jsonl`; the latest verdict per item wins. Pending
+The Oracle’s Bakery reads snapshots of the generated JSONL queues and exports
+reviewer feedback. Add adjudicated decisions to `reviews/<queue>.jsonl`; the
+latest decision per item wins. Pending
 suggestions alternate across tags, starting with tags that have the fewest verdicts; tags with 20
 or more verdicts and none wrong come last. Custom card suggestions skip tags already on the card,
 and a parent tag is not suggested when a child tag you have not rejected already implies it.

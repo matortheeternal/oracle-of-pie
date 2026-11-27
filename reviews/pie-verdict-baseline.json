@@ -136,5 +136,5 @@
     "mtg-underground:Depthdiver Troll|regrowth": null,
     "mtg-underground:Matau, the First Fungi|discard-outlet": "G monocolor, bend in G",
     "mtg-underground:Reviver of the Depths|regrowth": null,
-    "mtg-underground:Smite the Wicked|damage-creature": null
+    "mtg-underground:Smite the Wicked|damage-creature": "W monocolor, break in W"
 }
