@@ -6,6 +6,7 @@ import loadProjects from './custom/loadProjects.js';
 import ReviewPriority from './queues/ReviewPriority.js';
 import ProjectPieFlags from './pie/projectPieFlags.js';
 import pieFlagItem from './pie/pieFlagItem.js';
+import { judgementOfAll } from './pie/pieJudgement.js';
 import sampleFlaggedCards from './pie/sampleFlaggedCards.js';
 import { PIE_GATES } from './pie/pieGates.js';
 
@@ -15,6 +16,7 @@ const SAMPLE_SIZES = { monocolor: MONO_SAMPLE_SIZE, hybrid: Infinity };
 
 const corpus = readJson(PATHS.corpus);
 const profiles = readJson(PATHS.pieProfiles);
+const baseline = readJson(PATHS.pieVerdictBaseline);
 
 function printedView(card) {
     const { name, rarity, faces, image, scryfall_uri } = card;
@@ -48,21 +50,37 @@ function customItems() {
 const byName = new Map(corpus.map(card => [card.name, card]));
 const printedFlags = readJson(PATHS.pieFlags);
 
-function printedItems(policy) {
+function printedItems(policy, reviews) {
     const flags = printedFlags.filter(flag => flag.policy === policy);
     const sampled = sampleFlaggedCards(flags, SAMPLE_SIZES[policy]);
     const keyOf = flag => JSON.stringify([flag.name, flag.inspection]);
-    const groups = groupedFlags(sampled, keyOf);
-    return groups.map(flags => {
-        const { name, inspection } = flags[0];
+    const selected = new Set(sampled.map(keyOf));
+    const items = [];
+    for (const group of groupedFlags(flags, keyOf)) {
+        const [flag] = group;
+        const { name, inspection } = flag;
         const card = byName.get(name);
+        const id = `${card.oracle_id}|${inspection}`;
+        if (!selected.has(keyOf(flag)) && !matchesReviewedFlag(reviews, id, group))
+            continue;
         const profile = profiles[inspection];
-        const view = printedView(card);
-        return pieFlagItem({ id: card.oracle_id, card: view, flags, profile });
-    });
+        items.push(pieFlagItem({
+            id: card.oracle_id,
+            card: printedView(card),
+            flags: group,
+            profile
+        }));
+    }
+    return items;
 }
 
-const PRINTED_QUEUES = PIE_GATES.map(gate => [gate.queue, printedItems(gate.policy)]);
+function matchesReviewedFlag(reviews, id, flags) {
+    return !reviews.isPending(id) && baseline[id] === judgementOfAll(flags);
+}
+
+const PRINTED_QUEUES = PIE_GATES.map(gate => [
+    gate.queue, printedItems(gate.policy, ReviewLog.forQueue(gate.queue))
+]);
 const QUEUES = [[CUSTOM_QUEUE, customItems()], ...PRINTED_QUEUES];
 for (const [queue, items] of QUEUES) {
     const ordered = new ReviewPriority(ReviewLog.forQueue(queue)).order(items);

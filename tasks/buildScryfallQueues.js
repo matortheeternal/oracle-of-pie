@@ -16,6 +16,8 @@ const score = TagScore.fromJSON(readJson(PATHS.score));
 const adjudicated = TagScore.fromJSON(readJson(PATHS.adjudicatedScore));
 const tree = TagTree.load(PATHS.tags);
 const random = new SeededRandom(7);
+const notTaggedReviews = ReviewLog.forQueue('scryfall-suggested-not-tagged');
+const notSuggestedReviews = ReviewLog.forQueue('scryfall-tagged-not-suggested');
 
 function context(tag, key) {
     return { card: corpus.get(key), key, tag, prediction: predictions[key], tree };
@@ -30,7 +32,20 @@ for (const [tag, keys] of Object.entries(score.falseNegatives)) {
     notSuggested.push(...sample.map(key => notSuggestedItem(context(tag, key))));
 }
 
-const notTaggedReviews = ReviewLog.forQueue('scryfall-suggested-not-tagged');
+function includeReviewed(items, reviews, mismatches, makeItem) {
+    const included = new Set(items.map(item => item.id));
+    for (const [id] of reviews.decided) {
+        if (included.has(id)) continue;
+        const { cardId, tag } = ReviewLog.parseId(id);
+        if (!mismatches[tag]?.includes(cardId)) continue;
+        items.push(makeItem(context(tag, cardId)));
+    }
+}
+
+includeReviewed(notTagged, notTaggedReviews, score.falsePositives, notTaggedItem);
+includeReviewed(
+    notSuggested, notSuggestedReviews, score.falseNegatives, notSuggestedItem
+);
 const prioritized = new ReviewPriority(notTaggedReviews).order(notTagged);
 writeJsonl(queuePath('scryfall-suggested-not-tagged'), prioritized);
 writeJsonl(queuePath('scryfall-tagged-not-suggested'), notSuggested);
