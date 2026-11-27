@@ -174,21 +174,21 @@ import { getInspectionCatalog } from 'oracle-of-pie/inspection-catalog';
 const catalog = getInspectionCatalog();
 ```
 
-The result is a plain object with `schemaVersion: 2` and `inspections` in registry
-order. Each inspection includes its ID, title, group, optional subgroup (represented
-by `null`), description, five effective color tiers, ordered exceptions, and examples.
-Tier values are `primary`, `secondary`, `tertiary`, and `none`. Each exception lists
-the `colors` it allows, in WUBRG order. The function takes no arguments and returns a
-fresh object on each call.
+The result is a plain object with `schemaVersion: 3`, `conditions`, and `inspections` in
+registry order. Each condition has an `id`, a `title`, and a `parameter` naming the extra
+field its exceptions carry (`subtype` for `creature-type`, otherwise `null`).
 
-Examples are bundled from the November 2026 printed-card corpus and its inspection
-profiles. The profiles identify cards by name. For multiface examples the catalog
-includes every face in source order. Example rows contain only the face's name,
-type line, mana cost, Oracle text, colors, power, toughness, and loyalty.
-Power, toughness, and loyalty are strings when present and `null` otherwise.
-An inspection with no recorded examples returns an empty array. Catalog generation
-does not read project cards or evaluate inspections. A build can serialize the
-catalog with `JSON.stringify(catalog)` for offline delivery.
+Each inspection includes its ID, title, group, optional subgroup (represented by `null`),
+description, five default color tiers, the IDs of the `conditions` that make sense for it,
+ordered `exceptions`, a `scryfall` search query, and an `example` template. Tier values are
+`primary`, `secondary`, `tertiary`, and `none`. Each exception is
+`{ condition, subtype?, title, colors }` with `colors` in WUBRG order, the same shape
+`PieInspector` accepts in `overrides`. The example template is `{ typeLine, text }`: a main
+card type and rules text the inspection matches, for an editor to give a name, mana cost and
+stats and render in whichever color it wants to show. Keyword examples use the keyword's most
+common printed line without colored mana. The function takes no arguments and returns a fresh
+object on each call. Catalog generation does not read project cards or evaluate inspections.
+A build can serialize the catalog with `JSON.stringify(catalog)` for offline delivery.
 
 #### Future card evaluation
 

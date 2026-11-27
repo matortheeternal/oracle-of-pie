@@ -1,11 +1,18 @@
 import { COLORS } from './ColorProfile.js';
 import PieInspector from './PieInspector.js';
-import EXAMPLES from './inspectionCatalogExamples.json' with { type: 'json' };
+import { PIE_CONDITIONS } from './conditions/index.js';
 
-const SCHEMA_VERSION = 2;
+const SCHEMA_VERSION = 3;
 
-function describeException({ id, title, colors }) {
-    return { id, title, colors: COLORS.filter(color => colors.includes(color)) };
+function describeException({ condition, arguments: args, title, colors }) {
+    const ordered = COLORS.filter(color => colors.includes(color));
+    return { condition: condition.id, ...args, title, colors: ordered };
+}
+
+function conditionsFor(inspection) {
+    return PIE_CONDITIONS
+        .filter(condition => condition.appliesTo(inspection))
+        .map(condition => condition.id);
 }
 
 function describeInspection(inspection) {
@@ -13,12 +20,15 @@ function describeInspection(inspection) {
     return {
         id, title, group, subgroup, description,
         tiers: tiers.toJSON(),
+        conditions: conditionsFor(inspection),
         exceptions: exceptions.map(describeException),
-        examples: structuredClone(EXAMPLES[id] ?? [])
+        scryfall: inspection.scryfall,
+        example: structuredClone(inspection.example)
     };
 }
 
 export function getInspectionCatalog() {
     const inspections = PieInspector.createInspections({}).map(describeInspection);
-    return { schemaVersion: SCHEMA_VERSION, inspections };
+    const conditions = PIE_CONDITIONS.map(condition => condition.toJSON());
+    return { schemaVersion: SCHEMA_VERSION, conditions, inspections };
 }
