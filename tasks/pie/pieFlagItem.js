@@ -43,10 +43,10 @@ function tierEvidence(flag) {
 const COLOR_NAMES = { W: 'White', U: 'Blue', B: 'Black', R: 'Red', G: 'Green' };
 
 function citationComparison(flag) {
-    const differences = flag.offending.map(color => {
-        const observed = flag.tiers[color].tier;
+    const differences = Object.entries(flag.tiers).map(([color, { tier: observed }]) => {
         const effective = flag.effectiveTiers[color].tier;
         const name = COLOR_NAMES[color];
+        if (observed === effective) return `${name}: ${effective} in both`;
         return `${name}: ${observed} by frequency, ${effective} with citation`;
     });
     return { label: flag.citation.source, text: differences.join(' · ') };
