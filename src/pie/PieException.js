@@ -1,12 +1,13 @@
 import Query from '../evaluators/Query.js';
 import Citation from './Citation.js';
+import { PRIMARY } from './ColorTier.js';
 
 export default class PieException {
-    constructor({ id, title, tiers, cites, match }) {
+    constructor({ id, title, colors, cites, match }) {
         this.id = id;
         this.title = title;
+        this.colors = colors;
         this.citation = Citation.of(cites);
-        this.overrides = tiers ?? this.citation.tiers.listed;
         this.query = Query.compile(match);
     }
 
@@ -15,6 +16,7 @@ export default class PieException {
     }
 
     tiersOver(baseTiers) {
-        return baseTiers.withOverrides(this.overrides, `exception ${this.id}`);
+        const allowed = Object.fromEntries(this.colors.map(color => [color, PRIMARY]));
+        return baseTiers.withOverrides(allowed, `exception ${this.id}`);
     }
 }

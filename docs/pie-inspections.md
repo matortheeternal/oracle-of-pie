@@ -15,11 +15,11 @@ tier overrides, and project configuration affect a flag.
 | --- | --- | --- |
 | Counters spells | `counterspell` | — |
 | Counters abilities | `counter-ability` | — |
-| Destroys creatures | `destroy-creature` | Replaced by a random card for its controller ("Polymorph")<br>Land creatures (Land destruction)<br>Creatures with defender (R tertiary)<br>Creatures with flying (Destroy target creature with flying)<br>Attacking or blocking creatures (Destroy target attacking or blocking creature.) |
-| Exiles creatures | `exile-creature` | Replaced by a random card for its controller ("Polymorph")<br>Creatures with flying (G tertiary) |
+| Destroys creatures | `destroy-creature` | Replaced by a random card for its controller (U, R; "Polymorph")<br>Land creatures (B, R, G; Land destruction)<br>Creatures with defender (R)<br>Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
+| Exiles creatures | `exile-creature` | Replaced by a random card for its controller (U, R; "Polymorph")<br>Creatures with flying (G) |
 | Returns creatures to hand | `bounce-creature` | — |
-| Makes opponents sacrifice | `edict` | Creatures with flying (Destroy target creature with flying)<br>Attacking or blocking creatures (Destroy target attacking or blocking creature.) |
-| Lowers toughness | `shrink-creature` | Creatures with flying (Destroy target creature with flying) |
+| Makes opponents sacrifice | `edict` | Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
+| Lowers toughness | `shrink-creature` | Creatures with flying (G; Destroy target creature with flying) |
 | Removes artifacts | `destroy-artifact` | — |
 | Removes enchantments | `destroy-enchantment` | — |
 
@@ -27,8 +27,8 @@ tier overrides, and project configuration affect a flag.
 
 | Inspection | ID | Exceptions |
 | --- | --- | --- |
-| Deals direct damage to creatures | `damage-creature` | Redirected prevented damage (Damage redirection)<br>Creatures with flying (G primary, W secondary)<br>Damage scaled by a creature's power or toughness (G primary)<br>Attacking or blocking creatures (Deal N damage to target attacking or blocking creature.)<br>Tapped creatures (W secondary) |
-| Deals direct damage to players | `damage-player` | Redirected prevented damage (Damage redirection) |
+| Deals direct damage to creatures | `damage-creature` | Redirected prevented damage (W; Damage redirection)<br>Creatures with flying (G, W)<br>Damage scaled by a creature's power or toughness (G)<br>Attacking or blocking creatures (W; Deal N damage to target attacking or blocking creature.)<br>Tapped creatures (W) |
+| Deals direct damage to players | `damage-player` | Redirected prevented damage (W; Damage redirection) |
 | Creature deals damage equal to its power | `bite` | — |
 | Fights | `fight` | — |
 
@@ -36,7 +36,7 @@ tier overrides, and project configuration affect a flag.
 
 | Inspection | ID | Exceptions |
 | --- | --- | --- |
-| Makes opponents discard | `discard-opponent` | Discarding paired with drawing ("Wheeling") |
+| Makes opponents discard | `discard-opponent` | Discarding paired with drawing (R; "Wheeling") |
 | Searches the library for a nonland card | `tutor-nonland` | — |
 | Draws cards | `draw-cards` | — |
 | Draws, then discards | `loot` | — |
@@ -56,8 +56,8 @@ tier overrides, and project configuration affect a flag.
 | Inspection | ID | Exceptions |
 | --- | --- | --- |
 | Puts lands from the library onto the battlefield | `land-ramp` | — |
-| Creatures that tap for mana | `mana-dork` | Mana paid for by sacrificing another permanent (Mana production, temporary) |
-| Untaps your permanents en masse | `extra-untap` | Untapping creatures for an additional combat (Extra attack)<br>Untapping creatures (Untapping creatures) |
+| Creatures that tap for mana | `mana-dork` | Mana paid for by sacrificing another permanent (B, R; Mana production, temporary) |
+| Untaps your permanents en masse | `extra-untap` | Untapping creatures for an additional combat (W, R; Extra attack)<br>Untapping creatures (W, U, G; Untapping creatures) |
 
 ### Control
 
@@ -93,7 +93,7 @@ tier overrides, and project configuration affect a flag.
 | Inspection | ID | Exceptions |
 | --- | --- | --- |
 | Can’t be blocked | `unblockable` | — |
-| Pumps its own power | `firebreathing` | Power boosts bundled with unblockability (U tertiary) |
+| Pumps its own power | `firebreathing` | Power boosts bundled with unblockability (U) |
 | Pumps itself +N/+N | `shade-pump` | — |
 | Adds combat phases | `extra-combat-phase` | — |
 
@@ -111,11 +111,11 @@ tier overrides, and project configuration affect a flag.
 | Lifelink | `keyword-lifelink` | — |
 | Menace | `keyword-menace` | — |
 | Reach | `keyword-reach` | — |
-| Trample | `keyword-trample` | Demons (B secondary) |
+| Trample | `keyword-trample` | Demons (B) |
 | Vigilance | `keyword-vigilance` | — |
 | Defender | `keyword-defender` | — |
 | Flash | `keyword-flash` | — |
-| Ward | `keyword-ward` | Ward costs paid in life (Ward (for life))<br>Non-mana ward costs (B primary) |
+| Ward | `keyword-ward` | Ward costs paid in life (B, R; Ward (for life))<br>Non-mana ward costs (B) |
 | Prowess | `keyword-prowess` | — |
 
 ### Keywords / Returning

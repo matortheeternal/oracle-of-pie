@@ -2,12 +2,10 @@ import { COLORS } from './ColorProfile.js';
 import PieInspector from './PieInspector.js';
 import EXAMPLES from './inspectionCatalogExamples.json' with { type: 'json' };
 
-const SCHEMA_VERSION = 1;
+const SCHEMA_VERSION = 2;
 
-function describeException({ id, title, overrides }) {
-    const colors = COLORS.filter(color => Object.hasOwn(overrides, color));
-    const tiers = Object.fromEntries(colors.map(color => [color, overrides[color].name]));
-    return { id, title, tiers };
+function describeException({ id, title, colors }) {
+    return { id, title, colors: COLORS.filter(color => colors.includes(color)) };
 }
 
 function describeInspection(inspection) {

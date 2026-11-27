@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { CardColors, ColorTiers, Oracle, PieInspector } from '../../src/index.js';
-import { PRIMARY } from '../../src/pie/ColorTier.js';
 
 test('an exempt occurrence does not hide a later violation', () => {
     const inspector = new PieInspector({
@@ -13,7 +12,7 @@ test('an exempt occurrence does not hide a later violation', () => {
             exceptions: [{
                 id: 'one-damage',
                 match: { fixedAmount: 1 },
-                tiers: { U: PRIMARY }
+                colors: ['U']
             }]
         }]
     });
