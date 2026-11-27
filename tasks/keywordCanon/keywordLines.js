@@ -11,9 +11,10 @@ function startsWithKeyword(text, keyword) {
     return new RegExp(`^${escaped}(?![\\w'-])`, 'i').test(text);
 }
 
-function listsKeyword(line, keyword) {
-    if (SENTENCE_END.test(line)) return false;
-    return line.split(LIST_SEPARATOR).some(item => startsWithKeyword(item, keyword));
+function listedItem(line, keyword) {
+    if (SENTENCE_END.test(line)) return null;
+    const items = line.split(LIST_SEPARATOR);
+    return items.find(item => startsWithKeyword(item, keyword)) ?? null;
 }
 
 function opensCostLine(line, keyword) {
@@ -21,15 +22,20 @@ function opensCostLine(line, keyword) {
     return line.slice(keyword.length).startsWith(COST_DASH);
 }
 
-function isAbilityLine(line, keyword) {
-    if (line.slice(keyword.length).startsWith(ABILITY_WORD_DASH)) return false;
-    return listsKeyword(line, keyword) || opensCostLine(line, keyword);
+function abilityText(line, keyword) {
+    if (line.slice(keyword.length).startsWith(ABILITY_WORD_DASH)) return null;
+    if (opensCostLine(line, keyword)) return line;
+    return listedItem(line, keyword);
 }
 
 export function textLines(text) {
     return text.replace(REMINDER, '').split(LINE_BREAK).map(line => line.trim());
 }
 
-export function hasAbilityLine(lines, keyword) {
-    return lines.some(line => isAbilityLine(line, keyword));
+export function abilityTextIn(lines, keyword) {
+    for (const line of lines) {
+        const text = abilityText(line, keyword);
+        if (text) return text;
+    }
+    return null;
 }

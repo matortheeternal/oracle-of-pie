@@ -8,6 +8,10 @@
             "B": "tertiary",
             "R": "secondary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Affinity for artifacts"
         }
     },
     "afflict": {
@@ -19,6 +23,10 @@
             "B": "primary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Afflict 2"
         }
     },
     "afterlife": {
@@ -30,6 +38,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Afterlife 1"
         }
     },
     "aftermath": {
@@ -41,6 +53,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Aftermath"
         }
     },
     "amplify": {
@@ -52,6 +68,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Amplify 1"
         }
     },
     "annihilator": {
@@ -63,6 +83,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Annihilator 2"
         }
     },
     "ascend": {
@@ -74,6 +98,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Ascend"
         }
     },
     "assist": {
@@ -85,6 +113,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Assist"
         }
     },
     "aura swap": {
@@ -96,6 +128,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Enchantment",
+            "text": "Aura swap {2}{U}"
         }
     },
     "awaken": {
@@ -107,6 +143,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Awaken 3—{4}{U}"
         }
     },
     "backup": {
@@ -118,6 +158,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Backup 1"
         }
     },
     "banding": {
@@ -129,6 +173,10 @@
             "B": "none",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Banding"
         }
     },
     "bargain": {
@@ -140,6 +188,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Bargain"
         }
     },
     "basic landcycling": {
@@ -151,6 +203,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Basic landcycling {2}"
         }
     },
     "battle cry": {
@@ -162,6 +218,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Battle cry"
         }
     },
     "beam me up": {
@@ -173,6 +233,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Beam me up {2}{W}"
         }
     },
     "bestow": {
@@ -184,6 +248,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Bestow {3}{B}"
         }
     },
     "blitz": {
@@ -195,6 +263,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Blitz {2}{R}"
         }
     },
     "bloodthirst": {
@@ -206,6 +278,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Bloodthirst 1"
         }
     },
     "bushido": {
@@ -217,6 +293,10 @@
             "B": "secondary",
             "R": "secondary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Bushido 1"
         }
     },
     "buyback": {
@@ -228,6 +308,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Buyback {3}"
         }
     },
     "cascade": {
@@ -239,6 +323,10 @@
             "B": "none",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Cascade"
         }
     },
     "casualty": {
@@ -250,6 +338,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Casualty 1"
         }
     },
     "champion": {
@@ -261,6 +353,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Champion a creature"
         }
     },
     "changeling": {
@@ -272,6 +368,10 @@
             "B": "primary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Changeling"
         }
     },
     "choose a background": {
@@ -283,6 +383,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Choose a Background"
         }
     },
     "cipher": {
@@ -294,6 +398,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Cipher"
         }
     },
     "cleave": {
@@ -305,6 +413,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Cleave {3}{U}{U}"
         }
     },
     "commander ninjutsu": {
@@ -316,6 +428,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Commander ninjutsu {U}{B}"
         }
     },
     "compleated": {
@@ -327,6 +443,10 @@
             "B": "primary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Planeswalker",
+            "text": "Compleated"
         }
     },
     "conspire": {
@@ -338,6 +458,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Conspire"
         }
     },
     "convoke": {
@@ -349,6 +473,10 @@
             "B": "secondary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Convoke"
         }
     },
     "craft": {
@@ -360,6 +488,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "Craft with six artifacts {4}"
         }
     },
     "crew": {
@@ -371,6 +503,10 @@
             "B": "primary",
             "R": "primary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "Crew 2"
         }
     },
     "cumulative upkeep": {
@@ -382,6 +518,10 @@
             "B": "secondary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Enchantment",
+            "text": "Cumulative upkeep {1}"
         }
     },
     "cycling": {
@@ -393,6 +533,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Cycling {2}"
         }
     },
     "dash": {
@@ -404,6 +548,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Dash {1}{R}"
         }
     },
     "daybound": {
@@ -415,6 +563,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Daybound"
         }
     },
     "deathtouch": {
@@ -426,6 +578,10 @@
             "B": "primary",
             "R": "none",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Deathtouch"
         }
     },
     "decayed": {
@@ -437,6 +593,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Decayed"
         }
     },
     "defender": {
@@ -448,6 +608,10 @@
             "B": "secondary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Defender"
         }
     },
     "delve": {
@@ -459,6 +623,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Delve"
         }
     },
     "demonstrate": {
@@ -470,6 +638,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Demonstrate"
         }
     },
     "desertwalk": {
@@ -481,6 +653,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Desertwalk"
         }
     },
     "dethrone": {
@@ -492,6 +668,10 @@
             "B": "none",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Dethrone"
         }
     },
     "devoid": {
@@ -503,6 +683,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Devoid"
         }
     },
     "devour": {
@@ -514,6 +698,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Devour 1"
         }
     },
     "disguise": {
@@ -525,6 +713,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Disguise {5}"
         }
     },
     "disturb": {
@@ -536,6 +728,10 @@
             "B": "tertiary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Disturb {2}{U}"
         }
     },
     "doctor's companion": {
@@ -547,6 +743,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Doctor's companion"
         }
     },
     "double agenda": {
@@ -558,6 +758,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Conspiracy",
+            "text": "Double agenda"
         }
     },
     "double strike": {
@@ -569,6 +773,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Double strike"
         }
     },
     "dredge": {
@@ -580,6 +788,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Dredge 2"
         }
     },
     "echo": {
@@ -591,6 +803,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Echo {4}"
         }
     },
     "embalm": {
@@ -602,6 +818,10 @@
             "B": "none",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Embalm {3}{U}"
         }
     },
     "emerge": {
@@ -613,6 +833,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Emerge {6}{U}"
         }
     },
     "enchant": {
@@ -624,6 +848,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Enchantment",
+            "text": "Enchant creature"
         }
     },
     "encore": {
@@ -635,6 +863,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Encore {12}"
         }
     },
     "enlist": {
@@ -646,6 +878,10 @@
             "B": "none",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Enlist"
         }
     },
     "entwine": {
@@ -657,6 +893,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Entwine {2}"
         }
     },
     "epic": {
@@ -668,6 +908,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Epic"
         }
     },
     "equip": {
@@ -679,6 +923,10 @@
             "B": "primary",
             "R": "primary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "Equip {2}"
         }
     },
     "escalate": {
@@ -690,6 +938,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Escalate {1}"
         }
     },
     "escape": {
@@ -701,6 +953,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Escape—{3}{B}{B}, Exile four other cards from your graveyard."
         }
     },
     "eternalize": {
@@ -712,6 +968,10 @@
             "B": "tertiary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Eternalize {4}{G}{G}"
         }
     },
     "evoke": {
@@ -723,6 +983,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Evoke—Exile a white card from your hand."
         }
     },
     "evolve": {
@@ -734,6 +998,10 @@
             "B": "tertiary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Evolve"
         }
     },
     "exalted": {
@@ -745,6 +1013,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Exalted"
         }
     },
     "exploit": {
@@ -756,6 +1028,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Exploit"
         }
     },
     "extort": {
@@ -767,6 +1043,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Extort"
         }
     },
     "fabricate": {
@@ -778,6 +1058,10 @@
             "B": "primary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Fabricate 1"
         }
     },
     "fading": {
@@ -789,6 +1073,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Fading 5"
         }
     },
     "fear": {
@@ -800,6 +1088,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Fear"
         }
     },
     "firebending": {
@@ -811,6 +1103,10 @@
             "B": "primary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Firebending 1"
         }
     },
     "first strike": {
@@ -822,6 +1118,10 @@
             "B": "secondary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "First strike"
         }
     },
     "flanking": {
@@ -833,6 +1133,10 @@
             "B": "tertiary",
             "R": "secondary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Flanking"
         }
     },
     "flash": {
@@ -844,6 +1148,10 @@
             "B": "secondary",
             "R": "secondary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Flash"
         }
     },
     "flashback": {
@@ -855,6 +1163,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Flashback—Sacrifice a creature."
         }
     },
     "flying": {
@@ -866,6 +1178,10 @@
             "B": "primary",
             "R": "secondary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Flying"
         }
     },
     "for mirrodin!": {
@@ -877,6 +1193,10 @@
             "B": "none",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "For Mirrodin!"
         }
     },
     "forestcycling": {
@@ -888,6 +1208,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Forestcycling {2}"
         }
     },
     "forestwalk": {
@@ -899,6 +1223,10 @@
             "B": "tertiary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Forestwalk"
         }
     },
     "foretell": {
@@ -910,6 +1238,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Foretell {0}"
         }
     },
     "fortify": {
@@ -921,6 +1253,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "Fortify {3}"
         }
     },
     "freerunning": {
@@ -932,6 +1268,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Freerunning—Return a blue creature you control to its owner's hand."
         }
     },
     "fuse": {
@@ -943,6 +1283,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Fuse"
         }
     },
     "gift": {
@@ -954,6 +1298,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Gift a card"
         }
     },
     "graft": {
@@ -965,6 +1313,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Graft 2"
         }
     },
     "gravestorm": {
@@ -976,6 +1328,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Gravestorm"
         }
     },
     "halflingcycling": {
@@ -987,6 +1343,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Land",
+            "text": "Halflingcycling {4}"
         }
     },
     "harmonize": {
@@ -998,6 +1358,10 @@
             "B": "none",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Harmonize {4}{G}"
         }
     },
     "haste": {
@@ -1009,6 +1373,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Haste"
         }
     },
     "haunt": {
@@ -1020,6 +1388,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Haunt"
         }
     },
     "hexproof": {
@@ -1031,6 +1403,10 @@
             "B": "secondary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Hexproof"
         }
     },
     "hexproof from": {
@@ -1042,6 +1418,10 @@
             "B": "primary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Hexproof from monocolored"
         }
     },
     "hidden agenda": {
@@ -1053,6 +1433,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Conspiracy",
+            "text": "Hidden agenda"
         }
     },
     "hideaway": {
@@ -1064,6 +1448,10 @@
             "B": "tertiary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Land",
+            "text": "Hideaway 4"
         }
     },
     "horsemanship": {
@@ -1075,6 +1463,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Horsemanship"
         }
     },
     "impending": {
@@ -1086,6 +1478,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Impending 4—{1}{G}{G}"
         }
     },
     "improvise": {
@@ -1097,6 +1493,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Improvise"
         }
     },
     "increment": {
@@ -1108,6 +1508,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Increment"
         }
     },
     "indestructible": {
@@ -1119,6 +1523,10 @@
             "B": "primary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Indestructible"
         }
     },
     "infect": {
@@ -1130,6 +1538,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Infect"
         }
     },
     "ingest": {
@@ -1141,6 +1553,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Ingest"
         }
     },
     "intimidate": {
@@ -1152,6 +1568,10 @@
             "B": "primary",
             "R": "secondary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Intimidate"
         }
     },
     "islandcycling": {
@@ -1163,6 +1583,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Islandcycling {2}"
         }
     },
     "islandwalk": {
@@ -1174,6 +1598,10 @@
             "B": "none",
             "R": "tertiary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Islandwalk"
         }
     },
     "job select": {
@@ -1185,6 +1613,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "Job select"
         }
     },
     "jump-start": {
@@ -1196,6 +1628,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Jump-start"
         }
     },
     "kicker": {
@@ -1207,6 +1643,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Kicker {4}"
         }
     },
     "legendary landwalk": {
@@ -1218,6 +1658,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "legendary landwalk"
         }
     },
     "level up": {
@@ -1229,6 +1673,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Level up {1}"
         }
     },
     "lifelink": {
@@ -1240,6 +1688,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Lifelink"
         }
     },
     "living metal": {
@@ -1251,6 +1703,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Living metal"
         }
     },
     "living weapon": {
@@ -1262,6 +1718,10 @@
             "B": "tertiary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "Living weapon"
         }
     },
     "madness": {
@@ -1273,6 +1733,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Madness {0}"
         }
     },
     "mayhem": {
@@ -1284,6 +1748,10 @@
             "B": "primary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Mayhem {2}"
         }
     },
     "megamorph": {
@@ -1295,6 +1763,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Megamorph {1}{G}"
         }
     },
     "melee": {
@@ -1306,6 +1778,10 @@
             "B": "none",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Melee"
         }
     },
     "menace": {
@@ -1317,6 +1793,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Menace"
         }
     },
     "mentor": {
@@ -1328,6 +1808,10 @@
             "B": "none",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Mentor"
         }
     },
     "miracle": {
@@ -1339,6 +1823,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Miracle {W}"
         }
     },
     "mobilize": {
@@ -1350,6 +1838,10 @@
             "B": "primary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Mobilize 1"
         }
     },
     "modular": {
@@ -1361,6 +1853,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Modular 1"
         }
     },
     "more than meets the eye": {
@@ -1372,6 +1868,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "More Than Meets the Eye {1}{R}{W}{B}"
         }
     },
     "morph": {
@@ -1383,6 +1883,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Morph {2}"
         }
     },
     "mountaincycling": {
@@ -1394,6 +1898,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Mountaincycling {2}"
         }
     },
     "mountainwalk": {
@@ -1405,6 +1913,10 @@
             "B": "none",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Mountainwalk"
         }
     },
     "multikicker": {
@@ -1416,6 +1928,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Multikicker {2}"
         }
     },
     "mutate": {
@@ -1427,6 +1943,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Mutate {5}{U}"
         }
     },
     "myriad": {
@@ -1438,6 +1958,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Myriad"
         }
     },
     "nightbound": {
@@ -1449,6 +1973,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Nightbound"
         }
     },
     "ninjutsu": {
@@ -1460,6 +1988,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Ninjutsu {3}{B}"
         }
     },
     "nonbasic landwalk": {
@@ -1471,6 +2003,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Nonbasic landwalk"
         }
     },
     "offspring": {
@@ -1482,6 +2018,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Offspring {2}"
         }
     },
     "outlast": {
@@ -1493,6 +2033,10 @@
             "B": "tertiary",
             "R": "none",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Outlast {2}"
         }
     },
     "overload": {
@@ -1504,6 +2048,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Overload {4}{C}"
         }
     },
     "paradigm": {
@@ -1515,6 +2063,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Paradigm"
         }
     },
     "partner": {
@@ -1526,6 +2078,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Partner"
         }
     },
     "partner with": {
@@ -1537,6 +2093,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Partner with Yannik"
         }
     },
     "persist": {
@@ -1548,6 +2108,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Persist"
         }
     },
     "phasing": {
@@ -1559,6 +2123,10 @@
             "B": "none",
             "R": "none",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Phasing"
         }
     },
     "plainscycling": {
@@ -1570,6 +2138,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Plainscycling {2}"
         }
     },
     "plainswalk": {
@@ -1581,6 +2153,10 @@
             "B": "none",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Plainswalk"
         }
     },
     "plot": {
@@ -1592,6 +2168,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Plot {3}{U}"
         }
     },
     "protection": {
@@ -1603,6 +2183,10 @@
             "B": "secondary",
             "R": "secondary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Protection from black"
         }
     },
     "prototype": {
@@ -1614,6 +2198,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Prototype {1}{W}{W} — 3/3"
         }
     },
     "provoke": {
@@ -1625,6 +2213,10 @@
             "B": "none",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Provoke"
         }
     },
     "prowess": {
@@ -1636,6 +2228,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Prowess"
         }
     },
     "prowl": {
@@ -1647,6 +2243,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Prowl {1}{B}"
         }
     },
     "rampage": {
@@ -1658,6 +2258,10 @@
             "B": "none",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Rampage 2"
         }
     },
     "ravenous": {
@@ -1669,6 +2273,10 @@
             "B": "none",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Ravenous"
         }
     },
     "reach": {
@@ -1680,6 +2288,10 @@
             "B": "tertiary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Reach"
         }
     },
     "read ahead": {
@@ -1691,6 +2303,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Enchantment",
+            "text": "Read ahead"
         }
     },
     "rebound": {
@@ -1702,6 +2318,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Rebound"
         }
     },
     "reconfigure": {
@@ -1713,6 +2333,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Reconfigure {2}"
         }
     },
     "recover": {
@@ -1724,6 +2348,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Recover—Pay half your life, rounded up."
         }
     },
     "reinforce": {
@@ -1735,6 +2363,10 @@
             "B": "none",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Reinforce 1—{1}{W}"
         }
     },
     "renown": {
@@ -1746,6 +2378,10 @@
             "B": "none",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Renown 1"
         }
     },
     "replicate": {
@@ -1757,6 +2393,10 @@
             "B": "tertiary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Replicate {2}"
         }
     },
     "retrace": {
@@ -1768,6 +2408,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Retrace"
         }
     },
     "riot": {
@@ -1779,6 +2423,10 @@
             "B": "none",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Riot"
         }
     },
     "ripple": {
@@ -1790,6 +2438,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Ripple 4"
         }
     },
     "saddle": {
@@ -1801,6 +2453,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Saddle 1"
         }
     },
     "scavenge": {
@@ -1812,6 +2468,10 @@
             "B": "primary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Scavenge {0}"
         }
     },
     "shadow": {
@@ -1823,6 +2483,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Shadow"
         }
     },
     "shroud": {
@@ -1834,6 +2498,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Shroud"
         }
     },
     "skulk": {
@@ -1845,6 +2513,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Skulk"
         }
     },
     "slivercycling": {
@@ -1856,6 +2528,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Slivercycling {3}"
         }
     },
     "sneak": {
@@ -1867,6 +2543,10 @@
             "B": "primary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Sneak {W}{B}"
         }
     },
     "soulbond": {
@@ -1878,6 +2558,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Soulbond"
         }
     },
     "soulshift": {
@@ -1889,6 +2573,10 @@
             "B": "primary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Soulshift 4"
         }
     },
     "spectacle": {
@@ -1900,6 +2588,10 @@
             "B": "primary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Spectacle {R}"
         }
     },
     "splice": {
@@ -1911,6 +2603,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Splice onto Arcane {1}{U}"
         }
     },
     "split second": {
@@ -1922,6 +2618,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Split second"
         }
     },
     "spree": {
@@ -1933,6 +2633,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Spree"
         }
     },
     "squad": {
@@ -1944,6 +2648,10 @@
             "B": "tertiary",
             "R": "tertiary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Squad {2}"
         }
     },
     "start your engines!": {
@@ -1955,6 +2663,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Start your engines!"
         }
     },
     "station": {
@@ -1966,6 +2678,10 @@
             "B": "tertiary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Artifact",
+            "text": "Station"
         }
     },
     "storied": {
@@ -1977,6 +2693,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Storied"
         }
     },
     "storm": {
@@ -1988,6 +2708,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Storm"
         }
     },
     "sunburst": {
@@ -1999,6 +2723,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Sunburst"
         }
     },
     "surge": {
@@ -2010,6 +2738,10 @@
             "B": "none",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Surge {1}{R}"
         }
     },
     "suspend": {
@@ -2021,6 +2753,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Suspend 3—{0}"
         }
     },
     "swampcycling": {
@@ -2032,6 +2768,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Swampcycling {2}"
         }
     },
     "swampwalk": {
@@ -2043,6 +2783,10 @@
             "B": "primary",
             "R": "none",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Swampwalk"
         }
     },
     "teamwork": {
@@ -2054,6 +2798,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Teamwork 2"
         }
     },
     "tiered": {
@@ -2065,6 +2813,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Instant",
+            "text": "Tiered"
         }
     },
     "toxic": {
@@ -2076,6 +2828,10 @@
             "B": "primary",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Toxic 1"
         }
     },
     "training": {
@@ -2087,6 +2843,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Training"
         }
     },
     "trample": {
@@ -2098,6 +2858,10 @@
             "B": "secondary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Trample"
         }
     },
     "transfigure": {
@@ -2109,6 +2873,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Transfigure {1}{B}{B}"
         }
     },
     "transmute": {
@@ -2120,6 +2888,10 @@
             "B": "primary",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Transmute {1}{U}{U}"
         }
     },
     "tribute": {
@@ -2131,6 +2903,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Tribute 2"
         }
     },
     "umbra armor": {
@@ -2142,6 +2918,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Enchantment",
+            "text": "Umbra armor"
         }
     },
     "undaunted": {
@@ -2153,6 +2933,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Sorcery",
+            "text": "Undaunted"
         }
     },
     "undying": {
@@ -2164,6 +2948,10 @@
             "B": "primary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Undying"
         }
     },
     "unearth": {
@@ -2175,6 +2963,10 @@
             "B": "primary",
             "R": "secondary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Unearth {7}"
         }
     },
     "unleash": {
@@ -2186,6 +2978,10 @@
             "B": "primary",
             "R": "primary",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Unleash"
         }
     },
     "vanishing": {
@@ -2197,6 +2993,10 @@
             "B": "tertiary",
             "R": "tertiary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Vanishing 3"
         }
     },
     "vigilance": {
@@ -2208,6 +3008,10 @@
             "B": "tertiary",
             "R": "tertiary",
             "G": "secondary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Vigilance"
         }
     },
     "ward": {
@@ -2219,6 +3023,10 @@
             "B": "secondary",
             "R": "secondary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Ward {2}"
         }
     },
     "warp": {
@@ -2230,6 +3038,10 @@
             "B": "tertiary",
             "R": "primary",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Warp {4}"
         }
     },
     "web-slinging": {
@@ -2241,6 +3053,10 @@
             "B": "none",
             "R": "none",
             "G": "primary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Web-slinging {W}"
         }
     },
     "wither": {
@@ -2252,6 +3068,10 @@
             "B": "primary",
             "R": "primary",
             "G": "tertiary"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Wither"
         }
     },
     "wizardcycling": {
@@ -2263,6 +3083,10 @@
             "B": "none",
             "R": "none",
             "G": "none"
+        },
+        "example": {
+            "typeLine": "Creature",
+            "text": "Wizardcycling {3}"
         }
     }
 }
