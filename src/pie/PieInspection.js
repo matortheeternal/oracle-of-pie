@@ -12,9 +12,9 @@ function canonTiersOf(id, source = CANON) {
 }
 
 function floorsOf(spec, citation) {
-    const { atLeast, allowedWherever } = spec;
+    const { atLeast, allowedWherever, citationOmits = [] } = spec;
     return [
-        citation?.tiers,
+        citation?.tiersOmitting(citationOmits),
         atLeast && ColorTiers.fromNames(atLeast, HAND_FLOOR),
         allowedWherever && canonTiersOf(allowedWherever, `canon ${allowedWherever}`)
     ].filter(Boolean);

@@ -35,6 +35,18 @@ export const STAT_SCALED_DAMAGE = {
     colors: ['G']
 };
 
+export const CREATURE_COUNT_DAMAGE = {
+    id: 'creature-count',
+    title: 'Damage scaled by the number of creatures you control',
+    match: {
+        any: [
+            { usesCreatureCount: true },
+            { context: { sentence: { definesXByCreatureCount: true } } }
+        ]
+    },
+    colors: ['W']
+};
+
 const COMBATANTS = {
     phrases: { any: [{ hasQualifier: 'attacking' }, { hasQualifier: 'blocking' }] }
 };

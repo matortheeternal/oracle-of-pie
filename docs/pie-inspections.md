@@ -27,7 +27,7 @@ tier overrides, and project configuration affect a flag.
 
 | Inspection | ID | Exceptions |
 | --- | --- | --- |
-| Deals direct damage to creatures | `damage-creature` | Redirected prevented damage (W; Damage redirection)<br>Creatures with flying (G)<br>Damage scaled by a creature's power or toughness (G)<br>Attacking or blocking creatures (W; Deal N damage to target attacking or blocking creature.)<br>Tapped creatures (W) |
+| Deals direct damage to creatures | `damage-creature` | Redirected prevented damage (W; Damage redirection)<br>Creatures with flying (G)<br>Damage scaled by a creature's power or toughness (G)<br>Damage scaled by the number of creatures you control (W)<br>Attacking or blocking creatures (W; Deal N damage to target attacking or blocking creature.)<br>Tapped creatures (W) |
 | Deals direct damage to players | `damage-player` | Redirected prevented damage (W; Damage redirection) |
 | Creature deals damage equal to its power | `bite` | — |
 | Fights | `fight` | — |

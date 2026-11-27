@@ -16,6 +16,7 @@ const CONDITIONAL_CONTINUATION = new RegExp(
     '^,? ?(?:and |then |or )(?=(?:if|when|whenever|until|as long as)\\b)', 'i'
 );
 const X_FROM_CREATURE_STATS = /\bwhere X is [^.]*\b(?:power|toughness)\b/i;
+const X_FROM_CREATURE_COUNT = /\bwhere X is the number of creatures you control\b/i;
 
 function sentenceMatch(sentence, text, statement) {
     const body = text.replace(THEN, '');
@@ -111,6 +112,10 @@ export default class Sentence extends Parser {
 
     get definesXByCreatureStats() {
         return X_FROM_CREATURE_STATS.test(this.raw);
+    }
+
+    get definesXByCreatureCount() {
+        return X_FROM_CREATURE_COUNT.test(this.raw);
     }
 
     get dependsOnPrevious() {

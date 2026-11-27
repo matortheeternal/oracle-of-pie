@@ -22,6 +22,12 @@ export default class Citation {
         return ColorTiers.fromNames(this.tierNames, this.label);
     }
 
+    tiersOmitting(colors) {
+        const kept = Object.entries(this.tierNames)
+            .filter(([color]) => !colors.includes(color));
+        return ColorTiers.fromNames(Object.fromEntries(kept), this.label);
+    }
+
     toJSON() {
         const { title, url } = MECHANICAL_COLOR_PIE_SOURCE;
         return { source: title, url, line: this.line, tiers: this.tierNames };

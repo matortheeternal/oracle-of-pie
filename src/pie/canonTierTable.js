@@ -27,7 +27,7 @@ export const CANON_TIERS = {
         W: 'primary', U: 'none', B: 'tertiary', R: 'none', G: 'primary'
     },
     'damage-creature': {
-        W: 'tertiary', U: 'none', B: 'tertiary', R: 'primary', G: 'none'
+        W: 'none', U: 'none', B: 'tertiary', R: 'primary', G: 'none'
     },
     'damage-player': {
         W: 'none', U: 'none', B: 'secondary', R: 'primary', G: 'none'

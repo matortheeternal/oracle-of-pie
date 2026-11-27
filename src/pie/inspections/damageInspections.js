@@ -1,6 +1,6 @@
 import {
-    REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, COMBATANT_DAMAGE,
-    TAPPED_CREATURE_DAMAGE
+    REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, CREATURE_COUNT_DAMAGE,
+    COMBATANT_DAMAGE, TAPPED_CREATURE_DAMAGE
 } from './exceptions.js';
 
 const ANY_TARGET_DAMAGE = 'Deal N damage to creature, planeswalker, and/or player.';
@@ -12,9 +12,10 @@ export const DAMAGE_INSPECTIONS = [
         title: 'Deals direct damage to creatures',
         group: 'Damage',
         cites: ANY_TARGET_DAMAGE,
+        citationOmits: ['W'],
         exceptions: [
-            REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, COMBATANT_DAMAGE,
-            TAPPED_CREATURE_DAMAGE
+            REDIRECTED_DAMAGE, FLYER_DAMAGE, STAT_SCALED_DAMAGE, CREATURE_COUNT_DAMAGE,
+            COMBATANT_DAMAGE, TAPPED_CREATURE_DAMAGE
         ],
         match: { ...DIRECT_DAMAGE, phrases: { hitsCreature: true } }
     },
