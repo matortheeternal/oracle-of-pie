@@ -15,8 +15,8 @@ tier overrides, and project configuration affect a flag.
 | --- | --- | --- |
 | Counters spells | `counterspell` | — |
 | Counters abilities | `counter-ability` | — |
-| Destroys creatures | `destroy-creature` | Replaced by a random card for its controller (R; "Polymorph")<br>Land creatures (B, R, G; Land destruction)<br>Creatures with defender (R)<br>Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
-| Exiles creatures | `exile-creature` | Replaced by a random card for its controller (R; "Polymorph")<br>Creatures with flying (G) |
+| Destroys creatures | `destroy-creature` | Replaced by a random card for its controller (R; "Polymorph")<br>Replaced by a token for its controller (U)<br>Land creatures (B, R, G; Land destruction)<br>Creatures with defender (R)<br>Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
+| Exiles creatures | `exile-creature` | Replaced by a random card for its controller (R; "Polymorph")<br>Replaced by a token for its controller (U)<br>Creatures with flying (G) |
 | Returns creatures to hand | `bounce-creature` | — |
 | Makes opponents sacrifice | `edict` | Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
 | Lowers toughness | `shrink-creature` | Creatures with flying (G; Destroy target creature with flying) |

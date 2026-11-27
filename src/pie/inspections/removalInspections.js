@@ -1,6 +1,6 @@
 import {
-    FLYER_REMOVAL, FLYER_EXILE, COMBATANT_REMOVAL, POLYMORPH, LAND_DESTRUCTION,
-    WALL_REMOVAL
+    FLYER_REMOVAL, FLYER_EXILE, COMBATANT_REMOVAL, POLYMORPH, TOKEN_EXCHANGE,
+    LAND_DESTRUCTION, WALL_REMOVAL
 } from './exceptions.js';
 
 const OPPOSING_CREATURE = {
@@ -33,7 +33,8 @@ export const REMOVAL_INSPECTIONS = [
         title: 'Destroys creatures',
         group: 'Removal',
         exceptions: [
-            POLYMORPH, LAND_DESTRUCTION, WALL_REMOVAL, FLYER_REMOVAL, COMBATANT_REMOVAL
+            POLYMORPH, TOKEN_EXCHANGE, LAND_DESTRUCTION, WALL_REMOVAL, FLYER_REMOVAL,
+            COMBATANT_REMOVAL
         ],
         match: {
             kind: 'DestroyEffect',
@@ -44,7 +45,7 @@ export const REMOVAL_INSPECTIONS = [
         id: 'exile-creature',
         title: 'Exiles creatures',
         group: 'Removal',
-        exceptions: [POLYMORPH, FLYER_EXILE],
+        exceptions: [POLYMORPH, TOKEN_EXCHANGE, FLYER_EXILE],
         match: {
             kind: 'ExileEffect',
             isTemporary: false,

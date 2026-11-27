@@ -147,6 +147,18 @@ export const POLYMORPH = {
     cites: '"Polymorph"'
 };
 
+const CONTROLLER_GETS_TOKEN = {
+    kind: 'CreateTokenEffect',
+    subject: { canBeOpponent: true }
+};
+
+export const TOKEN_EXCHANGE = {
+    id: 'token-exchange',
+    title: 'Replaced by a token for its controller',
+    match: { context: { cardText: { effects: { any: [CONTROLLER_GETS_TOKEN] } } } },
+    colors: ['U']
+};
+
 export const LAND_DESTRUCTION = {
     id: 'lands',
     title: 'Land creatures',
