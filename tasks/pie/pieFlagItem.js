@@ -43,40 +43,53 @@ function tierEvidence(flag) {
 const COLOR_NAMES = { W: 'White', U: 'Blue', B: 'Black', R: 'Red', G: 'Green' };
 
 function citationComparison(flag) {
-    const withoutCitation = Object.entries(flag.tiers).map(tierReason).join(' · ');
-    const withCitation = Object.entries(flag.effectiveTiers).map(tierReason).join(' · ');
-    return [
-        { label: 'Without the citation allowance', text: withoutCitation },
-        { label: 'Current policy', text: withCitation },
-        {
-            label: 'Why this is here',
-            text: 'The citation allowance suppresses this flag.'
-        }
-    ];
+    const differences = flag.offending.map(color => {
+        const observed = flag.tiers[color].tier;
+        const effective = flag.effectiveTiers[color].tier;
+        const name = COLOR_NAMES[color];
+        return `${name}: ${observed} by frequency, ${effective} with citation`;
+    });
+    return { label: flag.citation.source, text: differences.join(' · ') };
 }
 
-function judgementEvidence(flag) {
-    if (flag.effectiveTiers) return citationComparison(flag);
-    return [{ label: 'Judged as', text: judgementOf(flag) }, ...tierEvidence(flag)];
+function citationQuestion(flags) {
+    const bySeverity = Map.groupBy(flags, severityWord);
+    const judgements = [];
+    for (const [severity, matches] of bySeverity) {
+        const colors = new Set(matches.flatMap(flag => flag.offending));
+        const names = [...colors].map(color => COLOR_NAMES[color]).join(' or ');
+        judgements.push(`${severity} in ${names}`);
+    }
+    return `Is “${flags[0].title}” a color pie ${judgements.join(' or ')}?`;
 }
 
 function questionFor(flags, offending) {
     const [flag] = flags;
-    if (flag.effectiveTiers) {
-        const colors = offending.map(color => COLOR_NAMES[color]).join(' or ');
-        return `Does “${flag.title}” bend or break the color pie in ${colors}?`;
-    }
+    if (flag.effectiveTiers) return citationQuestion(flags);
     if (flags.length > 1) return `Are these color pie flags for “${flag.title}” correct?`;
     const colors = offending.join('');
     return `Is “${flag.title}” a color pie ${severityWord(flag)} in ${colors}?`;
 }
 
 function occurrenceEvidence(flag) {
+    const text = { label: 'Matched text', text: flag.evidence, code: true };
+    if (flag.effectiveTiers)
+        return [text, citationComparison(flag), ...exceptionEvidence(flag)];
     return [
-        { label: 'Matched text', text: flag.evidence, code: true },
-        ...judgementEvidence(flag),
+        text,
+        { label: 'Judged as', text: judgementOf(flag) },
+        ...tierEvidence(flag),
         ...exceptionEvidence(flag),
         ...citationEvidence(flag)
+    ];
+}
+
+function profileEvidence(flag, profile, offending) {
+    const counts = { label: 'Printed monocolor matches', text: canonCounts(profile) };
+    if (flag.effectiveTiers) return [counts];
+    return [
+        { ...counts, label: 'Printed mono cards with this effect' },
+        { label: 'Printed examples', text: printedExamples(profile, offending) }
     ];
 }
 
@@ -90,8 +103,7 @@ export default function pieFlagItem({ id, card, flags, profile }) {
         card,
         evidence: [
             ...flags.flatMap(occurrenceEvidence),
-            { label: 'Printed mono cards with this effect', text: canonCounts(profile) },
-            { label: 'Printed examples', text: printedExamples(profile, offending) },
+            ...profileEvidence(flag, profile, offending),
             { label: 'Verdict', text: VERDICT_HINT }
         ]
     };

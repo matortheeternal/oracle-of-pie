@@ -22,6 +22,11 @@ test('Pull is queued when the citation is the only reason Red avoids a flag', ()
     assert.equal(flag.tiers.R.tier, 'none');
     assert.equal(flag.effectiveTiers.R.tier, 'secondary');
     const row = pieFlagItem({ id: 'pull', card, flags: [flag] });
-    assert.match(row.question, /bend or break the color pie in Red/);
-    assert.ok(row.evidence.some(entry => entry.label === 'Current policy'));
+    assert.match(row.question, /color pie break in Red/);
+    const expectedTier = /Red: none by frequency, secondary with citation/;
+    assert.match(row.evidence[1].text, expectedTier);
+    const haste = review.flags.find(flag => flag.inspection === 'keyword-haste');
+    const hasteRow = pieFlagItem({ id: 'pull', card, flags: [haste] });
+    assert.match(hasteRow.question, /color pie bend in Black/);
+    assert.match(hasteRow.evidence[1].text, /Black: tertiary by frequency/);
 });
