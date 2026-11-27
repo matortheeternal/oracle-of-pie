@@ -1,4 +1,5 @@
 import { COLORS } from '../../src/index.js';
+import { percent } from '../shared/table.js';
 import { severityWord, judgementOf } from './pieJudgement.js';
 
 const VERDICT_HINT = 'Correct = the card really bends or breaks the color pie this way. '
@@ -42,14 +43,31 @@ function tierEvidence(flag) {
 
 const COLOR_NAMES = { W: 'White', U: 'Blue', B: 'Black', R: 'Red', G: 'Green' };
 
-function citationComparison(flag) {
-    const differences = Object.entries(flag.tiers).map(([color, { tier: observed }]) => {
-        const effective = flag.effectiveTiers[color].tier;
-        const name = COLOR_NAMES[color];
-        if (observed === effective) return `${name}: ${effective} in both`;
-        return `${name}: ${observed} by frequency, ${effective} with citation`;
-    });
-    return { label: flag.citation.source, text: differences.join(' · ') };
+function frequencyLine(profile, color, name) {
+    const counts = profile?.counts ?? {};
+    const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
+    if (!total) return '';
+    const share = percent((counts[color] ?? 0) / total);
+    return `${share} of matching monocolor cards printed since 2016 were ${name}.`;
+}
+
+function citationLines(flag, profile, color) {
+    const observed = flag.tiers[color].tier;
+    const effective = flag.effectiveTiers[color].tier;
+    const name = COLOR_NAMES[color];
+    const text = [
+        `${flag.title} is ${observed} in ${name} based on its frequency in canon cards.`,
+        `Maro’s Mechanical Color Pie (2021) lists ${flag.citation.line} as ${effective}`
+            + ` in ${name}.`
+    ].join('\n');
+    const frequency = frequencyLine(profile, color, name);
+    return { label: 'Tier comparison', text, frequency };
+}
+
+function citationComparison(flag, profile) {
+    const changed = flag.offending.filter(color =>
+        flag.tiers[color].tier !== flag.effectiveTiers[color].tier);
+    return changed.map(color => citationLines(flag, profile, color));
 }
 
 function citationQuestion(flags) {
@@ -71,10 +89,10 @@ function questionFor(flags, offending) {
     return `Is “${flag.title}” a color pie ${severityWord(flag)} in ${colors}?`;
 }
 
-function occurrenceEvidence(flag) {
+function occurrenceEvidence(flag, profile) {
     const text = { label: 'Matched text', text: flag.evidence, code: true };
     if (flag.effectiveTiers)
-        return [text, citationComparison(flag), ...exceptionEvidence(flag)];
+        return [text, ...citationComparison(flag, profile), ...exceptionEvidence(flag)];
     return [
         text,
         { label: 'Judged as', text: judgementOf(flag) },
@@ -85,10 +103,9 @@ function occurrenceEvidence(flag) {
 }
 
 function profileEvidence(flag, profile, offending) {
-    const counts = { label: 'Printed monocolor matches', text: canonCounts(profile) };
-    if (flag.effectiveTiers) return [counts];
+    if (flag.effectiveTiers) return [];
     return [
-        { ...counts, label: 'Printed mono cards with this effect' },
+        { label: 'Printed mono cards with this effect', text: canonCounts(profile) },
         { label: 'Printed examples', text: printedExamples(profile, offending) }
     ];
 }
@@ -102,7 +119,7 @@ export default function pieFlagItem({ id, card, flags, profile }) {
         tag: flag.inspection,
         card,
         evidence: [
-            ...flags.flatMap(occurrenceEvidence),
+            ...flags.flatMap(flag => occurrenceEvidence(flag, profile)),
             ...profileEvidence(flag, profile, offending),
             { label: 'Verdict', text: VERDICT_HINT }
         ]
