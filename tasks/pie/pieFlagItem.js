@@ -124,9 +124,9 @@ export default function pieFlagItem({ id, card, flags, profile }) {
         question: questionFor(flags, offending),
         tag: flag.inspection,
         card,
+        mechanic: inspectionWording(flag),
         evidence: [
             ...flags.flatMap(flag => occurrenceEvidence(flag, profile)),
-            { label: 'What this covers', text: inspectionWording(flag).definition },
             ...profileEvidence(flag, profile, offending),
             { label: 'Verdict', text: VERDICT_HINT }
         ]

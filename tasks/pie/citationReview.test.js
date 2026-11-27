@@ -23,8 +23,8 @@ test('Pull is queued when the citation is the only reason Red avoids a flag', ()
     assert.equal(flag.effectiveTiers.R.tier, 'secondary');
     const row = pieFlagItem({ id: 'pull', card, flags: [flag] });
     assert.equal(row.question, 'Is reanimation a color pie break in Red?');
-    const definition = row.evidence.find(entry => entry.label === 'What this covers');
-    assert.match(definition.text, /Returns creature cards from a graveyard/);
+    assert.equal(row.mechanic.name, 'reanimation');
+    assert.match(row.mechanic.definition, /Returns creature cards from a graveyard/);
     assert.match(row.evidence[1].text, /Reanimation is a pie break in Red/);
     const haste = review.flags.find(flag => flag.inspection === 'keyword-haste');
     const profile = { counts: { B: 24, G: 42, R: 404, U: 2 } };
