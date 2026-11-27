@@ -43,9 +43,8 @@ export default class PieInspection {
         this.query = Query.compile(spec.match);
     }
 
-    exceptionFor(node, context) {
-        const applies = exception => exception.matches(node, context);
-        return this.exceptions.find(applies) ?? null;
+    exceptionsFor(node, context) {
+        return this.exceptions.filter(exception => exception.matches(node, context));
     }
 
     appliesTo(face) {

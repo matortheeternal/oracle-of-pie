@@ -136,8 +136,8 @@ An inspection is one kind of color pie break:
   cited Mechanical Color Pie line (`cites`), a hand-written floor (`atLeast`), and another
   inspection's canon tiers (`allowedWherever`). `tiers` replaces all of them.
 - `exceptions`: `{ id, title, match, colors, cites }`. An exception's query is tested against the
-  node the inspection matched; the first match makes each color in `colors` primary, so those
-  colors are allowed in that case. The optional `cites` names the Mechanical Color Pie line the
+  node the inspection matched; every matching exception makes each color in its `colors`
+  primary, so those colors are allowed in that case. Exception order doesn't matter. The optional `cites` names the Mechanical Color Pie line the
   exception comes from and is reported with the flag; it does not change the colors.
 
 The match is attributed to colors: the face's mana cost, colored mana in the ability's cost and

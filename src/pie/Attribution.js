@@ -6,7 +6,7 @@ export default class Attribution {
         this.inspection = inspection;
         this.face = face;
         this.faceIndex = faceIndex;
-        this.exception = inspection.exceptionFor(node, context);
+        this.exceptions = inspection.exceptionsFor(node, context);
         this.colors = attributedColors(face, context, node);
         this.evidence = evidenceOf(node, context);
     }
@@ -15,12 +15,16 @@ export default class Attribution {
         return this.face.parsed.locate?.(this.evidence) ?? null;
     }
 
+    get exception() {
+        return this.exceptions[0] ?? null;
+    }
+
     get citation() {
         return this.exception?.citation ?? this.inspection.citation;
     }
 
     get tiers() {
-        const base = this.inspection.tiers;
-        return this.exception ? this.exception.tiersOver(base) : base;
+        const allow = (tiers, exception) => exception.tiersOver(tiers);
+        return this.exceptions.reduce(allow, this.inspection.tiers);
     }
 }
