@@ -10,7 +10,9 @@ const LIFE_LOSS_SENTENCE = { sentence: { effects: { any: [OPPONENT_LOSES_LIFE] }
 export const SUPPORT_INSPECTIONS = [
     tagInspection({
         id: 'mana-dork',
-        title: 'Creatures that tap for mana',
+        title: 'Creatures that produce mana',
+        description: 'Creatures with a repeatable mana ability that costs no mana, '
+            + 'including abilities that create Treasure, Gold or Powerstone tokens.',
         group: 'Mana & lands',
         exceptions: [SACRIFICIAL_MANA]
     }),

@@ -170,7 +170,7 @@ export const SACRIFICIAL_MANA = {
     id: 'sacrifice-cost',
     title: 'Mana paid for by sacrificing another permanent',
     match: { context: { ability: { cost: { sacrificesOther: true } } } },
-    colors: ['B', 'R'],
+    colors: ['B'],
     cites: 'Mana production, temporary'
 };
 

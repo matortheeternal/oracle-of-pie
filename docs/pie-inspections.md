@@ -56,7 +56,7 @@ tier overrides, and project configuration affect a flag.
 | Inspection | ID | Exceptions |
 | --- | --- | --- |
 | Puts lands from the library onto the battlefield | `land-ramp` | — |
-| Creatures that tap for mana | `mana-dork` | Mana paid for by sacrificing another permanent (B, R; Mana production, temporary) |
+| Creatures that produce mana | `mana-dork` | Mana paid for by sacrificing another permanent (B; Mana production, temporary) |
 | Untaps your permanents en masse | `extra-untap` | Untapping creatures for an additional combat (R; Extra attack)<br>Untapping creatures (W, U, G; Untapping creatures) |
 
 ### Control
