@@ -1,6 +1,6 @@
 # Color-pie inspections
 
-The default registry contains 244 inspections. Each entry lists its built-in exceptions in evaluation order.
+The default registry contains 244 inspections. Each entry lists its built-in exceptions and the colors each one allows.
 Color codes are W (white), U (blue), B (black), R (red), and G (green).
 
 Flags use the modern color pie. A tertiary tier is a bend and a tier of none is
@@ -15,8 +15,8 @@ tier overrides, and project configuration affect a flag.
 | --- | --- | --- |
 | Counters spells | `counterspell` | — |
 | Counters abilities | `counter-ability` | — |
-| Destroys creatures | `destroy-creature` | Replaced by a random card for its controller (U, R; "Polymorph")<br>Land creatures (B, R, G; Land destruction)<br>Creatures with defender (R)<br>Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
-| Exiles creatures | `exile-creature` | Replaced by a random card for its controller (U, R; "Polymorph")<br>Creatures with flying (G) |
+| Destroys creatures | `destroy-creature` | Replaced by a random card for its controller (R; "Polymorph")<br>Land creatures (B, R, G; Land destruction)<br>Creatures with defender (R)<br>Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
+| Exiles creatures | `exile-creature` | Replaced by a random card for its controller (R; "Polymorph")<br>Creatures with flying (G) |
 | Returns creatures to hand | `bounce-creature` | — |
 | Makes opponents sacrifice | `edict` | Creatures with flying (G; Destroy target creature with flying)<br>Attacking or blocking creatures (W; Destroy target attacking or blocking creature.) |
 | Lowers toughness | `shrink-creature` | Creatures with flying (G; Destroy target creature with flying) |
@@ -27,7 +27,7 @@ tier overrides, and project configuration affect a flag.
 
 | Inspection | ID | Exceptions |
 | --- | --- | --- |
-| Deals direct damage to creatures | `damage-creature` | Redirected prevented damage (W; Damage redirection)<br>Creatures with flying (G, W)<br>Damage scaled by a creature's power or toughness (G)<br>Attacking or blocking creatures (W; Deal N damage to target attacking or blocking creature.)<br>Tapped creatures (W) |
+| Deals direct damage to creatures | `damage-creature` | Redirected prevented damage (W; Damage redirection)<br>Creatures with flying (G)<br>Damage scaled by a creature's power or toughness (G)<br>Attacking or blocking creatures (W; Deal N damage to target attacking or blocking creature.)<br>Tapped creatures (W) |
 | Deals direct damage to players | `damage-player` | Redirected prevented damage (W; Damage redirection) |
 | Creature deals damage equal to its power | `bite` | — |
 | Fights | `fight` | — |
@@ -57,7 +57,7 @@ tier overrides, and project configuration affect a flag.
 | --- | --- | --- |
 | Puts lands from the library onto the battlefield | `land-ramp` | — |
 | Creatures that tap for mana | `mana-dork` | Mana paid for by sacrificing another permanent (B, R; Mana production, temporary) |
-| Untaps your permanents en masse | `extra-untap` | Untapping creatures for an additional combat (W, R; Extra attack)<br>Untapping creatures (W, U, G; Untapping creatures) |
+| Untaps your permanents en masse | `extra-untap` | Untapping creatures for an additional combat (R; Extra attack)<br>Untapping creatures (W, U, G; Untapping creatures) |
 
 ### Control
 
@@ -115,7 +115,7 @@ tier overrides, and project configuration affect a flag.
 | Vigilance | `keyword-vigilance` | — |
 | Defender | `keyword-defender` | — |
 | Flash | `keyword-flash` | — |
-| Ward | `keyword-ward` | Ward costs paid in life (B, R; Ward (for life))<br>Non-mana ward costs (B) |
+| Ward | `keyword-ward` | Ward costs paid in life (R; Ward (for life))<br>Non-mana ward costs (B) |
 | Prowess | `keyword-prowess` | — |
 
 ### Keywords / Returning

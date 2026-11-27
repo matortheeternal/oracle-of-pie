@@ -20,7 +20,7 @@ export const FLYER_DAMAGE = {
     id: 'flying',
     title: 'Creatures with flying',
     match: FLYING_TARGET,
-    colors: ['G', 'W']
+    colors: ['G']
 };
 
 export const STAT_SCALED_DAMAGE = {
@@ -80,7 +80,7 @@ export const LIFE_WARD = {
     id: 'life-cost',
     title: 'Ward costs paid in life',
     match: { kind: 'KeywordAbility', paysLifeCost: true },
-    colors: ['B', 'R'],
+    colors: ['R'],
     cites: 'Ward (for life)'
 };
 
@@ -100,7 +100,7 @@ export const EXTRA_ATTACK = {
     id: 'extra-attack',
     title: 'Untapping creatures for an additional combat',
     match: { context: { cardText: { effects: { any: [EXTRA_COMBAT] } } } },
-    colors: ['W', 'R'],
+    colors: ['R'],
     cites: 'Extra attack'
 };
 
@@ -131,7 +131,7 @@ export const POLYMORPH = {
     id: 'polymorph',
     title: 'Replaced by a random card for its controller',
     match: { context: { cardText: RANDOMLY_REPLACED } },
-    colors: ['U', 'R'],
+    colors: ['R'],
     cites: '"Polymorph"'
 };
 
