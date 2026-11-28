@@ -8,6 +8,11 @@ export {
     default as KeywordFamilyEvaluator
 } from './evaluators/KeywordFamilyEvaluator.js';
 export { default as Query } from './evaluators/Query.js';
+export {
+    canonicalTag, equivalentTags, effectiveTags, specificTags, inheritedTagSources
+} from './tags/tagRelationships.js';
+export { default as Keyword } from './values/Keyword.js';
+export { default as KeywordActionEffect } from './effects/KeywordActionEffect.js';
 export { default as TagLibrary } from './evaluators/TagLibrary.js';
 export { Oracle };
 export { DEFAULT_KEYWORDS } from './defaultKeywords.js';
@@ -27,6 +32,7 @@ export { default as CardColors } from './pie/CardColors.js';
 export { default as ColorProfileBuilder } from './pie/ColorProfileBuilder.js';
 export { DEFAULT_PIE_INSPECTIONS } from './pie/inspections/index.js';
 export { keywordInspections } from './pie/inspections/keywordInspection.js';
+export { default as KEYWORD_CANON } from './pie/keywordCanon.json' with { type: 'json' };
 export { default as ColorTiers } from './pie/ColorTiers.js';
 export { default as ColorProfile, COLORS } from './pie/ColorProfile.js';
 export { default as canonTiers } from './pie/canonTiers.js';

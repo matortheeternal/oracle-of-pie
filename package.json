@@ -19,7 +19,7 @@
   "exports": {
     ".": "./src/index.js",
     "./inspection-catalog": "./src/pie/inspectionCatalog.js",
-    "./src/*": "./src/*"
+    "./package.json": "./package.json"
   },
   "dependencies": {
     "mana-scribe": "^2.4.2"
@@ -34,6 +34,7 @@
     "yaml": "^2.9.1"
   },
   "scripts": {
+    "test": "node --test",
     "lint": "eslint src tasks lint eslint.config.js --max-warnings 0",
     "corpus": "node tasks/buildCorpus.js",
     "tag": "node tasks/tagCorpus.js",
